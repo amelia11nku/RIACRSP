@@ -1,0 +1,161 @@
+2025-04-30 01:25:07,221 - DEBUG - 开始两阶段混合学习算法，最大迭代次数: 100
+2025-04-30 01:25:07,896 - DEBUG - 迭代 1：SL初始化种群，大小: 100
+2025-04-30 01:25:08,410 - INFO - Initialization probability model completed.
+2025-04-30 01:25:08,410 - INFO - In generation 1：SL found new best solution with makespan: 1938.00，pointer=0
+2025-04-30 01:25:08,410 - DEBUG - 迭代 1/100 | 阶段: statistical learning | 最佳完工时间: 1938.00 | 迭代耗时: 1.19s | 
+2025-04-30 01:25:10,373 - DEBUG - 迭代 2：SL生成新种群，大小: 100
+2025-04-30 01:25:10,886 - DEBUG - 第2代概率模型更新完成
+2025-04-30 01:25:10,886 - INFO - In generation 2：SL not found better solution，pointer=1
+2025-04-30 01:25:10,888 - DEBUG - 迭代 2/100 | 阶段: statistical learning | 最佳完工时间: 1938.00 | 迭代耗时: 2.48s | 
+2025-04-30 01:25:12,731 - DEBUG - 迭代 3：SL生成新种群，大小: 100
+2025-04-30 01:25:13,237 - DEBUG - 第3代概率模型更新完成
+2025-04-30 01:25:13,237 - INFO - In generation 3：SL found new best solution with makespan: 1928.00，pointer=0
+2025-04-30 01:25:13,237 - DEBUG - 迭代 3/100 | 阶段: statistical learning | 最佳完工时间: 1928.00 | 迭代耗时: 2.35s | 
+2025-04-30 01:25:15,056 - DEBUG - 迭代 4：SL生成新种群，大小: 100
+2025-04-30 01:25:15,559 - DEBUG - 第4代概率模型更新完成
+2025-04-30 01:25:15,559 - INFO - In generation 4：SL not found better solution，pointer=1
+2025-04-30 01:25:15,559 - DEBUG - 迭代 4/100 | 阶段: statistical learning | 最佳完工时间: 1928.00 | 迭代耗时: 2.32s | 
+2025-04-30 01:25:17,336 - DEBUG - 迭代 5：SL生成新种群，大小: 100
+2025-04-30 01:25:17,960 - DEBUG - 第5代概率模型更新完成
+2025-04-30 01:25:17,961 - INFO - In generation 5：SL not found better solution，pointer=2
+2025-04-30 01:25:17,961 - DEBUG - 迭代 5/100 | 阶段: statistical learning | 最佳完工时间: 1928.00 | 迭代耗时: 2.40s | 
+2025-04-30 01:25:19,888 - DEBUG - 迭代 6：SL生成新种群，大小: 100
+2025-04-30 01:25:20,469 - DEBUG - 第6代概率模型更新完成
+2025-04-30 01:25:20,469 - INFO - In generation 6：SL found new best solution with makespan: 1925.00，pointer=0
+2025-04-30 01:25:20,470 - DEBUG - 迭代 6/100 | 阶段: statistical learning | 最佳完工时间: 1925.00 | 迭代耗时: 2.51s | 
+2025-04-30 01:25:22,559 - DEBUG - 迭代 7：SL生成新种群，大小: 100
+2025-04-30 01:25:23,093 - DEBUG - 第7代概率模型更新完成
+2025-04-30 01:25:23,093 - INFO - In generation 7：SL not found better solution，pointer=1
+2025-04-30 01:25:23,093 - DEBUG - 迭代 7/100 | 阶段: statistical learning | 最佳完工时间: 1925.00 | 迭代耗时: 2.62s | 
+2025-04-30 01:25:24,956 - DEBUG - 迭代 8：SL生成新种群，大小: 100
+2025-04-30 01:25:25,580 - DEBUG - 第8代概率模型更新完成
+2025-04-30 01:25:25,580 - INFO - In generation 8：SL not found better solution，pointer=2
+2025-04-30 01:25:25,580 - DEBUG - 迭代 8/100 | 阶段: statistical learning | 最佳完工时间: 1925.00 | 迭代耗时: 2.49s | 
+2025-04-30 01:25:27,699 - DEBUG - 迭代 9：SL生成新种群，大小: 100
+2025-04-30 01:25:28,230 - DEBUG - 第9代概率模型更新完成
+2025-04-30 01:25:28,230 - INFO - In generation 9：SL not found better solution，pointer=3
+2025-04-30 01:25:28,230 - DEBUG - 迭代 9/100 | 阶段: statistical learning | 最佳完工时间: 1925.00 | 迭代耗时: 2.65s | 
+2025-04-30 01:25:30,258 - DEBUG - 迭代 10：SL生成新种群，大小: 100
+2025-04-30 01:25:30,768 - DEBUG - 第10代概率模型更新完成
+2025-04-30 01:25:30,768 - INFO - In generation 10：SL not found better solution，pointer=4
+2025-04-30 01:25:30,769 - DEBUG - 迭代 10/100 | 阶段: statistical learning | 最佳完工时间: 1925.00 | 迭代耗时: 2.54s | 
+2025-04-30 01:25:32,661 - DEBUG - 迭代 11：SL生成新种群，大小: 100
+2025-04-30 01:25:33,169 - DEBUG - 第11代概率模型更新完成
+2025-04-30 01:25:33,169 - INFO - In generation 11：SL not found better solution，pointer=5
+2025-04-30 01:25:33,170 - INFO - SL is stagnating at generation 11, switching to EL phase...
+2025-04-30 01:25:33,170 - INFO - pointer=5, threshold=4.50
+2025-04-30 01:25:33,171 - DEBUG - 切换到EL阶段，使用SL种群初始化EL种群，种群大小: 100
+2025-04-30 01:25:33,171 - DEBUG - 迭代 11/100 | 阶段: evolutionary learning | 最佳完工时间: 1925.00 | 迭代耗时: 2.40s | 
+2025-04-30 01:25:34,173 - INFO - In generation 12, EL found new best solution with makespan: 1924.00
+2025-04-30 01:25:34,173 - DEBUG - 迭代 12/100 | 阶段: evolutionary learning | 最佳完工时间: 1924.00 | 迭代耗时: 1.00s | 
+2025-04-30 01:25:35,194 - INFO - In generation 13, EL found new best solution with makespan: 1907.00
+2025-04-30 01:25:35,195 - DEBUG - 迭代 13/100 | 阶段: evolutionary learning | 最佳完工时间: 1907.00 | 迭代耗时: 1.02s | 
+2025-04-30 01:25:36,230 - DEBUG - 迭代 14/100 | 阶段: evolutionary learning | 最佳完工时间: 1907.00 | 迭代耗时: 1.04s | 
+2025-04-30 01:25:37,256 - DEBUG - 迭代 15/100 | 阶段: evolutionary learning | 最佳完工时间: 1907.00 | 迭代耗时: 1.02s | 
+2025-04-30 01:25:38,419 - INFO - In generation 16, EL found new best solution with makespan: 1882.00
+2025-04-30 01:25:38,419 - DEBUG - 迭代 16/100 | 阶段: evolutionary learning | 最佳完工时间: 1882.00 | 迭代耗时: 1.16s | 
+2025-04-30 01:25:39,561 - DEBUG - 迭代 17/100 | 阶段: evolutionary learning | 最佳完工时间: 1882.00 | 迭代耗时: 1.14s | 
+2025-04-30 01:25:40,730 - INFO - In generation 18, EL found new best solution with makespan: 1879.00
+2025-04-30 01:25:40,730 - DEBUG - 迭代 18/100 | 阶段: evolutionary learning | 最佳完工时间: 1879.00 | 迭代耗时: 1.17s | 
+2025-04-30 01:25:41,785 - DEBUG - 迭代 19/100 | 阶段: evolutionary learning | 最佳完工时间: 1879.00 | 迭代耗时: 1.05s | 
+2025-04-30 01:25:42,883 - INFO - In generation 20, EL found new best solution with makespan: 1836.00
+2025-04-30 01:25:42,883 - DEBUG - 迭代 20/100 | 阶段: evolutionary learning | 最佳完工时间: 1836.00 | 迭代耗时: 1.10s | 
+2025-04-30 01:25:44,050 - DEBUG - 迭代 21/100 | 阶段: evolutionary learning | 最佳完工时间: 1836.00 | 迭代耗时: 1.17s | 
+2025-04-30 01:25:45,046 - DEBUG - 迭代 22/100 | 阶段: evolutionary learning | 最佳完工时间: 1836.00 | 迭代耗时: 1.00s | 
+2025-04-30 01:25:46,095 - DEBUG - 迭代 23/100 | 阶段: evolutionary learning | 最佳完工时间: 1836.00 | 迭代耗时: 1.05s | 
+2025-04-30 01:25:47,159 - DEBUG - 迭代 24/100 | 阶段: evolutionary learning | 最佳完工时间: 1836.00 | 迭代耗时: 1.06s | 
+2025-04-30 01:25:48,195 - DEBUG - 迭代 25/100 | 阶段: evolutionary learning | 最佳完工时间: 1836.00 | 迭代耗时: 1.04s | 
+2025-04-30 01:25:49,179 - INFO - In generation 26, EL found new best solution with makespan: 1828.00
+2025-04-30 01:25:49,179 - DEBUG - 迭代 26/100 | 阶段: evolutionary learning | 最佳完工时间: 1828.00 | 迭代耗时: 0.98s | 
+2025-04-30 01:25:50,220 - INFO - In generation 27, EL found new best solution with makespan: 1827.00
+2025-04-30 01:25:50,220 - DEBUG - 迭代 27/100 | 阶段: evolutionary learning | 最佳完工时间: 1827.00 | 迭代耗时: 1.04s | 
+2025-04-30 01:25:51,234 - INFO - In generation 28, EL found new best solution with makespan: 1804.00
+2025-04-30 01:25:51,234 - DEBUG - 迭代 28/100 | 阶段: evolutionary learning | 最佳完工时间: 1804.00 | 迭代耗时: 1.01s | 
+2025-04-30 01:25:52,293 - DEBUG - 迭代 29/100 | 阶段: evolutionary learning | 最佳完工时间: 1804.00 | 迭代耗时: 1.06s | 
+2025-04-30 01:25:53,361 - INFO - In generation 30, EL found new best solution with makespan: 1798.00
+2025-04-30 01:25:53,361 - DEBUG - 迭代 30/100 | 阶段: evolutionary learning | 最佳完工时间: 1798.00 | 迭代耗时: 1.07s | 
+2025-04-30 01:25:54,405 - DEBUG - 迭代 31/100 | 阶段: evolutionary learning | 最佳完工时间: 1798.00 | 迭代耗时: 1.04s | 
+2025-04-30 01:25:55,414 - DEBUG - 迭代 32/100 | 阶段: evolutionary learning | 最佳完工时间: 1798.00 | 迭代耗时: 1.01s | 
+2025-04-30 01:25:56,418 - INFO - In generation 33, EL found new best solution with makespan: 1787.00
+2025-04-30 01:25:56,418 - DEBUG - 迭代 33/100 | 阶段: evolutionary learning | 最佳完工时间: 1787.00 | 迭代耗时: 1.00s | 
+2025-04-30 01:25:57,436 - DEBUG - 迭代 34/100 | 阶段: evolutionary learning | 最佳完工时间: 1787.00 | 迭代耗时: 1.02s | 
+2025-04-30 01:25:58,507 - DEBUG - 迭代 35/100 | 阶段: evolutionary learning | 最佳完工时间: 1787.00 | 迭代耗时: 1.07s | 
+2025-04-30 01:25:59,520 - INFO - In generation 36, EL found new best solution with makespan: 1782.00
+2025-04-30 01:25:59,520 - DEBUG - 迭代 36/100 | 阶段: evolutionary learning | 最佳完工时间: 1782.00 | 迭代耗时: 1.01s | 
+2025-04-30 01:26:00,644 - DEBUG - 迭代 37/100 | 阶段: evolutionary learning | 最佳完工时间: 1782.00 | 迭代耗时: 1.12s | 
+2025-04-30 01:26:01,770 - DEBUG - 迭代 38/100 | 阶段: evolutionary learning | 最佳完工时间: 1782.00 | 迭代耗时: 1.13s | 
+2025-04-30 01:26:02,743 - INFO - In generation 39, EL found new best solution with makespan: 1776.00
+2025-04-30 01:26:02,743 - DEBUG - 迭代 39/100 | 阶段: evolutionary learning | 最佳完工时间: 1776.00 | 迭代耗时: 0.97s | 
+2025-04-30 01:26:03,757 - DEBUG - 迭代 40/100 | 阶段: evolutionary learning | 最佳完工时间: 1776.00 | 迭代耗时: 1.01s | 
+2025-04-30 01:26:04,819 - DEBUG - 迭代 41/100 | 阶段: evolutionary learning | 最佳完工时间: 1776.00 | 迭代耗时: 1.06s | 
+2025-04-30 01:26:05,859 - DEBUG - 迭代 42/100 | 阶段: evolutionary learning | 最佳完工时间: 1776.00 | 迭代耗时: 1.04s | 
+2025-04-30 01:26:06,788 - DEBUG - 迭代 43/100 | 阶段: evolutionary learning | 最佳完工时间: 1776.00 | 迭代耗时: 0.93s | 
+2025-04-30 01:26:07,832 - DEBUG - 迭代 44/100 | 阶段: evolutionary learning | 最佳完工时间: 1776.00 | 迭代耗时: 1.04s | 
+2025-04-30 01:26:08,975 - DEBUG - 迭代 45/100 | 阶段: evolutionary learning | 最佳完工时间: 1776.00 | 迭代耗时: 1.14s | 
+2025-04-30 01:26:10,261 - DEBUG - 迭代 46/100 | 阶段: evolutionary learning | 最佳完工时间: 1776.00 | 迭代耗时: 1.29s | 
+2025-04-30 01:26:11,478 - DEBUG - 迭代 47/100 | 阶段: evolutionary learning | 最佳完工时间: 1776.00 | 迭代耗时: 1.22s | 
+2025-04-30 01:26:12,620 - DEBUG - 迭代 48/100 | 阶段: evolutionary learning | 最佳完工时间: 1776.00 | 迭代耗时: 1.14s | 
+2025-04-30 01:26:13,784 - DEBUG - 迭代 49/100 | 阶段: evolutionary learning | 最佳完工时间: 1776.00 | 迭代耗时: 1.16s | 
+2025-04-30 01:26:14,813 - DEBUG - 迭代 50/100 | 阶段: evolutionary learning | 最佳完工时间: 1776.00 | 迭代耗时: 1.03s | 
+2025-04-30 01:26:15,783 - INFO - In generation 51, EL found new best solution with makespan: 1775.00
+2025-04-30 01:26:15,784 - DEBUG - 迭代 51/100 | 阶段: evolutionary learning | 最佳完工时间: 1775.00 | 迭代耗时: 0.97s | 
+2025-04-30 01:26:16,790 - DEBUG - 迭代 52/100 | 阶段: evolutionary learning | 最佳完工时间: 1775.00 | 迭代耗时: 1.01s | 
+2025-04-30 01:26:17,809 - INFO - In generation 53, EL found new best solution with makespan: 1760.00
+2025-04-30 01:26:17,810 - DEBUG - 迭代 53/100 | 阶段: evolutionary learning | 最佳完工时间: 1760.00 | 迭代耗时: 1.02s | 
+2025-04-30 01:26:18,813 - INFO - In generation 54, EL found new best solution with makespan: 1742.00
+2025-04-30 01:26:18,814 - DEBUG - 迭代 54/100 | 阶段: evolutionary learning | 最佳完工时间: 1742.00 | 迭代耗时: 1.00s | 
+2025-04-30 01:26:19,799 - INFO - In generation 55, EL found new best solution with makespan: 1734.00
+2025-04-30 01:26:19,799 - DEBUG - 迭代 55/100 | 阶段: evolutionary learning | 最佳完工时间: 1734.00 | 迭代耗时: 0.98s | 
+2025-04-30 01:26:20,784 - DEBUG - 迭代 56/100 | 阶段: evolutionary learning | 最佳完工时间: 1734.00 | 迭代耗时: 0.99s | 
+2025-04-30 01:26:21,767 - DEBUG - 迭代 57/100 | 阶段: evolutionary learning | 最佳完工时间: 1734.00 | 迭代耗时: 0.98s | 
+2025-04-30 01:26:22,765 - DEBUG - 迭代 58/100 | 阶段: evolutionary learning | 最佳完工时间: 1734.00 | 迭代耗时: 1.00s | 
+2025-04-30 01:26:23,738 - DEBUG - 迭代 59/100 | 阶段: evolutionary learning | 最佳完工时间: 1734.00 | 迭代耗时: 0.97s | 
+2025-04-30 01:26:24,690 - DEBUG - 迭代 60/100 | 阶段: evolutionary learning | 最佳完工时间: 1734.00 | 迭代耗时: 0.95s | 
+2025-04-30 01:26:25,628 - DEBUG - 迭代 61/100 | 阶段: evolutionary learning | 最佳完工时间: 1734.00 | 迭代耗时: 0.94s | 
+2025-04-30 01:26:26,615 - DEBUG - 迭代 62/100 | 阶段: evolutionary learning | 最佳完工时间: 1734.00 | 迭代耗时: 0.99s | 
+2025-04-30 01:26:27,624 - INFO - In generation 63, EL found new best solution with makespan: 1730.00
+2025-04-30 01:26:27,624 - DEBUG - 迭代 63/100 | 阶段: evolutionary learning | 最佳完工时间: 1730.00 | 迭代耗时: 1.01s | 
+2025-04-30 01:26:28,884 - DEBUG - 迭代 64/100 | 阶段: evolutionary learning | 最佳完工时间: 1730.00 | 迭代耗时: 1.26s | 
+2025-04-30 01:26:30,195 - DEBUG - 迭代 65/100 | 阶段: evolutionary learning | 最佳完工时间: 1730.00 | 迭代耗时: 1.31s | 
+2025-04-30 01:26:31,542 - DEBUG - 迭代 66/100 | 阶段: evolutionary learning | 最佳完工时间: 1730.00 | 迭代耗时: 1.35s | 
+2025-04-30 01:26:32,629 - DEBUG - 迭代 67/100 | 阶段: evolutionary learning | 最佳完工时间: 1730.00 | 迭代耗时: 1.09s | 
+2025-04-30 01:26:33,720 - DEBUG - 迭代 68/100 | 阶段: evolutionary learning | 最佳完工时间: 1730.00 | 迭代耗时: 1.09s | 
+2025-04-30 01:26:34,746 - DEBUG - 迭代 69/100 | 阶段: evolutionary learning | 最佳完工时间: 1730.00 | 迭代耗时: 1.03s | 
+2025-04-30 01:26:35,860 - DEBUG - 迭代 70/100 | 阶段: evolutionary learning | 最佳完工时间: 1730.00 | 迭代耗时: 1.11s | 
+2025-04-30 01:26:37,091 - DEBUG - 迭代 71/100 | 阶段: evolutionary learning | 最佳完工时间: 1730.00 | 迭代耗时: 1.23s | 
+2025-04-30 01:26:38,206 - INFO - In generation 72, EL found new best solution with makespan: 1720.00
+2025-04-30 01:26:38,206 - DEBUG - 迭代 72/100 | 阶段: evolutionary learning | 最佳完工时间: 1720.00 | 迭代耗时: 1.11s | 
+2025-04-30 01:26:39,214 - DEBUG - 迭代 73/100 | 阶段: evolutionary learning | 最佳完工时间: 1720.00 | 迭代耗时: 1.01s | 
+2025-04-30 01:26:40,232 - DEBUG - 迭代 74/100 | 阶段: evolutionary learning | 最佳完工时间: 1720.00 | 迭代耗时: 1.02s | 
+2025-04-30 01:26:41,251 - DEBUG - 迭代 75/100 | 阶段: evolutionary learning | 最佳完工时间: 1720.00 | 迭代耗时: 1.02s | 
+2025-04-30 01:26:42,308 - DEBUG - 迭代 76/100 | 阶段: evolutionary learning | 最佳完工时间: 1720.00 | 迭代耗时: 1.06s | 
+2025-04-30 01:26:43,319 - DEBUG - 迭代 77/100 | 阶段: evolutionary learning | 最佳完工时间: 1720.00 | 迭代耗时: 1.01s | 
+2025-04-30 01:26:44,360 - DEBUG - 迭代 78/100 | 阶段: evolutionary learning | 最佳完工时间: 1720.00 | 迭代耗时: 1.04s | 
+2025-04-30 01:26:45,440 - DEBUG - 迭代 79/100 | 阶段: evolutionary learning | 最佳完工时间: 1720.00 | 迭代耗时: 1.08s | 
+2025-04-30 01:26:46,497 - DEBUG - 迭代 80/100 | 阶段: evolutionary learning | 最佳完工时间: 1720.00 | 迭代耗时: 1.06s | 
+2025-04-30 01:26:47,554 - INFO - In generation 81, EL found new best solution with makespan: 1708.00
+2025-04-30 01:26:47,554 - DEBUG - 迭代 81/100 | 阶段: evolutionary learning | 最佳完工时间: 1708.00 | 迭代耗时: 1.06s | 
+2025-04-30 01:26:48,626 - DEBUG - 迭代 82/100 | 阶段: evolutionary learning | 最佳完工时间: 1708.00 | 迭代耗时: 1.07s | 
+2025-04-30 01:26:49,807 - DEBUG - 迭代 83/100 | 阶段: evolutionary learning | 最佳完工时间: 1708.00 | 迭代耗时: 1.18s | 
+2025-04-30 01:26:50,846 - DEBUG - 迭代 84/100 | 阶段: evolutionary learning | 最佳完工时间: 1708.00 | 迭代耗时: 1.04s | 
+2025-04-30 01:26:51,974 - INFO - In generation 85, EL found new best solution with makespan: 1706.00
+2025-04-30 01:26:51,975 - DEBUG - 迭代 85/100 | 阶段: evolutionary learning | 最佳完工时间: 1706.00 | 迭代耗时: 1.13s | 
+2025-04-30 01:26:53,162 - DEBUG - 迭代 86/100 | 阶段: evolutionary learning | 最佳完工时间: 1706.00 | 迭代耗时: 1.19s | 
+2025-04-30 01:26:54,327 - DEBUG - 迭代 87/100 | 阶段: evolutionary learning | 最佳完工时间: 1706.00 | 迭代耗时: 1.16s | 
+2025-04-30 01:26:55,456 - DEBUG - 迭代 88/100 | 阶段: evolutionary learning | 最佳完工时间: 1706.00 | 迭代耗时: 1.13s | 
+2025-04-30 01:26:56,572 - DEBUG - 迭代 89/100 | 阶段: evolutionary learning | 最佳完工时间: 1706.00 | 迭代耗时: 1.12s | 
+2025-04-30 01:26:57,658 - DEBUG - 迭代 90/100 | 阶段: evolutionary learning | 最佳完工时间: 1706.00 | 迭代耗时: 1.09s | 
+2025-04-30 01:26:58,782 - DEBUG - 迭代 91/100 | 阶段: evolutionary learning | 最佳完工时间: 1706.00 | 迭代耗时: 1.12s | 
+2025-04-30 01:26:59,920 - DEBUG - 迭代 92/100 | 阶段: evolutionary learning | 最佳完工时间: 1706.00 | 迭代耗时: 1.14s | 
+2025-04-30 01:27:01,010 - DEBUG - 迭代 93/100 | 阶段: evolutionary learning | 最佳完工时间: 1706.00 | 迭代耗时: 1.09s | 
+2025-04-30 01:27:02,172 - DEBUG - 迭代 94/100 | 阶段: evolutionary learning | 最佳完工时间: 1706.00 | 迭代耗时: 1.16s | 
+2025-04-30 01:27:03,376 - DEBUG - 迭代 95/100 | 阶段: evolutionary learning | 最佳完工时间: 1706.00 | 迭代耗时: 1.20s | 
+2025-04-30 01:27:04,469 - DEBUG - 迭代 96/100 | 阶段: evolutionary learning | 最佳完工时间: 1706.00 | 迭代耗时: 1.09s | 
+2025-04-30 01:27:05,497 - DEBUG - 迭代 97/100 | 阶段: evolutionary learning | 最佳完工时间: 1706.00 | 迭代耗时: 1.03s | 
+2025-04-30 01:27:06,500 - DEBUG - 迭代 98/100 | 阶段: evolutionary learning | 最佳完工时间: 1706.00 | 迭代耗时: 1.00s | 
+2025-04-30 01:27:07,535 - DEBUG - 迭代 99/100 | 阶段: evolutionary learning | 最佳完工时间: 1706.00 | 迭代耗时: 1.04s | 
+2025-04-30 01:27:08,569 - DEBUG - 迭代 100/100 | 阶段: evolutionary learning | 最佳完工时间: 1706.00 | 迭代耗时: 1.03s | 
+2025-04-30 01:27:08,571 - INFO - ==================================================
+2025-04-30 01:27:08,571 - INFO - Best solution found with makespan: 1706.00s at generation: 100
+2025-04-30 01:27:08,571 - INFO - Total time: 121.35s
+2025-04-30 01:27:08,771 - INFO - Convergence curve saved to: blea_convergence.png

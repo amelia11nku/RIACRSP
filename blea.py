@@ -1,3 +1,12 @@
+"""
+两阶段双学习进化模块
+
+该模块负责实现基于BLEA的优化算法, 包括:
+参考论文:(A Bi-Learning Evolutionary Algorithm for Transportation-Constrained and Distributed Energy-Efficient Flexible Scheduling) 
+- 迭代优化概率学习SL阶段, SL学习率固定=0.8
+- 当SL停滞后切换到EL阶段
+- EL阶段没有Q学习的选择算子、没有机器局部搜索
+"""
 import logging
 import time
 import os
@@ -224,11 +233,11 @@ class BLEA:
             self.best_solution = best_sl_solution
             # 找到新的最优解，重置pointer
             self.pointer = 0
-            logger.info(f"In generation {iteration + 1}：SL found new best solution with makespan: {self.best_makespan:.2f}，pointer=0")
+            logger.info(f"In generation {iteration + 1}, SL found new best solution with makespan: {self.best_makespan:.2f}，pointer=0")
         else:
             # 没有找到更好的解，pointer加1
             self.pointer += 1
-            logger.info(f"In generation {iteration + 1}：SL not found better solution，pointer={self.pointer}")
+            logger.info(f"In generation {iteration + 1}, SL not found better solution，pointer={self.pointer}")
         
         # 增加SL迭代计数
         self.sl_iteration += 1
@@ -310,10 +319,8 @@ class BLEA:
                 
                 while len(self.el.population) < self.el.population_size and attempts < max_attempts:
                     solution = self.el.generate_random_strings(
-                        self.el.num_jobs,
                         self.el.num_agvs_w,
                         self.el.num_agvs_f,
-                        self.el.job_operations,
                         self.el.processing_times
                     )
                     calculate = Calculate()

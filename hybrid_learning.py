@@ -397,10 +397,10 @@ class HybridLearning:
                 for top_el_solution in top_el_solutions:
                     try:
                         # Convert EL solution to SL format (probability matrix)
-                        machine_prob = self.sl.convert_assignments_to_probability(top_el_solution[2], assignment_type='machine')
-                        agv_w_prob = self.sl.convert_assignments_to_probability(top_el_solution[3], assignment_type='agv_w')
-                        agv_f_prob = self.sl.convert_assignments_to_probability(top_el_solution[4], assignment_type='agv_f')
-                        schedule_prob = self.sl.convert_schedule_to_probability(top_el_solution[5])
+                        machine_prob = self.convert_assignments_to_probability(top_el_solution[2], assignment_type='machine')
+                        agv_w_prob = self.convert_assignments_to_probability(top_el_solution[3], assignment_type='agv_w')
+                        agv_f_prob = self.convert_assignments_to_probability(top_el_solution[4], assignment_type='agv_f')
+                        schedule_prob = self.convert_schedule_to_probability(top_el_solution[5])
                         
                         # Create a new SL individual
                         new_sl_individual = (machine_prob, agv_w_prob, agv_f_prob, schedule_prob)
@@ -425,6 +425,89 @@ class HybridLearning:
         
         return sl_population, sl_makespans
     
+    def convert_assignments_to_probability(self, assignments, assignment_type=None):
+        """将分配方案转换为概率矩阵
+        
+        Args:
+            assignments: 分配方案列表，每个元素是一个分配ID
+            assignment_type: 分配类型，可以是'machine', 'agv_w', 'agv_f'或None
+            
+        Returns:
+            概率矩阵，选定的分配ID的概率为1.0，其他为0.0
+        """
+        
+        # 根据分配类型确定资源数量
+        if assignment_type == 'machine':
+            num_resources = num_machines
+        elif assignment_type == 'agv_w':
+            num_resources = num_agvs_w
+        elif assignment_type == 'agv_f':
+            num_resources = num_agvs_f
+        else:
+            # 如果没有指定类型，尝试自动判断
+            if len(assignments) == num_operations:
+                # 先检查最大值来判断类型
+                max_id = max(assignments) if assignments else 0
+                if max_id <= num_machines:
+                    num_resources = num_machines
+                elif max_id <= num_agvs_w:
+                    num_resources = num_agvs_w
+                elif max_id <= num_agvs_f:
+                    num_resources = num_agvs_f
+                else:
+                    # 如果无法确定，则使用最大值
+                    num_resources = max_id
+            else:
+                # 如果无法确定，则使用最大值
+                num_resources = max(assignments) if assignments else 0
+        
+        # 创建与当前模型相同大小的矩阵
+        if assignment_type == 'machine':
+            prob_matrix = np.zeros((num_operations, num_machines))
+        elif assignment_type == 'agv_w':
+            prob_matrix = np.zeros((num_operations, num_agvs_w))
+        elif assignment_type == 'agv_f':
+            prob_matrix = np.zeros((num_operations, num_agvs_f))
+        else:
+            # 如果无法确定，则创建新矩阵
+            prob_matrix = np.zeros((len(assignments), num_resources))
+        
+        # 将选定的分配ID的概率设置为1.0
+        for i, resource_id in enumerate(assignments):
+            if 1 <= resource_id <= prob_matrix.shape[1]:  # 确保资源ID在有效范围内
+                prob_matrix[i, resource_id-1] = 1.0
+        
+        return prob_matrix
+    
+    def convert_schedule_to_probability(self, schedule_string):
+        """将调度方案转换为概率矩阵
+        
+        Args:
+            schedule_string: 调度方案列表，每个元素是一个工序的索引
+            
+        Returns:
+            概率矩阵, 每个工序的优先级按照在schedule_string中的顺序排列
+        """
+        # 初始化概率矩阵
+        schedule_prob = np.zeros((1, num_operations))
+        
+        # 根据工序在schedule_string中的顺序赋予优先级
+        for i, op_index in enumerate(schedule_string):
+            # 确保索引在有效范围内
+            if 1 <= op_index <= num_operations:
+                # 赋予优先级，从num_operations开始递减
+                schedule_prob[0, op_index-1] = num_operations - i
+        
+        # 归一化处理
+        if np.sum(schedule_prob) > 0:  # 避免除以零
+            # 归一化使所有值之和为1
+            schedule_prob = schedule_prob / np.sum(schedule_prob)
+        else:
+            # 如果所有值都为0，设置为均匀分布
+            schedule_prob[:] = 1.0 / num_operations
+        
+        return schedule_prob
+        
     def _update_algorithm_ratio(self, performance_history, iteration, sl_ratio, el_ratio, algorithm_phase):
         """Dynamically update SL and EL ratios
         

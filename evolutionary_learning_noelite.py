@@ -154,10 +154,8 @@ class EvolutionaryLearning:
         
         while len(self.population) < self.population_size and attempts < max_attempts:
             solution = self.generate_random_strings(
-                self.num_jobs,
                 self.num_agvs_w,
                 self.num_agvs_f,
-                self.job_operations,
                 self.processing_times
             )
             calculate = Calculate()
@@ -178,18 +176,12 @@ class EvolutionaryLearning:
     
     def generate_random_strings(
         self,
-        num_jobs: int,
         num_agvs_w: int,
         num_agvs_f: int,
-        job_operations: Dict[int, int],
         processing_times: Dict[str, Dict[int, float]]) -> Tuple[List[int], List[int], List[int], List[int]]:
         """随机生成编码字符串"""
         # 获取所有工序的顺序列表
-        operations_list = [
-            f"o{job_id}_{op_seq}"
-            for job_id in range(1, num_jobs + 1)
-            for op_seq in range(1, job_operations[job_id] + 1)
-        ]
+        operations_list = self.calculate.get_operations_list()
         
         # 生成机器分配字符串
         machine_string = []
@@ -203,13 +195,33 @@ class EvolutionaryLearning:
         agv_f_string = [random.randint(1, num_agvs_f) for _ in range(len(operations_list))]
 
         # 生成调度字符串
+        total_operations = len(operations_list)
+        # 1) 创建工序ID到索引的映射（1到工序数量）
+        op_id_to_index = {op_id: i+1 for i, op_id in enumerate(operations_list)}
+        # 2) 构建工序依赖图（前置工序 -> 后继工序）
+        graph = {op_id: set() for op_id in operations_list}
+        in_degree = {op_id: 0 for op_id in operations_list}
+        for op_id, predecessors in priority_dict.items():
+            for pred in predecessors:
+                graph[pred].add(op_id)  # pred是op_id的前置工序，所以op_id是pred的后继工序
+                in_degree[op_id] += 1  # op_id的入度加1
+        # 3) 使用拓扑排序生成有效的工序序列
         schedule_string = []
-        remaining_ops = []  # 剩余未分配的工序
-        for job_id in range(1, num_jobs + 1):
-            for _ in range(job_operations[job_id]):
-                remaining_ops.append(job_id)
-        random.shuffle(remaining_ops)
-        schedule_string = remaining_ops
+        queue = [op_id for op_id, degree in in_degree.items() if degree == 0]
+        while queue:
+            # 随机选择一个没有前置工序的工序
+            np.random.shuffle(queue)
+            op_id = queue.pop(0)
+            # 将该工序的索引添加到调度序列中
+            schedule_string.append(op_id_to_index[op_id])
+            # 更新其后继工序的入度
+            for successor in graph[op_id]:
+                in_degree[successor] -= 1
+                if in_degree[successor] == 0:
+                    queue.append(successor)
+        # 检查是否所有工序都被排序（检测循环依赖）
+        if len(schedule_string) != total_operations:
+            raise ValueError("工序依赖图中存在循环依赖，无法生成有效的调度序列")
 
         return machine_string, agv_w_string, agv_f_string, schedule_string
 
@@ -283,29 +295,39 @@ class EvolutionaryLearning:
         """
         if random.random() > self.pc:
             return parent1.copy()
-            
-        # 初始化子代
-        child = [-1] * len(parent1)
+        
+        # 预处理：建立工序索引到作业ID的映射
+        if not hasattr(self, '_op_index_to_job_cache'):
+            operations_list = self.calculate.get_operations_list()
+            self._op_index_to_job_cache = {}
+            for i, op_id in enumerate(operations_list):
+                job_id = int(op_id.split('_')[0][1:])  # 从'o1_2'提取'1'
+                self._op_index_to_job_cache[i+1] = job_id
+        
+        op_index_to_job = self._op_index_to_job_cache
         
         # 随机将作业分为两组
         all_jobs = list(range(1, self.num_jobs + 1))
         num_jobs_in_jp1 = random.randint(1, self.num_jobs - 1)
         jp1 = set(random.sample(all_jobs, num_jobs_in_jp1))
-        jp2 = set(all_jobs) - jp1
         
-        # 从parent1复制JP1中的作业
-        p1_positions = []
-        for i, job in enumerate(parent1):
-            if job in jp1:  # 直接检查作业号是否在jp1中
-                child[i] = job
-                p1_positions.append(i)
-                
-        # 从parent2获取JP2中的作业
-        p2_elements = [job for job in parent2 if job in jp2]  # 获取parent2中属于jp2的作业
-        empty_positions = [i for i in range(len(child)) if child[i] == -1]
+        # 初始化子代和空位置列表
+        child = [-1] * len(parent1)
+        empty_positions = []
         
-        for pos, elem in zip(empty_positions, p2_elements):
-            child[pos] = elem
+        # 从父代1复制JP1中的作业对应的工序
+        for i, op_index in enumerate(parent1):
+            if op_index_to_job[op_index] in jp1:
+                child[i] = op_index
+            else:
+                empty_positions.append(i)
+        
+        # 从父代2中收集JP2作业对应的工序
+        p2_jp2_ops = [op for op in parent2 if op_index_to_job[op] not in jp1]
+        
+        # 将父代2中属于JP2的工序填入子代的空位置
+        for i, op_index in zip(empty_positions, p2_jp2_ops):
+            child[i] = op_index
             
         return child
     
@@ -330,12 +352,32 @@ class EvolutionaryLearning:
         return mutated
     
     def mutate_schedule_string(self, schedule: List[int]) -> List[int]:
-        """交换变异算子"""
-        mutated = schedule.copy()
-        if random.random() < self.pm:
+        """交换变异算子（保证优先级约束）"""
+        # 如果不变异，直接返回原始调度
+        if random.random() >= self.pm:
+            return schedule.copy()
+        
+        # 获取工序索引到工序ID的映射
+        operations_list = self.calculate.get_operations_list()
+        op_index_to_id = {i+1: op_id for i, op_id in enumerate(operations_list)}
+        
+        # 尝试多次变异，直到找到合法的交换或达到最大尝试次数
+        max_attempts = 10
+        for _ in range(max_attempts):
+            mutated = schedule.copy()
             i, j = random.sample(range(len(mutated)), 2)
             mutated[i], mutated[j] = mutated[j], mutated[i]
-        return mutated
+            
+            # 验证交换后的调度是否合法
+            try:
+                from MK10 import PRIORITY_DICT  # 导入优先级字典
+                self.calculate._validate_schedule_string(mutated, op_index_to_id, PRIORITY_DICT)
+                return mutated  # 找到合法交换，返回
+            except ValueError:
+                continue  # 交换导致非法调度，尝试下一次
+        
+        # 如果所有尝试都失败，返回原始调度
+        return schedule.copy()
     
     def select_parent2(self, parent1_idx: int, population: List[tuple], makespans: List[float]) -> int:
         """使用Q-learning选择parent2

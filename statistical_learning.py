@@ -5,6 +5,7 @@
 - 生成概率矩阵
 - 解码概率矩阵为具体的调度方案
 - 迭代优化概率模型
+- 学习率是自适应变化的
 """
 
 import os
@@ -26,7 +27,7 @@ from MK10 import (
     NUM_AGVS_F as num_agvs_f,
     JOB_OPERATIONS as job_operations,
     PROCESSING_TIMES as processing_times,
-    PRIORITY_DICT as priority_dict,
+    PRIORITY_DICT as priority_dict
 )
 
 # 导入统一日志配置
@@ -95,7 +96,7 @@ class StatisticalLearning:
             machine_prob = np.random.uniform(0, 1, size=(self.num_operations, self.num_machines))
             agv_w_prob = np.random.uniform(0, 1, size=(self.num_operations, self.num_agvs_w))
             agv_f_prob = np.random.uniform(0, 1, size=(self.num_operations, self.num_agvs_f))
-            schedule_prob = np.random.uniform(0, 1, size=(1, self.num_operations))
+            schedule_prob = self.generate_random_schedule_prob(np.full((1, self.num_operations), 1/self.num_operations))
             population.append((machine_prob, agv_w_prob, agv_f_prob, schedule_prob))
         
         return population
@@ -173,7 +174,7 @@ class StatisticalLearning:
 
     def generate_population(self, exploration_factor=0.2):
         """
-        根据概率模型生成一个新种群
+        根据概率模型生成一个新种群，并确保生成的schedule_prob符合优先级约束
         
         Returns:
             list: 种群列表，每个元素是一个个体(machine_prob, agv_w_prob, agv_f_prob, schedule_prob)
@@ -181,18 +182,54 @@ class StatisticalLearning:
         population = []
 
         for _ in range(self.population_size):
+            # 获取工序索引到工序ID的映射
+            operations_list = self.calculate.get_operations_list()
+            op_index_to_id = {i+1: op_id for i, op_id in enumerate(operations_list)}
+            
             # 使用概率模型生成新个体
             if random.random() < exploration_factor:
                 # 增加探索：生成更多随机解
                 machine_prob = np.random.uniform(0, 1, size=(self.num_operations, self.num_machines))
                 agv_w_prob = np.random.uniform(0, 1, size=(self.num_operations, self.num_agvs_w))
                 agv_f_prob = np.random.uniform(0, 1, size=(self.num_operations, self.num_agvs_f))
-                schedule_prob = np.random.uniform(0, 1, size=(1, self.num_operations))
+                # 直接使用拓扑排序生成合法的调度概率
+                schedule_prob = self.generate_random_schedule_prob(self.mean_schedule)
             else:
+                # 基于当前概率模型生成
                 machine_prob = np.random.normal(self.mean_machine, np.sqrt(self.var_machine))
                 agv_w_prob = np.random.normal(self.mean_agv_w, np.sqrt(self.var_agv_w))
                 agv_f_prob = np.random.normal(self.mean_agv_f, np.sqrt(self.var_agv_f))
-                schedule_prob = np.random.normal(self.mean_schedule, np.sqrt(self.var_schedule))
+                
+                # 确保 schedule_prob 符合优先级约束
+                valid_schedule = False
+                max_attempts = 100
+                
+                for _ in range(max_attempts):
+                    try:
+                        # 生成新的schedule_prob
+                        schedule_prob = np.random.normal(self.mean_schedule, np.sqrt(self.var_schedule))
+                        # 确保非负并归一化
+                        schedule_prob = np.maximum(0, schedule_prob)
+                        if np.sum(schedule_prob) > 0:
+                            schedule_prob = schedule_prob / np.sum(schedule_prob)
+                        
+                        # 将schedule_prob转换为调度字符串
+                        schedule_string = self.convert_to_schedule_string(schedule_prob)
+                        
+                        # 验证调度字符串是否合法
+                        self.calculate._validate_schedule_string(schedule_string, op_index_to_id, priority_dict)
+                        
+                        # 如果合法，标记并跳出循环
+                        valid_schedule = True
+                        break
+                        
+                    except ValueError:
+                        # 如果不合法，继续尝试
+                        continue
+                
+                # 如果达到最大尝试次数仍然无法生成合法解，使用拓扑排序生成
+                if not valid_schedule:
+                    schedule_prob = self.generate_random_schedule_prob(self.mean_schedule)
             
             # 防止概率值为负数
             machine_prob = np.maximum(0, machine_prob)
@@ -201,8 +238,78 @@ class StatisticalLearning:
             schedule_prob = np.maximum(0, schedule_prob)
             
             population.append((machine_prob, agv_w_prob, agv_f_prob, schedule_prob))
+    
+        return population[:self.population_size]
+
+    def generate_random_schedule_prob(self, mean_schedule):
+        """
+        使用拓扑排序生成一个有效的调度概率矩阵
+        概率值基于mean_schedule中的值，并规范到0~1之间
         
-        return population[:self.population_size]  
+        Returns:
+            np.ndarray: 调度概率矩阵，形状为(1, self.num_operations)
+        """
+        # 初始化概率矩阵
+        schedule_prob = np.zeros((1, self.num_operations))
+        
+        # 获取所有工序的顺序列表
+        operations_list = self.calculate.get_operations_list()
+        # 1) 创建工序ID到索引的映射（1到工序数量）
+        op_id_to_index = {op_id: i+1 for i, op_id in enumerate(operations_list)}
+        # 2) 构建工序依赖图（前置工序 -> 后继工序）
+        graph = {op_id: set() for op_id in operations_list}
+        in_degree = {op_id: 0 for op_id in operations_list}
+        for op_id, predecessors in priority_dict.items():
+            for pred in predecessors:
+                graph[pred].add(op_id)  # pred是op_id的前置工序，所以op_id是pred的后继工序
+                in_degree[op_id] += 1  # op_id的入度加1
+        
+        # 3) 使用拓扑排序生成有效的工序序列
+        schedule_string = []  # 存储拓扑排序结果
+        queue = [op_id for op_id, degree in in_degree.items() if degree == 0]
+        
+        while queue:
+            # 根据mean_schedule中的概率选择一个没有前置工序的工序
+            queue_indices = [op_id_to_index[op] - 1 for op in queue]  # 得到队列中工序在mean_schedule中的索引(0-based)
+            # 获取这些工序在mean_schedule中的概率值
+            probs = np.array([mean_schedule[0][idx] for idx in queue_indices])
+            # 如果所有概率都为0，则均等随机选择
+            if np.sum(probs) <= 0:
+                selected_idx = np.random.randint(0, len(queue))
+                op_id = queue.pop(selected_idx)
+            else:
+                # 根据概率选择工序
+                selected_idx = np.random.choice(len(queue), p=probs/np.sum(probs))
+                op_id = queue.pop(selected_idx)
+            
+            # 将该工序的索引添加到调度序列中
+            op_index = op_id_to_index[op_id] - 1  # 转为0-based索引
+            schedule_string.append(op_index)
+            
+            # 更新其后继工序的入度
+            for successor in graph[op_id]:
+                in_degree[successor] -= 1
+                if in_degree[successor] == 0:
+                    queue.append(successor)
+        
+        # 检查是否所有工序都被排序（检测循环依赖）
+        if len(schedule_string) != self.num_operations:
+            raise ValueError("工序依赖图中存在循环依赖，无法生成有效的调度序列")
+        
+        # 根据拓扑排序结果生成概率矩阵
+        # 位置越靠前的工序概率值越高
+        for i, op_index in enumerate(schedule_string):
+            # 赋予概率值，位置越靠前概率越高
+            schedule_prob[0, op_index] = self.num_operations - i
+        
+        # 归一化处理，确保概率值在0~1之间且和为1
+        if np.sum(schedule_prob) > 0:
+            schedule_prob = schedule_prob / np.sum(schedule_prob)
+        else:
+            # 如果所有概率都为0，则使用均匀分布
+            schedule_prob = np.ones((1, self.num_operations)) / self.num_operations
+        
+        return schedule_prob
 
     def get_operation_name(self, op_id):
         """获取工序名称"""
@@ -266,28 +373,23 @@ class StatisticalLearning:
         调度概率矩阵转换为离散字符串
         
         Args:
-            schedule_prob (np.ndarray): 调度概率矩阵，每个作业的工序优先级
+            schedule_prob (np.ndarray): 调度概率矩阵，每个工序的优先级
             
         Returns:
-            tuple: (schedule_string, order)
-                - schedule_string: 调度字符串，表示作业的处理顺序
-                - order: 考虑优先级约束后的工序处理顺序
+            schedule_string: 调度字符串, 表示工序的处理顺序
         """
-        # 将概率矩阵转换为作业工序优先级列表
-        op_priorities = []  # [(job_id, priority), ...]
-        current_pos = 0
-        
-        # 收集所有工序的优先级
-        for job_id, num_ops in self.job_operations.items():
-            for i in range(num_ops):
-                priority = schedule_prob[0, current_pos + i]
-                op_priorities.append((job_id, priority))
-            current_pos += num_ops
+        # 创建工序索引和优先级的对应关系
+        op_priorities = []
+        for i in range(num_operations):
+            # 工序索引从1开始
+            op_index = i + 1
+            priority = schedule_prob[0, i]
+            op_priorities.append((op_index, priority))
         
         # 根据优先级对工序进行排序（降序）
         sorted_ops = sorted(op_priorities, key=lambda x: x[1], reverse=True)
         
-        # 生成调度字符串
+        # 生成调度字符串，只取工序索引
         schedule_string = [op[0] for op in sorted_ops]
         
         return schedule_string
@@ -376,82 +478,6 @@ class StatisticalLearning:
         logger.debug("\n更新概率模型:")
         logger.debug(f"多样性指标: {diversity:.4f}")
         logger.debug(f"自适应学习率: {adaptive_alpha:.4f}")
-
-    def convert_assignments_to_probability(self, assignments, assignment_type=None):
-        """将分配方案转换为概率矩阵
-        
-        Args:
-            assignments: 分配方案列表，每个元素是一个分配ID
-            assignment_type: 分配类型，可以是'machine', 'agv_w', 'agv_f'或None
-            
-        Returns:
-            概率矩阵，选定的分配ID的概率为1.0，其他为0.0
-        """
-        
-        # 根据分配类型确定资源数量
-        if assignment_type == 'machine':
-            num_resources = self.num_machines
-        elif assignment_type == 'agv_w':
-            num_resources = self.num_agvs_w
-        elif assignment_type == 'agv_f':
-            num_resources = self.num_agvs_f
-        else:
-            # 如果没有指定类型，尝试自动判断
-            if len(assignments) == self.num_operations:
-                # 先检查最大值来判断类型
-                max_id = max(assignments) if assignments else 0
-                if max_id <= self.num_machines:
-                    num_resources = self.num_machines
-                elif max_id <= self.num_agvs_w:
-                    num_resources = self.num_agvs_w
-                elif max_id <= self.num_agvs_f:
-                    num_resources = self.num_agvs_f
-                else:
-                    # 如果无法确定，则使用最大值
-                    num_resources = max_id
-            else:
-                # 如果无法确定，则使用最大值
-                num_resources = max(assignments) if assignments else 0
-        
-        # 创建与当前模型相同大小的矩阵
-        if assignment_type == 'machine':
-            prob_matrix = np.zeros_like(self.mean_machine)
-        elif assignment_type == 'agv_w':
-            prob_matrix = np.zeros_like(self.mean_agv_w)
-        elif assignment_type == 'agv_f':
-            prob_matrix = np.zeros_like(self.mean_agv_f)
-        else:
-            # 如果无法确定，则创建新矩阵
-            prob_matrix = np.zeros((len(assignments), num_resources))
-        
-        # 将选定的分配ID的概率设置为1.0
-        for i, resource_id in enumerate(assignments):
-            if 1 <= resource_id <= prob_matrix.shape[1]:  # 确保资源ID在有效范围内
-                prob_matrix[i, resource_id-1] = 1.0
-        
-        return prob_matrix
-    
-    def convert_schedule_to_probability(self, schedule):
-        """将调度方案转换为概率矩阵
-        
-        Args:
-            schedule: 调度方案列表，每个元素是一个作业ID
-            
-        Returns:
-            概率矩阵，每个作业的优先级按照调度方案顺序排列
-        """
-        # 获取调度方案长度
-        schedule_len = len(schedule)
-        
-        # 初始化概率矩阵
-        prob_matrix = np.zeros((1, schedule_len))
-        
-        # 根据调度方案顺序设置优先级
-        for i in range(schedule_len):
-            # 优先级从1.0递减到0.1
-            prob_matrix[0, i] = 1.0 - 0.9 * (i / max(1, schedule_len - 1))
-        
-        return prob_matrix
     
     def optimize(self):
         """

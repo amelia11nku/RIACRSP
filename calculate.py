@@ -22,7 +22,6 @@ from MK10 import (
     NUM_AGVS_W as num_agvs_w,
     NUM_AGVS_F as num_agvs_f,
     JOB_OPERATIONS as job_operations,
-    TRANSPORT_TIMES as transport_times,
     AGV_W_TRANSPORT_TIMES as agv_w_transport_times,
     AGV_F_TRANSPORT_TIMES as agv_f_transport_times,
     PROCESSING_TIMES as processing_times,
@@ -381,57 +380,59 @@ class Calculate:
 
     def decode_schedule(self, schedule_string: List[int], priority_dict: Dict[str, set]) -> List[str]:
         """
-        解码调度字符串，考虑工序间的优先级约束
-        :param schedule_string: 调度字符串，表示作业的处理顺序
+        解码调度字符串
+        :param schedule_string: 调度字符串，直接表示工序的处理顺序
         :param priority_dict: 工序间优先级字典
         :return: 工序处理顺序列表
         """
-        # 验证调度字符串
-        self._validate_schedule_string(schedule_string)
+        # 获取所有工序ID列表
+        operations_list = self.get_operations_list()
 
-        # 初始化工序顺序列表
-        order = [None] * len(schedule_string)
-            
-        # 获取所有工序及其可用位置
-        job_id_operations = {}  # {job_id: [operations]}
-        job_id_positions = {}   # {job_id: [positions]}
+        # 创建工序索引到工序ID的映射
+        op_index_to_id = {i+1: op_id for i, op_id in enumerate(operations_list)}
         
-        for job_id in range(1, num_jobs + 1):
-            ops = [f"o{job_id}_{op_seq}" for op_seq in range(1, job_operations[job_id] + 1)]
-            positions = [i for i, x in enumerate(schedule_string) if x == job_id]
-            if positions:
-                job_id_operations[job_id] = ops
-                job_id_positions[job_id] = positions
+        # 验证调度字符串是否合法
+        self._validate_schedule_string(schedule_string, op_index_to_id, priority_dict)
         
-        # 循环分配工序，直到所有工序都被分配
-        while any(job_id_operations.values()):
-            assigned = False
-            for job_id in list(job_id_operations.keys()):
-                if not job_id_operations[job_id]:
-                    continue
-                
-                for op in job_id_operations[job_id]:
-                    # 递归查找可以分配的工序
-                    assignable_op = self._find_assignable_op(
-                        op, job_id_operations, order, priority_dict
-                    )
-                    if assignable_op:
-                        # 获取可分配工序所属的作业ID
-                        op_job = int(assignable_op.split('_')[0][1:])
-                        # 找到最早的可用位置
-                        valid_positions = [pos for pos in job_id_positions[op_job] if order[pos] is None]
-                        if valid_positions:
-                            pos = min(valid_positions)
-                            order[pos] = assignable_op
-                            job_id_operations[op_job].remove(assignable_op)
-                            job_id_positions[op_job].remove(pos)
-                            assigned = True
-                            break
-                
-                if assigned:
-                    break
-
+        # 直接将调度字符串转换为工序处理顺序
+        order = [op_index_to_id[op_index] for op_index in schedule_string]
+        
         return order
+        
+    def _validate_schedule_string(self, schedule_string: List[int], op_index_to_id: Dict[int, str], priority_dict: Dict[str, set]) -> None:
+        """
+        验证调度字符串是否合法, 是否满足工序优先级约束
+        
+        Args:
+            schedule_string: 调度字符串
+            op_index_to_id: 工序索引到工序ID的映射
+            priority_dict: 工序优先级字典
+        
+        Raises:
+            ValueError: 如果调度字符串不满足工序优先级约束
+        """
+        # 验证调度字符串长度
+        if len(schedule_string) != sum(job_operations.values()):
+            raise ValueError(f"调度字符串长度({len(schedule_string)})必须等于工序数量({num_operations})")
+        
+        # 验证调度字符串中的值是否为1到工序数量的排列
+        if sorted(schedule_string) != list(range(1, num_operations + 1)):
+            raise ValueError("调度字符串必须是1到工序数量的排列")
+
+        # 创建工序ID到其在调度字符串中位置的映射
+        op_id_to_position = {}
+        for i, op_index in enumerate(schedule_string):
+            op_id = op_index_to_id[op_index]
+            op_id_to_position[op_id] = i
+        
+        # 检查每个工序的前置工序是否在其之前
+        for op_id, position in op_id_to_position.items():
+            predecessors = priority_dict.get(op_id, set())
+            for pred in predecessors:
+                if pred in op_id_to_position and op_id_to_position[pred] >= position:
+                    raise ValueError(
+                        f"工序{op_id}的前置工序{pred}应该在其之前处理"
+                    )
 
     def _find_assignable_op(self, op: str, job_id_operations: Dict[int, List[str]], 
                         order: List[str], priority_dict: Dict[str, set]) -> Optional[str]:
@@ -480,24 +481,6 @@ class Calculate:
             return op
         
         return None
-
-    def _validate_schedule_string(self, schedule_string: List[int]) -> None:
-        """
-        验证调度字符串的合法性
-        """
-        # 验证每个作业的出现次数
-        job_counts = {}
-        for job_id in schedule_string:
-            if job_id not in job_counts:
-                job_counts[job_id] = 0
-            job_counts[job_id] += 1
-        
-        for job_id, count in job_counts.items():
-            if count != job_operations.get(job_id, 0):
-                raise ValueError(
-                    f"作业 {job_id} 在调度字符串中出现次数 ({count}) "
-                    f"不等于其工序数 ({job_operations[job_id]})"
-                )
 
     def update_sequences(self, order: List[str]):
         """

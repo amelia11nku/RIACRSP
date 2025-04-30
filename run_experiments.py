@@ -16,7 +16,9 @@ from statistical_learning import StatisticalLearning
 from evolutionary_learning import EvolutionaryLearning
 from hybrid_learning import HybridLearning, HybridLearningConfig
 from blea import BLEA, BLEAConfig
-from bi_learning_evolutionary import BiLearningEvolutionary, BiLearningEvolutionaryConfig
+from iblea import BiLearningEvolutionary, BiLearningEvolutionaryConfig
+from LMEO import LMEO
+from SLMEO import SLMEO
 
 # 导入配置
 from MK10 import (
@@ -43,7 +45,7 @@ os.makedirs(results_dir, exist_ok=True)
 results_file = os.path.join(results_dir, f"algorithm_comparison_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv")
 
 # 设置算法参数
-MAX_ITERATIONS = 1000  # 每个算法的最大迭代次数
+MAX_ITERATIONS = 500  # 每个算法的最大迭代次数
 POPULATION_SIZE = 100  # 种群大小
 NUM_RUNS = 10  # 每个算法运行的次数
 LEARNING_RATE = 0.8  # SL算法学习率
@@ -234,7 +236,7 @@ def run_iblea(run_id):
     Returns:
         tuple: (最优解, 求解时间, 最优解代数)
     """
-    logger.info(f"运行 BLE 算法 - 第{run_id}次")
+    logger.info(f"运行 IBLEA 算法 - 第{run_id}次")
     
     # 创建算法实例
     config = BiLearningEvolutionaryConfig(
@@ -263,10 +265,85 @@ def run_iblea(run_id):
             best_iteration = i + 1
             break
     
-    logger.info(f"BLE 算法第{run_id}次运行完成，最优解：{best_makespan:.2f}，最优解代数：{best_iteration}，用时：{total_time:.2f}s")
+    logger.info(f"IBLEA 算法第{run_id}次运行完成，最优解：{best_makespan:.2f}，最优解代数：{best_iteration}，用时：{total_time:.2f}s")
     
     return best_makespan, total_time, best_iteration
 
+def run_lmeo(run_id):
+    """运行LMEO算法
+    
+    Args:
+        run_id: 运行ID
+        
+    Returns:
+        tuple: (最优解, 求解时间, 最优解代数)
+    """
+    logger.info(f"运行LMEO算法 - 第{run_id}次")
+    
+    # 记录开始时间
+    start_time = time.time()
+    
+    # 初始化LMEO算法
+    lmeo = LMEO(
+        num_jobs=num_jobs,
+        num_agvs_f=num_agvs_f,
+        num_agvs_w=num_agvs_w,
+        job_operations=job_operations,
+        processing_times=processing_times,
+        population_size=POPULATION_SIZE,
+        max_iterations=MAX_ITERATIONS,
+        pc=0.9,
+        pm=0.05
+    )
+    
+    # 执行优化
+    best_solution, best_makespans = lmeo.evolve()
+    
+    # 计算总用时
+    end_time = time.time()
+    total_time = end_time - start_time
+    
+    logger.info(f"LMEO算法第{run_id}次运行完成，最优解：{best_solution[1]:.2f}，最优解代数：{lmeo.best_generation}，用时：{total_time:.2f}s")
+    
+    return best_solution[1], total_time, lmeo.best_generation
+
+def run_slmeo(run_id):
+    """运行SLMEO算法
+    
+    Args:
+        run_id: 运行ID
+        
+    Returns:
+        tuple: (最优解, 求解时间, 最优解代数)
+    """
+    logger.info(f"运行SLMEO算法 - 第{run_id}次")
+    
+    # 记录开始时间
+    start_time = time.time()
+    
+    # 初始化SLMEO算法
+    slmeo = SLMEO(
+        num_jobs=num_jobs,
+        num_agvs_f=num_agvs_f,
+        num_agvs_w=num_agvs_w,
+        job_operations=job_operations,
+        processing_times=processing_times,
+        population_size=POPULATION_SIZE,
+        max_iterations=MAX_ITERATIONS,
+        pc=0.9,
+        pm=0.05
+    )
+    
+    # 执行优化
+    best_solution, best_makespans = slmeo.evolve()
+    
+    # 计算总用时
+    end_time = time.time()
+    total_time = end_time - start_time
+    
+    logger.info(f"SLMEO算法第{run_id}次运行完成，最优解：{best_solution[1]:.2f}，最优解代数：{slmeo.best_generation}，用时：{total_time:.2f}s")
+    
+    return best_solution[1], total_time, slmeo.best_generation
 
 def save_results(results):
     """保存实验结果到CSV文件
@@ -278,9 +355,17 @@ def save_results(results):
         writer = csv.writer(f)
         # 写入表头
         writer.writerow(['算法名称', '运行次数', '最优解', '求解时间(s)', '最优解代数'])
-        # 写入结果
+        # 写入结果，确保数值类型正确
         for result in results:
-            writer.writerow(result)
+            # 将结果转换为正确的格式
+            algorithm_name = result[0]
+            run_number = result[1]
+            best_makespan = float(result[2])  # 确保是浮点数
+            total_time = float(result[3])  # 确保是浮点数
+            best_iteration = int(result[4])  # 确保是整数
+            
+            # 写入格式化后的结果
+            writer.writerow([algorithm_name, run_number, best_makespan, total_time, best_iteration])
     logger.info("\n" + "=" * 50)
     logger.info(f"实验结果已保存至：{results_file}")
 
@@ -294,26 +379,54 @@ def main():
         best_makespan, total_time, best_iteration = run_sl(i)
         results.append(('SL', i, best_makespan, total_time, best_iteration))
     
+    # 保存结果
+    save_results(results)
+
     # 运行EL算法NUM_RUNS次
     for i in range(1, NUM_RUNS + 1):
         best_makespan, total_time, best_iteration = run_el(i)
         results.append(('EL', i, best_makespan, total_time, best_iteration))
-    
+
+    # 保存结果
+    save_results(results)
+
     # 运行HL算法NUM_RUNS次
     for i in range(1, NUM_RUNS + 1):
         best_makespan, total_time, best_iteration = run_hl(i)
         results.append(('HL', i, best_makespan, total_time, best_iteration))
     
+    # 保存结果
+    save_results(results)
+
     # 运行BLEA算法NUM_RUNS次
     for i in range(1, NUM_RUNS + 1):
         best_makespan, total_time, best_iteration = run_blea(i)
         results.append(('BLEA', i, best_makespan, total_time, best_iteration))
     
+    # 保存结果
+    save_results(results)
+
     # 运行BLE算法NUM_RUNS次
     for i in range(1, NUM_RUNS + 1):
         best_makespan, total_time, best_iteration = run_iblea(i)
-        results.append(('BLE', i, best_makespan, total_time, best_iteration))
+        results.append(('IBLEA', i, best_makespan, total_time, best_iteration))
     
+    # 保存结果
+    save_results(results)
+
+    # 运行LMEO算法NUM_RUNS次
+    for i in range(1, NUM_RUNS + 1):
+        best_makespan, total_time, best_iteration = run_lmeo(i)
+        results.append(('LMEO', i, best_makespan, total_time, best_iteration))
+
+    # 保存结果
+    save_results(results)
+    
+    # 运行SLMEO算法NUM_RUNS次
+    for i in range(1, NUM_RUNS + 1):
+        best_makespan, total_time, best_iteration = run_slmeo(i)
+        results.append(('SLMEO', i, best_makespan, total_time, best_iteration))
+
     # 保存结果
     save_results(results)
     
@@ -323,25 +436,33 @@ def main():
     hl_results = [r for r in results if r[0] == 'HL']
     blea_results = [r for r in results if r[0] == 'BLEA']
     iblea_results = [r for r in results if r[0] == 'IBLEA']
-    
+    lmeo_results = [r for r in results if r[0] == 'LMEO']
+    slmeo_results = [r for r in results if r[0] == 'SLMEO']
+
     sl_makespans = [r[2] for r in sl_results]
     el_makespans = [r[2] for r in el_results]
     hl_makespans = [r[2] for r in hl_results]
     blea_makespans = [r[2] for r in blea_results]
     iblea_makespans = [r[2] for r in iblea_results]
+    lmeo_makespans = [r[2] for r in lmeo_results]
+    slmeo_makespans = [r[2] for r in slmeo_results]
     
     sl_times = [r[3] for r in sl_results]
     el_times = [r[3] for r in el_results]
     hl_times = [r[3] for r in hl_results]
     blea_times = [r[3] for r in blea_results]
     iblea_times = [r[3] for r in iblea_results]
+    lmeo_times = [r[3] for r in lmeo_results]
+    slmeo_times = [r[3] for r in slmeo_results]
     
     sl_iterations = [r[4] for r in sl_results]
     el_iterations = [r[4] for r in el_results]
     hl_iterations = [r[4] for r in hl_results]
     blea_iterations = [r[4] for r in blea_results]
     iblea_iterations = [r[4] for r in iblea_results]
-    
+    lmeo_iterations = [r[4] for r in lmeo_results]
+    slmeo_iterations = [r[4] for r in slmeo_results]
+
     # 输出统计信息
     logger.info("实验统计结果：")
     logger.info(f"SL算法：平均最优解 = {np.mean(sl_makespans):.2f}，最佳解 = {min(sl_makespans):.2f}，平均用时 = {np.mean(sl_times):.2f}s，平均最优解代数 = {np.mean(sl_iterations):.2f}")
@@ -349,8 +470,10 @@ def main():
     logger.info(f"HL算法：平均最优解 = {np.mean(hl_makespans):.2f}，最佳解 = {min(hl_makespans):.2f}，平均用时 = {np.mean(hl_times):.2f}s，平均最优解代数 = {np.mean(hl_iterations):.2f}")
     logger.info(f"BLEA算法：平均最优解 = {np.mean(blea_makespans):.2f}，最佳解 = {min(blea_makespans):.2f}，平均用时 = {np.mean(blea_times):.2f}s，平均最优解代数 = {np.mean(blea_iterations):.2f}")
     logger.info(f"IBLEA算法：平均最优解 = {np.mean(iblea_makespans):.2f}，最佳解 = {min(iblea_makespans):.2f}，平均用时 = {np.mean(iblea_times):.2f}s，平均最优解代数 = {np.mean(iblea_iterations):.2f}")
+    logger.info(f"LMEO算法：平均最优解 = {np.mean(lmeo_makespans):.2f}，最佳解 = {min(lmeo_makespans):.2f}，平均用时 = {np.mean(lmeo_times):.2f}s，平均最优解代数 = {np.mean(lmeo_iterations):.2f}")
+    logger.info(f"SLMEO算法：平均最优解 = {np.mean(slmeo_makespans):.2f}，最佳解 = {min(slmeo_makespans):.2f}，平均用时 = {np.mean(slmeo_times):.2f}s，平均最优解代数 = {np.mean(slmeo_iterations):.2f}")
     logger.info("=" * 50)
-
+    
 if __name__ == "__main__":
     try:
         main()
