@@ -1,0 +1,426 @@
+2025-04-08 05:02:29,418 - INFO - Starting optimization, total iterations: 100
+2025-04-08 05:02:29,418 - INFO - Minimum iterations for pure SL: 20
+2025-04-08 05:02:29,418 - INFO - Stagnation detection window size: 20
+2025-04-08 05:02:29,418 - INFO - Stagnation threshold: 0.01
+2025-04-08 05:02:29,418 - INFO - Force switch iterations: 50
+2025-04-08 05:02:29,418 - INFO - Iteration 1/100: Phase=statistical learning, SL ratio=1.00, EL ratio=0.00
+2025-04-08 05:02:29,886 - DEBUG - Initialized probability model
+2025-04-08 05:02:29,891 - INFO - In generation 1，New best makespan: 1927.00, source: sl
+2025-04-08 05:02:29,891 - INFO - Iteration 2/100: Phase=statistical learning, SL ratio=1.00, EL ratio=0.00
+2025-04-08 05:02:30,362 - DEBUG - Updated probability model at iteration 2
+2025-04-08 05:02:30,362 - INFO - Iteration 3/100: Phase=statistical learning, SL ratio=1.00, EL ratio=0.00
+2025-04-08 05:02:30,844 - DEBUG - Updated probability model at iteration 3
+2025-04-08 05:02:30,844 - INFO - Iteration 4/100: Phase=statistical learning, SL ratio=1.00, EL ratio=0.00
+2025-04-08 05:02:31,321 - DEBUG - Updated probability model at iteration 4
+2025-04-08 05:02:31,321 - INFO - Iteration 5/100: Phase=statistical learning, SL ratio=1.00, EL ratio=0.00
+2025-04-08 05:02:31,778 - DEBUG - Updated probability model at iteration 5
+2025-04-08 05:02:31,778 - INFO - Iteration 6/100: Phase=statistical learning, SL ratio=1.00, EL ratio=0.00
+2025-04-08 05:02:32,229 - DEBUG - Updated probability model at iteration 6
+2025-04-08 05:02:32,229 - INFO - Iteration 7/100: Phase=statistical learning, SL ratio=1.00, EL ratio=0.00
+2025-04-08 05:02:32,679 - DEBUG - Updated probability model at iteration 7
+2025-04-08 05:02:32,679 - INFO - Iteration 8/100: Phase=statistical learning, SL ratio=1.00, EL ratio=0.00
+2025-04-08 05:02:33,136 - DEBUG - Updated probability model at iteration 8
+2025-04-08 05:02:33,136 - INFO - Iteration 9/100: Phase=statistical learning, SL ratio=1.00, EL ratio=0.00
+2025-04-08 05:02:33,590 - DEBUG - Updated probability model at iteration 9
+2025-04-08 05:02:33,590 - INFO - Iteration 10/100: Phase=statistical learning, SL ratio=1.00, EL ratio=0.00
+2025-04-08 05:02:34,040 - DEBUG - Updated probability model at iteration 10
+2025-04-08 05:02:34,040 - INFO - Iteration 11/100: Phase=statistical learning, SL ratio=1.00, EL ratio=0.00
+2025-04-08 05:02:34,493 - DEBUG - Updated probability model at iteration 11
+2025-04-08 05:02:34,493 - INFO - Iteration 12/100: Phase=statistical learning, SL ratio=1.00, EL ratio=0.00
+2025-04-08 05:02:34,945 - DEBUG - Updated probability model at iteration 12
+2025-04-08 05:02:34,945 - INFO - Iteration 13/100: Phase=statistical learning, SL ratio=1.00, EL ratio=0.00
+2025-04-08 05:02:35,400 - DEBUG - Updated probability model at iteration 13
+2025-04-08 05:02:35,400 - INFO - Iteration 14/100: Phase=statistical learning, SL ratio=1.00, EL ratio=0.00
+2025-04-08 05:02:35,851 - DEBUG - Updated probability model at iteration 14
+2025-04-08 05:02:35,851 - INFO - Iteration 15/100: Phase=statistical learning, SL ratio=1.00, EL ratio=0.00
+2025-04-08 05:02:36,334 - DEBUG - Updated probability model at iteration 15
+2025-04-08 05:02:36,334 - INFO - Iteration 16/100: Phase=statistical learning, SL ratio=1.00, EL ratio=0.00
+2025-04-08 05:02:36,779 - DEBUG - Updated probability model at iteration 16
+2025-04-08 05:02:36,780 - INFO - Iteration 17/100: Phase=statistical learning, SL ratio=1.00, EL ratio=0.00
+2025-04-08 05:02:37,231 - DEBUG - Updated probability model at iteration 17
+2025-04-08 05:02:37,231 - INFO - Iteration 18/100: Phase=statistical learning, SL ratio=1.00, EL ratio=0.00
+2025-04-08 05:02:37,687 - DEBUG - Updated probability model at iteration 18
+2025-04-08 05:02:37,687 - INFO - Iteration 19/100: Phase=statistical learning, SL ratio=1.00, EL ratio=0.00
+2025-04-08 05:02:38,139 - DEBUG - Updated probability model at iteration 19
+2025-04-08 05:02:38,139 - INFO - Iteration 20/100: Phase=statistical learning, SL ratio=1.00, EL ratio=0.00
+2025-04-08 05:02:38,606 - DEBUG - Updated probability model at iteration 20
+2025-04-08 05:02:38,606 - INFO - Iteration 21/100: Phase=statistical learning, SL ratio=1.00, EL ratio=0.00
+2025-04-08 05:02:39,067 - DEBUG - Updated probability model at iteration 21
+2025-04-08 05:02:39,067 - INFO - 
+SL is stagnating, switching to hybrid phase...
+2025-04-08 05:02:39,067 - INFO - Iteration 22/100: Phase=hybrid learning, SL ratio=0.90, EL ratio=0.10
+2025-04-08 05:02:39,558 - DEBUG -   [SL->EL] 成功! 用SL最优解1986.00替换EL最差解2083.00, 改进了97.00
+2025-04-08 05:02:39,558 - DEBUG -   [EL->SL] 成功添加1个EL解到SL种群
+2025-04-08 05:02:39,559 - DEBUG - Updated probability model at iteration 22
+2025-04-08 05:02:39,559 - INFO - Iteration 23/100: Phase=hybrid learning, SL ratio=0.90, EL ratio=0.10
+2025-04-08 05:02:40,070 - DEBUG -   [SL->EL] 成功! 用SL最优解1947.00替换EL最差解2100.00, 改进了153.00
+2025-04-08 05:02:40,070 - DEBUG -   [EL->SL] 成功添加1个EL解到SL种群
+2025-04-08 05:02:40,071 - DEBUG - Updated probability model at iteration 23
+2025-04-08 05:02:40,071 - INFO - Iteration 24/100: Phase=hybrid learning, SL ratio=0.90, EL ratio=0.10
+2025-04-08 05:02:40,576 - DEBUG -   [SL->EL] 成功! 用SL最优解1942.00替换EL最差解2018.00, 改进了76.00
+2025-04-08 05:02:40,576 - DEBUG -   [EL->SL] 成功添加1个EL解到SL种群
+2025-04-08 05:02:40,576 - DEBUG - Updated probability model at iteration 24
+2025-04-08 05:02:40,576 - INFO - Iteration 25/100: Phase=hybrid learning, SL ratio=0.90, EL ratio=0.10
+2025-04-08 05:02:41,069 - INFO - In generation 25，New best makespan: 1896.00, source: el
+2025-04-08 05:02:41,069 - DEBUG -   [SL->EL] 成功! 用SL最优解1979.00替换EL最差解2074.00, 改进了95.00
+2025-04-08 05:02:41,069 - DEBUG -   [EL->SL] 成功添加1个EL解到SL种群
+2025-04-08 05:02:41,071 - DEBUG - Updated probability model at iteration 25
+2025-04-08 05:02:41,071 - INFO - Iteration 26/100: Phase=hybrid learning, SL ratio=0.90, EL ratio=0.10
+2025-04-08 05:02:41,577 - DEBUG -   [SL->EL] 失败! SL最优解1990.00不如EL最差解1947.00
+2025-04-08 05:02:41,578 - DEBUG -   [EL->SL] 成功添加1个EL解到SL种群
+2025-04-08 05:02:41,578 - DEBUG - Updated probability model at iteration 26
+2025-04-08 05:02:41,578 - INFO - Iteration 27/100: Phase=hybrid learning, SL ratio=0.90, EL ratio=0.10
+2025-04-08 05:02:42,101 - INFO - In generation 27，New best makespan: 1890.00, source: el
+2025-04-08 05:02:42,101 - DEBUG -   [SL->EL] 失败! SL最优解1989.00不如EL最差解1943.00
+2025-04-08 05:02:42,101 - DEBUG -   [EL->SL] 成功添加1个EL解到SL种群
+2025-04-08 05:02:42,102 - DEBUG - Updated probability model at iteration 27
+2025-04-08 05:02:42,102 - INFO - Iteration 28/100: Phase=hybrid learning, SL ratio=0.90, EL ratio=0.10
+2025-04-08 05:02:42,602 - INFO - In generation 28，New best makespan: 1880.00, source: el
+2025-04-08 05:02:42,603 - DEBUG -   [SL->EL] 失败! SL最优解1935.00不如EL最差解1896.00
+2025-04-08 05:02:42,604 - DEBUG -   [EL->SL] 成功添加1个EL解到SL种群
+2025-04-08 05:02:42,604 - DEBUG - Updated probability model at iteration 28
+2025-04-08 05:02:42,604 - INFO - Iteration 29/100: Phase=hybrid learning, SL ratio=0.90, EL ratio=0.10
+2025-04-08 05:02:43,101 - INFO - In generation 29，New best makespan: 1876.00, source: el
+2025-04-08 05:02:43,101 - DEBUG -   [SL->EL] 失败! SL最优解1997.00不如EL最差解1896.00
+2025-04-08 05:02:43,102 - DEBUG -   [EL->SL] 成功添加1个EL解到SL种群
+2025-04-08 05:02:43,102 - DEBUG - Updated probability model at iteration 29
+2025-04-08 05:02:43,102 - INFO - EL has been consistently better for 5 iterations, adjusting ratios: SL=0.80, EL=0.20
+2025-04-08 05:02:43,103 - INFO - Iteration 30/100: Phase=hybrid learning, SL ratio=0.80, EL ratio=0.20
+2025-04-08 05:02:43,644 - DEBUG -   [SL->EL] 成功! 用SL最优解1967.00替换EL最差解2026.00, 改进了59.00
+2025-04-08 05:02:43,644 - DEBUG -   [EL->SL] 成功添加2个EL解到SL种群
+2025-04-08 05:02:43,645 - DEBUG - Updated probability model at iteration 30
+2025-04-08 05:02:43,645 - INFO - Iteration 31/100: Phase=hybrid learning, SL ratio=0.80, EL ratio=0.20
+2025-04-08 05:02:44,202 - INFO - In generation 31，New best makespan: 1870.00, source: el
+2025-04-08 05:02:44,203 - DEBUG -   [SL->EL] 成功! 用SL最优解1998.00替换EL最差解2024.00, 改进了26.00
+2025-04-08 05:02:44,204 - DEBUG -   [EL->SL] 成功添加2个EL解到SL种群
+2025-04-08 05:02:44,204 - DEBUG - Updated probability model at iteration 31
+2025-04-08 05:02:44,204 - INFO - Iteration 32/100: Phase=hybrid learning, SL ratio=0.80, EL ratio=0.20
+2025-04-08 05:02:44,757 - INFO - In generation 32，New best makespan: 1868.00, source: el
+2025-04-08 05:02:44,757 - DEBUG -   [SL->EL] 成功! 用SL最优解1919.00替换EL最差解1987.00, 改进了68.00
+2025-04-08 05:02:44,758 - DEBUG -   [EL->SL] 成功添加2个EL解到SL种群
+2025-04-08 05:02:44,758 - DEBUG - Updated probability model at iteration 32
+2025-04-08 05:02:44,758 - INFO - Iteration 33/100: Phase=hybrid learning, SL ratio=0.80, EL ratio=0.20
+2025-04-08 05:02:45,317 - INFO - In generation 33，New best makespan: 1866.00, source: el
+2025-04-08 05:02:45,317 - DEBUG -   [SL->EL] 成功! 用SL最优解1960.00替换EL最差解1986.00, 改进了26.00
+2025-04-08 05:02:45,317 - DEBUG -   [EL->SL] 成功添加2个EL解到SL种群
+2025-04-08 05:02:45,318 - DEBUG - Updated probability model at iteration 33
+2025-04-08 05:02:45,318 - INFO - Iteration 34/100: Phase=hybrid learning, SL ratio=0.80, EL ratio=0.20
+2025-04-08 05:02:45,874 - DEBUG -   [SL->EL] 失败! SL最优解1994.00不如EL最差解1990.00
+2025-04-08 05:02:45,874 - DEBUG -   [EL->SL] 成功添加2个EL解到SL种群
+2025-04-08 05:02:45,875 - DEBUG - Updated probability model at iteration 34
+2025-04-08 05:02:45,875 - INFO - EL has been consistently better for 5 iterations, adjusting ratios: SL=0.70, EL=0.30
+2025-04-08 05:02:45,875 - INFO - Iteration 35/100: Phase=hybrid learning, SL ratio=0.70, EL ratio=0.30
+2025-04-08 05:02:46,472 - INFO - In generation 35，New best makespan: 1860.00, source: el
+2025-04-08 05:02:46,473 - DEBUG -   [SL->EL] 成功! 用SL最优解1921.00替换EL最差解1972.00, 改进了51.00
+2025-04-08 05:02:46,473 - DEBUG -   [EL->SL] 成功添加3个EL解到SL种群
+2025-04-08 05:02:46,474 - DEBUG - Updated probability model at iteration 35
+2025-04-08 05:02:46,474 - INFO - Iteration 36/100: Phase=hybrid learning, SL ratio=0.70, EL ratio=0.30
+2025-04-08 05:02:47,074 - DEBUG -   [SL->EL] 成功! 用SL最优解1980.00替换EL最差解1991.00, 改进了11.00
+2025-04-08 05:02:47,075 - DEBUG -   [EL->SL] 成功添加3个EL解到SL种群
+2025-04-08 05:02:47,075 - DEBUG - Updated probability model at iteration 36
+2025-04-08 05:02:47,075 - INFO - Iteration 37/100: Phase=hybrid learning, SL ratio=0.70, EL ratio=0.30
+2025-04-08 05:02:47,673 - INFO - In generation 37，New best makespan: 1856.00, source: el
+2025-04-08 05:02:47,674 - DEBUG -   [SL->EL] 成功! 用SL最优解1971.00替换EL最差解2033.00, 改进了62.00
+2025-04-08 05:02:47,674 - DEBUG -   [EL->SL] 成功添加3个EL解到SL种群
+2025-04-08 05:02:47,676 - DEBUG - Updated probability model at iteration 37
+2025-04-08 05:02:47,676 - INFO - Iteration 38/100: Phase=hybrid learning, SL ratio=0.70, EL ratio=0.30
+2025-04-08 05:02:48,308 - INFO - In generation 38，New best makespan: 1854.00, source: el
+2025-04-08 05:02:48,309 - DEBUG -   [SL->EL] 成功! 用SL最优解1989.00替换EL最差解2072.00, 改进了83.00
+2025-04-08 05:02:48,309 - DEBUG -   [EL->SL] 成功添加3个EL解到SL种群
+2025-04-08 05:02:48,310 - DEBUG - Updated probability model at iteration 38
+2025-04-08 05:02:48,310 - INFO - Iteration 39/100: Phase=hybrid learning, SL ratio=0.70, EL ratio=0.30
+2025-04-08 05:02:48,934 - DEBUG -   [SL->EL] 成功! 用SL最优解1978.00替换EL最差解2090.00, 改进了112.00
+2025-04-08 05:02:48,934 - DEBUG -   [EL->SL] 成功添加3个EL解到SL种群
+2025-04-08 05:02:48,935 - DEBUG - Updated probability model at iteration 39
+2025-04-08 05:02:48,935 - INFO - EL has been consistently better for 5 iterations, adjusting ratios: SL=0.60, EL=0.40
+2025-04-08 05:02:48,936 - INFO - Iteration 40/100: Phase=hybrid learning, SL ratio=0.60, EL ratio=0.40
+2025-04-08 05:02:49,597 - DEBUG -   [SL->EL] 成功! 用SL最优解1929.00替换EL最差解2034.00, 改进了105.00
+2025-04-08 05:02:49,597 - DEBUG -   [EL->SL] 成功添加4个EL解到SL种群
+2025-04-08 05:02:49,598 - DEBUG - Updated probability model at iteration 40
+2025-04-08 05:02:49,598 - INFO - Iteration 41/100: Phase=hybrid learning, SL ratio=0.60, EL ratio=0.40
+2025-04-08 05:02:50,254 - DEBUG -   [SL->EL] 成功! 用SL最优解1988.00替换EL最差解2053.00, 改进了65.00
+2025-04-08 05:02:50,254 - DEBUG -   [EL->SL] 成功添加4个EL解到SL种群
+2025-04-08 05:02:50,256 - DEBUG - Updated probability model at iteration 41
+2025-04-08 05:02:50,256 - INFO - Iteration 42/100: Phase=hybrid learning, SL ratio=0.60, EL ratio=0.40
+2025-04-08 05:02:50,917 - INFO - In generation 42，New best makespan: 1852.00, source: el
+2025-04-08 05:02:50,917 - DEBUG -   [SL->EL] 成功! 用SL最优解1970.00替换EL最差解1992.00, 改进了22.00
+2025-04-08 05:02:50,918 - DEBUG -   [EL->SL] 成功添加4个EL解到SL种群
+2025-04-08 05:02:50,919 - DEBUG - Updated probability model at iteration 42
+2025-04-08 05:02:50,919 - INFO - Iteration 43/100: Phase=hybrid learning, SL ratio=0.60, EL ratio=0.40
+2025-04-08 05:02:51,589 - INFO - In generation 43，New best makespan: 1848.00, source: el
+2025-04-08 05:02:51,590 - DEBUG -   [SL->EL] 成功! 用SL最优解1992.00替换EL最差解2066.00, 改进了74.00
+2025-04-08 05:02:51,590 - DEBUG -   [EL->SL] 成功添加4个EL解到SL种群
+2025-04-08 05:02:51,591 - DEBUG - Updated probability model at iteration 43
+2025-04-08 05:02:51,591 - INFO - Iteration 44/100: Phase=hybrid learning, SL ratio=0.60, EL ratio=0.40
+2025-04-08 05:02:52,240 - DEBUG -   [SL->EL] 成功! 用SL最优解1982.00替换EL最差解2164.00, 改进了182.00
+2025-04-08 05:02:52,242 - DEBUG -   [EL->SL] 成功添加4个EL解到SL种群
+2025-04-08 05:02:52,243 - DEBUG - Updated probability model at iteration 44
+2025-04-08 05:02:52,243 - INFO - EL has been consistently better for 5 iterations, adjusting ratios: SL=0.50, EL=0.50
+2025-04-08 05:02:52,243 - INFO - Iteration 45/100: Phase=hybrid learning, SL ratio=0.50, EL ratio=0.50
+2025-04-08 05:02:52,936 - INFO - In generation 45，New best makespan: 1844.00, source: el
+2025-04-08 05:02:52,936 - DEBUG -   [SL->EL] 成功! 用SL最优解1911.00替换EL最差解2082.00, 改进了171.00
+2025-04-08 05:02:52,937 - DEBUG -   [EL->SL] 成功添加5个EL解到SL种群
+2025-04-08 05:02:52,938 - DEBUG - Updated probability model at iteration 45
+2025-04-08 05:02:52,938 - INFO - Iteration 46/100: Phase=hybrid learning, SL ratio=0.50, EL ratio=0.50
+2025-04-08 05:02:53,633 - INFO - In generation 46，New best makespan: 1836.00, source: el
+2025-04-08 05:02:53,633 - DEBUG -   [SL->EL] 成功! 用SL最优解1990.00替换EL最差解2001.00, 改进了11.00
+2025-04-08 05:02:53,634 - DEBUG -   [EL->SL] 成功添加5个EL解到SL种群
+2025-04-08 05:02:53,635 - DEBUG - Updated probability model at iteration 46
+2025-04-08 05:02:53,635 - INFO - Iteration 47/100: Phase=hybrid learning, SL ratio=0.50, EL ratio=0.50
+2025-04-08 05:02:54,344 - INFO - In generation 47，New best makespan: 1826.00, source: el
+2025-04-08 05:02:54,344 - DEBUG -   [SL->EL] 成功! 用SL最优解1986.00替换EL最差解1994.00, 改进了8.00
+2025-04-08 05:02:54,345 - DEBUG -   [EL->SL] 成功添加5个EL解到SL种群
+2025-04-08 05:02:54,345 - DEBUG - Updated probability model at iteration 47
+2025-04-08 05:02:54,345 - INFO - Iteration 48/100: Phase=hybrid learning, SL ratio=0.50, EL ratio=0.50
+2025-04-08 05:02:55,010 - DEBUG -   [SL->EL] 成功! 用SL最优解1955.00替换EL最差解2090.00, 改进了135.00
+2025-04-08 05:02:55,012 - DEBUG -   [EL->SL] 成功添加5个EL解到SL种群
+2025-04-08 05:02:55,012 - DEBUG - Updated probability model at iteration 48
+2025-04-08 05:02:55,012 - INFO - Iteration 49/100: Phase=hybrid learning, SL ratio=0.50, EL ratio=0.50
+2025-04-08 05:02:55,716 - DEBUG -   [SL->EL] 失败! SL最优解1977.00不如EL最差解1974.00
+2025-04-08 05:02:55,717 - DEBUG -   [EL->SL] 成功添加5个EL解到SL种群
+2025-04-08 05:02:55,718 - DEBUG - Updated probability model at iteration 49
+2025-04-08 05:02:55,718 - INFO - EL has been consistently better for 5 iterations, adjusting ratios: SL=0.40, EL=0.60
+2025-04-08 05:02:55,718 - INFO - Iteration 50/100: Phase=hybrid learning, SL ratio=0.40, EL ratio=0.60
+2025-04-08 05:02:56,480 - DEBUG -   [SL->EL] 成功! 用SL最优解1957.00替换EL最差解2056.00, 改进了99.00
+2025-04-08 05:02:56,481 - DEBUG -   [EL->SL] 成功添加6个EL解到SL种群
+2025-04-08 05:02:56,481 - DEBUG - Updated probability model at iteration 50
+2025-04-08 05:02:56,481 - INFO - Iteration 51/100: Phase=hybrid learning, SL ratio=0.40, EL ratio=0.60
+2025-04-08 05:02:57,280 - INFO - In generation 51，New best makespan: 1824.00, source: el
+2025-04-08 05:02:57,280 - DEBUG -   [SL->EL] 成功! 用SL最优解1946.00替换EL最差解2016.00, 改进了70.00
+2025-04-08 05:02:57,281 - DEBUG -   [EL->SL] 成功添加6个EL解到SL种群
+2025-04-08 05:02:57,282 - DEBUG - Updated probability model at iteration 51
+2025-04-08 05:02:57,282 - INFO - Iteration 52/100: Phase=hybrid learning, SL ratio=0.40, EL ratio=0.60
+2025-04-08 05:02:58,078 - DEBUG -   [SL->EL] 成功! 用SL最优解1917.00替换EL最差解2068.00, 改进了151.00
+2025-04-08 05:02:58,079 - DEBUG -   [EL->SL] 成功添加6个EL解到SL种群
+2025-04-08 05:02:58,079 - DEBUG - Updated probability model at iteration 52
+2025-04-08 05:02:58,080 - INFO - Iteration 53/100: Phase=hybrid learning, SL ratio=0.40, EL ratio=0.60
+2025-04-08 05:02:58,840 - DEBUG -   [SL->EL] 成功! 用SL最优解1958.00替换EL最差解2051.00, 改进了93.00
+2025-04-08 05:02:58,841 - DEBUG -   [EL->SL] 成功添加6个EL解到SL种群
+2025-04-08 05:02:58,841 - DEBUG - Updated probability model at iteration 53
+2025-04-08 05:02:58,841 - INFO - Iteration 54/100: Phase=hybrid learning, SL ratio=0.40, EL ratio=0.60
+2025-04-08 05:02:59,623 - INFO - In generation 54，New best makespan: 1820.00, source: el
+2025-04-08 05:02:59,623 - DEBUG -   [SL->EL] 成功! 用SL最优解1904.00替换EL最差解1935.00, 改进了31.00
+2025-04-08 05:02:59,625 - DEBUG -   [EL->SL] 成功添加6个EL解到SL种群
+2025-04-08 05:02:59,625 - DEBUG - Updated probability model at iteration 54
+2025-04-08 05:02:59,625 - INFO - EL has been consistently better for 5 iterations, adjusting ratios: SL=0.30, EL=0.70
+2025-04-08 05:02:59,625 - INFO - Iteration 55/100: Phase=hybrid learning, SL ratio=0.30, EL ratio=0.70
+2025-04-08 05:03:00,446 - INFO - In generation 55，New best makespan: 1816.00, source: el
+2025-04-08 05:03:00,446 - DEBUG -   [SL->EL] 成功! 用SL最优解1886.00替换EL最差解2020.00, 改进了134.00
+2025-04-08 05:03:00,447 - DEBUG -   [EL->SL] 成功添加7个EL解到SL种群
+2025-04-08 05:03:00,447 - DEBUG - Updated probability model at iteration 55
+2025-04-08 05:03:00,447 - INFO - Iteration 56/100: Phase=hybrid learning, SL ratio=0.30, EL ratio=0.70
+2025-04-08 05:03:01,261 - INFO - In generation 56，New best makespan: 1814.00, source: el
+2025-04-08 05:03:01,261 - DEBUG -   [SL->EL] 成功! 用SL最优解1962.00替换EL最差解1976.00, 改进了14.00
+2025-04-08 05:03:01,262 - DEBUG -   [EL->SL] 成功添加7个EL解到SL种群
+2025-04-08 05:03:01,262 - DEBUG - Updated probability model at iteration 56
+2025-04-08 05:03:01,262 - INFO - Iteration 57/100: Phase=hybrid learning, SL ratio=0.30, EL ratio=0.70
+2025-04-08 05:03:02,090 - INFO - In generation 57，New best makespan: 1806.00, source: el
+2025-04-08 05:03:02,091 - DEBUG -   [SL->EL] 成功! 用SL最优解1980.00替换EL最差解2067.00, 改进了87.00
+2025-04-08 05:03:02,092 - DEBUG -   [EL->SL] 成功添加7个EL解到SL种群
+2025-04-08 05:03:02,093 - DEBUG - Updated probability model at iteration 57
+2025-04-08 05:03:02,093 - INFO - Iteration 58/100: Phase=hybrid learning, SL ratio=0.30, EL ratio=0.70
+2025-04-08 05:03:02,910 - INFO - In generation 58，New best makespan: 1804.00, source: el
+2025-04-08 05:03:02,910 - DEBUG -   [SL->EL] 成功! 用SL最优解1979.00替换EL最差解2017.00, 改进了38.00
+2025-04-08 05:03:02,912 - DEBUG -   [EL->SL] 成功添加7个EL解到SL种群
+2025-04-08 05:03:02,913 - DEBUG - Updated probability model at iteration 58
+2025-04-08 05:03:02,913 - INFO - Iteration 59/100: Phase=hybrid learning, SL ratio=0.30, EL ratio=0.70
+2025-04-08 05:03:03,709 - INFO - In generation 59，New best makespan: 1800.00, source: el
+2025-04-08 05:03:03,709 - DEBUG -   [SL->EL] 成功! 用SL最优解1938.00替换EL最差解1994.00, 改进了56.00
+2025-04-08 05:03:03,710 - DEBUG -   [EL->SL] 成功添加7个EL解到SL种群
+2025-04-08 05:03:03,710 - DEBUG - Updated probability model at iteration 59
+2025-04-08 05:03:03,710 - INFO - EL has been consistently better for 5 iterations, adjusting ratios: SL=0.20, EL=0.80
+2025-04-08 05:03:03,710 - INFO - Iteration 60/100: Phase=hybrid learning, SL ratio=0.20, EL ratio=0.80
+2025-04-08 05:03:04,564 - INFO - In generation 60，New best makespan: 1798.00, source: el
+2025-04-08 05:03:04,565 - DEBUG -   [SL->EL] 成功! 用SL最优解1954.00替换EL最差解1995.00, 改进了41.00
+2025-04-08 05:03:04,566 - DEBUG -   [EL->SL] 成功添加8个EL解到SL种群
+2025-04-08 05:03:04,567 - DEBUG - Updated probability model at iteration 60
+2025-04-08 05:03:04,567 - INFO - Iteration 61/100: Phase=hybrid learning, SL ratio=0.20, EL ratio=0.80
+2025-04-08 05:03:05,470 - INFO - In generation 61，New best makespan: 1796.00, source: el
+2025-04-08 05:03:05,471 - DEBUG -   [SL->EL] 成功! 用SL最优解1973.00替换EL最差解2008.00, 改进了35.00
+2025-04-08 05:03:05,471 - DEBUG -   [EL->SL] 成功添加8个EL解到SL种群
+2025-04-08 05:03:05,472 - DEBUG - Updated probability model at iteration 61
+2025-04-08 05:03:05,472 - INFO - Iteration 62/100: Phase=hybrid learning, SL ratio=0.20, EL ratio=0.80
+2025-04-08 05:03:06,328 - DEBUG -   [SL->EL] 失败! SL最优解2014.00不如EL最差解2004.00
+2025-04-08 05:03:06,329 - DEBUG -   [EL->SL] 成功添加8个EL解到SL种群
+2025-04-08 05:03:06,330 - DEBUG - Updated probability model at iteration 62
+2025-04-08 05:03:06,330 - INFO - Iteration 63/100: Phase=hybrid learning, SL ratio=0.20, EL ratio=0.80
+2025-04-08 05:03:07,177 - DEBUG -   [SL->EL] 失败! SL最优解2007.00不如EL最差解1941.00
+2025-04-08 05:03:07,178 - DEBUG -   [EL->SL] 成功添加8个EL解到SL种群
+2025-04-08 05:03:07,179 - DEBUG - Updated probability model at iteration 63
+2025-04-08 05:03:07,179 - INFO - Iteration 64/100: Phase=hybrid learning, SL ratio=0.20, EL ratio=0.80
+2025-04-08 05:03:08,037 - DEBUG -   [SL->EL] 成功! 用SL最优解1942.00替换EL最差解1999.00, 改进了57.00
+2025-04-08 05:03:08,039 - DEBUG -   [EL->SL] 成功添加8个EL解到SL种群
+2025-04-08 05:03:08,040 - DEBUG - Updated probability model at iteration 64
+2025-04-08 05:03:08,040 - INFO - EL has been consistently better for 5 iterations, adjusting ratios: SL=0.10, EL=0.90
+2025-04-08 05:03:08,040 - INFO - Iteration 65/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:08,918 - INFO - In generation 65，New best makespan: 1792.00, source: el
+2025-04-08 05:03:08,918 - DEBUG -   [SL->EL] 失败! SL最优解2009.00不如EL最差解1980.00
+2025-04-08 05:03:08,919 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:08,919 - DEBUG - Updated probability model at iteration 65
+2025-04-08 05:03:08,919 - INFO - Iteration 66/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:09,834 - DEBUG -   [SL->EL] 成功! 用SL最优解1982.00替换EL最差解2011.00, 改进了29.00
+2025-04-08 05:03:09,835 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:09,836 - DEBUG - Updated probability model at iteration 66
+2025-04-08 05:03:09,836 - INFO - Iteration 67/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:10,776 - DEBUG -   [SL->EL] 失败! SL最优解2007.00不如EL最差解1977.00
+2025-04-08 05:03:10,778 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:10,779 - DEBUG - Updated probability model at iteration 67
+2025-04-08 05:03:10,779 - INFO - Iteration 68/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:11,719 - INFO - In generation 68，New best makespan: 1788.00, source: el
+2025-04-08 05:03:11,719 - DEBUG -   [SL->EL] 成功! 用SL最优解1970.00替换EL最差解2019.00, 改进了49.00
+2025-04-08 05:03:11,721 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:11,721 - DEBUG - Updated probability model at iteration 68
+2025-04-08 05:03:11,721 - INFO - Iteration 69/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:12,652 - DEBUG -   [SL->EL] 成功! 用SL最优解1927.00替换EL最差解1978.00, 改进了51.00
+2025-04-08 05:03:12,653 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:12,653 - DEBUG - Updated probability model at iteration 69
+2025-04-08 05:03:12,653 - INFO - EL has been consistently better for 5 iterations, adjusting ratios: SL=0.10, EL=0.90
+2025-04-08 05:03:12,654 - INFO - Iteration 70/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:13,573 - DEBUG -   [SL->EL] 失败! SL最优解2069.00不如EL最差解2002.00
+2025-04-08 05:03:13,574 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:13,575 - DEBUG - Updated probability model at iteration 70
+2025-04-08 05:03:13,575 - INFO - Iteration 71/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:14,521 - DEBUG -   [SL->EL] 成功! 用SL最优解2085.00替换EL最差解2103.00, 改进了18.00
+2025-04-08 05:03:14,521 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:14,523 - DEBUG - Updated probability model at iteration 71
+2025-04-08 05:03:14,523 - INFO - Iteration 72/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:15,464 - INFO - In generation 72，New best makespan: 1784.00, source: el
+2025-04-08 05:03:15,464 - DEBUG -   [SL->EL] 失败! SL最优解2059.00不如EL最差解2057.00
+2025-04-08 05:03:15,465 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:15,466 - DEBUG - Updated probability model at iteration 72
+2025-04-08 05:03:15,466 - INFO - Iteration 73/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:16,402 - INFO - In generation 73，New best makespan: 1782.00, source: el
+2025-04-08 05:03:16,403 - DEBUG -   [SL->EL] 失败! SL最优解1991.00不如EL最差解1982.00
+2025-04-08 05:03:16,404 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:16,405 - DEBUG - Updated probability model at iteration 73
+2025-04-08 05:03:16,405 - INFO - Iteration 74/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:17,340 - INFO - In generation 74，New best makespan: 1778.00, source: el
+2025-04-08 05:03:17,340 - DEBUG -   [SL->EL] 成功! 用SL最优解1986.00替换EL最差解2033.00, 改进了47.00
+2025-04-08 05:03:17,341 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:17,342 - DEBUG - Updated probability model at iteration 74
+2025-04-08 05:03:17,342 - INFO - EL has been consistently better for 5 iterations, adjusting ratios: SL=0.10, EL=0.90
+2025-04-08 05:03:17,342 - INFO - Iteration 75/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:18,260 - DEBUG -   [SL->EL] 失败! SL最优解1991.00不如EL最差解1979.00
+2025-04-08 05:03:18,261 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:18,262 - DEBUG - Updated probability model at iteration 75
+2025-04-08 05:03:18,262 - INFO - Iteration 76/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:19,185 - INFO - In generation 76，New best makespan: 1776.00, source: el
+2025-04-08 05:03:19,185 - DEBUG -   [SL->EL] 失败! SL最优解2035.00不如EL最差解2031.00
+2025-04-08 05:03:19,187 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:19,187 - DEBUG - Updated probability model at iteration 76
+2025-04-08 05:03:19,187 - INFO - Iteration 77/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:20,102 - INFO - In generation 77，New best makespan: 1772.00, source: el
+2025-04-08 05:03:20,103 - DEBUG -   [SL->EL] 成功! 用SL最优解1935.00替换EL最差解2038.00, 改进了103.00
+2025-04-08 05:03:20,104 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:20,105 - DEBUG - Updated probability model at iteration 77
+2025-04-08 05:03:20,105 - INFO - Iteration 78/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:21,040 - INFO - In generation 78，New best makespan: 1762.00, source: el
+2025-04-08 05:03:21,041 - DEBUG -   [SL->EL] 失败! SL最优解1970.00不如EL最差解1924.00
+2025-04-08 05:03:21,042 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:21,043 - DEBUG - Updated probability model at iteration 78
+2025-04-08 05:03:21,043 - INFO - Iteration 79/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:22,016 - DEBUG -   [SL->EL] 失败! SL最优解1958.00不如EL最差解1938.00
+2025-04-08 05:03:22,018 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:22,018 - DEBUG - Updated probability model at iteration 79
+2025-04-08 05:03:22,018 - INFO - EL has been consistently better for 5 iterations, adjusting ratios: SL=0.10, EL=0.90
+2025-04-08 05:03:22,018 - INFO - Iteration 80/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:22,912 - DEBUG -   [SL->EL] 成功! 用SL最优解2026.00替换EL最差解2074.00, 改进了48.00
+2025-04-08 05:03:22,914 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:22,914 - DEBUG - Updated probability model at iteration 80
+2025-04-08 05:03:22,914 - INFO - Iteration 81/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:23,882 - INFO - In generation 81，New best makespan: 1760.00, source: el
+2025-04-08 05:03:23,883 - DEBUG -   [SL->EL] 成功! 用SL最优解2000.00替换EL最差解2100.00, 改进了100.00
+2025-04-08 05:03:23,884 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:23,885 - DEBUG - Updated probability model at iteration 81
+2025-04-08 05:03:23,885 - INFO - Iteration 82/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:24,820 - INFO - In generation 82，New best makespan: 1746.00, source: el
+2025-04-08 05:03:24,822 - DEBUG -   [SL->EL] 成功! 用SL最优解1937.00替换EL最差解2005.00, 改进了68.00
+2025-04-08 05:03:24,824 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:24,824 - DEBUG - Updated probability model at iteration 82
+2025-04-08 05:03:24,824 - INFO - Iteration 83/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:25,757 - DEBUG -   [SL->EL] 失败! SL最优解1995.00不如EL最差解1987.00
+2025-04-08 05:03:25,758 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:25,759 - DEBUG - Updated probability model at iteration 83
+2025-04-08 05:03:25,759 - INFO - Iteration 84/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:26,699 - DEBUG -   [SL->EL] 失败! SL最优解1982.00不如EL最差解1956.00
+2025-04-08 05:03:26,700 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:26,701 - DEBUG - Updated probability model at iteration 84
+2025-04-08 05:03:26,701 - INFO - EL has been consistently better for 5 iterations, adjusting ratios: SL=0.10, EL=0.90
+2025-04-08 05:03:26,701 - INFO - Iteration 85/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:27,604 - DEBUG -   [SL->EL] 成功! 用SL最优解1939.00替换EL最差解2005.00, 改进了66.00
+2025-04-08 05:03:27,605 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:27,605 - DEBUG - Updated probability model at iteration 85
+2025-04-08 05:03:27,605 - INFO - Iteration 86/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:28,499 - DEBUG -   [SL->EL] 成功! 用SL最优解1974.00替换EL最差解1996.00, 改进了22.00
+2025-04-08 05:03:28,501 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:28,502 - DEBUG - Updated probability model at iteration 86
+2025-04-08 05:03:28,502 - INFO - Iteration 87/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:29,391 - DEBUG -   [SL->EL] 成功! 用SL最优解1887.00替换EL最差解1942.00, 改进了55.00
+2025-04-08 05:03:29,392 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:29,393 - DEBUG - Updated probability model at iteration 87
+2025-04-08 05:03:29,393 - INFO - Iteration 88/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:30,316 - DEBUG -   [SL->EL] 成功! 用SL最优解1957.00替换EL最差解1970.00, 改进了13.00
+2025-04-08 05:03:30,318 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:30,318 - DEBUG - Updated probability model at iteration 88
+2025-04-08 05:03:30,318 - INFO - Iteration 89/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:31,207 - DEBUG -   [SL->EL] 成功! 用SL最优解1887.00替换EL最差解1948.00, 改进了61.00
+2025-04-08 05:03:31,208 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:31,209 - DEBUG - Updated probability model at iteration 89
+2025-04-08 05:03:31,209 - INFO - EL has been consistently better for 5 iterations, adjusting ratios: SL=0.10, EL=0.90
+2025-04-08 05:03:31,209 - INFO - Iteration 90/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:32,144 - DEBUG -   [SL->EL] 失败! SL最优解2009.00不如EL最差解1930.00
+2025-04-08 05:03:32,145 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:32,147 - DEBUG - Updated probability model at iteration 90
+2025-04-08 05:03:32,147 - INFO - Iteration 91/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:33,062 - DEBUG -   [SL->EL] 失败! SL最优解1976.00不如EL最差解1908.00
+2025-04-08 05:03:33,064 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:33,064 - DEBUG - Updated probability model at iteration 91
+2025-04-08 05:03:33,064 - INFO - Iteration 92/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:33,970 - INFO - In generation 92，New best makespan: 1742.00, source: el
+2025-04-08 05:03:33,971 - DEBUG -   [SL->EL] 成功! 用SL最优解1940.00替换EL最差解2017.00, 改进了77.00
+2025-04-08 05:03:33,972 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:33,972 - DEBUG - Updated probability model at iteration 92
+2025-04-08 05:03:33,972 - INFO - Iteration 93/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:34,874 - INFO - In generation 93，New best makespan: 1738.00, source: el
+2025-04-08 05:03:34,875 - DEBUG -   [SL->EL] 失败! SL最优解2003.00不如EL最差解1968.00
+2025-04-08 05:03:34,877 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:34,877 - DEBUG - Updated probability model at iteration 93
+2025-04-08 05:03:34,877 - INFO - Iteration 94/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:35,801 - DEBUG -   [SL->EL] 失败! SL最优解1973.00不如EL最差解1943.00
+2025-04-08 05:03:35,803 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:35,803 - DEBUG - Updated probability model at iteration 94
+2025-04-08 05:03:35,803 - INFO - EL has been consistently better for 5 iterations, adjusting ratios: SL=0.10, EL=0.90
+2025-04-08 05:03:35,803 - INFO - Iteration 95/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:36,769 - INFO - In generation 95，New best makespan: 1736.00, source: el
+2025-04-08 05:03:36,770 - DEBUG -   [SL->EL] 成功! 用SL最优解1918.00替换EL最差解1971.00, 改进了53.00
+2025-04-08 05:03:36,771 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:36,771 - DEBUG - Updated probability model at iteration 95
+2025-04-08 05:03:36,771 - INFO - Iteration 96/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:37,674 - DEBUG -   [SL->EL] 成功! 用SL最优解1917.00替换EL最差解1966.00, 改进了49.00
+2025-04-08 05:03:37,675 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:37,675 - DEBUG - Updated probability model at iteration 96
+2025-04-08 05:03:37,675 - INFO - Iteration 97/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:38,592 - DEBUG -   [SL->EL] 失败! SL最优解1967.00不如EL最差解1962.00
+2025-04-08 05:03:38,593 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:38,594 - DEBUG - Updated probability model at iteration 97
+2025-04-08 05:03:38,594 - INFO - Iteration 98/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:39,490 - INFO - In generation 98，New best makespan: 1732.00, source: el
+2025-04-08 05:03:39,490 - DEBUG -   [SL->EL] 成功! 用SL最优解1971.00替换EL最差解2006.00, 改进了35.00
+2025-04-08 05:03:39,491 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:39,491 - DEBUG - Updated probability model at iteration 98
+2025-04-08 05:03:39,491 - INFO - Iteration 99/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:40,464 - INFO - In generation 99，New best makespan: 1730.00, source: el
+2025-04-08 05:03:40,464 - DEBUG -   [SL->EL] 成功! 用SL最优解2064.00替换EL最差解2106.00, 改进了42.00
+2025-04-08 05:03:40,465 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:40,467 - DEBUG - Updated probability model at iteration 99
+2025-04-08 05:03:40,467 - INFO - EL has been consistently better for 5 iterations, adjusting ratios: SL=0.10, EL=0.90
+2025-04-08 05:03:40,467 - INFO - Iteration 100/100: Phase=hybrid learning, SL ratio=0.10, EL ratio=0.90
+2025-04-08 05:03:41,360 - INFO - In generation 100，New best makespan: 1728.00, source: el
+2025-04-08 05:03:41,362 - DEBUG -   [SL->EL] 失败! SL最优解2027.00不如EL最差解1988.00
+2025-04-08 05:03:41,362 - DEBUG -   [EL->SL] 成功添加9个EL解到SL种群
+2025-04-08 05:03:41,362 - DEBUG - Updated probability model at iteration 100
+2025-04-08 05:03:41,372 - INFO - ==================================================
+2025-04-08 05:03:41,373 - INFO - Results saved to: hl_output
+2025-04-08 05:03:41,645 - INFO - Convergence curve saved to: hl_output/hl_convergence.png
+2025-04-08 05:03:41,645 - INFO - Best solution found with makespan: 1728.00s at generation 100
+2025-04-08 05:03:41,646 - INFO - Total time: 72.23s
