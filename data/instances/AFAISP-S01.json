@@ -1,0 +1,122 @@
+{
+  "metadata": {
+    "instance_name": "AFAISP-S01",
+    "source_file": "Fattahi01.fjs",
+    "format_version": "1.0",
+    "generator": "data_preprocessing.py",
+    "deterministic_seed": 401367095,
+    "original_instance_name": "Fattahi01"
+  },
+  "base_info": {
+    "num_products": 2,
+    "num_operations": 4,
+    "num_units": 2,
+    "num_agvs_w": 2,
+    "num_agvs_f": 2,
+    "speed_w": 1,
+    "speed_f": 1.2
+  },
+  "product_operations": {
+    "1": 2,
+    "2": 2
+  },
+  "unit_coordinates": {
+    "Warehouse": [
+      0.5,
+      0.5
+    ],
+    "M1": [
+      0.285812,
+      0.555146
+    ],
+    "M2": [
+      0.017817,
+      0.181643
+    ]
+  },
+  "distances": {
+    "Warehouse": {
+      "Warehouse": 0,
+      "M1": 14,
+      "M2": 38
+    },
+    "M1": {
+      "Warehouse": 14,
+      "M1": 0,
+      "M2": 30
+    },
+    "M2": {
+      "Warehouse": 38,
+      "M1": 30,
+      "M2": 0
+    }
+  },
+  "agv_w_transport_times": {
+    "Warehouse": {
+      "Warehouse": 0,
+      "M1": 14,
+      "M2": 38
+    },
+    "M1": {
+      "Warehouse": 14,
+      "M1": 0,
+      "M2": 30
+    },
+    "M2": {
+      "Warehouse": 38,
+      "M1": 30,
+      "M2": 0
+    }
+  },
+  "agv_f_transport_times": {
+    "Warehouse": {
+      "Warehouse": 0,
+      "M1": 12,
+      "M2": 32
+    },
+    "M1": {
+      "Warehouse": 12,
+      "M1": 0,
+      "M2": 25
+    },
+    "M2": {
+      "Warehouse": 32,
+      "M1": 25,
+      "M2": 0
+    }
+  },
+  "processing_times": {
+    "o1_1": {
+      "1": 25,
+      "2": 37
+    },
+    "o1_2": {
+      "1": 32,
+      "2": 24
+    },
+    "o2_1": {
+      "1": 45,
+      "2": 65
+    },
+    "o2_2": {
+      "1": 21,
+      "2": 65
+    }
+  },
+  "priority_dict": {
+    "o1_1": [
+      "o1_2"
+    ],
+    "o1_2": [],
+    "o2_1": [],
+    "o2_2": [
+      "o2_1"
+    ]
+  },
+  "statistics": {
+    "max_processing_time": 65,
+    "operations_with_predecessors": 2,
+    "total_precedence_relations": 2,
+    "average_predecessors_per_operation": 0.5
+  }
+}

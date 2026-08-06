@@ -1,0 +1,133 @@
+{
+  "metadata": {
+    "instance_name": "AFAISP-S03",
+    "source_file": "Fattahi03.fjs",
+    "format_version": "1.0",
+    "generator": "data_preprocessing.py",
+    "deterministic_seed": 1373146558,
+    "original_instance_name": "Fattahi03"
+  },
+  "base_info": {
+    "num_products": 3,
+    "num_operations": 6,
+    "num_units": 2,
+    "num_agvs_w": 2,
+    "num_agvs_f": 2,
+    "speed_w": 1,
+    "speed_f": 1.2
+  },
+  "product_operations": {
+    "1": 2,
+    "2": 2,
+    "3": 2
+  },
+  "unit_coordinates": {
+    "Warehouse": [
+      0.5,
+      0.5
+    ],
+    "M1": [
+      0.406864,
+      0.255509
+    ],
+    "M2": [
+      0.850554,
+      0.996831
+    ]
+  },
+  "distances": {
+    "Warehouse": {
+      "Warehouse": 0,
+      "M1": 35,
+      "M2": 82
+    },
+    "M1": {
+      "Warehouse": 35,
+      "M1": 0,
+      "M2": 117
+    },
+    "M2": {
+      "Warehouse": 82,
+      "M1": 117,
+      "M2": 0
+    }
+  },
+  "agv_w_transport_times": {
+    "Warehouse": {
+      "Warehouse": 0,
+      "M1": 35,
+      "M2": 82
+    },
+    "M1": {
+      "Warehouse": 35,
+      "M1": 0,
+      "M2": 117
+    },
+    "M2": {
+      "Warehouse": 82,
+      "M1": 117,
+      "M2": 0
+    }
+  },
+  "agv_f_transport_times": {
+    "Warehouse": {
+      "Warehouse": 0,
+      "M1": 29,
+      "M2": 68
+    },
+    "M1": {
+      "Warehouse": 29,
+      "M1": 0,
+      "M2": 98
+    },
+    "M2": {
+      "Warehouse": 68,
+      "M1": 98,
+      "M2": 0
+    }
+  },
+  "processing_times": {
+    "o1_1": {
+      "1": 43
+    },
+    "o1_2": {
+      "1": 87,
+      "2": 95
+    },
+    "o2_1": {
+      "1": 63,
+      "2": 53
+    },
+    "o2_2": {
+      "2": 73
+    },
+    "o3_1": {
+      "1": 125,
+      "2": 135
+    },
+    "o3_2": {
+      "1": 43,
+      "2": 61
+    }
+  },
+  "priority_dict": {
+    "o1_1": [
+      "o1_2"
+    ],
+    "o1_2": [],
+    "o2_1": [
+      "o2_2"
+    ],
+    "o2_2": [],
+    "o3_1": [
+      "o3_2"
+    ],
+    "o3_2": []
+  },
+  "statistics": {
+    "max_processing_time": 135,
+    "operations_with_predecessors": 3,
+    "total_precedence_relations": 3,
+    "average_predecessors_per_operation": 0.5
+  }
+}

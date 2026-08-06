@@ -1,0 +1,118 @@
+{
+  "metadata": {
+    "instance_name": "AFAISP-S02",
+    "source_file": "Fattahi02.fjs",
+    "format_version": "1.0",
+    "generator": "data_preprocessing.py",
+    "deterministic_seed": 1085926307,
+    "original_instance_name": "Fattahi02"
+  },
+  "base_info": {
+    "num_products": 2,
+    "num_operations": 4,
+    "num_units": 2,
+    "num_agvs_w": 2,
+    "num_agvs_f": 2,
+    "speed_w": 1,
+    "speed_f": 1.2
+  },
+  "product_operations": {
+    "1": 2,
+    "2": 2
+  },
+  "unit_coordinates": {
+    "Warehouse": [
+      0.5,
+      0.5
+    ],
+    "M1": [
+      0.669941,
+      0.409433
+    ],
+    "M2": [
+      0.704028,
+      0.519135
+    ]
+  },
+  "distances": {
+    "Warehouse": {
+      "Warehouse": 0,
+      "M1": 14,
+      "M2": 15
+    },
+    "M1": {
+      "Warehouse": 14,
+      "M1": 0,
+      "M2": 8
+    },
+    "M2": {
+      "Warehouse": 15,
+      "M1": 8,
+      "M2": 0
+    }
+  },
+  "agv_w_transport_times": {
+    "Warehouse": {
+      "Warehouse": 0,
+      "M1": 14,
+      "M2": 15
+    },
+    "M1": {
+      "Warehouse": 14,
+      "M1": 0,
+      "M2": 8
+    },
+    "M2": {
+      "Warehouse": 15,
+      "M1": 8,
+      "M2": 0
+    }
+  },
+  "agv_f_transport_times": {
+    "Warehouse": {
+      "Warehouse": 0,
+      "M1": 12,
+      "M2": 12
+    },
+    "M1": {
+      "Warehouse": 12,
+      "M1": 0,
+      "M2": 7
+    },
+    "M2": {
+      "Warehouse": 12,
+      "M1": 7,
+      "M2": 0
+    }
+  },
+  "processing_times": {
+    "o1_1": {
+      "1": 43
+    },
+    "o1_2": {
+      "1": 64,
+      "2": 71
+    },
+    "o2_1": {
+      "1": 21,
+      "2": 35
+    },
+    "o2_2": {
+      "2": 43
+    }
+  },
+  "priority_dict": {
+    "o1_1": [],
+    "o1_2": [],
+    "o2_1": [
+      "o2_2"
+    ],
+    "o2_2": []
+  },
+  "statistics": {
+    "max_processing_time": 71,
+    "operations_with_predecessors": 1,
+    "total_precedence_relations": 1,
+    "average_predecessors_per_operation": 0.25
+  }
+}
