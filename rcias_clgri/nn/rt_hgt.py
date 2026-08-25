@@ -9,7 +9,7 @@ import torch
 from torch import nn
 
 from .config import ModelConfig
-from .tensorizer import GraphTensor, NODE_TYPES
+from .tensorizer import BatchGraphTensor, GraphTensor, NODE_TYPES
 
 
 class RTHGTLayer(nn.Module):
@@ -45,13 +45,30 @@ class RTHGTLayer(nn.Module):
 
     @staticmethod
     def _segment_softmax(scores: torch.Tensor, targets: torch.Tensor) -> torch.Tensor:
-        weights = torch.empty_like(scores)
-        for target in torch.unique(targets):
-            mask = targets == target
-            weights[mask] = torch.softmax(scores[mask], dim=0)
-        return weights
+        if scores.shape[0] == 0:
+            return torch.empty_like(scores)
+        if targets.ndim != 1 or targets.shape[0] != scores.shape[0]:
+            raise ValueError("targets must contain one segment index per score row")
+        segment_count = int(targets.max().item()) + 1
+        expanded = targets.view(-1, *([1] * (scores.ndim - 1))).expand_as(scores)
+        segment_shape = (segment_count, *scores.shape[1:])
+        maxima = torch.full(
+            segment_shape, -torch.inf, dtype=scores.dtype, device=scores.device
+        )
+        maxima.scatter_reduce_(0, expanded, scores, reduce="amax", include_self=True)
+        shifted = scores - maxima[targets]
+        numerators = torch.exp(shifted)
+        denominators = torch.zeros(
+            segment_shape, dtype=scores.dtype, device=scores.device
+        )
+        denominators.index_add_(0, targets, numerators)
+        return numerators / denominators[targets].clamp_min(torch.finfo(scores.dtype).tiny)
 
-    def forward(self, hidden: Mapping[str, torch.Tensor], graph: GraphTensor) -> dict[str, torch.Tensor]:
+    def forward(
+        self,
+        hidden: Mapping[str, torch.Tensor],
+        graph: GraphTensor | BatchGraphTensor,
+    ) -> dict[str, torch.Tensor]:
         aggregates = {kind: torch.zeros_like(hidden[kind]) for kind in NODE_TYPES}
         relation_counts = {
             kind: torch.zeros((hidden[kind].shape[0], 1), device=hidden[kind].device)
@@ -104,7 +121,9 @@ class RTHGTEncoder(nn.Module):
             RTHGTLayer(relation_specs, config) for _ in range(config.layers)
         ])
 
-    def forward(self, graph: GraphTensor) -> dict[str, torch.Tensor]:
+    def forward(
+        self, graph: GraphTensor | BatchGraphTensor,
+    ) -> dict[str, torch.Tensor]:
         hidden = {
             kind: self.input_norm[kind](self.input_projection[kind](graph.node_features[kind]))
             for kind in NODE_TYPES

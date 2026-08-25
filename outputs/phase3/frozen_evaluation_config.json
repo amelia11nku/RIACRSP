@@ -1,0 +1,76 @@
+{
+  "canonical_training_or_tuning_instances": 0,
+  "checkpoints": [
+    {
+      "checkpoint": "outputs/phase3/bc_pretrain/best.pt",
+      "metadata": {
+        "epoch": 4,
+        "phase": "synthetic_bc_pretrain",
+        "training_seed": 20260825,
+        "validation_score": 0.23655278768638893
+      },
+      "method": "BC_GREEDY",
+      "sha256": "02a5c9fd63059435c73b121492356f61e33706d9ea46020484f34410e57894d9",
+      "training_seed": "BC"
+    },
+    {
+      "checkpoint": "outputs/phase3/ppo_seed_1/best.pt",
+      "metadata": {
+        "initialization": "outputs\\phase3\\bc_pretrain\\best.pt",
+        "phase": "constructive_ppo",
+        "seed": 31001,
+        "update": 2,
+        "validation_score": 0.1982708481133001
+      },
+      "method": "PPO_GREEDY",
+      "sha256": "a5cdd9241d875e7122a2169e40f57bccfaec035b2925b1327f33a4929d412ece",
+      "training_seed": 31001
+    },
+    {
+      "checkpoint": "outputs/phase3/ppo_seed_2/best.pt",
+      "metadata": {
+        "initialization": "outputs\\phase3\\bc_pretrain\\best.pt",
+        "phase": "constructive_ppo",
+        "seed": 31002,
+        "update": 3,
+        "validation_score": 0.20237220603464742
+      },
+      "method": "PPO_GREEDY",
+      "sha256": "2afff0da99e75ca383281709ebd6e66006bcdade8bacd1d1790f70507e980c2a",
+      "training_seed": 31002
+    },
+    {
+      "checkpoint": "outputs/phase3/ppo_seed_3/best.pt",
+      "metadata": {
+        "initialization": "outputs\\phase3\\bc_pretrain\\best.pt",
+        "phase": "constructive_ppo",
+        "seed": 31003,
+        "update": 4,
+        "validation_score": 0.19982610368483056
+      },
+      "method": "PPO_GREEDY",
+      "sha256": "ebdcf432a95429174e5b1471016f1169e96b032f223553d5f3cf029ac9ed396a",
+      "training_seed": 31003
+    }
+  ],
+  "evaluation_config": {
+    "canonical_full_after_freeze": true,
+    "canonical_probe_instances": [
+      "BR_Mk01",
+      "HU_E_la01",
+      "HU_R_la01",
+      "HU_V_la01"
+    ],
+    "deterministic": true,
+    "report_methods": [
+      "H1",
+      "H2",
+      "H3",
+      "BC_GREEDY",
+      "PPO_GREEDY"
+    ],
+    "sample_k": 4
+  },
+  "frozen_before_canonical_evaluation": true,
+  "selection_data": "fixed synthetic validation only"
+}

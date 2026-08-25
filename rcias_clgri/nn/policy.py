@@ -26,6 +26,67 @@ class CandidateDistribution(Generic[CandidateId]):
             raise RuntimeError("cannot select from an empty hard-masked candidate set")
         return self.candidate_ids[int(torch.argmax(self.logits).item())]
 
+    def probabilities(self, temperature: float = 1.0) -> torch.Tensor:
+        if temperature <= 0:
+            raise ValueError("temperature must be positive")
+        if not self.candidate_ids:
+            raise RuntimeError("cannot normalize an empty hard-masked candidate set")
+        if len(self.candidate_ids) == 1:
+            return torch.ones_like(self.logits)
+        return torch.softmax(self.logits / temperature, dim=0)
+
+    def probability(self, candidate_id: CandidateId, temperature: float = 1.0) -> torch.Tensor:
+        if candidate_id not in self.candidate_ids:
+            return self.logits.sum() * 0.0
+        return self.probabilities(temperature)[self.candidate_ids.index(candidate_id)]
+
+    def sample(
+        self,
+        *,
+        deterministic: bool = False,
+        temperature: float = 1.0,
+        generator: torch.Generator | None = None,
+    ) -> CandidateId:
+        if deterministic:
+            return self.argmax()
+        probabilities = self.probabilities(temperature)
+        index = torch.multinomial(probabilities, 1, generator=generator)
+        return self.candidate_ids[int(index.item())]
+
+    def log_prob(self, candidate_id: CandidateId, temperature: float = 1.0) -> torch.Tensor:
+        if candidate_id not in self.candidate_ids:
+            raise ValueError(
+                f"target {candidate_id!r} violates the hard mask {self.candidate_ids}"
+            )
+        if len(self.candidate_ids) == 1:
+            return self.logits.sum() * 0.0
+        index = self.candidate_ids.index(candidate_id)
+        return torch.log_softmax(self.logits / temperature, dim=0)[index]
+
+    def entropy(self, temperature: float = 1.0) -> torch.Tensor:
+        if len(self.candidate_ids) <= 1:
+            return self.logits.sum() * 0.0
+        log_probabilities = torch.log_softmax(self.logits / temperature, dim=0)
+        probabilities = torch.exp(log_probabilities)
+        return -(probabilities * log_probabilities).sum()
+
+    def normalized_entropy(self, temperature: float = 1.0) -> torch.Tensor:
+        if len(self.candidate_ids) <= 1:
+            return self.logits.sum() * 0.0
+        scale = torch.log(self.logits.new_tensor(float(len(self.candidate_ids))))
+        return self.entropy(temperature) / scale
+
+
+@dataclass(frozen=True)
+class PolicyActionEvaluation:
+    action: Action
+    joint_log_prob: torch.Tensor
+    stage_log_probs: Mapping[str, torch.Tensor]
+    stage_entropies: Mapping[str, torch.Tensor]
+    joint_entropy: torch.Tensor
+    active_stage_normalized_entropy: torch.Tensor
+    stage_candidate_counts: Mapping[str, int]
+
 
 def _scorer(input_dim: int, embedding_dim: int) -> nn.Sequential:
     return nn.Sequential(
@@ -157,11 +218,112 @@ class AutoregressivePolicy(nn.Module):
         losses["total"] = sum(losses.values())
         return losses
 
+    def evaluate_action(
+        self,
+        graph: GraphTensor,
+        hidden: Mapping[str, torch.Tensor],
+        action: Action,
+        *,
+        temperature: float = 1.0,
+    ) -> PolicyActionEvaluation:
+        distributions = {
+            "operation": self.operation_distribution(graph, hidden),
+            "island": self.island_distribution(graph, hidden, action.operation_id),
+            "w": self.w_distribution(
+                graph, hidden, action.operation_id, action.island_id
+            ),
+            "f": self.f_distribution(
+                graph, hidden, action.operation_id, action.island_id, action.w_agv_id
+            ),
+        }
+        selected = {
+            "operation": action.operation_id,
+            "island": action.island_id,
+            "w": action.w_agv_id,
+            "f": action.f_agv_id,
+        }
+        stage_log_probs = {
+            name: distribution.log_prob(selected[name], temperature)
+            for name, distribution in distributions.items()
+        }
+        stage_entropies = {
+            name: distribution.entropy(temperature)
+            for name, distribution in distributions.items()
+        }
+        normalized = [
+            distribution.normalized_entropy(temperature)
+            for distribution in distributions.values()
+            if len(distribution.candidate_ids) > 1
+        ]
+        zero = next(iter(stage_log_probs.values())).new_zeros(())
+        return PolicyActionEvaluation(
+            action=action,
+            joint_log_prob=torch.stack(tuple(stage_log_probs.values())).sum(),
+            stage_log_probs=stage_log_probs,
+            stage_entropies=stage_entropies,
+            joint_entropy=torch.stack(tuple(stage_entropies.values())).sum(),
+            active_stage_normalized_entropy=(
+                torch.stack(normalized).mean() if normalized else zero
+            ),
+            stage_candidate_counts={
+                name: len(distribution.candidate_ids)
+                for name, distribution in distributions.items()
+            },
+        )
+
+    def sample_action(
+        self,
+        graph: GraphTensor,
+        hidden: Mapping[str, torch.Tensor],
+        *,
+        deterministic: bool = False,
+        temperature: float = 1.0,
+        generator: torch.Generator | None = None,
+    ) -> PolicyActionEvaluation:
+        operation = self.operation_distribution(graph, hidden)
+        op_id = operation.sample(
+            deterministic=deterministic, temperature=temperature, generator=generator
+        )
+        island = self.island_distribution(graph, hidden, op_id)
+        island_id = island.sample(
+            deterministic=deterministic, temperature=temperature, generator=generator
+        )
+        w_agv = self.w_distribution(graph, hidden, op_id, island_id)
+        w_id = w_agv.sample(
+            deterministic=deterministic, temperature=temperature, generator=generator
+        )
+        f_agv = self.f_distribution(graph, hidden, op_id, island_id, w_id)
+        f_id = f_agv.sample(
+            deterministic=deterministic, temperature=temperature, generator=generator
+        )
+        return self.evaluate_action(
+            graph, hidden, Action(op_id, island_id, w_id, f_id),
+            temperature=temperature,
+        )
+
+    def action_log_prob(
+        self,
+        graph: GraphTensor,
+        hidden: Mapping[str, torch.Tensor],
+        action: Action,
+        *,
+        temperature: float = 1.0,
+    ) -> torch.Tensor:
+        return self.evaluate_action(
+            graph, hidden, action, temperature=temperature
+        ).joint_log_prob
+
+    def action_entropy(
+        self,
+        graph: GraphTensor,
+        hidden: Mapping[str, torch.Tensor],
+        action: Action,
+        *,
+        temperature: float = 1.0,
+    ) -> PolicyActionEvaluation:
+        return self.evaluate_action(graph, hidden, action, temperature=temperature)
+
     def greedy_action(
         self, graph: GraphTensor, hidden: Mapping[str, torch.Tensor],
     ) -> Action:
-        op_id = self.operation_distribution(graph, hidden).argmax()
-        island_id = self.island_distribution(graph, hidden, op_id).argmax()
-        w_id = self.w_distribution(graph, hidden, op_id, island_id).argmax()
-        f_id = self.f_distribution(graph, hidden, op_id, island_id, w_id).argmax()
-        return Action(op_id, island_id, w_id, f_id)
+        return self.sample_action(graph, hidden, deterministic=True).action

@@ -1,0 +1,64 @@
+{
+  "phase": "Phase 3 Constructive PPO, curriculum, and held-out generalization",
+  "status": "COMPLETE",
+  "gates": {
+    "PPO_IMPLEMENTED": true,
+    "PPO_NUMERICALLY_STABLE": true,
+    "PPO_FEASIBILITY_100": true,
+    "PPO_REPRODUCIBLE": true,
+    "PPO_GENERALIZATION_VALIDATED": true,
+    "REPOSITORY_CLEAN": true,
+    "READY_FOR_CSG": true
+  },
+  "training": {
+    "hardware": "NVIDIA GeForce RTX 4060 Laptop GPU (8 GB); Intel x64, 20 logical processors",
+    "torch_version": "2.12.1+cu130",
+    "cuda_version": "13.0",
+    "bc_seed": 20260825,
+    "ppo_seeds": [31001, 31002, 31003],
+    "ppo_updates_per_seed": 6,
+    "total_environment_steps": 3806,
+    "total_episodes": 131,
+    "total_ppo_wall_clock_seconds": 3135.252735999995,
+    "best_validation_normalized_makespan_mean": 0.20015638594425936,
+    "best_validation_normalized_makespan_population_std": 0.0016905815523895263,
+    "best_checkpoint_criterion": "fixed held-out synthetic S/M mean normalized makespan",
+    "canonical_gradient_instances": 0
+  },
+  "synthetic_evaluation": {
+    "instances": 19,
+    "method_runs": 133,
+    "bc_mean_gap_percent": 22.9967,
+    "ppo_mean_gap_percent": 19.6397,
+    "feasibility_rate": 1.0
+  },
+  "canonical_evaluation": {
+    "instances": 130,
+    "method_runs": 910,
+    "runtime_seconds": 2941.7242051999783,
+    "bc_mean_gap_percent": 48.218550707845935,
+    "ppo_mean_gap_percent": 41.544445301532086,
+    "ppo_seed_mean_gap_percent": [38.89211126285407, 42.83561830249555, 42.90560633924665],
+    "ppo_seed_gap_population_std": 1.875701019329325,
+    "h1_mean_gap_percent": 0.8747791719104018,
+    "feasibility_rate": 1.0,
+    "checkpoint_frozen_before_evaluation": true
+  },
+  "profiling": {
+    "episodes": 300,
+    "environment_steps": 6200,
+    "steps_per_second": 7.8963482183149,
+    "episodes_per_second": 0.3820813654023339,
+    "cpu_tail_growth_bytes": 1622016,
+    "gpu_tail_growth_bytes": 0,
+    "memory_stable": true
+  },
+  "regression": {
+    "compileall": true,
+    "pytest_passed": 69,
+    "canonical_verified": 130,
+    "tiny_native_exact_makespan": 36,
+    "phase2_bc_unchanged": true,
+    "repository_clean": true
+  }
+}

@@ -92,6 +92,9 @@ def _candidate_redundant_python() -> list[str]:
         "profile_graph_builder.py",
         "plot_bc_results.py", "run_bc_validation.py",
         "plot_native_solver_comparison.py", "run_native_tiny_validation.py",
+        "train_bc_pretrain.py", "train_ppo.py", "run_ppo_sanity.py",
+        "evaluate_ppo.py", "profile_training.py", "plot_phase3_results.py",
+        "summarize_phase3_results.py",
     }
     for path in ROOT.rglob("*.py"):
         if ".git" in path.parts or "FJSP-benchmark-main" in path.parts or "tests" in path.parts:

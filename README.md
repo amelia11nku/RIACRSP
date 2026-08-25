@@ -5,12 +5,13 @@ Capability-based Island Assembly Scheduling** problem. The repository provides
 a frozen 130-instance public FJSP extension suite, a deterministic insertion
 decoder with independent feasibility checks, exact Tiny validation, a
 semantics-hardened heterogeneous graph interface, RT-HGT, an autoregressive
-O→M→W→F policy, and a Behavior Cloning sanity check.
+O→M→W→F policy, synthetic BC warm start, and constructive PPO.
 
 This revision deliberately keeps the existing F-kit semantics: there is no
 early material release/staging constraint and no modified F-AGV formulation.
-It implements no PPO, multiobjective preference policy, Critical
-Synchronization Graph, or neural destroy/repair yet.
+Phase 3 optimizes makespan only. Multiobjective preference policies, the
+Critical Synchronization Graph, and neural destroy/repair remain intentionally
+out of scope.
 
 ## Installation
 
@@ -31,6 +32,12 @@ python scripts/generate_canonical_benchmarks.py --verify-only
 python scripts/run_small_validation.py
 python scripts/profile_graph_builder.py
 python scripts/run_bc_validation.py
+python scripts/run_ppo_sanity.py --device cuda
+python scripts/train_bc_pretrain.py --device cuda
+python scripts/train_ppo.py --seed 31001 --device cuda
+python scripts/evaluate_ppo.py --device cuda
+python scripts/profile_training.py --device cuda --episodes 300
+python scripts/plot_phase3_results.py
 python scripts/audit_repo_structure.py
 ```
 
@@ -67,12 +74,19 @@ profiling read checked-in instances; they never regenerate benchmark data.
   ready-only candidate interfaces.
 - `rcias_clgri/nn/`: tensorizer, RT-HGT, hard-masked autoregressive policy,
   and value head.
-- `rcias_clgri/learning/`: auditable expert demonstration replay.
+- `rcias_clgri/learning/`: demonstration replay, rollout buffer,
+  telescope-preserving reward, GAE, clipped PPO, trainer, and evaluation.
+- `rcias_clgri/training/`: deterministic synthetic instance factory and
+  validation-gated S/M/L curriculum with old-level replay.
+- `configs/phase3_training.json`: frozen seeds, distribution, model, PPO, BC,
+  curriculum, and evaluation settings.
 - `outputs/validation/tiny_01/`: exact solution, CSVs, feasibility report, and
   Gantt PNG/PDF derived from one schedule object.
 - `outputs/profiling/`: graph complexity measurements.
 - `outputs/bc_validation/run_1/`: demonstrations, training history, figures,
   and final BC metrics.
+- `outputs/phase3/`: BC warm start, three independent PPO seeds, held-out
+  synthetic/canonical evaluation, profiling, and five PNG/PDF figures.
 - `docs/reports/`: phase-by-phase and final validation reports.
 
 ## Current validated state
@@ -86,6 +100,14 @@ profiling read checked-in instances; they never regenerate benchmark data.
   and O(|W|+|F|) probing per ready operation-island pair.
 - BC: 100% expert action reproduction, 100% feasible greedy rollout, and
   makespan 157.
+- Constructive PPO: three independent synthetic-only training seeds, joint
+  autoregressive PPO ratios, 100% feasible training rollouts, fixed held-out
+  validation, and checkpoint-frozen canonical evaluation.
+- Frozen evaluation: 130/130 canonical instances and all 910 method-runs are
+  feasible; pooled PPO gap is 41.54% versus 48.22% for BC. PPO improves BC in
+  every benchmark family but does not outperform H1 (0.87% gap).
+- Profiling: 300 detached CUDA episodes, 6200 steps, 7.90 steps/s, stable CPU
+  RAM and GPU reserved memory.
 
 The mathematical model is in
 `reconfigurable_island_assembly_mathematical_model.md`; the execution design is

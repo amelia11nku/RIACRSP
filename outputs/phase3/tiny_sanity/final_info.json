@@ -1,0 +1,95 @@
+{
+  "device": "cuda",
+  "results": [
+    {
+      "bc_makespan": 157.0,
+      "best_makespan": 157.0,
+      "exact_makespan": 157.0,
+      "feasibility_rate": 1.0,
+      "final_makespan": 157.0,
+      "finite_updates": true,
+      "instance": "tiny_01",
+      "ppo_parameters_changed": true,
+      "updates": [
+        {
+          "approx_kl": 0.04904249207174871,
+          "deterministic_makespan": 157.0,
+          "gradient_norm": 0.9369057379662991,
+          "policy_loss": -0.045653125271201134,
+          "update": 1,
+          "value_loss": 0.00702524468943011
+        },
+        {
+          "approx_kl": 0.0038311348398565315,
+          "deterministic_makespan": 157.0,
+          "gradient_norm": 1.1275135949254036,
+          "policy_loss": -0.01457005925476551,
+          "update": 2,
+          "value_loss": 0.003527357301209122
+        },
+        {
+          "approx_kl": 0.017506481179225375,
+          "deterministic_makespan": 157.0,
+          "gradient_norm": 0.5824430212378502,
+          "policy_loss": 0.00496983528137207,
+          "update": 3,
+          "value_loss": 0.0008317087267641909
+        },
+        {
+          "approx_kl": 0.008268198682344519,
+          "deterministic_makespan": 157.0,
+          "gradient_norm": 2.5812043994665146,
+          "policy_loss": -0.03082528430968523,
+          "update": 4,
+          "value_loss": 0.0019977181509602815
+        }
+      ]
+    },
+    {
+      "bc_makespan": 36.0,
+      "best_makespan": 36.0,
+      "exact_makespan": 36.0,
+      "feasibility_rate": 1.0,
+      "final_makespan": 36.0,
+      "finite_updates": true,
+      "instance": "tiny_03",
+      "ppo_parameters_changed": true,
+      "updates": [
+        {
+          "approx_kl": 0.009379273746162653,
+          "deterministic_makespan": 36.0,
+          "gradient_norm": 1.1781554222106934,
+          "policy_loss": 0.005568645894527435,
+          "update": 1,
+          "value_loss": 0.0033100186265073717
+        },
+        {
+          "approx_kl": 0.0015266851405613124,
+          "deterministic_makespan": 36.0,
+          "gradient_norm": 2.5667647272348404,
+          "policy_loss": 0.00011393986642360687,
+          "update": 2,
+          "value_loss": 0.0015756215289002284
+        },
+        {
+          "approx_kl": 0.002327789469745767,
+          "deterministic_makespan": 36.0,
+          "gradient_norm": 0.8679385185241699,
+          "policy_loss": 0.05930020287632942,
+          "update": 3,
+          "value_loss": 0.0003196721227141097
+        },
+        {
+          "approx_kl": 8.697772805987825e-05,
+          "deterministic_makespan": 36.0,
+          "gradient_norm": 0.48261191695928574,
+          "policy_loss": 0.0071431531105190516,
+          "update": 4,
+          "value_loss": 0.0005973750303382985
+        }
+      ]
+    }
+  ],
+  "tiny_ppo_sanity_validated": true,
+  "torch_version": "2.12.1+cu130"
+}

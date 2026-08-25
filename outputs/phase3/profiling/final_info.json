@@ -1,0 +1,130 @@
+{
+  "checkpoint": "outputs/phase3/ppo_seed_1/best.pt",
+  "cpu_memory_stable": true,
+  "cpu_tail_growth_bytes": 1622016,
+  "device": "cuda",
+  "environment_steps": 6200,
+  "environment_steps_per_second": 7.8963482183149,
+  "episodes": 300,
+  "episodes_per_second": 0.3820813654023339,
+  "gpu_memory_stable": true,
+  "gpu_tail_growth_bytes": 0,
+  "memory_samples": [
+    {
+      "cpu_rss_bytes": 1252933632,
+      "episode": 1,
+      "gpu_allocated_bytes": 9237504,
+      "gpu_reserved_bytes": 23068672
+    },
+    {
+      "cpu_rss_bytes": 1254473728,
+      "episode": 26,
+      "gpu_allocated_bytes": 9237504,
+      "gpu_reserved_bytes": 23068672
+    },
+    {
+      "cpu_rss_bytes": 1254825984,
+      "episode": 51,
+      "gpu_allocated_bytes": 9237504,
+      "gpu_reserved_bytes": 23068672
+    },
+    {
+      "cpu_rss_bytes": 1255346176,
+      "episode": 76,
+      "gpu_allocated_bytes": 9237504,
+      "gpu_reserved_bytes": 23068672
+    },
+    {
+      "cpu_rss_bytes": 1255026688,
+      "episode": 101,
+      "gpu_allocated_bytes": 9237504,
+      "gpu_reserved_bytes": 23068672
+    },
+    {
+      "cpu_rss_bytes": 1255473152,
+      "episode": 126,
+      "gpu_allocated_bytes": 9237504,
+      "gpu_reserved_bytes": 23068672
+    },
+    {
+      "cpu_rss_bytes": 1255694336,
+      "episode": 151,
+      "gpu_allocated_bytes": 9237504,
+      "gpu_reserved_bytes": 23068672
+    },
+    {
+      "cpu_rss_bytes": 1255895040,
+      "episode": 176,
+      "gpu_allocated_bytes": 9237504,
+      "gpu_reserved_bytes": 23068672
+    },
+    {
+      "cpu_rss_bytes": 1256144896,
+      "episode": 201,
+      "gpu_allocated_bytes": 9237504,
+      "gpu_reserved_bytes": 23068672
+    },
+    {
+      "cpu_rss_bytes": 1256370176,
+      "episode": 226,
+      "gpu_allocated_bytes": 9237504,
+      "gpu_reserved_bytes": 23068672
+    },
+    {
+      "cpu_rss_bytes": 1256456192,
+      "episode": 251,
+      "gpu_allocated_bytes": 9237504,
+      "gpu_reserved_bytes": 23068672
+    },
+    {
+      "cpu_rss_bytes": 1256443904,
+      "episode": 276,
+      "gpu_allocated_bytes": 9237504,
+      "gpu_reserved_bytes": 23068672
+    },
+    {
+      "cpu_rss_bytes": 1256448000,
+      "episode": 300,
+      "gpu_allocated_bytes": 9237504,
+      "gpu_reserved_bytes": 23068672
+    }
+  ],
+  "memory_stable": true,
+  "ppo_collection_seconds": 49.9216516999295,
+  "ppo_update_metrics": {
+    "approx_kl": 0.007813235220964998,
+    "clip_fraction": 0.0922619050834328,
+    "entropy": 3.848340854048729,
+    "epochs_completed": 4,
+    "explained_variance": 0.8250450268387794,
+    "f_entropy": 0.4518381181627601,
+    "gradient_norm_after": 0.29806601721793413,
+    "gradient_norm_before": 0.31829189229756594,
+    "island_entropy": 0.8158803249243647,
+    "learning_rate": 0.0003,
+    "minibatches": 16,
+    "normalized_entropy": 0.9409160648605653,
+    "operation_entropy": 2.2283703545025286,
+    "parameter_norm": 48.62646972489655,
+    "policy_loss": -0.020957182627171278,
+    "total_loss": -0.05903876933734864,
+    "update_time": 63.98654070007615,
+    "value_loss": 0.000803640474259737,
+    "w_entropy": 0.3522520205816753
+  },
+  "rollout_wall_seconds": 785.1730734999292,
+  "timing_percent": {
+    "decoder": 0.11965953633364437,
+    "forward": 68.63688673987183,
+    "graph_build": 12.529934559582243,
+    "policy_scoring": 11.130450119152743,
+    "ppo_update": 7.5830690450595455
+  },
+  "timing_seconds": {
+    "decoder": 1.0096967001445591,
+    "forward": 579.1635182022583,
+    "graph_build": 105.72858599887695,
+    "policy_scoring": 93.91962480195798,
+    "ppo_update": 63.98654070007615
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "global_seed": 20260825,
+  "training_seed_policy": {
+    "independent_training_seeds": [31001, 31002, 31003],
+    "episode_seed_start": 1000000,
+    "forbid_validation_overlap": true
+  },
+  "validation_seeds": {
+    "S": [41001, 41002, 41003, 41004, 41005],
+    "M": [42001, 42002, 42003],
+    "L": [43001, 43002]
+  },
+  "curriculum_levels": {
+    "S": {
+      "products": [3, 6],
+      "operations_per_product": [3, 6],
+      "islands": [3, 5],
+      "configurations": [2, 4],
+      "w_agvs": [1, 2],
+      "f_agvs": [1, 2],
+      "eligible_islands": [1, 3],
+      "processing_time": [2, 20],
+      "dag_probability": [0.15, 0.35]
+    },
+    "M": {
+      "products": [6, 12],
+      "operations_per_product": [4, 10],
+      "islands": [5, 10],
+      "configurations": [3, 6],
+      "w_agvs": [1, 3],
+      "f_agvs": [1, 3],
+      "eligible_islands": [1, 5],
+      "processing_time": [2, 40],
+      "dag_probability": [0.15, 0.30]
+    },
+    "L": {
+      "manifest_driven": true,
+      "manifest_quantiles": [0.10, 0.50, 0.90],
+      "products": [10, 30],
+      "operations_per_product": [3, 12],
+      "total_operations": [50, 300],
+      "islands": [5, 15],
+      "configurations": [5, 6],
+      "w_agvs": [2, 3],
+      "f_agvs": [2, 3],
+      "eligible_islands": [1, 7],
+      "processing_time": [12, 110],
+      "dag_probability": [0.15, 0.28]
+    }
+  },
+  "model": {
+    "embedding_dim": 32,
+    "heads": 4,
+    "layers": 2,
+    "feedforward_multiplier": 2,
+    "dropout": 0.0
+  },
+  "ppo": {
+    "learning_rate": 0.0003,
+    "gamma": 1.0,
+    "gae_lambda": 0.95,
+    "clip_epsilon": 0.2,
+    "value_coefficient": 0.5,
+    "entropy_coefficient": 0.01,
+    "max_grad_norm": 0.5,
+    "target_kl": 0.03,
+    "update_epochs": 4,
+    "minibatch_size": 64,
+    "rollout_transitions": 192,
+    "total_updates": 6,
+    "validation_interval": 1,
+    "plateau_window": 3,
+    "plateau_relative_improvement": 0.03,
+    "minimum_updates_per_level": 3,
+    "current_level_probability": 0.75,
+    "minimum_normalized_entropy": 0.02
+  },
+  "bc_warm_start": {
+    "enabled": true,
+    "demonstration_episodes": 12,
+    "levels": ["S", "M"],
+    "epochs": 20,
+    "learning_rate": 0.001,
+    "weight_decay": 0.00001,
+    "batch_size": 64,
+    "best_checkpoint_criterion": "held_out_synthetic_validation_makespan"
+  },
+  "evaluation": {
+    "deterministic": true,
+    "sample_k": 4,
+    "canonical_probe_instances": ["BR_Mk01", "HU_E_la01", "HU_R_la01", "HU_V_la01"],
+    "canonical_full_after_freeze": true,
+    "report_methods": ["H1", "H2", "H3", "BC_GREEDY", "PPO_GREEDY"]
+  },
+  "curriculum_gate": {
+    "feasibility_rate": 1.0,
+    "selection_metric": "mean_validation_makespan",
+    "retain_previous_levels": true
+  },
+  "prohibited_components": [
+    "critical_synchronization_graph",
+    "neural_destroy_repair",
+    "multiobjective_preference_policy",
+    "pareto_archive",
+    "self_imitation_search"
+  ]
+}
