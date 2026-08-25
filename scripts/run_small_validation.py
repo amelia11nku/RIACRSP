@@ -15,16 +15,15 @@ if str(ROOT) not in sys.path:
 
 from rcias_clgri.data.loader import load_instance
 from rcias_clgri.env.feasibility import check_schedule
-from rcias_clgri.exact.tiny_exact_solver import gurobi_available, solve_tiny_exact
+from rcias_clgri.exact.tiny_exact_solver import solve_tiny_exact
 from rcias_clgri.graph.builder import build_graph_state
 from rcias_clgri.heuristic.dispatching import solve_dispatching
 
 
 INSTANCE_PATHS = (
-    Path("instances/tiny/fjsp_tiny.json"),
-    Path("instances/tiny/automotive_tiny.json"),
-    Path("instances/tiny/fjsp_small.json"),
-    Path("instances/tiny/automotive_small.json"),
+    Path("instances/tiny/tiny_01.json"),
+    Path("instances/tiny/tiny_02.json"),
+    Path("instances/tiny/tiny_03.json"),
 )
 
 
@@ -41,11 +40,13 @@ def _schedule_summary(result: Any) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Validate deterministic RCIAS construction")
-    parser.add_argument("--output", type=Path, default=Path("validation_results.json"))
+    parser.add_argument(
+        "--output", type=Path, default=Path("outputs/reports/small_validation.json")
+    )
     args = parser.parse_args()
     print("This run shows that all baselines share one decoder and produce independently feasible schedules.")
     report: dict[str, Any] = {
-        "exact_backend": "gurobi" if gurobi_available() else "exhaustive-active-schedule-bnb",
+        "exact_backend": "exhaustive-active-schedule-bnb",
         "instances": {},
     }
     for path in INSTANCE_PATHS:
@@ -76,9 +77,9 @@ def main() -> None:
                 f"{path.name} {method}: makespan={result.objective.makespan:.1f} "
                 f"cost={result.objective.total_cost:.3f} feasible=True runtime={result.runtime_seconds:.4f}s"
             )
-            if "tiny" in path.stem and method == "H2":
+            if method == "H2":
                 print("  " + _schedule_summary(result))
-        if path.stem.endswith("_tiny"):
+        if path.stem in {"tiny_01", "tiny_02", "tiny_03"}:
             exact = solve_tiny_exact(instance, time_limit_seconds=30.0)
             item["exact"] = {
                 "status": exact.status,
@@ -96,6 +97,7 @@ def main() -> None:
                 f"nodes={exact.explored_nodes} runtime={exact.runtime_seconds:.4f}s"
             )
         report["instances"][instance.instance_id] = item
+    args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"Wrote {args.output}")
 

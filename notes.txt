@@ -1,19 +1,22 @@
-RCIAS implementation validation notes
+RCIAS implementation and experiment notes
 
 Purpose
 -------
-Establish a reproducible RCIAS-2.0 chain from generated instances through a
-deterministic insertion decoder, independent feasibility audit, exact tiny
-enumeration, three constructive baselines, and graph/action interfaces.
+Maintain a reproducible RCIAS-2.0 chain from frozen public instances through a
+deterministic decoder, independent feasibility audit, exact Tiny enumeration,
+normalized graph/candidate interfaces, RT-HGT, and Behavior Cloning rollout.
 
 Runs
 ----
-1. python scripts/validate_instances.py
-2. python scripts/run_small_validation.py
-3. python scripts/stress_random_validation.py --count 1000
-4. python -m compileall .
-5. pytest -q
+1. python -m compileall .
+2. pytest -q
+3. python scripts/generate_canonical_benchmarks.py --verify-only
+4. python scripts/run_small_validation.py
+5. python scripts/profile_graph_builder.py
+6. python scripts/run_bc_validation.py
+7. python scripts/audit_repo_structure.py
 
-Machine-readable results are stored in validation_results.json and
-stress_validation_results.json. The interpretation is summarized in
-implementation_validation_report.md.
+Machine-readable results are stored below outputs/validation,
+outputs/profiling, and outputs/bc_validation. Phase reports are under
+docs/reports; implementation_validation_report.md records the earlier decoder
+foundation and is superseded by the Phase 2 final report for current paths.

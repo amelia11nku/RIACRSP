@@ -24,7 +24,10 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Stress-test random RCIAS tiny instances")
     parser.add_argument("--count", type=int, default=1000)
     parser.add_argument("--seed", type=int, default=1000)
-    parser.add_argument("--output", type=Path, default=Path("stress_validation_results.json"))
+    parser.add_argument(
+        "--output", type=Path,
+        default=Path("outputs/reports/stress_random_validation.json"),
+    )
     args = parser.parse_args()
     if args.count < 1:
         raise ValueError("count must be positive")
@@ -52,6 +55,7 @@ def main() -> None:
         "runtime_seconds": runtime,
         "failures": failures,
     }
+    args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False))
     if failures:

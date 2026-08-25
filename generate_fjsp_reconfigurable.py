@@ -9,11 +9,18 @@ by the RCIAS mathematical model.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import random
 from pathlib import Path
 from typing import Any, Mapping
 
-from rcias_clgri.data.generation import finalize_instance, operation_id, unique_coordinates, write_json
+from rcias_clgri.data.generation import (
+    DEFAULT_GENERATION_CONFIG,
+    finalize_instance,
+    operation_id,
+    unique_coordinates,
+    write_json,
+)
 
 
 def parse_fjsp(path: str | Path) -> dict[str, Any]:
@@ -23,10 +30,10 @@ def parse_fjsp(path: str | Path) -> dict[str, Any]:
     lines = [line.strip() for line in source.read_text(encoding="utf-8").splitlines() if line.strip()]
     if not lines:
         raise ValueError(f"empty FJSP file: {source}")
-    header = [int(token) for token in lines[0].split()]
-    if len(header) < 2:
+    header_tokens = lines[0].split()
+    if len(header_tokens) < 2:
         raise ValueError("FJSP header must contain job and machine counts")
-    num_jobs, num_machines = header[:2]
+    num_jobs, num_machines = int(header_tokens[0]), int(header_tokens[1])
     if len(lines) - 1 < num_jobs:
         raise ValueError(f"expected {num_jobs} job lines, found {len(lines) - 1}")
     jobs: list[list[list[tuple[int, int]]]] = []
@@ -102,19 +109,31 @@ def small_fjsp() -> dict[str, Any]:
     }
 
 
-def _sparse_dag(op_ids: list[str], rng: random.Random) -> list[list[str]]:
+def stable_seed(family: str, instance_name: str) -> int:
+    """Derive a cross-process stable 32-bit seed from public source identity."""
+
+    key = f"RCIAS-2.0::{family}::{instance_name}"
+    digest = hashlib.sha256(key.encode("utf-8")).digest()
+    return int.from_bytes(digest[:4], "big")
+
+
+def _sparse_dag(
+    op_ids: list[str],
+    rng: random.Random,
+    edge_probability: float,
+) -> list[list[str]]:
     """Create an acyclic partial order without freezing a job-shop chain."""
 
     if len(op_ids) < 2:
         return []
     if len(op_ids) == 2:
-        return [[op_ids[0], op_ids[1]]]
+        return []
     edges: set[tuple[str, str]] = {(op_ids[0], op_ids[-1])}
     for left in range(len(op_ids) - 1):
         for right in range(left + 1, len(op_ids)):
             if (left, right) in {(0, len(op_ids) - 1), (0, 1), (1, 2)}:
                 continue
-            if rng.random() < 0.18:
+            if rng.random() < edge_probability:
                 edges.add((op_ids[left], op_ids[right]))
     return [list(edge) for edge in sorted(edges)]
 
@@ -127,6 +146,8 @@ def build_instance(
     num_agv_f: int = 2,
     source_name: str = "built-in-demo",
     instance_id: str | None = None,
+    family: str = "fjsp_demo",
+    generation_config: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Build and validate an RCIAS-2.0 instance from an FJSP domain."""
 
@@ -138,7 +159,12 @@ def build_instance(
         raise ValueError("FJSP base must contain jobs and at least two machines")
     if num_agv_w < 1 or num_agv_f < 1:
         raise ValueError("both logistics fleets must be non-empty")
-    config_count = num_configurations or max(3, min(6, num_machines + 1))
+    config = dict(DEFAULT_GENERATION_CONFIG if generation_config is None else generation_config)
+    config_rule = config["configuration_generation"]
+    config_count = num_configurations or max(
+        int(config_rule["minimum"]),
+        min(int(config_rule["maximum"]), num_machines + int(config_rule["island_offset"])),
+    )
     if config_count < 2:
         raise ValueError("at least two configurations are required")
 
@@ -159,7 +185,7 @@ def build_instance(
         ]
         products[product_id] = {
             "operations": op_ids,
-            "precedence": _sparse_dag(op_ids, rng),
+            "precedence": _sparse_dag(op_ids, rng, float(config["dag_generation"]["optional_edge_probability"])),
             "family": "FJSP-expanded",
         }
         for operation_index, alternatives in enumerate(job, start=1):
@@ -190,7 +216,7 @@ def build_instance(
             "supported_configurations": supported_ordered,
             "initial_configuration": rng.choice(supported_ordered),
         }
-    coordinates = unique_coordinates(island_ids, rng)
+    coordinates = unique_coordinates(island_ids, rng, generation_config=config)
     return finalize_instance(
         instance_id=instance_id or f"fjsp-rcias-{num_jobs}x{num_machines}-s{seed}",
         generator="FJSP RCIAS-2.0 extension",
@@ -203,8 +229,11 @@ def build_instance(
         agvs_f=agvs_f,
         coordinates=coordinates,
         rng=rng,
+        generation_config=config,
         extra_meta={
             "source": source_name,
+            "family": family,
+            "generator_version": str(config["generator_version"]),
             "mapping": {"job": "product", "operation": "operation", "machine": "assembly_island"},
         },
     )
@@ -231,7 +260,9 @@ def build_small_instance(seed: int = 17) -> dict[str, Any]:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Generate an RCIAS-2.0 FJSP extension")
     parser.add_argument("--input", type=Path, default=None)
-    parser.add_argument("--output", type=Path, default=Path("fjsp_reconfigurable_demo.json"))
+    parser.add_argument(
+        "--output", type=Path, default=Path("outputs/generated/fjsp_reconfigurable.json")
+    )
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--configurations", type=int, default=None)
     parser.add_argument("--agv-w", type=int, default=2)

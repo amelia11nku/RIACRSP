@@ -13,12 +13,12 @@ ROOT = Path(__file__).resolve().parents[1]
 
 @pytest.fixture()
 def automotive_instance():
-    return load_instance(ROOT / "instances" / "tiny" / "automotive_tiny.json")
+    return load_instance(ROOT / "instances" / "tiny" / "tiny_01.json")
 
 
 @pytest.fixture()
 def fjsp_instance():
-    return load_instance(ROOT / "instances" / "tiny" / "fjsp_tiny.json")
+    return load_instance(ROOT / "instances" / "tiny" / "tiny_02.json")
 
 
 @pytest.fixture()

@@ -32,7 +32,7 @@ def test_nonready_action_is_hard_rejected(automotive_instance):
 
 
 def test_cycle_is_rejected():
-    raw = json.loads((ROOT / "instances/tiny/automotive_tiny.json").read_text(encoding="utf-8"))
+    raw = json.loads((ROOT / "instances/tiny/tiny_01.json").read_text(encoding="utf-8"))
     broken = copy.deepcopy(raw)
     broken["products"]["J1"]["precedence"].append(["o12", "o11"])
     with pytest.raises(InstanceValidationError, match="DAG"):

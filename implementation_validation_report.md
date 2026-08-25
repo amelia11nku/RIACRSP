@@ -1,5 +1,9 @@
 # RCIAS 第一阶段实现与验证报告
 
+> 本文是 decoder 基础阶段的历史报告。旧 demo/Small 文件已在 Phase 2
+> 冻结过程中迁移或删除；当前正式路径与结论见
+> `docs/reports/phase2_final_validation_report.md`。
+
 ## 1. 验收结论
 
 本轮已闭环实现：
@@ -13,7 +17,9 @@ RCIAS-2.0 instance
 -> tiny exhaustive exact validation
 ```
 
-两套生成器、两个 demo、四个小规模验证实例已统一到 `RCIAS-2.0`。三种非学习构造式启发式共享同一个 decoder，在全部验证实例上均得到可行调度。两个 tiny 实例完成穷举分支定界，H2 均达到最优 makespan。1,000 个不同 seed 的双生成器压力测试可行率为 100%。
+两套生成器和当时的四个小规模验证实例统一到 `RCIAS-2.0`。Phase 2
+现已将正式验证集冻结为 `tiny_01.json` 与 `tiny_02.json`；旧 demo 与
+Small JSON 不再保留。三种非学习构造式启发式共享同一个 decoder。
 
 ## 2. 新增与修改文件
 
@@ -21,7 +27,7 @@ RCIAS-2.0 instance
 
 - `generate_fjsp_reconfigurable.py`：从旧模块实例模型重写为固定能力配置的 RCIAS-2.0 生成器。
 - `generate_automotive_semantic.py`：删除模块类型/实例/配置覆盖，改为语义任务到唯一固定配置的映射。
-- `fjsp_reconfigurable_demo.json`、`automotive_semantic_demo.json`：重新生成 RCIAS-2.0 demo。
+- 两个生成器的默认实验输出已迁移到 `outputs/generated/`，根目录旧 demo 已删除。
 
 ### 新增
 
@@ -30,12 +36,12 @@ RCIAS-2.0 instance
 - `rcias_clgri/exact/tiny_exact_solver.py`：有规模保护的穷举活动调度分支定界。
 - `rcias_clgri/heuristic/dispatching.py`：H1/H2/H3 三类构造式基线。
 - `rcias_clgri/graph/`：五类节点的动态异构图、特征、typed relations 与 action masks。
-- `instances/tiny/`：两套 tiny 与两套稍大实例。
+- `instances/tiny/`：正式 `tiny_01` 与 `tiny_02`。
 - `tests/`：28 项单元与交叉验证测试。
 - `scripts/validate_instances.py`：批量严格加载。
 - `scripts/run_small_validation.py`：基线、checker、graph 与 exact 验证。
 - `scripts/stress_random_validation.py`：随机实例压力测试。
-- `pytest.ini`、`notes.txt`、`validation_results.json`、`stress_validation_results.json`。
+- `pytest.ini`、`notes.txt`；机器可读结果现统一写入 `outputs/`。
 
 ## 3. 数学模型到代码的映射
 
@@ -65,10 +71,8 @@ start = max(product_ready, W_ready, F_ready, previous_island_end + setup_before)
 
 | 文件 | 产品 | 工序 | 岛 | W/F | 结构用途 |
 |---|---:|---:|---:|---:|---|
-| `instances/tiny/fjsp_tiny.json` | 2 | 5 | 2 | 1/1 | FJSP 加工域、非线性 DAG、exact |
-| `instances/tiny/automotive_tiny.json` | 2 | 6 | 3 | 1/1 | 分支/汇合 DAG、同配置、exact |
-| `instances/tiny/fjsp_small.json` | 3 | 9 | 3 | 2/2 | 多车、多岛稍大验证 |
-| `instances/tiny/automotive_small.json` | 3 | 12 | 3 | 2/2 | 三类语义 DAG 稍大验证 |
+| `instances/tiny/tiny_01.json` | 2 | 6 | 3 | 1/1 | 分支/汇合 DAG、资源时间线、exact |
+| `instances/tiny/tiny_02.json` | 2 | 5 | 2 | 1/1 | FJSP 加工域、非线性 DAG、exact |
 
 受控 automotive tiny 决策覆盖：非线性 DAG、不可比工序、多候选岛、配置切换、同配置连续加工、跨岛 W、同岛无 W、W 空驶与单 F 资源竞争。
 
@@ -141,9 +145,10 @@ H3 的目标是验证 configuration-aware 规则和环境稳定性，不宣称�
 7. **算法说明中的插入伪代码写成 `max(base_ready, prev.end) + setup`，但 MILP 将物流就绪与重构就绪作为独立下界。** 实现服从数学模型，使用 `max(base_ready, prev.end + setup)`，允许提前重构。
 8. **旧 JSON 路径使用 `agv_w/agv_f`。** 已统一为模型说明中的 `logistics.W` 与 `logistics.F`。
 
-## 9. 当前未实现的 CLGRI 模块
+## 9. 当时未实现的 CLGRI 模块
 
-本阶段按要求没有创建占位神经网络。尚未实现：
+第一阶段按要求没有创建占位神经网络。RT-HGT、自回归策略和 Behavior
+Cloning 已在 Phase 2 实现；以下列表仅记录当时的状态：
 
 - RT-HGT encoder；
 - preference-conditioned autoregressive neural policy；
@@ -164,4 +169,5 @@ H3 的目标是验证 configuration-aware 规则和环境稳定性，不宣称�
 5. 构建 Critical Synchronization Graph，先验证 heuristic destroy + repair。
 6. 再引入 neural destroy、preference conditioning、Pareto archive 与泛化实验。
 
-机器可读完整结果见 `validation_results.json` 与 `stress_validation_results.json`。
+当前机器可读结果见 `outputs/validation/`、`outputs/profiling/` 与
+`outputs/bc_validation/`。

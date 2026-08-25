@@ -15,12 +15,11 @@ from rcias_clgri.data.loader import load_instance
 
 
 DEFAULT_PATHS = (
-    Path("fjsp_reconfigurable_demo.json"),
-    Path("automotive_semantic_demo.json"),
-    Path("instances/tiny/fjsp_tiny.json"),
-    Path("instances/tiny/automotive_tiny.json"),
-    Path("instances/tiny/fjsp_small.json"),
-    Path("instances/tiny/automotive_small.json"),
+    Path("instances/tiny/tiny_01.json"),
+    Path("instances/tiny/tiny_02.json"),
+    Path("instances/tiny/tiny_03.json"),
+    Path("instances/canonical/RCIAS-2.0/brandimarte/BR_Mk01.json"),
+    Path("instances/canonical/RCIAS-2.0/hurink/edata/HU_E_la01.json"),
 )
 
 

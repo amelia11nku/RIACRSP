@@ -1,16 +1,13 @@
-# 忽略所有日志和大文件
-*.log
-*.npy
-*.pt
-*.pkl
-*.csv
-*.zip
-*.tar.gz
-*.h5
 __pycache__/
-logs/
-output/
-checkpoints/
-.idea/
-.vscode/
+.pytest_cache/
+*.pyc
+*.log
+*.tmp
+*.bak
 .DS_Store
+
+# Training-only artifacts; canonical instances and validation outputs remain tracked.
+checkpoints/
+tensorboard/
+*.pt
+*.pth

@@ -217,7 +217,9 @@ def build_small_instance(seed: int = 19) -> dict[str, Any]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Generate an automotive RCIAS-2.0 instance")
-    parser.add_argument("--output", type=Path, default=Path("automotive_semantic_demo.json"))
+    parser.add_argument(
+        "--output", type=Path, default=Path("outputs/generated/automotive_semantic.json")
+    )
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--products", type=int, default=4)
     parser.add_argument("--islands", type=int, default=6)

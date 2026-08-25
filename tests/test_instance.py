@@ -15,12 +15,11 @@ ROOT = Path(__file__).resolve().parents[1]
 @pytest.mark.parametrize(
     "relative",
     [
-        "fjsp_reconfigurable_demo.json",
-        "automotive_semantic_demo.json",
-        "instances/tiny/fjsp_tiny.json",
-        "instances/tiny/automotive_tiny.json",
-        "instances/tiny/fjsp_small.json",
-        "instances/tiny/automotive_small.json",
+        "instances/tiny/tiny_01.json",
+        "instances/tiny/tiny_02.json",
+        "instances/tiny/tiny_03.json",
+        "instances/canonical/RCIAS-2.0/brandimarte/BR_Mk01.json",
+        "instances/canonical/RCIAS-2.0/hurink/edata/HU_E_la01.json",
     ],
 )
 def test_all_generated_instances_load(relative):
@@ -30,7 +29,7 @@ def test_all_generated_instances_load(relative):
 
 
 def test_processing_keys_must_equal_eligibility():
-    raw = json.loads((ROOT / "instances/tiny/fjsp_tiny.json").read_text(encoding="utf-8"))
+    raw = json.loads((ROOT / "instances/tiny/tiny_02.json").read_text(encoding="utf-8"))
     broken = copy.deepcopy(raw)
     op_id = broken["sets"]["operations"][0]
     broken["operations"][op_id]["processing_time"].pop(
