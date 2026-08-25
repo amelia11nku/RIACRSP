@@ -1,0 +1,2349 @@
+{
+  "meta": {
+    "schema": "RCIAS-2.0",
+    "instance_id": "automotive-rcias-4x6-s42",
+    "generator": "Automotive semantic RCIAS-2.0",
+    "seed": 42,
+    "static_problem": true,
+    "source": "synthetic automotive final assembly"
+  },
+  "sets": {
+    "products": [
+      "J1",
+      "J2",
+      "J3",
+      "J4"
+    ],
+    "operations": [
+      "o1_1",
+      "o1_2",
+      "o1_3",
+      "o1_4",
+      "o1_5",
+      "o1_6",
+      "o1_7",
+      "o1_8",
+      "o1_9",
+      "o1_10",
+      "o1_11",
+      "o2_1",
+      "o2_2",
+      "o2_3",
+      "o2_4",
+      "o2_5",
+      "o2_6",
+      "o2_7",
+      "o2_8",
+      "o2_9",
+      "o2_10",
+      "o2_11",
+      "o2_12",
+      "o3_1",
+      "o3_2",
+      "o3_3",
+      "o3_4",
+      "o3_5",
+      "o3_6",
+      "o3_7",
+      "o3_8",
+      "o3_9",
+      "o3_10",
+      "o3_11",
+      "o3_12",
+      "o3_13",
+      "o4_1",
+      "o4_2",
+      "o4_3",
+      "o4_4",
+      "o4_5",
+      "o4_6",
+      "o4_7",
+      "o4_8",
+      "o4_9",
+      "o4_10",
+      "o4_11",
+      "o4_12"
+    ],
+    "islands": [
+      "M1",
+      "M2",
+      "M3",
+      "M4",
+      "M5",
+      "M6"
+    ],
+    "configurations": [
+      "C1",
+      "C2",
+      "C3",
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "C8",
+      "C9"
+    ],
+    "agvs_w": [
+      "W1",
+      "W2"
+    ],
+    "agvs_f": [
+      "F1",
+      "F2"
+    ],
+    "nodes": [
+      "WH",
+      "M1",
+      "M2",
+      "M3",
+      "M4",
+      "M5",
+      "M6"
+    ]
+  },
+  "products": {
+    "J1": {
+      "operations": [
+        "o1_1",
+        "o1_2",
+        "o1_3",
+        "o1_4",
+        "o1_5",
+        "o1_6",
+        "o1_7",
+        "o1_8",
+        "o1_9",
+        "o1_10",
+        "o1_11"
+      ],
+      "precedence": [
+        [
+          "o1_1",
+          "o1_2"
+        ],
+        [
+          "o1_1",
+          "o1_3"
+        ],
+        [
+          "o1_1",
+          "o1_7"
+        ],
+        [
+          "o1_1",
+          "o1_8"
+        ],
+        [
+          "o1_10",
+          "o1_11"
+        ],
+        [
+          "o1_2",
+          "o1_10"
+        ],
+        [
+          "o1_3",
+          "o1_4"
+        ],
+        [
+          "o1_4",
+          "o1_10"
+        ],
+        [
+          "o1_4",
+          "o1_5"
+        ],
+        [
+          "o1_4",
+          "o1_6"
+        ],
+        [
+          "o1_4",
+          "o1_9"
+        ],
+        [
+          "o1_5",
+          "o1_11"
+        ],
+        [
+          "o1_6",
+          "o1_11"
+        ],
+        [
+          "o1_7",
+          "o1_10"
+        ],
+        [
+          "o1_8",
+          "o1_10"
+        ],
+        [
+          "o1_9",
+          "o1_11"
+        ]
+      ],
+      "family": "Automotive-Final-Assembly",
+      "variant": "EV"
+    },
+    "J2": {
+      "operations": [
+        "o2_1",
+        "o2_2",
+        "o2_3",
+        "o2_4",
+        "o2_5",
+        "o2_6",
+        "o2_7",
+        "o2_8",
+        "o2_9",
+        "o2_10",
+        "o2_11",
+        "o2_12"
+      ],
+      "precedence": [
+        [
+          "o2_1",
+          "o2_2"
+        ],
+        [
+          "o2_1",
+          "o2_4"
+        ],
+        [
+          "o2_1",
+          "o2_7"
+        ],
+        [
+          "o2_1",
+          "o2_8"
+        ],
+        [
+          "o2_10",
+          "o2_12"
+        ],
+        [
+          "o2_11",
+          "o2_12"
+        ],
+        [
+          "o2_2",
+          "o2_3"
+        ],
+        [
+          "o2_3",
+          "o2_11"
+        ],
+        [
+          "o2_3",
+          "o2_5"
+        ],
+        [
+          "o2_3",
+          "o2_6"
+        ],
+        [
+          "o2_3",
+          "o2_9"
+        ],
+        [
+          "o2_4",
+          "o2_11"
+        ],
+        [
+          "o2_5",
+          "o2_12"
+        ],
+        [
+          "o2_6",
+          "o2_12"
+        ],
+        [
+          "o2_7",
+          "o2_11"
+        ],
+        [
+          "o2_8",
+          "o2_11"
+        ],
+        [
+          "o2_9",
+          "o2_12"
+        ]
+      ],
+      "family": "Automotive-Final-Assembly",
+      "variant": "ICE"
+    },
+    "J3": {
+      "operations": [
+        "o3_1",
+        "o3_2",
+        "o3_3",
+        "o3_4",
+        "o3_5",
+        "o3_6",
+        "o3_7",
+        "o3_8",
+        "o3_9",
+        "o3_10",
+        "o3_11",
+        "o3_12",
+        "o3_13"
+      ],
+      "precedence": [
+        [
+          "o3_1",
+          "o3_2"
+        ],
+        [
+          "o3_1",
+          "o3_3"
+        ],
+        [
+          "o3_1",
+          "o3_4"
+        ],
+        [
+          "o3_1",
+          "o3_8"
+        ],
+        [
+          "o3_1",
+          "o3_9"
+        ],
+        [
+          "o3_10",
+          "o3_13"
+        ],
+        [
+          "o3_11",
+          "o3_13"
+        ],
+        [
+          "o3_12",
+          "o3_13"
+        ],
+        [
+          "o3_2",
+          "o3_12"
+        ],
+        [
+          "o3_3",
+          "o3_5"
+        ],
+        [
+          "o3_4",
+          "o3_12"
+        ],
+        [
+          "o3_5",
+          "o3_11"
+        ],
+        [
+          "o3_5",
+          "o3_12"
+        ],
+        [
+          "o3_5",
+          "o3_6"
+        ],
+        [
+          "o3_5",
+          "o3_7"
+        ],
+        [
+          "o3_6",
+          "o3_13"
+        ],
+        [
+          "o3_7",
+          "o3_13"
+        ],
+        [
+          "o3_8",
+          "o3_12"
+        ],
+        [
+          "o3_9",
+          "o3_12"
+        ]
+      ],
+      "family": "Automotive-Final-Assembly",
+      "variant": "SUV_EV"
+    },
+    "J4": {
+      "operations": [
+        "o4_1",
+        "o4_2",
+        "o4_3",
+        "o4_4",
+        "o4_5",
+        "o4_6",
+        "o4_7",
+        "o4_8",
+        "o4_9",
+        "o4_10",
+        "o4_11",
+        "o4_12"
+      ],
+      "precedence": [
+        [
+          "o4_1",
+          "o4_2"
+        ],
+        [
+          "o4_1",
+          "o4_3"
+        ],
+        [
+          "o4_1",
+          "o4_4"
+        ],
+        [
+          "o4_1",
+          "o4_8"
+        ],
+        [
+          "o4_1",
+          "o4_9"
+        ],
+        [
+          "o4_10",
+          "o4_12"
+        ],
+        [
+          "o4_11",
+          "o4_12"
+        ],
+        [
+          "o4_2",
+          "o4_11"
+        ],
+        [
+          "o4_3",
+          "o4_5"
+        ],
+        [
+          "o4_4",
+          "o4_11"
+        ],
+        [
+          "o4_5",
+          "o4_10"
+        ],
+        [
+          "o4_5",
+          "o4_11"
+        ],
+        [
+          "o4_5",
+          "o4_6"
+        ],
+        [
+          "o4_5",
+          "o4_7"
+        ],
+        [
+          "o4_6",
+          "o4_12"
+        ],
+        [
+          "o4_7",
+          "o4_12"
+        ],
+        [
+          "o4_8",
+          "o4_11"
+        ],
+        [
+          "o4_9",
+          "o4_11"
+        ]
+      ],
+      "family": "Automotive-Final-Assembly",
+      "variant": "EV"
+    }
+  },
+  "operations": {
+    "o1_1": {
+      "product": "J1",
+      "required_configuration": "C1",
+      "eligible_islands": [
+        "M1",
+        "M5",
+        "M6"
+      ],
+      "processing_time": {
+        "M1": 10,
+        "M5": 8,
+        "M6": 8
+      },
+      "semantic_code": "BODY_POS",
+      "semantic_name": "Body positioning"
+    },
+    "o1_2": {
+      "product": "J1",
+      "required_configuration": "C8",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M4",
+        "M6"
+      ],
+      "processing_time": {
+        "M1": 19,
+        "M2": 17,
+        "M4": 17,
+        "M6": 16
+      },
+      "semantic_code": "HV_BAT",
+      "semantic_name": "High-voltage battery installation"
+    },
+    "o1_3": {
+      "product": "J1",
+      "required_configuration": "C2",
+      "eligible_islands": [
+        "M1",
+        "M3"
+      ],
+      "processing_time": {
+        "M1": 14,
+        "M3": 11
+      },
+      "semantic_code": "WIRING",
+      "semantic_name": "Interior wiring harness"
+    },
+    "o1_4": {
+      "product": "J1",
+      "required_configuration": "C3",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M5",
+        "M6"
+      ],
+      "processing_time": {
+        "M1": 17,
+        "M2": 14,
+        "M5": 15,
+        "M6": 14
+      },
+      "semantic_code": "COCKPIT",
+      "semantic_name": "Cockpit installation"
+    },
+    "o1_5": {
+      "product": "J1",
+      "required_configuration": "C4",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M4",
+        "M5",
+        "M6"
+      ],
+      "processing_time": {
+        "M1": 12,
+        "M2": 11,
+        "M4": 10,
+        "M5": 10,
+        "M6": 10
+      },
+      "semantic_code": "SEAT_F",
+      "semantic_name": "Front-seat installation"
+    },
+    "o1_6": {
+      "product": "J1",
+      "required_configuration": "C4",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M4",
+        "M5",
+        "M6"
+      ],
+      "processing_time": {
+        "M1": 11,
+        "M2": 9,
+        "M4": 10,
+        "M5": 9,
+        "M6": 9
+      },
+      "semantic_code": "SEAT_R",
+      "semantic_name": "Rear-seat installation"
+    },
+    "o1_7": {
+      "product": "J1",
+      "required_configuration": "C3",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M5",
+        "M6"
+      ],
+      "processing_time": {
+        "M1": 16,
+        "M2": 14,
+        "M5": 13,
+        "M6": 14
+      },
+      "semantic_code": "DOOR",
+      "semantic_name": "Door-module installation"
+    },
+    "o1_8": {
+      "product": "J1",
+      "required_configuration": "C5",
+      "eligible_islands": [
+        "M4",
+        "M5",
+        "M6"
+      ],
+      "processing_time": {
+        "M4": 12,
+        "M5": 11,
+        "M6": 11
+      },
+      "semantic_code": "WHEEL",
+      "semantic_name": "Wheel installation"
+    },
+    "o1_9": {
+      "product": "J1",
+      "required_configuration": "C6",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "processing_time": {
+        "M1": 10,
+        "M2": 8,
+        "M3": 7,
+        "M4": 8,
+        "M5": 8
+      },
+      "semantic_code": "FLUID_FILL",
+      "semantic_name": "Fluid filling"
+    },
+    "o1_10": {
+      "product": "J1",
+      "required_configuration": "C7",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M4"
+      ],
+      "processing_time": {
+        "M1": 12,
+        "M2": 10,
+        "M4": 11
+      },
+      "semantic_code": "ADAS",
+      "semantic_name": "ADAS calibration"
+    },
+    "o1_11": {
+      "product": "J1",
+      "required_configuration": "C2",
+      "eligible_islands": [
+        "M1",
+        "M3"
+      ],
+      "processing_time": {
+        "M1": 11,
+        "M3": 8
+      },
+      "semantic_code": "EOL",
+      "semantic_name": "End-of-line test"
+    },
+    "o2_1": {
+      "product": "J2",
+      "required_configuration": "C1",
+      "eligible_islands": [
+        "M1",
+        "M5",
+        "M6"
+      ],
+      "processing_time": {
+        "M1": 9,
+        "M5": 8,
+        "M6": 8
+      },
+      "semantic_code": "BODY_POS",
+      "semantic_name": "Body positioning"
+    },
+    "o2_2": {
+      "product": "J2",
+      "required_configuration": "C2",
+      "eligible_islands": [
+        "M1",
+        "M3"
+      ],
+      "processing_time": {
+        "M1": 13,
+        "M3": 11
+      },
+      "semantic_code": "WIRING",
+      "semantic_name": "Interior wiring harness"
+    },
+    "o2_3": {
+      "product": "J2",
+      "required_configuration": "C3",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M5",
+        "M6"
+      ],
+      "processing_time": {
+        "M1": 16,
+        "M2": 13,
+        "M5": 14,
+        "M6": 13
+      },
+      "semantic_code": "COCKPIT",
+      "semantic_name": "Cockpit installation"
+    },
+    "o2_4": {
+      "product": "J2",
+      "required_configuration": "C9",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M4",
+        "M6"
+      ],
+      "processing_time": {
+        "M1": 14,
+        "M2": 11,
+        "M4": 11,
+        "M6": 11
+      },
+      "semantic_code": "ROOF",
+      "semantic_name": "Panoramic-roof bonding"
+    },
+    "o2_5": {
+      "product": "J2",
+      "required_configuration": "C4",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M4",
+        "M5",
+        "M6"
+      ],
+      "processing_time": {
+        "M1": 11,
+        "M2": 10,
+        "M4": 10,
+        "M5": 10,
+        "M6": 9
+      },
+      "semantic_code": "SEAT_F",
+      "semantic_name": "Front-seat installation"
+    },
+    "o2_6": {
+      "product": "J2",
+      "required_configuration": "C4",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M4",
+        "M5",
+        "M6"
+      ],
+      "processing_time": {
+        "M1": 10,
+        "M2": 9,
+        "M4": 9,
+        "M5": 8,
+        "M6": 8
+      },
+      "semantic_code": "SEAT_R",
+      "semantic_name": "Rear-seat installation"
+    },
+    "o2_7": {
+      "product": "J2",
+      "required_configuration": "C3",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M5",
+        "M6"
+      ],
+      "processing_time": {
+        "M1": 14,
+        "M2": 12,
+        "M5": 13,
+        "M6": 12
+      },
+      "semantic_code": "DOOR",
+      "semantic_name": "Door-module installation"
+    },
+    "o2_8": {
+      "product": "J2",
+      "required_configuration": "C5",
+      "eligible_islands": [
+        "M4",
+        "M5",
+        "M6"
+      ],
+      "processing_time": {
+        "M4": 11,
+        "M5": 10,
+        "M6": 10
+      },
+      "semantic_code": "WHEEL",
+      "semantic_name": "Wheel installation"
+    },
+    "o2_9": {
+      "product": "J2",
+      "required_configuration": "C6",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "processing_time": {
+        "M1": 9,
+        "M2": 7,
+        "M3": 7,
+        "M4": 8,
+        "M5": 8
+      },
+      "semantic_code": "FLUID_FILL",
+      "semantic_name": "Fluid filling"
+    },
+    "o2_10": {
+      "product": "J2",
+      "required_configuration": "C6",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "processing_time": {
+        "M1": 10,
+        "M2": 8,
+        "M3": 8,
+        "M4": 9,
+        "M5": 9
+      },
+      "semantic_code": "FUEL_CHECK",
+      "semantic_name": "Fuel-system check"
+    },
+    "o2_11": {
+      "product": "J2",
+      "required_configuration": "C7",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M4"
+      ],
+      "processing_time": {
+        "M1": 11,
+        "M2": 9,
+        "M4": 9
+      },
+      "semantic_code": "ADAS",
+      "semantic_name": "ADAS calibration"
+    },
+    "o2_12": {
+      "product": "J2",
+      "required_configuration": "C2",
+      "eligible_islands": [
+        "M1",
+        "M3"
+      ],
+      "processing_time": {
+        "M1": 10,
+        "M3": 8
+      },
+      "semantic_code": "EOL",
+      "semantic_name": "End-of-line test"
+    },
+    "o3_1": {
+      "product": "J3",
+      "required_configuration": "C1",
+      "eligible_islands": [
+        "M1",
+        "M5",
+        "M6"
+      ],
+      "processing_time": {
+        "M1": 8,
+        "M5": 7,
+        "M6": 7
+      },
+      "semantic_code": "BODY_POS",
+      "semantic_name": "Body positioning"
+    },
+    "o3_2": {
+      "product": "J3",
+      "required_configuration": "C8",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M4",
+        "M6"
+      ],
+      "processing_time": {
+        "M1": 17,
+        "M2": 15,
+        "M4": 15,
+        "M6": 14
+      },
+      "semantic_code": "HV_BAT",
+      "semantic_name": "High-voltage battery installation"
+    },
+    "o3_3": {
+      "product": "J3",
+      "required_configuration": "C2",
+      "eligible_islands": [
+        "M1",
+        "M3"
+      ],
+      "processing_time": {
+        "M1": 13,
+        "M3": 10
+      },
+      "semantic_code": "WIRING",
+      "semantic_name": "Interior wiring harness"
+    },
+    "o3_4": {
+      "product": "J3",
+      "required_configuration": "C9",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M4",
+        "M6"
+      ],
+      "processing_time": {
+        "M1": 13,
+        "M2": 10,
+        "M4": 12,
+        "M6": 11
+      },
+      "semantic_code": "ROOF",
+      "semantic_name": "Panoramic-roof bonding"
+    },
+    "o3_5": {
+      "product": "J3",
+      "required_configuration": "C3",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M5",
+        "M6"
+      ],
+      "processing_time": {
+        "M1": 15,
+        "M2": 13,
+        "M5": 13,
+        "M6": 12
+      },
+      "semantic_code": "COCKPIT",
+      "semantic_name": "Cockpit installation"
+    },
+    "o3_6": {
+      "product": "J3",
+      "required_configuration": "C4",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M4",
+        "M5",
+        "M6"
+      ],
+      "processing_time": {
+        "M1": 10,
+        "M2": 9,
+        "M4": 9,
+        "M5": 9,
+        "M6": 9
+      },
+      "semantic_code": "SEAT_F",
+      "semantic_name": "Front-seat installation"
+    },
+    "o3_7": {
+      "product": "J3",
+      "required_configuration": "C4",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M4",
+        "M5",
+        "M6"
+      ],
+      "processing_time": {
+        "M1": 10,
+        "M2": 8,
+        "M4": 8,
+        "M5": 8,
+        "M6": 8
+      },
+      "semantic_code": "SEAT_R",
+      "semantic_name": "Rear-seat installation"
+    },
+    "o3_8": {
+      "product": "J3",
+      "required_configuration": "C3",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M5",
+        "M6"
+      ],
+      "processing_time": {
+        "M1": 14,
+        "M2": 11,
+        "M5": 11,
+        "M6": 11
+      },
+      "semantic_code": "DOOR",
+      "semantic_name": "Door-module installation"
+    },
+    "o3_9": {
+      "product": "J3",
+      "required_configuration": "C5",
+      "eligible_islands": [
+        "M4",
+        "M5",
+        "M6"
+      ],
+      "processing_time": {
+        "M4": 10,
+        "M5": 10,
+        "M6": 10
+      },
+      "semantic_code": "WHEEL",
+      "semantic_name": "Wheel installation"
+    },
+    "o3_10": {
+      "product": "J3",
+      "required_configuration": "C4",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M4",
+        "M5",
+        "M6"
+      ],
+      "processing_time": {
+        "M1": 10,
+        "M2": 8,
+        "M4": 9,
+        "M5": 8,
+        "M6": 8
+      },
+      "semantic_code": "ROW3",
+      "semantic_name": "Third-row seat installation"
+    },
+    "o3_11": {
+      "product": "J3",
+      "required_configuration": "C6",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "processing_time": {
+        "M1": 9,
+        "M2": 7,
+        "M3": 7,
+        "M4": 8,
+        "M5": 7
+      },
+      "semantic_code": "FLUID_FILL",
+      "semantic_name": "Fluid filling"
+    },
+    "o3_12": {
+      "product": "J3",
+      "required_configuration": "C7",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M4"
+      ],
+      "processing_time": {
+        "M1": 10,
+        "M2": 9,
+        "M4": 9
+      },
+      "semantic_code": "ADAS",
+      "semantic_name": "ADAS calibration"
+    },
+    "o3_13": {
+      "product": "J3",
+      "required_configuration": "C2",
+      "eligible_islands": [
+        "M1",
+        "M3"
+      ],
+      "processing_time": {
+        "M1": 10,
+        "M3": 7
+      },
+      "semantic_code": "EOL",
+      "semantic_name": "End-of-line test"
+    },
+    "o4_1": {
+      "product": "J4",
+      "required_configuration": "C1",
+      "eligible_islands": [
+        "M1",
+        "M5",
+        "M6"
+      ],
+      "processing_time": {
+        "M1": 9,
+        "M5": 7,
+        "M6": 7
+      },
+      "semantic_code": "BODY_POS",
+      "semantic_name": "Body positioning"
+    },
+    "o4_2": {
+      "product": "J4",
+      "required_configuration": "C8",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M4",
+        "M6"
+      ],
+      "processing_time": {
+        "M1": 18,
+        "M2": 15,
+        "M4": 16,
+        "M6": 15
+      },
+      "semantic_code": "HV_BAT",
+      "semantic_name": "High-voltage battery installation"
+    },
+    "o4_3": {
+      "product": "J4",
+      "required_configuration": "C2",
+      "eligible_islands": [
+        "M1",
+        "M3"
+      ],
+      "processing_time": {
+        "M1": 13,
+        "M3": 10
+      },
+      "semantic_code": "WIRING",
+      "semantic_name": "Interior wiring harness"
+    },
+    "o4_4": {
+      "product": "J4",
+      "required_configuration": "C9",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M4",
+        "M6"
+      ],
+      "processing_time": {
+        "M1": 13,
+        "M2": 11,
+        "M4": 12,
+        "M6": 11
+      },
+      "semantic_code": "ROOF",
+      "semantic_name": "Panoramic-roof bonding"
+    },
+    "o4_5": {
+      "product": "J4",
+      "required_configuration": "C3",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M5",
+        "M6"
+      ],
+      "processing_time": {
+        "M1": 16,
+        "M2": 13,
+        "M5": 13,
+        "M6": 13
+      },
+      "semantic_code": "COCKPIT",
+      "semantic_name": "Cockpit installation"
+    },
+    "o4_6": {
+      "product": "J4",
+      "required_configuration": "C4",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M4",
+        "M5",
+        "M6"
+      ],
+      "processing_time": {
+        "M1": 11,
+        "M2": 9,
+        "M4": 9,
+        "M5": 10,
+        "M6": 9
+      },
+      "semantic_code": "SEAT_F",
+      "semantic_name": "Front-seat installation"
+    },
+    "o4_7": {
+      "product": "J4",
+      "required_configuration": "C4",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M4",
+        "M5",
+        "M6"
+      ],
+      "processing_time": {
+        "M1": 10,
+        "M2": 8,
+        "M4": 9,
+        "M5": 8,
+        "M6": 8
+      },
+      "semantic_code": "SEAT_R",
+      "semantic_name": "Rear-seat installation"
+    },
+    "o4_8": {
+      "product": "J4",
+      "required_configuration": "C3",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M5",
+        "M6"
+      ],
+      "processing_time": {
+        "M1": 15,
+        "M2": 12,
+        "M5": 12,
+        "M6": 12
+      },
+      "semantic_code": "DOOR",
+      "semantic_name": "Door-module installation"
+    },
+    "o4_9": {
+      "product": "J4",
+      "required_configuration": "C5",
+      "eligible_islands": [
+        "M4",
+        "M5",
+        "M6"
+      ],
+      "processing_time": {
+        "M4": 10,
+        "M5": 10,
+        "M6": 10
+      },
+      "semantic_code": "WHEEL",
+      "semantic_name": "Wheel installation"
+    },
+    "o4_10": {
+      "product": "J4",
+      "required_configuration": "C6",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "processing_time": {
+        "M1": 9,
+        "M2": 7,
+        "M3": 7,
+        "M4": 7,
+        "M5": 7
+      },
+      "semantic_code": "FLUID_FILL",
+      "semantic_name": "Fluid filling"
+    },
+    "o4_11": {
+      "product": "J4",
+      "required_configuration": "C7",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M4"
+      ],
+      "processing_time": {
+        "M1": 11,
+        "M2": 9,
+        "M4": 9
+      },
+      "semantic_code": "ADAS",
+      "semantic_name": "ADAS calibration"
+    },
+    "o4_12": {
+      "product": "J4",
+      "required_configuration": "C2",
+      "eligible_islands": [
+        "M1",
+        "M3"
+      ],
+      "processing_time": {
+        "M1": 10,
+        "M3": 7
+      },
+      "semantic_code": "EOL",
+      "semantic_name": "End-of-line test"
+    }
+  },
+  "islands": {
+    "M1": {
+      "supported_configurations": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ],
+      "initial_configuration": "C9",
+      "coordinate": [
+        20,
+        12
+      ]
+    },
+    "M2": {
+      "supported_configurations": [
+        "C3",
+        "C4",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ],
+      "initial_configuration": "C8",
+      "coordinate": [
+        8,
+        15
+      ]
+    },
+    "M3": {
+      "supported_configurations": [
+        "C2",
+        "C6"
+      ],
+      "initial_configuration": "C2",
+      "coordinate": [
+        6,
+        11
+      ]
+    },
+    "M4": {
+      "supported_configurations": [
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ],
+      "initial_configuration": "C4",
+      "coordinate": [
+        15,
+        13
+      ]
+    },
+    "M5": {
+      "supported_configurations": [
+        "C1",
+        "C3",
+        "C4",
+        "C5",
+        "C6"
+      ],
+      "initial_configuration": "C6",
+      "coordinate": [
+        9,
+        18
+      ]
+    },
+    "M6": {
+      "supported_configurations": [
+        "C1",
+        "C3",
+        "C4",
+        "C5",
+        "C8",
+        "C9"
+      ],
+      "initial_configuration": "C3",
+      "coordinate": [
+        30,
+        21
+      ]
+    }
+  },
+  "reconfiguration": {
+    "time": {
+      "M1": {
+        "C1": {
+          "C1": 0,
+          "C2": 4,
+          "C3": 5,
+          "C4": 6,
+          "C6": 7,
+          "C7": 7,
+          "C8": 8,
+          "C9": 9
+        },
+        "C2": {
+          "C1": 2,
+          "C2": 0,
+          "C3": 4,
+          "C4": 4,
+          "C6": 7,
+          "C7": 8,
+          "C8": 7,
+          "C9": 9
+        },
+        "C3": {
+          "C1": 3,
+          "C2": 2,
+          "C3": 0,
+          "C4": 3,
+          "C6": 5,
+          "C7": 6,
+          "C8": 6,
+          "C9": 9
+        },
+        "C4": {
+          "C1": 6,
+          "C2": 4,
+          "C3": 2,
+          "C4": 0,
+          "C6": 3,
+          "C7": 4,
+          "C8": 5,
+          "C9": 8
+        },
+        "C6": {
+          "C1": 8,
+          "C2": 6,
+          "C3": 6,
+          "C4": 3,
+          "C6": 0,
+          "C7": 2,
+          "C8": 3,
+          "C9": 5
+        },
+        "C7": {
+          "C1": 8,
+          "C2": 8,
+          "C3": 6,
+          "C4": 6,
+          "C6": 2,
+          "C7": 0,
+          "C8": 2,
+          "C9": 4
+        },
+        "C8": {
+          "C1": 8,
+          "C2": 9,
+          "C3": 7,
+          "C4": 5,
+          "C6": 4,
+          "C7": 4,
+          "C8": 0,
+          "C9": 4
+        },
+        "C9": {
+          "C1": 9,
+          "C2": 9,
+          "C3": 8,
+          "C4": 8,
+          "C6": 6,
+          "C7": 4,
+          "C8": 4,
+          "C9": 0
+        }
+      },
+      "M2": {
+        "C3": {
+          "C3": 0,
+          "C4": 4,
+          "C6": 4,
+          "C7": 5,
+          "C8": 8,
+          "C9": 9
+        },
+        "C4": {
+          "C3": 2,
+          "C4": 0,
+          "C6": 3,
+          "C7": 5,
+          "C8": 7,
+          "C9": 8
+        },
+        "C6": {
+          "C3": 6,
+          "C4": 4,
+          "C6": 0,
+          "C7": 4,
+          "C8": 3,
+          "C9": 6
+        },
+        "C7": {
+          "C3": 7,
+          "C4": 4,
+          "C6": 3,
+          "C7": 0,
+          "C8": 2,
+          "C9": 3
+        },
+        "C8": {
+          "C3": 8,
+          "C4": 6,
+          "C6": 4,
+          "C7": 4,
+          "C8": 0,
+          "C9": 4
+        },
+        "C9": {
+          "C3": 7,
+          "C4": 8,
+          "C6": 5,
+          "C7": 3,
+          "C8": 2,
+          "C9": 0
+        }
+      },
+      "M3": {
+        "C2": {
+          "C2": 0,
+          "C6": 5
+        },
+        "C6": {
+          "C2": 5,
+          "C6": 0
+        }
+      },
+      "M4": {
+        "C4": {
+          "C4": 0,
+          "C5": 4,
+          "C6": 3,
+          "C7": 6,
+          "C8": 7,
+          "C9": 7
+        },
+        "C5": {
+          "C4": 2,
+          "C5": 0,
+          "C6": 2,
+          "C7": 3,
+          "C8": 4,
+          "C9": 7
+        },
+        "C6": {
+          "C4": 3,
+          "C5": 2,
+          "C6": 0,
+          "C7": 3,
+          "C8": 5,
+          "C9": 5
+        },
+        "C7": {
+          "C4": 6,
+          "C5": 4,
+          "C6": 4,
+          "C7": 0,
+          "C8": 2,
+          "C9": 4
+        },
+        "C8": {
+          "C4": 5,
+          "C5": 5,
+          "C6": 5,
+          "C7": 2,
+          "C8": 0,
+          "C9": 2
+        },
+        "C9": {
+          "C4": 6,
+          "C5": 6,
+          "C6": 4,
+          "C7": 3,
+          "C8": 2,
+          "C9": 0
+        }
+      },
+      "M5": {
+        "C1": {
+          "C1": 0,
+          "C3": 3,
+          "C4": 5,
+          "C5": 6,
+          "C6": 7
+        },
+        "C3": {
+          "C1": 5,
+          "C3": 0,
+          "C4": 2,
+          "C5": 5,
+          "C6": 4
+        },
+        "C4": {
+          "C1": 5,
+          "C3": 3,
+          "C4": 0,
+          "C5": 4,
+          "C6": 5
+        },
+        "C5": {
+          "C1": 6,
+          "C3": 4,
+          "C4": 3,
+          "C5": 0,
+          "C6": 4
+        },
+        "C6": {
+          "C1": 8,
+          "C3": 5,
+          "C4": 5,
+          "C5": 3,
+          "C6": 0
+        }
+      },
+      "M6": {
+        "C1": {
+          "C1": 0,
+          "C3": 5,
+          "C4": 6,
+          "C5": 6,
+          "C8": 9,
+          "C9": 9
+        },
+        "C3": {
+          "C1": 4,
+          "C3": 0,
+          "C4": 3,
+          "C5": 4,
+          "C8": 6,
+          "C9": 9
+        },
+        "C4": {
+          "C1": 5,
+          "C3": 2,
+          "C4": 0,
+          "C5": 4,
+          "C8": 5,
+          "C9": 6
+        },
+        "C5": {
+          "C1": 7,
+          "C3": 3,
+          "C4": 2,
+          "C5": 0,
+          "C8": 4,
+          "C9": 6
+        },
+        "C8": {
+          "C1": 8,
+          "C3": 8,
+          "C4": 5,
+          "C5": 4,
+          "C8": 0,
+          "C9": 3
+        },
+        "C9": {
+          "C1": 10,
+          "C3": 9,
+          "C4": 8,
+          "C5": 7,
+          "C8": 4,
+          "C9": 0
+        }
+      }
+    },
+    "cost": {
+      "M1": {
+        "C1": {
+          "C1": 0.0,
+          "C2": 2.55,
+          "C3": 3.53,
+          "C4": 4.57,
+          "C6": 6.18,
+          "C7": 6.94,
+          "C8": 7.01,
+          "C9": 8.24
+        },
+        "C2": {
+          "C1": 2.52,
+          "C2": 0.0,
+          "C3": 2.46,
+          "C4": 3.2,
+          "C6": 5.35,
+          "C7": 5.74,
+          "C8": 6.09,
+          "C9": 7.58
+        },
+        "C3": {
+          "C1": 3.0,
+          "C2": 2.89,
+          "C3": 0.0,
+          "C4": 2.41,
+          "C6": 4.3,
+          "C7": 5.06,
+          "C8": 5.33,
+          "C9": 6.9
+        },
+        "C4": {
+          "C1": 3.79,
+          "C2": 3.58,
+          "C3": 2.68,
+          "C4": 0.0,
+          "C6": 3.31,
+          "C7": 4.65,
+          "C8": 5.18,
+          "C9": 5.35
+        },
+        "C6": {
+          "C1": 6.13,
+          "C2": 5.47,
+          "C3": 3.9,
+          "C4": 3.86,
+          "C6": 0.0,
+          "C7": 3.13,
+          "C8": 3.18,
+          "C9": 4.53
+        },
+        "C7": {
+          "C1": 6.8,
+          "C2": 6.06,
+          "C3": 4.66,
+          "C4": 3.86,
+          "C6": 3.11,
+          "C7": 0.0,
+          "C8": 2.45,
+          "C9": 3.35
+        },
+        "C8": {
+          "C1": 6.97,
+          "C2": 6.19,
+          "C3": 5.53,
+          "C4": 5.47,
+          "C6": 3.35,
+          "C7": 2.65,
+          "C8": 0.0,
+          "C9": 2.58
+        },
+        "C9": {
+          "C1": 7.62,
+          "C2": 6.93,
+          "C3": 6.04,
+          "C4": 5.68,
+          "C6": 4.54,
+          "C7": 3.61,
+          "C8": 2.37,
+          "C9": 0.0
+        }
+      },
+      "M2": {
+        "C3": {
+          "C3": 0.0,
+          "C4": 2.44,
+          "C6": 4.46,
+          "C7": 5.02,
+          "C8": 5.94,
+          "C9": 6.74
+        },
+        "C4": {
+          "C3": 2.61,
+          "C4": 0.0,
+          "C6": 3.95,
+          "C7": 4.37,
+          "C8": 5.35,
+          "C9": 6.15
+        },
+        "C6": {
+          "C3": 4.06,
+          "C4": 3.33,
+          "C6": 0.0,
+          "C7": 2.55,
+          "C8": 3.19,
+          "C9": 4.69
+        },
+        "C7": {
+          "C3": 5.25,
+          "C4": 4.37,
+          "C6": 2.66,
+          "C7": 0.0,
+          "C8": 2.55,
+          "C9": 3.43
+        },
+        "C8": {
+          "C3": 5.86,
+          "C4": 4.96,
+          "C6": 3.68,
+          "C7": 2.72,
+          "C8": 0.0,
+          "C9": 2.42
+        },
+        "C9": {
+          "C3": 6.28,
+          "C4": 5.88,
+          "C6": 3.84,
+          "C7": 3.67,
+          "C8": 3.06,
+          "C9": 0.0
+        }
+      },
+      "M3": {
+        "C2": {
+          "C2": 0.0,
+          "C6": 4.52
+        },
+        "C6": {
+          "C2": 5.48,
+          "C6": 0.0
+        }
+      },
+      "M4": {
+        "C4": {
+          "C4": 0.0,
+          "C5": 3.1,
+          "C6": 3.46,
+          "C7": 4.33,
+          "C8": 5.2,
+          "C9": 5.65
+        },
+        "C5": {
+          "C4": 2.91,
+          "C5": 0.0,
+          "C6": 3.14,
+          "C7": 3.78,
+          "C8": 3.93,
+          "C9": 5.02
+        },
+        "C6": {
+          "C4": 3.56,
+          "C5": 2.71,
+          "C6": 0.0,
+          "C7": 2.92,
+          "C8": 3.6,
+          "C9": 4.36
+        },
+        "C7": {
+          "C4": 4.64,
+          "C5": 3.83,
+          "C6": 2.7,
+          "C7": 0.0,
+          "C8": 2.99,
+          "C9": 3.45
+        },
+        "C8": {
+          "C4": 5.34,
+          "C5": 4.52,
+          "C6": 3.48,
+          "C7": 2.52,
+          "C8": 0.0,
+          "C9": 2.96
+        },
+        "C9": {
+          "C4": 5.52,
+          "C5": 5.39,
+          "C6": 3.89,
+          "C7": 3.38,
+          "C8": 2.96,
+          "C9": 0.0
+        }
+      },
+      "M5": {
+        "C1": {
+          "C1": 0.0,
+          "C3": 3.41,
+          "C4": 4.29,
+          "C5": 4.56,
+          "C6": 5.64
+        },
+        "C3": {
+          "C1": 3.95,
+          "C3": 0.0,
+          "C4": 3.11,
+          "C5": 3.38,
+          "C6": 4.69
+        },
+        "C4": {
+          "C1": 4.5,
+          "C3": 2.79,
+          "C4": 0.0,
+          "C5": 2.8,
+          "C6": 3.9
+        },
+        "C5": {
+          "C1": 4.72,
+          "C3": 3.49,
+          "C4": 2.59,
+          "C5": 0.0,
+          "C6": 3.05
+        },
+        "C6": {
+          "C1": 5.42,
+          "C3": 4.67,
+          "C4": 3.53,
+          "C5": 2.84,
+          "C6": 0.0
+        }
+      },
+      "M6": {
+        "C1": {
+          "C1": 0.0,
+          "C3": 3.03,
+          "C4": 4.18,
+          "C5": 4.68,
+          "C8": 7.13,
+          "C9": 7.95
+        },
+        "C3": {
+          "C1": 3.76,
+          "C3": 0.0,
+          "C4": 2.53,
+          "C5": 3.25,
+          "C8": 5.72,
+          "C9": 6.54
+        },
+        "C4": {
+          "C1": 3.97,
+          "C3": 3.03,
+          "C4": 0.0,
+          "C5": 2.29,
+          "C8": 5.45,
+          "C9": 6.09
+        },
+        "C5": {
+          "C1": 4.65,
+          "C3": 3.47,
+          "C4": 2.81,
+          "C5": 0.0,
+          "C8": 4.22,
+          "C9": 5.27
+        },
+        "C8": {
+          "C1": 7.36,
+          "C3": 5.97,
+          "C4": 5.46,
+          "C5": 4.33,
+          "C8": 0.0,
+          "C9": 2.83
+        },
+        "C9": {
+          "C1": 7.9,
+          "C3": 6.2,
+          "C4": 5.94,
+          "C5": 4.74,
+          "C8": 3.02,
+          "C9": 0.0
+        }
+      }
+    }
+  },
+  "logistics": {
+    "warehouse": "WH",
+    "distance": {
+      "WH": {
+        "WH": 0,
+        "M1": 32,
+        "M2": 23,
+        "M3": 17,
+        "M4": 28,
+        "M5": 27,
+        "M6": 51
+      },
+      "M1": {
+        "WH": 32,
+        "M1": 0,
+        "M2": 15,
+        "M3": 15,
+        "M4": 6,
+        "M5": 17,
+        "M6": 19
+      },
+      "M2": {
+        "WH": 23,
+        "M1": 15,
+        "M2": 0,
+        "M3": 6,
+        "M4": 9,
+        "M5": 4,
+        "M6": 28
+      },
+      "M3": {
+        "WH": 17,
+        "M1": 15,
+        "M2": 6,
+        "M3": 0,
+        "M4": 11,
+        "M5": 10,
+        "M6": 34
+      },
+      "M4": {
+        "WH": 28,
+        "M1": 6,
+        "M2": 9,
+        "M3": 11,
+        "M4": 0,
+        "M5": 11,
+        "M6": 23
+      },
+      "M5": {
+        "WH": 27,
+        "M1": 17,
+        "M2": 4,
+        "M3": 10,
+        "M4": 11,
+        "M5": 0,
+        "M6": 24
+      },
+      "M6": {
+        "WH": 51,
+        "M1": 19,
+        "M2": 28,
+        "M3": 34,
+        "M4": 23,
+        "M5": 24,
+        "M6": 0
+      }
+    },
+    "W": {
+      "loaded_time": {
+        "W1": {
+          "WH": {
+            "WH": 0,
+            "M1": 22,
+            "M2": 16,
+            "M3": 12,
+            "M4": 19,
+            "M5": 18,
+            "M6": 34
+          },
+          "M1": {
+            "WH": 22,
+            "M1": 0,
+            "M2": 10,
+            "M3": 10,
+            "M4": 4,
+            "M5": 12,
+            "M6": 13
+          },
+          "M2": {
+            "WH": 16,
+            "M1": 10,
+            "M2": 0,
+            "M3": 4,
+            "M4": 6,
+            "M5": 3,
+            "M6": 19
+          },
+          "M3": {
+            "WH": 12,
+            "M1": 10,
+            "M2": 4,
+            "M3": 0,
+            "M4": 8,
+            "M5": 7,
+            "M6": 23
+          },
+          "M4": {
+            "WH": 19,
+            "M1": 4,
+            "M2": 6,
+            "M3": 8,
+            "M4": 0,
+            "M5": 8,
+            "M6": 16
+          },
+          "M5": {
+            "WH": 18,
+            "M1": 12,
+            "M2": 3,
+            "M3": 7,
+            "M4": 8,
+            "M5": 0,
+            "M6": 16
+          },
+          "M6": {
+            "WH": 34,
+            "M1": 13,
+            "M2": 19,
+            "M3": 23,
+            "M4": 16,
+            "M5": 16,
+            "M6": 0
+          }
+        },
+        "W2": {
+          "WH": {
+            "WH": 0,
+            "M1": 22,
+            "M2": 16,
+            "M3": 12,
+            "M4": 20,
+            "M5": 19,
+            "M6": 35
+          },
+          "M1": {
+            "WH": 22,
+            "M1": 0,
+            "M2": 11,
+            "M3": 11,
+            "M4": 5,
+            "M5": 12,
+            "M6": 13
+          },
+          "M2": {
+            "WH": 16,
+            "M1": 11,
+            "M2": 0,
+            "M3": 5,
+            "M4": 7,
+            "M5": 3,
+            "M6": 20
+          },
+          "M3": {
+            "WH": 12,
+            "M1": 11,
+            "M2": 5,
+            "M3": 0,
+            "M4": 8,
+            "M5": 7,
+            "M6": 24
+          },
+          "M4": {
+            "WH": 20,
+            "M1": 5,
+            "M2": 7,
+            "M3": 8,
+            "M4": 0,
+            "M5": 8,
+            "M6": 16
+          },
+          "M5": {
+            "WH": 19,
+            "M1": 12,
+            "M2": 3,
+            "M3": 7,
+            "M4": 8,
+            "M5": 0,
+            "M6": 17
+          },
+          "M6": {
+            "WH": 35,
+            "M1": 13,
+            "M2": 20,
+            "M3": 24,
+            "M4": 16,
+            "M5": 17,
+            "M6": 0
+          }
+        }
+      },
+      "empty_time": {
+        "W1": {
+          "WH": {
+            "WH": 0,
+            "M1": 19,
+            "M2": 14,
+            "M3": 10,
+            "M4": 17,
+            "M5": 16,
+            "M6": 30
+          },
+          "M1": {
+            "WH": 19,
+            "M1": 0,
+            "M2": 9,
+            "M3": 9,
+            "M4": 4,
+            "M5": 10,
+            "M6": 12
+          },
+          "M2": {
+            "WH": 14,
+            "M1": 9,
+            "M2": 0,
+            "M3": 4,
+            "M4": 6,
+            "M5": 3,
+            "M6": 17
+          },
+          "M3": {
+            "WH": 10,
+            "M1": 9,
+            "M2": 4,
+            "M3": 0,
+            "M4": 7,
+            "M5": 6,
+            "M6": 20
+          },
+          "M4": {
+            "WH": 17,
+            "M1": 4,
+            "M2": 6,
+            "M3": 7,
+            "M4": 0,
+            "M5": 7,
+            "M6": 14
+          },
+          "M5": {
+            "WH": 16,
+            "M1": 10,
+            "M2": 3,
+            "M3": 6,
+            "M4": 7,
+            "M5": 0,
+            "M6": 14
+          },
+          "M6": {
+            "WH": 30,
+            "M1": 12,
+            "M2": 17,
+            "M3": 20,
+            "M4": 14,
+            "M5": 14,
+            "M6": 0
+          }
+        },
+        "W2": {
+          "WH": {
+            "WH": 0,
+            "M1": 21,
+            "M2": 15,
+            "M3": 12,
+            "M4": 19,
+            "M5": 18,
+            "M6": 34
+          },
+          "M1": {
+            "WH": 21,
+            "M1": 0,
+            "M2": 10,
+            "M3": 10,
+            "M4": 4,
+            "M5": 12,
+            "M6": 13
+          },
+          "M2": {
+            "WH": 15,
+            "M1": 10,
+            "M2": 0,
+            "M3": 4,
+            "M4": 6,
+            "M5": 3,
+            "M6": 19
+          },
+          "M3": {
+            "WH": 12,
+            "M1": 10,
+            "M2": 4,
+            "M3": 0,
+            "M4": 8,
+            "M5": 7,
+            "M6": 23
+          },
+          "M4": {
+            "WH": 19,
+            "M1": 4,
+            "M2": 6,
+            "M3": 8,
+            "M4": 0,
+            "M5": 8,
+            "M6": 15
+          },
+          "M5": {
+            "WH": 18,
+            "M1": 12,
+            "M2": 3,
+            "M3": 7,
+            "M4": 8,
+            "M5": 0,
+            "M6": 16
+          },
+          "M6": {
+            "WH": 34,
+            "M1": 13,
+            "M2": 19,
+            "M3": 23,
+            "M4": 15,
+            "M5": 16,
+            "M6": 0
+          }
+        }
+      },
+      "loaded_cost_per_distance": {
+        "W1": 0.304,
+        "W2": 0.366
+      },
+      "empty_cost_per_distance": {
+        "W1": 0.317,
+        "W2": 0.219
+      }
+    },
+    "F": {
+      "outbound_time": {
+        "F1": {
+          "M1": 23,
+          "M2": 16,
+          "M3": 12,
+          "M4": 20,
+          "M5": 19,
+          "M6": 36
+        },
+        "F2": {
+          "M1": 28,
+          "M2": 20,
+          "M3": 15,
+          "M4": 24,
+          "M5": 24,
+          "M6": 44
+        }
+      },
+      "return_time": {
+        "F1": {
+          "M1": 20,
+          "M2": 15,
+          "M3": 11,
+          "M4": 18,
+          "M5": 17,
+          "M6": 32
+        },
+        "F2": {
+          "M1": 16,
+          "M2": 12,
+          "M3": 9,
+          "M4": 14,
+          "M5": 14,
+          "M6": 25
+        }
+      },
+      "outbound_cost_per_distance": {
+        "F1": 0.333,
+        "F2": 0.294
+      },
+      "return_cost_per_distance": {
+        "F1": 0.272,
+        "F2": 0.273
+      }
+    }
+  },
+  "objective_parameters": {
+    "makespan_weight": 1.0,
+    "cost_weight": 0.05
+  }
+}

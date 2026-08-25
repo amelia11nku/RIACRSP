@@ -1,0 +1,19 @@
+RCIAS implementation validation notes
+
+Purpose
+-------
+Establish a reproducible RCIAS-2.0 chain from generated instances through a
+deterministic insertion decoder, independent feasibility audit, exact tiny
+enumeration, three constructive baselines, and graph/action interfaces.
+
+Runs
+----
+1. python scripts/validate_instances.py
+2. python scripts/run_small_validation.py
+3. python scripts/stress_random_validation.py --count 1000
+4. python -m compileall .
+5. pytest -q
+
+Machine-readable results are stored in validation_results.json and
+stress_validation_results.json. The interpretation is summarized in
+implementation_validation_report.md.

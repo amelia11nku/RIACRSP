@@ -1,0 +1,463 @@
+{
+  "meta": {
+    "schema": "RCIAS-2.0",
+    "instance_id": "automotive-tiny",
+    "generator": "Automotive semantic RCIAS-2.0",
+    "seed": 11,
+    "static_problem": true,
+    "source": "synthetic automotive final assembly"
+  },
+  "sets": {
+    "products": [
+      "J1",
+      "J2"
+    ],
+    "operations": [
+      "o11",
+      "o12",
+      "o13",
+      "o21",
+      "o22",
+      "o23"
+    ],
+    "islands": [
+      "M1",
+      "M2",
+      "M3"
+    ],
+    "configurations": [
+      "C1",
+      "C2",
+      "C4",
+      "C8"
+    ],
+    "agvs_w": [
+      "W1"
+    ],
+    "agvs_f": [
+      "F1"
+    ],
+    "nodes": [
+      "WH",
+      "M1",
+      "M2",
+      "M3"
+    ]
+  },
+  "products": {
+    "J1": {
+      "operations": [
+        "o11",
+        "o12",
+        "o13"
+      ],
+      "precedence": [
+        [
+          "o11",
+          "o12"
+        ],
+        [
+          "o11",
+          "o13"
+        ]
+      ],
+      "family": "Automotive-Final-Assembly",
+      "variant": "EV"
+    },
+    "J2": {
+      "operations": [
+        "o21",
+        "o22",
+        "o23"
+      ],
+      "precedence": [
+        [
+          "o21",
+          "o23"
+        ],
+        [
+          "o22",
+          "o23"
+        ]
+      ],
+      "family": "Automotive-Final-Assembly",
+      "variant": "ICE"
+    }
+  },
+  "operations": {
+    "o11": {
+      "product": "J1",
+      "required_configuration": "C1",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M3"
+      ],
+      "processing_time": {
+        "M1": 8,
+        "M2": 7,
+        "M3": 7
+      },
+      "semantic_code": "BODY_POS",
+      "semantic_name": "Body positioning"
+    },
+    "o12": {
+      "product": "J1",
+      "required_configuration": "C2",
+      "eligible_islands": [
+        "M1",
+        "M2"
+      ],
+      "processing_time": {
+        "M1": 12,
+        "M2": 10
+      },
+      "semantic_code": "WIRING",
+      "semantic_name": "Interior wiring harness"
+    },
+    "o13": {
+      "product": "J1",
+      "required_configuration": "C8",
+      "eligible_islands": [
+        "M1",
+        "M3"
+      ],
+      "processing_time": {
+        "M1": 16,
+        "M3": 14
+      },
+      "semantic_code": "HV_BAT",
+      "semantic_name": "High-voltage battery installation"
+    },
+    "o21": {
+      "product": "J2",
+      "required_configuration": "C4",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M3"
+      ],
+      "processing_time": {
+        "M1": 11,
+        "M2": 9,
+        "M3": 10
+      },
+      "semantic_code": "SEAT_F",
+      "semantic_name": "Front-seat installation"
+    },
+    "o22": {
+      "product": "J2",
+      "required_configuration": "C4",
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M3"
+      ],
+      "processing_time": {
+        "M1": 10,
+        "M2": 8,
+        "M3": 9
+      },
+      "semantic_code": "SEAT_R",
+      "semantic_name": "Rear-seat installation"
+    },
+    "o23": {
+      "product": "J2",
+      "required_configuration": "C2",
+      "eligible_islands": [
+        "M1",
+        "M2"
+      ],
+      "processing_time": {
+        "M1": 9,
+        "M2": 8
+      },
+      "semantic_code": "EOL",
+      "semantic_name": "End-of-line test"
+    }
+  },
+  "islands": {
+    "M1": {
+      "supported_configurations": [
+        "C1",
+        "C2",
+        "C4",
+        "C8"
+      ],
+      "initial_configuration": "C4",
+      "coordinate": [
+        22,
+        28
+      ]
+    },
+    "M2": {
+      "supported_configurations": [
+        "C1",
+        "C2",
+        "C4"
+      ],
+      "initial_configuration": "C1",
+      "coordinate": [
+        7,
+        16
+      ]
+    },
+    "M3": {
+      "supported_configurations": [
+        "C1",
+        "C4",
+        "C8"
+      ],
+      "initial_configuration": "C1",
+      "coordinate": [
+        7,
+        13
+      ]
+    }
+  },
+  "reconfiguration": {
+    "time": {
+      "M1": {
+        "C1": {
+          "C1": 0,
+          "C2": 3,
+          "C4": 4,
+          "C8": 8
+        },
+        "C2": {
+          "C1": 2,
+          "C2": 0,
+          "C4": 5,
+          "C8": 7
+        },
+        "C4": {
+          "C1": 4,
+          "C2": 4,
+          "C4": 0,
+          "C8": 6
+        },
+        "C8": {
+          "C1": 9,
+          "C2": 7,
+          "C4": 7,
+          "C8": 0
+        }
+      },
+      "M2": {
+        "C1": {
+          "C1": 0,
+          "C2": 2,
+          "C4": 5
+        },
+        "C2": {
+          "C1": 4,
+          "C2": 0,
+          "C4": 5
+        },
+        "C4": {
+          "C1": 6,
+          "C2": 4,
+          "C4": 0
+        }
+      },
+      "M3": {
+        "C1": {
+          "C1": 0,
+          "C4": 4,
+          "C8": 8
+        },
+        "C4": {
+          "C1": 6,
+          "C4": 0,
+          "C8": 5
+        },
+        "C8": {
+          "C1": 9,
+          "C4": 7,
+          "C8": 0
+        }
+      }
+    },
+    "cost": {
+      "M1": {
+        "C1": {
+          "C1": 0.0,
+          "C2": 2.32,
+          "C4": 4.6,
+          "C8": 6.96
+        },
+        "C2": {
+          "C1": 2.72,
+          "C2": 0.0,
+          "C4": 3.4,
+          "C8": 6.57
+        },
+        "C4": {
+          "C1": 4.53,
+          "C2": 3.34,
+          "C4": 0.0,
+          "C8": 4.83
+        },
+        "C8": {
+          "C1": 7.51,
+          "C2": 6.13,
+          "C4": 4.6,
+          "C8": 0.0
+        }
+      },
+      "M2": {
+        "C1": {
+          "C1": 0.0,
+          "C2": 2.71,
+          "C4": 3.93
+        },
+        "C2": {
+          "C1": 2.44,
+          "C2": 0.0,
+          "C4": 3.19
+        },
+        "C4": {
+          "C1": 4.52,
+          "C2": 3.64,
+          "C4": 0.0
+        }
+      },
+      "M3": {
+        "C1": {
+          "C1": 0.0,
+          "C4": 4.14,
+          "C8": 6.75
+        },
+        "C4": {
+          "C1": 4.05,
+          "C4": 0.0,
+          "C8": 4.71
+        },
+        "C8": {
+          "C1": 7.75,
+          "C4": 5.14,
+          "C8": 0.0
+        }
+      }
+    }
+  },
+  "logistics": {
+    "warehouse": "WH",
+    "distance": {
+      "WH": {
+        "WH": 0,
+        "M1": 50,
+        "M2": 23,
+        "M3": 20
+      },
+      "M1": {
+        "WH": 50,
+        "M1": 0,
+        "M2": 27,
+        "M3": 30
+      },
+      "M2": {
+        "WH": 23,
+        "M1": 27,
+        "M2": 0,
+        "M3": 3
+      },
+      "M3": {
+        "WH": 20,
+        "M1": 30,
+        "M2": 3,
+        "M3": 0
+      }
+    },
+    "W": {
+      "loaded_time": {
+        "W1": {
+          "WH": {
+            "WH": 0,
+            "M1": 48,
+            "M2": 22,
+            "M3": 19
+          },
+          "M1": {
+            "WH": 48,
+            "M1": 0,
+            "M2": 26,
+            "M3": 29
+          },
+          "M2": {
+            "WH": 22,
+            "M1": 26,
+            "M2": 0,
+            "M3": 3
+          },
+          "M3": {
+            "WH": 19,
+            "M1": 29,
+            "M2": 3,
+            "M3": 0
+          }
+        }
+      },
+      "empty_time": {
+        "W1": {
+          "WH": {
+            "WH": 0,
+            "M1": 26,
+            "M2": 12,
+            "M3": 11
+          },
+          "M1": {
+            "WH": 26,
+            "M1": 0,
+            "M2": 14,
+            "M3": 16
+          },
+          "M2": {
+            "WH": 12,
+            "M1": 14,
+            "M2": 0,
+            "M3": 2
+          },
+          "M3": {
+            "WH": 11,
+            "M1": 16,
+            "M2": 2,
+            "M3": 0
+          }
+        }
+      },
+      "loaded_cost_per_distance": {
+        "W1": 0.323
+      },
+      "empty_cost_per_distance": {
+        "W1": 0.201
+      }
+    },
+    "F": {
+      "outbound_time": {
+        "F1": {
+          "M1": 31,
+          "M2": 15,
+          "M3": 13
+        }
+      },
+      "return_time": {
+        "F1": {
+          "M1": 31,
+          "M2": 15,
+          "M3": 13
+        }
+      },
+      "outbound_cost_per_distance": {
+        "F1": 0.233
+      },
+      "return_cost_per_distance": {
+        "F1": 0.152
+      }
+    }
+  },
+  "objective_parameters": {
+    "makespan_weight": 1.0,
+    "cost_weight": 0.05
+  }
+}

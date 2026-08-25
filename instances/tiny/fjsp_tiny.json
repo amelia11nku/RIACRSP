@@ -1,0 +1,334 @@
+{
+  "meta": {
+    "schema": "RCIAS-2.0",
+    "instance_id": "fjsp-tiny",
+    "generator": "FJSP RCIAS-2.0 extension",
+    "seed": 7,
+    "static_problem": true,
+    "source": "built-in-tiny",
+    "mapping": {
+      "job": "product",
+      "operation": "operation",
+      "machine": "assembly_island"
+    }
+  },
+  "sets": {
+    "products": [
+      "J1",
+      "J2"
+    ],
+    "operations": [
+      "o11",
+      "o12",
+      "o13",
+      "o21",
+      "o22"
+    ],
+    "islands": [
+      "M1",
+      "M2"
+    ],
+    "configurations": [
+      "C1",
+      "C2",
+      "C3"
+    ],
+    "agvs_w": [
+      "W1"
+    ],
+    "agvs_f": [
+      "F1"
+    ],
+    "nodes": [
+      "WH",
+      "M1",
+      "M2"
+    ]
+  },
+  "products": {
+    "J1": {
+      "operations": [
+        "o11",
+        "o12",
+        "o13"
+      ],
+      "precedence": [
+        [
+          "o11",
+          "o13"
+        ]
+      ],
+      "family": "FJSP-expanded"
+    },
+    "J2": {
+      "operations": [
+        "o21",
+        "o22"
+      ],
+      "precedence": [
+        [
+          "o21",
+          "o22"
+        ]
+      ],
+      "family": "FJSP-expanded"
+    }
+  },
+  "operations": {
+    "o11": {
+      "product": "J1",
+      "required_configuration": "C1",
+      "eligible_islands": [
+        "M1",
+        "M2"
+      ],
+      "processing_time": {
+        "M1": 4,
+        "M2": 5
+      },
+      "benchmark_operation_index": 1
+    },
+    "o12": {
+      "product": "J1",
+      "required_configuration": "C2",
+      "eligible_islands": [
+        "M1",
+        "M2"
+      ],
+      "processing_time": {
+        "M1": 3,
+        "M2": 4
+      },
+      "benchmark_operation_index": 2
+    },
+    "o13": {
+      "product": "J1",
+      "required_configuration": "C3",
+      "eligible_islands": [
+        "M1",
+        "M2"
+      ],
+      "processing_time": {
+        "M1": 5,
+        "M2": 3
+      },
+      "benchmark_operation_index": 3
+    },
+    "o21": {
+      "product": "J2",
+      "required_configuration": "C1",
+      "eligible_islands": [
+        "M1",
+        "M2"
+      ],
+      "processing_time": {
+        "M1": 3,
+        "M2": 4
+      },
+      "benchmark_operation_index": 1
+    },
+    "o22": {
+      "product": "J2",
+      "required_configuration": "C2",
+      "eligible_islands": [
+        "M1",
+        "M2"
+      ],
+      "processing_time": {
+        "M1": 4,
+        "M2": 2
+      },
+      "benchmark_operation_index": 2
+    }
+  },
+  "islands": {
+    "M1": {
+      "supported_configurations": [
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "initial_configuration": "C2",
+      "coordinate": [
+        15,
+        23
+      ]
+    },
+    "M2": {
+      "supported_configurations": [
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "initial_configuration": "C1",
+      "coordinate": [
+        4,
+        5
+      ]
+    }
+  },
+  "reconfiguration": {
+    "time": {
+      "M1": {
+        "C1": {
+          "C1": 0,
+          "C2": 4,
+          "C3": 5
+        },
+        "C2": {
+          "C1": 4,
+          "C2": 0,
+          "C3": 2
+        },
+        "C3": {
+          "C1": 3,
+          "C2": 4,
+          "C3": 0
+        }
+      },
+      "M2": {
+        "C1": {
+          "C1": 0,
+          "C2": 4,
+          "C3": 3
+        },
+        "C2": {
+          "C1": 4,
+          "C2": 0,
+          "C3": 4
+        },
+        "C3": {
+          "C1": 3,
+          "C2": 2,
+          "C3": 0
+        }
+      }
+    },
+    "cost": {
+      "M1": {
+        "C1": {
+          "C1": 0.0,
+          "C2": 2.34,
+          "C3": 3.06
+        },
+        "C2": {
+          "C1": 2.46,
+          "C2": 0.0,
+          "C3": 2.68
+        },
+        "C3": {
+          "C1": 3.24,
+          "C2": 2.67,
+          "C3": 0.0
+        }
+      },
+      "M2": {
+        "C1": {
+          "C1": 0.0,
+          "C2": 2.37,
+          "C3": 3.63
+        },
+        "C2": {
+          "C1": 3.2,
+          "C2": 0.0,
+          "C3": 2.84
+        },
+        "C3": {
+          "C1": 3.98,
+          "C2": 2.81,
+          "C3": 0.0
+        }
+      }
+    }
+  },
+  "logistics": {
+    "warehouse": "WH",
+    "distance": {
+      "WH": {
+        "WH": 0,
+        "M1": 38,
+        "M2": 9
+      },
+      "M1": {
+        "WH": 38,
+        "M1": 0,
+        "M2": 29
+      },
+      "M2": {
+        "WH": 9,
+        "M1": 29,
+        "M2": 0
+      }
+    },
+    "W": {
+      "loaded_time": {
+        "W1": {
+          "WH": {
+            "WH": 0,
+            "M1": 36,
+            "M2": 9
+          },
+          "M1": {
+            "WH": 36,
+            "M1": 0,
+            "M2": 27
+          },
+          "M2": {
+            "WH": 9,
+            "M1": 27,
+            "M2": 0
+          }
+        }
+      },
+      "empty_time": {
+        "W1": {
+          "WH": {
+            "WH": 0,
+            "M1": 24,
+            "M2": 6
+          },
+          "M1": {
+            "WH": 24,
+            "M1": 0,
+            "M2": 19
+          },
+          "M2": {
+            "WH": 6,
+            "M1": 19,
+            "M2": 0
+          }
+        }
+      },
+      "loaded_cost_per_distance": {
+        "W1": 0.388
+      },
+      "empty_cost_per_distance": {
+        "W1": 0.251
+      }
+    },
+    "F": {
+      "outbound_time": {
+        "F1": {
+          "M1": 26,
+          "M2": 7
+        }
+      },
+      "return_time": {
+        "F1": {
+          "M1": 21,
+          "M2": 5
+        }
+      },
+      "outbound_cost_per_distance": {
+        "F1": 0.199
+      },
+      "return_cost_per_distance": {
+        "F1": 0.231
+      }
+    }
+  },
+  "objective_parameters": {
+    "makespan_weight": 1.0,
+    "cost_weight": 0.05
+  }
+}
