@@ -1,0 +1,143 @@
+{
+  "global_seed": 20260825,
+  "output_root": "outputs/phase4",
+  "ppo_initialization": "outputs/phase4/bc_large/best.pt",
+  "training_seed_policy": {
+    "independent_training_seeds": [410101, 410102, 410103],
+    "episode_seed_start": 2000000,
+    "forbid_validation_overlap": true
+  },
+  "validation_seeds": {
+    "S": [51001, 51002, 51003, 51004, 51005],
+    "M": [52001, 52002, 52003],
+    "L": [53001, 53002]
+  },
+  "curriculum_levels": {
+    "S": {
+      "products": [3, 6],
+      "operations_per_product": [3, 6],
+      "islands": [3, 5],
+      "configurations": [2, 4],
+      "w_agvs": [1, 2],
+      "f_agvs": [1, 2],
+      "eligible_islands": [1, 3],
+      "processing_time": [2, 20],
+      "dag_probability": [0.15, 0.35]
+    },
+    "M": {
+      "products": [6, 12],
+      "operations_per_product": [4, 10],
+      "islands": [5, 10],
+      "configurations": [3, 6],
+      "w_agvs": [1, 3],
+      "f_agvs": [1, 3],
+      "eligible_islands": [1, 5],
+      "processing_time": [2, 40],
+      "dag_probability": [0.15, 0.30]
+    },
+    "L": {
+      "manifest_driven": true,
+      "manifest_quantiles": [0.10, 0.50, 0.90],
+      "products": [10, 30],
+      "operations_per_product": [3, 12],
+      "total_operations": [50, 300],
+      "islands": [5, 15],
+      "configurations": [5, 6],
+      "w_agvs": [2, 3],
+      "f_agvs": [2, 3],
+      "eligible_islands": [1, 7],
+      "processing_time": [12, 110],
+      "dag_probability": [0.15, 0.28]
+    }
+  },
+  "model": {
+    "embedding_dim": 128,
+    "heads": 4,
+    "layers": 3,
+    "feedforward_multiplier": 2,
+    "dropout": 0.0
+  },
+  "model_capacity_study": [
+    {"name": "D32-L2", "embedding_dim": 32, "layers": 2},
+    {"name": "D64-L2", "embedding_dim": 64, "layers": 2},
+    {"name": "D64-L3", "embedding_dim": 64, "layers": 3},
+    {"name": "D128-L3", "embedding_dim": 128, "layers": 3}
+  ],
+  "capacity_study_settings": {
+    "demonstration_instances": {"S": 20, "M": 5, "L": 1},
+    "epochs": 1
+  },
+  "selected_capacity": "D128-L3",
+  "ppo": {
+    "learning_rate": 0.0003,
+    "gamma": 1.0,
+    "gae_lambda": 0.95,
+    "clip_epsilon": 0.2,
+    "value_coefficient": 0.5,
+    "entropy_coefficient": 0.01,
+    "max_grad_norm": 0.5,
+    "target_kl": 0.03,
+    "update_epochs": 4,
+    "minibatch_size": 64,
+    "rollout_transitions": 192,
+    "total_updates": 100,
+    "pilot_updates": 12,
+    "validation_interval": 1,
+    "plateau_window": 3,
+    "plateau_relative_improvement": 0.03,
+    "minimum_updates_per_level": 5,
+    "current_level_probability": 0.75,
+    "minimum_normalized_entropy": 0.02
+  },
+  "checkpoint_selection": {
+    "metric": "weighted_mean_normalized_makespan",
+    "weights": {"S": 0.20, "M": 0.30, "L": 0.50},
+    "renormalize_over_active_levels": true
+  },
+  "bc_warm_start": {
+    "enabled": true,
+    "demonstration_instances": {"S": 100, "M": 100, "L": 50},
+    "teachers": ["H1", "H2", "H3"],
+    "teacher_selection": "minimum_makespan",
+    "epochs": 3,
+    "learning_rate": 0.001,
+    "weight_decay": 0.00001,
+    "batch_size": 64,
+    "canonical_gradient_instances": 0
+  },
+  "reward_study": {
+    "baseline": "R0_telescoping_makespan",
+    "collect_sparsity_statistics": true,
+    "potential_shaping_enabled": false
+  },
+  "evaluation": {
+    "deterministic": true,
+    "sample_k": 4,
+    "canonical_full_after_freeze": true,
+    "report_methods": ["H1", "H2", "H3", "BC_GREEDY", "PPO_GREEDY"]
+  },
+  "curriculum_gate": {
+    "feasibility_rate": 1.0,
+    "selection_metric": "weighted_mean_normalized_makespan",
+    "retain_previous_levels": true,
+    "minimum_completed_large_updates": 5
+  },
+  "constructive_gate": {
+    "synthetic_overall_gap_to_h1_max": 0.10,
+    "per_level_gap_to_h1_max": 0.15,
+    "canonical_overall_gap_to_h1_max": 0.10
+  },
+  "csg": {
+    "enabled_after_constructive_gate": true,
+    "destroy_operators": ["D0", "D1", "D2", "D3", "D4", "D5"],
+    "destroy_fractions": [0.05, 0.10, 0.15],
+    "acceptance": "strict_makespan_then_total_cost_tiebreak"
+  },
+  "prohibited_components": [
+    "neural_destroy_selector",
+    "multiobjective_ppo",
+    "preference_conditioned_policy",
+    "pareto_archive",
+    "self_imitation"
+  ]
+}

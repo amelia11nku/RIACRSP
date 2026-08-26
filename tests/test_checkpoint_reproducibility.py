@@ -32,3 +32,17 @@ def test_checkpoint_reproducibility(tmp_path, automotive_instance):
     assert metadata["seed"] == 123
     assert first.actions == second.actions
     assert first.makespan == second.makespan
+
+
+def test_checkpoint_loads_torch_version_metadata(tmp_path, automotive_instance):
+    state = build_graph_state(
+        automotive_instance, InsertionDecoder(automotive_instance).empty_schedule()
+    )
+    tensorizer = GraphTensorizer(state)
+    model = RCIASNeuralModel(
+        tensorizer, ModelConfig(embedding_dim=16, heads=4, layers=1)
+    )
+    path = tmp_path / "torch_version.pt"
+    save_checkpoint(path, model, tensorizer, metadata={"torch": torch.__version__})
+    _, _, metadata = load_checkpoint(path, device="cpu")
+    assert str(metadata["torch"]) == str(torch.__version__)

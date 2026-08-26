@@ -21,6 +21,52 @@ Python 3.11 is used for the validated environment.
 python -m pip install -r requirements.txt
 ```
 
+## New workstation bootstrap
+
+Use Python 3.11 in an isolated environment. For the validated `gnn311` Conda
+environment, install GPU PyTorch from the official wheel channel before the
+generic requirements. Select the CUDA build supported by the workstation
+driver; this workstation uses CUDA 12.8:
+
+```bash
+conda activate gnn311
+python -m pip install --upgrade pip setuptools wheel
+python -m pip install torch==2.11.0 --index-url https://download.pytorch.org/whl/cu128
+python -m pip install -r requirements.txt
+python -c "import torch; print(torch.__version__, torch.cuda.is_available(), torch.version.cuda); print(torch.cuda.get_device_name(0))"
+```
+
+Check the Gurobi package and license separately:
+
+```bash
+python -c "import gurobipy as gp; m=gp.Model(); print(gp.gurobi.version())"
+```
+
+Restore the Phase 1--3 baseline before Phase 4 work:
+
+```bash
+python -m compileall -q rcias_clgri scripts tests
+pytest -q
+python scripts/generate_canonical_benchmarks.py --verify-only
+python scripts/run_small_validation.py
+python scripts/run_bc_validation.py
+python scripts/run_native_tiny_validation.py
+python scripts/run_ppo_sanity.py --device cuda --out-dir outputs/phase4/environment/ppo_sanity
+python scripts/profile_training.py --device cuda --episodes 30 --out-dir outputs/phase4/profiling/bootstrap_30
+```
+
+After these gates pass, enter Phase 4 without modifying the frozen Phase 3
+configuration or outputs:
+
+```bash
+python scripts/train_bc_pretrain.py --config configs/phase4_training.json --device cuda
+python scripts/train_ppo.py --config configs/phase4_training.json --seed 410101 --device cuda
+```
+
+The validated dependency snapshot and machine report are in
+`requirements-lock.txt` and
+`docs/reports/workstation_environment_report.md`.
+
 ## Reproducible validation
 
 Run from the repository root:

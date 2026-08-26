@@ -1,0 +1,112 @@
+{
+  "canonical_training_or_tuning_instances": 0,
+  "checkpoints": [
+    {
+      "checkpoint": "outputs/phase4/bc_large/best.pt",
+      "metadata": {
+        "epoch": 3,
+        "phase": "synthetic_bc_pretrain",
+        "training_seed": 20260825,
+        "validation_score": 0.15529032057859898
+      },
+      "method": "BC_GREEDY",
+      "sha256": "7a8ea47617143541033e0dc10d5bc7b772be49c749a0546baedc20e59cc7333c",
+      "training_seed": "BC"
+    },
+    {
+      "checkpoint": "outputs/phase4/ppo_seed_1/best.pt",
+      "metadata": {
+        "initialization": "outputs/phase4/bc_large/best.pt",
+        "phase": "constructive_ppo",
+        "run_metadata": {
+          "config_sha256": "39e8fdfb42981755e8d2b190f04e3cfe4cf75f3dd35e93a21c7ee7fb2fd79e8d",
+          "cpu": "x86_64",
+          "device": "cuda",
+          "git_commit": "c62f1087dcdeadeff91d376b2d31472f26af56f6",
+          "gpu": "NVIDIA GeForce RTX 4060 Ti",
+          "hostname": "ustb",
+          "python": "3.11.15",
+          "ram_bytes": 33423183872,
+          "torch_cuda_version": "12.8",
+          "torch_version": "2.11.0+cu128",
+          "training_seed": 410101,
+          "vram_bytes": 8182628352
+        },
+        "seed": 410101,
+        "update": 34,
+        "validation_score": 0.13951587805429644
+      },
+      "method": "PPO_GREEDY",
+      "sha256": "2a1b231f782d8baa7a376c156edb028d4770837f77a16ee99766aa9352a3222a",
+      "training_seed": 410101
+    },
+    {
+      "checkpoint": "outputs/phase4/ppo_seed_2/best.pt",
+      "metadata": {
+        "initialization": "outputs/phase4/bc_large/best.pt",
+        "phase": "constructive_ppo",
+        "run_metadata": {
+          "config_sha256": "39e8fdfb42981755e8d2b190f04e3cfe4cf75f3dd35e93a21c7ee7fb2fd79e8d",
+          "cpu": "x86_64",
+          "device": "cuda",
+          "git_commit": "c62f1087dcdeadeff91d376b2d31472f26af56f6",
+          "gpu": "NVIDIA GeForce RTX 4060 Ti",
+          "hostname": "ustb",
+          "python": "3.11.15",
+          "ram_bytes": 33423183872,
+          "torch_cuda_version": "12.8",
+          "torch_version": "2.11.0+cu128",
+          "training_seed": 410102,
+          "vram_bytes": 8182628352
+        },
+        "seed": 410102,
+        "update": 19,
+        "validation_score": 0.16689970754468936
+      },
+      "method": "PPO_GREEDY",
+      "sha256": "22c96853235ed1b3566c0caa186059efb75bd980d7a50b9d9ebbe833b0564cf7",
+      "training_seed": 410102
+    },
+    {
+      "checkpoint": "outputs/phase4/ppo_seed_3/best.pt",
+      "metadata": {
+        "initialization": "outputs/phase4/bc_large/best.pt",
+        "phase": "constructive_ppo",
+        "run_metadata": {
+          "config_sha256": "39e8fdfb42981755e8d2b190f04e3cfe4cf75f3dd35e93a21c7ee7fb2fd79e8d",
+          "cpu": "x86_64",
+          "device": "cuda",
+          "git_commit": "c62f1087dcdeadeff91d376b2d31472f26af56f6",
+          "gpu": "NVIDIA GeForce RTX 4060 Ti",
+          "hostname": "ustb",
+          "python": "3.11.15",
+          "ram_bytes": 33423183872,
+          "torch_cuda_version": "12.8",
+          "torch_version": "2.11.0+cu128",
+          "training_seed": 410103,
+          "vram_bytes": 8182628352
+        },
+        "seed": 410103,
+        "update": 39,
+        "validation_score": 0.1391634157930684
+      },
+      "method": "PPO_GREEDY",
+      "sha256": "44fc7feb2b19b3ed358c09f6542e010deac2ee7771a2d96468a681c8dd3e5686",
+      "training_seed": 410103
+    }
+  ],
+  "evaluation_config": {
+    "canonical_full_after_freeze": true,
+    "deterministic": true,
+    "report_methods": [
+      "H1",
+      "H2",
+      "H3",
+      "BC_GREEDY",
+      "PPO_GREEDY"
+    ],
+    "sample_k": 4
+  },
+  "frozen_before_canonical_evaluation": true,
+  "selection_data": "fixed synthetic validation only"
+}

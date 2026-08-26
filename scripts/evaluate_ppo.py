@@ -132,6 +132,23 @@ def _write_csv(path, rows):
         writer.writerows(rows)
 
 
+def _checkpoint_specs(config, out_dir):
+    bc_directory = (
+        "bc_large"
+        if "demonstration_instances" in config["bc_warm_start"]
+        else "bc_pretrain"
+    )
+    return [
+        ("BC_GREEDY", "BC", out_dir / bc_directory / "best.pt"),
+        *[
+            ("PPO_GREEDY", seed, out_dir / f"ppo_seed_{index}" / "best.pt")
+            for index, seed in enumerate(
+                config["training_seed_policy"]["independent_training_seeds"], start=1
+            )
+        ],
+    ]
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, default=Path("configs/phase3_training.json"))
@@ -143,15 +160,7 @@ def main():
     args = parser.parse_args()
     config = load_phase3_config(args.config)
     device = resolve_device(args.device)
-    checkpoint_specs = [
-        ("BC_GREEDY", "BC", args.out_dir / "bc_pretrain" / "best.pt"),
-        *[
-            ("PPO_GREEDY", seed, args.out_dir / f"ppo_seed_{index}" / "best.pt")
-            for index, seed in enumerate(
-                config["training_seed_policy"]["independent_training_seeds"], start=1
-            )
-        ],
-    ]
+    checkpoint_specs = _checkpoint_specs(config, args.out_dir)
     missing = [str(path) for _, _, path in checkpoint_specs if not path.exists()]
     if missing:
         raise FileNotFoundError(f"frozen evaluation checkpoints are missing: {missing}")
@@ -268,7 +277,7 @@ def main():
         "evaluation_complete": not args.synthetic_only,
     }, args.out_dir / "evaluation_final_info.json")
     print(
-        "PHASE3_EVALUATION_COMPLETE = TRUE | "
+        "FROZEN_EVALUATION_COMPLETE = TRUE | "
         f"synthetic_runs={len(synthetic_rows)} canonical_instances="
         f"{0 if args.synthetic_only else 130}"
     )

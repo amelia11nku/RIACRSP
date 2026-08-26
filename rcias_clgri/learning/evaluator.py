@@ -8,6 +8,7 @@ from time import perf_counter
 from typing import Iterable
 
 import torch
+from torch.torch_version import TorchVersion
 
 from rcias_clgri.data.instance import Instance
 from rcias_clgri.heuristic.dispatching import solve_dispatching
@@ -95,7 +96,11 @@ def save_checkpoint(
 def load_checkpoint(
     path: str | Path, *, device: torch.device | str,
 ) -> tuple[RCIASNeuralModel, GraphTensorizer, dict[str, object]]:
-    payload = torch.load(Path(path), map_location=device, weights_only=True)
+    # PyTorch exposes ``torch.__version__`` as TorchVersion. Older locally-created
+    # checkpoints may contain that harmless metadata type; keep weights-only loading
+    # and allowlist only this concrete standard-library-adjacent PyTorch class.
+    with torch.serialization.safe_globals([TorchVersion]):
+        payload = torch.load(Path(path), map_location=device, weights_only=True)
     tensorizer = GraphTensorizer.from_schema(payload["tensorizer_schema"])
     model = RCIASNeuralModel(tensorizer, ModelConfig(**payload["model_config"]))
     model.load_state_dict(payload["model_state"])

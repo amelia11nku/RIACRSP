@@ -3,8 +3,12 @@
 from __future__ import annotations
 
 import json
+import hashlib
+import platform
 from pathlib import Path
 import random
+import socket
+import subprocess
 from typing import Iterable, Mapping
 
 import numpy as np
@@ -16,6 +20,47 @@ from rcias_clgri.nn import GraphTensorizer, ModelConfig, RCIASNeuralModel
 from rcias_clgri.training import TrainingInstanceFactory
 
 from .rollout import collect_episode
+
+
+def run_metadata(
+    config_path: str | Path, *, device: torch.device | str, training_seed: int,
+) -> dict[str, object]:
+    """Collect the reproducibility metadata required for a major training run."""
+    resolved_device = torch.device(device)
+    config_bytes = Path(config_path).read_bytes()
+    try:
+        git_commit = subprocess.run(
+            ["git", "rev-parse", "HEAD"], check=True, capture_output=True, text=True
+        ).stdout.strip()
+    except (OSError, subprocess.CalledProcessError):
+        git_commit = "unknown"
+    try:
+        import psutil
+        ram_bytes = int(psutil.virtual_memory().total)
+        cpu = platform.processor() or platform.machine()
+    except ImportError:
+        ram_bytes = 0
+        cpu = platform.processor() or platform.machine()
+    gpu = None
+    vram_bytes = 0
+    if resolved_device.type == "cuda":
+        properties = torch.cuda.get_device_properties(resolved_device)
+        gpu = properties.name
+        vram_bytes = int(properties.total_memory)
+    return {
+        "hostname": socket.gethostname(),
+        "cpu": cpu,
+        "ram_bytes": ram_bytes,
+        "gpu": gpu,
+        "vram_bytes": vram_bytes,
+        "python": platform.python_version(),
+        "torch_version": str(torch.__version__),
+        "torch_cuda_version": torch.version.cuda,
+        "device": str(resolved_device),
+        "training_seed": int(training_seed),
+        "git_commit": git_commit,
+        "config_sha256": hashlib.sha256(config_bytes).hexdigest(),
+    }
 
 
 def load_phase3_config(path: str | Path) -> dict[str, object]:
