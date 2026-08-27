@@ -28,8 +28,9 @@ from rcias_clgri.learning.experiment import (
     seed_everything,
     validate_policy,
 )
+from rcias_clgri.learning.teacher_anchor import freeze_teacher
 from rcias_clgri.learning.trainer import PPOConfig, PPOTrainer
-from rcias_clgri.training.curriculum import CurriculumManager
+from rcias_clgri.training.curriculum import CurriculumManager, MixedScaleCurriculum
 
 
 def _memory(device: torch.device) -> dict[str, int]:
@@ -92,6 +93,26 @@ def _weighted_validation_score(
     ) / weight_sum
 
 
+def _robust_validation_score(
+    validation: dict[str, object], levels: tuple[str, ...],
+    weights: dict[str, object], robust_lambda: float,
+) -> tuple[float, float, float]:
+    mean_score = _weighted_validation_score(validation, levels, weights)
+    weight_sum = sum(float(weights[level]) for level in levels)
+    variance = 0.0
+    for level in levels:
+        values = [
+            float(row["normalized_makespan"])
+            for row in validation["records"] if row["level"] == level
+        ]
+        level_weight = float(weights[level]) / weight_sum
+        variance += level_weight * sum(
+            (value - mean_score) ** 2 for value in values
+        ) / len(values)
+    standard_deviation = math.sqrt(variance)
+    return mean_score, standard_deviation, mean_score + robust_lambda * standard_deviation
+
+
 def _legacy_validation_score(
     validation: dict[str, object], levels: tuple[str, ...],
 ) -> float:
@@ -123,6 +144,20 @@ def _reward_statistics(episodes: list[object]) -> dict[str, float]:
     }
 
 
+def _relative_parameter_drift(model, teacher, prefix: str | None = None) -> float:
+    current = dict(model.named_parameters())
+    reference = dict(teacher.named_parameters())
+    names = [name for name in current if prefix is None or name.startswith(prefix)]
+    numerator = sum(
+        float((current[name].detach() - reference[name].detach()).pow(2).sum().cpu())
+        for name in names
+    )
+    denominator = sum(
+        float(reference[name].detach().pow(2).sum().cpu()) for name in names
+    )
+    return math.sqrt(numerator / max(denominator, 1e-24))
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, default=Path("configs/phase3_training.json"))
@@ -131,8 +166,37 @@ def main() -> None:
     parser.add_argument("--out-dir", type=Path)
     parser.add_argument("--device", default="auto")
     parser.add_argument("--updates", type=int)
+    parser.add_argument("--screening-stage-a", choices=("A0", "A1", "A2"))
+    parser.add_argument("--anchor-profile", choices=("B0", "B1", "B2"))
+    parser.add_argument("--critic-profile", choices=("C0", "C1"))
+    parser.add_argument("--curriculum-profile", choices=("D0", "D1"))
     args = parser.parse_args()
     config = load_phase3_config(args.config)
+    if args.screening_stage_a is not None:
+        config["ppo"].update(
+            config["screening"]["stage_a"][args.screening_stage_a]
+        )
+        config["teacher_anchor"] = {
+            **config.get("teacher_anchor", {}), "enabled": False
+        }
+    if args.anchor_profile is not None:
+        profiles = {
+            "B0": {"enabled": False},
+            "B1": {"enabled": True, "beta_initial": 0.05, "beta_minimum": 0.005},
+            "B2": {"enabled": True, "beta_initial": 0.20, "beta_minimum": 0.020},
+        }
+        config["teacher_anchor"] = {
+            **config.get("teacher_anchor", {}), **profiles[args.anchor_profile]
+        }
+    if args.critic_profile is not None:
+        config["ppo"]["critic_stop_gradient"] = args.critic_profile == "C1"
+    if args.curriculum_profile == "D0":
+        config["curriculum"] = {"mode": "staged"}
+    elif args.curriculum_profile == "D1":
+        config["curriculum"] = {
+            "mode": "mixed", "weights": {"S": 0.25, "M": 0.35, "L": 0.40},
+            "window_size": 8, "require_all_levels_per_window": True,
+        }
     allowed_seeds = set(int(value) for value in config["training_seed_policy"]["independent_training_seeds"])
     if args.seed not in allowed_seeds:
         raise ValueError(f"seed {args.seed} is not one of the frozen training seeds")
@@ -169,30 +233,57 @@ def main() -> None:
         f"seed={args.seed} device={device} torch={torch.__version__} init={initialization}"
     )
     ppo_config = PPOConfig.from_mapping(config["ppo"])
-    trainer = PPOTrainer(model, tensorizer, ppo_config, device=device)
-    curriculum = CurriculumManager(
-        plateau_window=int(config["ppo"]["plateau_window"]),
-        plateau_relative_improvement=float(
-            config["ppo"]["plateau_relative_improvement"]
-        ),
-        minimum_updates=int(config["ppo"]["minimum_updates_per_level"]),
-        current_level_probability=float(config["ppo"]["current_level_probability"]),
-        minimum_normalized_entropy=float(config["ppo"]["minimum_normalized_entropy"]),
+    curriculum_config = config.get("curriculum", {})
+    mixed_mode = curriculum_config.get("mode") == "mixed"
+    phase5_mode = "development_seeds" in config
+    if mixed_mode:
+        curriculum = MixedScaleCurriculum(
+            curriculum_config["weights"],
+            window_size=int(curriculum_config["window_size"]),
+        )
+    else:
+        curriculum = CurriculumManager(
+            plateau_window=int(config["ppo"]["plateau_window"]),
+            plateau_relative_improvement=float(config["ppo"]["plateau_relative_improvement"]),
+            minimum_updates=int(config["ppo"]["minimum_updates_per_level"]),
+            current_level_probability=float(config["ppo"]["current_level_probability"]),
+            minimum_normalized_entropy=float(config["ppo"]["minimum_normalized_entropy"]),
+        )
+    teacher_model = None
+    teacher_anchor_config = config.get("teacher_anchor", {"enabled": False})
+    if "teacher_checkpoint" in config:
+        teacher_model, _, _ = load_checkpoint(config["teacher_checkpoint"], device=device)
+        freeze_teacher(teacher_model)
+    trainer = PPOTrainer(
+        model, tensorizer, ppo_config, device=device,
+        teacher_model=teacher_model,
+        teacher_anchor_config=teacher_anchor_config,
     )
     total_updates = args.updates or int(config["ppo"]["total_updates"])
     selection_config = config.get("checkpoint_selection")
     selection_weights = None if selection_config is None else selection_config["weights"]
+    robust_lambda = (
+        float(selection_config.get("robust_lambda", 0.0))
+        if selection_config is not None else 0.0
+    )
     seed_rng = random.Random(int(config["global_seed"]) + args.seed)
+    initial_levels = ("S", "M", "L") if phase5_mode else ("S", "M")
     initial_validation = validate_policy(
         model, tensorizer, factory, config["validation_seeds"],
-        levels=("S", "M"), device=device,
+        levels=initial_levels, device=device,
     )
     best_score = (
-        _legacy_validation_score(initial_validation, ("S", "M"))
+        _legacy_validation_score(initial_validation, initial_levels)
         if selection_weights is None
-        else _weighted_validation_score(initial_validation, ("S", "M"), selection_weights)
+        else _weighted_validation_score(initial_validation, initial_levels, selection_weights)
     )
     best_update = 0
+    best_robust_update = 0
+    best_robust_score = (
+        _robust_validation_score(
+            initial_validation, initial_levels, selection_weights, robust_lambda
+        )[2] if selection_weights is not None else best_score
+    )
     save_checkpoint(
         out_dir / "best.pt", model, tensorizer,
         metadata={
@@ -201,7 +292,17 @@ def main() -> None:
             "run_metadata": hardware_metadata,
         },
     )
+    if robust_lambda > 0.0:
+        save_checkpoint(
+            out_dir / "best_mean.pt", model, tensorizer,
+            metadata={"phase": "constructive_ppo", "seed": args.seed, "update": 0, "selection": "mean"},
+        )
+        save_checkpoint(
+            out_dir / "best_robust.pt", model, tensorizer,
+            metadata={"phase": "constructive_ppo", "seed": args.seed, "update": 0, "selection": "mean_plus_std"},
+        )
     history = []
+    stopped_early = False
     cumulative_steps = 0
     cumulative_episodes = 0
     wall_started = perf_counter()
@@ -215,15 +316,23 @@ def main() -> None:
         )
         rollout = trainer.rollout_metrics(episodes)
         reward_statistics = _reward_statistics(episodes)
-        update_metrics = trainer.update(buffer, seed=args.seed + update * 1000)
+        update_metrics = trainer.update(
+            buffer, seed=args.seed + update * 1000, update_number=update
+        )
         cumulative_steps += int(rollout["environment_steps"])
         cumulative_episodes += int(rollout["episodes"])
-        selection_levels = ("S", "M") if level_before != "L" else ("S", "M", "L")
+        selection_levels = (
+            ("S", "M", "L") if phase5_mode
+            else (("S", "M") if level_before != "L" else ("S", "M", "L"))
+        )
         selection_validation = validate_policy(
             model, tensorizer, factory, config["validation_seeds"],
             levels=selection_levels, device=device,
         )
-        current_validation = _level_subset(selection_validation, level_before)
+        current_validation = (
+            selection_validation if mixed_mode
+            else _level_subset(selection_validation, level_before)
+        )
         promoted = curriculum.record_validation(
             float(current_validation["mean_makespan"]),
             feasibility_rate=float(current_validation["feasibility_rate"]),
@@ -235,6 +344,11 @@ def main() -> None:
             else _weighted_validation_score(
                 selection_validation, selection_levels, selection_weights
             )
+        )
+        robust_score = (
+            _robust_validation_score(
+                selection_validation, selection_levels, selection_weights, robust_lambda
+            )[2] if selection_weights is not None else selection_score
         )
         if selection_score < best_score:
             best_score = selection_score
@@ -248,11 +362,25 @@ def main() -> None:
                     "run_metadata": hardware_metadata,
                 },
             )
+            if robust_lambda > 0.0:
+                save_checkpoint(
+                    out_dir / "best_mean.pt", model, tensorizer,
+                    metadata={"phase": "constructive_ppo", "seed": args.seed, "update": update, "selection": "mean", "validation_score": selection_score},
+                )
+        if robust_score < best_robust_score:
+            best_robust_score = robust_score
+            best_robust_update = update
+            save_checkpoint(
+                out_dir / "best_robust.pt", model, tensorizer,
+                metadata={"phase": "constructive_ppo", "seed": args.seed, "update": update, "selection": "mean_plus_std", "validation_score": robust_score},
+            )
         timing = rollout["timing"]
         record = {
             "update": update,
             "environment_steps": cumulative_steps,
             "episodes": cumulative_episodes,
+            "episodes_this_update": rollout["episodes"],
+            "unique_instances_this_update": rollout["unique_instances"],
             "curriculum_level": level_before,
             "promoted_after_update": promoted,
             "mean_episode_makespan": rollout["mean_episode_makespan"],
@@ -261,17 +389,40 @@ def main() -> None:
             "validation_makespan": current_validation["mean_makespan"],
             "validation_normalized_makespan": current_validation["mean_normalized_makespan"],
             "selection_validation_normalized_makespan": selection_score,
+            "robust_selection_score": robust_score,
             "feasibility_rate": rollout["feasibility_rate"],
             "policy_loss": update_metrics["policy_loss"],
             "value_loss": update_metrics["value_loss"],
             "total_loss": update_metrics["total_loss"],
             "entropy": update_metrics["entropy"],
             "normalized_entropy": update_metrics["normalized_entropy"],
+            "normalized_operation_entropy": update_metrics["normalized_operation_entropy"],
+            "normalized_island_entropy": update_metrics["normalized_island_entropy"],
+            "normalized_w_entropy": update_metrics["normalized_w_entropy"],
+            "normalized_f_entropy": update_metrics["normalized_f_entropy"],
             "operation_entropy": update_metrics["operation_entropy"],
             "island_entropy": update_metrics["island_entropy"],
             "w_entropy": update_metrics["w_entropy"],
             "f_entropy": update_metrics["f_entropy"],
             "approx_kl": update_metrics["approx_kl"],
+            "max_kl": update_metrics["max_kl"],
+            "p95_kl": update_metrics["p95_kl"],
+            "teacher_beta": update_metrics["teacher_beta"],
+            "teacher_kl": update_metrics["teacher_kl"],
+            "teacher_kl_operation": update_metrics["teacher_kl_operation"],
+            "teacher_kl_island": update_metrics["teacher_kl_island"],
+            "teacher_kl_w": update_metrics["teacher_kl_w"],
+            "teacher_kl_f": update_metrics["teacher_kl_f"],
+            "policy_parameter_drift_from_bc": (
+                _relative_parameter_drift(model, teacher_model) if teacher_model else 0.0
+            ),
+            "encoder_parameter_drift_from_bc": (
+                _relative_parameter_drift(model, teacher_model, "encoder.")
+                if teacher_model else 0.0
+            ),
+            "advantage_mean": update_metrics["advantage_mean"],
+            "advantage_std": update_metrics["advantage_std"],
+            "return_variance": update_metrics["return_variance"],
             "clip_fraction": update_metrics["clip_fraction"],
             "explained_variance": update_metrics["explained_variance"],
             "gradient_norm": update_metrics["gradient_norm_before"],
@@ -302,7 +453,19 @@ def main() -> None:
             f"promoted={promoted}"
         )
         buffer.clear()
+        patience = int(selection_config.get("early_stopping_patience", 0)) if selection_config else 0
+        minimum_updates = int(config["ppo"].get("minimum_updates", total_updates))
+        if patience > 0 and update >= minimum_updates and update - best_update >= patience:
+            kl_window = [row["teacher_kl"] for row in history[-patience:]]
+            if kl_window[-1] > kl_window[0]:
+                stopped_early = True
+                print(
+                    f"early_stop update={update} patience={patience} "
+                    f"teacher_kl={kl_window[0]:.6f}->{kl_window[-1]:.6f}"
+                )
+                break
     wall_time = perf_counter() - wall_started
+    completed_updates = len(history)
     # The last update already evaluated the unchanged final weights on S/M.
     # Reuse that exact result instead of repeating an expensive deterministic rollout.
     final_validation = selection_validation
@@ -310,7 +473,7 @@ def main() -> None:
         out_dir / "final.pt", model, tensorizer,
         metadata={
             "phase": "constructive_ppo", "seed": args.seed,
-            "update": total_updates, "initialization": initialization,
+            "update": completed_updates, "initialization": initialization,
             "validation_score": history[-1]["selection_validation_normalized_makespan"],
         },
     )
@@ -323,7 +486,9 @@ def main() -> None:
         "run_metadata": hardware_metadata,
         "cuda_version": torch.version.cuda,
         "gpu": torch.cuda.get_device_name(device) if device.type == "cuda" else None,
-        "updates": total_updates,
+        "updates": completed_updates,
+        "requested_updates": total_updates,
+        "stopped_early": stopped_early,
         "environment_steps": cumulative_steps,
         "episodes": cumulative_episodes,
         "wall_clock_seconds": wall_time,
@@ -332,6 +497,8 @@ def main() -> None:
         "large_validation_deferred_to_frozen_evaluation": True,
         "best_update": best_update,
         "best_validation_normalized_makespan": best_score,
+        "best_robust_update": best_robust_update,
+        "best_robust_score": best_robust_score,
         "curriculum": curriculum.to_dict(),
         "training_validation_seed_overlap": False,
         "canonical_gradient_instances": 0,

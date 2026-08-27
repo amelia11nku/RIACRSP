@@ -1,0 +1,12 @@
+{
+  "selected": "C0",
+  "selection_reason": "Shared actor-critic encoder achieved a substantially better and still-improving development trajectory despite measured negative gradient cosine; stop-gradient removed useful value representation learning.",
+  "trials": {
+    "C0_shared": {"best_mean": 0.153827, "best_update": 10, "final_mean": 0.153827},
+    "C1_critic_stop_gradient": {"best_mean": 0.156346, "best_update": 7, "final_mean": 0.157953}
+  },
+  "gradient_interference_measured": true,
+  "separate_critic_encoder_tested": false,
+  "separate_critic_encoder_reason": "C1 did not improve C0, so AC2 was not justified.",
+  "canonical_instances": 0
+}

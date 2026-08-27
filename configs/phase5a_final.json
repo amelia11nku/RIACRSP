@@ -1,0 +1,31 @@
+{
+  "extends": "phase5a_training.json",
+  "output_root": "outputs/phase5a",
+  "ppo": {
+    "critic_stop_gradient": false,
+    "minimum_updates": 30,
+    "total_updates": 40
+  },
+  "teacher_anchor": {
+    "enabled": false,
+    "measure_kl": true,
+    "schedule": "constant",
+    "beta_initial": 0.0,
+    "beta_minimum": 0.0
+  },
+  "curriculum": {
+    "mode": "mixed",
+    "weights": {"S": 0.25, "M": 0.35, "L": 0.40},
+    "window_size": 8,
+    "require_all_levels_per_window": true
+  },
+  "checkpoint_selection": {
+    "weights": {"S": 0.20, "M": 0.30, "L": 0.50},
+    "robust_lambda": 0.25,
+    "early_stopping_patience": 10
+  },
+  "screening_selection": {"stage_a": "A1", "stage_b": "B0", "stage_c": "C0", "stage_d": "D1"},
+  "canonical_gradient_instances": 0,
+  "canonical_full_evaluation": 0,
+  "csg_enabled": false
+}

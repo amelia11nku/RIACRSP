@@ -17,14 +17,35 @@
     ".pytest_cache"
   ],
   "legacy_schema_files": [],
-  "duplicate_content_groups": [],
-  "candidate_redundant_files": [],
+  "duplicate_content_groups": [
+    [
+      "outputs/phase4/bc_large/notes.txt",
+      "outputs/phase4/capacity_study/D128-L3/notes.txt",
+      "outputs/phase4/capacity_study/D32-L2/notes.txt",
+      "outputs/phase4/capacity_study/D64-L2/notes.txt",
+      "outputs/phase4/capacity_study/D64-L3/notes.txt"
+    ],
+    [
+      "outputs/phase4/capacity_study/D128-L3/demonstrations_summary.json",
+      "outputs/phase4/capacity_study/D32-L2/demonstrations_summary.json",
+      "outputs/phase4/capacity_study/D64-L2/demonstrations_summary.json",
+      "outputs/phase4/capacity_study/D64-L3/demonstrations_summary.json"
+    ]
+  ],
+  "candidate_redundant_files": [
+    "scripts/analyze_gradient_interference.py",
+    "scripts/analyze_phase5a_gate.py",
+    "scripts/analyze_policy_stages.py",
+    "scripts/build_phase5a_development.py",
+    "scripts/evaluate_phase5a.py",
+    "scripts/plot_phase5a_results.py"
+  ],
   "unexpected_tiny_json": [],
   "root_demo_json": [],
   "obsolete_versioned_or_module_python": [],
   "duplicate_exact_solver_candidates": [],
   "duplicate_graph_builder_candidates": [],
-  "repository_clean": true,
+  "repository_clean": false,
   "protected_roots": [
     "FJSP-benchmark-main",
     "instances/canonical",

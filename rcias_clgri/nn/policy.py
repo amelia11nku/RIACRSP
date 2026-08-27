@@ -83,6 +83,7 @@ class PolicyActionEvaluation:
     joint_log_prob: torch.Tensor
     stage_log_probs: Mapping[str, torch.Tensor]
     stage_entropies: Mapping[str, torch.Tensor]
+    stage_normalized_entropies: Mapping[str, torch.Tensor]
     joint_entropy: torch.Tensor
     active_stage_normalized_entropy: torch.Tensor
     stage_candidate_counts: Mapping[str, int]
@@ -226,16 +227,7 @@ class AutoregressivePolicy(nn.Module):
         *,
         temperature: float = 1.0,
     ) -> PolicyActionEvaluation:
-        distributions = {
-            "operation": self.operation_distribution(graph, hidden),
-            "island": self.island_distribution(graph, hidden, action.operation_id),
-            "w": self.w_distribution(
-                graph, hidden, action.operation_id, action.island_id
-            ),
-            "f": self.f_distribution(
-                graph, hidden, action.operation_id, action.island_id, action.w_agv_id
-            ),
-        }
+        distributions = self.action_distributions(graph, hidden, action)
         selected = {
             "operation": action.operation_id,
             "island": action.island_id,
@@ -250,9 +242,13 @@ class AutoregressivePolicy(nn.Module):
             name: distribution.entropy(temperature)
             for name, distribution in distributions.items()
         }
+        stage_normalized_entropies = {
+            name: distribution.normalized_entropy(temperature)
+            for name, distribution in distributions.items()
+        }
         normalized = [
-            distribution.normalized_entropy(temperature)
-            for distribution in distributions.values()
+            stage_normalized_entropies[name]
+            for name, distribution in distributions.items()
             if len(distribution.candidate_ids) > 1
         ]
         zero = next(iter(stage_log_probs.values())).new_zeros(())
@@ -261,6 +257,7 @@ class AutoregressivePolicy(nn.Module):
             joint_log_prob=torch.stack(tuple(stage_log_probs.values())).sum(),
             stage_log_probs=stage_log_probs,
             stage_entropies=stage_entropies,
+            stage_normalized_entropies=stage_normalized_entropies,
             joint_entropy=torch.stack(tuple(stage_entropies.values())).sum(),
             active_stage_normalized_entropy=(
                 torch.stack(normalized).mean() if normalized else zero
@@ -270,6 +267,24 @@ class AutoregressivePolicy(nn.Module):
                 for name, distribution in distributions.items()
             },
         )
+
+    def action_distributions(
+        self,
+        graph: GraphTensor,
+        hidden: Mapping[str, torch.Tensor],
+        action: Action,
+    ) -> dict[str, CandidateDistribution]:
+        """Return all hard-masked stage distributions along an action path."""
+        return {
+            "operation": self.operation_distribution(graph, hidden),
+            "island": self.island_distribution(graph, hidden, action.operation_id),
+            "w": self.w_distribution(
+                graph, hidden, action.operation_id, action.island_id
+            ),
+            "f": self.f_distribution(
+                graph, hidden, action.operation_id, action.island_id, action.w_agv_id
+            ),
+        }
 
     def sample_action(
         self,

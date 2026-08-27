@@ -2,9 +2,9 @@
 
 ## 面向 RCIASP-DL 的 Capability–Logistics Coupled Graph Reinforcement and Improvement Framework
 
-> **工作算法名**：CLGRI（Capability–Logistics Graph Reinforcement and Improvement）  
-> **目标定位**：不是“普通 GNN + PPO 的调度应用”，而是针对 RCIAS-2.0 中 **DAG 拓扑线性化—能力重构—W/F 双层物流同步** 三类内生关系设计结构感知学习与神经改进算法。  
-> **目标期刊层级**：算法设计按 IEEE Transactions on Cybernetics / IEEE TNNLS / IEEE TEVC / CIE / JMS 等高水平期刊所需的“方法贡献 + 问题结构利用 + 泛化验证”标准组织。  
+> **工作算法名**：CLGRI（Capability–Logistics Graph Reinforcement and Improvement）
+> **目标定位**：不是“普通 GNN + PPO 的调度应用”，而是针对 RCIAS-2.0 中 **DAG 拓扑线性化—能力重构—W/F 双层物流同步** 三类内生关系设计结构感知学习与神经改进算法。
+> **目标期刊层级**：算法设计按 IEEE Transactions on Cybernetics / IEEE TNNLS / IEEE TEVC / CIE / JMS 等高水平期刊所需的“方法贡献 + 问题结构利用 + 泛化验证”标准组织。
 > **重要说明**：本说明书提供的是高水平研究设计与工程执行规范，不代表仅凭算法名称或组件堆叠即可保证特定期刊录用。
 
 ---
@@ -230,20 +230,20 @@ processing_time[o,m]
 
 每一步动作：
 
-\[
+$$
 a_t=(o_t,m_t,w_t,f_t),
-\]
+$$
 
 但采用自回归条件分解：
 
-\[
+$$
 P(a_t|s_t)
 =
 P(o_t|s_t)
 P(m_t|o_t,s_t)
 P(w_t|o_t,m_t,s_t)
 P(f_t|o_t,m_t,w_t,s_t).
-\]
+$$
 
 其中：
 
@@ -510,9 +510,9 @@ incremental_reconfig_cost
 
 使用五类节点：
 
-\[
+$$
 V=V^O\cup V^J\cup V^M\cup V^W\cup V^F.
-\]
+$$
 
 即：
 
@@ -695,24 +695,24 @@ round_trip_time
 
 对 relation `r: s -> t`：
 
-\[
+$$
 q_i=W^Q_t h_i,
 \qquad
 k_j=W^K_{r,s} h_j,
 \qquad
 v_j=W^V_{r,s} h_j.
-\]
+$$
 
 attention logit：
 
-\[
+$$
 e_{ij}^{(r)}
 =
 \frac{q_i^T k_j}{\sqrt d}
 +b_r
 +b^{time}_{ij}
 +b^{cap}_{ij}.
-\]
+$$
 
 其中：
 
@@ -753,11 +753,11 @@ relation_hidden: 64
 
 若保留论文双目标，训练时采样：
 
-\[
+$$
 \lambda=(\lambda_1,\lambda_2),
 \qquad \lambda_i\ge0,
 \quad \lambda_1+\lambda_2=1.
-\]
+$$
 
 建议：
 
@@ -772,12 +772,12 @@ lambda2 = 1-lambda1
 
 使用 normalized augmented Tchebycheff：
 
-\[
+$$
 g_\lambda(f)
 =
 \max_k\lambda_k\hat f_k
 +\epsilon\sum_k\lambda_k\hat f_k,
-\]
+$$
 
 其中 `epsilon=0.05`。
 
@@ -855,9 +855,9 @@ W head 输入：
 
 动作数近似：
 
-\[
+$$
 |O^{ready}|\times|M_o|\times|W|\times|F|,
-\]
+$$
 
 在规模迁移时迅速膨胀。
 
@@ -888,15 +888,15 @@ accumulated_F_cost
 
 构造 normalized scalar potential：
 
-\[
+$$
 \Phi_t=g_\lambda(\hat C_{\max,t},\hat C_{cost,t}).
-\]
+$$
 
 reward：
 
-\[
+$$
 r_t=\Phi_{t-1}-\Phi_t.
-\]
+$$
 
 由于每一步通常使 objective 增大，reward 可能为负；可乘常数 `reward_scale`。
 
@@ -925,9 +925,9 @@ reconfiguration-caused waiting
 
 auxiliary loss：
 
-\[
+$$
 L_{sync}=\mathrm{Huber}(\hat d,d).
-\]
+$$
 
 这会迫使 encoder 学到同步瓶颈，而不改变原优化目标。
 
@@ -987,11 +987,11 @@ F assignment
 
 训练：
 
-\[
+$$
 L_{BC}
 =-\sum_t
 (\log\pi_o+\log\pi_m+\log\pi_w+\log\pi_f).
-\]
+$$
 
 推荐先预训练 10–30 epochs，再 PPO。
 
@@ -1209,9 +1209,9 @@ destroy set 的 log-prob 为无放回采样的联合概率。
 
 reward：
 
-\[
+$$
 r^{NI}=g_\lambda(S_{before})-g_\lambda(S_{after}).
-\]
+$$
 
 仅当完整 repair 后计算。
 
@@ -1247,22 +1247,22 @@ self-imitation loss 与 PPO loss 分开采样，不要在同一 mini-batch 混�
 
 推荐：
 
-\[
+$$
 L
 =
 L_{PPO}
 +\lambda_V L_V
 +\lambda_{sync}L_{sync}
 +\lambda_{BC}L_{BC/imitation}.
-\]
+$$
 
 其中 `BC/imitation` 在对应训练阶段开启，不是永久固定大权重。
 
 destroy selector 单独优化：
 
-\[
+$$
 L_D=L_{PG}^{destroy}+\lambda_{rank}L_{rank}.
-\]
+$$
 
 ---
 
@@ -1785,7 +1785,7 @@ P13 large-scale/generalization experiments
 
 主叙事应是：
 
-\[
+$$
 \boxed{
 \text{capability reconfiguration}
 +
@@ -1793,7 +1793,7 @@ P13 large-scale/generalization experiments
 +
 \text{dual-flow synchronization}
 }
-\]
+$$
 
 共同导致**调度关系本身内生变化**：
 

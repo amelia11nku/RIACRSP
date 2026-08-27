@@ -102,3 +102,40 @@ class CurriculumManager:
             "validation_history": self.state.validation_history,
             "sampling_probabilities": dict(self.sampling_probabilities()),
         }
+
+
+class MixedScaleCurriculum:
+    """Weighted S/M/L sampling with guaranteed coverage in every fixed window."""
+
+    LEVELS = ("S", "M", "L")
+
+    def __init__(self, weights: Mapping[str, float], *, window_size: int = 8) -> None:
+        if set(weights) != set(self.LEVELS) or any(float(weights[x]) <= 0 for x in self.LEVELS):
+            raise ValueError("mixed-scale weights must be positive for S, M, and L")
+        if window_size < len(self.LEVELS):
+            raise ValueError("mixed-scale window must fit all levels")
+        total = sum(float(weights[x]) for x in self.LEVELS)
+        self.weights = {x: float(weights[x]) / total for x in self.LEVELS}
+        self.window_size = window_size
+        self._queue: list[str] = []
+
+    @property
+    def current_level(self) -> str:
+        return "mixed"
+
+    def sample_level(self, rng: random.Random) -> str:
+        if not self._queue:
+            queue = list(self.LEVELS)
+            queue.extend(rng.choices(self.LEVELS, weights=[self.weights[x] for x in self.LEVELS], k=self.window_size - 3))
+            rng.shuffle(queue)
+            self._queue = queue
+        return self._queue.pop()
+
+    def sampling_probabilities(self) -> Mapping[str, float]:
+        return dict(self.weights)
+
+    def record_validation(self, *args, **kwargs) -> bool:
+        return False
+
+    def to_dict(self) -> dict[str, object]:
+        return {"mode": "mixed", "sampling_probabilities": dict(self.weights), "window_size": self.window_size}

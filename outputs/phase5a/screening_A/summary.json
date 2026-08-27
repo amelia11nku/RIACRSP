@@ -1,0 +1,11 @@
+{
+  "development_initial_score": 0.16650720257823864,
+  "selected": "A1",
+  "selection_reason": "Best mean score and best late-update retention; A2 has marginally better robust score but larger final regression.",
+  "trials": {
+    "A0": {"best_mean": 0.161016, "final_mean": 0.166533, "best_robust": 0.180502, "max_minibatch_kl": 0.29820, "max_policy_drift": 0.02740, "max_encoder_drift": 0.02674},
+    "A1": {"best_mean": 0.156346, "final_mean": 0.157953, "best_robust": 0.176562, "max_minibatch_kl": 0.05061, "max_policy_drift": 0.01525, "max_encoder_drift": 0.01285},
+    "A2": {"best_mean": 0.156451, "final_mean": 0.161089, "best_robust": 0.176187, "max_minibatch_kl": 0.02631, "max_policy_drift": 0.01116, "max_encoder_drift": 0.01053}
+  },
+  "canonical_instances": 0
+}

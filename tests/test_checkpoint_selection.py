@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import pytest
 
-from scripts.train_ppo import _legacy_validation_score, _weighted_validation_score
+from scripts.train_ppo import (
+    _legacy_validation_score, _robust_validation_score, _weighted_validation_score,
+)
 
 
 def _validation() -> dict[str, object]:
@@ -42,3 +44,11 @@ def test_checkpoint_score_rejects_missing_or_zero_active_weights():
 def test_phase3_legacy_score_remains_record_weighted_and_excludes_large_level():
     assert _legacy_validation_score(_validation(), ("S", "M")) == pytest.approx(8.0 / 3.0)
     assert _legacy_validation_score(_validation(), ("S", "M", "L")) == pytest.approx(8.0 / 3.0)
+
+
+def test_phase5a_robust_checkpoint_score_penalizes_variance():
+    mean, std, robust = _robust_validation_score(
+        _validation(), ("S", "M"), {"S": 1.0, "M": 1.0}, .25
+    )
+    assert std > 0.0
+    assert robust == pytest.approx(mean + .25 * std)

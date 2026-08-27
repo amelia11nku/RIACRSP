@@ -64,7 +64,24 @@ def run_metadata(
 
 
 def load_phase3_config(path: str | Path) -> dict[str, object]:
-    return json.loads(Path(path).read_text(encoding="utf-8"))
+    target = Path(path)
+    config = json.loads(target.read_text(encoding="utf-8"))
+    parent = config.pop("extends", None)
+    if parent is None:
+        return config
+    base = load_phase3_config(target.parent / str(parent))
+
+    def merge(left, right):
+        result = dict(left)
+        for key, value in right.items():
+            result[key] = (
+                merge(result[key], value)
+                if key in result and isinstance(result[key], dict) and isinstance(value, dict)
+                else value
+            )
+        return result
+
+    return merge(base, config)
 
 
 def seed_everything(seed: int) -> None:

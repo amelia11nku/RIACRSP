@@ -1,0 +1,78 @@
+{
+  "global_seed": 20260826,
+  "output_root": "outputs/phase5a",
+  "ppo_initialization": "outputs/phase4/bc_large/best.pt",
+  "teacher_checkpoint": "outputs/phase4/bc_large/best.pt",
+  "training_seed_policy": {
+    "independent_training_seeds": [510101, 510102, 510103],
+    "episode_seed_start": 3000000,
+    "forbid_validation_overlap": true
+  },
+  "development_seeds": {
+    "S": [61001, 61002, 61003, 61004, 61005, 61006, 61007, 61008, 61009, 61010],
+    "M": [62001, 62002, 62003, 62004, 62005, 62006, 62007, 62008, 62009, 62010],
+    "L": [63001, 63002, 63003, 63004, 63005, 63006, 63007, 63008, 63009, 63010]
+  },
+  "historical_validation_seeds": {
+    "S": [51001, 51002, 51003, 51004, 51005],
+    "M": [52001, 52002, 52003],
+    "L": [53001, 53002]
+  },
+  "validation_seeds": {
+    "S": [61001, 61002, 61003, 61004, 61005, 61006, 61007, 61008, 61009, 61010],
+    "M": [62001, 62002, 62003, 62004, 62005, 62006, 62007, 62008, 62009, 62010],
+    "L": [63001, 63002, 63003, 63004, 63005, 63006, 63007, 63008, 63009, 63010]
+  },
+  "curriculum_levels": {
+    "S": {"products": [3, 6], "operations_per_product": [3, 6], "islands": [3, 5], "configurations": [2, 4], "w_agvs": [1, 2], "f_agvs": [1, 2], "eligible_islands": [1, 3], "processing_time": [2, 20], "dag_probability": [0.15, 0.35]},
+    "M": {"products": [6, 12], "operations_per_product": [4, 10], "islands": [5, 10], "configurations": [3, 6], "w_agvs": [1, 3], "f_agvs": [1, 3], "eligible_islands": [1, 5], "processing_time": [2, 40], "dag_probability": [0.15, 0.30]},
+    "L": {"manifest_driven": true, "manifest_quantiles": [0.10, 0.50, 0.90], "products": [10, 30], "operations_per_product": [3, 12], "total_operations": [50, 300], "islands": [5, 15], "configurations": [5, 6], "w_agvs": [2, 3], "f_agvs": [2, 3], "eligible_islands": [1, 7], "processing_time": [12, 110], "dag_probability": [0.15, 0.28]}
+  },
+  "model": {"embedding_dim": 128, "heads": 4, "layers": 3, "feedforward_multiplier": 2, "dropout": 0.0},
+  "ppo": {
+    "learning_rate": 0.0001,
+    "encoder_lr": 0.00005,
+    "policy_head_lr": 0.0001,
+    "value_head_lr": 0.0001,
+    "gamma": 1.0,
+    "gae_lambda": 0.95,
+    "clip_epsilon": 0.1,
+    "value_coefficient": 0.5,
+    "entropy_coefficient": 0.01,
+    "entropy_mode": "normalized_stage",
+    "entropy_stage_coefficients": {"operation": 1.0, "island": 1.0, "w": 1.0, "f": 1.0},
+    "max_grad_norm": 0.5,
+    "target_kl": 0.01,
+    "hard_kl_multiplier": 2.0,
+    "update_epochs": 3,
+    "minibatch_size": 128,
+    "rollout_transitions": 1024,
+    "minimum_complete_episodes": 8,
+    "critic_stop_gradient": true,
+    "plateau_window": 3,
+    "plateau_relative_improvement": 0.03,
+    "minimum_updates_per_level": 5,
+    "current_level_probability": 0.75,
+    "minimum_normalized_entropy": 0.02,
+    "total_updates": 100,
+    "minimum_updates": 30,
+    "validation_interval": 1
+  },
+  "teacher_anchor": {"enabled": true, "schedule": "floor_decay", "beta_initial": 0.1, "beta_minimum": 0.01, "anchor_updates": 30, "direction": "current_to_teacher"},
+  "curriculum": {"mode": "mixed", "weights": {"S": 0.25, "M": 0.35, "L": 0.40}, "window_size": 8, "require_all_levels_per_window": true},
+  "checkpoint_selection": {"weights": {"S": 0.20, "M": 0.30, "L": 0.50}, "robust_lambda": 0.25, "early_stopping_patience": 10},
+  "screening": {
+    "updates": 12,
+    "seed": 510101,
+    "stage_a": {
+      "A0": {"encoder_lr": 0.0003, "policy_head_lr": 0.0003, "value_head_lr": 0.0003, "clip_epsilon": 0.2, "target_kl": 0.03},
+      "A1": {"encoder_lr": 0.00005, "policy_head_lr": 0.0001, "value_head_lr": 0.0001, "clip_epsilon": 0.1, "target_kl": 0.01},
+      "A2": {"encoder_lr": 0.00005, "policy_head_lr": 0.00005, "value_head_lr": 0.0001, "clip_epsilon": 0.1, "target_kl": 0.01}
+    }
+  },
+  "structural_scenarios": {"seeds": [64001, 64002, 64003], "names": ["high_reconfiguration", "fleet_scarcity", "high_travel"]},
+  "canonical_gradient_instances": 0,
+  "canonical_full_evaluation": 0,
+  "csg_enabled": false,
+  "prohibited_components": ["neural_destroy_selector", "heuristic_destroy", "multiobjective_ppo", "potential_shaping", "new_gnn_architecture"]
+}
