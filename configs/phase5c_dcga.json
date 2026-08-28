@@ -1,0 +1,12 @@
+{
+  "algorithm_label": "Adapted DCGA",
+  "population_size_each": 500,
+  "crossover_probability": 0.9,
+  "mutation_probability": 0.15,
+  "diversity_check_interval": 300,
+  "similarity_threshold": 0.8,
+  "elite_count": 2,
+  "fidelity": "FAITHFUL_ADAPTATION",
+  "paper_parameter_source": "Han et al. (2024), Section 5.2",
+  "status": "FROZEN_BEFORE_FORMAL_EVALUATION"
+}

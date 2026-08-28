@@ -1,0 +1,45 @@
+{
+  "schema": "phase5c-cb1-core-audit-v1",
+  "status": "PASS",
+  "checks": {
+    "result_count_1350": true,
+    "algorithm_counts_450_each": true,
+    "instance_count_45": true,
+    "ten_unique_seeds_per_instance_algorithm": true,
+    "no_duplicate_instance_algorithm_seed": true,
+    "all_feasible": true,
+    "suite_cb1_core": true,
+    "freeze_hash_matches": true,
+    "manifest_instances_match": true
+  },
+  "algorithm_counts": {
+    "ALNS-H1": 450,
+    "Adapted DCGA": 450,
+    "GA": 450
+  },
+  "duplicate_count": 0,
+  "runtime_ratio_by_algorithm": [
+    {
+      "algorithm": "ALNS-H1",
+      "mean": 1.0000439791280296,
+      "median": 1.0000396071423228,
+      "p95": 1.0001049114903067,
+      "max": 1.0001633234836766
+    },
+    {
+      "algorithm": "Adapted DCGA",
+      "mean": 1.0546114539594098,
+      "median": 1.000704867793122,
+      "p95": 1.1843630021044105,
+      "max": 1.3789792877716662
+    },
+    {
+      "algorithm": "GA",
+      "mean": 1.000044682780482,
+      "median": 1.000039930911284,
+      "p95": 1.0000948330870598,
+      "max": 1.000145781869203
+    }
+  ],
+  "best_conventional_baseline_by_mean_makespan": "ALNS-H1"
+}

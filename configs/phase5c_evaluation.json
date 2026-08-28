@@ -1,0 +1,15 @@
+{
+  "canonical_instances": 130,
+  "constructive_protocol": "one_shot",
+  "search_time_limit_seconds": "2 * number_of_operations",
+  "stochastic_runs_per_instance": 10,
+  "search_algorithms": ["GA", "Adapted DCGA", "ALNS-H1"],
+  "individual_run_cpu_threads": 1,
+  "individual_run_processes": 1,
+  "search_gpu_usage": false,
+  "primary_paired_unit": "instance",
+  "pairwise_test": "Wilcoxon signed-rank on per-instance run means",
+  "multiple_comparison_correction": "Holm",
+  "taxonomy_hash": "2a040facdd671f71263b3ab8fa50982c5a7c07020a6ce240b312b9086efdea0b",
+  "status": "FROZEN_BEFORE_FORMAL_EVALUATION"
+}

@@ -1,0 +1,95 @@
+{
+  "benchmark": "RCIAS-CB1",
+  "cf_levels": {
+    "CF1": {
+      "cap_center": 0.35,
+      "cap_max": 0.4,
+      "cap_min": 0.3,
+      "route_center": 0.25,
+      "route_max": 0.3,
+      "route_min": 0.2
+    },
+    "CF2": {
+      "cap_center": 0.5,
+      "cap_max": 0.55,
+      "cap_min": 0.45,
+      "route_center": 0.38,
+      "route_max": 0.43,
+      "route_min": 0.33
+    },
+    "CF3": {
+      "cap_center": 0.65,
+      "cap_max": 0.7,
+      "cap_min": 0.6,
+      "route_center": 0.52,
+      "route_max": 0.57,
+      "route_min": 0.47
+    }
+  },
+  "core_targets": {
+    "entropy_max": 0.98,
+    "entropy_min": 0.8,
+    "f_ti_center": 1.0,
+    "f_ti_max": 1.4,
+    "f_ti_min": 0.7,
+    "processing_cv_max": 0.45,
+    "processing_cv_min": 0.2,
+    "ri_center": 0.42,
+    "ri_max": 0.6,
+    "ri_min": 0.3,
+    "w_ti_center": 0.55,
+    "w_ti_max": 0.75,
+    "w_ti_min": 0.35
+  },
+  "generator_version": "1.0.0",
+  "max_attempts": 100,
+  "scales": {
+    "L": {
+      "configurations": 8,
+      "f_agvs": 2,
+      "islands": 15,
+      "operations_max": 195,
+      "operations_min": 165,
+      "products": 22,
+      "w_agvs": 2
+    },
+    "M": {
+      "configurations": 6,
+      "f_agvs": 2,
+      "islands": 10,
+      "operations_max": 130,
+      "operations_min": 110,
+      "products": 15,
+      "w_agvs": 2
+    },
+    "S": {
+      "configurations": 5,
+      "f_agvs": 2,
+      "islands": 7,
+      "operations_max": 65,
+      "operations_min": 55,
+      "products": 8,
+      "w_agvs": 2
+    }
+  },
+  "seed_ranges": {
+    "CORE": 552000,
+    "DEV": 551000,
+    "SENS": 553000
+  },
+  "sensitivity": {
+    "cf": "CF2",
+    "ri_factors": {
+      "RI1": 0.5,
+      "RI2": 1.0,
+      "RI3": 2.0
+    },
+    "scale": "M",
+    "ti_factors": {
+      "TI1": 0.5,
+      "TI2": 1.0,
+      "TI3": 2.0
+    }
+  },
+  "small_cf1_resolution_note": "Seven islands are the nearest feasible interpretation of approximately six: the two-eligible-island gate implies 2/7=0.285714, whereas six islands would make the CF1 upper bound 0.30 impossible."
+}

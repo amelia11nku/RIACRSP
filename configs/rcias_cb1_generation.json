@@ -1,0 +1,19 @@
+{
+  "benchmark": "RCIAS-CB1",
+  "generator_version": "1.0.0",
+  "max_attempts": 100,
+  "seed_ranges": {"DEV": 551000, "CORE": 552000, "SENS": 553000},
+  "scales": {
+    "S": {"products": 8, "operations_min": 55, "operations_max": 65, "islands": 7, "configurations": 5, "w_agvs": 2, "f_agvs": 2},
+    "M": {"products": 15, "operations_min": 110, "operations_max": 130, "islands": 10, "configurations": 6, "w_agvs": 2, "f_agvs": 2},
+    "L": {"products": 22, "operations_min": 165, "operations_max": 195, "islands": 15, "configurations": 8, "w_agvs": 2, "f_agvs": 2}
+  },
+  "cf_levels": {
+    "CF1": {"cap_min": 0.30, "cap_max": 0.40, "cap_center": 0.35, "route_min": 0.20, "route_max": 0.30, "route_center": 0.25},
+    "CF2": {"cap_min": 0.45, "cap_max": 0.55, "cap_center": 0.50, "route_min": 0.33, "route_max": 0.43, "route_center": 0.38},
+    "CF3": {"cap_min": 0.60, "cap_max": 0.70, "cap_center": 0.65, "route_min": 0.47, "route_max": 0.57, "route_center": 0.52}
+  },
+  "core_targets": {"processing_cv_min": 0.20, "processing_cv_max": 0.45, "ri_min": 0.30, "ri_max": 0.60, "ri_center": 0.42, "w_ti_min": 0.35, "w_ti_max": 0.75, "w_ti_center": 0.55, "f_ti_min": 0.70, "f_ti_max": 1.40, "f_ti_center": 1.00, "entropy_min": 0.80, "entropy_max": 0.98},
+  "sensitivity": {"scale": "M", "cf": "CF2", "ri_factors": {"RI1": 0.5, "RI2": 1.0, "RI3": 2.0}, "ti_factors": {"TI1": 0.5, "TI2": 1.0, "TI3": 2.0}},
+  "small_cf1_resolution_note": "Seven islands are the nearest feasible interpretation of approximately six: the two-eligible-island gate implies 2/7=0.285714, whereas six islands would make the CF1 upper bound 0.30 impossible."
+}
