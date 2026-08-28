@@ -1,0 +1,22 @@
+{
+  "extends": "phase5b_training.json",
+  "phase5b_config_frozen": true,
+  "downstream_ppo": {
+    "pilot_seed": 520101,
+    "pilot_updates": 25,
+    "formal_updates": 25,
+    "operation_mode": "frozen_bc_greedy",
+    "trainable_stages": ["island", "w", "f"],
+    "best_policy_kl_loss_enabled": false,
+    "rollback_patience": 3,
+    "rollback_relative_regression": 0.04,
+    "rollback_learning_rate_factor": 0.5,
+    "maximum_rollbacks": 2
+  },
+  "pilot_gate_passed": true,
+  "freeze_boundary_selection": "F1_frozen_bc_operation_plus_ppo_mwf",
+  "freeze_boundary_selected_after_holdout": true,
+  "canonical_gradient_instances": 0,
+  "canonical_full_evaluation": 0,
+  "csg_enabled": false
+}

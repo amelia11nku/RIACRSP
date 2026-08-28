@@ -1,0 +1,1618 @@
+{
+  "all_feasible": true,
+  "best_update": 18,
+  "best_validation_normalized_makespan": 0.14553242627854523,
+  "canonical_gradient_instances": 0,
+  "environment_steps": 27376,
+  "episodes": 320,
+  "experiment": "phase5b_frozen_operation_downstream_ppo",
+  "frozen_operation_checkpoint": "outputs/phase4/bc_large/best.pt",
+  "history": [
+    {
+      "approx_kl": 0.006925337808206677,
+      "best_policy_kl_mwf": {
+        "f": 3.540419846181919e-09,
+        "island": 1.798165577375499e-09,
+        "mean": 4.441928219631648e-09,
+        "w": 7.987199235337528e-09
+      },
+      "best_reference_score": 0.1660891114387894,
+      "environment_steps": 1310,
+      "episodes": 17,
+      "episodes_this_update": 17,
+      "feasibility_rate": 1.0,
+      "improved_best_reference": true,
+      "learning_rates": [
+        5e-05,
+        0.0001,
+        0.0001
+      ],
+      "normalized_entropy_mwf": 0.7167803005891551,
+      "normalized_f_entropy": 0.43773196160026007,
+      "normalized_island_entropy": 0.7041218232807296,
+      "normalized_operation_entropy_measurement": 0.6989132431015495,
+      "normalized_w_entropy": 0.6240465941034927,
+      "policy_loss": -0.03098328411579132,
+      "reward_statistics": {
+        "count": 1310.0,
+        "mean": -0.002930247481520902,
+        "std": 0.005605974660887672,
+        "zero_fraction": 0.4450381679389313
+      },
+      "rollback_applied": false,
+      "rollback_count": 0,
+      "rollback_triggered": false,
+      "rollout_time": 76.19244125598925,
+      "unique_instances_this_update": 17,
+      "update": 1,
+      "update_time": 13.99626855799579,
+      "validation_normalized_makespan": 0.1660891114387894,
+      "value_loss": 0.007098020054399967
+    },
+    {
+      "approx_kl": 0.0023039908756564494,
+      "best_policy_kl_mwf": {
+        "f": 5.2340119076765814e-09,
+        "island": 2.1099223479481566e-09,
+        "mean": 4.692902193255806e-11,
+        "w": -7.203147189827064e-09
+      },
+      "best_reference_score": 0.1649326854329491,
+      "environment_steps": 2452,
+      "episodes": 29,
+      "episodes_this_update": 12,
+      "feasibility_rate": 1.0,
+      "improved_best_reference": true,
+      "learning_rates": [
+        5e-05,
+        0.0001,
+        0.0001
+      ],
+      "normalized_entropy_mwf": 0.6879408946591883,
+      "normalized_f_entropy": 0.3579304013384855,
+      "normalized_island_entropy": 0.7422789188601165,
+      "normalized_operation_entropy_measurement": 0.6196696494074594,
+      "normalized_w_entropy": 0.6593127148851233,
+      "policy_loss": -0.0018257845055173944,
+      "reward_statistics": {
+        "count": 1142.0,
+        "mean": -0.0015904934021586665,
+        "std": 0.003433090405767462,
+        "zero_fraction": 0.44833625218914186
+      },
+      "rollback_applied": false,
+      "rollback_count": 0,
+      "rollback_triggered": false,
+      "rollout_time": 64.7631241529889,
+      "unique_instances_this_update": 12,
+      "update": 2,
+      "update_time": 70.43450963500072,
+      "validation_normalized_makespan": 0.1649326854329491,
+      "value_loss": 0.0014769121318952078
+    },
+    {
+      "approx_kl": 0.0027812744614224088,
+      "best_policy_kl_mwf": {
+        "f": 0.0017129641910790736,
+        "island": 0.003115586401690962,
+        "mean": 0.0016648628311843675,
+        "w": 0.00016603790078306702
+      },
+      "best_reference_score": 0.1649326854329491,
+      "environment_steps": 3505,
+      "episodes": 40,
+      "episodes_this_update": 11,
+      "feasibility_rate": 1.0,
+      "improved_best_reference": false,
+      "learning_rates": [
+        5e-05,
+        0.0001,
+        0.0001
+      ],
+      "normalized_entropy_mwf": 0.6664169487564656,
+      "normalized_f_entropy": 0.2309389979067091,
+      "normalized_island_entropy": 0.7355698622604963,
+      "normalized_operation_entropy_measurement": 0.5590534784536123,
+      "normalized_w_entropy": 0.6344043995755682,
+      "policy_loss": -0.0045115215082963305,
+      "reward_statistics": {
+        "count": 1053.0,
+        "mean": -0.001961239424386443,
+        "std": 0.0038627758589340777,
+        "zero_fraction": 0.5612535612535613
+      },
+      "rollback_applied": false,
+      "rollback_count": 0,
+      "rollback_triggered": false,
+      "rollout_time": 53.51194643697818,
+      "unique_instances_this_update": 11,
+      "update": 3,
+      "update_time": 61.85884996099048,
+      "validation_normalized_makespan": 0.16563464711040748,
+      "value_loss": 0.0009277766706266751
+    },
+    {
+      "approx_kl": 0.003067138611095288,
+      "best_policy_kl_mwf": {
+        "f": 0.0,
+        "island": -1.0443537701299022e-09,
+        "mean": 5.40892417949986e-10,
+        "w": 2.66703102397986e-09
+      },
+      "best_reference_score": 0.16362446876107556,
+      "environment_steps": 4674,
+      "episodes": 49,
+      "episodes_this_update": 9,
+      "feasibility_rate": 1.0,
+      "improved_best_reference": true,
+      "learning_rates": [
+        5e-05,
+        0.0001,
+        0.0001
+      ],
+      "normalized_entropy_mwf": 0.7086553888345004,
+      "normalized_f_entropy": 0.36886818184452647,
+      "normalized_island_entropy": 0.7576867134902083,
+      "normalized_operation_entropy_measurement": 0.6424122939960173,
+      "normalized_w_entropy": 0.702688027367713,
+      "policy_loss": 0.010583015096684297,
+      "reward_statistics": {
+        "count": 1169.0,
+        "mean": -0.0012965701748475303,
+        "std": 0.0028221758827122754,
+        "zero_fraction": 0.48674080410607357
+      },
+      "rollback_applied": false,
+      "rollback_count": 0,
+      "rollback_triggered": false,
+      "rollout_time": 72.7349768410204,
+      "unique_instances_this_update": 9,
+      "update": 4,
+      "update_time": 80.59695873400779,
+      "validation_normalized_makespan": 0.16362446876107556,
+      "value_loss": 0.0006235019953843827
+    },
+    {
+      "approx_kl": 0.0018258809549378282,
+      "best_policy_kl_mwf": {
+        "f": -6.21702443864168e-10,
+        "island": 1.0024144625475628e-08,
+        "mean": 3.1341473938704866e-09,
+        "w": 0.0
+      },
+      "best_reference_score": 0.1634730098279449,
+      "environment_steps": 5775,
+      "episodes": 63,
+      "episodes_this_update": 14,
+      "feasibility_rate": 1.0,
+      "improved_best_reference": true,
+      "learning_rates": [
+        5e-05,
+        0.0001,
+        0.0001
+      ],
+      "normalized_entropy_mwf": 0.6850117544886161,
+      "normalized_f_entropy": 0.3822705191595684,
+      "normalized_island_entropy": 0.7184512819067684,
+      "normalized_operation_entropy_measurement": 0.6320185779728568,
+      "normalized_w_entropy": 0.5936886054777709,
+      "policy_loss": -0.0037806068581563456,
+      "reward_statistics": {
+        "count": 1101.0,
+        "mean": -0.0020594676385772654,
+        "std": 0.003820484930601846,
+        "zero_fraction": 0.5077202543142597
+      },
+      "rollback_applied": false,
+      "rollback_count": 0,
+      "rollback_triggered": false,
+      "rollout_time": 54.61339460700401,
+      "unique_instances_this_update": 14,
+      "update": 5,
+      "update_time": 63.65654968901072,
+      "validation_normalized_makespan": 0.1634730098279449,
+      "value_loss": 0.0007765652736890371
+    },
+    {
+      "approx_kl": 0.001135045799418111,
+      "best_policy_kl_mwf": {
+        "f": 0.0,
+        "island": 6.062842838883142e-09,
+        "mean": 5.608808417711941e-10,
+        "w": -4.38020031356956e-09
+      },
+      "best_reference_score": 0.1606035092782248,
+      "environment_steps": 6902,
+      "episodes": 73,
+      "episodes_this_update": 10,
+      "feasibility_rate": 1.0,
+      "improved_best_reference": true,
+      "learning_rates": [
+        5e-05,
+        0.0001,
+        0.0001
+      ],
+      "normalized_entropy_mwf": 0.7122154845664469,
+      "normalized_f_entropy": 0.3429937174160837,
+      "normalized_island_entropy": 0.7103171167492567,
+      "normalized_operation_entropy_measurement": 0.6130928874517207,
+      "normalized_w_entropy": 0.7996145287323821,
+      "policy_loss": -0.004132865272738316,
+      "reward_statistics": {
+        "count": 1127.0,
+        "mean": -0.001370851005309788,
+        "std": 0.003702947808975409,
+        "zero_fraction": 0.5128660159716061
+      },
+      "rollback_applied": false,
+      "rollback_count": 0,
+      "rollback_triggered": false,
+      "rollout_time": 73.01578485200298,
+      "unique_instances_this_update": 10,
+      "update": 6,
+      "update_time": 79.81652749600471,
+      "validation_normalized_makespan": 0.1606035092782248,
+      "value_loss": 0.0003908200887963176
+    },
+    {
+      "approx_kl": 0.0031726448818921605,
+      "best_policy_kl_mwf": {
+        "f": 5.334202200417058e-09,
+        "island": -7.2164815789754755e-09,
+        "mean": -6.274264595194727e-10,
+        "w": 0.0
+      },
+      "best_reference_score": 0.1602810391807272,
+      "environment_steps": 7955,
+      "episodes": 88,
+      "episodes_this_update": 15,
+      "feasibility_rate": 1.0,
+      "improved_best_reference": true,
+      "learning_rates": [
+        5e-05,
+        0.0001,
+        0.0001
+      ],
+      "normalized_entropy_mwf": 0.6478535500665059,
+      "normalized_f_entropy": 0.32880137635896073,
+      "normalized_island_entropy": 0.7258755135482011,
+      "normalized_operation_entropy_measurement": 0.6010304560390703,
+      "normalized_w_entropy": 0.5423496319002518,
+      "policy_loss": -0.00909830760900621,
+      "reward_statistics": {
+        "count": 1053.0,
+        "mean": -0.0026055071200700567,
+        "std": 0.004714342104392513,
+        "zero_fraction": 0.41025641025641024
+      },
+      "rollback_applied": false,
+      "rollback_count": 0,
+      "rollback_triggered": false,
+      "rollout_time": 50.47595142701175,
+      "unique_instances_this_update": 15,
+      "update": 7,
+      "update_time": 58.84555419199751,
+      "validation_normalized_makespan": 0.1602810391807272,
+      "value_loss": 0.0005374134995724523
+    },
+    {
+      "approx_kl": 0.0019102317444826945,
+      "best_policy_kl_mwf": {
+        "f": 1.261673215170258e-09,
+        "island": 3.869458808924975e-09,
+        "mean": -1.320231293052024e-09,
+        "w": -9.091825903251305e-09
+      },
+      "best_reference_score": 0.1599425818051541,
+      "environment_steps": 9004,
+      "episodes": 101,
+      "episodes_this_update": 13,
+      "feasibility_rate": 1.0,
+      "improved_best_reference": true,
+      "learning_rates": [
+        5e-05,
+        0.0001,
+        0.0001
+      ],
+      "normalized_entropy_mwf": 0.6863092341489322,
+      "normalized_f_entropy": 0.3126664820639063,
+      "normalized_island_entropy": 0.7226545261417885,
+      "normalized_operation_entropy_measurement": 0.5663552869325527,
+      "normalized_w_entropy": 0.6595433231658184,
+      "policy_loss": 0.006879190879839438,
+      "reward_statistics": {
+        "count": 1049.0,
+        "mean": -0.002222856090993592,
+        "std": 0.0037095999143062727,
+        "zero_fraction": 0.3822688274547188
+      },
+      "rollback_applied": false,
+      "rollback_count": 0,
+      "rollback_triggered": false,
+      "rollout_time": 52.15708937999443,
+      "unique_instances_this_update": 13,
+      "update": 8,
+      "update_time": 59.91629897800158,
+      "validation_normalized_makespan": 0.1599425818051541,
+      "value_loss": 0.0004321689393017786
+    },
+    {
+      "approx_kl": 0.0025790744620179692,
+      "best_policy_kl_mwf": {
+        "f": -1.0378659935037325e-08,
+        "island": 5.243692147161028e-10,
+        "mean": -1.5150233116962983e-09,
+        "w": 5.309220785232327e-09
+      },
+      "best_reference_score": 0.15926791273841223,
+      "environment_steps": 10148,
+      "episodes": 117,
+      "episodes_this_update": 16,
+      "feasibility_rate": 1.0,
+      "improved_best_reference": true,
+      "learning_rates": [
+        5e-05,
+        0.0001,
+        0.0001
+      ],
+      "normalized_entropy_mwf": 0.6543661696675349,
+      "normalized_f_entropy": 0.26490924156556694,
+      "normalized_island_entropy": 0.6923076603137658,
+      "normalized_operation_entropy_measurement": 0.5693929349944485,
+      "normalized_w_entropy": 0.7065242680388627,
+      "policy_loss": -0.0036314910760632266,
+      "reward_statistics": {
+        "count": 1144.0,
+        "mean": -0.002515465690640371,
+        "std": 0.0053626335504721855,
+        "zero_fraction": 0.48164335664335667
+      },
+      "rollback_applied": false,
+      "rollback_count": 0,
+      "rollback_triggered": false,
+      "rollout_time": 54.976487281994196,
+      "unique_instances_this_update": 16,
+      "update": 9,
+      "update_time": 64.31787365398486,
+      "validation_normalized_makespan": 0.15926791273841223,
+      "value_loss": 0.00035805463428712555
+    },
+    {
+      "approx_kl": 0.0021424668956805597,
+      "best_policy_kl_mwf": {
+        "f": 9.38581356407775e-10,
+        "island": 5.387698454040191e-09,
+        "mean": 3.9953035063267045e-09,
+        "w": 5.6596307085321484e-09
+      },
+      "best_reference_score": 0.15532428856907982,
+      "environment_steps": 11207,
+      "episodes": 129,
+      "episodes_this_update": 12,
+      "feasibility_rate": 1.0,
+      "improved_best_reference": true,
+      "learning_rates": [
+        5e-05,
+        0.0001,
+        0.0001
+      ],
+      "normalized_entropy_mwf": 0.6668388845368491,
+      "normalized_f_entropy": 0.2557875008811462,
+      "normalized_island_entropy": 0.7097633082101417,
+      "normalized_operation_entropy_measurement": 0.54357707668146,
+      "normalized_w_entropy": 0.6935513988427974,
+      "policy_loss": 0.0030511817032540284,
+      "reward_statistics": {
+        "count": 1059.0,
+        "mean": -0.002140610044138403,
+        "std": 0.004229736012798229,
+        "zero_fraction": 0.4475920679886686
+      },
+      "rollback_applied": false,
+      "rollback_count": 0,
+      "rollback_triggered": false,
+      "rollout_time": 58.43389346500044,
+      "unique_instances_this_update": 12,
+      "update": 10,
+      "update_time": 64.54025683098007,
+      "validation_normalized_makespan": 0.15532428856907982,
+      "value_loss": 0.00024922277306258265
+    },
+    {
+      "approx_kl": 0.0012287571759467635,
+      "best_policy_kl_mwf": {
+        "f": 0.00011810825659193166,
+        "island": 0.0014744689328836103,
+        "mean": 0.000638338732933086,
+        "w": 0.00032243900932371616
+      },
+      "best_reference_score": 0.15532428856907982,
+      "environment_steps": 12292,
+      "episodes": 146,
+      "episodes_this_update": 17,
+      "feasibility_rate": 1.0,
+      "improved_best_reference": false,
+      "learning_rates": [
+        5e-05,
+        0.0001,
+        0.0001
+      ],
+      "normalized_entropy_mwf": 0.7414070622163712,
+      "normalized_f_entropy": 0.2833621766417455,
+      "normalized_island_entropy": 0.7090134482796737,
+      "normalized_operation_entropy_measurement": 0.5889149706224297,
+      "normalized_w_entropy": 0.7744663228857901,
+      "policy_loss": -0.0013206092709744418,
+      "reward_statistics": {
+        "count": 1085.0,
+        "mean": -0.003140418191582487,
+        "std": 0.004911690488602513,
+        "zero_fraction": 0.31152073732718893
+      },
+      "rollback_applied": false,
+      "rollback_count": 0,
+      "rollback_triggered": false,
+      "rollout_time": 50.955678583995905,
+      "unique_instances_this_update": 17,
+      "update": 11,
+      "update_time": 60.57553036499303,
+      "validation_normalized_makespan": 0.15549060328325523,
+      "value_loss": 0.00036062472079518356
+    },
+    {
+      "approx_kl": 0.0018377501888877574,
+      "best_policy_kl_mwf": {
+        "f": 2.105728480472635e-09,
+        "island": 6.486998646582087e-09,
+        "mean": 3.952703141648269e-09,
+        "w": 3.265382297890085e-09
+      },
+      "best_reference_score": 0.1527173176622658,
+      "environment_steps": 13343,
+      "episodes": 158,
+      "episodes_this_update": 12,
+      "feasibility_rate": 1.0,
+      "improved_best_reference": true,
+      "learning_rates": [
+        5e-05,
+        0.0001,
+        0.0001
+      ],
+      "normalized_entropy_mwf": 0.6404067572312477,
+      "normalized_f_entropy": 0.32918478521250993,
+      "normalized_island_entropy": 0.6714299242185667,
+      "normalized_operation_entropy_measurement": 0.5851408800160929,
+      "normalized_w_entropy": 0.606729014263717,
+      "policy_loss": -0.0011106500471079791,
+      "reward_statistics": {
+        "count": 1051.0,
+        "mean": -0.002158735652015238,
+        "std": 0.005155714432108715,
+        "zero_fraction": 0.5413891531874405
+      },
+      "rollback_applied": false,
+      "rollback_count": 0,
+      "rollback_triggered": false,
+      "rollout_time": 55.71333325500018,
+      "unique_instances_this_update": 12,
+      "update": 12,
+      "update_time": 64.57438606099458,
+      "validation_normalized_makespan": 0.1527173176622658,
+      "value_loss": 0.00025214106992482103
+    },
+    {
+      "approx_kl": 0.001300026724055459,
+      "best_policy_kl_mwf": {
+        "f": -1.431593391772978e-09,
+        "island": -4.7667567115716736e-09,
+        "mean": -1.025092600858135e-09,
+        "w": 3.1230723007702466e-09
+      },
+      "best_reference_score": 0.14950059717034242,
+      "environment_steps": 14428,
+      "episodes": 171,
+      "episodes_this_update": 13,
+      "feasibility_rate": 1.0,
+      "improved_best_reference": true,
+      "learning_rates": [
+        5e-05,
+        0.0001,
+        0.0001
+      ],
+      "normalized_entropy_mwf": 0.6297555647176972,
+      "normalized_f_entropy": 0.287687651414656,
+      "normalized_island_entropy": 0.7037955335372742,
+      "normalized_operation_entropy_measurement": 0.5657082075876433,
+      "normalized_w_entropy": 0.6230717967473576,
+      "policy_loss": 0.0006300689376614712,
+      "reward_statistics": {
+        "count": 1085.0,
+        "mean": -0.002003386423023429,
+        "std": 0.003704997842482537,
+        "zero_fraction": 0.42672811059907834
+      },
+      "rollback_applied": false,
+      "rollback_count": 0,
+      "rollback_triggered": false,
+      "rollout_time": 55.41535678098444,
+      "unique_instances_this_update": 13,
+      "update": 13,
+      "update_time": 64.18434772599721,
+      "validation_normalized_makespan": 0.14950059717034242,
+      "value_loss": 0.00021477210167278018
+    },
+    {
+      "approx_kl": 0.002518824566558814,
+      "best_policy_kl_mwf": {
+        "f": 0.0,
+        "island": 0.0011618586695476552,
+        "mean": 0.00048661276650818763,
+        "w": 0.00029797962997690775
+      },
+      "best_reference_score": 0.14950059717034242,
+      "environment_steps": 15542,
+      "episodes": 184,
+      "episodes_this_update": 13,
+      "feasibility_rate": 1.0,
+      "improved_best_reference": false,
+      "learning_rates": [
+        5e-05,
+        0.0001,
+        0.0001
+      ],
+      "normalized_entropy_mwf": 0.6684080528192735,
+      "normalized_f_entropy": 0.2113393858430792,
+      "normalized_island_entropy": 0.6792437520259973,
+      "normalized_operation_entropy_measurement": 0.5385395679902392,
+      "normalized_w_entropy": 0.7152791691390192,
+      "policy_loss": -0.006147803497259264,
+      "reward_statistics": {
+        "count": 1114.0,
+        "mean": -0.0019433891516068818,
+        "std": 0.0034624692044560464,
+        "zero_fraction": 0.4129263913824057
+      },
+      "rollback_applied": false,
+      "rollback_count": 0,
+      "rollback_triggered": false,
+      "rollout_time": 53.29458417400019,
+      "unique_instances_this_update": 13,
+      "update": 14,
+      "update_time": 61.45265602201107,
+      "validation_normalized_makespan": 0.15010945875954018,
+      "value_loss": 0.00023514519637467824
+    },
+    {
+      "approx_kl": 0.002627228667632961,
+      "best_policy_kl_mwf": {
+        "f": -6.160620686095757e-09,
+        "island": 4.343913742599348e-09,
+        "mean": 5.30294491920015e-09,
+        "w": 1.772554170109686e-08
+      },
+      "best_reference_score": 0.14759013550101788,
+      "environment_steps": 16658,
+      "episodes": 199,
+      "episodes_this_update": 15,
+      "feasibility_rate": 1.0,
+      "improved_best_reference": true,
+      "learning_rates": [
+        5e-05,
+        0.0001,
+        0.0001
+      ],
+      "normalized_entropy_mwf": 0.605752751387696,
+      "normalized_f_entropy": 0.2427951633080457,
+      "normalized_island_entropy": 0.697604952021453,
+      "normalized_operation_entropy_measurement": 0.5179455830647461,
+      "normalized_w_entropy": 0.5560293032460802,
+      "policy_loss": -0.0006670515501388798,
+      "reward_statistics": {
+        "count": 1116.0,
+        "mean": -0.001958666710257208,
+        "std": 0.0032180133100235702,
+        "zero_fraction": 0.43100358422939067
+      },
+      "rollback_applied": false,
+      "rollback_count": 0,
+      "rollback_triggered": false,
+      "rollout_time": 49.46685196997714,
+      "unique_instances_this_update": 15,
+      "update": 15,
+      "update_time": 59.77949462799006,
+      "validation_normalized_makespan": 0.14759013550101788,
+      "value_loss": 0.0002133539959753829
+    },
+    {
+      "approx_kl": 0.0022947045077604277,
+      "best_policy_kl_mwf": {
+        "f": 7.561873991253662e-09,
+        "island": -3.2929767246336894e-09,
+        "mean": 5.240169253275723e-09,
+        "w": 1.1451610493207198e-08
+      },
+      "best_reference_score": 0.14672117683106228,
+      "environment_steps": 17732,
+      "episodes": 210,
+      "episodes_this_update": 11,
+      "feasibility_rate": 1.0,
+      "improved_best_reference": true,
+      "learning_rates": [
+        5e-05,
+        0.0001,
+        0.0001
+      ],
+      "normalized_entropy_mwf": 0.687314783321913,
+      "normalized_f_entropy": 0.29292228193522307,
+      "normalized_island_entropy": 0.6856003665555289,
+      "normalized_operation_entropy_measurement": 0.5499993566849238,
+      "normalized_w_entropy": 0.8284490076198968,
+      "policy_loss": -0.0011841166350576612,
+      "reward_statistics": {
+        "count": 1074.0,
+        "mean": -0.0015040504438835088,
+        "std": 0.003244748471078442,
+        "zero_fraction": 0.5121042830540037
+      },
+      "rollback_applied": false,
+      "rollback_count": 0,
+      "rollback_triggered": false,
+      "rollout_time": 56.140810575016076,
+      "unique_instances_this_update": 11,
+      "update": 16,
+      "update_time": 64.82627042199601,
+      "validation_normalized_makespan": 0.14672117683106228,
+      "value_loss": 0.00013767048599051864
+    },
+    {
+      "approx_kl": 0.0021100935939304894,
+      "best_policy_kl_mwf": {
+        "f": 0.0047400992712596235,
+        "island": 0.000602136265115405,
+        "mean": 0.0017903750310210853,
+        "w": 2.8889556688227458e-05
+      },
+      "best_reference_score": 0.14672117683106228,
+      "environment_steps": 18772,
+      "episodes": 221,
+      "episodes_this_update": 11,
+      "feasibility_rate": 1.0,
+      "improved_best_reference": false,
+      "learning_rates": [
+        5e-05,
+        0.0001,
+        0.0001
+      ],
+      "normalized_entropy_mwf": 0.6707604756090733,
+      "normalized_f_entropy": 0.3362555553412922,
+      "normalized_island_entropy": 0.6983460386801636,
+      "normalized_operation_entropy_measurement": 0.5576515060539862,
+      "normalized_w_entropy": 0.6696671422752034,
+      "policy_loss": -0.026304112678324734,
+      "reward_statistics": {
+        "count": 1040.0,
+        "mean": -0.001818363313226045,
+        "std": 0.003775024133376112,
+        "zero_fraction": 0.4355769230769231
+      },
+      "rollback_applied": false,
+      "rollback_count": 0,
+      "rollback_triggered": false,
+      "rollout_time": 57.340227875014534,
+      "unique_instances_this_update": 11,
+      "update": 17,
+      "update_time": 65.2057637720136,
+      "validation_normalized_makespan": 0.1474067603829753,
+      "value_loss": 0.00016957210431832614
+    },
+    {
+      "approx_kl": 0.004682816700517799,
+      "best_policy_kl_mwf": {
+        "f": -4.890408224395555e-10,
+        "island": 2.2563613491510814e-08,
+        "mean": 7.729586433638877e-09,
+        "w": 1.1141866318453708e-09
+      },
+      "best_reference_score": 0.14553242627854523,
+      "environment_steps": 19841,
+      "episodes": 233,
+      "episodes_this_update": 12,
+      "feasibility_rate": 1.0,
+      "improved_best_reference": true,
+      "learning_rates": [
+        5e-05,
+        0.0001,
+        0.0001
+      ],
+      "normalized_entropy_mwf": 0.6525452778289527,
+      "normalized_f_entropy": 0.2561446013645657,
+      "normalized_island_entropy": 0.6836600057300588,
+      "normalized_operation_entropy_measurement": 0.5034159510501658,
+      "normalized_w_entropy": 0.8075785791826215,
+      "policy_loss": -0.006039043957436526,
+      "reward_statistics": {
+        "count": 1069.0,
+        "mean": -0.0015050372069937384,
+        "std": 0.0028087609930376395,
+        "zero_fraction": 0.5116931711880262
+      },
+      "rollback_applied": false,
+      "rollback_count": 0,
+      "rollback_triggered": false,
+      "rollout_time": 50.398925321991555,
+      "unique_instances_this_update": 12,
+      "update": 18,
+      "update_time": 59.17582672199933,
+      "validation_normalized_makespan": 0.14553242627854523,
+      "value_loss": 0.0001373540823503087
+    },
+    {
+      "approx_kl": 0.0022355313353559555,
+      "best_policy_kl_mwf": {
+        "f": 0.0,
+        "island": 0.0010701563296606764,
+        "mean": 0.0003567187765535588,
+        "w": 0.0
+      },
+      "best_reference_score": 0.14553242627854523,
+      "environment_steps": 20866,
+      "episodes": 244,
+      "episodes_this_update": 11,
+      "feasibility_rate": 1.0,
+      "improved_best_reference": false,
+      "learning_rates": [
+        5e-05,
+        0.0001,
+        0.0001
+      ],
+      "normalized_entropy_mwf": 0.6870411252665677,
+      "normalized_f_entropy": 0.2758598884943429,
+      "normalized_island_entropy": 0.6920287775800615,
+      "normalized_operation_entropy_measurement": 0.5760028904000204,
+      "normalized_w_entropy": 0.7259923778689915,
+      "policy_loss": -0.05200999816534696,
+      "reward_statistics": {
+        "count": 1025.0,
+        "mean": -0.0022663130071775375,
+        "std": 0.004429133004598084,
+        "zero_fraction": 0.4751219512195122
+      },
+      "rollback_applied": false,
+      "rollback_count": 0,
+      "rollback_triggered": false,
+      "rollout_time": 51.309755643014796,
+      "unique_instances_this_update": 11,
+      "update": 19,
+      "update_time": 59.63724381197244,
+      "validation_normalized_makespan": 0.14752420243786352,
+      "value_loss": 0.00021563300504112703
+    },
+    {
+      "approx_kl": 0.0016243684434879538,
+      "best_policy_kl_mwf": {
+        "f": 0.003613692203796095,
+        "island": 0.0018482808345652302,
+        "mean": 0.0020153568979601566,
+        "w": 0.0005840976555191446
+      },
+      "best_reference_score": 0.14553242627854523,
+      "environment_steps": 21893,
+      "episodes": 255,
+      "episodes_this_update": 11,
+      "feasibility_rate": 1.0,
+      "improved_best_reference": false,
+      "learning_rates": [
+        5e-05,
+        0.0001,
+        0.0001
+      ],
+      "normalized_entropy_mwf": 0.6807725892150073,
+      "normalized_f_entropy": 0.2911104038581312,
+      "normalized_island_entropy": 0.6673917615926593,
+      "normalized_operation_entropy_measurement": 0.5342510168829977,
+      "normalized_w_entropy": 0.7487049719267006,
+      "policy_loss": 0.09890495195846867,
+      "reward_statistics": {
+        "count": 1027.0,
+        "mean": -0.0017911649917490128,
+        "std": 0.003352680370489235,
+        "zero_fraction": 0.4936708860759494
+      },
+      "rollback_applied": false,
+      "rollback_count": 0,
+      "rollback_triggered": false,
+      "rollout_time": 53.85095677600475,
+      "unique_instances_this_update": 11,
+      "update": 20,
+      "update_time": 62.17228913199506,
+      "validation_normalized_makespan": 0.1501591286115365,
+      "value_loss": 0.0002568340272841009
+    },
+    {
+      "approx_kl": 0.0011655647842282498,
+      "best_policy_kl_mwf": {
+        "f": 0.003912942054967061,
+        "island": 0.003918313690519426,
+        "mean": 0.002775107007967866,
+        "w": 0.0004940652784171107
+      },
+      "best_reference_score": 0.14553242627854523,
+      "environment_steps": 23008,
+      "episodes": 266,
+      "episodes_this_update": 11,
+      "feasibility_rate": 1.0,
+      "improved_best_reference": false,
+      "learning_rates": [
+        5e-05,
+        0.0001,
+        0.0001
+      ],
+      "normalized_entropy_mwf": 0.6851305176109106,
+      "normalized_f_entropy": 0.3343139553491196,
+      "normalized_island_entropy": 0.6788627643947741,
+      "normalized_operation_entropy_measurement": 0.5514749263786102,
+      "normalized_w_entropy": 0.761704611642882,
+      "policy_loss": -0.0023304367506945573,
+      "reward_statistics": {
+        "count": 1115.0,
+        "mean": -0.0016728445042349014,
+        "std": 0.0037401623883853135,
+        "zero_fraction": 0.567713004484305
+      },
+      "rollback_applied": false,
+      "rollback_count": 0,
+      "rollback_triggered": false,
+      "rollout_time": 61.09191256799386,
+      "unique_instances_this_update": 11,
+      "update": 21,
+      "update_time": 69.13604296400445,
+      "validation_normalized_makespan": 0.14838736397374303,
+      "value_loss": 0.0001444915340269088
+    },
+    {
+      "approx_kl": 0.0012734767652647053,
+      "best_policy_kl_mwf": {
+        "f": 0.004370188577642153,
+        "island": 0.004731073204311542,
+        "mean": 0.003367610952174971,
+        "w": 0.001001571074571217
+      },
+      "best_reference_score": 0.14553242627854523,
+      "environment_steps": 24063,
+      "episodes": 276,
+      "episodes_this_update": 10,
+      "feasibility_rate": 1.0,
+      "improved_best_reference": false,
+      "learning_rates": [
+        5e-05,
+        0.0001,
+        0.0001
+      ],
+      "normalized_entropy_mwf": 0.7159356390707766,
+      "normalized_f_entropy": 0.3203520975985447,
+      "normalized_island_entropy": 0.6936712082678232,
+      "normalized_operation_entropy_measurement": 0.5914485554445087,
+      "normalized_w_entropy": 0.8061068330546078,
+      "policy_loss": -0.008592545227320105,
+      "reward_statistics": {
+        "count": 1055.0,
+        "mean": -0.0016646417653852703,
+        "std": 0.003513564530884308,
+        "zero_fraction": 0.4957345971563981
+      },
+      "rollback_applied": false,
+      "rollback_count": 0,
+      "rollback_triggered": false,
+      "rollout_time": 58.73077364999335,
+      "unique_instances_this_update": 10,
+      "update": 22,
+      "update_time": 66.86297962997924,
+      "validation_normalized_makespan": 0.14958397136434923,
+      "value_loss": 0.0001792361875198333
+    },
+    {
+      "approx_kl": 0.0024607343877034037,
+      "best_policy_kl_mwf": {
+        "f": 0.0021353721252934383,
+        "island": 0.007932785489174421,
+        "mean": 0.003525418244677253,
+        "w": 0.0005080971195638995
+      },
+      "best_reference_score": 0.14553242627854523,
+      "environment_steps": 25196,
+      "episodes": 295,
+      "episodes_this_update": 19,
+      "feasibility_rate": 1.0,
+      "improved_best_reference": false,
+      "learning_rates": [
+        5e-05,
+        0.0001,
+        0.0001
+      ],
+      "normalized_entropy_mwf": 0.6505097799959821,
+      "normalized_f_entropy": 0.21544267455501528,
+      "normalized_island_entropy": 0.6644655495060587,
+      "normalized_operation_entropy_measurement": 0.5117001702377443,
+      "normalized_w_entropy": 0.6325799616479252,
+      "policy_loss": -0.004180788855861734,
+      "reward_statistics": {
+        "count": 1133.0,
+        "mean": -0.0034685907029423932,
+        "std": 0.00552102794020246,
+        "zero_fraction": 0.3848190644307149
+      },
+      "rollback_applied": false,
+      "rollback_count": 0,
+      "rollback_triggered": false,
+      "rollout_time": 50.80990429598023,
+      "unique_instances_this_update": 19,
+      "update": 23,
+      "update_time": 59.40194716499536,
+      "validation_normalized_makespan": 0.15184967744969352,
+      "value_loss": 0.00032636074347128333
+    },
+    {
+      "approx_kl": 0.0013140178754703676,
+      "best_policy_kl_mwf": {
+        "f": 0.004234426397760229,
+        "island": 0.0021851699111721246,
+        "mean": 0.0021398654363107843,
+        "w": 0.0
+      },
+      "best_reference_score": 0.14553242627854523,
+      "environment_steps": 26303,
+      "episodes": 307,
+      "episodes_this_update": 12,
+      "feasibility_rate": 1.0,
+      "improved_best_reference": false,
+      "learning_rates": [
+        5e-05,
+        0.0001,
+        0.0001
+      ],
+      "normalized_entropy_mwf": 0.6848058783779967,
+      "normalized_f_entropy": 0.3746568173471094,
+      "normalized_island_entropy": 0.6761828372623522,
+      "normalized_operation_entropy_measurement": 0.5645698575618947,
+      "normalized_w_entropy": 0.7799618321457202,
+      "policy_loss": -0.0036681373086240557,
+      "reward_statistics": {
+        "count": 1107.0,
+        "mean": -0.001541900760996554,
+        "std": 0.0038135402081446055,
+        "zero_fraction": 0.5700090334236676
+      },
+      "rollback_applied": false,
+      "rollback_count": 0,
+      "rollback_triggered": false,
+      "rollout_time": 67.27179566901759,
+      "unique_instances_this_update": 12,
+      "update": 24,
+      "update_time": 75.43112112599192,
+      "validation_normalized_makespan": 0.1484993996364456,
+      "value_loss": 0.0001789154333959299
+    },
+    {
+      "approx_kl": 0.0011667687063486988,
+      "best_policy_kl_mwf": {
+        "f": 0.02603092842400656,
+        "island": 0.004942656801176781,
+        "mean": 0.01056884415144547,
+        "w": 0.0007329472291530692
+      },
+      "best_reference_score": 0.14553242627854523,
+      "environment_steps": 27376,
+      "episodes": 320,
+      "episodes_this_update": 13,
+      "feasibility_rate": 1.0,
+      "improved_best_reference": false,
+      "learning_rates": [
+        5e-05,
+        0.0001,
+        0.0001
+      ],
+      "normalized_entropy_mwf": 0.662319342585801,
+      "normalized_f_entropy": 0.29153307431091907,
+      "normalized_island_entropy": 0.6547066055661703,
+      "normalized_operation_entropy_measurement": 0.5415422196541585,
+      "normalized_w_entropy": 0.7093409348952563,
+      "policy_loss": -0.0037887427886879005,
+      "reward_statistics": {
+        "count": 1073.0,
+        "mean": -0.0021403483051167706,
+        "std": 0.0040505062987781365,
+        "zero_fraction": 0.47809878844361603
+      },
+      "rollback_applied": false,
+      "rollback_count": 0,
+      "rollback_triggered": false,
+      "rollout_time": 59.20390171697363,
+      "unique_instances_this_update": 13,
+      "update": 25,
+      "update_time": 67.53531320701586,
+      "validation_normalized_makespan": 0.1498277134649788,
+      "value_loss": 0.00014246157095638208
+    }
+  ],
+  "initial_validation": {
+    "feasibility_rate": 1.0,
+    "mean_makespan": 1882.2,
+    "mean_normalized_entropy": 0.6828209373973712,
+    "mean_normalized_makespan": 0.18749457138589518,
+    "records": [
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61001",
+        "level": "S",
+        "makespan": 336.0,
+        "normalized_entropy": 0.5781674353699935,
+        "normalized_makespan": 0.18823529411764706,
+        "seed": 61001
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61002",
+        "level": "S",
+        "makespan": 442.0,
+        "normalized_entropy": 0.7402474546432495,
+        "normalized_makespan": 0.17145073700543056,
+        "seed": 61002
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61003",
+        "level": "S",
+        "makespan": 711.0,
+        "normalized_entropy": 0.7073076116955943,
+        "normalized_makespan": 0.38041733547351525,
+        "seed": 61003
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61004",
+        "level": "S",
+        "makespan": 309.0,
+        "normalized_entropy": 0.7406985272060741,
+        "normalized_makespan": 0.24178403755868544,
+        "seed": 61004
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61005",
+        "level": "S",
+        "makespan": 641.0,
+        "normalized_entropy": 0.3387014003844033,
+        "normalized_makespan": 0.19987527284066106,
+        "seed": 61005
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61006",
+        "level": "S",
+        "makespan": 278.0,
+        "normalized_entropy": 0.7126297280192375,
+        "normalized_makespan": 0.17331670822942644,
+        "seed": 61006
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61007",
+        "level": "S",
+        "makespan": 1086.0,
+        "normalized_entropy": 0.4857661621323947,
+        "normalized_makespan": 0.39248283339356704,
+        "seed": 61007
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61008",
+        "level": "S",
+        "makespan": 961.0,
+        "normalized_entropy": 0.5605177233616511,
+        "normalized_makespan": 0.33909668313338037,
+        "seed": 61008
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61009",
+        "level": "S",
+        "makespan": 618.0,
+        "normalized_entropy": 0.66391735030886,
+        "normalized_makespan": 0.356401384083045,
+        "seed": 61009
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61010",
+        "level": "S",
+        "makespan": 474.0,
+        "normalized_entropy": 0.3347427425330818,
+        "normalized_makespan": 0.25374732334047106,
+        "seed": 61010
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62001",
+        "level": "M",
+        "makespan": 871.0,
+        "normalized_entropy": 0.7327257348545666,
+        "normalized_makespan": 0.12750695359391012,
+        "seed": 62001
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62002",
+        "level": "M",
+        "makespan": 1445.0,
+        "normalized_entropy": 0.44265780159126134,
+        "normalized_makespan": 0.11863711001642036,
+        "seed": 62002
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62003",
+        "level": "M",
+        "makespan": 960.0,
+        "normalized_entropy": 0.642382536349552,
+        "normalized_makespan": 0.10182435299109037,
+        "seed": 62003
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62004",
+        "level": "M",
+        "makespan": 1114.0,
+        "normalized_entropy": 0.7821253322892718,
+        "normalized_makespan": 0.12792834175470832,
+        "seed": 62004
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62005",
+        "level": "M",
+        "makespan": 705.0,
+        "normalized_entropy": 0.7881958342733837,
+        "normalized_makespan": 0.15736607142857142,
+        "seed": 62005
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62006",
+        "level": "M",
+        "makespan": 1422.0,
+        "normalized_entropy": 0.7420692449470736,
+        "normalized_makespan": 0.17381738173817382,
+        "seed": 62006
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62007",
+        "level": "M",
+        "makespan": 1346.0,
+        "normalized_entropy": 0.7363972059317998,
+        "normalized_makespan": 0.14253944720957323,
+        "seed": 62007
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62008",
+        "level": "M",
+        "makespan": 1296.0,
+        "normalized_entropy": 0.6483262655686359,
+        "normalized_makespan": 0.254416961130742,
+        "seed": 62008
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62009",
+        "level": "M",
+        "makespan": 1396.0,
+        "normalized_entropy": 0.6874133342841886,
+        "normalized_makespan": 0.21424186617556784,
+        "seed": 62009
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62010",
+        "level": "M",
+        "makespan": 1590.0,
+        "normalized_entropy": 0.6460182497840982,
+        "normalized_makespan": 0.2732428252277024,
+        "seed": 62010
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63001",
+        "level": "L",
+        "makespan": 3437.0,
+        "normalized_entropy": 0.7850326761267239,
+        "normalized_makespan": 0.10175563253101223,
+        "seed": 63001
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63002",
+        "level": "L",
+        "makespan": 2339.0,
+        "normalized_entropy": 0.7721230756668818,
+        "normalized_makespan": 0.1601396686293304,
+        "seed": 63002
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63003",
+        "level": "L",
+        "makespan": 2163.0,
+        "normalized_entropy": 0.7760908942330967,
+        "normalized_makespan": 0.11984043437309547,
+        "seed": 63003
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63004",
+        "level": "L",
+        "makespan": 6138.0,
+        "normalized_entropy": 0.7907895981932486,
+        "normalized_makespan": 0.13800701501933627,
+        "seed": 63004
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63005",
+        "level": "L",
+        "makespan": 2810.0,
+        "normalized_entropy": 0.7259742423892022,
+        "normalized_makespan": 0.09209793189341549,
+        "seed": 63005
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63006",
+        "level": "L",
+        "makespan": 4720.0,
+        "normalized_entropy": 0.7797373145345657,
+        "normalized_makespan": 0.10600309924315583,
+        "seed": 63006
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63007",
+        "level": "L",
+        "makespan": 3413.0,
+        "normalized_entropy": 0.8074444805161428,
+        "normalized_makespan": 0.11267373147139415,
+        "seed": 63007
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63008",
+        "level": "L",
+        "makespan": 3067.0,
+        "normalized_entropy": 0.8175144269142622,
+        "normalized_makespan": 0.15281514698555057,
+        "seed": 63008
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63009",
+        "level": "L",
+        "makespan": 5301.0,
+        "normalized_entropy": 0.7020732944124731,
+        "normalized_makespan": 0.12927376481490513,
+        "seed": 63009
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63010",
+        "level": "L",
+        "makespan": 5077.0,
+        "normalized_entropy": 0.8168404434061698,
+        "normalized_makespan": 0.12390179617336977,
+        "seed": 63010
+      }
+    ]
+  },
+  "memory": {
+    "peak_gpu_allocated_bytes": 4133307392,
+    "peak_gpu_reserved_bytes": 7400849408
+  },
+  "requested_updates": 25,
+  "rollback_count": 0,
+  "rollback_events": [],
+  "run_metadata": {
+    "config_sha256": "5b63b8833fef33468a69b55ca59b722240ad748684e793b0f966e60f4717b789",
+    "cpu": "x86_64",
+    "device": "cuda",
+    "git_commit": "d6c4eb28062c6d1189fb078fd6fb626c8999638e",
+    "gpu": "NVIDIA GeForce RTX 4060 Ti",
+    "hostname": "ustb",
+    "python": "3.11.15",
+    "ram_bytes": 33423183872,
+    "torch_cuda_version": "12.8",
+    "torch_version": "2.11.0+cu128",
+    "training_seed": 520101,
+    "vram_bytes": 8182628352
+  },
+  "selected_best_validation": {
+    "feasibility_rate": 1.0,
+    "mean_makespan": 1518.8333333333333,
+    "mean_normalized_entropy": 0.6147498743615614,
+    "mean_normalized_makespan": 0.17106813127889844,
+    "records": [
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61001",
+        "level": "S",
+        "makespan": 336.0,
+        "normalized_entropy": 0.4788701189191718,
+        "normalized_makespan": 0.18823529411764706,
+        "seed": 61001
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61002",
+        "level": "S",
+        "makespan": 387.0,
+        "normalized_entropy": 0.7893084549903869,
+        "normalized_makespan": 0.15011636927851046,
+        "seed": 61002
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61003",
+        "level": "S",
+        "makespan": 708.0,
+        "normalized_entropy": 0.6291946524547206,
+        "normalized_makespan": 0.37881219903691815,
+        "seed": 61003
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61004",
+        "level": "S",
+        "makespan": 324.0,
+        "normalized_entropy": 0.3573751436038451,
+        "normalized_makespan": 0.2535211267605634,
+        "seed": 61004
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61005",
+        "level": "S",
+        "makespan": 641.0,
+        "normalized_entropy": 0.258323869883878,
+        "normalized_makespan": 0.19987527284066106,
+        "seed": 61005
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61006",
+        "level": "S",
+        "makespan": 278.0,
+        "normalized_entropy": 0.5127040110528469,
+        "normalized_makespan": 0.17331670822942644,
+        "seed": 61006
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61007",
+        "level": "S",
+        "makespan": 1092.0,
+        "normalized_entropy": 0.5468728293118805,
+        "normalized_makespan": 0.3946512468377304,
+        "seed": 61007
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61008",
+        "level": "S",
+        "makespan": 961.0,
+        "normalized_entropy": 0.4603571215023597,
+        "normalized_makespan": 0.33909668313338037,
+        "seed": 61008
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61009",
+        "level": "S",
+        "makespan": 618.0,
+        "normalized_entropy": 0.7144424091367161,
+        "normalized_makespan": 0.356401384083045,
+        "seed": 61009
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61010",
+        "level": "S",
+        "makespan": 474.0,
+        "normalized_entropy": 0.19239929459916208,
+        "normalized_makespan": 0.25374732334047106,
+        "seed": 61010
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62001",
+        "level": "M",
+        "makespan": 709.0,
+        "normalized_entropy": 0.6014896966747795,
+        "normalized_makespan": 0.10379153857414727,
+        "seed": 62001
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62002",
+        "level": "M",
+        "makespan": 1353.0,
+        "normalized_entropy": 0.44631122968671744,
+        "normalized_makespan": 0.11108374384236454,
+        "seed": 62002
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62003",
+        "level": "M",
+        "makespan": 836.0,
+        "normalized_entropy": 0.5967320385945121,
+        "normalized_makespan": 0.08867204072974119,
+        "seed": 62003
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62004",
+        "level": "M",
+        "makespan": 733.0,
+        "normalized_entropy": 0.6190450773506958,
+        "normalized_makespan": 0.08417547083141938,
+        "seed": 62004
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62005",
+        "level": "M",
+        "makespan": 619.0,
+        "normalized_entropy": 0.6023052039423159,
+        "normalized_makespan": 0.13816964285714287,
+        "seed": 62005
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62006",
+        "level": "M",
+        "makespan": 1414.0,
+        "normalized_entropy": 0.6789504081573127,
+        "normalized_makespan": 0.1728395061728395,
+        "seed": 62006
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62007",
+        "level": "M",
+        "makespan": 957.0,
+        "normalized_entropy": 0.6526776287134558,
+        "normalized_makespan": 0.10134491157471143,
+        "seed": 62007
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62008",
+        "level": "M",
+        "makespan": 1298.0,
+        "normalized_entropy": 0.5707998391316862,
+        "normalized_makespan": 0.25480957989791914,
+        "seed": 62008
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62009",
+        "level": "M",
+        "makespan": 1373.0,
+        "normalized_entropy": 0.5448093881022256,
+        "normalized_makespan": 0.21071209330877838,
+        "seed": 62009
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62010",
+        "level": "M",
+        "makespan": 1491.0,
+        "normalized_entropy": 0.8270536543324937,
+        "normalized_makespan": 0.25622959271352463,
+        "seed": 62010
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63001",
+        "level": "L",
+        "makespan": 2135.0,
+        "normalized_entropy": 0.6704013650970799,
+        "normalized_makespan": 0.06320869230541493,
+        "seed": 63001
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63002",
+        "level": "L",
+        "makespan": 1607.0,
+        "normalized_entropy": 0.6212325287421071,
+        "normalized_makespan": 0.1100232781048884,
+        "seed": 63002
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63003",
+        "level": "L",
+        "makespan": 1872.0,
+        "normalized_entropy": 0.652437553565318,
+        "normalized_makespan": 0.10371765748794948,
+        "seed": 63003
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63004",
+        "level": "L",
+        "makespan": 2880.0,
+        "normalized_entropy": 0.7550049259342961,
+        "normalized_makespan": 0.06475402464250382,
+        "seed": 63004
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63005",
+        "level": "L",
+        "makespan": 2724.0,
+        "normalized_entropy": 0.6947069696017674,
+        "normalized_makespan": 0.08927927632657075,
+        "seed": 63005
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63006",
+        "level": "L",
+        "makespan": 3754.0,
+        "normalized_entropy": 0.756352478549594,
+        "normalized_makespan": 0.08430839715228962,
+        "seed": 63006
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63007",
+        "level": "L",
+        "makespan": 2870.0,
+        "normalized_entropy": 0.8518767124515468,
+        "normalized_makespan": 0.09474761480307682,
+        "seed": 63007
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63008",
+        "level": "L",
+        "makespan": 1616.0,
+        "normalized_entropy": 0.8438993677680875,
+        "normalized_makespan": 0.08051818634778277,
+        "seed": 63008
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63009",
+        "level": "L",
+        "makespan": 4479.0,
+        "normalized_entropy": 0.7701513422974224,
+        "normalized_makespan": 0.10922791786567819,
+        "seed": 63009
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63010",
+        "level": "L",
+        "makespan": 5026.0,
+        "normalized_entropy": 0.7464109166984645,
+        "normalized_makespan": 0.12265716516985553,
+        "seed": 63010
+      }
+    ]
+  },
+  "stopped_early": false,
+  "training_seed": 520101,
+  "updates": 25,
+  "wall_clock_seconds": 6004.76687267801
+}

@@ -1,0 +1,43 @@
+{
+  "extends": "phase5a_final.json",
+  "output_root": "outputs/phase5b",
+  "training_seed_policy": {
+    "independent_training_seeds": [520101, 520102, 520103],
+    "episode_seed_start": 4000000,
+    "forbid_validation_overlap": true
+  },
+  "phase5b_holdout_seeds": {
+    "S": [71001, 71002, 71003, 71004, 71005, 71006, 71007, 71008, 71009, 71010, 71011, 71012, 71013, 71014, 71015, 71016, 71017, 71018, 71019, 71020],
+    "M": [72001, 72002, 72003, 72004, 72005, 72006, 72007, 72008, 72009, 72010, 72011, 72012, 72013, 72014, 72015, 72016, 72017, 72018, 72019, 72020],
+    "L": [73001, 73002, 73003, 73004, 73005, 73006, 73007, 73008, 73009, 73010, 73011, 73012, 73013, 73014, 73015, 73016, 73017, 73018, 73019, 73020]
+  },
+  "phase5b_structural_scenarios": {
+    "seeds": [74001, 74002, 74003, 74004, 74005, 74006, 74007, 74008, 74009, 74010],
+    "names": ["high_reconfiguration", "high_travel", "fleet_scarcity"]
+  },
+  "phase5a_oracle_checkpoints": [
+    "outputs/phase5a/seed_1/best_mean.pt",
+    "outputs/phase5a/seed_2/best_mean.pt",
+    "outputs/phase5a/seed_3/best_mean.pt"
+  ],
+  "downstream_ppo": {
+    "pilot_seed": 520101,
+    "pilot_updates": 25,
+    "operation_mode": "frozen_bc_greedy",
+    "trainable_stages": ["island", "w", "f"],
+    "best_policy_kl_loss_enabled": false,
+    "rollback_patience": 3,
+    "rollback_relative_regression": 0.04,
+    "rollback_learning_rate_factor": 0.5,
+    "maximum_rollbacks": 2
+  },
+  "downstream_pilot_gate": {
+    "holdout_gap_to_bc_percent_max": 0.0,
+    "per_level_gap_to_bc_percent_max": 5.0,
+    "high_travel_gap_to_bc_percent_max": 5.0,
+    "high_reconfiguration_gap_to_bc_percent_max": 5.0
+  },
+  "canonical_gradient_instances": 0,
+  "canonical_full_evaluation": 0,
+  "csg_enabled": false
+}

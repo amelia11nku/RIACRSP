@@ -30,15 +30,34 @@
       "outputs/phase4/capacity_study/D32-L2/demonstrations_summary.json",
       "outputs/phase4/capacity_study/D64-L2/demonstrations_summary.json",
       "outputs/phase4/capacity_study/D64-L3/demonstrations_summary.json"
+    ],
+    [
+      "outputs/phase5b/downstream_pilot/config.json",
+      "outputs/phase5b/profiling/downstream_sanity/config.json"
+    ],
+    [
+      "outputs/phase5b/downstream_seed_1/config.json",
+      "outputs/phase5b/downstream_seed_2/config.json",
+      "outputs/phase5b/downstream_seed_3/config.json",
+      "outputs/phase5b/freeze_boundary/F2_seed_1/config.json"
     ]
   ],
   "candidate_redundant_files": [
     "scripts/analyze_gradient_interference.py",
     "scripts/analyze_phase5a_gate.py",
+    "scripts/analyze_phase5b_final_gate.py",
+    "scripts/analyze_phase5b_hybrids.py",
+    "scripts/analyze_phase5b_operation_drift.py",
     "scripts/analyze_policy_stages.py",
     "scripts/build_phase5a_development.py",
+    "scripts/build_phase5b_holdout.py",
     "scripts/evaluate_phase5a.py",
-    "scripts/plot_phase5a_results.py"
+    "scripts/evaluate_phase5b_canonical.py",
+    "scripts/evaluate_phase5b_pilot.py",
+    "scripts/evaluate_phase5b_seeds.py",
+    "scripts/plot_phase5a_results.py",
+    "scripts/plot_phase5b_results.py",
+    "scripts/train_downstream_ppo.py"
   ],
   "unexpected_tiny_json": [],
   "root_demo_json": [],

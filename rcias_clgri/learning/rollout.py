@@ -81,7 +81,7 @@ def collect_episode(
         timing["forward"] += perf_counter() - started
         started = perf_counter()
         with torch.no_grad():
-            evaluation = model.policy.sample_action(
+            evaluation = model.sample_action_from_hidden(
                 graph_device,
                 hidden,
                 deterministic=deterministic,

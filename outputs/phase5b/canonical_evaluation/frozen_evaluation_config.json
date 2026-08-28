@@ -1,0 +1,113 @@
+{
+  "canonical_gate": {
+    "canonical_evaluation_authorized": true,
+    "canonical_instances_before_authorized_evaluation": 0,
+    "checks": {
+      "config_frozen": true,
+      "expanded_holdout_overall_not_worse_than_bc": true,
+      "f1_beats_f2_on_holdout": true,
+      "feasibility_100": true,
+      "no_level_severe_regression": true,
+      "structural_groups_stable": true,
+      "three_seeds_stable": true
+    },
+    "config": "configs/phase5b_final.json",
+    "config_sha256": "2476d52ea82ee21461ca9128c84ab80743e391bfe346c0b87008763d4f244e42",
+    "f2_holdout_gap_to_bc_percent": -1.5387558785468356,
+    "frozen_checkpoints": [
+      {
+        "best_update": 18,
+        "checkpoint": "outputs/phase5b/downstream_seed_1/selected_best.pt",
+        "sha256": "80fcc2e850262d4112edc49a2c344268bdb82513a91c17fbcd0554d4e5589fbc",
+        "training_seed": 520101
+      },
+      {
+        "best_update": 25,
+        "checkpoint": "outputs/phase5b/downstream_seed_2/selected_best.pt",
+        "sha256": "dc9e2e21d278fddc87c8d4fee210066e21ffb66183f17627b39b1acc67085753",
+        "training_seed": 520102
+      },
+      {
+        "best_update": 11,
+        "checkpoint": "outputs/phase5b/downstream_seed_3/selected_best.pt",
+        "sha256": "73da06481a7a766ce3dc061aa09b2aaeff03f648d6a43bf30e4dc1aeedae0119",
+        "training_seed": 520103
+      }
+    ],
+    "holdout_mean_gap_to_bc_percent": -5.864577613061778,
+    "holdout_seed_std_percentage_points": 2.034907531315033,
+    "level_gaps_to_bc_percent": {
+      "L": -10.346291752500695,
+      "M": -5.244163021869509,
+      "S": -2.0032780648151283
+    },
+    "passed": true,
+    "selected_architecture": "F1_frozen_bc_operation_plus_ppo_mwf",
+    "structural_results": {
+      "fleet_scarcity": {
+        "best_seed_gap_to_bc_percent": 0.41182540345798163,
+        "feasibility_rate": 1.0,
+        "instance_seed_runs": 30,
+        "mean_gap_to_bc_percent": 0.8695808821597477,
+        "median_gap_to_bc_percent": 0.8708074646211237,
+        "seed_gaps_to_bc_percent": {
+          "520101": 0.8708074646211237,
+          "520102": 1.3261097784001379,
+          "520103": 0.41182540345798163
+        },
+        "std_gap_to_bc_percentage_points": 0.3732560407586578,
+        "worst_seed_gap_to_bc_percent": 1.3261097784001379
+      },
+      "high_reconfiguration": {
+        "best_seed_gap_to_bc_percent": -15.814828511172601,
+        "feasibility_rate": 1.0,
+        "instance_seed_runs": 30,
+        "mean_gap_to_bc_percent": -8.10738495753126,
+        "median_gap_to_bc_percent": -10.512830340391298,
+        "seed_gaps_to_bc_percent": {
+          "520101": -15.814828511172601,
+          "520102": -10.512830340391298,
+          "520103": 2.0055039789701223
+        },
+        "std_gap_to_bc_percentage_points": 7.471309038905703,
+        "worst_seed_gap_to_bc_percent": 2.0055039789701223
+      },
+      "high_travel": {
+        "best_seed_gap_to_bc_percent": -19.81499798854762,
+        "feasibility_rate": 1.0,
+        "instance_seed_runs": 30,
+        "mean_gap_to_bc_percent": -10.566005020435554,
+        "median_gap_to_bc_percent": -11.235292596340337,
+        "seed_gaps_to_bc_percent": {
+          "520101": -19.81499798854762,
+          "520102": -11.235292596340337,
+          "520103": -0.6477244764187071
+        },
+        "std_gap_to_bc_percentage_points": 7.839304938008856,
+        "worst_seed_gap_to_bc_percent": -0.6477244764187071
+      }
+    }
+  },
+  "checkpoints": [
+    {
+      "best_update": 18,
+      "checkpoint": "outputs/phase5b/downstream_seed_1/selected_best.pt",
+      "sha256": "80fcc2e850262d4112edc49a2c344268bdb82513a91c17fbcd0554d4e5589fbc",
+      "training_seed": 520101
+    },
+    {
+      "best_update": 25,
+      "checkpoint": "outputs/phase5b/downstream_seed_2/selected_best.pt",
+      "sha256": "dc9e2e21d278fddc87c8d4fee210066e21ffb66183f17627b39b1acc67085753",
+      "training_seed": 520102
+    },
+    {
+      "best_update": 11,
+      "checkpoint": "outputs/phase5b/downstream_seed_3/selected_best.pt",
+      "sha256": "73da06481a7a766ce3dc061aa09b2aaeff03f648d6a43bf30e4dc1aeedae0119",
+      "training_seed": 520103
+    }
+  ],
+  "config_sha256": "2476d52ea82ee21461ca9128c84ab80743e391bfe346c0b87008763d4f244e42",
+  "frozen_before_canonical_evaluation": true
+}

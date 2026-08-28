@@ -14,6 +14,7 @@ from rcias_clgri.data.instance import Instance
 from rcias_clgri.heuristic.dispatching import solve_dispatching
 from rcias_clgri.nn.config import ModelConfig
 from rcias_clgri.nn.model import RCIASNeuralModel
+from rcias_clgri.nn.hierarchical_policy import OperationAnchoredModel
 from rcias_clgri.nn.tensorizer import GraphTensorizer
 
 from .rollout import collect_episode
@@ -93,6 +94,27 @@ def save_checkpoint(
     torch.save(checkpoint_payload(model, tensorizer, metadata=metadata), target)
 
 
+def save_operation_anchored_checkpoint(
+    path: str | Path,
+    model: OperationAnchoredModel,
+    tensorizer: GraphTensorizer,
+    *,
+    frozen_operation_checkpoint: str,
+    metadata: dict[str, object],
+) -> None:
+    target = Path(path)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    torch.save({
+        "checkpoint_type": "operation_anchored",
+        "downstream_model_state": model.downstream.state_dict(),
+        "model_config": model.config.to_dict(),
+        "tensorizer_schema": tensorizer.to_schema(),
+        "frozen_operation_checkpoint": frozen_operation_checkpoint,
+        "frozen_prefix_stages": model.frozen_prefix_stages,
+        "metadata": metadata,
+    }, target)
+
+
 def load_checkpoint(
     path: str | Path, *, device: torch.device | str,
 ) -> tuple[RCIASNeuralModel, GraphTensorizer, dict[str, object]]:
@@ -105,6 +127,30 @@ def load_checkpoint(
     model = RCIASNeuralModel(tensorizer, ModelConfig(**payload["model_config"]))
     model.load_state_dict(payload["model_state"])
     model.to(device)
+    model.eval()
+    return model, tensorizer, payload.get("metadata", {})
+
+
+def load_operation_anchored_checkpoint(
+    path: str | Path, *, device: torch.device | str,
+) -> tuple[OperationAnchoredModel, GraphTensorizer, dict[str, object]]:
+    with torch.serialization.safe_globals([TorchVersion]):
+        payload = torch.load(Path(path), map_location=device, weights_only=True)
+    if payload.get("checkpoint_type") != "operation_anchored":
+        raise ValueError("checkpoint is not an operation-anchored Phase 5B policy")
+    tensorizer = GraphTensorizer.from_schema(payload["tensorizer_schema"])
+    downstream = RCIASNeuralModel(tensorizer, ModelConfig(**payload["model_config"]))
+    downstream.load_state_dict(payload["downstream_model_state"])
+    frozen, frozen_tensorizer, _ = load_checkpoint(
+        payload["frozen_operation_checkpoint"], device=device
+    )
+    if frozen_tensorizer.to_schema() != tensorizer.to_schema():
+        raise RuntimeError("frozen-operation and downstream tensorizer schemas differ")
+    model = OperationAnchoredModel(
+        frozen,
+        downstream,
+        frozen_prefix_stages=int(payload.get("frozen_prefix_stages", 1)),
+    ).to(device)
     model.eval()
     return model, tensorizer, payload.get("metadata", {})
 

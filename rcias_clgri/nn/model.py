@@ -60,6 +60,35 @@ class RCIASNeuralModel(nn.Module):
             generator=generator,
         )
 
+    def sample_action_from_hidden(
+        self,
+        graph: GraphTensor,
+        hidden: Mapping[str, torch.Tensor],
+        *,
+        deterministic: bool = False,
+        temperature: float = 1.0,
+        generator: torch.Generator | None = None,
+    ):
+        return self.policy.sample_action(
+            graph,
+            hidden,
+            deterministic=deterministic,
+            temperature=temperature,
+            generator=generator,
+        )
+
+    def evaluate_action_from_hidden(
+        self,
+        graph: GraphTensor,
+        hidden: Mapping[str, torch.Tensor],
+        action: Action,
+        *,
+        temperature: float = 1.0,
+    ):
+        return self.policy.evaluate_action(
+            graph, hidden, action, temperature=temperature
+        )
+
     def evaluate_action(
         self, graph: GraphTensor, action: Action, *, temperature: float = 1.0,
     ):

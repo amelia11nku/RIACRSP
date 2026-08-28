@@ -1,0 +1,634 @@
+{
+  "all_feasible": true,
+  "best_update": 1,
+  "best_validation_normalized_makespan": 0.1662050329538226,
+  "canonical_gradient_instances": 0,
+  "environment_steps": 1310,
+  "episodes": 17,
+  "experiment": "phase5b_frozen_operation_downstream_ppo",
+  "frozen_operation_checkpoint": "outputs/phase4/bc_large/best.pt",
+  "history": [
+    {
+      "approx_kl": 0.006924871355295181,
+      "best_policy_kl_mwf": {
+        "f": -1.7268632079847634e-09,
+        "island": -8.362496058036267e-09,
+        "mean": 1.0924080802270086e-09,
+        "w": 1.3366583506702057e-08
+      },
+      "best_reference_score": 0.1662050329538226,
+      "environment_steps": 1310,
+      "episodes": 17,
+      "episodes_this_update": 17,
+      "feasibility_rate": 1.0,
+      "improved_best_reference": true,
+      "learning_rates": [
+        5e-05,
+        0.0001,
+        0.0001
+      ],
+      "normalized_entropy_mwf": 0.7167803396206595,
+      "normalized_f_entropy": 0.4377320230193992,
+      "normalized_island_entropy": 0.7041218403159292,
+      "normalized_operation_entropy_measurement": 0.6989132560469573,
+      "normalized_w_entropy": 0.624046581006769,
+      "policy_loss": -0.030983375012874605,
+      "reward_statistics": {
+        "count": 1310.0,
+        "mean": -0.002930247481520902,
+        "std": 0.005605974660887672,
+        "zero_fraction": 0.4450381679389313
+      },
+      "rollback_applied": false,
+      "rollback_count": 0,
+      "rollback_triggered": false,
+      "rollout_time": 78.34147233297699,
+      "unique_instances_this_update": 17,
+      "update": 1,
+      "update_time": 15.316984445991693,
+      "validation_normalized_makespan": 0.1662050329538226,
+      "value_loss": 0.007098023872822523
+    }
+  ],
+  "initial_validation": {
+    "feasibility_rate": 1.0,
+    "mean_makespan": 1882.2,
+    "mean_normalized_entropy": 0.6828209252597842,
+    "mean_normalized_makespan": 0.18749457138589518,
+    "records": [
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61001",
+        "level": "S",
+        "makespan": 336.0,
+        "normalized_entropy": 0.5781674447812533,
+        "normalized_makespan": 0.18823529411764706,
+        "seed": 61001
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61002",
+        "level": "S",
+        "makespan": 442.0,
+        "normalized_entropy": 0.740247483253479,
+        "normalized_makespan": 0.17145073700543056,
+        "seed": 61002
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61003",
+        "level": "S",
+        "makespan": 711.0,
+        "normalized_entropy": 0.7073076176974509,
+        "normalized_makespan": 0.38041733547351525,
+        "seed": 61003
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61004",
+        "level": "S",
+        "makespan": 309.0,
+        "normalized_entropy": 0.7406984730200334,
+        "normalized_makespan": 0.24178403755868544,
+        "seed": 61004
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61005",
+        "level": "S",
+        "makespan": 641.0,
+        "normalized_entropy": 0.3387012314797411,
+        "normalized_makespan": 0.19987527284066106,
+        "seed": 61005
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61006",
+        "level": "S",
+        "makespan": 278.0,
+        "normalized_entropy": 0.712629782302039,
+        "normalized_makespan": 0.17331670822942644,
+        "seed": 61006
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61007",
+        "level": "S",
+        "makespan": 1086.0,
+        "normalized_entropy": 0.4857661575078964,
+        "normalized_makespan": 0.39248283339356704,
+        "seed": 61007
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61008",
+        "level": "S",
+        "makespan": 961.0,
+        "normalized_entropy": 0.5605177283287048,
+        "normalized_makespan": 0.33909668313338037,
+        "seed": 61008
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61009",
+        "level": "S",
+        "makespan": 618.0,
+        "normalized_entropy": 0.6639173490488354,
+        "normalized_makespan": 0.356401384083045,
+        "seed": 61009
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61010",
+        "level": "S",
+        "makespan": 474.0,
+        "normalized_entropy": 0.3347424623084671,
+        "normalized_makespan": 0.25374732334047106,
+        "seed": 61010
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62001",
+        "level": "M",
+        "makespan": 871.0,
+        "normalized_entropy": 0.7327257667122216,
+        "normalized_makespan": 0.12750695359391012,
+        "seed": 62001
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62002",
+        "level": "M",
+        "makespan": 1445.0,
+        "normalized_entropy": 0.44265770858268566,
+        "normalized_makespan": 0.11863711001642036,
+        "seed": 62002
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62003",
+        "level": "M",
+        "makespan": 960.0,
+        "normalized_entropy": 0.6423825014914785,
+        "normalized_makespan": 0.10182435299109037,
+        "seed": 62003
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62004",
+        "level": "M",
+        "makespan": 1114.0,
+        "normalized_entropy": 0.7821253422233794,
+        "normalized_makespan": 0.12792834175470832,
+        "seed": 62004
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62005",
+        "level": "M",
+        "makespan": 705.0,
+        "normalized_entropy": 0.7881958342733837,
+        "normalized_makespan": 0.15736607142857142,
+        "seed": 62005
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62006",
+        "level": "M",
+        "makespan": 1422.0,
+        "normalized_entropy": 0.7420692528193852,
+        "normalized_makespan": 0.17381738173817382,
+        "seed": 62006
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62007",
+        "level": "M",
+        "makespan": 1346.0,
+        "normalized_entropy": 0.7363973012992314,
+        "normalized_makespan": 0.14253944720957323,
+        "seed": 62007
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62008",
+        "level": "M",
+        "makespan": 1296.0,
+        "normalized_entropy": 0.6483262552290546,
+        "normalized_makespan": 0.254416961130742,
+        "seed": 62008
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62009",
+        "level": "M",
+        "makespan": 1396.0,
+        "normalized_entropy": 0.6874133233191833,
+        "normalized_makespan": 0.21424186617556784,
+        "seed": 62009
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62010",
+        "level": "M",
+        "makespan": 1590.0,
+        "normalized_entropy": 0.6460182522098685,
+        "normalized_makespan": 0.2732428252277024,
+        "seed": 62010
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63001",
+        "level": "L",
+        "makespan": 3437.0,
+        "normalized_entropy": 0.7850327276645747,
+        "normalized_makespan": 0.10175563253101223,
+        "seed": 63001
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63002",
+        "level": "L",
+        "makespan": 2339.0,
+        "normalized_entropy": 0.7721230775590927,
+        "normalized_makespan": 0.1601396686293304,
+        "seed": 63002
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63003",
+        "level": "L",
+        "makespan": 2163.0,
+        "normalized_entropy": 0.7760909091342579,
+        "normalized_makespan": 0.11984043437309547,
+        "seed": 63003
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63004",
+        "level": "L",
+        "makespan": 6138.0,
+        "normalized_entropy": 0.7907896274960907,
+        "normalized_makespan": 0.13800701501933627,
+        "seed": 63004
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63005",
+        "level": "L",
+        "makespan": 2810.0,
+        "normalized_entropy": 0.7259742193988391,
+        "normalized_makespan": 0.09209793189341549,
+        "seed": 63005
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63006",
+        "level": "L",
+        "makespan": 4720.0,
+        "normalized_entropy": 0.7797372706983455,
+        "normalized_makespan": 0.10600309924315583,
+        "seed": 63006
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63007",
+        "level": "L",
+        "makespan": 3413.0,
+        "normalized_entropy": 0.8074444744546535,
+        "normalized_makespan": 0.11267373147139415,
+        "seed": 63007
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63008",
+        "level": "L",
+        "makespan": 3067.0,
+        "normalized_entropy": 0.8175144328011407,
+        "normalized_makespan": 0.15281514698555057,
+        "seed": 63008
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63009",
+        "level": "L",
+        "makespan": 5301.0,
+        "normalized_entropy": 0.702073287604184,
+        "normalized_makespan": 0.12927376481490513,
+        "seed": 63009
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63010",
+        "level": "L",
+        "makespan": 5077.0,
+        "normalized_entropy": 0.8168404630945818,
+        "normalized_makespan": 0.12390179617336977,
+        "seed": 63010
+      }
+    ]
+  },
+  "memory": {
+    "peak_gpu_allocated_bytes": 3138397184,
+    "peak_gpu_reserved_bytes": 4334813184
+  },
+  "requested_updates": 1,
+  "rollback_count": 0,
+  "rollback_events": [],
+  "run_metadata": {
+    "config_sha256": "88d66fa637893b34149b50d3cf65a87e8c031581795ab1a805410e4636f9a2b1",
+    "cpu": "x86_64",
+    "device": "cuda",
+    "git_commit": "d6c4eb28062c6d1189fb078fd6fb626c8999638e",
+    "gpu": "NVIDIA GeForce RTX 4060 Ti",
+    "hostname": "ustb",
+    "python": "3.11.15",
+    "ram_bytes": 33423183872,
+    "torch_cuda_version": "12.8",
+    "torch_version": "2.11.0+cu128",
+    "training_seed": 520101,
+    "vram_bytes": 8182628352
+  },
+  "selected_best_validation": {
+    "feasibility_rate": 1.0,
+    "mean_makespan": 1885.0,
+    "mean_normalized_entropy": 0.6782310773543883,
+    "mean_normalized_makespan": 0.18712544966879255,
+    "records": [
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61001",
+        "level": "S",
+        "makespan": 336.0,
+        "normalized_entropy": 0.5762938386515567,
+        "normalized_makespan": 0.18823529411764706,
+        "seed": 61001
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61002",
+        "level": "S",
+        "makespan": 442.0,
+        "normalized_entropy": 0.7301827347278596,
+        "normalized_makespan": 0.17145073700543056,
+        "seed": 61002
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61003",
+        "level": "S",
+        "makespan": 711.0,
+        "normalized_entropy": 0.706131384604507,
+        "normalized_makespan": 0.38041733547351525,
+        "seed": 61003
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61004",
+        "level": "S",
+        "makespan": 309.0,
+        "normalized_entropy": 0.7314976887269453,
+        "normalized_makespan": 0.24178403755868544,
+        "seed": 61004
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61005",
+        "level": "S",
+        "makespan": 641.0,
+        "normalized_entropy": 0.38982728297121694,
+        "normalized_makespan": 0.19987527284066106,
+        "seed": 61005
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61006",
+        "level": "S",
+        "makespan": 278.0,
+        "normalized_entropy": 0.6768468852554049,
+        "normalized_makespan": 0.17331670822942644,
+        "seed": 61006
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61007",
+        "level": "S",
+        "makespan": 1086.0,
+        "normalized_entropy": 0.49018233860361166,
+        "normalized_makespan": 0.39248283339356704,
+        "seed": 61007
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61008",
+        "level": "S",
+        "makespan": 961.0,
+        "normalized_entropy": 0.5546077551941077,
+        "normalized_makespan": 0.33909668313338037,
+        "seed": 61008
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61009",
+        "level": "S",
+        "makespan": 618.0,
+        "normalized_entropy": 0.6526398282936391,
+        "normalized_makespan": 0.356401384083045,
+        "seed": 61009
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_S_61010",
+        "level": "S",
+        "makespan": 474.0,
+        "normalized_entropy": 0.3841134918004364,
+        "normalized_makespan": 0.25374732334047106,
+        "seed": 61010
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62001",
+        "level": "M",
+        "makespan": 824.0,
+        "normalized_entropy": 0.7329633842254507,
+        "normalized_makespan": 0.1206265554091641,
+        "seed": 62001
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62002",
+        "level": "M",
+        "makespan": 1445.0,
+        "normalized_entropy": 0.43783127140952616,
+        "normalized_makespan": 0.11863711001642036,
+        "seed": 62002
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62003",
+        "level": "M",
+        "makespan": 944.0,
+        "normalized_entropy": 0.636095922919984,
+        "normalized_makespan": 0.10012728044123886,
+        "seed": 62003
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62004",
+        "level": "M",
+        "makespan": 1146.0,
+        "normalized_entropy": 0.7775189810329013,
+        "normalized_makespan": 0.13160312356453835,
+        "seed": 62004
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62005",
+        "level": "M",
+        "makespan": 705.0,
+        "normalized_entropy": 0.7831389620190575,
+        "normalized_makespan": 0.15736607142857142,
+        "seed": 62005
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62006",
+        "level": "M",
+        "makespan": 1422.0,
+        "normalized_entropy": 0.7324805484627778,
+        "normalized_makespan": 0.17381738173817382,
+        "seed": 62006
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62007",
+        "level": "M",
+        "makespan": 1306.0,
+        "normalized_entropy": 0.7434799058096749,
+        "normalized_makespan": 0.13830350524197818,
+        "seed": 62007
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62008",
+        "level": "M",
+        "makespan": 1296.0,
+        "normalized_entropy": 0.6482801729319047,
+        "normalized_makespan": 0.254416961130742,
+        "seed": 62008
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62009",
+        "level": "M",
+        "makespan": 1396.0,
+        "normalized_entropy": 0.6790586830872409,
+        "normalized_makespan": 0.21424186617556784,
+        "seed": 62009
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_M_62010",
+        "level": "M",
+        "makespan": 1570.0,
+        "normalized_entropy": 0.628312232016131,
+        "normalized_makespan": 0.2698058085581715,
+        "seed": 62010
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63001",
+        "level": "L",
+        "makespan": 3468.0,
+        "normalized_entropy": 0.781207615719702,
+        "normalized_makespan": 0.10267341682209788,
+        "seed": 63001
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63002",
+        "level": "L",
+        "makespan": 2329.0,
+        "normalized_entropy": 0.7604404810875182,
+        "normalized_makespan": 0.15945501848555388,
+        "seed": 63002
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63003",
+        "level": "L",
+        "makespan": 2163.0,
+        "normalized_entropy": 0.7793813544240865,
+        "normalized_makespan": 0.11984043437309547,
+        "seed": 63003
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63004",
+        "level": "L",
+        "makespan": 5943.0,
+        "normalized_entropy": 0.7857511799428716,
+        "normalized_makespan": 0.13362262793416674,
+        "seed": 63004
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63005",
+        "level": "L",
+        "makespan": 2799.0,
+        "normalized_entropy": 0.715905901151044,
+        "normalized_makespan": 0.09173740618137721,
+        "seed": 63005
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63006",
+        "level": "L",
+        "makespan": 5439.0,
+        "normalized_entropy": 0.6989182754168435,
+        "normalized_makespan": 0.12215060525074674,
+        "seed": 63006
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63007",
+        "level": "L",
+        "makespan": 3328.0,
+        "normalized_entropy": 0.8055150215908632,
+        "normalized_makespan": 0.10986761744412532,
+        "seed": 63007
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63008",
+        "level": "L",
+        "makespan": 3042.0,
+        "normalized_entropy": 0.8219016473970295,
+        "normalized_makespan": 0.1515695067264574,
+        "seed": 63008
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63009",
+        "level": "L",
+        "makespan": 5595.0,
+        "normalized_entropy": 0.7028384180418377,
+        "normalized_makespan": 0.13644344730039507,
+        "seed": 63009
+      },
+      {
+        "feasible": true,
+        "instance_id": "synthetic_L_63010",
+        "level": "L",
+        "makespan": 4534.0,
+        "normalized_entropy": 0.8035891331159152,
+        "normalized_makespan": 0.11065013666536509,
+        "seed": 63010
+      }
+    ]
+  },
+  "stopped_early": false,
+  "training_seed": 520101,
+  "updates": 1,
+  "wall_clock_seconds": 221.6621156570036
+}

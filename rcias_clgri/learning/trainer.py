@@ -81,11 +81,30 @@ class PPOTrainer:
         self.device = torch.device(device)
         self.teacher_model = teacher_model
         self.teacher_anchor_config = teacher_anchor_config or {"enabled": False}
-        self.optimizer = torch.optim.AdamW([
-            {"params": self.model.encoder.parameters(), "lr": config.encoder_lr or config.learning_rate, "name": "encoder"},
-            {"params": self.model.policy.parameters(), "lr": config.policy_head_lr or config.learning_rate, "name": "policy"},
-            {"params": self.model.value.parameters(), "lr": config.value_head_lr or config.learning_rate, "name": "value"},
+        self.optimizer = self._make_optimizer([
+            config.encoder_lr or config.learning_rate,
+            config.policy_head_lr or config.learning_rate,
+            config.value_head_lr or config.learning_rate,
+        ])
+
+    def _make_optimizer(self, learning_rates: list[float]) -> torch.optim.AdamW:
+        return torch.optim.AdamW([
+            {"params": self.model.encoder.parameters(), "lr": learning_rates[0], "name": "encoder"},
+            {"params": self.model.policy.parameters(), "lr": learning_rates[1], "name": "policy"},
+            {"params": self.model.value.parameters(), "lr": learning_rates[2], "name": "value"},
         ], weight_decay=1e-5)
+
+    def reduce_learning_rates(
+        self, factor: float, *, reset_optimizer_state: bool = True,
+    ) -> None:
+        if not 0.0 < factor < 1.0:
+            raise ValueError("learning-rate reduction factor must be between zero and one")
+        learning_rates = [float(group["lr"]) * factor for group in self.optimizer.param_groups]
+        if reset_optimizer_state:
+            self.optimizer = self._make_optimizer(learning_rates)
+        else:
+            for group, learning_rate in zip(self.optimizer.param_groups, learning_rates):
+                group["lr"] = learning_rate
 
     def collect(
         self,
@@ -156,7 +175,7 @@ class PPOTrainer:
                 ).to(self.device)
                 hidden_batch = self.model.encode_batch(graph_batch)
                 evaluations = [
-                    self.model.policy.evaluate_action(graph, hidden, transition.action)
+                    self.model.evaluate_action_from_hidden(graph, hidden, transition.action)
                     for graph, hidden, transition in zip(
                         graph_batch.graphs, hidden_batch, transitions
                     )
@@ -173,10 +192,14 @@ class PPOTrainer:
                     evaluation.joint_entropy for evaluation in evaluations
                 ])
                 normalized_entropy = torch.stack([
-                    active_stage_mean(
-                        evaluation.stage_normalized_entropies,
-                        evaluation.stage_candidate_counts,
-                        self.config.entropy_stage_coefficients,
+                    (
+                        evaluation.active_stage_normalized_entropy
+                        if hasattr(self.model, "trainable_stages")
+                        else active_stage_mean(
+                            evaluation.stage_normalized_entropies,
+                            evaluation.stage_candidate_counts,
+                            self.config.entropy_stage_coefficients,
+                        )
                     ) for evaluation in evaluations
                 ])
                 entropy_for_loss = (
