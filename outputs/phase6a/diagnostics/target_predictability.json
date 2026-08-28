@@ -1,0 +1,25 @@
+{
+  "coefficients": {
+    "F_waiting_or_delay_contribution": 0.052322240390366,
+    "W_waiting_or_delay_contribution": 0.14570361315107572,
+    "criticality_score": -0.01016453205011819,
+    "eligible_island_count": -0.06303883852800177,
+    "island_relative_load": -0.06721297649824128,
+    "local_reconfiguration_contribution": 0.001686492058178531,
+    "number_of_predecessors": 0.11624978476435376,
+    "number_of_successors": -0.19657257702954645,
+    "operation_slack": 0.40768178549720135,
+    "synchronization_wait_contribution": 0.0
+  },
+  "cross_validation_group": "instance_id",
+  "grouped_5_fold_logistic_auc": 0.6033968425184427,
+  "model_role": "DIAGNOSTIC_ONLY",
+  "regime_grouped_cv_auc": {
+    "CF_level=CF1": 0.6185514712698955,
+    "CF_level=CF2": 0.6179892441329287,
+    "CF_level=CF3": 0.5766290544391715,
+    "scale=L": 0.5923278305823461,
+    "scale=M": 0.5932842453823207,
+    "scale=S": 0.5828288779998448
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "COUNTERFACTUAL_GENERATION_FEASIBLE": true,
+  "candidate_evaluation_isolated_from_live_state": true,
+  "decoder_evaluations_independently_countable": true,
+  "engineering_requirements": [
+    "clone Candidate and decoded Schedule",
+    "use one dedicated RNG state per counterfactual arm",
+    "never update live adaptive weights",
+    "count decode_candidate calls per arm"
+  ],
+  "multiple_destroy_operators_same_state": true,
+  "multiple_destroy_targets_same_state": true,
+  "repair_deterministic_fixed_seed": true,
+  "schedule_state_clone_safe": true
+}

@@ -7,6 +7,7 @@ from dataclasses import dataclass
 import math
 import random
 import time
+from typing import Callable, Mapping
 
 from rcias_clgri.data.instance import Instance
 from rcias_clgri.heuristic.dispatching import solve_dispatching
@@ -25,6 +26,10 @@ class ALNSConfig:
     destroy_fraction: float = 0.15
     reaction_factor: float = 0.2
     candidate_trials: int = 8
+    iteration_limit: int | None = None
+
+
+ALNSObserver = Callable[[Mapping[str, object]], None]
 
 
 def _roulette(names, weights, rng):
@@ -92,7 +97,13 @@ def _neighbor(instance: Instance, base: Candidate, removed: set[str], repair: st
     return Candidate(tuple(retained), tuple(islands), tuple(w_agvs), tuple(f_agvs))
 
 
-def solve_alns(instance: Instance, time_limit: float, seed: int, config: ALNSConfig = ALNSConfig()) -> SearchResult:
+def solve_alns(
+    instance: Instance,
+    time_limit: float,
+    seed: int,
+    config: ALNSConfig = ALNSConfig(),
+    observer: ALNSObserver | None = None,
+) -> SearchResult:
     rng = random.Random(seed)
     started = time.perf_counter()
     h1 = solve_dispatching(instance, "H1")
@@ -105,19 +116,29 @@ def solve_alns(instance: Instance, time_limit: float, seed: int, config: ALNSCon
     selections, successes, improvements = Counter(), Counter(), Counter()
     temperature = config.initial_temperature * max(1.0, current.makespan)
     iterations = 0
-    while time.perf_counter() - started < time_limit:
+    while (
+        time.perf_counter() - started < time_limit
+        and (config.iteration_limit is None or iterations < config.iteration_limit)
+    ):
+        iteration_started = time.perf_counter()
+        current_before = current
+        best_before = best
+        evaluations_before = evaluations
+        weights_before = dict(weights)
         destroy = _roulette(DESTROY, weights, rng)
         repair = _roulette(REPAIR, weights, rng)
         selections.update((destroy, repair))
         count = max(2, round(instance.num_operations * config.destroy_fraction))
         removed = _destroy(instance, current, destroy, min(count, instance.num_operations), rng)
         candidates = []
+        repair_started = time.perf_counter()
         for _ in range(config.candidate_trials):
             if time.perf_counter() - started >= time_limit and candidates:
                 break
             candidates.append(decode_candidate(instance, _neighbor(instance, current.candidate, removed, repair, rng)))
             evaluations += 1
         candidate = min(candidates, key=lambda item: item.makespan)
+        repair_runtime = time.perf_counter() - repair_started
         delta = candidate.makespan - current.makespan
         accepted = delta <= 0 or rng.random() < math.exp(-delta / max(temperature, 1e-12))
         score = 0.0
@@ -134,6 +155,30 @@ def solve_alns(instance: Instance, time_limit: float, seed: int, config: ALNSCon
         for operator in (destroy, repair):
             weights[operator] = (1 - config.reaction_factor) * weights[operator] + config.reaction_factor * max(score, 0.1)
         temperature *= config.cooling_rate
+        if observer is not None:
+            observer({
+                "iteration": iterations,
+                "elapsed_time": time.perf_counter() - started,
+                "iteration_runtime": time.perf_counter() - iteration_started,
+                "decoder_evaluations": evaluations,
+                "current_before": current_before,
+                "best_before": best_before,
+                "candidate": candidate,
+                "current_after": current,
+                "best_after": best,
+                "destroy_operator": destroy,
+                "repair_operator": repair,
+                "destroy_fraction": config.destroy_fraction,
+                "destroyed_operation_ids": tuple(sorted(removed)),
+                "accepted": accepted,
+                "new_global_best": candidate.makespan < best_before.makespan,
+                "operator_weights_before": weights_before,
+                "operator_weights_after": dict(weights),
+                "repair_decoder_evaluations": evaluations - evaluations_before,
+                "repair_runtime": repair_runtime,
+                "candidate_trials_completed": len(candidates),
+                "temperature_before": temperature / config.cooling_rate,
+            })
         iterations += 1
     return SearchResult(
         "ALNS-H1", best, best_time, time.perf_counter() - started, evaluations, iterations, None, tuple(trace),
