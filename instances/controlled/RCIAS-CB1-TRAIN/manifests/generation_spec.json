@@ -1,0 +1,43 @@
+{
+  "base_seed_namespace": 661000,
+  "factorial_design": {
+    "CF": [
+      "CF1",
+      "CF2",
+      "CF3"
+    ],
+    "RI": [
+      "RI1",
+      "RI2",
+      "RI3"
+    ],
+    "TI": [
+      "TI1",
+      "TI2",
+      "TI3"
+    ],
+    "replicates": 5,
+    "scale": [
+      "S",
+      "M",
+      "L"
+    ]
+  },
+  "ri_factors": {
+    "RI1": 0.5,
+    "RI2": 1.0,
+    "RI3": 2.0
+  },
+  "schema": "rcias-cb1-train-generation-v1",
+  "source_spec_sha256": "272d2108b095593adb7df3a3db3b52d56ff7863acfe68c7c09279fbf4178f92c",
+  "split_rule": {
+    "R01-R03": "TRAIN",
+    "R04": "TRAIN_VALIDATION",
+    "R05": "TRAIN_INTERNAL_HOLDOUT"
+  },
+  "ti_factors": {
+    "TI1": 0.5,
+    "TI2": 1.0,
+    "TI3": 2.0
+  }
+}

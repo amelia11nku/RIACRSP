@@ -1,0 +1,32 @@
+{
+  "DAG_validity": "PASS_VIA_LOAD_INSTANCE",
+  "F_TI_ordering_valid": true,
+  "RI_ordering_valid": true,
+  "W_TI_ordering_valid": true,
+  "all_81_cells_in_every_split": true,
+  "all_generation_seeds_unique": true,
+  "all_loadable": true,
+  "all_phase6b_seeds_disjoint_from_frozen_sets": true,
+  "deterministic_regeneration": true,
+  "factorial_independence": "exactly balanced Scale x CF x RI x TI design",
+  "frozen_test_hash_overlap": false,
+  "instance_count": 405,
+  "schema": "rcias-cb1-train-audit-v1",
+  "split_counts": {
+    "TRAIN": 243,
+    "TRAIN_INTERNAL_HOLDOUT": 81,
+    "TRAIN_VALIDATION": 81
+  },
+  "structural_metrics_present": [
+    "F_cap_mean",
+    "F_route_mean",
+    "F_transport_intensity",
+    "RI",
+    "R_full_island",
+    "R_full_op",
+    "W_transport_intensity",
+    "configuration_entropy",
+    "number_of_operations",
+    "processing_CV_mean"
+  ]
+}
