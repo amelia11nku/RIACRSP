@@ -1,0 +1,220 @@
+{
+  "schema": "rcias-csg-schema-v1",
+  "version": "CSG-1.0",
+  "phase6c_contract_version": "phase6c-v1",
+  "phase6c_dataset_freeze_hash": "695307ac6193ecbbeb0f73e81a94ea20672ffd47aa9419bb37610be9d3161437",
+  "information_layers": {
+    "FEASIBLE_ALTERNATIVE": "Static capability, eligibility, configuration, and precedence structure.",
+    "REALIZED_SYNCHRONIZATION": "Current complete schedule resource order, events, timing, and causal enablement."
+  },
+  "edge_classes": [
+    "STATIC_CONTEXT",
+    "REALIZED_RESOURCE_ORDER",
+    "TEMPORAL_CAUSAL",
+    "SYNCHRONIZATION",
+    "DERIVED_REVERSE"
+  ],
+  "normalization": {
+    "time": "divide by max(current_makespan, 1)",
+    "processing_duration": "divide by the instance mean positive eligible processing time",
+    "travel_duration": "divide by the instance mean positive W/F travel time",
+    "reconfiguration_duration": "divide by the instance mean positive reconfiguration time, or 1 when absent",
+    "operation_count": "divide by max(number of operations, 1)",
+    "resource_count": "divide by the corresponding positive resource count",
+    "position": "divide by max(chain_length - 1, 1)",
+    "temporal_gap": "divide by max(current_makespan, 1)",
+    "prohibited_sources": [
+      "future best solution",
+      "test-set aggregate statistics",
+      "counterfactual outcome distributions"
+    ]
+  },
+  "node_types": {
+    "OP": {
+      "description": "One current-schedule assembly operation; primary action-target node.",
+      "features": {
+        "processing_time": {"semantic_type": "CONTINUOUS_TIME", "normalization": "none"},
+        "processing_time_normalized": {"semantic_type": "CONTINUOUS", "normalization": "processing_duration"},
+        "mean_eligible_processing_time_normalized": {"semantic_type": "CONTINUOUS", "normalization": "processing_duration"},
+        "eligible_island_count": {"semantic_type": "COUNT", "normalization": "none"},
+        "eligible_island_fraction": {"semantic_type": "RATIO", "normalization": "island count"},
+        "start_time": {"semantic_type": "CONTINUOUS_TIME", "normalization": "none"},
+        "start_time_normalized": {"semantic_type": "CONTINUOUS", "normalization": "time"},
+        "completion_time": {"semantic_type": "CONTINUOUS_TIME", "normalization": "none"},
+        "completion_time_normalized": {"semantic_type": "CONTINUOUS", "normalization": "time"},
+        "operation_slack": {"semantic_type": "CONTINUOUS_TIME", "normalization": "none"},
+        "operation_slack_normalized": {"semantic_type": "CONTINUOUS", "normalization": "time"},
+        "criticality_proxy": {"semantic_type": "CURRENT_STATE_DESCRIPTOR", "normalization": "1 / (1 + raw non-negative slack), identical to the frozen Phase6C feature"},
+        "is_processing_critical_proxy": {"semantic_type": "BINARY", "normalization": "none"},
+        "is_resource_terminal_proxy": {"semantic_type": "BINARY", "normalization": "none"},
+        "w_delay": {"semantic_type": "CONTINUOUS_TIME", "normalization": "none"},
+        "w_delay_normalized": {"semantic_type": "CONTINUOUS", "normalization": "time"},
+        "f_delay": {"semantic_type": "CONTINUOUS_TIME", "normalization": "none"},
+        "f_delay_normalized": {"semantic_type": "CONTINUOUS", "normalization": "time"},
+        "synchronization_wait": {"semantic_type": "CONTINUOUS_TIME", "normalization": "none"},
+        "synchronization_wait_normalized": {"semantic_type": "CONTINUOUS", "normalization": "time"},
+        "local_reconfiguration": {"semantic_type": "CONTINUOUS_TIME", "normalization": "none"},
+        "local_reconfiguration_normalized": {"semantic_type": "CONTINUOUS", "normalization": "reconfiguration_duration"},
+        "island_relative_load": {"semantic_type": "RATIO", "normalization": "maximum assigned island operation count"},
+        "product_position_normalized": {"semantic_type": "POSITION", "normalization": "position"},
+        "island_position_normalized": {"semantic_type": "POSITION", "normalization": "position"},
+        "w_chain_position_normalized": {"semantic_type": "POSITION", "normalization": "position"},
+        "f_chain_position_normalized": {"semantic_type": "POSITION", "normalization": "position"},
+        "has_w_event": {"semantic_type": "BINARY", "normalization": "none"},
+        "has_f_event": {"semantic_type": "BINARY", "normalization": "none"},
+        "predecessor_count_normalized": {"semantic_type": "CONTINUOUS", "normalization": "operation_count"},
+        "successor_count_normalized": {"semantic_type": "CONTINUOUS", "normalization": "operation_count"}
+      }
+    },
+    "ISLAND": {
+      "description": "One assembly island with current load and capability context.",
+      "features": {
+        "assigned_processing_load": {"semantic_type": "CONTINUOUS_TIME", "normalization": "none"},
+        "assigned_processing_load_normalized": {"semantic_type": "CONTINUOUS", "normalization": "time"},
+        "relative_processing_load": {"semantic_type": "RATIO", "normalization": "maximum island processing load"},
+        "scheduled_operation_count_normalized": {"semantic_type": "CONTINUOUS", "normalization": "operation_count"},
+        "capability_count_normalized": {"semantic_type": "CONTINUOUS", "normalization": "configuration count"},
+        "capability_fraction": {"semantic_type": "RATIO", "normalization": "configuration count"},
+        "reconfiguration_count_normalized": {"semantic_type": "CONTINUOUS", "normalization": "operation_count"},
+        "reconfiguration_time_burden": {"semantic_type": "CONTINUOUS_TIME", "normalization": "none"},
+        "reconfiguration_time_normalized": {"semantic_type": "CONTINUOUS", "normalization": "time"},
+        "busy_time_normalized": {"semantic_type": "CONTINUOUS", "normalization": "time"},
+        "idle_time_normalized": {"semantic_type": "CONTINUOUS", "normalization": "time"},
+        "last_completion_normalized": {"semantic_type": "CONTINUOUS", "normalization": "time"}
+      }
+    },
+    "CONFIG": {
+      "description": "One local categorical configuration identity; the key is never a numeric feature.",
+      "features": {
+        "supporting_island_fraction": {"semantic_type": "RATIO", "normalization": "island count"},
+        "required_operation_fraction": {"semantic_type": "RATIO", "normalization": "operation_count"}
+      }
+    },
+    "W_AGV": {
+      "description": "One workpiece AGV with current realized-chain aggregates.",
+      "features": {
+        "task_count_normalized": {"semantic_type": "CONTINUOUS", "normalization": "operation_count"},
+        "busy_time": {"semantic_type": "CONTINUOUS_TIME", "normalization": "none"},
+        "busy_time_normalized": {"semantic_type": "CONTINUOUS", "normalization": "time"},
+        "travel_time_normalized": {"semantic_type": "CONTINUOUS", "normalization": "travel_duration"},
+        "waiting_burden_normalized": {"semantic_type": "CONTINUOUS", "normalization": "time"},
+        "relative_load": {"semantic_type": "RATIO", "normalization": "maximum W busy time"},
+        "last_completion_normalized": {"semantic_type": "CONTINUOUS", "normalization": "time"}
+      }
+    },
+    "F_AGV": {
+      "description": "One component-kit AGV with current realized round-trip aggregates.",
+      "features": {
+        "task_count_normalized": {"semantic_type": "CONTINUOUS", "normalization": "operation_count"},
+        "busy_time": {"semantic_type": "CONTINUOUS_TIME", "normalization": "none"},
+        "busy_time_normalized": {"semantic_type": "CONTINUOUS", "normalization": "time"},
+        "travel_time_normalized": {"semantic_type": "CONTINUOUS", "normalization": "travel_duration"},
+        "relative_load": {"semantic_type": "RATIO", "normalization": "maximum F busy time"},
+        "last_completion_normalized": {"semantic_type": "CONTINUOUS", "normalization": "time"}
+      }
+    },
+    "W_EVENT": {
+      "description": "One realized non-same-island workpiece transport task.",
+      "features": {
+        "start_time": {"semantic_type": "CONTINUOUS_TIME", "normalization": "none"},
+        "end_time": {"semantic_type": "CONTINUOUS_TIME", "normalization": "none"},
+        "duration_normalized": {"semantic_type": "CONTINUOUS", "normalization": "time"},
+        "empty_travel_normalized": {"semantic_type": "CONTINUOUS", "normalization": "travel_duration"},
+        "pickup_wait_normalized": {"semantic_type": "CONTINUOUS", "normalization": "time"},
+        "loaded_travel_normalized": {"semantic_type": "CONTINUOUS", "normalization": "travel_duration"},
+        "resource_position_normalized": {"semantic_type": "POSITION", "normalization": "position"},
+        "warehouse_origin": {"semantic_type": "BINARY", "normalization": "none"},
+        "first_product_transport": {"semantic_type": "BINARY", "normalization": "none"}
+      }
+    },
+    "F_EVENT": {
+      "description": "One realized component-kit delivery and return task.",
+      "features": {
+        "start_time": {"semantic_type": "CONTINUOUS_TIME", "normalization": "none"},
+        "arrival_time": {"semantic_type": "CONTINUOUS_TIME", "normalization": "none"},
+        "end_time": {"semantic_type": "CONTINUOUS_TIME", "normalization": "none"},
+        "duration_normalized": {"semantic_type": "CONTINUOUS", "normalization": "time"},
+        "outbound_travel_normalized": {"semantic_type": "CONTINUOUS", "normalization": "travel_duration"},
+        "return_travel_normalized": {"semantic_type": "CONTINUOUS", "normalization": "travel_duration"},
+        "resource_position_normalized": {"semantic_type": "POSITION", "normalization": "position"}
+      }
+    },
+    "RECONF_EVENT": {
+      "description": "One realized positive-duration island configuration transition.",
+      "features": {
+        "start_time": {"semantic_type": "CONTINUOUS_TIME", "normalization": "none"},
+        "end_time": {"semantic_type": "CONTINUOUS_TIME", "normalization": "none"},
+        "duration": {"semantic_type": "CONTINUOUS_TIME", "normalization": "none"},
+        "duration_normalized": {"semantic_type": "CONTINUOUS", "normalization": "reconfiguration_duration"},
+        "resource_position_normalized": {"semantic_type": "POSITION", "normalization": "position"},
+        "from_initial_configuration": {"semantic_type": "BINARY", "normalization": "none"}
+      }
+    }
+  },
+  "temporal_edge_features": {
+    "source_end_time": {"semantic_type": "CONTINUOUS_TIME", "normalization": "none"},
+    "target_start_time": {"semantic_type": "CONTINUOUS_TIME", "normalization": "none"},
+    "temporal_gap": {"semantic_type": "CONTINUOUS_TIME", "normalization": "none"},
+    "normalized_temporal_gap": {"semantic_type": "CONTINUOUS", "normalization": "temporal_gap"},
+    "binding_indicator": {"semantic_type": "BINARY", "normalization": "abs(gap) <= 1e-9"}
+  },
+  "edge_types": [
+    {"key": "OP__PRECEDES__OP", "source": "OP", "relation": "PRECEDES", "target": "OP", "class": "TEMPORAL_CAUSAL", "layer": "FEASIBLE_ALTERNATIVE", "temporal": true, "optional": false},
+    {"key": "OP__ELIGIBLE_ON__ISLAND", "source": "OP", "relation": "ELIGIBLE_ON", "target": "ISLAND", "class": "STATIC_CONTEXT", "layer": "FEASIBLE_ALTERNATIVE", "temporal": false, "optional": false, "features": ["processing_time", "processing_time_normalized"]},
+    {"key": "OP__ASSIGNED_TO__ISLAND", "source": "OP", "relation": "ASSIGNED_TO", "target": "ISLAND", "class": "STATIC_CONTEXT", "layer": "REALIZED_SYNCHRONIZATION", "temporal": false, "optional": false},
+    {"key": "OP__REQUIRES__CONFIG", "source": "OP", "relation": "REQUIRES", "target": "CONFIG", "class": "STATIC_CONTEXT", "layer": "FEASIBLE_ALTERNATIVE", "temporal": false, "optional": false},
+    {"key": "ISLAND__SUPPORTS__CONFIG", "source": "ISLAND", "relation": "SUPPORTS", "target": "CONFIG", "class": "STATIC_CONTEXT", "layer": "FEASIBLE_ALTERNATIVE", "temporal": false, "optional": false},
+    {"key": "ISLAND__CURRENT_CONFIG__CONFIG", "source": "ISLAND", "relation": "CURRENT_CONFIG", "target": "CONFIG", "class": "STATIC_CONTEXT", "layer": "REALIZED_SYNCHRONIZATION", "temporal": false, "optional": false},
+    {"key": "OP__PRODUCT_NEXT__OP", "source": "OP", "relation": "PRODUCT_NEXT", "target": "OP", "class": "REALIZED_RESOURCE_ORDER", "layer": "REALIZED_SYNCHRONIZATION", "temporal": true, "optional": true},
+    {"key": "OP__ISLAND_NEXT__OP", "source": "OP", "relation": "ISLAND_NEXT", "target": "OP", "class": "REALIZED_RESOURCE_ORDER", "layer": "REALIZED_SYNCHRONIZATION", "temporal": true, "optional": true},
+    {"key": "W_EVENT__W_NEXT__W_EVENT", "source": "W_EVENT", "relation": "W_NEXT", "target": "W_EVENT", "class": "REALIZED_RESOURCE_ORDER", "layer": "REALIZED_SYNCHRONIZATION", "temporal": true, "optional": true},
+    {"key": "F_EVENT__F_NEXT__F_EVENT", "source": "F_EVENT", "relation": "F_NEXT", "target": "F_EVENT", "class": "REALIZED_RESOURCE_ORDER", "layer": "REALIZED_SYNCHRONIZATION", "temporal": true, "optional": true},
+    {"key": "W_EVENT__ENABLES__OP", "source": "W_EVENT", "relation": "ENABLES", "target": "OP", "class": "SYNCHRONIZATION", "layer": "REALIZED_SYNCHRONIZATION", "temporal": true, "optional": true},
+    {"key": "F_EVENT__ENABLES__OP", "source": "F_EVENT", "relation": "ENABLES", "target": "OP", "class": "SYNCHRONIZATION", "layer": "REALIZED_SYNCHRONIZATION", "temporal": true, "optional": false},
+    {"key": "RECONF_EVENT__ENABLES__OP", "source": "RECONF_EVENT", "relation": "ENABLES", "target": "OP", "class": "SYNCHRONIZATION", "layer": "REALIZED_SYNCHRONIZATION", "temporal": true, "optional": true},
+    {"key": "W_EVENT__EXECUTED_BY__W_AGV", "source": "W_EVENT", "relation": "EXECUTED_BY", "target": "W_AGV", "class": "STATIC_CONTEXT", "layer": "REALIZED_SYNCHRONIZATION", "temporal": false, "optional": true},
+    {"key": "F_EVENT__EXECUTED_BY__F_AGV", "source": "F_EVENT", "relation": "EXECUTED_BY", "target": "F_AGV", "class": "STATIC_CONTEXT", "layer": "REALIZED_SYNCHRONIZATION", "temporal": false, "optional": false},
+    {"key": "RECONF_EVENT__OCCURS_ON__ISLAND", "source": "RECONF_EVENT", "relation": "OCCURS_ON", "target": "ISLAND", "class": "STATIC_CONTEXT", "layer": "REALIZED_SYNCHRONIZATION", "temporal": false, "optional": true},
+    {"key": "OP__TRIGGERS_RECONF__RECONF_EVENT", "source": "OP", "relation": "TRIGGERS_RECONF", "target": "RECONF_EVENT", "class": "TEMPORAL_CAUSAL", "layer": "REALIZED_SYNCHRONIZATION", "temporal": true, "optional": true},
+    {"key": "OP__RELEASES_WORKPIECE_TO__W_EVENT", "source": "OP", "relation": "RELEASES_WORKPIECE_TO", "target": "W_EVENT", "class": "TEMPORAL_CAUSAL", "layer": "REALIZED_SYNCHRONIZATION", "temporal": true, "optional": true},
+    {"key": "RECONF_EVENT__FROM_CONFIG__CONFIG", "source": "RECONF_EVENT", "relation": "FROM_CONFIG", "target": "CONFIG", "class": "STATIC_CONTEXT", "layer": "REALIZED_SYNCHRONIZATION", "temporal": false, "optional": true},
+    {"key": "RECONF_EVENT__TO_CONFIG__CONFIG", "source": "RECONF_EVENT", "relation": "TO_CONFIG", "target": "CONFIG", "class": "STATIC_CONTEXT", "layer": "REALIZED_SYNCHRONIZATION", "temporal": false, "optional": true}
+  ],
+  "graph_level": {
+    "numeric_fields": {
+      "current_makespan": {"semantic_type": "CONTINUOUS_TIME", "availability": "INFERENCE"},
+      "search_progress": {"semantic_type": "RATIO", "availability": "INFERENCE"}
+    },
+    "categorical_fields": {
+      "search_stage": {"availability": "INFERENCE"},
+      "bottleneck_proxy": {"availability": "INFERENCE"}
+    },
+    "optional_diagnostic_metadata": {
+      "scale": {"availability": "BENCHMARK_DESIGN_ONLY"},
+      "CF_level": {"availability": "BENCHMARK_DESIGN_ONLY"},
+      "RI_level": {"availability": "BENCHMARK_DESIGN_ONLY"},
+      "TI_level": {"availability": "BENCHMARK_DESIGN_ONLY"}
+    }
+  },
+  "action_projection": {
+    "base_graph_shared_within_state": true,
+    "target_node_type": "OP",
+    "fields": ["state_id", "target_set_id", "target_operation_node_indices", "target_mask", "origin_rule_metadata"],
+    "forbidden_fields": ["counterfactual_makespan", "relative_improvement", "rank_within_state", "regret_to_best", "repair_seed"]
+  },
+  "forbidden_predictive_fields": [
+    "raw operation ID",
+    "raw island ID",
+    "raw AGV ID",
+    "dataset row index",
+    "counterfactual outcome",
+    "future improvement",
+    "future best",
+    "after-state information",
+    "repair outcome"
+  ],
+  "reverse_relations": {
+    "enabled": false,
+    "policy": "Any future reverse relation must be mechanically derived and classified DERIVED_REVERSE."
+  }
+}
