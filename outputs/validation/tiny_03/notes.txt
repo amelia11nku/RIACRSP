@@ -1,7 +1,0 @@
-# tiny_03 native exact validation
-
-Both Gurobi MILP and OR-Tools CP-SAT proved makespan 36 with bound 36 and gap 0. Both extracted solutions replay to makespan 36 through the production decoder and pass the independent checker. The exhaustive active-schedule solver independently confirms 36.
-
-- Same W/F assignments: True
-- Same action order: False
-- Interpretation: different action orders are equivalent optimal schedules when the objective agrees.

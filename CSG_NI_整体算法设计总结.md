@@ -9,13 +9,13 @@
 3. **ALNS-H1 是当前最强的传统求解基线。** 在 45 个 RCIAS-CB1 Core 实例上，ALNS 从 H1 初始解出发仍能进一步获得约 5% 的平均 makespan 改善，说明当前真正有价值的优化空间主要位于“高质量初始解之后的解改进阶段”。
 4. 因此后续主线从
 
-\[
+$$
 \text{BC} \rightarrow \text{constructive PPO}
-\]
+$$
 
 正式调整为
 
-\[
+$$
 \boxed{
 \text{H1 Initialization}
 \rightarrow
@@ -23,7 +23,7 @@
 \rightarrow
 \text{Neural Improvement}
 }
-\]
+$$
 
 即：**不再让强化学习从空白状态构造整个调度，而是让学习模型基于一个已经较强的 H1 可行解，判断“哪里值得改、改多少、改哪些工序以及如何修复”。**
 
@@ -37,7 +37,7 @@
 
 总体流程：
 
-\[
+$$
 I
 \xrightarrow{H1}
 S_0
@@ -51,7 +51,7 @@ S_1
 G_1
 \rightarrow \cdots \rightarrow
 S^*
-\]
+$$
 
 其中：
 
@@ -80,7 +80,7 @@ CSG 不是传统意义上的静态 instance graph，也不是只描述 operation
 
 CSG 需要显式描述 RCIAS 中已经实现的同步结构，包括：
 
-\[
+$$
 E =
 E^{prec}
 \cup
@@ -93,7 +93,7 @@ E^{W}
 E^{F}
 \cup
 E^{sync}
-\]
+$$
 
 其中：
 
@@ -131,13 +131,13 @@ Neural Improvement 不应只做“ALNS 算子选择”。
 
 最终目标动作建议分解为：
 
-\[
+$$
 a_t =
 (a_t^{bottleneck},
  a_t^{size},
  a_t^{target},
  a_t^{repair})
-\]
+$$
 
 包括：
 
@@ -148,15 +148,15 @@ a_t =
 
 其中最重要的学习任务预计是：
 
-\[
+$$
 \boxed{\text{Learn where to search}}
-\]
+$$
 
 即直接学习每个工序/事件的 improvement potential，而不是仅仅学习：
 
-\[
+$$
 \text{which heuristic operator to call}
-\]
+$$
 
 这能使 CSG-NI 与普通 RL-guided ALNS/operator-selection 方法形成明显区分。
 
@@ -168,27 +168,27 @@ a_t =
 
 训练实例首先通过：
 
-\[
+$$
 I \rightarrow H1 \rightarrow ALNS
-\]
+$$
 
 产生搜索轨迹：
 
-\[
+$$
 S_t \rightarrow S_{t+1}
-\]
+$$
 
 记录：
 
-\[
+$$
 (G_t,a_t,\Delta C_t)
-\]
+$$
 
 其中：
 
-\[
+$$
 \Delta C_t = C_{\max}(S_t)-C_{\max}(S_{t+1})
-\]
+$$
 
 通过这些轨迹，NI 可以先学习：
 
@@ -207,35 +207,35 @@ S_t \rightarrow S_{t+1}
 
 对选定状态 \(G_t\)，应额外采样多个候选改进动作：
 
-\[
+$$
 a_1,a_2,\dots,a_m
-\]
+$$
 
 分别真实解码得到：
 
-\[
+$$
 \Delta C_1,\Delta C_2,\dots,\Delta C_m
-\]
+$$
 
 从而建立：
 
-\[
+$$
 (G,a,\Delta C)
-\]
+$$
 
 或 pairwise ranking：
 
-\[
+$$
 a_i \succ a_j
 \quad \text{if}\quad
 \Delta C_i > \Delta C_j
-\]
+$$
 
 训练神经网络学习：
 
-\[
+$$
 Q_{imp}(G,a)
-\]
+$$
 
 即动作在当前同步结构下的真实 improvement potential。
 
@@ -257,35 +257,35 @@ Q_{imp}(G,a)
 
 MDP 可以定义为：
 
-\[
+$$
 s_t = CSG(S_t)
-\]
+$$
 
-\[
+$$
 a_t = (type,size,target,repair)
-\]
+$$
 
 即时 reward 可定义为：
 
-\[
+$$
 r_t =
 \frac{C_{\max}(S_t)-C_{\max}(S_{t+1})}
 {C_{\max}(S_t)}
-\]
+$$
 
 也可加入 decoder/evaluation cost：
 
-\[
+$$
 r_t = improvement - \lambda \cdot search\_cost
-\]
+$$
 
 最终保留 RL 的前提是：
 
-\[
+$$
 CSG\text{-}NI_{RL}
 >
 CSG\text{-}NI_{supervised}
-\]
+$$
 
 如果 RL 没有显著增益，则最终算法不必为了复杂度而强行保留 PPO。
 
@@ -327,13 +327,13 @@ CSG\text{-}NI_{supervised}
 
 建议通过 controlled generator 程序化生成：
 
-\[
+$$
 800\sim1500
-\]
+$$
 
 个 base training instances，覆盖：
 
-\[
+$$
 S/M/L
 \times
 CF1/CF2/CF3
@@ -341,7 +341,7 @@ CF1/CF2/CF3
 RI
 \times
 TI
-\]
+$$
 
 TRAIN 的随机种子必须与 DEV/Core/Sensitivity/Legacy 完全隔离。
 
@@ -351,17 +351,17 @@ TRAIN 的随机种子必须与 DEV/Core/Sensitivity/Legacy 完全隔离。
 
 每个训练实例通过：
 
-\[
+$$
 H1 \rightarrow ALNS
-\]
+$$
 
 可产生大量 search states。
 
 最终监督数据目标可以达到：
 
-\[
+$$
 10^5\sim10^6
-\]
+$$
 
 级：
 
@@ -395,11 +395,11 @@ H1 \rightarrow ALNS
 
 正确下一步是：
 
-\[
+$$
 \boxed{
 \text{Phase 6A: ALNS Search Behavior Diagnosis and NI Data Readiness Audit}
 }
-\]
+$$
 
 该阶段只做 instrumentation、日志收集和行为分析，不改变 ALNS 搜索逻辑。
 
@@ -450,9 +450,9 @@ Gate：明确第一版 NI 最应该学习什么。
 
 当前预期：
 
-\[
+$$
 \boxed{destroy\ target\ learning}
-\]
+$$
 
 最有潜力，operator selection 为辅助，neural repair 暂缓。
 
@@ -538,11 +538,11 @@ Gate：显著增加 neural destroy 的收益。
 
 Gate：
 
-\[
+$$
 CSG\text{-}NI_{RL}
 >
 CSG\text{-}NI_{sup}
-\]
+$$
 
 如果不成立，则不保留 RL。
 
@@ -552,7 +552,7 @@ CSG\text{-}NI_{sup}
 
 完整流程：
 
-\[
+$$
 H1
 \rightarrow
 CSG
@@ -565,7 +565,7 @@ Decoder
 \rightarrow
 CSG
 \rightarrow\cdots
-\]
+$$
 
 与 ALNS 使用完全相同 stopping budget。
 
@@ -597,9 +597,9 @@ CSG
 
 最终核心比较：
 
-\[
+$$
 \boxed{CSG\text{-}NI\quad vs.\quad ALNS}
-\]
+$$
 
 而不是 PPO vs H1。
 
@@ -627,13 +627,13 @@ CSG
 
 **Search-supervised + Counterfactual + Self-improvement Learning**：
 
-\[
+$$
 Search\ Demonstration
 \rightarrow
 Counterfactual\ Ranking
 \rightarrow
 Policy\ Improvement
-\]
+$$
 
 让模型不仅模仿 ALNS，而是最终尝试超越 ALNS。
 
@@ -645,9 +645,9 @@ Policy\ Improvement
 
 真正目标必须设为：
 
-\[
+$$
 \boxed{CSG\text{-}NI > ALNS}
-\]
+$$
 
 可接受的成功形式包括：
 

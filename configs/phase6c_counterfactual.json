@@ -1,0 +1,27 @@
+{
+  "candidate_trials": 8,
+  "destroy_fraction": 0.15,
+  "label_generation_version": "phase6c-v1",
+  "repair_operator": "transport_aware",
+  "repair_seed_count": 3,
+  "readiness_thresholds": {
+    "minimum_pairwise_accuracy": 0.55,
+    "minimum_repair_aggregate_rank_spearman": 0.75,
+    "minimum_set_level_roc_auc": 0.7,
+    "minimum_structural_regime_positive_fraction": 0.005
+  },
+  "schema": "phase6c-production-config-v1",
+  "seed_namespaces": {
+    "arm_generation": 667000000,
+    "repair": 668000000,
+    "state_sampling": 666100000,
+    "trajectory": 666000000
+  },
+  "state_targets": {
+    "TRAIN": 60000,
+    "TRAIN_INTERNAL_HOLDOUT": 20000,
+    "TRAIN_VALIDATION": 20000
+  },
+  "trajectory_iteration_limit": 250,
+  "trajectory_runs_per_instance": 2
+}
