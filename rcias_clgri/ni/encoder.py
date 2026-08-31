@@ -34,6 +34,7 @@ class NIModelConfig:
     use_edge_features: bool = True
     relation_mode: str = "FULL_CSG"
     message_passing: bool = True
+    utility_head: bool = False
 
     def __post_init__(self) -> None:
         if self.hidden_dim <= 0 or self.hidden_dim % self.heads:

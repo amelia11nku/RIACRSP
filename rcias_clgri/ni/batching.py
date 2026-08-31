@@ -41,6 +41,8 @@ class NIBatch:
     target_set_ids: tuple[str, ...]
     arm_family: tuple[str, ...]
     origin_destroy_operator: tuple[str, ...]
+    origin_rules: tuple[str, ...]
+    origin_families: tuple[str, ...]
     structural_metadata: tuple[Mapping[str, str], ...]
 
     @property
@@ -256,5 +258,7 @@ def batch_state_samples(samples: Sequence[NIStateSample]) -> NIBatch:
         target_set_ids=action_metadata("target_set_ids"),
         arm_family=action_metadata("arm_family"),
         origin_destroy_operator=action_metadata("origin_destroy_operator"),
+        origin_rules=action_metadata("origin_rules"),
+        origin_families=action_metadata("origin_families"),
         structural_metadata=tuple(sample.structural_metadata for sample in samples),
     )

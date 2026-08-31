@@ -83,15 +83,21 @@ def config_fingerprint(
     ).hexdigest()
 
 
-def scored_action_frame(scores: torch.Tensor, batch: NIBatch) -> pd.DataFrame:
+def scored_action_frame(
+    scores: torch.Tensor,
+    batch: NIBatch,
+    utility_predictions: torch.Tensor | None = None,
+) -> pd.DataFrame:
     state_index = batch.action_to_state.detach().cpu().tolist()
     metadata = [batch.structural_metadata[index] for index in state_index]
-    return pd.DataFrame({
+    values = {
         "state_id": [batch.state_ids[index] for index in state_index],
         "instance_id": [batch.instance_ids[index] for index in state_index],
         "target_set_id": batch.target_set_ids,
         "arm_family": batch.arm_family,
         "origin_destroy_operator": batch.origin_destroy_operator,
+        "origin_rules": batch.origin_rules,
+        "origin_families": batch.origin_families,
         "mean_relative_improvement": batch.utility.detach().cpu().numpy(),
         "rank_within_state": batch.rank_within_state.detach().cpu().numpy(),
         "rank_percentile": batch.rank_percentile.detach().cpu().numpy(),
@@ -106,7 +112,10 @@ def scored_action_frame(scores: torch.Tensor, batch: NIBatch) -> pd.DataFrame:
                 "search_stage", "bottleneck_proxy",
             )
         },
-    })
+    }
+    if utility_predictions is not None:
+        values["predicted_utility"] = utility_predictions.detach().float().cpu().numpy()
+    return pd.DataFrame(values)
 
 
 class NITrainer:
@@ -240,6 +249,12 @@ class NITrainer:
         self.optimizer.zero_grad(set_to_none=True)
         self.global_step += 1
 
+    def _compute_losses(self, output, batch: NIBatch) -> dict[str, torch.Tensor]:
+        return phase6e_loss(output.scores, batch, self.loss_config)
+
+    def _validation_objective(self, metrics: Mapping[str, float]) -> float:
+        return float(0.5 * metrics["pairwise_accuracy"] + 0.5 * metrics["ndcg"])
+
     def train_epoch(
         self,
         records: pd.DataFrame,
@@ -252,6 +267,8 @@ class NITrainer:
             "weighted_loss": 0.0,
             "weighted_rank_loss": 0.0,
             "weighted_classification_loss": 0.0,
+            "weighted_utility_loss": 0.0,
+            "weighted_distillation_loss": 0.0,
             "action_count": 0.0,
             "state_count": 0.0,
             "batch_count": 0.0,
@@ -278,7 +295,7 @@ class NITrainer:
                     enabled=self.amp_enabled,
                 ):
                     output = self.model(batch)
-                    losses = phase6e_loss(output.scores, batch, self.loss_config)
+                    losses = self._compute_losses(output, batch)
                     scaled_loss = losses["loss"] / self.config.gradient_accumulation
                 self.scaler.scale(scaled_loss).backward()
                 accumulation_step += 1
@@ -291,6 +308,11 @@ class NITrainer:
                 values["weighted_classification_loss"] += (
                     float(losses["classification_loss"].detach()) * actions
                 )
+                for name in ("utility_loss", "distillation_loss"):
+                    if name in losses:
+                        values[f"weighted_{name}"] += (
+                            float(losses[name].detach()) * actions
+                        )
                 values["action_count"] += actions
                 values["state_count"] += batch.state_count
                 values["batch_count"] += 1
@@ -331,6 +353,8 @@ class NITrainer:
             "train_loss": values["weighted_loss"] / count,
             "train_rank_loss": values["weighted_rank_loss"] / count,
             "train_classification_loss": values["weighted_classification_loss"] / count,
+            "train_utility_loss": values["weighted_utility_loss"] / count,
+            "train_distillation_loss": values["weighted_distillation_loss"] / count,
         }
 
     def evaluate(self, records: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, float]]:
@@ -352,8 +376,10 @@ class NITrainer:
                         dtype=torch.float16,
                         enabled=self.amp_enabled,
                     ):
-                        scores = self.model(batch).scores
-                    frames.append(scored_action_frame(scores, batch))
+                        output = self.model(batch)
+                    frames.append(scored_action_frame(
+                        output.scores, batch, output.utility_predictions
+                    ))
         scored = pd.concat(frames, ignore_index=True)
         return scored, evaluate_action_scores(scored)
 
@@ -380,9 +406,7 @@ class NITrainer:
                 accumulator=accumulator if epoch == start_epoch else None,
             )
             scored, validation = self.evaluate(validation_records)
-            objective = float(
-                0.5 * validation["pairwise_accuracy"] + 0.5 * validation["ndcg"]
-            )
+            objective = self._validation_objective(validation)
             improved = objective > self.best_objective + self.config.early_stopping_min_delta
             if improved:
                 self.best_objective = objective

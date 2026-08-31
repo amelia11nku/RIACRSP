@@ -57,7 +57,7 @@ def repair_seed(state_id: str, target_id: str, group: int, namespace: int) -> in
 
 
 def shard_directory(output_root: Path, split: str, instance_id: str) -> Path:
-    return output_root / SPLIT_DIR[split] / instance_id
+    return output_root / SPLIT_DIR.get(split, split.lower()) / instance_id
 
 
 def valid_status(path: Path) -> dict | None:
@@ -125,9 +125,13 @@ def _rank_aggregates(rows: list[dict]) -> None:
 
 
 def run_shard(task):
-    instance_record, states, output_root, cfg = task
+    if len(task) == 4:
+        instance_record, states, output_root, cfg = task
+        instance_root = TRAIN
+    else:
+        instance_record, states, output_root, cfg, instance_root = task
     started = time.perf_counter()
-    instance = load_instance(TRAIN / instance_record["relative_path"])
+    instance = load_instance(Path(instance_root) / instance_record["relative_path"])
     state_rows, raw_rows, aggregate_rows, membership_rows, pair_rows = [], [], [], [], []
     arm_namespace = int(cfg["seed_namespaces"]["arm_generation"])
     for state in states.sort_values("state_id").itertuples(index=False):

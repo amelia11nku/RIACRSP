@@ -1,0 +1,149 @@
+{
+  "schema": "phase6f-utility-aware-revision-config-v1",
+  "scope": "OFFLINE_MODEL_REVISION_ONLY",
+  "frozen_boundaries": {
+    "phase6c_dataset_version": "phase6c-v1",
+    "phase6c_dataset_freeze_hash": "695307ac6193ecbbeb0f73e81a94ea20672ffd47aa9419bb37610be9d3161437",
+    "csg_version": "CSG-1.0",
+    "phase6e_holdout_version": "phase6e-holdout-v2",
+    "phase6e_internal_holdout_selection_use": "FORBIDDEN"
+  },
+  "revision_holdout": {
+    "suite": "RCIAS-CB1-TRAIN-R06",
+    "replicate": "R06",
+    "instance_count": 81,
+    "states_per_structural_cell": 100,
+    "structural_cell_count": 81,
+    "state_count": 8100,
+    "trajectory_runs_per_instance": 2,
+    "trajectory_iteration_limit": 250,
+    "destroy_fraction": 0.15,
+    "repair_operator": "transport_aware",
+    "repair_seed_count": 3,
+    "candidate_trials": 8,
+    "label_generation_version": "phase6c-v1",
+    "state_selection": "outcome-blind; 20 states per search stage per structural cell"
+  },
+  "seed_namespaces": {
+    "instance_base_generation": 669000,
+    "trajectory": 669100000,
+    "state_sampling": 669200000,
+    "arm_generation": 669300000,
+    "repair": 669400000
+  },
+  "objective_candidates": {
+    "O1_PHASE6E_REFERENCE": {
+      "regret_weighted_ranking": false,
+      "rank_weight": 1.0,
+      "classification_weight": 0.25,
+      "utility_weight": 0.0
+    },
+    "O2_REGRET_WEIGHTED_RANKING": {
+      "regret_weighted_ranking": true,
+      "rank_weight": 1.0,
+      "classification_weight": 0.25,
+      "utility_weight": 0.0
+    },
+    "O3_UTILITY_AWARE_MULTITASK": {
+      "regret_weighted_ranking": true,
+      "rank_weight": 1.0,
+      "classification_weight": 0.25,
+      "utility_weight": 0.25,
+      "utility_loss": "huber"
+    }
+  },
+  "utility_scaling": {
+    "source_split": "TRAIN",
+    "clip_rule": "symmetric absolute TRAIN 99th percentile",
+    "rank_weight_scale_rule": "TRAIN median nonzero pairwise utility gap",
+    "rank_weight_min": 0.25,
+    "rank_weight_max": 4.0
+  },
+  "compact_model_candidates": {
+    "C1_H128_L2": {
+      "hidden_dim": 128,
+      "layers": 2,
+      "heads": 4,
+      "dropout": 0.1
+    },
+    "C2_H96_L2": {
+      "hidden_dim": 96,
+      "layers": 2,
+      "heads": 4,
+      "dropout": 0.1
+    },
+    "C3_H96_L3": {
+      "hidden_dim": 96,
+      "layers": 3,
+      "heads": 4,
+      "dropout": 0.1
+    }
+  },
+  "distillation": {
+    "teacher": "PHASE6E_THREE_MODEL_ENSEMBLE",
+    "candidate_weights": [
+      0.0,
+      0.1
+    ],
+    "teacher_target": "within-state centered normalized action score",
+    "ground_truth_remains_primary": true
+  },
+  "calibration": {
+    "fit_split": "TRAIN_VALIDATION",
+    "candidate_methods": [
+      "PLATT",
+      "ISOTONIC"
+    ],
+    "ece_bins": 10,
+    "minimum_intervention_coverage": 0.2,
+    "fallback_primary": "B1_FIXED_RELATED",
+    "fallback_secondary": "B3_PHASE6C_TABULAR"
+  },
+  "development_protocol": {
+    "gradient_split": "TRAIN",
+    "selection_split": "TRAIN_VALIDATION",
+    "objective_study_epochs": 2,
+    "compact_study_epochs": 2,
+    "study_seed": 660250,
+    "selection_priority": [
+      "hybrid_selected_utility",
+      "mean_selected_regret",
+      "selected_positive_fraction",
+      "p90_model_decision_latency"
+    ]
+  },
+  "final_training": {
+    "epochs": 6,
+    "seeds": [
+      660301,
+      660302,
+      660303
+    ],
+    "deployment_seed_rule": "highest TRAIN_VALIDATION hybrid selected utility, then lowest regret, then smallest seed",
+    "r06_seed_selection": "FORBIDDEN"
+  },
+  "success_gates": {
+    "u1_minimum_mean_utility_delta_vs_phase6e_ensemble": 0.0015,
+    "u2_maximum_mean_utility_loss_vs_phase6e_ensemble": 0.001,
+    "model_decision_p90_ms_hard": 150.0,
+    "model_decision_p90_ms_l_preferred": 120.0,
+    "minimum_intervention_coverage": 0.2,
+    "require_positive_incremental_utility_vs_fallback": true,
+    "require_lower_regret_vs_fallback": true
+  },
+  "latency_projection_calls": [
+    100,
+    250,
+    500,
+    1000
+  ],
+  "forbidden": [
+    "live ALNS integration",
+    "online NI rollout",
+    "PPO or actor-critic",
+    "neural repair",
+    "destroy-size learning",
+    "new destroy or repair operators",
+    "CB1-Core, CB1-Sensitivity, or Legacy final evaluation"
+  ]
+}

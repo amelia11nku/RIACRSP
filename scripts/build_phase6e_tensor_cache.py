@@ -31,6 +31,7 @@ SPLIT_CACHE_DIRECTORIES = {
     "TRAIN": "train",
     "TRAIN_VALIDATION": "validation",
     "TRAIN_INTERNAL_HOLDOUT": "internal_holdout",
+    "REVISION_HOLDOUT": "revision_holdout",
 }
 
 
