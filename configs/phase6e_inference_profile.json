@@ -1,0 +1,16 @@
+{
+  "schema": "phase6e-inference-profile-plan-v1",
+  "profile_split": "TRAIN_VALIDATION",
+  "states_per_scale": 12,
+  "gpu_repetitions_per_state": 30,
+  "warmup_repetitions": 5,
+  "checkpoint_seed": 660201,
+  "shared_state_design": "encode graph once and score every candidate target set",
+  "ensemble_projection": "reuse the same tensorized state and execute three frozen same-architecture models sequentially",
+  "future_decision_counts": [100, 500, 1000],
+  "acceptance_thresholds": {
+    "maximum_p90_projected_ensemble_state_latency_ms": 150.0,
+    "maximum_projected_1000_decision_overhead_seconds": 150.0,
+    "maximum_gpu_memory_fraction": 0.6
+  }
+}

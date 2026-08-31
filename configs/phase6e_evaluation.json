@@ -1,0 +1,39 @@
+{
+  "schema": "phase6e-frozen-evaluation-plan-v1",
+  "primary_method": "FULL_CSG_3_SEED_ENSEMBLE",
+  "ensemble_rule": "arithmetic mean of the three frozen per-action scores",
+  "controlled_neural_methods": {
+    "FLAT_SET": {"message_passing": false, "relation_mode": "FULL_CSG", "use_edge_features": true},
+    "STATIC_CSG": {"message_passing": true, "relation_mode": "STATIC_CSG", "use_edge_features": true},
+    "NO_EDGE_FEATURES": {"message_passing": true, "relation_mode": "FULL_CSG", "use_edge_features": false}
+  },
+  "controlled_neural_seed": 660201,
+  "controlled_training_protocol": "same frozen optimizer, loss, epochs, state batches, TRAIN gradients, and TRAIN_VALIDATION checkpoint selection as FULL_CSG",
+  "heuristic_baselines": [
+    "B0_RANDOM_EXPECTATION",
+    "B1_FIXED_RELATED",
+    "B2_BEST_FIXED_ORIGINAL_VALIDATION_FROZEN",
+    "B3_PHASE6C_LEGAL_TABULAR"
+  ],
+  "holdout_policy": "score all 20000 states and every candidate action after all checkpoints are frozen",
+  "paired_statistics": {
+    "unit": "state",
+    "test": "two-sided Wilcoxon signed-rank",
+    "multiplicity": "Benjamini-Hochberg FDR",
+    "alpha": 0.05,
+    "comparisons": [
+      "FULL_CSG_ENSEMBLE vs B0_RANDOM_EXPECTATION",
+      "FULL_CSG_ENSEMBLE vs B1_FIXED_RELATED",
+      "FULL_CSG_ENSEMBLE vs B2_BEST_FIXED_ORIGINAL",
+      "FULL_CSG_ENSEMBLE vs B3_PHASE6C_TABULAR",
+      "FULL_CSG_ENSEMBLE vs FLAT_SET",
+      "FULL_CSG_ENSEMBLE vs STATIC_CSG",
+      "FULL_CSG_ENSEMBLE vs NO_EDGE_FEATURES"
+    ]
+  },
+  "structural_regimes": [
+    "scale", "CF_level", "RI_level", "TI_level", "search_stage", "bottleneck_proxy"
+  ],
+  "optional_no_event_nodes": "OMITTED: removing event node types changes type pooling and is not a clean single-factor ablation",
+  "checkpoint_selection_uses_internal_holdout": false
+}
