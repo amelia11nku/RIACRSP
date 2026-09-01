@@ -1,0 +1,38 @@
+{
+  "schema": "phase6h-exact-validation-protocol-v1",
+  "status": "FROZEN_BEFORE_PHASE6H_EXACT_VALIDATION",
+  "source_commit": "1c793854eb6452ab5150ec8206814c36a4639059",
+  "selected_policy_sha256": "4d2da03e13a036569bebf3897135e5da139e292e3260a2f452754d5c9ae3d239",
+  "tiny_instances": ["tiny_01", "tiny_03"],
+  "tiny_proven_optima": {
+    "tiny_01": 157.0,
+    "tiny_03": 36.0
+  },
+  "tiny_stochastic_seeds": [671501, 671502, 671503],
+  "tiny_stochastic_budget_seconds": 10.0,
+  "gurobi": {
+    "time_limit_seconds": 600.0,
+    "seed": 671501,
+    "threads": 1,
+    "mip_gap": 0.0,
+    "model": "rcias_clgri/exact/general_gurobi.py"
+  },
+  "additional_cal_fit_small_cases": [
+    {
+      "instance_id": "CB1_CAL_S_CF2_RI2_TI2_R07",
+      "relative_path": "cal_fit/CB1_CAL_S_CF2_RI2_TI2_R07.json",
+      "number_of_operations": 56
+    },
+    {
+      "instance_id": "CB1_CAL_S_CF3_RI2_TI2_R07",
+      "relative_path": "cal_fit/CB1_CAL_S_CF3_RI2_TI2_R07.json",
+      "number_of_operations": 59
+    }
+  ],
+  "additional_case_selection_rule": "two smallest CAL-FIT instances by frozen operation count",
+  "adequate_license_comparison_methods": ["H1", "ALNS", "GA", "DCGA", "PHASE6H_CSGNI"],
+  "adequate_license_stochastic_seeds": [671501, 671502, 671503],
+  "adequate_license_budget": "2 * N_operations seconds",
+  "comparison_rule": "Only call an incumbent an optimum when Gurobi proves optimality; otherwise retain status, incumbent, bound, gap, and the solver log separately.",
+  "forbidden_suites": ["CB1_CORE", "CB1_SENSITIVITY", "LEGACY_130"]
+}

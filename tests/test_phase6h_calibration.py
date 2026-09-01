@@ -49,6 +49,23 @@ def test_phase6h_split_is_disjoint_and_holdout_is_unopened_by_config():
     assert all(audit["checks"].values())
 
 
+def test_phase6h_exact_protocol_uses_only_tiny_and_cal_fit():
+    protocol = json.loads((
+        ROOT / "configs/phase6h_exact_validation.json"
+    ).read_text())
+    assert protocol["status"] == "FROZEN_BEFORE_PHASE6H_EXACT_VALIDATION"
+    assert set(protocol["tiny_instances"]) == {"tiny_01", "tiny_03"}
+    assert all(
+        case["relative_path"].startswith("cal_fit/")
+        for case in protocol["additional_cal_fit_small_cases"]
+    )
+    selected_cases = json.dumps(protocol["additional_cal_fit_small_cases"])
+    assert not any(
+        forbidden in selected_cases
+        for forbidden in ("CB1_CORE", "CB1_SENSITIVITY", "LEGACY_130")
+    )
+
+
 def test_live_inference_api_is_outcome_blind():
     parameters = set(inspect.signature(FrozenLiveInference.decide).parameters)
     assert parameters == {

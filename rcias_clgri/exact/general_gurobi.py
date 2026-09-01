@@ -128,6 +128,7 @@ def solve_general_gurobi(
     threads: int = 1,
     mip_gap: float = 0.0,
     output_flag: bool = False,
+    log_file: str | None = None,
 ) -> GeneralGurobiResult:
     """Build and solve the general makespan MILP, then replay via production actions.
 
@@ -155,7 +156,10 @@ def solve_general_gurobi(
     big_m = 2.0 * event_upper + float(max_empty) + 1.0
 
     model = gp.Model(f"{instance.instance_id}_general_rcias")
-    model.Params.OutputFlag = int(output_flag)
+    model.Params.OutputFlag = int(output_flag or log_file is not None)
+    if log_file is not None:
+        model.Params.LogToConsole = int(output_flag)
+        model.Params.LogFile = log_file
     model.Params.Threads = int(threads)
     model.Params.Seed = int(seed)
     model.Params.TimeLimit = float(time_limit_seconds)
