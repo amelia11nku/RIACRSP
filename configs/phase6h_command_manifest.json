@@ -24,8 +24,12 @@
       "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/fit_phase6h_calibration.py"
     },
     {
+      "stage": "gpu_gate_artifact_smoke",
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/run_phase6h_gate_smoke.py"
+    },
+    {
       "stage": "cal_fit_gate_study",
-      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/run_phase6h_gate_study.py --device cuda"
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/launch_phase6h_gate_study.py"
     },
     {
       "stage": "freeze_selected_policy",
