@@ -233,14 +233,19 @@ def anytime_statistics(runs: pd.DataFrame, config: dict) -> pd.DataFrame:
     return anytime_method
 
 
-def calibration_and_drift(config: dict) -> tuple[pd.DataFrame, str]:
+def calibration_and_drift(
+    config: dict, runs: pd.DataFrame
+) -> tuple[pd.DataFrame, str]:
     calibration_rows = []
     reliability_rows = []
+    intervention_rows = []
+    runtime_rows = []
     phase6h_live = []
     for method in ("PHASE6G_CSGNI", "PHASE6H_CSGNI"):
         paths = sorted((OUT / "live_logs" / method).rglob("*.parquet"))
         live = pd.concat((pd.read_parquet(path) for path in paths), ignore_index=True)
-        selected = live[live.ni_intervention].copy()
+        eligible = live[live.ni_eligible].copy()
+        selected = eligible[eligible.ni_intervention].copy()
         if selected.empty:
             raise RuntimeError(f"{method} has no evaluated NI interventions")
         metrics = calibration_metrics(
@@ -253,10 +258,10 @@ def calibration_and_drift(config: dict) -> tuple[pd.DataFrame, str]:
         ).statistic
         calibration_rows.append({
             "method": method,
-            "eligible_state_count": len(live),
+            "eligible_state_count": len(eligible),
             "evaluated_intervention_count": len(selected),
-            "intervention_coverage": float(live.ni_intervention.mean()),
-            "fallback_coverage": float(live.fallback.mean()),
+            "intervention_coverage": float(eligible.ni_intervention.mean()),
+            "fallback_coverage": float(eligible.fallback.mean()),
             **metrics,
             "utility_mae": float(np.mean(np.abs(
                 selected.calibrated_utility - selected.realized_immediate_utility
@@ -276,11 +281,81 @@ def calibration_and_drift(config: dict) -> tuple[pd.DataFrame, str]:
         )
         table.insert(0, "method", method)
         reliability_rows.append(table)
+        groups = [("overall", "ALL", eligible)]
+        groups.extend(
+            ("scale", str(group), part) for group, part in eligible.groupby("scale")
+        )
+        groups.extend(
+            ("CF_level", str(group), part)
+            for group, part in eligible.groupby("CF_level")
+        )
+        for grouping, group, part in groups:
+            interventions = part[part.ni_intervention]
+            intervention_rows.append({
+                "method": method,
+                "grouping": grouping,
+                "group": group,
+                "eligible_state_count": len(part),
+                "intervention_count": len(interventions),
+                "fallback_count": int(part.fallback.sum()),
+                "intervention_coverage": float(part.ni_intervention.mean()),
+                "fallback_coverage": float(part.fallback.mean()),
+                "immediate_positive_rate": float(interventions.realized_positive.mean()),
+                "acceptance_rate": float(interventions.accepted.mean()),
+                "global_best_hit_rate": float(interventions.new_global_best.mean()),
+                "mean_immediate_utility": float(
+                    interventions.realized_immediate_utility.mean()
+                ),
+                "mean_predicted_probability": float(
+                    interventions.calibrated_probability.mean()
+                ),
+                "mean_predicted_utility": float(
+                    interventions.calibrated_utility.mean()
+                ),
+            })
+        runtime_lookup = runs[runs.method == method].set_index(
+            ["instance_id", "seed"]
+        ).total_runtime
+        for (instance_id, seed), part in live.groupby(["instance_id", "seed"]):
+            solver_runtime = float(runtime_lookup.loc[(instance_id, int(seed))])
+            total_overhead = float(part.ni_overhead_ms.sum())
+            runtime_rows.append({
+                "method": method,
+                "instance_id": instance_id,
+                "seed": int(seed),
+                "eligible_decisions": len(part),
+                "interventions": int(part.ni_intervention.sum()),
+                "fallbacks": int(part.fallback.sum()),
+                "solver_runtime_seconds": solver_runtime,
+                "total_decision_overhead_ms": total_overhead,
+                "decision_overhead_fraction": total_overhead / (1000.0 * solver_runtime),
+                "total_csg_build_ms": float(part.csg_build_ms.sum()),
+                "total_model_inference_ms": float(part.model_inference_ms.sum()),
+                "total_calibration_gate_ms": float(part.calibration_gate_ms.sum()),
+                "mean_decision_overhead_ms": float(part.ni_overhead_ms.mean()),
+            })
         if method == "PHASE6H_CSGNI":
             phase6h_live.append(live[["scale", "CF_level", *FEATURES]])
     calibration = pd.DataFrame(calibration_rows)
     atomic_csv(calibration, STATISTICS / "holdout_calibration_summary.csv")
     atomic_csv(pd.concat(reliability_rows, ignore_index=True), STATISTICS / "holdout_reliability_bins.csv")
+    atomic_csv(pd.DataFrame(intervention_rows), STATISTICS / "intervention_diagnostics.csv")
+    runtime = pd.DataFrame(runtime_rows)
+    runtime_summary = runtime.groupby("method").agg(
+        run_count=("seed", "size"),
+        mean_eligible_decisions=("eligible_decisions", "mean"),
+        mean_interventions=("interventions", "mean"),
+        mean_fallbacks=("fallbacks", "mean"),
+        mean_solver_runtime_seconds=("solver_runtime_seconds", "mean"),
+        mean_total_decision_overhead_ms=("total_decision_overhead_ms", "mean"),
+        mean_decision_overhead_fraction=("decision_overhead_fraction", "mean"),
+        mean_total_csg_build_ms=("total_csg_build_ms", "mean"),
+        mean_total_model_inference_ms=("total_model_inference_ms", "mean"),
+        mean_total_calibration_gate_ms=("total_calibration_gate_ms", "mean"),
+        mean_per_decision_overhead_ms=("mean_decision_overhead_ms", "mean"),
+    ).reset_index()
+    atomic_csv(runtime, STATISTICS / "csgni_runtime_efficiency_by_run.csv")
+    atomic_csv(runtime_summary, STATISTICS / "csgni_runtime_efficiency_summary.csv")
 
     live_states = pd.concat(phase6h_live, ignore_index=True)
     reference = pd.read_parquet(
@@ -307,7 +382,7 @@ def main() -> None:
         raise RuntimeError("at least one Phase 6H validation schedule is infeasible")
     instances = final_quality_statistics(runs, config)
     anytime = anytime_statistics(runs, config)
-    calibration, drift = calibration_and_drift(config)
+    calibration, drift = calibration_and_drift(config, runs)
     atomic_json({
         "schema": "phase6h-validation-analysis-integrity-v1",
         "created_at_utc": datetime.now(timezone.utc).isoformat(),
