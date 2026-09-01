@@ -1,0 +1,148 @@
+{
+  "schema": "phase6h-live-calibration-config-v1",
+  "status": "PREREGISTERED_BEFORE_CAL_FIT_COLLECTION",
+  "starting_git_commit": "87ef6837c13dcad034ecd5062b76eeb3ef836872",
+  "frozen_phase6f": {
+    "seed": 660301,
+    "checkpoint_sha256": "f1ccceb607b0e453dfb74e7aa7a946616001db8ec08c12dc9900a66c6f165fc7",
+    "experiment_freeze": "outputs/phase6f/audit/experiment_freeze.json"
+  },
+  "frozen_phase6g_config": "configs/phase6g_live_solver.json",
+  "calibration_instances": {
+    "root": "instances/controlled/RCIAS-CB1-CAL",
+    "manifest": "instances/controlled/RCIAS-CB1-CAL/manifests/calibration_instance_manifest.csv",
+    "source_generation_spec": "configs/rcias_cb1_generation.json",
+    "base_seed_namespace": 671000,
+    "scales": ["S", "M", "L"],
+    "capability_flexibility_groups": ["CF1", "CF2", "CF3"],
+    "RI_level": "RI2",
+    "TI_level": "TI2",
+    "replicate_split": {
+      "R07": "CAL_FIT",
+      "R08": "CAL_HOLDOUT"
+    },
+    "instances_per_split": 9
+  },
+  "search": {
+    "wall_clock_seconds_per_operation": 2.0,
+    "initial_solution": "H1",
+    "destroy_fraction": 0.15,
+    "repair_for_ni": "transport_aware",
+    "candidate_trials": 8,
+    "intervention_rate": 100,
+    "model_residency": "load once per GPU worker; exclude one-time checkpoint load from each run budget and report it separately"
+  },
+  "rng_namespaces": {
+    "baseline": 0,
+    "proposal": 670102,
+    "ni_repair": 670103,
+    "acceptance": 670104,
+    "diagnostics": 670105
+  },
+  "seeds": {
+    "CAL_FIT_COLLECTION": [671201, 671202, 671203],
+    "CAL_FIT_GATE_STUDY": [671401, 671402],
+    "CAL_HOLDOUT": [671301, 671302, 671303, 671304, 671305],
+    "TINY": [671501, 671502, 671503],
+    "ANALYSIS_BOOTSTRAP": [671901]
+  },
+  "calibration_collection": {
+    "split": "CAL_FIT",
+    "policy": "FORCED_FROZEN_TOP1",
+    "force_selected_top_action": true,
+    "outcome_use": "LABEL_ONLY_AFTER_COMMON_DECODER_EVALUATION",
+    "holdout_access": "FORBIDDEN",
+    "purpose": "collect an outcome label for every selected frozen-model top-1 action without changing the candidate bank, repair, decoder, or acceptance semantics"
+  },
+  "probability_calibration": {
+    "candidate_methods": ["PHASE6G", "SIGMOID_IDENTITY", "PLATT", "ISOTONIC", "BETA"],
+    "grouped_cross_validation_folds": 3,
+    "cross_validation_group": "instance_id",
+    "selection_priority": ["lowest_mean_nll", "lowest_mean_brier", "lowest_mean_ece", "simplest_method"],
+    "reliability_bins": 10
+  },
+  "utility_calibration": {
+    "candidate_methods": ["PHASE6G", "ISOTONIC"],
+    "selection_priority": ["lowest_grouped_cv_mae", "lowest_grouped_cv_rmse"],
+    "maximum_spearman_degradation": 0.02,
+    "top_k_fractions": [0.05, 0.1, 0.2]
+  },
+  "support_guard": {
+    "features": [
+      "mean_slack_ratio",
+      "mean_w_delay_ratio",
+      "mean_f_delay_ratio",
+      "mean_island_relative_load",
+      "mean_local_reconfiguration_ratio",
+      "search_progress"
+    ],
+    "lower_quantile": 0.005,
+    "upper_quantile": 0.995,
+    "maximum_out_of_range_features": 0,
+    "fallback": "FROZEN_ALNS"
+  },
+  "intervention_gate_study": {
+    "split": "CAL_FIT",
+    "candidates": [
+      "PHASE6G_REFERENCE",
+      "CALIBRATED_PROBABILITY",
+      "CALIBRATED_PROBABILITY_UTILITY",
+      "CALIBRATED_PROBABILITY_UTILITY_SUPPORT"
+    ],
+    "probability_threshold_grid": [0.02, 0.04, 0.06, 0.08, 0.1, 0.15, 0.2],
+    "utility_threshold_grid": [-0.1, -0.075, -0.05, -0.025, 0.0],
+    "minimum_coverage": 0.1,
+    "maximum_coverage": 0.6,
+    "minimum_selected_samples": 500,
+    "offline_threshold_selection": [
+      "highest_mean_realized_immediate_utility",
+      "highest_realized_positive_fraction",
+      "highest_coverage",
+      "highest_threshold"
+    ],
+    "solver_policy_selection": [
+      "all_schedules_feasible",
+      "lowest_mean_of_instance_mean_final_makespan",
+      "fewest_mean_decoder_evaluations",
+      "lowest_mean_decision_overhead",
+      "lexicographic_policy_name"
+    ]
+  },
+  "cal_holdout_protocol": {
+    "open_only_after_policy_freeze": true,
+    "primary_paired_unit": "instance_mean_over_seeds",
+    "methods": ["H1", "ALNS", "GA", "DCGA", "PHASE6G_CSGNI", "PHASE6H_CSGNI"],
+    "matched_cpu_threads_per_run": 1,
+    "gpu_csgni_workers": 1,
+    "final_quality_is_primary": true
+  },
+  "anytime": {
+    "normalized_budget_fractions": [0.05, 0.1, 0.25, 0.5, 0.75, 1.0],
+    "common_target_gaps": [0.05, 0.02, 0.01, 0.005],
+    "reference_priority": ["PROVEN_GUROBI_OPTIMUM", "POOLED_BKS"],
+    "unreached_target_encoding": "NULL_WITH_RIGHT_CENSORED_TRUE",
+    "auc": "trapezoidal integral of relative gap to the per-instance common reference over normalized wall-clock budget"
+  },
+  "acceptance_gates": {
+    "required_feasibility_rate": 1.0,
+    "maximum_ece": 0.1,
+    "preferred_ece": 0.05,
+    "require_brier_improvement_vs_phase6g": true,
+    "require_nll_improvement_vs_phase6g": true,
+    "maximum_utility_spearman_degradation": 0.02,
+    "minimum_mean_improvement_vs_alns": 0.0,
+    "preferred_mean_improvement_vs_alns": 0.005,
+    "strong_mean_improvement_vs_alns": 0.01,
+    "require_no_catastrophic_subgroup_collapse": true
+  },
+  "forbidden": [
+    "CB1_CORE",
+    "CB1_SENSITIVITY",
+    "LEGACY_130",
+    "PPO_OR_ONLINE_RL",
+    "PHASE6F_WEIGHT_OR_ARCHITECTURE_CHANGE",
+    "CSG_OR_REPAIR_SEMANTICS_CHANGE",
+    "DEV_HOLDOUT_THRESHOLD_TUNING",
+    "CSGNI_V2_IMPLEMENTATION"
+  ]
+}

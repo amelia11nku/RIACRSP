@@ -18,6 +18,9 @@ class FrozenCalibrator:
 
     def predict(self, scores) -> np.ndarray:
         values = np.asarray(scores, dtype=float)
+        if self.method == "SIGMOID_IDENTITY":
+            logits = np.clip(values, -40.0, 40.0)
+            return 1.0 / (1.0 + np.exp(-logits))
         if self.method == "PLATT":
             coefficient = float(self.parameters["coefficient"])
             intercept = float(self.parameters["intercept"])
@@ -29,6 +32,17 @@ class FrozenCalibrator:
                 np.asarray(self.parameters["x_thresholds"], dtype=float),
                 np.asarray(self.parameters["y_thresholds"], dtype=float),
             )
+        if self.method == "BETA":
+            raw_probability = 1.0 / (1.0 + np.exp(-np.clip(values, -40.0, 40.0)))
+            raw_probability = np.clip(raw_probability, 1e-12, 1.0 - 1e-12)
+            transformed = (
+                float(self.parameters["log_probability_coefficient"])
+                * np.log(raw_probability)
+                + float(self.parameters["log_one_minus_probability_coefficient"])
+                * np.log1p(-raw_probability)
+                + float(self.parameters["intercept"])
+            )
+            return 1.0 / (1.0 + np.exp(-np.clip(transformed, -40.0, 40.0)))
         raise ValueError(f"unknown calibration method: {self.method}")
 
     def to_dict(self) -> dict[str, object]:
@@ -40,6 +54,8 @@ def fit_probability_calibrator(scores, positive, method: str) -> FrozenCalibrato
     labels = np.asarray(positive, dtype=int)
     if values.ndim != 1 or labels.shape != values.shape or np.unique(labels).size != 2:
         raise ValueError("probability calibration requires aligned scores and two classes")
+    if method == "SIGMOID_IDENTITY":
+        return FrozenCalibrator(method, {})
     if method == "PLATT":
         model = LogisticRegression(C=1e6, solver="lbfgs", random_state=0)
         model.fit(values.reshape(-1, 1), labels)
@@ -52,6 +68,20 @@ def fit_probability_calibrator(scores, positive, method: str) -> FrozenCalibrato
         return FrozenCalibrator(method, {
             "x_thresholds": model.X_thresholds_.astype(float).tolist(),
             "y_thresholds": model.y_thresholds_.astype(float).tolist(),
+        })
+    if method == "BETA":
+        raw_probability = 1.0 / (1.0 + np.exp(-np.clip(values, -40.0, 40.0)))
+        raw_probability = np.clip(raw_probability, 1e-12, 1.0 - 1e-12)
+        transformed = np.column_stack((
+            np.log(raw_probability),
+            np.log1p(-raw_probability),
+        ))
+        model = LogisticRegression(C=1e6, solver="lbfgs", random_state=0)
+        model.fit(transformed, labels)
+        return FrozenCalibrator(method, {
+            "log_probability_coefficient": float(model.coef_[0, 0]),
+            "log_one_minus_probability_coefficient": float(model.coef_[0, 1]),
+            "intercept": float(model.intercept_[0]),
         })
     raise ValueError(f"unsupported probability calibration method: {method}")
 
@@ -89,8 +119,10 @@ def reliability_table(probability, positive, *, bins: int = 10) -> pd.DataFrame:
 
 
 def calibration_metrics(probability, positive, *, bins: int = 10) -> dict[str, float]:
-    prediction = np.clip(np.asarray(probability, dtype=float), 0, 1)
+    prediction = np.clip(np.asarray(probability, dtype=float), 1e-12, 1 - 1e-12)
     labels = np.asarray(positive, dtype=float)
+    if prediction.ndim != 1 or labels.shape != prediction.shape:
+        raise ValueError("calibration metrics require aligned one-dimensional arrays")
     table = reliability_table(prediction, labels, bins=bins)
     nonempty = table[table["count"] > 0]
     ece = float((
@@ -101,4 +133,9 @@ def calibration_metrics(probability, positive, *, bins: int = 10) -> dict[str, f
     return {
         "brier_score": float(np.mean((prediction - labels) ** 2)),
         "expected_calibration_error": ece,
+        "negative_log_likelihood": float(-np.mean(
+            labels * np.log(prediction) + (1.0 - labels) * np.log1p(-prediction)
+        )),
+        "mean_predicted_probability": float(prediction.mean()),
+        "realized_positive_fraction": float(labels.mean()),
     }

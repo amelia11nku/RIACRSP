@@ -1,0 +1,20 @@
+{
+  "checks": {
+    "all_loadable_and_hash_exact": true,
+    "balanced_scale_cf_cells": true,
+    "exactly_18_unique_instances": true,
+    "exactly_9_per_split": true,
+    "fixed_ri2_ti2": true,
+    "generation_and_search_seeds_disjoint": true,
+    "generation_seeds_unique": true,
+    "phase6h_config_hash_matches": true,
+    "replicate_split_exact": true,
+    "zero_historical_id_or_hash_overlap": true
+  },
+  "schema": "phase6h-calibration-instance-audit-v1",
+  "split_counts": {
+    "CAL_FIT": 9,
+    "CAL_HOLDOUT": 9
+  },
+  "status": "PASS"
+}

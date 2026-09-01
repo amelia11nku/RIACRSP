@@ -28,6 +28,12 @@ class InterventionDecision:
     graph_hash: str | None = None
     timings_ms: Mapping[str, float] | None = None
     state_feature_summary: Mapping[str, float] | None = None
+    raw_score: float | None = None
+    raw_probability: float | None = None
+    raw_utility: float | None = None
+    support_in_range: bool | None = None
+    support_out_of_range_count: int = 0
+    policy_name: str | None = None
 
 
 class LiveInterventionPolicy(Protocol):

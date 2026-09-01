@@ -1,0 +1,43 @@
+{
+  "schema": "phase6h-command-manifest-v1",
+  "working_directory": "/home/liulei/ayx/RI-ACRSP",
+  "python": "/home/liulei/miniconda3/envs/gnn311/bin/python",
+  "commands": [
+    {
+      "stage": "verify_calibration_instances",
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/generate_phase6h_calibration_instances.py --verify-only"
+    },
+    {
+      "stage": "environment_freeze",
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/freeze_phase6h_environment.py"
+    },
+    {
+      "stage": "gpu_collection_smoke",
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/run_phase6h_collection_smoke.py"
+    },
+    {
+      "stage": "launch_cal_fit_collection",
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/launch_phase6h_calibration_collection.py"
+    },
+    {
+      "stage": "fit_calibration",
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/fit_phase6h_calibration.py"
+    },
+    {
+      "stage": "cal_fit_gate_study",
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/run_phase6h_gate_study.py --device cuda"
+    },
+    {
+      "stage": "freeze_selected_policy",
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/freeze_phase6h_policy.py"
+    },
+    {
+      "stage": "cal_holdout_validation",
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/run_phase6h_validation.py --device cuda"
+    },
+    {
+      "stage": "analyze_validation",
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/analyze_phase6h_validation.py"
+    }
+  ]
+}

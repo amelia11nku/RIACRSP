@@ -42,6 +42,8 @@ class FrozenLiveInference:
         *,
         device: str = "cuda",
         proposal_seed_namespace: int = 670102,
+        deployment_artifact: Path | None = None,
+        force_intervention: bool = False,
     ) -> None:
         freeze = json.loads(experiment_freeze.read_text(encoding="utf-8"))
         checkpoint_path = Path(str(freeze["selected_checkpoint_path"]))
@@ -66,6 +68,20 @@ class FrozenLiveInference:
         self.probability = FrozenCalibrator(**freeze["probability_calibrator"])
         self.utility = FrozenCalibrator(**freeze["utility_calibrator"])
         self.thresholds = dict(freeze["selective_intervention_thresholds"])
+        self.support_guard: dict[str, object] = {"enabled": False}
+        self.policy_name = "PHASE6G_REFERENCE"
+        self.deployment_artifact_sha256: str | None = None
+        if deployment_artifact is not None:
+            artifact = json.loads(deployment_artifact.read_text(encoding="utf-8"))
+            if artifact.get("checkpoint_sha256") != actual_hash:
+                raise ValueError("deployment artifact/checkpoint hash mismatch")
+            self.probability = FrozenCalibrator(**artifact["probability_calibrator"])
+            self.utility = FrozenCalibrator(**artifact["utility_calibrator"])
+            self.thresholds = dict(artifact["thresholds"])
+            self.support_guard = dict(artifact.get("support_guard", {"enabled": False}))
+            self.policy_name = str(artifact["policy_name"])
+            self.deployment_artifact_sha256 = _sha256(deployment_artifact)
+        self.force_intervention = bool(force_intervention)
         self.proposal_seed_namespace = int(proposal_seed_namespace)
         self.checkpoint_path = checkpoint_path
         self.checkpoint_sha256 = actual_hash
@@ -158,22 +174,40 @@ class FrozenLiveInference:
         probability = float(probabilities[best])
         utility = float(utilities[best])
         margin = probability - second_probability
-        intervene = bool(
+        bounds = dict(self.support_guard.get("bounds", {}))
+        outside = sum(
+            not (
+                float(limits["lower"]) <= float(state_feature_summary[name])
+                <= float(limits["upper"])
+            )
+            for name, limits in bounds.items()
+        )
+        support_in_range = bool(
+            not self.support_guard.get("enabled", False)
+            or outside <= int(self.support_guard.get("maximum_out_of_range_features", 0))
+        )
+        calibration_pass = bool(
             probability >= float(self.thresholds["confidence"])
             and utility >= float(self.thresholds["predicted_utility"])
             and margin >= float(self.thresholds["decision_margin"])
         )
+        intervene = self.force_intervention or (calibration_pass and support_in_range)
         calibration_ms = (time.perf_counter() - calibration_started) * 1000.0
         arm = generated.arms[best]
         return InterventionDecision(
             intervene=intervene,
             state_id=state_id,
             selected_target_set_id=arm.target_set_id,
-            destroyed_operations=arm.destroyed_operations if intervene else (),
+            destroyed_operations=arm.destroyed_operations,
             calibrated_probability=probability,
             calibrated_utility=utility,
             decision_margin=margin,
-            fallback_reason=None if intervene else "CALIBRATION_GATE",
+            fallback_reason=(
+                None if intervene else (
+                    "SUPPORT_GUARD" if calibration_pass and not support_in_range
+                    else "CALIBRATION_GATE"
+                )
+            ),
             proposal_count=generated.unique_arm_count,
             requested_proposal_count=generated.requested_arm_count,
             duplicate_proposal_count=generated.duplicate_arm_count,
@@ -191,4 +225,13 @@ class FrozenLiveInference:
                 "total": (time.perf_counter() - started) * 1000.0,
             },
             state_feature_summary=state_feature_summary,
+            raw_score=float(raw_scores[best]),
+            raw_probability=float(1.0 / (1.0 + np.exp(-np.clip(raw_scores[best], -40.0, 40.0)))),
+            raw_utility=float(raw_utilities[best]),
+            support_in_range=support_in_range,
+            support_out_of_range_count=outside,
+            policy_name=(
+                "FORCED_FROZEN_TOP1_COLLECTION" if self.force_intervention
+                else self.policy_name
+            ),
         )

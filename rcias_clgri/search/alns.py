@@ -111,6 +111,7 @@ def solve_alns(
     best = current
     evaluations = 1
     best_time = time.perf_counter() - started
+    initialization_seconds = best_time
     trace = [TracePoint(best_time, evaluations, best.makespan)]
     weights = {name: 1.0 for name in (*DESTROY, *REPAIR)}
     selections, successes, improvements = Counter(), Counter(), Counter()
@@ -182,5 +183,6 @@ def solve_alns(
         iterations += 1
     return SearchResult(
         "ALNS-H1", best, best_time, time.perf_counter() - started, evaluations, iterations, None, tuple(trace),
-        {"operator_selections": dict(selections), "operator_successes": dict(successes), "operator_improvements": dict(improvements), "final_adaptive_weights": weights},
+        {"operator_selections": dict(selections), "operator_successes": dict(successes), "operator_improvements": dict(improvements), "final_adaptive_weights": weights,
+         "initialization_seconds": initialization_seconds},
     )

@@ -85,6 +85,7 @@ def solve_csgni(
     best = current
     evaluations = 1
     best_time = time.perf_counter() - started
+    initialization_seconds = best_time
     trace = [TracePoint(best_time, evaluations, best.makespan)]
     weights = {name: 1.0 for name in (*DESTROY, *REPAIR)}
     selections, successes, improvements = Counter(), Counter(), Counter()
@@ -208,6 +209,9 @@ def solve_csgni(
                 "ni_fallback_reason": decision.fallback_reason if decision else "NOT_ELIGIBLE",
                 "ni_state_id": decision.state_id if decision else None,
                 "ni_target_set_id": decision.selected_target_set_id if decision else None,
+                "ni_selected_operation_ids": (
+                    decision.destroyed_operations if decision else ()
+                ),
                 "ni_proposal_count": decision.proposal_count if decision else 0,
                 "ni_requested_proposal_count": decision.requested_proposal_count if decision else 0,
                 "ni_duplicate_proposal_count": decision.duplicate_proposal_count if decision else 0,
@@ -217,6 +221,14 @@ def solve_csgni(
                 "ni_calibrated_probability": decision.calibrated_probability if decision else None,
                 "ni_calibrated_utility": decision.calibrated_utility if decision else None,
                 "ni_decision_margin": decision.decision_margin if decision else None,
+                "ni_raw_score": decision.raw_score if decision else None,
+                "ni_raw_probability": decision.raw_probability if decision else None,
+                "ni_raw_utility": decision.raw_utility if decision else None,
+                "ni_support_in_range": decision.support_in_range if decision else None,
+                "ni_support_out_of_range_count": (
+                    decision.support_out_of_range_count if decision else 0
+                ),
+                "ni_policy_name": decision.policy_name if decision else None,
                 "ni_graph_hash": decision.graph_hash if decision else None,
                 "ni_state_feature_summary": (
                     decision.state_feature_summary if decision else None
@@ -245,6 +257,7 @@ def solve_csgni(
             "ni_eligible_iterations": eligible_count,
             "ni_interventions": intervention_count,
             "ni_fallbacks": fallback_count,
+            "initialization_seconds": initialization_seconds,
             "rng_namespaces": {
                 "baseline": 0,
                 "proposal": csgni_config.proposal_seed_namespace,

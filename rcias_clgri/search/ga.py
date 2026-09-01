@@ -63,11 +63,21 @@ def solve_ga(instance: Instance, time_limit: float, seed: int, config: GAConfig 
     rng = random.Random(seed)
     started = time.perf_counter()
     population = [random_candidate(instance, rng) for _ in range(config.population_size)]
-    evaluated = [decode_candidate(instance, item) for item in population]
-    evaluations = len(evaluated)
-    best = min(evaluated, key=lambda item: item.makespan)
-    best_time = time.perf_counter() - started
-    trace = [TracePoint(best_time, evaluations, best.makespan)]
+    evaluated = []
+    evaluations = 0
+    best = None
+    best_time = 0.0
+    trace = []
+    for candidate in population:
+        decoded = decode_candidate(instance, candidate)
+        evaluations += 1
+        evaluated.append(decoded)
+        if best is None or decoded.makespan < best.makespan:
+            best = decoded
+            best_time = time.perf_counter() - started
+            trace.append(TracePoint(best_time, evaluations, best.makespan))
+    assert best is not None
+    initialization_seconds = time.perf_counter() - started
     generation = 0
     elite_count = max(1, round(config.population_size * config.elite_fraction))
 
@@ -96,4 +106,7 @@ def solve_ga(instance: Instance, time_limit: float, seed: int, config: GAConfig 
                 trace.append(TracePoint(best_time, evaluations, best.makespan))
         generation += 1
     runtime = time.perf_counter() - started
-    return SearchResult("GA", best, best_time, runtime, evaluations, generation, generation, tuple(trace), {})
+    return SearchResult(
+        "GA", best, best_time, runtime, evaluations, generation, generation,
+        tuple(trace), {"initialization_seconds": initialization_seconds},
+    )

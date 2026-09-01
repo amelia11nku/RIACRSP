@@ -92,12 +92,22 @@ def _diversity_check(instance, population, population_index, rng, threshold):
 def solve_dcga(instance: Instance, time_limit: float, seed: int, config: DCGAConfig = DCGAConfig()) -> SearchResult:
     rng = random.Random(seed)
     started = time.perf_counter()
-    populations = [[_decode(instance, random_candidate(instance, rng), index)
-                    for _ in range(config.population_size_each)] for index in range(2)]
-    evaluations = 2 * config.population_size_each
-    best = min((*populations[0], *populations[1]), key=lambda item: item.makespan)
-    best_time = time.perf_counter() - started
-    trace = [TracePoint(best_time, evaluations, best.makespan)]
+    populations: list[list[DecodedCandidate]] = [[], []]
+    evaluations = 0
+    best = None
+    best_time = 0.0
+    trace = []
+    for index in range(2):
+        for _ in range(config.population_size_each):
+            decoded = _decode(instance, random_candidate(instance, rng), index)
+            evaluations += 1
+            populations[index].append(decoded)
+            if best is None or decoded.makespan < best.makespan:
+                best = decoded
+                best_time = time.perf_counter() - started
+                trace.append(TracePoint(best_time, evaluations, best.makespan))
+    assert best is not None
+    initialization_seconds = time.perf_counter() - started
     generations = collaborations = regenerated = 0
 
     def record(item):
@@ -153,7 +163,8 @@ def solve_dcga(instance: Instance, time_limit: float, seed: int, config: DCGACon
     return SearchResult("Adapted DCGA", best, best_time, time.perf_counter() - started, evaluations,
                         generations, generations, tuple(trace), {
                             "fidelity": "FAITHFUL_ADAPTATION", "population_pathway_best": pathway_best,
-                            "collaboration_trials": collaborations, "diversity_regenerations": regenerated})
+                            "collaboration_trials": collaborations, "diversity_regenerations": regenerated,
+                            "initialization_seconds": initialization_seconds})
 
 
 solve_dcga_inspired = solve_dcga

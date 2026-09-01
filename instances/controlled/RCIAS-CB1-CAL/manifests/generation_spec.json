@@ -1,0 +1,29 @@
+{
+  "base_seed_namespace": 671000,
+  "cal_holdout_use": "FORBIDDEN_UNTIL_PHASE6H_POLICY_ARTIFACT_IS_FROZEN",
+  "factorial_design": {
+    "CF": [
+      "CF1",
+      "CF2",
+      "CF3"
+    ],
+    "RI": [
+      "RI2"
+    ],
+    "TI": [
+      "TI2"
+    ],
+    "replicate_split": {
+      "R07": "CAL_FIT",
+      "R08": "CAL_HOLDOUT"
+    },
+    "scale": [
+      "S",
+      "M",
+      "L"
+    ]
+  },
+  "phase6h_config_sha256": "e6ac2ab2aeaef7d799e58a6f7b2a5bcbbcc6342e8c8e7a5d2e5330eaea99fe22",
+  "schema": "rcias-cb1-cal-generation-v1",
+  "source_spec_sha256": "272d2108b095593adb7df3a3db3b52d56ff7863acfe68c7c09279fbf4178f92c"
+}
