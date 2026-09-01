@@ -1,0 +1,62 @@
+{
+  "schema": "phase6g-live-solver-config-v1",
+  "status": "PREREGISTERED_BEFORE_DEV_TUNE",
+  "frozen_phase6f": {
+    "seed": 660301,
+    "checkpoint_sha256": "f1ccceb607b0e453dfb74e7aa7a946616001db8ec08c12dc9900a66c6f165fc7",
+    "experiment_freeze": "outputs/phase6f/audit/experiment_freeze.json"
+  },
+  "search": {
+    "wall_clock_seconds_per_operation": 2.0,
+    "initial_solution": "H1",
+    "destroy_fraction": 0.15,
+    "repair_for_ni": "transport_aware",
+    "candidate_trials": 8,
+    "intervention_rates": [20, 50, 100]
+  },
+  "rng_namespaces": {
+    "baseline": 0,
+    "proposal": 670102,
+    "ni_repair": 670103,
+    "acceptance": 670104,
+    "diagnostics": 670105
+  },
+  "development_split": {
+    "manifest": "instances/controlled/RCIAS-CB1/manifests/dev_manifest.csv",
+    "grouping": ["scale", "CF_level"],
+    "DEV_TUNE_replicate": "R01",
+    "DEV_HOLDOUT_replicate": "R02"
+  },
+  "seeds": {
+    "DEV_TUNE": [670201, 670202, 670203],
+    "DEV_HOLDOUT": [670301, 670302, 670303, 670304, 670305, 670306, 670307, 670308, 670309, 670310],
+    "TINY": [670401, 670402, 670403]
+  },
+  "frequency_selection": {
+    "primary": "lowest_mean_final_makespan",
+    "tie_breakers": [
+      "largest_improvement_over_alns",
+      "fewest_decoder_evaluations",
+      "lowest_total_ni_overhead",
+      "lowest_seed_std"
+    ]
+  },
+  "tiny_validation": {
+    "instances": ["tiny_01", "tiny_03"],
+    "stochastic_budget_seconds": 10.0,
+    "exact_time_limit_seconds": 600.0,
+    "additional_gurobi_dev_small_count": 2
+  },
+  "gate": {
+    "required_feasibility_rate": 1.0,
+    "preferred_improvement_over_alns": 0.01,
+    "conditional_improvement_over_alns": 0.005
+  },
+  "forbidden": [
+    "CB1_CORE",
+    "CB1_SENSITIVITY",
+    "LEGACY_130",
+    "PPO_OR_ONLINE_RL",
+    "MODEL_RETRAINING"
+  ]
+}
