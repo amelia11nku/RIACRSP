@@ -206,6 +206,9 @@ def run_case(case: dict[str, Any], config: dict[str, Any], output_root: Path) ->
         "replay_makespan": None,
         "replay_feasible": False,
         "native_replay_equal": False,
+        "action_replay_makespan": None,
+        "action_replay_feasible": False,
+        "action_replay_matches_solver": False,
         "log_path": str(log_path.relative_to(ROOT)).replace("\\", "/"),
         "solution_path": str(solution_path.relative_to(ROOT)).replace("\\", "/"),
         "feasibility_path": str(feasibility_path.relative_to(ROOT)).replace("\\", "/"),
@@ -259,6 +262,9 @@ def run_case(case: dict[str, Any], config: dict[str, Any], output_root: Path) ->
             "replay_makespan": result.replay_makespan,
             "replay_feasible": bool(audit["feasible"]),
             "native_replay_equal": native_replay_equal,
+            "action_replay_makespan": result.action_replay_makespan,
+            "action_replay_feasible": result.action_replay_feasible,
+            "action_replay_matches_solver": result.action_replay_matches_solver,
         })
         atomic_json(result.to_dict(), solution_path)
         atomic_json(audit, feasibility_path)
@@ -343,6 +349,9 @@ def plot_results(rows: list[dict[str, Any]], output_root: Path) -> None:
 def write_report(config: dict[str, Any], rows: list[dict[str, Any]], output_root: Path) -> None:
     proven = sum(bool(row["optimality_proven"]) for row in rows)
     time_limited = sum(row["status"] == "TIME_LIMIT" for row in rows)
+    action_projection_mismatches = sum(
+        not bool(row.get("action_replay_matches_solver")) for row in rows
+    )
     all_replayed = bool(rows) and all(
         row["objective_makespan"] is not None
         and row["replay_feasible"]
@@ -389,6 +398,7 @@ def write_report(config: dict[str, Any], rows: list[dict[str, Any]], output_root
         f"- Formal Core-S runs: {len(rows)}/{len(config['runs'])}; proven optima: {proven}; time-limit cases: {time_limited}.",
         f"- Every returned incumbent passed production replay and the independent checker: `{str(all_replayed).upper()}`.",
         "- H1 gap to optimum is reported only when Gurobi proved optimality.",
+        f"- Start-time-only action projection mismatches: {action_projection_mismatches}; these are retained as diagnostics and are not used as the lossless MILP schedule reconstruction.",
         "- Only the newly authorized formal Core-S stratum was accessed; Core-M/L, Sensitivity, Legacy, DEV-HOLDOUT, and CAL-HOLDOUT were not accessed.",
         "",
         "## Artifacts",
@@ -428,6 +438,7 @@ def summarize(config: dict[str, Any], output_root: Path) -> list[dict[str, Any]]
         "variable_count", "constraint_count", "h1_makespan",
         "h1_gap_to_opt_percent", "replay_makespan", "replay_feasible",
         "native_replay_equal", "log_path", "solution_path", "feasibility_path", "error",
+        "action_replay_makespan", "action_replay_feasible", "action_replay_matches_solver",
     ]
     normalized = [{key: row.get(key) for key in columns} for row in rows]
     atomic_csv(normalized, output_root / "gurobi_results.csv")

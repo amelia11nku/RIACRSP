@@ -44,6 +44,8 @@ def test_general_gurobi_proves_all_frozen_tiny_optima(general_results):
         assert result.node_count >= 0.0
         assert result.h1_mip_start_used
         assert result.replay_feasible
+        assert result.action_replay_feasible
+        assert result.action_replay_matches_solver
         assert check_schedule(instance, result.schedule)["feasible"]
         assert json.loads(json.dumps(result.to_dict()))["status"] == "OPTIMAL"
 
