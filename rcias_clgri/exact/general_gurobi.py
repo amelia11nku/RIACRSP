@@ -48,7 +48,9 @@ class GeneralGurobiResult:
     f_sequences: Mapping[str, tuple[str, ...]]
     variable_count: int
     constraint_count: int
+    node_count: float
     h1_upper_bound: float
+    h1_mip_start_used: bool
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -78,7 +80,9 @@ class GeneralGurobiResult:
             "f_sequences": {key: list(value) for key, value in self.f_sequences.items()},
             "variable_count": self.variable_count,
             "constraint_count": self.constraint_count,
+            "node_count": self.node_count,
             "h1_upper_bound": self.h1_upper_bound,
+            "h1_mip_start_used": self.h1_mip_start_used,
             "schedule": self.schedule.to_dict(),
         }
 
@@ -129,6 +133,7 @@ def solve_general_gurobi(
     mip_gap: float = 0.0,
     output_flag: bool = False,
     log_file: str | None = None,
+    use_h1_mip_start: bool = True,
 ) -> GeneralGurobiResult:
     """Build and solve the general makespan MILP, then replay via production actions.
 
@@ -655,6 +660,130 @@ def solve_general_gurobi(
     for op in operations:
         model.addConstr(makespan >= completion[op])
     model.setObjective(makespan, GRB.MINIMIZE)
+
+    # The production H1 schedule is already known to be feasible.  Supplying it
+    # as a complete discrete/temporal MIP start gives time-limited paper runs a
+    # reproducible incumbent without restricting any MILP decision.
+    if use_h1_mip_start:
+        h1_schedule = h1.schedule
+
+        def set_path_start(
+            source: str,
+            sink: str,
+            arcs: Mapping[tuple[str, str], Any],
+            sequence: tuple[str, ...] | list[str],
+        ) -> None:
+            selected = set(zip((source, *sequence), (*sequence, sink))) if sequence else set()
+            for key, variable in arcs.items():
+                variable.Start = float(key in selected)
+
+        for op in operations:
+            operation = h1_schedule.operation_schedules[op]
+            for island in instance.operation_data[op].eligible_islands:
+                assign[(op, island)].Start = float(operation.island_id == island)
+            start[op].Start = float(operation.start_time)
+            completion[op].Start = float(operation.completion_time)
+
+        for product in instance.products:
+            source, sink = f"PRODUCT_SOURCE::{product}", f"PRODUCT_SINK::{product}"
+            sequence = h1_schedule.product_sequences[product]
+            set_path_start(source, sink, product_arcs[product], sequence)
+            for position, op in enumerate(sequence, 1):
+                product_rank[op].Start = float(position)
+
+        for island in instance.islands:
+            set_path_start(
+                f"ISLAND_SOURCE::{island}",
+                f"ISLAND_SINK::{island}",
+                island_arcs[island],
+                h1_schedule.island_timelines[island],
+            )
+
+        f_task_by_operation = {
+            task.operation_id: task
+            for tasks in h1_schedule.f_timelines.values()
+            for task in tasks
+        }
+        for op in operations:
+            operation = h1_schedule.operation_schedules[op]
+            task = f_task_by_operation[op]
+            f_depart[op].Start = float(task.departure_wh)
+            f_arrive[op].Start = float(task.arrival_island)
+            f_return[op].Start = float(task.return_wh)
+            for vehicle in instance.agvs_f:
+                f_assigned[(op, vehicle)].Start = float(task.vehicle_id == vehicle)
+                for island in instance.operation_data[op].eligible_islands:
+                    f_pair[(op, vehicle, island)].Start = float(
+                        task.vehicle_id == vehicle and operation.island_id == island
+                    )
+        for vehicle in instance.agvs_f:
+            set_path_start(
+                f"F_SOURCE::{vehicle}",
+                f"F_SINK::{vehicle}",
+                f_arcs[vehicle],
+                [task.operation_id for task in h1_schedule.f_timelines[vehicle]],
+            )
+
+        w_task_by_operation = {
+            task.operation_id: task
+            for tasks in h1_schedule.w_timelines.values()
+            for task in tasks
+        }
+        for op in operations:
+            operation = h1_schedule.operation_schedules[op]
+            predecessor = operation.product_predecessor
+            pickup = (
+                "WH" if predecessor is None
+                else h1_schedule.operation_schedules[predecessor].island_id
+            )
+            detail_key = (
+                f"PRODUCT_SOURCE::{operation.product_id}" if predecessor is None else predecessor,
+                op,
+                pickup,
+                operation.island_id,
+            )
+            for key, variable in details_by_operation[op]:
+                variable.Start = float(key == detail_key)
+
+            task = w_task_by_operation.get(op)
+            need_w[op].Start = float(task is not None)
+            w_loaded_start[op].Start = 0.0 if task is None else float(task.loaded_start)
+            w_arrive[op].Start = 0.0 if task is None else float(task.arrival_time)
+            for vehicle in instance.agvs_w:
+                w_assigned[(op, vehicle)].Start = float(
+                    task is not None and task.vehicle_id == vehicle
+                )
+            for (route_op, vehicle, route_pickup, destination), variable in w_type.items():
+                if route_op == op:
+                    variable.Start = float(
+                        task is not None
+                        and task.vehicle_id == vehicle
+                        and task.pickup == route_pickup
+                        and task.destination == destination
+                    )
+            for (route_op, vehicle, route_pickup), variable in w_pickup.items():
+                if route_op == op:
+                    variable.Start = float(
+                        task is not None
+                        and task.vehicle_id == vehicle
+                        and task.pickup == route_pickup
+                    )
+            for (route_op, vehicle, destination), variable in w_destination.items():
+                if route_op == op:
+                    variable.Start = float(
+                        task is not None
+                        and task.vehicle_id == vehicle
+                        and task.destination == destination
+                    )
+        for vehicle in instance.agvs_w:
+            set_path_start(
+                f"W_SOURCE::{vehicle}",
+                f"W_SINK::{vehicle}",
+                w_arcs[vehicle],
+                [task.operation_id for task in h1_schedule.w_timelines[vehicle]],
+            )
+        makespan.Start = makespan_upper
+
     model.optimize()
 
     status = _status_name(model.Status, GRB)
@@ -751,5 +880,7 @@ def solve_general_gurobi(
         f_sequences=f_sequences,
         variable_count=int(model.NumVars),
         constraint_count=int(model.NumConstrs + model.NumGenConstrs),
+        node_count=float(model.NodeCount),
         h1_upper_bound=makespan_upper,
+        h1_mip_start_used=bool(use_h1_mip_start),
     )
