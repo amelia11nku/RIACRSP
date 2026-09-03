@@ -1,0 +1,39 @@
+{
+  "alignment": {
+    "overlay": "paper_experiments/figures/figure2_anytime_efficiency.alignment.svg",
+    "report": "paper_experiments/figures/figure2_anytime_efficiency.alignment.json",
+    "tolerance_pt": 1.5,
+    "verdict": "PASS"
+  },
+  "archetype": "quantitative grid",
+  "backend": "python-matplotlib",
+  "center_and_spread": "median and interquartile range at six preregistered normalized-budget checkpoints",
+  "core_conclusion": "Phase6H CSG-NI is compared with ALNS in both wall-clock anytime convergence and decoder-search effort.",
+  "display_transform": "relative gap multiplied by 100; decoder-evaluation axis is logarithmic; no interpolation or sampling",
+  "exclusions": "none; every method/checkpoint group contains all 45 runs",
+  "exports": [
+    "paper_experiments/figures/figure2_anytime_efficiency.svg",
+    "paper_experiments/figures/figure2_anytime_efficiency.pdf",
+    "paper_experiments/figures/figure2_anytime_efficiency.eps",
+    "paper_experiments/figures/figure2_anytime_efficiency.tiff",
+    "paper_experiments/figures/figure2_anytime_efficiency.png"
+  ],
+  "figure": 2,
+  "final_width_mm": 180.0,
+  "font": "Times New Roman",
+  "font_file": "Times_New_Roman.ttf",
+  "minimum_rendered_glyph_pt": 5,
+  "pdf_audits": {
+    "collision_audit": "paper_experiments/figures/figure2_anytime_efficiency.collision-audit.json",
+    "collision_overlay": "paper_experiments/figures/figure2_anytime_efficiency.collision-audit.pdf",
+    "collision_verdict": "PASS",
+    "pdf_text_audit": "paper_experiments/figures/figure2_anytime_efficiency.pdf-text-audit.json"
+  },
+  "replicate_unit": "45 matched runs: nine CAL-HOLDOUT instances x five seeds per method",
+  "reporting_boundary": "descriptive efficiency evidence on CAL-HOLDOUT; ALNS is not part of the five-method Core ranking and Phase6H CSG-NI remains provisional",
+  "schema": "initial-manuscript-figure-qa-v1",
+  "source_data": "paper_experiments/processed_data/efficiency/anytime_curves.csv",
+  "source_rows": 540,
+  "source_sha256": "7906ebb29287c3cbd96421d5d252b4de9826fb5ab0f9c0527f23d9adcb73a0ac",
+  "status": "AUTOMATED_QA_PASS"
+}

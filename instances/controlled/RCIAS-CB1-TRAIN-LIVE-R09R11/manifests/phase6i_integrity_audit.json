@@ -1,0 +1,27 @@
+{
+  "checks": {
+    "all_hashes_and_sizes_exact": true,
+    "all_instance_hashes_unique": true,
+    "cell_replicates_exact": true,
+    "exactly_18_per_split": true,
+    "exactly_54_unique_instances": true,
+    "fixed_ri2_ti2": true,
+    "generation_and_search_seeds_disjoint": true,
+    "generation_seeds_unique": true,
+    "phase6i_config_hash_matches": true,
+    "r09_r10_structural_metrics_complete_and_r11_withheld": true,
+    "r11_content_not_parsed_during_verify": true,
+    "replicate_split_exact": true,
+    "split_content_hashes_pairwise_disjoint": true,
+    "two_instances_per_scale_cf_cell": true,
+    "zero_historical_id_hash_or_generation_seed_overlap": true
+  },
+  "r11_access_scope": "MANIFEST_ID_HASH_SIZE_ONLY",
+  "schema": "phase6i-mr-instance-integrity-audit-v1.2",
+  "split_counts": {
+    "LIVE_REV_FIT": 18,
+    "LIVE_REV_HOLDOUT": 18,
+    "LIVE_REV_SELECT": 18
+  },
+  "status": "PASS"
+}

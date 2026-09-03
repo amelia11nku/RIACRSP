@@ -1,0 +1,627 @@
+{
+  "all_optimality_proven": true,
+  "all_replay_feasible": true,
+  "instance_count": 10,
+  "instances": [
+    {
+      "canonical_rank": 1,
+      "dag_pattern": "fork_join",
+      "eligibility_density": 0.625,
+      "eligibility_pattern": "wide",
+      "f_agv_count": 2,
+      "instance_id": "RIACRSP_E01",
+      "island_count": 4,
+      "operation_count": 6,
+      "precedence_arc_count": 4,
+      "precedence_arcs": [
+        [
+          "o11",
+          "o12"
+        ],
+        [
+          "o11",
+          "o13"
+        ],
+        [
+          "o21",
+          "o22"
+        ],
+        [
+          "o21",
+          "o23"
+        ]
+      ],
+      "processing_time": {
+        "maximum": 31.0,
+        "mean": 23.266666666666666,
+        "minimum": 9.0,
+        "population_stdev": 6.16945882733828
+      },
+      "product_count": 2,
+      "rationale": "small branching case with full alternative eligibility and both fleets contending across four islands",
+      "relative_path": "exact_validation_10_final/instances/RIACRSP_E01.json",
+      "seed": 730101,
+      "sha256": "761fc1bfda182ed2eba5fb5f88274aec4440d48506490b1fa88f787c9a85f798",
+      "source_instance_id": "RIACRSP_EXACT_01",
+      "source_suite": "exact_validation_10_v2",
+      "travel_time": {
+        "maximum": 22.0,
+        "mean": 8.25,
+        "minimum": 0.0,
+        "population_stdev": 5.781771295229934
+      },
+      "w_agv_count": 2
+    },
+    {
+      "canonical_rank": 2,
+      "dag_pattern": "mixed",
+      "eligibility_density": 0.6666666666666666,
+      "eligibility_pattern": "narrow",
+      "f_agv_count": 1,
+      "instance_id": "RIACRSP_E02",
+      "island_count": 3,
+      "operation_count": 7,
+      "precedence_arc_count": 5,
+      "precedence_arcs": [
+        [
+          "o11",
+          "o12"
+        ],
+        [
+          "o12",
+          "o13"
+        ],
+        [
+          "o13",
+          "o14"
+        ],
+        [
+          "o21",
+          "o22"
+        ],
+        [
+          "o22",
+          "o23"
+        ]
+      ],
+      "processing_time": {
+        "maximum": 31.0,
+        "mean": 20.642857142857142,
+        "minimum": 13.0,
+        "population_stdev": 5.826137446972943
+      },
+      "product_count": 2,
+      "rationale": "odd-sized mixed precedence case with full alternative eligibility and single-vehicle conflicts",
+      "relative_path": "exact_validation_10_final/instances/RIACRSP_E02.json",
+      "seed": 730102,
+      "sha256": "ff1cca40c333a80b4c26297a5f35d92fd1a62264294918a5b671851c72c42899",
+      "source_instance_id": "RIACRSP_EXACT_02",
+      "source_suite": "exact_validation_10_v2",
+      "travel_time": {
+        "maximum": 22.0,
+        "mean": 8.578947368421053,
+        "minimum": 0.0,
+        "population_stdev": 6.175637955314791
+      },
+      "w_agv_count": 1
+    },
+    {
+      "canonical_rank": 3,
+      "dag_pattern": "fork_join",
+      "eligibility_density": 0.6428571428571429,
+      "eligibility_pattern": "wide",
+      "f_agv_count": 1,
+      "instance_id": "RIACRSP_E03",
+      "island_count": 2,
+      "operation_count": 7,
+      "precedence_arc_count": 5,
+      "precedence_arcs": [
+        [
+          "o11",
+          "o12"
+        ],
+        [
+          "o11",
+          "o13"
+        ],
+        [
+          "o12",
+          "o14"
+        ],
+        [
+          "o13",
+          "o14"
+        ],
+        [
+          "o21",
+          "o22"
+        ]
+      ],
+      "processing_time": {
+        "maximum": 29.0,
+        "mean": 19.444444444444443,
+        "minimum": 9.0,
+        "population_stdev": 6.784150009988332
+      },
+      "product_count": 3,
+      "rationale": "retain three products and the main fork-join job while shortening the third product from two operations to one after the eight-operation v3 case ended at the 3600-second limit with a 14.44% MIP gap",
+      "relative_path": "exact_validation_10_final/instances/RIACRSP_E03.json",
+      "scale_revision": {
+        "parent_best_bound": 231.0000000000001,
+        "parent_incumbent": 270.0,
+        "parent_operation_count": 8,
+        "parent_reported_gap": 0.1444444443585603,
+        "parent_status": "TIME_LIMIT",
+        "parent_suite": "exact_validation_10_v3_scaled",
+        "parent_time_limit_seconds": 3600.0,
+        "removed_operations": [
+          "o32"
+        ]
+      },
+      "seed": 730109,
+      "sha256": "2ccc0a5d8495edbc50a7c896ebbf8d0d12fd1b5961851da0c4c035d1e2445d4e",
+      "source_instance_id": "RIACRSP_EXACT_09",
+      "source_suite": "exact_validation_09_v4_scaled",
+      "travel_time": {
+        "maximum": 31.0,
+        "mean": 12.636363636363637,
+        "minimum": 0.0,
+        "population_stdev": 9.622631725381266
+      },
+      "w_agv_count": 1
+    },
+    {
+      "canonical_rank": 4,
+      "dag_pattern": "fork_join",
+      "eligibility_density": 0.625,
+      "eligibility_pattern": "wide",
+      "f_agv_count": 1,
+      "instance_id": "RIACRSP_E04",
+      "island_count": 2,
+      "operation_count": 8,
+      "precedence_arc_count": 8,
+      "precedence_arcs": [
+        [
+          "o11",
+          "o12"
+        ],
+        [
+          "o11",
+          "o13"
+        ],
+        [
+          "o12",
+          "o14"
+        ],
+        [
+          "o13",
+          "o14"
+        ],
+        [
+          "o21",
+          "o22"
+        ],
+        [
+          "o21",
+          "o23"
+        ],
+        [
+          "o22",
+          "o24"
+        ],
+        [
+          "o23",
+          "o24"
+        ]
+      ],
+      "processing_time": {
+        "maximum": 22.0,
+        "mean": 14.5,
+        "minimum": 10.0,
+        "population_stdev": 3.7483329627982624
+      },
+      "product_count": 2,
+      "rationale": "operation-cap branching case sized below the restricted-license model boundary; reduced to eight operations after the v2 case could not prove optimality within the allocated exact-solver budget",
+      "relative_path": "exact_validation_10_final/instances/RIACRSP_E04.json",
+      "scale_revision": {
+        "parent_operation_count": 12,
+        "reason": "v2 exact optimality was not proven within the allocated solver budget",
+        "removed_operations": [
+          "o31",
+          "o32",
+          "o33",
+          "o34"
+        ]
+      },
+      "seed": 730107,
+      "sha256": "fb26ea46496602726afb4ee4a86c3fa7c81e86fad5dc5505bd30202d9bc0cb6e",
+      "source_instance_id": "RIACRSP_EXACT_07",
+      "source_suite": "exact_validation_10_v3_scaled",
+      "travel_time": {
+        "maximum": 27.0,
+        "mean": 12.681818181818182,
+        "minimum": 0.0,
+        "population_stdev": 9.785826316372821
+      },
+      "w_agv_count": 1
+    },
+    {
+      "canonical_rank": 5,
+      "dag_pattern": "mixed",
+      "eligibility_density": 0.625,
+      "eligibility_pattern": "wide",
+      "f_agv_count": 1,
+      "instance_id": "RIACRSP_E05",
+      "island_count": 2,
+      "operation_count": 8,
+      "precedence_arc_count": 6,
+      "precedence_arcs": [
+        [
+          "o11",
+          "o12"
+        ],
+        [
+          "o12",
+          "o13"
+        ],
+        [
+          "o13",
+          "o14"
+        ],
+        [
+          "o21",
+          "o22"
+        ],
+        [
+          "o22",
+          "o23"
+        ],
+        [
+          "o23",
+          "o24"
+        ]
+      ],
+      "processing_time": {
+        "maximum": 32.0,
+        "mean": 21.2,
+        "minimum": 9.0,
+        "population_stdev": 6.939740629158989
+      },
+      "product_count": 2,
+      "rationale": "two deeper jobs at the operation cap with selected alternative eligibility; reduced to eight operations after the v2 case could not prove optimality within the allocated exact-solver budget",
+      "relative_path": "exact_validation_10_final/instances/RIACRSP_E05.json",
+      "scale_revision": {
+        "parent_operation_count": 12,
+        "reason": "v2 exact optimality was not proven within the allocated solver budget",
+        "removed_operations": [
+          "o15",
+          "o16",
+          "o25",
+          "o26"
+        ]
+      },
+      "seed": 730110,
+      "sha256": "9514e207172a60adeed2c062af02d5bbe7d8fb3484c27dce353fa6e9f38340b6",
+      "source_instance_id": "RIACRSP_EXACT_10",
+      "source_suite": "exact_validation_10_v3_scaled",
+      "travel_time": {
+        "maximum": 15.0,
+        "mean": 6.954545454545454,
+        "minimum": 0.0,
+        "population_stdev": 4.967871985681163
+      },
+      "w_agv_count": 1
+    },
+    {
+      "canonical_rank": 6,
+      "dag_pattern": "linear",
+      "eligibility_density": 0.4166666666666667,
+      "eligibility_pattern": "narrow",
+      "f_agv_count": 1,
+      "instance_id": "RIACRSP_E06",
+      "island_count": 3,
+      "operation_count": 8,
+      "precedence_arc_count": 6,
+      "precedence_arcs": [
+        [
+          "o11",
+          "o12"
+        ],
+        [
+          "o12",
+          "o13"
+        ],
+        [
+          "o13",
+          "o14"
+        ],
+        [
+          "o21",
+          "o22"
+        ],
+        [
+          "o22",
+          "o23"
+        ],
+        [
+          "o23",
+          "o24"
+        ]
+      ],
+      "processing_time": {
+        "maximum": 27.0,
+        "mean": 17.0,
+        "minimum": 7.0,
+        "population_stdev": 6.131883886702357
+      },
+      "product_count": 2,
+      "rationale": "longer job chains emphasizing island and transport sequencing; reduced to eight operations after the v2 case could not prove optimality within the allocated exact-solver budget",
+      "relative_path": "exact_validation_10_final/instances/RIACRSP_E06.json",
+      "scale_revision": {
+        "parent_operation_count": 10,
+        "reason": "v2 exact optimality was not proven within the allocated solver budget",
+        "removed_operations": [
+          "o15",
+          "o25"
+        ]
+      },
+      "seed": 730105,
+      "sha256": "456353e913968f2b653a16149b65203fdb0abc0cfd697f4400e11e4e68b86adf",
+      "source_instance_id": "RIACRSP_EXACT_05",
+      "source_suite": "exact_validation_10_v3_scaled",
+      "travel_time": {
+        "maximum": 23.0,
+        "mean": 8.052631578947368,
+        "minimum": 0.0,
+        "population_stdev": 6.164189315465377
+      },
+      "w_agv_count": 1
+    },
+    {
+      "canonical_rank": 7,
+      "dag_pattern": "fork_join",
+      "eligibility_density": 0.4166666666666667,
+      "eligibility_pattern": "narrow",
+      "f_agv_count": 1,
+      "instance_id": "RIACRSP_E07",
+      "island_count": 3,
+      "operation_count": 8,
+      "precedence_arc_count": 8,
+      "precedence_arcs": [
+        [
+          "o11",
+          "o12"
+        ],
+        [
+          "o11",
+          "o13"
+        ],
+        [
+          "o12",
+          "o14"
+        ],
+        [
+          "o13",
+          "o14"
+        ],
+        [
+          "o21",
+          "o22"
+        ],
+        [
+          "o21",
+          "o23"
+        ],
+        [
+          "o22",
+          "o24"
+        ],
+        [
+          "o23",
+          "o24"
+        ]
+      ],
+      "processing_time": {
+        "maximum": 28.0,
+        "mean": 21.3,
+        "minimum": 7.0,
+        "population_stdev": 5.866003750424986
+      },
+      "product_count": 2,
+      "rationale": "balanced branching jobs with asymmetric fleets and two explicit routing choices",
+      "relative_path": "exact_validation_10_final/instances/RIACRSP_E07.json",
+      "seed": 730103,
+      "sha256": "e5b0bc9be8f1fbfc1f1419bd567b309073cb78bd50fc744e8e591cf4ad4e2172",
+      "source_instance_id": "RIACRSP_EXACT_03",
+      "source_suite": "exact_validation_10_v2",
+      "travel_time": {
+        "maximum": 33.0,
+        "mean": 11.642857142857142,
+        "minimum": 0.0,
+        "population_stdev": 8.43976254622929
+      },
+      "w_agv_count": 2
+    },
+    {
+      "canonical_rank": 8,
+      "dag_pattern": "mixed",
+      "eligibility_density": 0.625,
+      "eligibility_pattern": "wide",
+      "f_agv_count": 1,
+      "instance_id": "RIACRSP_E08",
+      "island_count": 2,
+      "operation_count": 8,
+      "precedence_arc_count": 5,
+      "precedence_arcs": [
+        [
+          "o11",
+          "o12"
+        ],
+        [
+          "o12",
+          "o13"
+        ],
+        [
+          "o21",
+          "o22"
+        ],
+        [
+          "o22",
+          "o23"
+        ],
+        [
+          "o31",
+          "o32"
+        ]
+      ],
+      "processing_time": {
+        "maximum": 27.0,
+        "mean": 20.0,
+        "minimum": 8.0,
+        "population_stdev": 6.708203932499369
+      },
+      "product_count": 3,
+      "rationale": "dense two-island contention with three heterogeneous products; reduced to eight operations after the v2 case could not prove optimality within the allocated exact-solver budget",
+      "relative_path": "exact_validation_10_final/instances/RIACRSP_E08.json",
+      "scale_revision": {
+        "parent_operation_count": 11,
+        "reason": "v2 exact optimality was not proven within the allocated solver budget",
+        "removed_operations": [
+          "o14",
+          "o24",
+          "o33"
+        ]
+      },
+      "seed": 730106,
+      "sha256": "53800d1a2c8e5b3427d302bc032b0b16960c4032358d73575c7e6cc80a7824ea",
+      "source_instance_id": "RIACRSP_EXACT_06",
+      "source_suite": "exact_validation_10_v3_scaled",
+      "travel_time": {
+        "maximum": 22.0,
+        "mean": 10.318181818181818,
+        "minimum": 0.0,
+        "population_stdev": 8.165261024811503
+      },
+      "w_agv_count": 1
+    },
+    {
+      "canonical_rank": 9,
+      "dag_pattern": "mixed",
+      "eligibility_density": 0.34375,
+      "eligibility_pattern": "wide",
+      "f_agv_count": 2,
+      "instance_id": "RIACRSP_E09",
+      "island_count": 4,
+      "operation_count": 8,
+      "precedence_arc_count": 5,
+      "precedence_arcs": [
+        [
+          "o11",
+          "o12"
+        ],
+        [
+          "o11",
+          "o13"
+        ],
+        [
+          "o21",
+          "o22"
+        ],
+        [
+          "o22",
+          "o23"
+        ],
+        [
+          "o31",
+          "o32"
+        ]
+      ],
+      "processing_time": {
+        "maximum": 30.0,
+        "mean": 17.818181818181817,
+        "minimum": 7.0,
+        "population_stdev": 6.739546542854778
+      },
+      "product_count": 3,
+      "rationale": "more islands than products with selected alternative routes and F-fleet choice",
+      "relative_path": "exact_validation_10_final/instances/RIACRSP_E09.json",
+      "seed": 730108,
+      "sha256": "ff999a4428e2f83fbd07e65386bb6579a9b8f2737125324cc2447479c10aec2a",
+      "source_instance_id": "RIACRSP_EXACT_08",
+      "source_suite": "exact_validation_10_v2",
+      "travel_time": {
+        "maximum": 32.0,
+        "mean": 12.621212121212121,
+        "minimum": 0.0,
+        "population_stdev": 7.680682481345458
+      },
+      "w_agv_count": 1
+    },
+    {
+      "canonical_rank": 10,
+      "dag_pattern": "mixed",
+      "eligibility_density": 0.4074074074074074,
+      "eligibility_pattern": "narrow",
+      "f_agv_count": 2,
+      "instance_id": "RIACRSP_E10",
+      "island_count": 3,
+      "operation_count": 9,
+      "precedence_arc_count": 6,
+      "precedence_arcs": [
+        [
+          "o11",
+          "o12"
+        ],
+        [
+          "o11",
+          "o13"
+        ],
+        [
+          "o21",
+          "o22"
+        ],
+        [
+          "o22",
+          "o23"
+        ],
+        [
+          "o31",
+          "o32"
+        ],
+        [
+          "o31",
+          "o33"
+        ]
+      ],
+      "processing_time": {
+        "maximum": 24.0,
+        "mean": 16.363636363636363,
+        "minimum": 9.0,
+        "population_stdev": 4.848106045808503
+      },
+      "product_count": 3,
+      "rationale": "three-product synchronization case with competing component-kit vehicles",
+      "relative_path": "exact_validation_10_final/instances/RIACRSP_E10.json",
+      "seed": 730104,
+      "sha256": "7b3a90e0f5e4d6a83ebf7d4a8617c7243b9fb68ebae14b7690543ea244f4ecab",
+      "source_instance_id": "RIACRSP_EXACT_04",
+      "source_suite": "exact_validation_10_v2",
+      "travel_time": {
+        "maximum": 18.0,
+        "mean": 8.068181818181818,
+        "minimum": 0.0,
+        "population_stdev": 5.871339197060765
+      },
+      "w_agv_count": 1
+    }
+  ],
+  "schema": "riacrsp-exact-validation-10-final-manifest-v1",
+  "sort_rule": [
+    "operation_count",
+    "product_count",
+    "island_count",
+    "vehicle_count",
+    "source_instance_id"
+  ],
+  "status": "FINAL_ALL_GUROBI_OPTIMAL_REPLAY_AUDITED"
+}

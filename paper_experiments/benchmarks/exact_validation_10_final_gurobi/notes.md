@@ -1,0 +1,17 @@
+# RIACRSP exact-validation final consolidation
+
+All ten selected schedules are Gurobi-proven optimal and replay-feasible.
+Canonical ordering: operation count, product count, island count, total vehicle count, source ID.
+
+| New ID | Source ID | Source suite | Ops | Products | Islands | Vehicles | Makespan |
+|---|---|---|---:|---:|---:|---:|---:|
+| RIACRSP_E01 | RIACRSP_EXACT_01 | exact_validation_10_v2 | 6 | 2 | 4 | 4 | 88 |
+| RIACRSP_E02 | RIACRSP_EXACT_02 | exact_validation_10_v2 | 7 | 2 | 3 | 2 | 196 |
+| RIACRSP_E03 | RIACRSP_EXACT_09 | exact_validation_09_v4_scaled | 7 | 3 | 2 | 2 | 229 |
+| RIACRSP_E04 | RIACRSP_EXACT_07 | exact_validation_10_v3_scaled | 8 | 2 | 2 | 2 | 326 |
+| RIACRSP_E05 | RIACRSP_EXACT_10 | exact_validation_10_v3_scaled | 8 | 2 | 2 | 2 | 148 |
+| RIACRSP_E06 | RIACRSP_EXACT_05 | exact_validation_10_v3_scaled | 8 | 2 | 3 | 2 | 217 |
+| RIACRSP_E07 | RIACRSP_EXACT_03 | exact_validation_10_v2 | 8 | 2 | 3 | 3 | 259 |
+| RIACRSP_E08 | RIACRSP_EXACT_06 | exact_validation_10_v3_scaled | 8 | 3 | 2 | 2 | 251 |
+| RIACRSP_E09 | RIACRSP_EXACT_08 | exact_validation_10_v2 | 8 | 3 | 4 | 3 | 129 |
+| RIACRSP_E10 | RIACRSP_EXACT_04 | exact_validation_10_v2 | 9 | 3 | 3 | 3 | 129 |

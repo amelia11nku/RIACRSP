@@ -1,0 +1,38 @@
+{
+  "alignment": {
+    "overlay": "paper_experiments/figures/supplementary_figure2_seed_stability.alignment.svg",
+    "report": "paper_experiments/figures/supplementary_figure2_seed_stability.alignment.json",
+    "tolerance_pt": 1.5,
+    "verdict": "PASS"
+  },
+  "archetype": "quantitative grid",
+  "backend": "python-matplotlib",
+  "center_and_spread": "boxplot median and interquartile range; whiskers use the Matplotlib 1.5-IQR rule",
+  "core_conclusion": "Seed sensitivity differs by method and scale, qualifying quality comparisons with a direct robustness diagnostic.",
+  "exclusions": "none; boxplot outlier symbols are suppressed because every instance is shown as a point",
+  "exports": [
+    "paper_experiments/figures/supplementary_figure2_seed_stability.svg",
+    "paper_experiments/figures/supplementary_figure2_seed_stability.pdf",
+    "paper_experiments/figures/supplementary_figure2_seed_stability.eps",
+    "paper_experiments/figures/supplementary_figure2_seed_stability.tiff",
+    "paper_experiments/figures/supplementary_figure2_seed_stability.png"
+  ],
+  "figure": "Supplementary Figure 2",
+  "final_width_mm": 180.0,
+  "font": "Times New Roman",
+  "font_file": "Times_New_Roman.ttf",
+  "minimum_rendered_glyph_pt": 5,
+  "pdf_audits": {
+    "collision_audit": "paper_experiments/figures/supplementary_figure2_seed_stability.collision-audit.json",
+    "collision_overlay": "paper_experiments/figures/supplementary_figure2_seed_stability.collision-audit.pdf",
+    "collision_verdict": "PASS",
+    "pdf_text_audit": "paper_experiments/figures/supplementary_figure2_seed_stability.pdf-text-audit.json"
+  },
+  "replicate_unit": "Core instance; each point is the sample standard deviation of RPD across five matched seeds",
+  "reporting_boundary": "descriptive robustness analysis; lower variability does not imply better solution quality",
+  "schema": "initial-manuscript-figure-qa-v1",
+  "source_data": "paper_experiments/processed_data/supplementary/core_seed_variability.csv",
+  "source_rows": 225,
+  "source_sha256": "ef7a80070599540a373610de67c98062bfe7c26077bec1361f2762f25aa1c386",
+  "status": "AUTOMATED_QA_PASS"
+}

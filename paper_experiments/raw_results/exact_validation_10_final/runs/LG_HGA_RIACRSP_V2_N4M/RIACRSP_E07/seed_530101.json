@@ -1,0 +1,1949 @@
+{
+  "best_actions": [
+    {
+      "f_agv_id": "F1",
+      "island_id": "M1",
+      "operation_id": "o11",
+      "w_agv_id": "W2"
+    },
+    {
+      "f_agv_id": "F1",
+      "island_id": "M3",
+      "operation_id": "o12",
+      "w_agv_id": "W2"
+    },
+    {
+      "f_agv_id": "F1",
+      "island_id": "M3",
+      "operation_id": "o21",
+      "w_agv_id": "W2"
+    },
+    {
+      "f_agv_id": "F1",
+      "island_id": "M2",
+      "operation_id": "o23",
+      "w_agv_id": "W1"
+    },
+    {
+      "f_agv_id": "F1",
+      "island_id": "M2",
+      "operation_id": "o22",
+      "w_agv_id": null
+    },
+    {
+      "f_agv_id": "F1",
+      "island_id": "M1",
+      "operation_id": "o24",
+      "w_agv_id": "W1"
+    },
+    {
+      "f_agv_id": "F1",
+      "island_id": "M1",
+      "operation_id": "o13",
+      "w_agv_id": "W2"
+    },
+    {
+      "f_agv_id": "F1",
+      "island_id": "M1",
+      "operation_id": "o14",
+      "w_agv_id": null
+    }
+  ],
+  "best_found_time_seconds": 0.0031131079886108637,
+  "best_makespan": 259.0,
+  "best_solution": {
+    "accumulated_reconfiguration_cost": 14.3,
+    "f_timelines": {
+      "F1": [
+        {
+          "arrival_island": 17.0,
+          "departure_wh": 0.0,
+          "island_id": "M1",
+          "operation_id": "o11",
+          "outbound_distance": 25.0,
+          "outbound_time": 17.0,
+          "return_distance": 25.0,
+          "return_time": 14.0,
+          "return_wh": 31.0,
+          "task_id": "F:o11",
+          "vehicle_id": "F1"
+        },
+        {
+          "arrival_island": 43.0,
+          "departure_wh": 31.0,
+          "island_id": "M3",
+          "operation_id": "o12",
+          "outbound_distance": 17.0,
+          "outbound_time": 12.0,
+          "return_distance": 17.0,
+          "return_time": 10.0,
+          "return_wh": 53.0,
+          "task_id": "F:o12",
+          "vehicle_id": "F1"
+        },
+        {
+          "arrival_island": 65.0,
+          "departure_wh": 53.0,
+          "island_id": "M3",
+          "operation_id": "o21",
+          "outbound_distance": 17.0,
+          "outbound_time": 12.0,
+          "return_distance": 17.0,
+          "return_time": 10.0,
+          "return_wh": 75.0,
+          "task_id": "F:o21",
+          "vehicle_id": "F1"
+        },
+        {
+          "arrival_island": 99.0,
+          "departure_wh": 75.0,
+          "island_id": "M2",
+          "operation_id": "o23",
+          "outbound_distance": 35.0,
+          "outbound_time": 24.0,
+          "return_distance": 35.0,
+          "return_time": 20.0,
+          "return_wh": 119.0,
+          "task_id": "F:o23",
+          "vehicle_id": "F1"
+        },
+        {
+          "arrival_island": 143.0,
+          "departure_wh": 119.0,
+          "island_id": "M2",
+          "operation_id": "o22",
+          "outbound_distance": 35.0,
+          "outbound_time": 24.0,
+          "return_distance": 35.0,
+          "return_time": 20.0,
+          "return_wh": 163.0,
+          "task_id": "F:o22",
+          "vehicle_id": "F1"
+        },
+        {
+          "arrival_island": 180.0,
+          "departure_wh": 163.0,
+          "island_id": "M1",
+          "operation_id": "o24",
+          "outbound_distance": 25.0,
+          "outbound_time": 17.0,
+          "return_distance": 25.0,
+          "return_time": 14.0,
+          "return_wh": 194.0,
+          "task_id": "F:o24",
+          "vehicle_id": "F1"
+        },
+        {
+          "arrival_island": 211.0,
+          "departure_wh": 194.0,
+          "island_id": "M1",
+          "operation_id": "o13",
+          "outbound_distance": 25.0,
+          "outbound_time": 17.0,
+          "return_distance": 25.0,
+          "return_time": 14.0,
+          "return_wh": 225.0,
+          "task_id": "F:o13",
+          "vehicle_id": "F1"
+        },
+        {
+          "arrival_island": 242.0,
+          "departure_wh": 225.0,
+          "island_id": "M1",
+          "operation_id": "o14",
+          "outbound_distance": 25.0,
+          "outbound_time": 17.0,
+          "return_distance": 25.0,
+          "return_time": 14.0,
+          "return_wh": 256.0,
+          "task_id": "F:o14",
+          "vehicle_id": "F1"
+        }
+      ]
+    },
+    "instance_id": "RIACRSP_E07",
+    "island_timelines": {
+      "M1": [
+        "o11",
+        "o24",
+        "o13",
+        "o14"
+      ],
+      "M2": [
+        "o23",
+        "o22"
+      ],
+      "M3": [
+        "o12",
+        "o21"
+      ]
+    },
+    "operations": {
+      "o11": {
+        "binding_resource": [
+          "W_AGV",
+          "F_AGV"
+        ],
+        "completion_time": 43.0,
+        "config_id": "C2",
+        "config_ready_time": 0.0,
+        "f_ready_time": 17.0,
+        "f_task_id": "F:o11",
+        "island_id": "M1",
+        "island_ready_time": 0.0,
+        "op_id": "o11",
+        "processing_time": 26,
+        "product_id": "J1",
+        "product_predecessor": null,
+        "product_ready_time": 0.0,
+        "reconfiguration_end": 0.0,
+        "reconfiguration_start": 0.0,
+        "start_time": 17.0,
+        "w_ready_time": 17.0,
+        "w_task_id": "W:o11"
+      },
+      "o12": {
+        "binding_resource": [
+          "W_AGV"
+        ],
+        "completion_time": 78.0,
+        "config_id": "C3",
+        "config_ready_time": 0.0,
+        "f_ready_time": 43.0,
+        "f_task_id": "F:o12",
+        "island_id": "M3",
+        "island_ready_time": 0.0,
+        "op_id": "o12",
+        "processing_time": 24,
+        "product_id": "J1",
+        "product_predecessor": "o11",
+        "product_ready_time": 43.0,
+        "reconfiguration_end": 0.0,
+        "reconfiguration_start": 0.0,
+        "start_time": 54.0,
+        "w_ready_time": 54.0,
+        "w_task_id": "W:o12"
+      },
+      "o13": {
+        "binding_resource": [
+          "F_AGV"
+        ],
+        "completion_time": 235.0,
+        "config_id": "C1",
+        "config_ready_time": 208.0,
+        "f_ready_time": 211.0,
+        "f_task_id": "F:o13",
+        "island_id": "M1",
+        "island_ready_time": 208.0,
+        "op_id": "o13",
+        "processing_time": 24,
+        "product_id": "J1",
+        "product_predecessor": "o12",
+        "product_ready_time": 78.0,
+        "reconfiguration_end": 208.0,
+        "reconfiguration_start": 208.0,
+        "start_time": 211.0,
+        "w_ready_time": 90.0,
+        "w_task_id": "W:o13"
+      },
+      "o14": {
+        "binding_resource": [
+          "F_AGV"
+        ],
+        "completion_time": 259.0,
+        "config_id": "C2",
+        "config_ready_time": 238.0,
+        "f_ready_time": 242.0,
+        "f_task_id": "F:o14",
+        "island_id": "M1",
+        "island_ready_time": 235.0,
+        "op_id": "o14",
+        "processing_time": 17,
+        "product_id": "J1",
+        "product_predecessor": "o13",
+        "product_ready_time": 235.0,
+        "reconfiguration_end": 238.0,
+        "reconfiguration_start": 235.0,
+        "start_time": 242.0,
+        "w_ready_time": 235.0,
+        "w_task_id": null
+      },
+      "o21": {
+        "binding_resource": [
+          "ISLAND_CONFIG"
+        ],
+        "completion_time": 109.0,
+        "config_id": "C1",
+        "config_ready_time": 82.0,
+        "f_ready_time": 65.0,
+        "f_task_id": "F:o21",
+        "island_id": "M3",
+        "island_ready_time": 78.0,
+        "op_id": "o21",
+        "processing_time": 27,
+        "product_id": "J2",
+        "product_predecessor": null,
+        "product_ready_time": 0.0,
+        "reconfiguration_end": 82.0,
+        "reconfiguration_start": 78.0,
+        "start_time": 82.0,
+        "w_ready_time": 79.0,
+        "w_task_id": "W:o21"
+      },
+      "o22": {
+        "binding_resource": [
+          "ISLAND_CONFIG"
+        ],
+        "completion_time": 155.0,
+        "config_id": "C2",
+        "config_ready_time": 148.0,
+        "f_ready_time": 143.0,
+        "f_task_id": "F:o22",
+        "island_id": "M2",
+        "island_ready_time": 145.0,
+        "op_id": "o22",
+        "processing_time": 7,
+        "product_id": "J2",
+        "product_predecessor": "o23",
+        "product_ready_time": 145.0,
+        "reconfiguration_end": 148.0,
+        "reconfiguration_start": 145.0,
+        "start_time": 148.0,
+        "w_ready_time": 145.0,
+        "w_task_id": null
+      },
+      "o23": {
+        "binding_resource": [
+          "W_AGV"
+        ],
+        "completion_time": 145.0,
+        "config_id": "C3",
+        "config_ready_time": 4.0,
+        "f_ready_time": 99.0,
+        "f_task_id": "F:o23",
+        "island_id": "M2",
+        "island_ready_time": 0.0,
+        "op_id": "o23",
+        "processing_time": 19,
+        "product_id": "J2",
+        "product_predecessor": "o21",
+        "product_ready_time": 109.0,
+        "reconfiguration_end": 4.0,
+        "reconfiguration_start": 0.0,
+        "start_time": 126.0,
+        "w_ready_time": 126.0,
+        "w_task_id": "W:o23"
+      },
+      "o24": {
+        "binding_resource": [
+          "F_AGV"
+        ],
+        "completion_time": 208.0,
+        "config_id": "C1",
+        "config_ready_time": 45.0,
+        "f_ready_time": 180.0,
+        "f_task_id": "F:o24",
+        "island_id": "M1",
+        "island_ready_time": 43.0,
+        "op_id": "o24",
+        "processing_time": 28,
+        "product_id": "J2",
+        "product_predecessor": "o22",
+        "product_ready_time": 155.0,
+        "reconfiguration_end": 45.0,
+        "reconfiguration_start": 43.0,
+        "start_time": 180.0,
+        "w_ready_time": 165.0,
+        "w_task_id": "W:o24"
+      }
+    },
+    "product_predecessor": {
+      "o11": null,
+      "o12": "o11",
+      "o13": "o12",
+      "o14": "o13",
+      "o21": null,
+      "o22": "o23",
+      "o23": "o21",
+      "o24": "o22"
+    },
+    "product_sequences": {
+      "J1": [
+        "o11",
+        "o12",
+        "o13",
+        "o14"
+      ],
+      "J2": [
+        "o21",
+        "o23",
+        "o22",
+        "o24"
+      ]
+    },
+    "product_successor": {
+      "o11": "o12",
+      "o12": "o13",
+      "o13": "o14",
+      "o14": null,
+      "o21": "o23",
+      "o22": "o24",
+      "o23": "o22",
+      "o24": null
+    },
+    "w_timelines": {
+      "W1": [
+        {
+          "arrival_time": 126.0,
+          "destination": "M2",
+          "empty_arrival": 9.0,
+          "empty_distance": 17.0,
+          "empty_origin": "WH",
+          "empty_start": 0.0,
+          "empty_travel_time": 9.0,
+          "loaded_distance": 18.0,
+          "loaded_start": 109.0,
+          "loaded_travel_time": 17.0,
+          "operation_id": "o23",
+          "pickup": "M3",
+          "predecessor_op": "o21",
+          "product_id": "J2",
+          "release_time": 109.0,
+          "task_id": "W:o23",
+          "vehicle_id": "W1"
+        },
+        {
+          "arrival_time": 165.0,
+          "destination": "M1",
+          "empty_arrival": 126.0,
+          "empty_distance": 0.0,
+          "empty_origin": "M2",
+          "empty_start": 126.0,
+          "empty_travel_time": 0.0,
+          "loaded_distance": 10.0,
+          "loaded_start": 155.0,
+          "loaded_travel_time": 10.0,
+          "operation_id": "o24",
+          "pickup": "M2",
+          "predecessor_op": "o22",
+          "product_id": "J2",
+          "release_time": 155.0,
+          "task_id": "W:o24",
+          "vehicle_id": "W1"
+        }
+      ],
+      "W2": [
+        {
+          "arrival_time": 17.0,
+          "destination": "M1",
+          "empty_arrival": 0.0,
+          "empty_distance": 0.0,
+          "empty_origin": "WH",
+          "empty_start": 0.0,
+          "empty_travel_time": 0.0,
+          "loaded_distance": 25.0,
+          "loaded_start": 0.0,
+          "loaded_travel_time": 17.0,
+          "operation_id": "o11",
+          "pickup": "WH",
+          "predecessor_op": null,
+          "product_id": "J1",
+          "release_time": 0.0,
+          "task_id": "W:o11",
+          "vehicle_id": "W2"
+        },
+        {
+          "arrival_time": 54.0,
+          "destination": "M3",
+          "empty_arrival": 17.0,
+          "empty_distance": 0.0,
+          "empty_origin": "M1",
+          "empty_start": 17.0,
+          "empty_travel_time": 0.0,
+          "loaded_distance": 16.0,
+          "loaded_start": 43.0,
+          "loaded_travel_time": 11.0,
+          "operation_id": "o12",
+          "pickup": "M1",
+          "predecessor_op": "o11",
+          "product_id": "J1",
+          "release_time": 43.0,
+          "task_id": "W:o12",
+          "vehicle_id": "W2"
+        },
+        {
+          "arrival_time": 79.0,
+          "destination": "M3",
+          "empty_arrival": 67.0,
+          "empty_distance": 17.0,
+          "empty_origin": "M3",
+          "empty_start": 54.0,
+          "empty_travel_time": 13.0,
+          "loaded_distance": 17.0,
+          "loaded_start": 67.0,
+          "loaded_travel_time": 12.0,
+          "operation_id": "o21",
+          "pickup": "WH",
+          "predecessor_op": null,
+          "product_id": "J2",
+          "release_time": 0.0,
+          "task_id": "W:o21",
+          "vehicle_id": "W2"
+        },
+        {
+          "arrival_time": 90.0,
+          "destination": "M1",
+          "empty_arrival": 79.0,
+          "empty_distance": 0.0,
+          "empty_origin": "M3",
+          "empty_start": 79.0,
+          "empty_travel_time": 0.0,
+          "loaded_distance": 16.0,
+          "loaded_start": 79.0,
+          "loaded_travel_time": 11.0,
+          "operation_id": "o13",
+          "pickup": "M3",
+          "predecessor_op": "o12",
+          "product_id": "J1",
+          "release_time": 78.0,
+          "task_id": "W:o13",
+          "vehicle_id": "W2"
+        }
+      ]
+    }
+  },
+  "compute": {
+    "cpu_threads_per_solver": 1,
+    "gpu_used": false
+  },
+  "convergence_trace": [
+    {
+      "current_best_makespan": 281.0,
+      "decoder_evaluations": 1,
+      "elapsed_time": 0.00030984298791736364
+    },
+    {
+      "current_best_makespan": 270.0,
+      "decoder_evaluations": 3,
+      "elapsed_time": 0.0008226549834944308
+    },
+    {
+      "current_best_makespan": 259.0,
+      "decoder_evaluations": 12,
+      "elapsed_time": 0.0031131079886108637
+    }
+  ],
+  "decoder_evaluations": 4040,
+  "diagnostics": {
+    "changed_proposal_counts": {
+      "N1_CTU": 0,
+      "N2_EST": 0,
+      "N3_TOPO": 0,
+      "N4_MMIT": 0
+    },
+    "dtr_features": [
+      "normalized_generation_index"
+    ],
+    "dtr_model_hashes": {
+      "N1_CTU": "aa5144b2bab168d291d60b863f5f8aa68384cb6c212bb3a7f6fd89079bd3c972",
+      "N2_EST": "99fe731fc41281c76d64b1e90318aa9c093978de3d8b7df4f3f4e99714872934",
+      "N3_TOPO": "8a223ca9bc80eb67ccc07a9adc10bf5d81113171654e50d447722d5049085047",
+      "N4_MMIT": "dad3e0fced13e6177614c550181c594b50a52028db77ac7cd52c8b5aa9da908a"
+    },
+    "fidelity": "VERSIONED_SINGLE_OBJECTIVE_N4_MINIMAL_PLURAL",
+    "final_population_size": 40,
+    "formal_objective": "makespan",
+    "generation_records": [
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 1,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 15.25,
+          "N2_EST": 13.5,
+          "N3_TOPO": 34.75,
+          "N4_MMIT": 35.75
+        },
+        "selected_neighborhood": "N4_MMIT"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 2,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 12.5,
+          "N2_EST": 11.75,
+          "N3_TOPO": 19.5,
+          "N4_MMIT": 27.0
+        },
+        "selected_neighborhood": "N4_MMIT"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 3,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 12.25,
+          "N2_EST": 13.0,
+          "N3_TOPO": 13.75,
+          "N4_MMIT": 12.0
+        },
+        "selected_neighborhood": "N3_TOPO"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 4,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 9.25,
+          "N2_EST": 9.5,
+          "N3_TOPO": 9.75,
+          "N4_MMIT": 12.75
+        },
+        "selected_neighborhood": "N4_MMIT"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 5,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 14.0,
+          "N2_EST": 14.25,
+          "N3_TOPO": 6.0,
+          "N4_MMIT": 7.0
+        },
+        "selected_neighborhood": "N2_EST"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 6,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 5.5,
+          "N2_EST": 7.25,
+          "N3_TOPO": 7.25,
+          "N4_MMIT": 6.0
+        },
+        "selected_neighborhood": "N2_EST"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 7,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 5.0,
+          "N2_EST": 6.25,
+          "N3_TOPO": 1.75,
+          "N4_MMIT": 12.75
+        },
+        "selected_neighborhood": "N4_MMIT"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 8,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 12.0,
+          "N2_EST": 11.75,
+          "N3_TOPO": 4.75,
+          "N4_MMIT": 8.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 9,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 6.5,
+          "N2_EST": 5.5,
+          "N3_TOPO": 1.5,
+          "N4_MMIT": 2.75
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 10,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 5.5,
+          "N2_EST": 5.5,
+          "N3_TOPO": 3.75,
+          "N4_MMIT": 5.75
+        },
+        "selected_neighborhood": "N4_MMIT"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 11,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 4.75,
+          "N2_EST": 3.0,
+          "N3_TOPO": 0.75,
+          "N4_MMIT": 1.25
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 12,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 2.0,
+          "N2_EST": 2.75,
+          "N3_TOPO": 1.25,
+          "N4_MMIT": 3.5
+        },
+        "selected_neighborhood": "N4_MMIT"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 13,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 3.0,
+          "N2_EST": 4.0,
+          "N3_TOPO": 1.0,
+          "N4_MMIT": 1.0
+        },
+        "selected_neighborhood": "N2_EST"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 14,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 1.0,
+          "N2_EST": 1.0,
+          "N3_TOPO": 0.5,
+          "N4_MMIT": 1.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 15,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 2.25,
+          "N2_EST": 2.5,
+          "N3_TOPO": 1.0,
+          "N4_MMIT": 1.5
+        },
+        "selected_neighborhood": "N2_EST"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 16,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.75,
+          "N2_EST": 1.25,
+          "N3_TOPO": 1.0,
+          "N4_MMIT": 4.75
+        },
+        "selected_neighborhood": "N4_MMIT"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 17,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 2.25,
+          "N2_EST": 4.75,
+          "N3_TOPO": 1.75,
+          "N4_MMIT": 0.5
+        },
+        "selected_neighborhood": "N2_EST"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 18,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.5,
+          "N4_MMIT": 0.25
+        },
+        "selected_neighborhood": "N3_TOPO"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 19,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 1.0,
+          "N2_EST": 1.25,
+          "N3_TOPO": 1.0,
+          "N4_MMIT": 1.0
+        },
+        "selected_neighborhood": "N2_EST"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 20,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.5,
+          "N3_TOPO": 0.75,
+          "N4_MMIT": 0.75
+        },
+        "selected_neighborhood": "N3_TOPO"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 21,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 1.75,
+          "N2_EST": 1.25,
+          "N3_TOPO": 1.75,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 22,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 1.25,
+          "N2_EST": 1.75,
+          "N3_TOPO": 1.5,
+          "N4_MMIT": 1.5
+        },
+        "selected_neighborhood": "N2_EST"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 23,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.25,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.25,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 24,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 1.0,
+          "N2_EST": 1.0,
+          "N3_TOPO": 0.75,
+          "N4_MMIT": 0.25
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 25,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 1.0,
+          "N2_EST": 1.25,
+          "N3_TOPO": 0.25,
+          "N4_MMIT": 2.75
+        },
+        "selected_neighborhood": "N4_MMIT"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 26,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 3.25,
+          "N2_EST": 4.0,
+          "N3_TOPO": 1.5,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N2_EST"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 27,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 1.0,
+          "N2_EST": 0.5,
+          "N3_TOPO": 0.25,
+          "N4_MMIT": 1.5
+        },
+        "selected_neighborhood": "N4_MMIT"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 28,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.25,
+          "N3_TOPO": 0.75,
+          "N4_MMIT": 0.25
+        },
+        "selected_neighborhood": "N3_TOPO"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 29,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.25,
+          "N2_EST": 0.75,
+          "N3_TOPO": 1.0,
+          "N4_MMIT": 1.0
+        },
+        "selected_neighborhood": "N3_TOPO"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 30,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.25,
+          "N2_EST": 0.75,
+          "N3_TOPO": 1.5,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N3_TOPO"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 31,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.5,
+          "N2_EST": 0.25,
+          "N3_TOPO": 0.5,
+          "N4_MMIT": 0.5
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 32,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.25,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.25,
+          "N4_MMIT": 0.25
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 33,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.25,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 34,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.25,
+          "N4_MMIT": 0.25
+        },
+        "selected_neighborhood": "N3_TOPO"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 35,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 2.0,
+          "N2_EST": 2.0,
+          "N3_TOPO": 1.25,
+          "N4_MMIT": 1.25
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 36,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.25,
+          "N2_EST": 0.25,
+          "N3_TOPO": 0.25,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 37,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 38,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.25,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 39,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.5,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N2_EST"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 40,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.25,
+          "N4_MMIT": 0.25
+        },
+        "selected_neighborhood": "N3_TOPO"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 41,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.5,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.25
+        },
+        "selected_neighborhood": "N2_EST"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 42,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 43,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 44,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 45,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.25,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N3_TOPO"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 46,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 47,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 1.25
+        },
+        "selected_neighborhood": "N4_MMIT"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 48,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 2.0,
+          "N2_EST": 2.0,
+          "N3_TOPO": 0.25,
+          "N4_MMIT": 0.25
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 49,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 50,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 51,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 52,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 53,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 54,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 55,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.25,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N3_TOPO"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 56,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 1.0,
+          "N2_EST": 1.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 57,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.75,
+          "N2_EST": 0.5,
+          "N3_TOPO": 0.25,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 58,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 59,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 60,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 61,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 62,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 63,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 64,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 65,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 66,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.5,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N3_TOPO"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 67,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 2.0
+        },
+        "selected_neighborhood": "N4_MMIT"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 68,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 69,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 70,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 71,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.25,
+          "N2_EST": 0.75,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N2_EST"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 72,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.25
+        },
+        "selected_neighborhood": "N4_MMIT"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 73,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 74,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 75,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 76,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.25,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N3_TOPO"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 77,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.5,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N3_TOPO"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 78,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 79,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 80,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 81,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.25,
+          "N4_MMIT": 0.25
+        },
+        "selected_neighborhood": "N3_TOPO"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 82,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.75
+        },
+        "selected_neighborhood": "N4_MMIT"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 83,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 84,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 85,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 86,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 87,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 88,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.25,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N3_TOPO"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 89,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 90,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.25,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 91,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.25,
+          "N2_EST": 0.25,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 92,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.5,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 93,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.25,
+          "N2_EST": 0.25,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 94,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 2.25,
+          "N2_EST": 2.5,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N2_EST"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 95,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 96,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.5,
+          "N2_EST": 0.25,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 97,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.25,
+          "N2_EST": 1.5,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N2_EST"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 98,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 99,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      },
+      {
+        "best_improvement": null,
+        "gate_passed": false,
+        "generation": 100,
+        "local_decoder_evaluations": 0,
+        "predicted_R_pct": {
+          "N1_CTU": 0.0,
+          "N2_EST": 0.0,
+          "N3_TOPO": 0.0,
+          "N4_MMIT": 0.0
+        },
+        "selected_neighborhood": "N1_CTU"
+      }
+    ],
+    "genetic_offspring_count": 4000,
+    "initialization_seconds": 0.00992747995769605,
+    "knowledge_manifest_hash": "8f316ca918d3709f237205edf7ea9466da54006689b056c3866cf35d8e4cc515",
+    "local_decoder_evaluations": 0,
+    "local_search_gate_passes": 0,
+    "n4_selection_rule": "MINIMAL_PLURAL_TWO_EFFECTIVE_MOVES",
+    "neighborhood_proposal_counts": {
+      "N1_CTU": 0,
+      "N2_EST": 0,
+      "N3_TOPO": 0,
+      "N4_MMIT": 0
+    },
+    "noop_proposal_counts": {
+      "N1_CTU": 0,
+      "N2_EST": 0,
+      "N3_TOPO": 0,
+      "N4_MMIT": 0
+    }
+  },
+  "environment": {
+    "python": "3.11.15"
+  },
+  "feasible": true,
+  "finished_at_utc": "2026-09-03T06:56:39.801438+00:00",
+  "first_optimum_time_seconds": 0.0031131079886108637,
+  "gap_to_proven_optimum_percent": 0.0,
+  "generations_if_applicable": 100,
+  "implementation_manifest_sha256": "0b5e1586bd0ea1905ce05da4fe60d6c21bf184bc84857d675e2aa8650f4af35b",
+  "independent_feasibility_audit": {
+    "cost": 187.998,
+    "feasible": true,
+    "makespan": 259.0,
+    "objective": {
+      "f_outbound_cost": 64.87200000000001,
+      "f_return_cost": 58.14,
+      "f_travel": 408.0,
+      "makespan": 259.0,
+      "reconfiguration_cost": 14.299999999999999,
+      "reconfiguration_count": 5,
+      "total_cost": 187.998,
+      "w_empty_cost": 6.3919999999999995,
+      "w_empty_travel": 34.0,
+      "w_loaded_cost": 44.294000000000004,
+      "w_loaded_travel": 102.0
+    },
+    "violations": []
+  },
+  "instance_id": "RIACRSP_E07",
+  "instance_path": "paper_experiments/benchmarks/exact_validation_10_final_gurobi/exact_validation_10_final/instances/RIACRSP_E07.json",
+  "instance_sha256": "e5b0bc9be8f1fbfc1f1419bd567b309073cb78bd50fc744e8e591cf4ad4e2172",
+  "iterations": 100,
+  "method": "LG_HGA-RIACRSP-v2-N4M",
+  "method_artifact": {
+    "config": "configs/baselines/lghga_v2_riacrsp.json",
+    "effective_config": {
+      "crossover_probability": 0.9,
+      "knowledge_generation_runs": 20,
+      "local_search_max_iterations": 5,
+      "local_search_population_size": 5,
+      "local_search_threshold_pct": 50.0,
+      "max_generations": 100,
+      "mutation_probability": 0.4,
+      "neighborhood_size": 20,
+      "population_size": 40,
+      "tournament_size": 2
+    },
+    "model_dir": "outputs/baselines/lghga_kb_v2/models/S_CF2",
+    "model_hashes": {
+      "N1_CTU": "aa5144b2bab168d291d60b863f5f8aa68384cb6c212bb3a7f6fd89079bd3c972",
+      "N2_EST": "99fe731fc41281c76d64b1e90318aa9c093978de3d8b7df4f3f4e99714872934",
+      "N3_TOPO": "8a223ca9bc80eb67ccc07a9adc10bf5d81113171654e50d447722d5049085047",
+      "N4_MMIT": "dad3e0fced13e6177614c550181c594b50a52028db77ac7cd52c8b5aa9da908a"
+    },
+    "model_manifest_sha256": "11c66d42da2d8d166f666c1196d256223db88afa77c6308f307990704bf53663",
+    "model_regime": "S_CF2"
+  },
+  "number_of_operations": 8,
+  "optimum_reached": true,
+  "protocol_path": "paper_experiments/configs/exact_validation/final_protocol.json",
+  "protocol_sha256": "3a54d4830d1748decac8e7a57af4c5c67edfa7062e7ef4314ebd0110017ba989",
+  "proven_optimum": 259.0,
+  "right_censored_without_optimum": false,
+  "runtime_seconds": 1.158447689958848,
+  "schema": "initial-manuscript-final-exact-run-v1",
+  "seed": 530101,
+  "source_instance_id": "RIACRSP_EXACT_03",
+  "source_suite": "exact_validation_10_v2",
+  "started_from_commit": "7c448000be69084511af181f52cad0a8db71479a",
+  "status": "COMPLETE",
+  "suite": "RIACRSP exact validation 10 final",
+  "time_limit_seconds": 16.0
+}

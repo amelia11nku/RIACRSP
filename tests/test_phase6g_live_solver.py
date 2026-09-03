@@ -96,6 +96,12 @@ def test_live_proposal_bank_is_deterministic_and_outcome_blind():
 
 
 class _AlwaysIntervene:
+    def __init__(self):
+        self.prepared = []
+
+    def prepare_instance(self, instance, h1_schedule):
+        self.prepared.append((instance.instance_id, h1_schedule))
+
     def decide(self, instance, current, *, state_id, destroy_count, search_progress, search_stage):
         removed = tuple(instance.operations[:destroy_count])
         return InterventionDecision(
@@ -106,11 +112,12 @@ class _AlwaysIntervene:
 def test_neural_iterations_do_not_receive_alns_weight_credit():
     instance = load_instance(ROOT / "instances/tiny/tiny_03.json")
     events = []
+    policy = _AlwaysIntervene()
     result = solve_csgni(
         instance,
         60.0,
         670002,
-        _AlwaysIntervene(),
+        policy,
         alns_config=ALNSConfig(candidate_trials=2, iteration_limit=5),
         csgni_config=CSGNIConfig(intervention_rate=100),
         observer=events.append,
@@ -119,3 +126,6 @@ def test_neural_iterations_do_not_receive_alns_weight_credit():
     assert all(row["operator_weights_before"] == row["operator_weights_after"] for row in events)
     assert all(row["alns_weight_credit"] is False for row in events)
     assert all(row["repair_operator"] == "transport_aware" for row in events)
+    assert len(policy.prepared) == 1
+    assert policy.prepared[0][0] == instance.instance_id
+    assert result.diagnostics["policy_preparation_seconds"] >= 0.0

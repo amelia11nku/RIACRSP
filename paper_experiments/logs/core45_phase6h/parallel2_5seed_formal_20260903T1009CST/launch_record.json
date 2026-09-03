@@ -1,0 +1,47 @@
+{
+  "schema": "initial-manuscript-phase6h-parallel-launch-v2",
+  "status": "RUNNING",
+  "algorithm": "CSG_NI_PROVISIONAL_PHASE6H",
+  "execution_revision": "PARALLEL2_DISJOINT_SHARDS_5SEED",
+  "primary_seeds": [530101, 530102, 530103, 530104, 530105],
+  "started_at_cst": "2026-09-03T10:09:36+08:00",
+  "services": [
+    {
+      "unit": "paper-phase6h-core-5seed-s0.service",
+      "pid_at_launch": 339184,
+      "shard_index": 0,
+      "records": 113,
+      "budget_seconds": 26990,
+      "log": "paper_experiments/logs/core45_phase6h/parallel2_5seed_formal_20260903T1009CST/shard_0.log"
+    },
+    {
+      "unit": "paper-phase6h-core-5seed-s1.service",
+      "pid_at_launch": 339167,
+      "shard_index": 1,
+      "records": 112,
+      "budget_seconds": 26640,
+      "log": "paper_experiments/logs/core45_phase6h/parallel2_5seed_formal_20260903T1009CST/shard_1.log"
+    }
+  ],
+  "total_records": 225,
+  "central_expected_completion_cst": "2026-09-03T17:39:29+08:00",
+  "expected_completion_window_cst": [
+    "2026-09-03T17:40:00+08:00",
+    "2026-09-03T18:10:00+08:00"
+  ],
+  "protocol_sha256": "72665a112ef3a5cfd5b856374c4f26b00e94d9586a16c8eadd696cd72c6c5361",
+  "config_sha256": "466dc049448d9308ade09e8c00625d7da90c70d5f4e119428c9b57e9228f2f07",
+  "implementation_manifest_sha256": "b4141ea57aec7a3c5023f24a37fd5f4f39c09efe2ff797d63448d28c8dd5da0d",
+  "runner_sha256": "bf10b0bc194416ab61cae3b767b0a7e6429638cb22fdcc1601286253eb874a9d",
+  "result_root": "paper_experiments/raw_results/core45/CSG_NI_PROVISIONAL_PHASE6H",
+  "progress_file": "paper_experiments/raw_results/core45/CSG_NI_PROVISIONAL_PHASE6H/progress.json",
+  "restart_policy": "on-failure after 30 seconds; each shard validates and skips complete atomic results",
+  "parallel_resource_gate": {
+    "parallel4_status": "REJECTED",
+    "parallel4_mean_decoder_evaluation_retention": 0.567835660270813,
+    "parallel2_status": "PASS",
+    "parallel2_mean_decoder_evaluation_retention": 0.9359903834242407,
+    "minimum_required_retention": 0.9
+  },
+  "superseded_ten_seed_launch": "paper_experiments/raw_results/core45/superseded/CSG_NI_PROVISIONAL_PHASE6H_parallel2_10seed_aborted_20260903T1005CST"
+}

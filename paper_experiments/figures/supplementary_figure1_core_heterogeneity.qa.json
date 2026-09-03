@@ -1,0 +1,38 @@
+{
+  "alignment": {
+    "overlay": "paper_experiments/figures/supplementary_figure1_core_heterogeneity.alignment.svg",
+    "report": "paper_experiments/figures/supplementary_figure1_core_heterogeneity.alignment.json",
+    "tolerance_pt": 1.5,
+    "verdict": "PASS"
+  },
+  "archetype": "quantitative grid",
+  "backend": "python-matplotlib",
+  "center_and_spread": "cell value is the median paired RPD difference; parenthetical annotations give CSG-NI wins/losses among five instances",
+  "core_conclusion": "The paired CSG-NI quality advantage is strongly scale dependent and is not uniform on Small instances.",
+  "exclusions": "none",
+  "exports": [
+    "paper_experiments/figures/supplementary_figure1_core_heterogeneity.svg",
+    "paper_experiments/figures/supplementary_figure1_core_heterogeneity.pdf",
+    "paper_experiments/figures/supplementary_figure1_core_heterogeneity.eps",
+    "paper_experiments/figures/supplementary_figure1_core_heterogeneity.tiff",
+    "paper_experiments/figures/supplementary_figure1_core_heterogeneity.png"
+  ],
+  "figure": "Supplementary Figure 1",
+  "final_width_mm": 180.0,
+  "font": "Times New Roman",
+  "font_file": "Times_New_Roman.ttf",
+  "minimum_rendered_glyph_pt": 5,
+  "pdf_audits": {
+    "collision_audit": "paper_experiments/figures/supplementary_figure1_core_heterogeneity.collision-audit.json",
+    "collision_overlay": "paper_experiments/figures/supplementary_figure1_core_heterogeneity.collision-audit.pdf",
+    "collision_verdict": "PASS",
+    "pdf_text_audit": "paper_experiments/figures/supplementary_figure1_core_heterogeneity.pdf-text-audit.json"
+  },
+  "replicate_unit": "Core instance; five independent instances per scale-by-CF cell, each summarized over five matched seeds",
+  "reporting_boundary": "post-hoc descriptive stratification; no cellwise hypothesis tests and no causal interpretation",
+  "schema": "initial-manuscript-figure-qa-v1",
+  "source_data": "paper_experiments/processed_data/supplementary/core_paired_advantage_scale_cf.csv",
+  "source_rows": 36,
+  "source_sha256": "1782a49abcedb210dca09c690d1c17a036e8de5f95196f53edd32ad8efca2a0b",
+  "status": "AUTOMATED_QA_PASS"
+}

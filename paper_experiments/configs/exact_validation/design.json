@@ -1,0 +1,17 @@
+{
+  "schema": "initial-manuscript-exact-design-v1",
+  "status": "LOCKED_BEFORE_EXACT_SOLVE_AND_HEURISTICS",
+  "generator": "initial-manuscript-exact-v1",
+  "cases": [
+    {"instance_id": "RIACRSP_EXACT_01", "seed": 730101, "operations": 6, "products": 2, "islands": 4, "w_agvs": 2, "f_agvs": 2, "dag_pattern": "fork_join", "eligibility_pattern": "wide", "rationale": "small branching case with both fleets contending across four islands"},
+    {"instance_id": "RIACRSP_EXACT_02", "seed": 730102, "operations": 7, "products": 2, "islands": 3, "w_agvs": 1, "f_agvs": 1, "dag_pattern": "mixed", "eligibility_pattern": "narrow", "rationale": "odd-sized mixed precedence case with single-vehicle resource conflicts"},
+    {"instance_id": "RIACRSP_EXACT_03", "seed": 730103, "operations": 8, "products": 2, "islands": 3, "w_agvs": 2, "f_agvs": 1, "dag_pattern": "fork_join", "eligibility_pattern": "narrow", "rationale": "balanced branching jobs with asymmetric W and F fleet sizes"},
+    {"instance_id": "RIACRSP_EXACT_04", "seed": 730104, "operations": 9, "products": 3, "islands": 3, "w_agvs": 1, "f_agvs": 2, "dag_pattern": "mixed", "eligibility_pattern": "narrow", "rationale": "three-product synchronization case with competing component-kit vehicles"},
+    {"instance_id": "RIACRSP_EXACT_05", "seed": 730105, "operations": 10, "products": 2, "islands": 3, "w_agvs": 1, "f_agvs": 1, "dag_pattern": "linear", "eligibility_pattern": "narrow", "rationale": "longer job chains emphasizing island and transport sequencing"},
+    {"instance_id": "RIACRSP_EXACT_06", "seed": 730106, "operations": 11, "products": 3, "islands": 2, "w_agvs": 1, "f_agvs": 1, "dag_pattern": "mixed", "eligibility_pattern": "wide", "rationale": "dense two-island contention with three heterogeneous products"},
+    {"instance_id": "RIACRSP_EXACT_07", "seed": 730107, "operations": 12, "products": 3, "islands": 2, "w_agvs": 1, "f_agvs": 1, "dag_pattern": "fork_join", "eligibility_pattern": "wide", "rationale": "operation-cap branching case sized for practical exact proof"},
+    {"instance_id": "RIACRSP_EXACT_08", "seed": 730108, "operations": 8, "products": 3, "islands": 4, "w_agvs": 1, "f_agvs": 2, "dag_pattern": "mixed", "eligibility_pattern": "wide", "rationale": "more islands than products with alternative routes and F-fleet choice"},
+    {"instance_id": "RIACRSP_EXACT_09", "seed": 730109, "operations": 10, "products": 3, "islands": 2, "w_agvs": 1, "f_agvs": 1, "dag_pattern": "fork_join", "eligibility_pattern": "wide", "rationale": "three-product branching under maximum two-island contention"},
+    {"instance_id": "RIACRSP_EXACT_10", "seed": 730110, "operations": 12, "products": 2, "islands": 2, "w_agvs": 1, "f_agvs": 1, "dag_pattern": "mixed", "eligibility_pattern": "wide", "rationale": "two deeper jobs at the operation cap with dense alternative eligibility"}
+  ]
+}

@@ -90,6 +90,10 @@ class Phase6HLiveObserver:
             "calibration_gate_ms": float(timing.get("calibration_gate", 0.0)),
             "ni_overhead_ms": float(timing.get("total", 0.0)),
             "repair_time_ms": float(event["repair_runtime"]) * 1000.0,
+            "repair_excluding_decoder_ms": float(
+                event.get("repair_excluding_decoder_runtime", event["repair_runtime"])
+            ) * 1000.0,
+            "decoder_time_ms": float(event.get("decoder_runtime", 0.0)) * 1000.0,
             "temperature": float(event["temperature_before"]),
             "cumulative_ni_calls": self.interventions,
             "cumulative_fallback_count": self.fallbacks,

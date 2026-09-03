@@ -1,0 +1,408 @@
+{
+  "islands": {
+    "M1": {
+      "coordinate": [
+        13,
+        14
+      ],
+      "initial_configuration": "C1",
+      "supported_configurations": [
+        "C1",
+        "C2"
+      ]
+    },
+    "M2": {
+      "coordinate": [
+        8,
+        10
+      ],
+      "initial_configuration": "C3",
+      "supported_configurations": [
+        "C2",
+        "C3"
+      ]
+    },
+    "M3": {
+      "coordinate": [
+        5,
+        16
+      ],
+      "initial_configuration": "C1",
+      "supported_configurations": [
+        "C1",
+        "C3"
+      ]
+    }
+  },
+  "logistics": {
+    "F": {
+      "outbound_cost_per_distance": {
+        "F1": 0.301
+      },
+      "outbound_time": {
+        "F1": {
+          "M1": 22,
+          "M2": 15,
+          "M3": 18
+        }
+      },
+      "return_cost_per_distance": {
+        "F1": 0.29
+      },
+      "return_time": {
+        "F1": {
+          "M1": 17,
+          "M2": 11,
+          "M3": 13
+        }
+      }
+    },
+    "W": {
+      "empty_cost_per_distance": {
+        "W1": 0.239
+      },
+      "empty_time": {
+        "W1": {
+          "M1": {
+            "M1": 0,
+            "M2": 5,
+            "M3": 6,
+            "WH": 15
+          },
+          "M2": {
+            "M1": 5,
+            "M2": 0,
+            "M3": 5,
+            "WH": 10
+          },
+          "M3": {
+            "M1": 6,
+            "M2": 5,
+            "M3": 0,
+            "WH": 11
+          },
+          "WH": {
+            "M1": 15,
+            "M2": 10,
+            "M3": 11,
+            "WH": 0
+          }
+        }
+      },
+      "loaded_cost_per_distance": {
+        "W1": 0.423
+      },
+      "loaded_time": {
+        "W1": {
+          "M1": {
+            "M1": 0,
+            "M2": 6,
+            "M3": 7,
+            "WH": 18
+          },
+          "M2": {
+            "M1": 6,
+            "M2": 0,
+            "M3": 6,
+            "WH": 12
+          },
+          "M3": {
+            "M1": 7,
+            "M2": 6,
+            "M3": 0,
+            "WH": 14
+          },
+          "WH": {
+            "M1": 18,
+            "M2": 12,
+            "M3": 14,
+            "WH": 0
+          }
+        }
+      }
+    },
+    "distance": {
+      "M1": {
+        "M1": 0,
+        "M2": 9,
+        "M3": 10,
+        "WH": 27
+      },
+      "M2": {
+        "M1": 9,
+        "M2": 0,
+        "M3": 9,
+        "WH": 18
+      },
+      "M3": {
+        "M1": 10,
+        "M2": 9,
+        "M3": 0,
+        "WH": 21
+      },
+      "WH": {
+        "M1": 27,
+        "M2": 18,
+        "M3": 21,
+        "WH": 0
+      }
+    },
+    "warehouse": "WH"
+  },
+  "meta": {
+    "canonical_rank": 2,
+    "canonical_sort_key": [
+      7,
+      2,
+      3,
+      2,
+      "RIACRSP_EXACT_02"
+    ],
+    "dag_pattern": "mixed",
+    "design_status": "PRE_HEURISTIC_NOT_FROZEN",
+    "eligibility_pattern": "narrow",
+    "generation_rationale": "odd-sized mixed precedence case with full alternative eligibility and single-vehicle conflicts",
+    "generator": "initial-manuscript-exact-v1",
+    "instance_id": "RIACRSP_E02",
+    "schema": "RCIAS-2.0",
+    "seed": 730102,
+    "source_instance_id": "RIACRSP_EXACT_02",
+    "source_suite": "exact_validation_10_v2",
+    "static_problem": true,
+    "suite": "RIACRSP_EXACT_VALIDATION_10_FINAL"
+  },
+  "objective_parameters": {
+    "cost_weight": 0.05,
+    "makespan_weight": 1.0
+  },
+  "operations": {
+    "o11": {
+      "eligible_islands": [
+        "M1",
+        "M2"
+      ],
+      "processing_time": {
+        "M1": 22,
+        "M2": 20
+      },
+      "product": "J1",
+      "required_configuration": "C2"
+    },
+    "o12": {
+      "eligible_islands": [
+        "M2",
+        "M3"
+      ],
+      "processing_time": {
+        "M2": 29,
+        "M3": 26
+      },
+      "product": "J1",
+      "required_configuration": "C3"
+    },
+    "o13": {
+      "eligible_islands": [
+        "M1",
+        "M3"
+      ],
+      "processing_time": {
+        "M1": 19,
+        "M3": 15
+      },
+      "product": "J1",
+      "required_configuration": "C1"
+    },
+    "o14": {
+      "eligible_islands": [
+        "M1",
+        "M2"
+      ],
+      "processing_time": {
+        "M1": 17,
+        "M2": 19
+      },
+      "product": "J1",
+      "required_configuration": "C2"
+    },
+    "o21": {
+      "eligible_islands": [
+        "M1",
+        "M3"
+      ],
+      "processing_time": {
+        "M1": 30,
+        "M3": 31
+      },
+      "product": "J2",
+      "required_configuration": "C1"
+    },
+    "o22": {
+      "eligible_islands": [
+        "M1",
+        "M2"
+      ],
+      "processing_time": {
+        "M1": 13,
+        "M2": 15
+      },
+      "product": "J2",
+      "required_configuration": "C2"
+    },
+    "o23": {
+      "eligible_islands": [
+        "M2",
+        "M3"
+      ],
+      "processing_time": {
+        "M2": 15,
+        "M3": 18
+      },
+      "product": "J2",
+      "required_configuration": "C3"
+    }
+  },
+  "products": {
+    "J1": {
+      "operations": [
+        "o11",
+        "o12",
+        "o13",
+        "o14"
+      ],
+      "precedence": [
+        [
+          "o11",
+          "o12"
+        ],
+        [
+          "o12",
+          "o13"
+        ],
+        [
+          "o13",
+          "o14"
+        ]
+      ]
+    },
+    "J2": {
+      "operations": [
+        "o21",
+        "o22",
+        "o23"
+      ],
+      "precedence": [
+        [
+          "o21",
+          "o22"
+        ],
+        [
+          "o22",
+          "o23"
+        ]
+      ]
+    }
+  },
+  "reconfiguration": {
+    "cost": {
+      "M1": {
+        "C1": {
+          "C1": 0.0,
+          "C2": 2.94
+        },
+        "C2": {
+          "C1": 2.61,
+          "C2": 0.0
+        }
+      },
+      "M2": {
+        "C2": {
+          "C2": 0.0,
+          "C3": 2.28
+        },
+        "C3": {
+          "C2": 2.81,
+          "C3": 0.0
+        }
+      },
+      "M3": {
+        "C1": {
+          "C1": 0.0,
+          "C3": 3.12
+        },
+        "C3": {
+          "C1": 3.14,
+          "C3": 0.0
+        }
+      }
+    },
+    "time": {
+      "M1": {
+        "C1": {
+          "C1": 0,
+          "C2": 2
+        },
+        "C2": {
+          "C1": 2,
+          "C2": 0
+        }
+      },
+      "M2": {
+        "C2": {
+          "C2": 0,
+          "C3": 4
+        },
+        "C3": {
+          "C2": 3,
+          "C3": 0
+        }
+      },
+      "M3": {
+        "C1": {
+          "C1": 0,
+          "C3": 4
+        },
+        "C3": {
+          "C1": 3,
+          "C3": 0
+        }
+      }
+    }
+  },
+  "sets": {
+    "agvs_f": [
+      "F1"
+    ],
+    "agvs_w": [
+      "W1"
+    ],
+    "configurations": [
+      "C1",
+      "C2",
+      "C3"
+    ],
+    "islands": [
+      "M1",
+      "M2",
+      "M3"
+    ],
+    "nodes": [
+      "WH",
+      "M1",
+      "M2",
+      "M3"
+    ],
+    "operations": [
+      "o11",
+      "o12",
+      "o13",
+      "o14",
+      "o21",
+      "o22",
+      "o23"
+    ],
+    "products": [
+      "J1",
+      "J2"
+    ]
+  }
+}

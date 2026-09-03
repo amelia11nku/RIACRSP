@@ -1,0 +1,113 @@
+{
+  "schema": "phase6i-mr-command-manifest-v1.2",
+  "status": "FROZEN_BEFORE_FORMAL_R09_COLLECTION_OR_R10_R11_CONTENT_ACCESS",
+  "phase6i_config_sha256": "535ab64b10be26593da4716488dd0189e22fb6d22c413b6b2569251171e64683",
+  "python": "/home/liulei/miniconda3/envs/gnn311/bin/python",
+  "environment": {
+    "PYTHONHASHSEED": "0",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1"
+  },
+  "revision_1_1_partial_pilot": {
+    "output_root": "outputs/phase6i_mr/pilot",
+    "status": "SUPERSEDED_PARTIAL_COST_AND_SCHEMA_EVIDENCE_ONLY",
+    "resume": false
+  },
+  "stages": [
+    {
+      "id": "01_generate_and_verify_instances",
+      "command": ["{python}", "scripts/generate_phase6i_mr_instances.py", "--extend-v12"],
+      "output": "instances/controlled/RCIAS-CB1-TRAIN-LIVE-R09R11",
+      "completion": "54 unique instances, 18 per split, two per scale-CF cell, every integrity check true"
+    },
+    {
+      "id": "02_formal_r09_pilot",
+      "command": ["{python}", "scripts/run_phase6i_mr_pilot.py", "--device", "cuda", "--protocol-revision", "1.2"],
+      "launcher": ["{python}", "scripts/launch_phase6i_mr_pilot.py", "--protocol-revision", "1.2"],
+      "output": "outputs/phase6i_mr/pilot_v12",
+      "completion": "9 C02 runs, 54 states, 216 broad candidate rows, replay/feasibility/integrity pass"
+    },
+    {
+      "id": "03_pilot_failure_scale_and_truncation_analysis",
+      "command": ["{python}", "scripts/analyze_phase6i_mr_pilot.py", "--protocol-revision", "1.2"],
+      "output": "outputs/phase6i_mr/pilot_v12/analysis",
+      "completion": "failure taxonomy, scale feature audit, top-eight audit, true-full-bank audit, and compact error bundles complete"
+    },
+    {
+      "id": "04_continuation_diagnostic",
+      "command": ["{python}", "scripts/run_phase6i_mr_continuation.py", "--device", "cuda"],
+      "output": "outputs/phase6i_mr/continuation",
+      "completion": "27 states x four roles x two CRN seeds complete and branch decision immutable"
+    },
+    {
+      "id": "05_freeze_collection_protocol",
+      "command": ["{python}", "scripts/freeze_phase6i_mr_collection_protocol.py"],
+      "output": "outputs/phase6i_mr/frozen/collection_protocol.json",
+      "completion": "pilot, audit, continuation, and config hashes exact"
+    },
+    {
+      "id": "06_collect_r09",
+      "command": ["{python}", "scripts/run_phase6i_mr_collection.py", "--split", "R09", "--device", "cuda"],
+      "output": "outputs/phase6i_mr/collection/r09",
+      "completion": "54 source trajectories, 1620 sampled states, broad labels and fixed audit subsets complete"
+    },
+    {
+      "id": "07_collect_r10_once",
+      "command": ["{python}", "scripts/run_phase6i_mr_collection.py", "--split", "R10", "--device", "cuda"],
+      "output": "outputs/phase6i_mr/collection/r10",
+      "completion": "54 source trajectories, 1620 sampled states, broad labels and fixed audit subsets complete; access count one"
+    },
+    {
+      "id": "08_train_seed_robust_candidates",
+      "command": ["{python}", "scripts/train_phase6i_mr_revision.py", "--all-preregistered"],
+      "output": "outputs/phase6i_mr/training",
+      "completion": "every activated family/data variant has seeds 686101, 686102, 686103 and seed-stability metrics"
+    },
+    {
+      "id": "09_one_hard_state_round",
+      "command": ["{python}", "scripts/run_phase6i_mr_hard_state_round.py", "--round", "1"],
+      "output": "outputs/phase6i_mr/hard_state_round_1",
+      "completion": "grouped OOF R09-only selection and exactly one refit complete; R10/R11 access false"
+    },
+    {
+      "id": "10_r10_select_once",
+      "command": ["{python}", "scripts/select_phase6i_mr_on_r10.py"],
+      "output": "outputs/phase6i_mr/r10_selection",
+      "completion": "one lexicographic seed-robust family/threshold selection record; no refit"
+    },
+    {
+      "id": "11_r10_solver_translation_once",
+      "command": ["{python}", "scripts/run_phase6i_mr_r10_translation.py"],
+      "output": "outputs/phase6i_mr/r10_translation",
+      "completion": "nine C02 instances x two matched seeds for ALNS/revised plus H1; pass or terminal MODEL_REVISION"
+    },
+    {
+      "id": "12_freeze_selected_artifact",
+      "command": ["{python}", "scripts/freeze_phase6i_mr_artifact.py"],
+      "output": "outputs/phase6i_mr/frozen",
+      "completion": "selected artifact, replay fixture, access ledger, and freeze hash immutable before R11"
+    },
+    {
+      "id": "13_r11_once",
+      "command": ["{python}", "scripts/run_phase6i_mr_r11_validation.py"],
+      "output": "outputs/phase6i_mr/r11_validation",
+      "completion": "18 instances, five matched seeds, required methods, integrity and feasibility complete"
+    },
+    {
+      "id": "14_finalize",
+      "command": ["{python}", "scripts/finalize_phase6i_mr.py"],
+      "output": "outputs/phase6i_mr/final",
+      "completion": "grouped statistics, runtime/anytime analysis, exact gate decision, reports, and handoff complete"
+    }
+  ],
+  "protected_access": {
+    "r10": "one collection/evaluation pass after all candidates and selection rules are frozen; no refit",
+    "r11": "reject until selected artifact and its matching freeze record exist",
+    "phase6h_cal_holdout": "forbidden for development",
+    "phase6g_dev_holdout": "forbidden"
+  },
+  "long_job_rule": "verified detached launch with PID/log/progress/ETA, then stop interactive polling",
+  "forbidden_commands": ["git push", "gurobi", "exact/tiny rerun"]
+}

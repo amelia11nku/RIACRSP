@@ -1,0 +1,15 @@
+{
+  "schema": "initial-manuscript-superseded-run-record-v1",
+  "status": "SUPERSEDED_NOT_FOR_ANALYSIS",
+  "algorithm": "CSG_NI_PROVISIONAL_PHASE6H",
+  "execution_revision": "PARALLEL4_DISJOINT_SHARDS",
+  "completed_records": 4,
+  "config_sha256": "5da7df6e50c591357f47388207c0eeabae334db0714b21afc945e6239bd4bb33",
+  "implementation_manifest_sha256": "036ef8b9b41ddd210cf8449edd911f9a7811ede6e4a849f0255deb77c0609510",
+  "mean_decoder_evaluation_retention_vs_serial": 0.567835660270813,
+  "mean_iteration_retention_vs_serial": 0.5680568596344779,
+  "observed_gpu_sm_percent_range": [74, 99],
+  "observed_gpu_memory_mib_range": [1305, 1329],
+  "superseded_at_cst": "2026-09-03T09:57:30+08:00",
+  "reason": "Rejected because four concurrent workers retained only 56.8 percent of serial decoder evaluations under the same per-run wall-clock budget."
+}

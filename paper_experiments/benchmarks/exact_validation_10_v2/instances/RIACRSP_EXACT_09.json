@@ -1,0 +1,411 @@
+{
+  "islands": {
+    "M1": {
+      "coordinate": [
+        17,
+        3
+      ],
+      "initial_configuration": "C3",
+      "supported_configurations": [
+        "C1",
+        "C2",
+        "C3"
+      ]
+    },
+    "M2": {
+      "coordinate": [
+        18,
+        16
+      ],
+      "initial_configuration": "C1",
+      "supported_configurations": [
+        "C1",
+        "C2",
+        "C3"
+      ]
+    }
+  },
+  "logistics": {
+    "F": {
+      "outbound_cost_per_distance": {
+        "F1": 0.257
+      },
+      "outbound_time": {
+        "F1": {
+          "M1": 14,
+          "M2": 23
+        }
+      },
+      "return_cost_per_distance": {
+        "F1": 0.24
+      },
+      "return_time": {
+        "F1": {
+          "M1": 12,
+          "M2": 21
+        }
+      }
+    },
+    "W": {
+      "empty_cost_per_distance": {
+        "W1": 0.31
+      },
+      "empty_time": {
+        "W1": {
+          "M1": {
+            "M1": 0,
+            "M2": 9,
+            "WH": 12
+          },
+          "M2": {
+            "M1": 9,
+            "M2": 0,
+            "WH": 21
+          },
+          "WH": {
+            "M1": 12,
+            "M2": 21,
+            "WH": 0
+          }
+        }
+      },
+      "loaded_cost_per_distance": {
+        "W1": 0.461
+      },
+      "loaded_time": {
+        "W1": {
+          "M1": {
+            "M1": 0,
+            "M2": 13,
+            "WH": 18
+          },
+          "M2": {
+            "M1": 13,
+            "M2": 0,
+            "WH": 31
+          },
+          "WH": {
+            "M1": 18,
+            "M2": 31,
+            "WH": 0
+          }
+        }
+      }
+    },
+    "distance": {
+      "M1": {
+        "M1": 0,
+        "M2": 14,
+        "WH": 20
+      },
+      "M2": {
+        "M1": 14,
+        "M2": 0,
+        "WH": 34
+      },
+      "WH": {
+        "M1": 20,
+        "M2": 34,
+        "WH": 0
+      }
+    },
+    "warehouse": "WH"
+  },
+  "meta": {
+    "dag_pattern": "fork_join",
+    "design_status": "PRE_HEURISTIC_NOT_FROZEN",
+    "eligibility_pattern": "wide",
+    "generation_rationale": "three-product branching under maximum two-island contention",
+    "generator": "initial-manuscript-exact-v1",
+    "instance_id": "RIACRSP_EXACT_09",
+    "schema": "RCIAS-2.0",
+    "seed": 730109,
+    "static_problem": true,
+    "suite": "INITIAL_MANUSCRIPT_EXACT_VALIDATION_CANDIDATE"
+  },
+  "objective_parameters": {
+    "cost_weight": 0.05,
+    "makespan_weight": 1.0
+  },
+  "operations": {
+    "o11": {
+      "eligible_islands": [
+        "M1",
+        "M2"
+      ],
+      "processing_time": {
+        "M1": 20,
+        "M2": 17
+      },
+      "product": "J1",
+      "required_configuration": "C2"
+    },
+    "o12": {
+      "eligible_islands": [
+        "M1",
+        "M2"
+      ],
+      "processing_time": {
+        "M1": 13,
+        "M2": 9
+      },
+      "product": "J1",
+      "required_configuration": "C3"
+    },
+    "o13": {
+      "eligible_islands": [
+        "M1"
+      ],
+      "processing_time": {
+        "M1": 29
+      },
+      "product": "J1",
+      "required_configuration": "C1"
+    },
+    "o14": {
+      "eligible_islands": [
+        "M2"
+      ],
+      "processing_time": {
+        "M2": 26
+      },
+      "product": "J1",
+      "required_configuration": "C2"
+    },
+    "o21": {
+      "eligible_islands": [
+        "M1"
+      ],
+      "processing_time": {
+        "M1": 18
+      },
+      "product": "J2",
+      "required_configuration": "C1"
+    },
+    "o22": {
+      "eligible_islands": [
+        "M2"
+      ],
+      "processing_time": {
+        "M2": 29
+      },
+      "product": "J2",
+      "required_configuration": "C2"
+    },
+    "o23": {
+      "eligible_islands": [
+        "M2"
+      ],
+      "processing_time": {
+        "M2": 15
+      },
+      "product": "J2",
+      "required_configuration": "C3"
+    },
+    "o31": {
+      "eligible_islands": [
+        "M2"
+      ],
+      "processing_time": {
+        "M2": 14
+      },
+      "product": "J3",
+      "required_configuration": "C2"
+    },
+    "o32": {
+      "eligible_islands": [
+        "M2"
+      ],
+      "processing_time": {
+        "M2": 11
+      },
+      "product": "J3",
+      "required_configuration": "C3"
+    },
+    "o33": {
+      "eligible_islands": [
+        "M1"
+      ],
+      "processing_time": {
+        "M1": 16
+      },
+      "product": "J3",
+      "required_configuration": "C1"
+    }
+  },
+  "products": {
+    "J1": {
+      "operations": [
+        "o11",
+        "o12",
+        "o13",
+        "o14"
+      ],
+      "precedence": [
+        [
+          "o11",
+          "o12"
+        ],
+        [
+          "o11",
+          "o13"
+        ],
+        [
+          "o12",
+          "o14"
+        ],
+        [
+          "o13",
+          "o14"
+        ]
+      ]
+    },
+    "J2": {
+      "operations": [
+        "o21",
+        "o22",
+        "o23"
+      ],
+      "precedence": [
+        [
+          "o21",
+          "o22"
+        ],
+        [
+          "o21",
+          "o23"
+        ]
+      ]
+    },
+    "J3": {
+      "operations": [
+        "o31",
+        "o32",
+        "o33"
+      ],
+      "precedence": [
+        [
+          "o31",
+          "o32"
+        ],
+        [
+          "o31",
+          "o33"
+        ]
+      ]
+    }
+  },
+  "reconfiguration": {
+    "cost": {
+      "M1": {
+        "C1": {
+          "C1": 0.0,
+          "C2": 2.38,
+          "C3": 3.86
+        },
+        "C2": {
+          "C1": 2.42,
+          "C2": 0.0,
+          "C3": 3.09
+        },
+        "C3": {
+          "C1": 3.5,
+          "C2": 2.71,
+          "C3": 0.0
+        }
+      },
+      "M2": {
+        "C1": {
+          "C1": 0.0,
+          "C2": 2.97,
+          "C3": 3.08
+        },
+        "C2": {
+          "C1": 3.0,
+          "C2": 0.0,
+          "C3": 2.41
+        },
+        "C3": {
+          "C1": 3.18,
+          "C2": 2.79,
+          "C3": 0.0
+        }
+      }
+    },
+    "time": {
+      "M1": {
+        "C1": {
+          "C1": 0,
+          "C2": 3,
+          "C3": 5
+        },
+        "C2": {
+          "C1": 3,
+          "C2": 0,
+          "C3": 2
+        },
+        "C3": {
+          "C1": 3,
+          "C2": 2,
+          "C3": 0
+        }
+      },
+      "M2": {
+        "C1": {
+          "C1": 0,
+          "C2": 3,
+          "C3": 3
+        },
+        "C2": {
+          "C1": 3,
+          "C2": 0,
+          "C3": 3
+        },
+        "C3": {
+          "C1": 3,
+          "C2": 4,
+          "C3": 0
+        }
+      }
+    }
+  },
+  "sets": {
+    "agvs_f": [
+      "F1"
+    ],
+    "agvs_w": [
+      "W1"
+    ],
+    "configurations": [
+      "C1",
+      "C2",
+      "C3"
+    ],
+    "islands": [
+      "M1",
+      "M2"
+    ],
+    "nodes": [
+      "WH",
+      "M1",
+      "M2"
+    ],
+    "operations": [
+      "o11",
+      "o12",
+      "o13",
+      "o14",
+      "o21",
+      "o22",
+      "o23",
+      "o31",
+      "o32",
+      "o33"
+    ],
+    "products": [
+      "J1",
+      "J2",
+      "J3"
+    ]
+  }
+}

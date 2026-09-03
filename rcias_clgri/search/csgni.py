@@ -82,6 +82,11 @@ def solve_csgni(
     started = time.perf_counter()
     h1 = solve_dispatching(instance, "H1")
     current = decode_candidate(instance, candidate_from_actions(instance, h1.actions))
+    policy_preparation_started = time.perf_counter()
+    prepare_instance = getattr(policy, "prepare_instance", None)
+    if callable(prepare_instance):
+        prepare_instance(instance, h1.schedule)
+    policy_preparation_seconds = time.perf_counter() - policy_preparation_started
     best = current
     evaluations = 1
     best_time = time.perf_counter() - started
@@ -144,14 +149,20 @@ def solve_csgni(
             repair_rng = baseline_rng
 
         candidates = []
+        neighbor_runtime = 0.0
+        decoder_runtime = 0.0
         repair_started = time.perf_counter()
         for _ in range(alns_config.candidate_trials):
             if time.perf_counter() - started >= time_limit and candidates:
                 break
-            candidates.append(decode_candidate(
-                instance,
-                _neighbor(instance, current.candidate, removed, repair, repair_rng),
-            ))
+            neighbor_started = time.perf_counter()
+            neighbor = _neighbor(
+                instance, current.candidate, removed, repair, repair_rng
+            )
+            neighbor_runtime += time.perf_counter() - neighbor_started
+            decoder_started = time.perf_counter()
+            candidates.append(decode_candidate(instance, neighbor))
+            decoder_runtime += time.perf_counter() - decoder_started
             evaluations += 1
         candidate = min(candidates, key=lambda item: item.makespan)
         repair_runtime = time.perf_counter() - repair_started
@@ -202,6 +213,8 @@ def solve_csgni(
                 "operator_weights_after": dict(weights),
                 "repair_decoder_evaluations": evaluations - evaluations_before,
                 "repair_runtime": repair_runtime,
+                "repair_excluding_decoder_runtime": neighbor_runtime,
+                "decoder_runtime": decoder_runtime,
                 "candidate_trials_completed": len(candidates),
                 "temperature_before": temperature_before,
                 "ni_eligible": eligible,
@@ -258,6 +271,7 @@ def solve_csgni(
             "ni_interventions": intervention_count,
             "ni_fallbacks": fallback_count,
             "initialization_seconds": initialization_seconds,
+            "policy_preparation_seconds": policy_preparation_seconds,
             "rng_namespaces": {
                 "baseline": 0,
                 "proposal": csgni_config.proposal_seed_namespace,

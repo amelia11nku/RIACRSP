@@ -1,0 +1,15 @@
+{
+  "schema": "dabc-riacrsp-config-v1",
+  "method": "DABC-RIACRSP",
+  "population_size": 120,
+  "neighborhood_search_intensity": 2,
+  "max_nonimprovements": 40,
+  "self_exploration_rate": 0.1,
+  "first_level_fraction": 0.2,
+  "restart_self_explorations": 10,
+  "source_clipping_mode": "shadow",
+  "iteration_limit": null,
+  "formal_stop": "wall_clock_2N",
+  "formal_objective": "makespan",
+  "status": "FROZEN_BEFORE_FORMAL_EVALUATION"
+}

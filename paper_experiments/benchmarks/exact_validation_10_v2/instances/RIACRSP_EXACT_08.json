@@ -1,0 +1,507 @@
+{
+  "islands": {
+    "M1": {
+      "coordinate": [
+        8,
+        18
+      ],
+      "initial_configuration": "C1",
+      "supported_configurations": [
+        "C1",
+        "C2"
+      ]
+    },
+    "M2": {
+      "coordinate": [
+        18,
+        15
+      ],
+      "initial_configuration": "C3",
+      "supported_configurations": [
+        "C2",
+        "C3"
+      ]
+    },
+    "M3": {
+      "coordinate": [
+        14,
+        7
+      ],
+      "initial_configuration": "C1",
+      "supported_configurations": [
+        "C1",
+        "C3"
+      ]
+    },
+    "M4": {
+      "coordinate": [
+        3,
+        15
+      ],
+      "initial_configuration": "C2",
+      "supported_configurations": [
+        "C1",
+        "C2",
+        "C3"
+      ]
+    }
+  },
+  "logistics": {
+    "F": {
+      "outbound_cost_per_distance": {
+        "F1": 0.273,
+        "F2": 0.254
+      },
+      "outbound_time": {
+        "F1": {
+          "M1": 15,
+          "M2": 19,
+          "M3": 12,
+          "M4": 11
+        },
+        "F2": {
+          "M1": 23,
+          "M2": 29,
+          "M3": 19,
+          "M4": 16
+        }
+      },
+      "return_cost_per_distance": {
+        "F1": 0.254,
+        "F2": 0.175
+      },
+      "return_time": {
+        "F1": {
+          "M1": 14,
+          "M2": 18,
+          "M3": 12,
+          "M4": 10
+        },
+        "F2": {
+          "M1": 13,
+          "M2": 16,
+          "M3": 11,
+          "M4": 9
+        }
+      }
+    },
+    "W": {
+      "empty_cost_per_distance": {
+        "W1": 0.306
+      },
+      "empty_time": {
+        "W1": {
+          "M1": {
+            "M1": 0,
+            "M2": 8,
+            "M3": 11,
+            "M4": 5,
+            "WH": 16
+          },
+          "M2": {
+            "M1": 8,
+            "M2": 0,
+            "M3": 8,
+            "M4": 10,
+            "WH": 20
+          },
+          "M3": {
+            "M1": 11,
+            "M2": 8,
+            "M3": 0,
+            "M4": 12,
+            "WH": 13
+          },
+          "M4": {
+            "M1": 5,
+            "M2": 10,
+            "M3": 12,
+            "M4": 0,
+            "WH": 11
+          },
+          "WH": {
+            "M1": 16,
+            "M2": 20,
+            "M3": 13,
+            "M4": 11,
+            "WH": 0
+          }
+        }
+      },
+      "loaded_cost_per_distance": {
+        "W1": 0.446
+      },
+      "loaded_time": {
+        "W1": {
+          "M1": {
+            "M1": 0,
+            "M2": 13,
+            "M3": 17,
+            "M4": 8,
+            "WH": 25
+          },
+          "M2": {
+            "M1": 13,
+            "M2": 0,
+            "M3": 12,
+            "M4": 15,
+            "WH": 32
+          },
+          "M3": {
+            "M1": 17,
+            "M2": 12,
+            "M3": 0,
+            "M4": 19,
+            "WH": 20
+          },
+          "M4": {
+            "M1": 8,
+            "M2": 15,
+            "M3": 19,
+            "M4": 0,
+            "WH": 18
+          },
+          "WH": {
+            "M1": 25,
+            "M2": 32,
+            "M3": 20,
+            "M4": 18,
+            "WH": 0
+          }
+        }
+      }
+    },
+    "distance": {
+      "M1": {
+        "M1": 0,
+        "M2": 13,
+        "M3": 17,
+        "M4": 8,
+        "WH": 26
+      },
+      "M2": {
+        "M1": 13,
+        "M2": 0,
+        "M3": 12,
+        "M4": 15,
+        "WH": 33
+      },
+      "M3": {
+        "M1": 17,
+        "M2": 12,
+        "M3": 0,
+        "M4": 19,
+        "WH": 21
+      },
+      "M4": {
+        "M1": 8,
+        "M2": 15,
+        "M3": 19,
+        "M4": 0,
+        "WH": 18
+      },
+      "WH": {
+        "M1": 26,
+        "M2": 33,
+        "M3": 21,
+        "M4": 18,
+        "WH": 0
+      }
+    },
+    "warehouse": "WH"
+  },
+  "meta": {
+    "dag_pattern": "mixed",
+    "design_status": "PRE_HEURISTIC_NOT_FROZEN",
+    "eligibility_pattern": "wide",
+    "generation_rationale": "more islands than products with selected alternative routes and F-fleet choice",
+    "generator": "initial-manuscript-exact-v1",
+    "instance_id": "RIACRSP_EXACT_08",
+    "schema": "RCIAS-2.0",
+    "seed": 730108,
+    "static_problem": true,
+    "suite": "INITIAL_MANUSCRIPT_EXACT_VALIDATION_CANDIDATE"
+  },
+  "objective_parameters": {
+    "cost_weight": 0.05,
+    "makespan_weight": 1.0
+  },
+  "operations": {
+    "o11": {
+      "eligible_islands": [
+        "M1",
+        "M2",
+        "M4"
+      ],
+      "processing_time": {
+        "M1": 20,
+        "M2": 13,
+        "M4": 18
+      },
+      "product": "J1",
+      "required_configuration": "C2"
+    },
+    "o12": {
+      "eligible_islands": [
+        "M3",
+        "M4"
+      ],
+      "processing_time": {
+        "M3": 28,
+        "M4": 30
+      },
+      "product": "J1",
+      "required_configuration": "C3"
+    },
+    "o13": {
+      "eligible_islands": [
+        "M1"
+      ],
+      "processing_time": {
+        "M1": 11
+      },
+      "product": "J1",
+      "required_configuration": "C1"
+    },
+    "o21": {
+      "eligible_islands": [
+        "M4"
+      ],
+      "processing_time": {
+        "M4": 11
+      },
+      "product": "J2",
+      "required_configuration": "C3"
+    },
+    "o22": {
+      "eligible_islands": [
+        "M4"
+      ],
+      "processing_time": {
+        "M4": 7
+      },
+      "product": "J2",
+      "required_configuration": "C1"
+    },
+    "o23": {
+      "eligible_islands": [
+        "M4"
+      ],
+      "processing_time": {
+        "M4": 18
+      },
+      "product": "J2",
+      "required_configuration": "C2"
+    },
+    "o31": {
+      "eligible_islands": [
+        "M1"
+      ],
+      "processing_time": {
+        "M1": 20
+      },
+      "product": "J3",
+      "required_configuration": "C1"
+    },
+    "o32": {
+      "eligible_islands": [
+        "M1"
+      ],
+      "processing_time": {
+        "M1": 20
+      },
+      "product": "J3",
+      "required_configuration": "C2"
+    }
+  },
+  "products": {
+    "J1": {
+      "operations": [
+        "o11",
+        "o12",
+        "o13"
+      ],
+      "precedence": [
+        [
+          "o11",
+          "o12"
+        ],
+        [
+          "o11",
+          "o13"
+        ]
+      ]
+    },
+    "J2": {
+      "operations": [
+        "o21",
+        "o22",
+        "o23"
+      ],
+      "precedence": [
+        [
+          "o21",
+          "o22"
+        ],
+        [
+          "o22",
+          "o23"
+        ]
+      ]
+    },
+    "J3": {
+      "operations": [
+        "o31",
+        "o32"
+      ],
+      "precedence": [
+        [
+          "o31",
+          "o32"
+        ]
+      ]
+    }
+  },
+  "reconfiguration": {
+    "cost": {
+      "M1": {
+        "C1": {
+          "C1": 0.0,
+          "C2": 2.77
+        },
+        "C2": {
+          "C1": 2.62,
+          "C2": 0.0
+        }
+      },
+      "M2": {
+        "C2": {
+          "C2": 0.0,
+          "C3": 3.2
+        },
+        "C3": {
+          "C2": 2.59,
+          "C3": 0.0
+        }
+      },
+      "M3": {
+        "C1": {
+          "C1": 0.0,
+          "C3": 3.39
+        },
+        "C3": {
+          "C1": 3.11,
+          "C3": 0.0
+        }
+      },
+      "M4": {
+        "C1": {
+          "C1": 0.0,
+          "C2": 2.97,
+          "C3": 3.88
+        },
+        "C2": {
+          "C1": 3.03,
+          "C2": 0.0,
+          "C3": 2.75
+        },
+        "C3": {
+          "C1": 3.03,
+          "C2": 2.79,
+          "C3": 0.0
+        }
+      }
+    },
+    "time": {
+      "M1": {
+        "C1": {
+          "C1": 0,
+          "C2": 4
+        },
+        "C2": {
+          "C1": 4,
+          "C2": 0
+        }
+      },
+      "M2": {
+        "C2": {
+          "C2": 0,
+          "C3": 3
+        },
+        "C3": {
+          "C2": 2,
+          "C3": 0
+        }
+      },
+      "M3": {
+        "C1": {
+          "C1": 0,
+          "C3": 4
+        },
+        "C3": {
+          "C1": 3,
+          "C3": 0
+        }
+      },
+      "M4": {
+        "C1": {
+          "C1": 0,
+          "C2": 2,
+          "C3": 3
+        },
+        "C2": {
+          "C1": 4,
+          "C2": 0,
+          "C3": 4
+        },
+        "C3": {
+          "C1": 3,
+          "C2": 2,
+          "C3": 0
+        }
+      }
+    }
+  },
+  "sets": {
+    "agvs_f": [
+      "F1",
+      "F2"
+    ],
+    "agvs_w": [
+      "W1"
+    ],
+    "configurations": [
+      "C1",
+      "C2",
+      "C3"
+    ],
+    "islands": [
+      "M1",
+      "M2",
+      "M3",
+      "M4"
+    ],
+    "nodes": [
+      "WH",
+      "M1",
+      "M2",
+      "M3",
+      "M4"
+    ],
+    "operations": [
+      "o11",
+      "o12",
+      "o13",
+      "o21",
+      "o22",
+      "o23",
+      "o31",
+      "o32"
+    ],
+    "products": [
+      "J1",
+      "J2",
+      "J3"
+    ]
+  }
+}

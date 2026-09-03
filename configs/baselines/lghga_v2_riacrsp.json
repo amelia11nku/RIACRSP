@@ -1,0 +1,20 @@
+{
+  "schema": "lghga-riacrsp-config-v2",
+  "method": "LG_HGA-RIACRSP-v2-N4M",
+  "max_generations": 100,
+  "population_size": 40,
+  "crossover_probability": 0.9,
+  "mutation_probability": 0.4,
+  "local_search_threshold_pct": 50.0,
+  "local_search_population_size": 5,
+  "local_search_max_iterations": 5,
+  "neighborhood_size": 20,
+  "knowledge_generation_runs": 20,
+  "tournament_size": 2,
+  "n4_selection_rule": "MINIMAL_PLURAL_TWO_EFFECTIVE_MOVES",
+  "knowledge_target": "ONE_STEP_EQ11_R_PCT",
+  "knowledge_model_regime": "scale_x_CF_level",
+  "formal_stop": "wall_clock_2N_with_100_generation_cap",
+  "formal_objective": "makespan",
+  "status": "PREREGISTERED_V2_BEFORE_LGHGA_CORE_EVALUATION"
+}

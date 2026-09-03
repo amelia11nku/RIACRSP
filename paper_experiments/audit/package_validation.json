@@ -1,0 +1,122 @@
+{
+  "checks": [
+    {
+      "check": "exact_benchmark_gate",
+      "evidence": true,
+      "passed": true
+    },
+    {
+      "check": "ten_small_exact_instances",
+      "evidence": {
+        "instances": 10,
+        "maximum_operations": 9
+      },
+      "passed": true
+    },
+    {
+      "check": "all_gurobi_references_proven_optimal",
+      "evidence": {
+        "references": 10
+      },
+      "passed": true
+    },
+    {
+      "check": "exact_five_method_matrix",
+      "evidence": {
+        "expected": 250,
+        "status": "PASS_COMPLETE",
+        "valid": 250
+      },
+      "passed": true
+    },
+    {
+      "check": "core_five_method_matrix",
+      "evidence": {
+        "expected": 1125,
+        "status": "PASS_COMPLETE",
+        "valid": 1125
+      },
+      "passed": true
+    },
+    {
+      "check": "core_completion_and_seed_manifests",
+      "evidence": {
+        "completion_rows": 225,
+        "seed_status": "FROZEN_FIVE_MATCHED_SEEDS"
+      },
+      "passed": true
+    },
+    {
+      "check": "core_bks_rpd",
+      "evidence": "PASS_COMPLETE_DRAFT_PROVISIONAL_PHASE6H",
+      "passed": true
+    },
+    {
+      "check": "paired_statistics",
+      "evidence": "PASS",
+      "passed": true
+    },
+    {
+      "check": "phase6h_alns_efficiency",
+      "evidence": "PASS_REUSED_PHASE6H_CAL_HOLDOUT",
+      "passed": true
+    },
+    {
+      "check": "paper_tables",
+      "evidence": {
+        "missing": []
+      },
+      "passed": true
+    },
+    {
+      "check": "core_supplementary_analysis",
+      "evidence": "PASS_DESCRIPTIVE_EXPLORATORY",
+      "passed": true
+    },
+    {
+      "check": "paper_figures",
+      "evidence": {
+        "missing": []
+      },
+      "passed": true
+    },
+    {
+      "check": "paper_figure_qa",
+      "evidence": {
+        "figure1_quality_distribution": {
+          "alignment": "PASS",
+          "collision": "PASS",
+          "minimum_glyph_pt": 6.5,
+          "passed": true,
+          "status": "AUTOMATED_QA_PASS"
+        },
+        "figure2_anytime_efficiency": {
+          "alignment": "PASS",
+          "collision": "PASS",
+          "minimum_glyph_pt": 6.5,
+          "passed": true,
+          "status": "AUTOMATED_QA_PASS"
+        },
+        "supplementary_figure1_core_heterogeneity": {
+          "alignment": "PASS",
+          "collision": "PASS",
+          "minimum_glyph_pt": 5.5,
+          "passed": true,
+          "status": "AUTOMATED_QA_PASS"
+        },
+        "supplementary_figure2_seed_stability": {
+          "alignment": "PASS",
+          "collision": "PASS",
+          "minimum_glyph_pt": 6.5,
+          "passed": true,
+          "status": "AUTOMATED_QA_PASS"
+        }
+      },
+      "passed": true
+    }
+  ],
+  "checks_passed": 13,
+  "checks_total": 13,
+  "schema": "initial-manuscript-package-validation-v1",
+  "status": "PASS"
+}

@@ -1,0 +1,22 @@
+{
+  "definitions": {
+    "paired_advantage": "competitor median RPD minus CSG-NI median RPD; positive favors CSG-NI",
+    "runtime_budget_fraction": "observed runtime divided by the preregistered maximum wall-clock budget",
+    "seed_variability": "sample standard deviation of RPD across five matched seeds within each method-instance cell"
+  },
+  "exclusions": "none",
+  "exploratory_association": {
+    "interpretation_boundary": "post-hoc descriptive association confounded with scale and instance structure; not a preregistered causal or predictive claim",
+    "n_instances": 45,
+    "spearman_rho": 0.8305269816643839,
+    "two_sided_p_value_unadjusted": 1.6987694002148827e-12,
+    "variables": "operation count and CSG-NI advantage over the best baseline selected separately on each instance"
+  },
+  "independent_instances": 45,
+  "matched_seeds_per_method_instance": 5,
+  "multiplicity_boundary": "scale-by-CF cells and variability summaries are descriptive; no cellwise hypothesis tests were performed",
+  "runs": 1125,
+  "schema": "initial-manuscript-core-supplementary-analysis-v1",
+  "source": "paper_experiments/processed_data/main/main_runs.csv",
+  "status": "PASS_DESCRIPTIVE_EXPLORATORY"
+}

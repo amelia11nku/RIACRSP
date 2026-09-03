@@ -1,0 +1,543 @@
+{
+  "best_actions": [
+    {
+      "f_agv_id": "F1",
+      "island_id": "M3",
+      "operation_id": "o21",
+      "w_agv_id": "W1"
+    },
+    {
+      "f_agv_id": "F1",
+      "island_id": "M2",
+      "operation_id": "o11",
+      "w_agv_id": "W1"
+    },
+    {
+      "f_agv_id": "F1",
+      "island_id": "M2",
+      "operation_id": "o12",
+      "w_agv_id": null
+    },
+    {
+      "f_agv_id": "F1",
+      "island_id": "M3",
+      "operation_id": "o13",
+      "w_agv_id": "W1"
+    },
+    {
+      "f_agv_id": "F1",
+      "island_id": "M2",
+      "operation_id": "o14",
+      "w_agv_id": "W1"
+    },
+    {
+      "f_agv_id": "F1",
+      "island_id": "M2",
+      "operation_id": "o22",
+      "w_agv_id": "W1"
+    },
+    {
+      "f_agv_id": "F1",
+      "island_id": "M2",
+      "operation_id": "o23",
+      "w_agv_id": null
+    }
+  ],
+  "best_found_time_seconds": 0.03545079298783094,
+  "best_makespan": 196.0,
+  "best_solution": {
+    "accumulated_reconfiguration_cost": 10.18,
+    "f_timelines": {
+      "F1": [
+        {
+          "arrival_island": 18.0,
+          "departure_wh": 0.0,
+          "island_id": "M3",
+          "operation_id": "o21",
+          "outbound_distance": 21.0,
+          "outbound_time": 18.0,
+          "return_distance": 21.0,
+          "return_time": 13.0,
+          "return_wh": 31.0,
+          "task_id": "F:o21",
+          "vehicle_id": "F1"
+        },
+        {
+          "arrival_island": 46.0,
+          "departure_wh": 31.0,
+          "island_id": "M2",
+          "operation_id": "o11",
+          "outbound_distance": 18.0,
+          "outbound_time": 15.0,
+          "return_distance": 18.0,
+          "return_time": 11.0,
+          "return_wh": 57.0,
+          "task_id": "F:o11",
+          "vehicle_id": "F1"
+        },
+        {
+          "arrival_island": 72.0,
+          "departure_wh": 57.0,
+          "island_id": "M2",
+          "operation_id": "o12",
+          "outbound_distance": 18.0,
+          "outbound_time": 15.0,
+          "return_distance": 18.0,
+          "return_time": 11.0,
+          "return_wh": 83.0,
+          "task_id": "F:o12",
+          "vehicle_id": "F1"
+        },
+        {
+          "arrival_island": 101.0,
+          "departure_wh": 83.0,
+          "island_id": "M3",
+          "operation_id": "o13",
+          "outbound_distance": 21.0,
+          "outbound_time": 18.0,
+          "return_distance": 21.0,
+          "return_time": 13.0,
+          "return_wh": 114.0,
+          "task_id": "F:o13",
+          "vehicle_id": "F1"
+        },
+        {
+          "arrival_island": 129.0,
+          "departure_wh": 114.0,
+          "island_id": "M2",
+          "operation_id": "o14",
+          "outbound_distance": 18.0,
+          "outbound_time": 15.0,
+          "return_distance": 18.0,
+          "return_time": 11.0,
+          "return_wh": 140.0,
+          "task_id": "F:o14",
+          "vehicle_id": "F1"
+        },
+        {
+          "arrival_island": 155.0,
+          "departure_wh": 140.0,
+          "island_id": "M2",
+          "operation_id": "o22",
+          "outbound_distance": 18.0,
+          "outbound_time": 15.0,
+          "return_distance": 18.0,
+          "return_time": 11.0,
+          "return_wh": 166.0,
+          "task_id": "F:o22",
+          "vehicle_id": "F1"
+        },
+        {
+          "arrival_island": 181.0,
+          "departure_wh": 166.0,
+          "island_id": "M2",
+          "operation_id": "o23",
+          "outbound_distance": 18.0,
+          "outbound_time": 15.0,
+          "return_distance": 18.0,
+          "return_time": 11.0,
+          "return_wh": 192.0,
+          "task_id": "F:o23",
+          "vehicle_id": "F1"
+        }
+      ]
+    },
+    "instance_id": "RIACRSP_E02",
+    "island_timelines": {
+      "M1": [],
+      "M2": [
+        "o11",
+        "o12",
+        "o14",
+        "o22",
+        "o23"
+      ],
+      "M3": [
+        "o21",
+        "o13"
+      ]
+    },
+    "operations": {
+      "o11": {
+        "binding_resource": [
+          "F_AGV"
+        ],
+        "completion_time": 66.0,
+        "config_id": "C2",
+        "config_ready_time": 3.0,
+        "f_ready_time": 46.0,
+        "f_task_id": "F:o11",
+        "island_id": "M2",
+        "island_ready_time": 0.0,
+        "op_id": "o11",
+        "processing_time": 20,
+        "product_id": "J1",
+        "product_predecessor": null,
+        "product_ready_time": 0.0,
+        "reconfiguration_end": 3.0,
+        "reconfiguration_start": 0.0,
+        "start_time": 46.0,
+        "w_ready_time": 37.0,
+        "w_task_id": "W:o11"
+      },
+      "o12": {
+        "binding_resource": [
+          "F_AGV"
+        ],
+        "completion_time": 101.0,
+        "config_id": "C3",
+        "config_ready_time": 70.0,
+        "f_ready_time": 72.0,
+        "f_task_id": "F:o12",
+        "island_id": "M2",
+        "island_ready_time": 66.0,
+        "op_id": "o12",
+        "processing_time": 29,
+        "product_id": "J1",
+        "product_predecessor": "o11",
+        "product_ready_time": 66.0,
+        "reconfiguration_end": 70.0,
+        "reconfiguration_start": 66.0,
+        "start_time": 72.0,
+        "w_ready_time": 66.0,
+        "w_task_id": null
+      },
+      "o13": {
+        "binding_resource": [
+          "W_AGV"
+        ],
+        "completion_time": 122.0,
+        "config_id": "C1",
+        "config_ready_time": 49.0,
+        "f_ready_time": 101.0,
+        "f_task_id": "F:o13",
+        "island_id": "M3",
+        "island_ready_time": 49.0,
+        "op_id": "o13",
+        "processing_time": 15,
+        "product_id": "J1",
+        "product_predecessor": "o12",
+        "product_ready_time": 101.0,
+        "reconfiguration_end": 49.0,
+        "reconfiguration_start": 49.0,
+        "start_time": 107.0,
+        "w_ready_time": 107.0,
+        "w_task_id": "W:o13"
+      },
+      "o14": {
+        "binding_resource": [
+          "F_AGV"
+        ],
+        "completion_time": 148.0,
+        "config_id": "C2",
+        "config_ready_time": 104.0,
+        "f_ready_time": 129.0,
+        "f_task_id": "F:o14",
+        "island_id": "M2",
+        "island_ready_time": 101.0,
+        "op_id": "o14",
+        "processing_time": 19,
+        "product_id": "J1",
+        "product_predecessor": "o13",
+        "product_ready_time": 122.0,
+        "reconfiguration_end": 104.0,
+        "reconfiguration_start": 101.0,
+        "start_time": 129.0,
+        "w_ready_time": 128.0,
+        "w_task_id": "W:o14"
+      },
+      "o21": {
+        "binding_resource": [
+          "F_AGV"
+        ],
+        "completion_time": 49.0,
+        "config_id": "C1",
+        "config_ready_time": 0.0,
+        "f_ready_time": 18.0,
+        "f_task_id": "F:o21",
+        "island_id": "M3",
+        "island_ready_time": 0.0,
+        "op_id": "o21",
+        "processing_time": 31,
+        "product_id": "J2",
+        "product_predecessor": null,
+        "product_ready_time": 0.0,
+        "reconfiguration_end": 0.0,
+        "reconfiguration_start": 0.0,
+        "start_time": 18.0,
+        "w_ready_time": 14.0,
+        "w_task_id": "W:o21"
+      },
+      "o22": {
+        "binding_resource": [
+          "F_AGV"
+        ],
+        "completion_time": 170.0,
+        "config_id": "C2",
+        "config_ready_time": 148.0,
+        "f_ready_time": 155.0,
+        "f_task_id": "F:o22",
+        "island_id": "M2",
+        "island_ready_time": 148.0,
+        "op_id": "o22",
+        "processing_time": 15,
+        "product_id": "J2",
+        "product_predecessor": "o21",
+        "product_ready_time": 49.0,
+        "reconfiguration_end": 148.0,
+        "reconfiguration_start": 148.0,
+        "start_time": 155.0,
+        "w_ready_time": 55.0,
+        "w_task_id": "W:o22"
+      },
+      "o23": {
+        "binding_resource": [
+          "F_AGV"
+        ],
+        "completion_time": 196.0,
+        "config_id": "C3",
+        "config_ready_time": 174.0,
+        "f_ready_time": 181.0,
+        "f_task_id": "F:o23",
+        "island_id": "M2",
+        "island_ready_time": 170.0,
+        "op_id": "o23",
+        "processing_time": 15,
+        "product_id": "J2",
+        "product_predecessor": "o22",
+        "product_ready_time": 170.0,
+        "reconfiguration_end": 174.0,
+        "reconfiguration_start": 170.0,
+        "start_time": 181.0,
+        "w_ready_time": 170.0,
+        "w_task_id": null
+      }
+    },
+    "product_predecessor": {
+      "o11": null,
+      "o12": "o11",
+      "o13": "o12",
+      "o14": "o13",
+      "o21": null,
+      "o22": "o21",
+      "o23": "o22"
+    },
+    "product_sequences": {
+      "J1": [
+        "o11",
+        "o12",
+        "o13",
+        "o14"
+      ],
+      "J2": [
+        "o21",
+        "o22",
+        "o23"
+      ]
+    },
+    "product_successor": {
+      "o11": "o12",
+      "o12": "o13",
+      "o13": "o14",
+      "o14": null,
+      "o21": "o22",
+      "o22": "o23",
+      "o23": null
+    },
+    "w_timelines": {
+      "W1": [
+        {
+          "arrival_time": 14.0,
+          "destination": "M3",
+          "empty_arrival": 0.0,
+          "empty_distance": 0.0,
+          "empty_origin": "WH",
+          "empty_start": 0.0,
+          "empty_travel_time": 0.0,
+          "loaded_distance": 21.0,
+          "loaded_start": 0.0,
+          "loaded_travel_time": 14.0,
+          "operation_id": "o21",
+          "pickup": "WH",
+          "predecessor_op": null,
+          "product_id": "J2",
+          "release_time": 0.0,
+          "task_id": "W:o21",
+          "vehicle_id": "W1"
+        },
+        {
+          "arrival_time": 37.0,
+          "destination": "M2",
+          "empty_arrival": 25.0,
+          "empty_distance": 21.0,
+          "empty_origin": "M3",
+          "empty_start": 14.0,
+          "empty_travel_time": 11.0,
+          "loaded_distance": 18.0,
+          "loaded_start": 25.0,
+          "loaded_travel_time": 12.0,
+          "operation_id": "o11",
+          "pickup": "WH",
+          "predecessor_op": null,
+          "product_id": "J1",
+          "release_time": 0.0,
+          "task_id": "W:o11",
+          "vehicle_id": "W1"
+        },
+        {
+          "arrival_time": 55.0,
+          "destination": "M2",
+          "empty_arrival": 42.0,
+          "empty_distance": 9.0,
+          "empty_origin": "M2",
+          "empty_start": 37.0,
+          "empty_travel_time": 5.0,
+          "loaded_distance": 9.0,
+          "loaded_start": 49.0,
+          "loaded_travel_time": 6.0,
+          "operation_id": "o22",
+          "pickup": "M3",
+          "predecessor_op": "o21",
+          "product_id": "J2",
+          "release_time": 49.0,
+          "task_id": "W:o22",
+          "vehicle_id": "W1"
+        },
+        {
+          "arrival_time": 107.0,
+          "destination": "M3",
+          "empty_arrival": 55.0,
+          "empty_distance": 0.0,
+          "empty_origin": "M2",
+          "empty_start": 55.0,
+          "empty_travel_time": 0.0,
+          "loaded_distance": 9.0,
+          "loaded_start": 101.0,
+          "loaded_travel_time": 6.0,
+          "operation_id": "o13",
+          "pickup": "M2",
+          "predecessor_op": "o12",
+          "product_id": "J1",
+          "release_time": 101.0,
+          "task_id": "W:o13",
+          "vehicle_id": "W1"
+        },
+        {
+          "arrival_time": 128.0,
+          "destination": "M2",
+          "empty_arrival": 107.0,
+          "empty_distance": 0.0,
+          "empty_origin": "M3",
+          "empty_start": 107.0,
+          "empty_travel_time": 0.0,
+          "loaded_distance": 9.0,
+          "loaded_start": 122.0,
+          "loaded_travel_time": 6.0,
+          "operation_id": "o14",
+          "pickup": "M3",
+          "predecessor_op": "o13",
+          "product_id": "J1",
+          "release_time": 122.0,
+          "task_id": "W:o14",
+          "vehicle_id": "W1"
+        }
+      ]
+    }
+  },
+  "compute": {
+    "cpu_threads_per_solver": 1,
+    "gpu_used": false
+  },
+  "convergence_trace": [
+    {
+      "current_best_makespan": 243.0,
+      "decoder_evaluations": 1,
+      "elapsed_time": 0.0005745600210502744
+    },
+    {
+      "current_best_makespan": 210.0,
+      "decoder_evaluations": 2,
+      "elapsed_time": 0.0010928430128842592
+    },
+    {
+      "current_best_makespan": 205.0,
+      "decoder_evaluations": 5,
+      "elapsed_time": 0.0025875240098685026
+    },
+    {
+      "current_best_makespan": 196.0,
+      "decoder_evaluations": 105,
+      "elapsed_time": 0.03545079298783094
+    }
+  ],
+  "decoder_evaluations": 40000,
+  "diagnostics": {
+    "collaboration_trials": 9540,
+    "diversity_regenerations": 0,
+    "fidelity": "FAITHFUL_ADAPTATION",
+    "initialization_seconds": 0.36034554801881313,
+    "population_pathway_best": {
+      "Decoding1_fixed": 196.0,
+      "Decoding2_cumulative": 196.0
+    }
+  },
+  "environment": {
+    "python": "3.11.15"
+  },
+  "feasible": true,
+  "finished_at_utc": "2026-09-03T06:51:22.087722+00:00",
+  "first_optimum_time_seconds": 0.03545079298783094,
+  "gap_to_proven_optimum_percent": 0.0,
+  "generations_if_applicable": 20,
+  "implementation_manifest_sha256": "0b5e1586bd0ea1905ce05da4fe60d6c21bf184bc84857d675e2aa8650f4af35b",
+  "independent_feasibility_audit": {
+    "cost": 123.28,
+    "feasible": true,
+    "makespan": 196.0,
+    "objective": {
+      "f_outbound_cost": 39.732,
+      "f_return_cost": 38.279999999999994,
+      "f_travel": 264.0,
+      "makespan": 196.0,
+      "reconfiguration_cost": 10.18,
+      "reconfiguration_count": 4,
+      "total_cost": 123.28,
+      "w_empty_cost": 7.17,
+      "w_empty_travel": 30.0,
+      "w_loaded_cost": 27.917999999999996,
+      "w_loaded_travel": 66.0
+    },
+    "violations": []
+  },
+  "instance_id": "RIACRSP_E02",
+  "instance_path": "paper_experiments/benchmarks/exact_validation_10_final_gurobi/exact_validation_10_final/instances/RIACRSP_E02.json",
+  "instance_sha256": "ff1cca40c333a80b4c26297a5f35d92fd1a62264294918a5b671851c72c42899",
+  "iterations": 20,
+  "method": "Adapted DCGA",
+  "method_artifact": {
+    "config": "configs/phase5c_dcga.json",
+    "effective_config": {
+      "crossover_probability": 0.9,
+      "diversity_check_interval": 300,
+      "elite_count": 2,
+      "mutation_probability": 0.15,
+      "population_size_each": 500,
+      "similarity_threshold": 0.8
+    }
+  },
+  "number_of_operations": 7,
+  "optimum_reached": true,
+  "protocol_path": "paper_experiments/configs/exact_validation/final_protocol.json",
+  "protocol_sha256": "3a54d4830d1748decac8e7a57af4c5c67edfa7062e7ef4314ebd0110017ba989",
+  "proven_optimum": 196.0,
+  "right_censored_without_optimum": false,
+  "runtime_seconds": 14.000861466978677,
+  "schema": "initial-manuscript-final-exact-run-v1",
+  "seed": 530101,
+  "source_instance_id": "RIACRSP_EXACT_02",
+  "source_suite": "exact_validation_10_v2",
+  "started_from_commit": "7c448000be69084511af181f52cad0a8db71479a",
+  "status": "COMPLETE",
+  "suite": "RIACRSP exact validation 10 final",
+  "time_limit_seconds": 14.0
+}

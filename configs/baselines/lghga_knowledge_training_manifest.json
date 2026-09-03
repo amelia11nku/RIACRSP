@@ -1,0 +1,76 @@
+{
+  "schema": "lghga-knowledge-training-manifest-v1",
+  "suite": "RCIAS-CB1-TRAIN",
+  "source_manifest": "instances/controlled/RCIAS-CB1-TRAIN/manifests/train_instance_manifest.csv",
+  "selection_rule": "R01 TRAIN split, RI2, TI2, balanced 3 scales x 3 CF levels",
+  "instances": [
+    {
+      "instance_id": "CB1_TRAIN_S_CF1_RI2_TI2_R01",
+      "scale": "S",
+      "CF_level": "CF1",
+      "relative_path": "train/CB1_TRAIN_S_CF1_RI2_TI2_R01.json",
+      "sha256": "be3324809a2267aad76a4c41a42e116a5a9ce05652ffb6a44fe20f64e4d11f1e"
+    },
+    {
+      "instance_id": "CB1_TRAIN_S_CF2_RI2_TI2_R01",
+      "scale": "S",
+      "CF_level": "CF2",
+      "relative_path": "train/CB1_TRAIN_S_CF2_RI2_TI2_R01.json",
+      "sha256": "4c01b43af83e03464176a64b78cfdfddd59213c28ab11212a9e787bbf57854bc"
+    },
+    {
+      "instance_id": "CB1_TRAIN_S_CF3_RI2_TI2_R01",
+      "scale": "S",
+      "CF_level": "CF3",
+      "relative_path": "train/CB1_TRAIN_S_CF3_RI2_TI2_R01.json",
+      "sha256": "7c4e05a99246d0d5e4ccca995149b600b5061ede7a28b2acc82fb0a78c782831"
+    },
+    {
+      "instance_id": "CB1_TRAIN_M_CF1_RI2_TI2_R01",
+      "scale": "M",
+      "CF_level": "CF1",
+      "relative_path": "train/CB1_TRAIN_M_CF1_RI2_TI2_R01.json",
+      "sha256": "79348ee2bde6c8d69667f7483455ca87207899a9b7b2e64326f1f3fd754f239d"
+    },
+    {
+      "instance_id": "CB1_TRAIN_M_CF2_RI2_TI2_R01",
+      "scale": "M",
+      "CF_level": "CF2",
+      "relative_path": "train/CB1_TRAIN_M_CF2_RI2_TI2_R01.json",
+      "sha256": "693ff087312434300caabd5d7db6664a874c827fc5565363e6e4655b5bf9b668"
+    },
+    {
+      "instance_id": "CB1_TRAIN_M_CF3_RI2_TI2_R01",
+      "scale": "M",
+      "CF_level": "CF3",
+      "relative_path": "train/CB1_TRAIN_M_CF3_RI2_TI2_R01.json",
+      "sha256": "1670e9b119dfeb00dd5e1cc8201b24890442087ad107c48dfa21f4e11f3470fb"
+    },
+    {
+      "instance_id": "CB1_TRAIN_L_CF1_RI2_TI2_R01",
+      "scale": "L",
+      "CF_level": "CF1",
+      "relative_path": "train/CB1_TRAIN_L_CF1_RI2_TI2_R01.json",
+      "sha256": "09e215eaf98d989487a7221cb70b64cdb315517e4afbe52ce52a7df116f21ff0"
+    },
+    {
+      "instance_id": "CB1_TRAIN_L_CF2_RI2_TI2_R01",
+      "scale": "L",
+      "CF_level": "CF2",
+      "relative_path": "train/CB1_TRAIN_L_CF2_RI2_TI2_R01.json",
+      "sha256": "091ac5d759ec87539100609f2fb4efb449351c45d29f90f0039c8eceec3001ac"
+    },
+    {
+      "instance_id": "CB1_TRAIN_L_CF3_RI2_TI2_R01",
+      "scale": "L",
+      "CF_level": "CF3",
+      "relative_path": "train/CB1_TRAIN_L_CF3_RI2_TI2_R01.json",
+      "sha256": "2e38c09d01d50db529e149bc33209537f7f4ff76d7b4c4f13f008c1f854bf22d"
+    }
+  ],
+  "instance_count": 9,
+  "formal_evaluation_suite": "RCIAS-CB1 Core",
+  "formal_evaluation_manifest": "instances/controlled/RCIAS-CB1/manifests/core_manifest.csv",
+  "disjoint_by_design": true,
+  "status": "FROZEN_BEFORE_KNOWLEDGE_GENERATION"
+}

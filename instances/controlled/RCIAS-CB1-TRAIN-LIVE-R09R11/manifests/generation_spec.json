@@ -1,0 +1,36 @@
+{
+  "base_seed_namespace": 680000,
+  "factorial_design": {
+    "CF": [
+      "CF1",
+      "CF2",
+      "CF3"
+    ],
+    "RI": [
+      "RI2"
+    ],
+    "TI": [
+      "TI2"
+    ],
+    "cell_replicate": [
+      "C01",
+      "C02"
+    ],
+    "replicate_split": {
+      "R09": "LIVE_REV_FIT",
+      "R10": "LIVE_REV_SELECT",
+      "R11": "LIVE_REV_HOLDOUT"
+    },
+    "scale": [
+      "S",
+      "M",
+      "L"
+    ]
+  },
+  "phase6i_config_sha256": "535ab64b10be26593da4716488dd0189e22fb6d22c413b6b2569251171e64683",
+  "r11_generation_boundary": "generated deterministically and hashed here; downstream content access is forbidden until the selected Phase 6I-MR artifact is frozen",
+  "r11_pre_freeze_metrics": "WITHHELD",
+  "schema": "rcias-cb1-train-live-r09r11-generation-v1.2",
+  "second_cell_replicate_seed_offset": 10000,
+  "source_spec_sha256": "272d2108b095593adb7df3a3db3b52d56ff7863acfe68c7c09279fbf4178f92c"
+}

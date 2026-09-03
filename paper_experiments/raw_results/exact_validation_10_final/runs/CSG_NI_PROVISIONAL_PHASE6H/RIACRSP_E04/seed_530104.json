@@ -1,0 +1,642 @@
+{
+  "algorithm_version": "PHASE6H_FROZEN_POLICY",
+  "best_actions": [
+    {
+      "f_agv_id": "F1",
+      "island_id": "M2",
+      "operation_id": "o11",
+      "w_agv_id": "W1"
+    },
+    {
+      "f_agv_id": "F1",
+      "island_id": "M2",
+      "operation_id": "o21",
+      "w_agv_id": "W1"
+    },
+    {
+      "f_agv_id": "F1",
+      "island_id": "M2",
+      "operation_id": "o12",
+      "w_agv_id": null
+    },
+    {
+      "f_agv_id": "F1",
+      "island_id": "M1",
+      "operation_id": "o13",
+      "w_agv_id": "W1"
+    },
+    {
+      "f_agv_id": "F1",
+      "island_id": "M2",
+      "operation_id": "o23",
+      "w_agv_id": null
+    },
+    {
+      "f_agv_id": "F1",
+      "island_id": "M1",
+      "operation_id": "o22",
+      "w_agv_id": "W1"
+    },
+    {
+      "f_agv_id": "F1",
+      "island_id": "M2",
+      "operation_id": "o24",
+      "w_agv_id": "W1"
+    },
+    {
+      "f_agv_id": "F1",
+      "island_id": "M2",
+      "operation_id": "o14",
+      "w_agv_id": "W1"
+    }
+  ],
+  "best_found_time_seconds": 0.02699987997766584,
+  "best_makespan": 326.0,
+  "best_solution": {
+    "accumulated_reconfiguration_cost": 15.42,
+    "f_timelines": {
+      "F1": [
+        {
+          "arrival_island": 23.0,
+          "departure_wh": 0.0,
+          "island_id": "M2",
+          "operation_id": "o11",
+          "outbound_distance": 30.0,
+          "outbound_time": 23.0,
+          "return_distance": 30.0,
+          "return_time": 16.0,
+          "return_wh": 39.0,
+          "task_id": "F:o11",
+          "vehicle_id": "F1"
+        },
+        {
+          "arrival_island": 62.0,
+          "departure_wh": 39.0,
+          "island_id": "M2",
+          "operation_id": "o21",
+          "outbound_distance": 30.0,
+          "outbound_time": 23.0,
+          "return_distance": 30.0,
+          "return_time": 16.0,
+          "return_wh": 78.0,
+          "task_id": "F:o21",
+          "vehicle_id": "F1"
+        },
+        {
+          "arrival_island": 101.0,
+          "departure_wh": 78.0,
+          "island_id": "M2",
+          "operation_id": "o12",
+          "outbound_distance": 30.0,
+          "outbound_time": 23.0,
+          "return_distance": 30.0,
+          "return_time": 16.0,
+          "return_wh": 117.0,
+          "task_id": "F:o12",
+          "vehicle_id": "F1"
+        },
+        {
+          "arrival_island": 144.0,
+          "departure_wh": 117.0,
+          "island_id": "M1",
+          "operation_id": "o13",
+          "outbound_distance": 34.0,
+          "outbound_time": 27.0,
+          "return_distance": 34.0,
+          "return_time": 19.0,
+          "return_wh": 163.0,
+          "task_id": "F:o13",
+          "vehicle_id": "F1"
+        },
+        {
+          "arrival_island": 186.0,
+          "departure_wh": 163.0,
+          "island_id": "M2",
+          "operation_id": "o23",
+          "outbound_distance": 30.0,
+          "outbound_time": 23.0,
+          "return_distance": 30.0,
+          "return_time": 16.0,
+          "return_wh": 202.0,
+          "task_id": "F:o23",
+          "vehicle_id": "F1"
+        },
+        {
+          "arrival_island": 229.0,
+          "departure_wh": 202.0,
+          "island_id": "M1",
+          "operation_id": "o22",
+          "outbound_distance": 34.0,
+          "outbound_time": 27.0,
+          "return_distance": 34.0,
+          "return_time": 19.0,
+          "return_wh": 248.0,
+          "task_id": "F:o22",
+          "vehicle_id": "F1"
+        },
+        {
+          "arrival_island": 271.0,
+          "departure_wh": 248.0,
+          "island_id": "M2",
+          "operation_id": "o24",
+          "outbound_distance": 30.0,
+          "outbound_time": 23.0,
+          "return_distance": 30.0,
+          "return_time": 16.0,
+          "return_wh": 287.0,
+          "task_id": "F:o24",
+          "vehicle_id": "F1"
+        },
+        {
+          "arrival_island": 310.0,
+          "departure_wh": 287.0,
+          "island_id": "M2",
+          "operation_id": "o14",
+          "outbound_distance": 30.0,
+          "outbound_time": 23.0,
+          "return_distance": 30.0,
+          "return_time": 16.0,
+          "return_wh": 326.0,
+          "task_id": "F:o14",
+          "vehicle_id": "F1"
+        }
+      ]
+    },
+    "instance_id": "RIACRSP_E04",
+    "island_timelines": {
+      "M1": [
+        "o13",
+        "o22"
+      ],
+      "M2": [
+        "o11",
+        "o21",
+        "o12",
+        "o23",
+        "o24",
+        "o14"
+      ]
+    },
+    "operations": {
+      "o11": {
+        "binding_resource": [
+          "F_AGV"
+        ],
+        "completion_time": 36.0,
+        "config_id": "C2",
+        "config_ready_time": 0.0,
+        "f_ready_time": 23.0,
+        "f_task_id": "F:o11",
+        "island_id": "M2",
+        "island_ready_time": 0.0,
+        "op_id": "o11",
+        "processing_time": 13,
+        "product_id": "J1",
+        "product_predecessor": null,
+        "product_ready_time": 0.0,
+        "reconfiguration_end": 0.0,
+        "reconfiguration_start": 0.0,
+        "start_time": 23.0,
+        "w_ready_time": 20.0,
+        "w_task_id": "W:o11"
+      },
+      "o12": {
+        "binding_resource": [
+          "F_AGV"
+        ],
+        "completion_time": 112.0,
+        "config_id": "C3",
+        "config_ready_time": 85.0,
+        "f_ready_time": 101.0,
+        "f_task_id": "F:o12",
+        "island_id": "M2",
+        "island_ready_time": 80.0,
+        "op_id": "o12",
+        "processing_time": 11,
+        "product_id": "J1",
+        "product_predecessor": "o11",
+        "product_ready_time": 36.0,
+        "reconfiguration_end": 85.0,
+        "reconfiguration_start": 80.0,
+        "start_time": 101.0,
+        "w_ready_time": 36.0,
+        "w_task_id": null
+      },
+      "o13": {
+        "binding_resource": [
+          "F_AGV"
+        ],
+        "completion_time": 156.0,
+        "config_id": "C1",
+        "config_ready_time": 0.0,
+        "f_ready_time": 144.0,
+        "f_task_id": "F:o13",
+        "island_id": "M1",
+        "island_ready_time": 0.0,
+        "op_id": "o13",
+        "processing_time": 12,
+        "product_id": "J1",
+        "product_predecessor": "o12",
+        "product_ready_time": 112.0,
+        "reconfiguration_end": 0.0,
+        "reconfiguration_start": 0.0,
+        "start_time": 144.0,
+        "w_ready_time": 118.0,
+        "w_task_id": "W:o13"
+      },
+      "o14": {
+        "binding_resource": [
+          "F_AGV"
+        ],
+        "completion_time": 326.0,
+        "config_id": "C2",
+        "config_ready_time": 291.0,
+        "f_ready_time": 310.0,
+        "f_task_id": "F:o14",
+        "island_id": "M2",
+        "island_ready_time": 288.0,
+        "op_id": "o14",
+        "processing_time": 16,
+        "product_id": "J1",
+        "product_predecessor": "o13",
+        "product_ready_time": 156.0,
+        "reconfiguration_end": 291.0,
+        "reconfiguration_start": 288.0,
+        "start_time": 310.0,
+        "w_ready_time": 162.0,
+        "w_task_id": "W:o14"
+      },
+      "o21": {
+        "binding_resource": [
+          "F_AGV"
+        ],
+        "completion_time": 80.0,
+        "config_id": "C1",
+        "config_ready_time": 39.0,
+        "f_ready_time": 62.0,
+        "f_task_id": "F:o21",
+        "island_id": "M2",
+        "island_ready_time": 36.0,
+        "op_id": "o21",
+        "processing_time": 18,
+        "product_id": "J2",
+        "product_predecessor": null,
+        "product_ready_time": 0.0,
+        "reconfiguration_end": 39.0,
+        "reconfiguration_start": 36.0,
+        "start_time": 62.0,
+        "w_ready_time": 60.0,
+        "w_task_id": "W:o21"
+      },
+      "o22": {
+        "binding_resource": [
+          "F_AGV"
+        ],
+        "completion_time": 251.0,
+        "config_id": "C2",
+        "config_ready_time": 159.0,
+        "f_ready_time": 229.0,
+        "f_task_id": "F:o22",
+        "island_id": "M1",
+        "island_ready_time": 156.0,
+        "op_id": "o22",
+        "processing_time": 22,
+        "product_id": "J2",
+        "product_predecessor": "o23",
+        "product_ready_time": 196.0,
+        "reconfiguration_end": 159.0,
+        "reconfiguration_start": 156.0,
+        "start_time": 229.0,
+        "w_ready_time": 202.0,
+        "w_task_id": "W:o22"
+      },
+      "o23": {
+        "binding_resource": [
+          "F_AGV"
+        ],
+        "completion_time": 196.0,
+        "config_id": "C3",
+        "config_ready_time": 112.0,
+        "f_ready_time": 186.0,
+        "f_task_id": "F:o23",
+        "island_id": "M2",
+        "island_ready_time": 112.0,
+        "op_id": "o23",
+        "processing_time": 10,
+        "product_id": "J2",
+        "product_predecessor": "o21",
+        "product_ready_time": 80.0,
+        "reconfiguration_end": 112.0,
+        "reconfiguration_start": 112.0,
+        "start_time": 186.0,
+        "w_ready_time": 80.0,
+        "w_task_id": null
+      },
+      "o24": {
+        "binding_resource": [
+          "F_AGV"
+        ],
+        "completion_time": 288.0,
+        "config_id": "C1",
+        "config_ready_time": 201.0,
+        "f_ready_time": 271.0,
+        "f_task_id": "F:o24",
+        "island_id": "M2",
+        "island_ready_time": 196.0,
+        "op_id": "o24",
+        "processing_time": 17,
+        "product_id": "J2",
+        "product_predecessor": "o22",
+        "product_ready_time": 251.0,
+        "reconfiguration_end": 201.0,
+        "reconfiguration_start": 196.0,
+        "start_time": 271.0,
+        "w_ready_time": 257.0,
+        "w_task_id": "W:o24"
+      }
+    },
+    "product_predecessor": {
+      "o11": null,
+      "o12": "o11",
+      "o13": "o12",
+      "o14": "o13",
+      "o21": null,
+      "o22": "o23",
+      "o23": "o21",
+      "o24": "o22"
+    },
+    "product_sequences": {
+      "J1": [
+        "o11",
+        "o12",
+        "o13",
+        "o14"
+      ],
+      "J2": [
+        "o21",
+        "o23",
+        "o22",
+        "o24"
+      ]
+    },
+    "product_successor": {
+      "o11": "o12",
+      "o12": "o13",
+      "o13": "o14",
+      "o14": null,
+      "o21": "o23",
+      "o22": "o24",
+      "o23": "o22",
+      "o24": null
+    },
+    "w_timelines": {
+      "W1": [
+        {
+          "arrival_time": 20.0,
+          "destination": "M2",
+          "empty_arrival": 0.0,
+          "empty_distance": 0.0,
+          "empty_origin": "WH",
+          "empty_start": 0.0,
+          "empty_travel_time": 0.0,
+          "loaded_distance": 30.0,
+          "loaded_start": 0.0,
+          "loaded_travel_time": 20.0,
+          "operation_id": "o11",
+          "pickup": "WH",
+          "predecessor_op": null,
+          "product_id": "J1",
+          "release_time": 0.0,
+          "task_id": "W:o11",
+          "vehicle_id": "W1"
+        },
+        {
+          "arrival_time": 60.0,
+          "destination": "M2",
+          "empty_arrival": 40.0,
+          "empty_distance": 30.0,
+          "empty_origin": "M2",
+          "empty_start": 20.0,
+          "empty_travel_time": 20.0,
+          "loaded_distance": 30.0,
+          "loaded_start": 40.0,
+          "loaded_travel_time": 20.0,
+          "operation_id": "o21",
+          "pickup": "WH",
+          "predecessor_op": null,
+          "product_id": "J2",
+          "release_time": 0.0,
+          "task_id": "W:o21",
+          "vehicle_id": "W1"
+        },
+        {
+          "arrival_time": 118.0,
+          "destination": "M1",
+          "empty_arrival": 60.0,
+          "empty_distance": 0.0,
+          "empty_origin": "M2",
+          "empty_start": 60.0,
+          "empty_travel_time": 0.0,
+          "loaded_distance": 8.0,
+          "loaded_start": 112.0,
+          "loaded_travel_time": 6.0,
+          "operation_id": "o13",
+          "pickup": "M2",
+          "predecessor_op": "o12",
+          "product_id": "J1",
+          "release_time": 112.0,
+          "task_id": "W:o13",
+          "vehicle_id": "W1"
+        },
+        {
+          "arrival_time": 162.0,
+          "destination": "M2",
+          "empty_arrival": 118.0,
+          "empty_distance": 0.0,
+          "empty_origin": "M1",
+          "empty_start": 118.0,
+          "empty_travel_time": 0.0,
+          "loaded_distance": 8.0,
+          "loaded_start": 156.0,
+          "loaded_travel_time": 6.0,
+          "operation_id": "o14",
+          "pickup": "M1",
+          "predecessor_op": "o13",
+          "product_id": "J1",
+          "release_time": 156.0,
+          "task_id": "W:o14",
+          "vehicle_id": "W1"
+        },
+        {
+          "arrival_time": 202.0,
+          "destination": "M1",
+          "empty_arrival": 162.0,
+          "empty_distance": 0.0,
+          "empty_origin": "M2",
+          "empty_start": 162.0,
+          "empty_travel_time": 0.0,
+          "loaded_distance": 8.0,
+          "loaded_start": 196.0,
+          "loaded_travel_time": 6.0,
+          "operation_id": "o22",
+          "pickup": "M2",
+          "predecessor_op": "o23",
+          "product_id": "J2",
+          "release_time": 196.0,
+          "task_id": "W:o22",
+          "vehicle_id": "W1"
+        },
+        {
+          "arrival_time": 257.0,
+          "destination": "M2",
+          "empty_arrival": 202.0,
+          "empty_distance": 0.0,
+          "empty_origin": "M1",
+          "empty_start": 202.0,
+          "empty_travel_time": 0.0,
+          "loaded_distance": 8.0,
+          "loaded_start": 251.0,
+          "loaded_travel_time": 6.0,
+          "operation_id": "o24",
+          "pickup": "M1",
+          "predecessor_op": "o22",
+          "product_id": "J2",
+          "release_time": 251.0,
+          "task_id": "W:o24",
+          "vehicle_id": "W1"
+        }
+      ]
+    }
+  },
+  "checkpoint_sha256": "f1ccceb607b0e453dfb74e7aa7a946616001db8ec08c12dc9900a66c6f165fc7",
+  "compute": {
+    "cpu_threads_per_solver": 1,
+    "gpu_used": true
+  },
+  "convergence_trace": [
+    {
+      "current_best_makespan": 327.0,
+      "decoder_evaluations": 1,
+      "elapsed_time": 0.00047380896285176277
+    },
+    {
+      "current_best_makespan": 326.0,
+      "decoder_evaluations": 9,
+      "elapsed_time": 0.02699987997766584
+    }
+  ],
+  "decoder_evaluations": 4834,
+  "device": "cuda",
+  "diagnostics": {
+    "final_adaptive_weights": {
+      "critical": 0.9410176000000001,
+      "f_bottleneck": 0.9780828723196526,
+      "greedy": 0.9737420869548983,
+      "high_reconfiguration": 1.0,
+      "overloaded_island": 0.9560935396820458,
+      "random": 0.9998573314577051,
+      "reconfiguration_aware": 1.0,
+      "regret2": 0.9927793121198356,
+      "regret3": 0.9898501643462458,
+      "related": 1.0000000029642775,
+      "transport_aware": 0.9698010112000002,
+      "w_bottleneck": 0.9974006805031428
+    },
+    "initialization_seconds": 0.00047380896285176277,
+    "ni_eligible_iterations": 605,
+    "ni_fallbacks": 605,
+    "ni_interventions": 0,
+    "operator_improvements": {
+      "regret3": 1,
+      "related": 1
+    },
+    "operator_selections": {
+      "critical": 100,
+      "f_bottleneck": 78,
+      "greedy": 103,
+      "high_reconfiguration": 77,
+      "overloaded_island": 83,
+      "random": 91,
+      "reconfiguration_aware": 131,
+      "regret2": 119,
+      "regret3": 121,
+      "related": 88,
+      "transport_aware": 131,
+      "w_bottleneck": 88
+    },
+    "operator_successes": {
+      "critical": 99,
+      "f_bottleneck": 70,
+      "greedy": 97,
+      "high_reconfiguration": 77,
+      "overloaded_island": 79,
+      "random": 89,
+      "reconfiguration_aware": 131,
+      "regret2": 114,
+      "regret3": 114,
+      "related": 88,
+      "transport_aware": 130,
+      "w_bottleneck": 84
+    },
+    "policy_preparation_seconds": 5.379552021622658e-07,
+    "rng_namespaces": {
+      "acceptance": 670104,
+      "baseline": 0,
+      "diagnostics": 670105,
+      "ni_repair": 670103,
+      "proposal": 670102
+    }
+  },
+  "environment": {
+    "python": "3.11.15"
+  },
+  "experiment_status": "PROVISIONAL",
+  "feasible": true,
+  "finished_at_utc": "2026-09-03T09:44:25.342085+00:00",
+  "first_optimum_time_seconds": 0.02699987997766584,
+  "gap_to_proven_optimum_percent": 0.0,
+  "generations_if_applicable": null,
+  "implementation_manifest_sha256": "0b5e1586bd0ea1905ce05da4fe60d6c21bf184bc84857d675e2aa8650f4af35b",
+  "independent_feasibility_audit": {
+    "cost": 177.852,
+    "feasible": true,
+    "makespan": 326.0,
+    "objective": {
+      "f_outbound_cost": 53.815999999999995,
+      "f_return_cost": 66.21600000000001,
+      "f_travel": 496.0,
+      "makespan": 326.0,
+      "reconfiguration_cost": 15.42,
+      "reconfiguration_count": 5,
+      "total_cost": 177.852,
+      "w_empty_cost": 8.82,
+      "w_empty_travel": 30.0,
+      "w_loaded_cost": 33.580000000000005,
+      "w_loaded_travel": 92.0
+    },
+    "violations": []
+  },
+  "instance_id": "RIACRSP_E04",
+  "instance_path": "paper_experiments/benchmarks/exact_validation_10_final_gurobi/exact_validation_10_final/instances/RIACRSP_E04.json",
+  "instance_sha256": "fb26ea46496602726afb4ee4a86c3fa7c81e86fad5dc5505bd30202d9bc0cb6e",
+  "iterations": 605,
+  "live_log_sha256": "88c938f26150c6f0c8771860089235ef40ee34715f66e6ac2185b2d887b543c5",
+  "method": "CSG-NI Phase6H provisional",
+  "model_load_seconds_excluded_from_run_budget": 0.3531629859935492,
+  "number_of_operations": 8,
+  "optimum_reached": true,
+  "phase6h_policy_sha256": "4d2da03e13a036569bebf3897135e5da139e292e3260a2f452754d5c9ae3d239",
+  "protocol_path": "paper_experiments/configs/exact_validation/final_protocol.json",
+  "protocol_sha256": "3a54d4830d1748decac8e7a57af4c5c67edfa7062e7ef4314ebd0110017ba989",
+  "proven_optimum": 326.0,
+  "right_censored_without_optimum": false,
+  "runtime_seconds": 16.014444247004576,
+  "schema": "initial-manuscript-final-exact-run-v1",
+  "seed": 530104,
+  "source_instance_id": "RIACRSP_EXACT_07",
+  "source_suite": "exact_validation_10_v3_scaled",
+  "started_from_commit": "7c448000be69084511af181f52cad0a8db71479a",
+  "status": "COMPLETE",
+  "suite": "RIACRSP exact validation 10 final",
+  "time_limit_seconds": 16.0
+}

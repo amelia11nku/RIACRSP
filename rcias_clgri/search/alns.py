@@ -132,11 +132,18 @@ def solve_alns(
         count = max(2, round(instance.num_operations * config.destroy_fraction))
         removed = _destroy(instance, current, destroy, min(count, instance.num_operations), rng)
         candidates = []
+        neighbor_runtime = 0.0
+        decoder_runtime = 0.0
         repair_started = time.perf_counter()
         for _ in range(config.candidate_trials):
             if time.perf_counter() - started >= time_limit and candidates:
                 break
-            candidates.append(decode_candidate(instance, _neighbor(instance, current.candidate, removed, repair, rng)))
+            neighbor_started = time.perf_counter()
+            neighbor = _neighbor(instance, current.candidate, removed, repair, rng)
+            neighbor_runtime += time.perf_counter() - neighbor_started
+            decoder_started = time.perf_counter()
+            candidates.append(decode_candidate(instance, neighbor))
+            decoder_runtime += time.perf_counter() - decoder_started
             evaluations += 1
         candidate = min(candidates, key=lambda item: item.makespan)
         repair_runtime = time.perf_counter() - repair_started
@@ -177,6 +184,8 @@ def solve_alns(
                 "operator_weights_after": dict(weights),
                 "repair_decoder_evaluations": evaluations - evaluations_before,
                 "repair_runtime": repair_runtime,
+                "repair_excluding_decoder_runtime": neighbor_runtime,
+                "decoder_runtime": decoder_runtime,
                 "candidate_trials_completed": len(candidates),
                 "temperature_before": temperature / config.cooling_rate,
             })

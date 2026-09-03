@@ -1,0 +1,39 @@
+{
+  "alignment": {
+    "overlay": "paper_experiments/figures/figure1_quality_distribution.alignment.svg",
+    "report": "paper_experiments/figures/figure1_quality_distribution.alignment.json",
+    "tolerance_pt": 1.5,
+    "verdict": "PASS"
+  },
+  "archetype": "quantitative grid",
+  "backend": "python-matplotlib",
+  "center_and_spread": "boxplot median and interquartile range; whiskers use the Matplotlib 1.5-IQR rule",
+  "core_conclusion": "Relative solution-quality differences among the five methods are assessed across all three Core45 scales.",
+  "display_transform": "deterministic horizontal offsets expose all 15 instance summaries per method; no sampling",
+  "exclusions": "none",
+  "exports": [
+    "paper_experiments/figures/figure1_quality_distribution.svg",
+    "paper_experiments/figures/figure1_quality_distribution.pdf",
+    "paper_experiments/figures/figure1_quality_distribution.eps",
+    "paper_experiments/figures/figure1_quality_distribution.tiff",
+    "paper_experiments/figures/figure1_quality_distribution.png"
+  ],
+  "figure": 1,
+  "final_width_mm": 180.0,
+  "font": "Times New Roman",
+  "font_file": "Times_New_Roman.ttf",
+  "minimum_rendered_glyph_pt": 5,
+  "pdf_audits": {
+    "collision_audit": "paper_experiments/figures/figure1_quality_distribution.collision-audit.json",
+    "collision_overlay": "paper_experiments/figures/figure1_quality_distribution.collision-audit.pdf",
+    "collision_verdict": "PASS",
+    "pdf_text_audit": "paper_experiments/figures/figure1_quality_distribution.pdf-text-audit.json"
+  },
+  "replicate_unit": "Core instance; each point is the median RPD across five matched seeds",
+  "reporting_boundary": "Phase6H CSG-NI is provisional; formal inference is reported separately using 45 paired instances",
+  "schema": "initial-manuscript-figure-qa-v1",
+  "source_data": "paper_experiments/processed_data/main/main_instance_summary.csv",
+  "source_rows": 225,
+  "source_sha256": "5f8e8208b48bd014d6fa91e650c0f11a059d19feb3e083ca41a8d8c0aa1654d6",
+  "status": "AUTOMATED_QA_PASS"
+}

@@ -1,0 +1,479 @@
+{
+  "schema": "phase6i-mr-live-utility-revision-config-v1.2",
+  "phase": "Phase 6I-MR — Live-State Utility Model Revision, Regime-Robust Ranking, and Fresh-Holdout Promotion Gate",
+  "status": "REVISION_1_2_PREREGISTERED_BEFORE_FORMAL_R09_COLLECTION_OR_R10_R11_CONTENT_ACCESS",
+  "created_at": "2026-09-02T02:34:48+08:00",
+  "revision_1_2_created_at": "2026-09-02T02:53:06+08:00",
+  "execution_instructions": "/home/liulei/下载/Phase6I_MR_Codex_Execution_Instructions_Updated.md",
+  "starting_git_commit": "7c448000be69084511af181f52cad0a8db71479a",
+  "baseline_tests": {
+    "original_command": "pytest -q tests/test_phase6f_revision.py tests/test_phase6g_live_solver.py tests/test_phase6h_calibration.py tests/test_decoder.py tests/test_feasibility.py",
+    "original_result": "19 passed in 1.23s",
+    "revision_1_2_command": "pytest -q tests/test_phase6f_revision.py tests/test_phase6g_live_solver.py tests/test_phase6h_calibration.py tests/test_decoder.py tests/test_feasibility.py tests/test_phase5c_search.py tests/test_phase6i_mr_candidate_roles.py tests/test_phase6i_mr_instances.py tests/test_phase6i_mr_pilot.py",
+    "revision_1_2_result": "31 passed in 1.38s"
+  },
+  "superseded_partial_pilot": {
+    "protocol_revision": "1.1",
+    "output_root": "outputs/phase6i_mr/pilot",
+    "completed_runs": 4,
+    "expected_runs": 9,
+    "status": "PARTIAL_PROCESS_EXITED_WITHOUT_COMPLETION_MARKER",
+    "use": "COST_AND_SCHEMA_DIAGNOSTIC_ONLY",
+    "formal_revision_1_2_evidence": false,
+    "r10_accessed": false,
+    "r11_accessed": false,
+    "preserve": true
+  },
+  "locked_inputs": {
+    "phase6f_checkpoint_sha256": "f1ccceb607b0e453dfb74e7aa7a946616001db8ec08c12dc9900a66c6f165fc7",
+    "phase6f_experiment_freeze": "outputs/phase6f/audit/experiment_freeze.json",
+    "phase6h_policy": "outputs/phase6h_calibration/frozen/phase6h_policy.json",
+    "phase6h_policy_sha256": "4d2da03e13a036569bebf3897135e5da139e292e3260a2f452754d5c9ae3d239",
+    "phase6h_decision": "MODEL_REVISION"
+  },
+  "instance_suite": {
+    "root": "instances/controlled/RCIAS-CB1-TRAIN-LIVE-R09R11",
+    "manifest": "instances/controlled/RCIAS-CB1-TRAIN-LIVE-R09R11/manifests/phase6i_instance_manifest.csv",
+    "integrity_audit": "instances/controlled/RCIAS-CB1-TRAIN-LIVE-R09R11/manifests/phase6i_integrity_audit.json",
+    "source_generation_spec": "configs/rcias_cb1_generation.json",
+    "base_seed_namespace": 680000,
+    "second_cell_replicate_seed_offset": 10000,
+    "scales": ["S", "M", "L"],
+    "capability_flexibility_groups": ["CF1", "CF2", "CF3"],
+    "ri_level": "RI2",
+    "ti_level": "TI2",
+    "replicate_split": {
+      "R09": "LIVE_REV_FIT",
+      "R10": "LIVE_REV_SELECT",
+      "R11": "LIVE_REV_HOLDOUT"
+    },
+    "cell_replicates": ["C01", "C02"],
+    "instances_per_cell": 2,
+    "instances_per_split": 18,
+    "total_instances": 54,
+    "size_choice": "minimum compliant 18 per split; chosen over preferred 27 because the declared single-GPU five-seed R11 protocol is already compute-intensive, and size may not be reduced after R10 access",
+    "required_content_hash_disjointness": [
+      "R09_vs_R10",
+      "R09_vs_R11",
+      "R10_vs_R11",
+      "R09_R10_R11_vs_all_prior_controlled_instances"
+    ],
+    "r11_access": {
+      "before_freeze": "MANIFEST_ID_AND_CONTENT_HASH_ONLY",
+      "content_loader_guard": "REJECT_UNLESS_VALID_FROZEN_ARTIFACT_HASH_IS_SUPPLIED",
+      "forbid_paths_before_freeze": ["R11 instance JSON", "R11 labels", "R11 solver results"]
+    }
+  },
+  "search": {
+    "wall_clock_seconds_per_operation": 2.0,
+    "pilot_wall_clock_seconds_per_operation": 0.25,
+    "initial_solution": "H1",
+    "destroy_fraction": 0.15,
+    "repair_for_ni": "transport_aware",
+    "repair_decoder_trials_per_target": 8,
+    "intervention_rate": 100,
+    "candidate_bank_contract": {
+      "implementation": "generate_revised_target_arms",
+      "semantics": "24 deterministic generation rules followed by target-set deduplication",
+      "clarification": "candidate_trials=8 is the repair/decoder trial count and is not the proposal-bank size",
+      "revision_1_2_eight_candidate_interpretation": "the instruction's all-eight audit is implemented as a fixed top-eight audit layer while a smaller true-full-bank subset evaluates every deduplicated arm; neither layer changes production proposal semantics",
+      "change_allowed": false
+    },
+    "acceptance": "frozen simulated annealing",
+    "threads_per_stochastic_process": 1,
+    "csgni_gpu_workers": 1,
+    "checkpoint_loading": "load once per GPU worker; exclude consistently from run budget and report separately"
+  },
+  "rng_namespaces": {
+    "frozen_live_baseline": 0,
+    "frozen_live_proposal": 670102,
+    "frozen_live_repair": 670103,
+    "frozen_live_acceptance": 670104,
+    "frozen_live_diagnostics": 670105,
+    "state_sampling": 682000000,
+    "forced_role_selection": 683000000,
+    "forced_repair": 684000000,
+    "continuation": 685000000,
+    "hard_state_aggregation": 687000000
+  },
+  "seeds": {
+    "R09_PILOT_TRAJECTORY": [681101],
+    "R09_FULL_TRAJECTORY": [681201, 681202, 681203],
+    "R10_FULL_TRAJECTORY": [681301, 681302, 681303],
+    "R11_FINAL_GATE": [681401, 681402, 681403, 681404, 681405],
+    "R10_SOLVER_TRANSLATION": [681501, 681502],
+    "CONTINUATION_CRN": [685101, 685102],
+    "MODEL_TRAINING": [686101, 686102, 686103],
+    "ANALYSIS_BOOTSTRAP": [688001]
+  },
+  "pilot": {
+    "split": "R09",
+    "protocol_revision": "1.2",
+    "output_root": "outputs/phase6i_mr/pilot_v12",
+    "cell_replicate": "C02",
+    "required_before": ["R09_FULL_COLLECTION", "R10_COLLECTION", "MODEL_TRAINING"],
+    "trajectory_policy": "FROZEN_PHASE6H_CSGNI",
+    "instances": 9,
+    "seeds_per_instance": 1,
+    "sample_progress_fractions": [0.1, 0.25, 0.45, 0.6, 0.75, 0.9],
+    "stage_mapping": {
+      "EARLY": [0.1, 0.25],
+      "MIDDLE": [0.45, 0.6],
+      "LATE": [0.75, 0.9]
+    },
+    "expected_states": 54,
+    "maximum_forced_actions": 216,
+    "label_timing": "snapshot during trajectory; select and decode forced candidates only after the trajectory has ended",
+    "trajectory_outcome_blindness": "forced outcomes, timing, and RNG cannot change the source trajectory"
+  },
+  "forced_candidate_roles": {
+    "count": 4,
+    "roles_in_order": ["FROZEN_NEURAL_TOP1", "FROZEN_NEURAL_TOP2", "ALNS_RELATED_FALLBACK", "DETERMINISTIC_DIVERSE"],
+    "ranking_key": ["raw_frozen_score_desc", "target_set_id_asc"],
+    "fallback_origin_priority": [
+      "operator_related",
+      "related_variant_1",
+      "related_variant_2",
+      "related_variant_3",
+      "related_variant_4",
+      "remaining_related_or_structured_origin"
+    ],
+    "diverse_rule": "maximize minimum Jaccard distance from already selected target sets, then raw frozen score descending, then target_set_id ascending",
+    "duplicate_replacement": "scan the same preregistered outcome-blind ordering for the first unseen target set; record an explicit shortfall if fewer than four unique target sets exist",
+    "outcome_use": "POST_DECODER_LABEL_ONLY",
+    "utility_sign": "(current_makespan - decoded_candidate_makespan) / current_makespan; positive is improvement",
+    "fallback_definition": "the selected ALNS_RELATED_FALLBACK role in the same state",
+    "rank_ties": "minimum rank with decoded utility descending and target_set_id ascending"
+  },
+  "full_collection": {
+    "splits": ["R09", "R10"],
+    "trajectory_seeds_per_instance": 3,
+    "sample_states_per_trajectory": 30,
+    "samples_per_stage": 10,
+    "sampling": "fixed normalized wall-progress quantiles within EARLY, MIDDLE, LATE; nearest unique snapshot with deterministic tie break",
+    "expected_states_per_split": 1620,
+    "maximum_forced_actions_per_split": 6480,
+    "r10_use": "evaluate every preregistered frozen candidate/threshold combination exactly once; never refit"
+  },
+  "candidate_truncation_audit": {
+    "purpose": "diagnose four-candidate label truncation without changing the frozen production bank",
+    "splits": ["R09", "R10"],
+    "top_eight_subset": {
+      "states_per_instance": 1,
+      "states_per_split": 18,
+      "stage_assignment": "six EARLY at 0.15, six MIDDLE at 0.50, six LATE at 0.85 by sorted scale-CF-cell_replicate index modulo three",
+      "candidate_rule": "union the four forced roles with frozen-score order, then append highest-score unseen target sets until exactly eight unique targets or exhaust the bank",
+      "metrics": ["best_action_missing_from_four_rate", "four_of_eight_recall", "four_candidate_regret", "rank_truncation_bias"]
+    },
+    "true_full_bank_subset": {
+      "states_per_cell": 1,
+      "states_per_split": 9,
+      "cell_replicate": "C02",
+      "stage_assignment": {"CF1": 0.15, "CF2": 0.50, "CF3": 0.85},
+      "candidate_rule": "evaluate every unique target set from the frozen 24-rule deduplicated bank",
+      "metrics": ["best_action_missing_from_four_rate", "best_action_missing_from_top_eight_rate", "four_candidate_regret", "top_eight_regret"]
+    },
+    "diagnostic_only": true,
+    "candidate_generation_redesign_allowed": false
+  },
+  "failure_analysis": {
+    "categories": [
+      "WITHIN_STATE_INVERSION",
+      "CROSS_STATE_MISCALIBRATION",
+      "SIGN_ERROR",
+      "SCALE_DRIFT",
+      "SEARCH_STAGE_DRIFT",
+      "CANDIDATE_SOURCE_BIAS",
+      "ONE_STEP_VALUE_MISMATCH",
+      "REPRESENTATION_LIMIT",
+      "LOW_SUPPORT_EXTRAPOLATION",
+      "GATE_SELECTION_BIAS"
+    ],
+    "bootstrap_unit": "instance_id",
+    "top_error_case_limit_per_category": 10,
+    "full_graph_console_output": false
+  },
+  "scale_invariance": {
+    "audit_classes": ["STATIC_ABSOLUTE", "DYNAMIC_ABSOLUTE", "RATIO", "STANDARDIZED", "CATEGORICAL"],
+    "r09_only_fit": true,
+    "context_features": [
+      "log1p_operation_count_r09_robust_z",
+      "log1p_graph_node_count_r09_robust_z",
+      "log1p_graph_edge_count_r09_robust_z",
+      "edge_per_node_ratio",
+      "dag_depth_per_operation",
+      "dag_width_per_operation",
+      "eligibility_density",
+      "resource_load_cv",
+      "current_makespan_over_h1_makespan",
+      "critical_path_over_h1_critical_path",
+      "w_delay_over_current_makespan",
+      "f_delay_over_current_makespan",
+      "reconfiguration_over_current_makespan",
+      "mean_slack_ratio",
+      "mean_w_delay_ratio",
+      "mean_f_delay_ratio",
+      "mean_island_relative_load",
+      "mean_local_reconfiguration_ratio",
+      "search_progress"
+    ],
+    "remaining_operations": {
+      "record_raw": true,
+      "utility_context_use": false,
+      "reason": "the current complete-schedule local-search representation has zero remaining operations at every decision state"
+    },
+    "candidate_set_normalization_for_cross_state_gate": false
+  },
+  "continuation_diagnostic": {
+    "split": "R09_PILOT_ONLY",
+    "states": "one state nearest 0.15, 0.50, and 0.85 progress for each of the nine cells",
+    "expected_states": 27,
+    "candidate_roles": 4,
+    "common_random_seeds": [685101, 685102],
+    "fixed_horizon_alns_iterations": 12,
+    "repair_decoder_trials_per_target": 8,
+    "continuation_target": "(candidate_start_makespan - best_makespan_after_12_iterations) / candidate_start_makespan",
+    "branch_metric": "median within-state Spearman and top1 agreement across state-seed groups",
+    "branch": {
+      "IMMEDIATE_TARGET_VALID": "median_spearman >= 0.30 and top1_agreement >= 0.50",
+      "TARGET_MISMATCH": "otherwise"
+    }
+  },
+  "training_data": {
+    "earlier_train_source": "Phase6F eligible TRAIN-only state-action labels",
+    "required_data_variants": ["R09_ONLY", "MIXED_OLD_NEW"],
+    "mixed_old_new_batch_ratio": [1, 3],
+    "mixed_batch_fractions": {"earlier_train": 0.25, "r09_live": 0.75},
+    "hard_aggregation_refit_batch_fractions": {"earlier_train": 0.20, "r09_live": 0.60, "r09_hard_state": 0.20},
+    "negative_transfer_rule": "MIXED is ineligible if its three-seed mean R10 Spearman is more than 0.02 below R09_ONLY, its worst-seed Spearman is more than 0.05 below R09_ONLY, or it introduces a scale sign reversal",
+    "balance_keys": ["instance_id", "scale", "cf_group", "search_stage", "candidate_role"],
+    "normalization_and_clipping_fit_split": "R09_ONLY"
+  },
+  "model_candidates": {
+    "U0": {
+      "description": "frozen Phase6F model/reference",
+      "trainable_components": []
+    },
+    "U1": {
+      "description": "retrained immediate-utility head",
+      "frozen_components": ["state_encoder", "action_encoder", "score_head"],
+      "trainable_components": ["utility_head"],
+      "data_variants": ["R09_ONLY", "MIXED_OLD_NEW"],
+      "variants": ["BASE", "ONE_ROUND_HARD_AGG"]
+    },
+    "U2": {
+      "description": "compact regime-conditioned immediate-utility head",
+      "frozen_components": ["state_encoder", "action_encoder", "score_head"],
+      "trainable_components": ["context_mlp", "context_gated_utility_head"],
+      "context_hidden_dim": 32,
+      "data_variants": ["R09_ONLY", "MIXED_OLD_NEW"],
+      "variants": ["BASE", "ONE_ROUND_HARD_AGG"]
+    },
+    "U2_H": {
+      "activation": "TARGET_MISMATCH_ONLY",
+      "description": "U2 plus a separate fixed-horizon continuation-value head",
+      "gate_rule": "probability eligibility, rank by continuation value, require immediate utility >= 0 and continuation value >= selected continuation threshold",
+      "variants": ["BASE", "ONE_ROUND_HARD_AGG"]
+    },
+    "U3": {
+      "activation": "best grouped-OOF R09 U1/U2 overall per-instance utility Spearman < 0.20 or any scale mean Spearman < 0",
+      "description": "limited last relation block, final action projection, and utility adaptation",
+      "trainable_components": ["state_encoder.layers.1", "action_encoder.projection", "utility_head"],
+      "score_head": "frozen with fixed-reference score-stability loss",
+      "maximum_total_parameters": 5350000,
+      "maximum_trainable_parameters": 2600000,
+      "maximum_p90_neural_decision_ms": 30.0,
+      "maximum_p90_total_decision_ms": 100.0,
+      "variants": ["ONE_ROUND_HARD_AGG_ONLY"]
+    }
+  },
+  "training_seed_robustness": {
+    "training_seeds": [686101, 686102, 686103],
+    "identical_data_and_training_budget": true,
+    "family_artifact_rule": "shared frozen encoder with arithmetic mean of the three seed-specific normalized utility-head outputs; all three heads are retained",
+    "single_best_seed_selection": "FORBIDDEN",
+    "eligibility": {
+      "mean_overall_r10_spearman": "> 0",
+      "worst_seed_overall_r10_spearman": ">= 0",
+      "mean_each_scale_r10_spearman": ">= 0",
+      "scale_sign_stability": "at least two of three seeds non-negative in every scale and no seed below -0.10 in any scale"
+    },
+    "selection_priority": ["worst_seed_spearman_desc", "mean_seed_spearman_desc", "seed_standard_deviation_asc", "lexicographic_family_id"]
+  },
+  "objective": {
+    "pairwise_margin_weight": 1.0,
+    "listwise_weight": 0.5,
+    "huber_weight": 0.5,
+    "positive_consistency_weight": 0.1,
+    "u3_score_stability_weight": 1.0,
+    "pairwise_gap_weight_clip": [0.25, 4.0],
+    "pairwise_margin_clip": [0.05, 1.0],
+    "listwise": "ListNet cross entropy over all forced candidates in a state",
+    "listwise_temperature": "R09 median positive within-state utility standard deviation, lower-clipped at 0.001, then frozen",
+    "cross_state_target": "divide immediate relative utility by R09 p99 absolute utility and clip to [-1, 1]",
+    "huber_delta": 0.1,
+    "within_state_standardization_scope": "RANKING_LOSSES_ONLY"
+  },
+  "contrastive_branch": {
+    "activation": "frozen-embedding grouped-OOF linear-probe pairwise accuracy < 0.55 and raw normalized-context probe accuracy >= 0.60",
+    "model_scope": "U3_ONLY",
+    "weight": 0.05,
+    "required_ablation": "U3_WITHOUT_CONTRASTIVE",
+    "post_r10_activation_forbidden": true
+  },
+  "hard_state_aggregation": {
+    "rounds": 1,
+    "split": "R09_ONLY",
+    "grouped_oof_folds": {
+      "fold_0": ["S_CF1", "M_CF2", "L_CF3"],
+      "fold_1": ["S_CF2", "M_CF3", "L_CF1"],
+      "fold_2": ["S_CF3", "M_CF1", "L_CF2"]
+    },
+    "maximum_states_per_instance": 20,
+    "maximum_states_total": 360,
+    "priority_union": [
+      "top_decile_regret",
+      "sign_error",
+      "neural_fallback_disagreement",
+      "absolute_scale_residual_z_at_least_2",
+      "low_support"
+    ],
+    "selection_ties": ["priority_count_desc", "regret_desc", "state_id_asc"],
+    "r10_or_r11_access": "FORBIDDEN"
+  },
+  "live_policy": {
+    "probability_calibration": "reuse frozen Phase6H Platt mapping when score head is bitwise frozen; otherwise fit on R09 only",
+    "decision": "filter candidates by probability threshold and support, select maximum revised utility with raw-score and target-set-ID tie breaks, then require the selected utility threshold; otherwise use frozen ALNS fallback",
+    "probability_threshold_grid": [0.04, 0.06, 0.08, 0.1],
+    "immediate_utility_threshold_grid": [-0.01, 0.0, 0.0025, 0.005, 0.01],
+    "continuation_threshold_grid": [0.0, 0.0025, 0.005, 0.01],
+    "support_guard": "R09-fitted finite/range validity for all required context features; no R10/R11-fitted quantile",
+    "r09_threshold_constraints": {
+      "minimum_selected_actions_per_scale_for_direct_estimation": 100,
+      "maximum_unsupported_intervention_fraction": 0.1,
+      "coverage_range": "DESCRIPTIVE_ONLY_NOT_A_GATE",
+      "low_coverage_rule": "allowed when forced evaluation shows abstention is non-harmful and no scale solver collapse is present"
+    }
+  },
+  "r10_selection": {
+    "accesses": 1,
+    "refit_allowed": false,
+    "lexicographic_order": [
+      "no_schema_replay_or_feasibility_failure",
+      "positive_aggregate_per_instance_utility_spearman",
+      "no_negative_scale_mean_spearman",
+      "no_unresolved_scale_sign_error_or_cross_state_calibration_collapse",
+      "highest_selected_immediate_utility_vs_fallback_or_preregistered_u2h_continuation_value",
+      "lowest_selected_regret_then_pair_inversion_rate",
+      "highest_ndcg_at_1_then_ndcg_at_2",
+      "best_training_seed_stability_by_worst_then_mean_then_variance",
+      "adequate_support_and_non_pathological_coverage",
+      "lowest_p90_neural_decision_latency",
+      "smallest_model_then_lexicographically_smallest_model_id"
+    ]
+  },
+  "r10_solver_translation": {
+    "accesses": 1,
+    "run_after_offline_selection_is_immutable": true,
+    "instances": "the nine C02 R10 instances, one per scale-CF cell",
+    "methods": ["H1", "ALNS", "PHASE6I_MR_CSGNI"],
+    "matched_seeds": [681501, 681502],
+    "wall_clock_seconds_per_operation": 1.0,
+    "pass": "100% feasibility, aggregate revised-vs-ALNS relative makespan <= +0.01, no scale mean worse than +0.03, no instance worse than +0.075, and intervention/fallback replay integrity complete",
+    "failure_action": "stop with MODEL_REVISION; no R10 retuning and no R11 access"
+  },
+  "artifact_freeze": {
+    "required_before_r11_content_access": true,
+    "root": "outputs/phase6i_mr/frozen",
+    "required_fields": [
+      "weights_and_config",
+      "tensor_schema_hash",
+      "training_data_and_manifest_hashes",
+      "probability_and_utility_calibration",
+      "intervention_thresholds",
+      "support_and_regime_features",
+      "code_and_config_hashes",
+      "deterministic_replay_fixture",
+      "accessed_split_ledger"
+    ]
+  },
+  "r11_protocol": {
+    "methods": ["H1", "ALNS", "PHASE6H_CSGNI_DESCRIPTIVE", "PHASE6I_MR_CSGNI"],
+    "seeds": [681401, 681402, 681403, 681404, 681405],
+    "primary_paired_unit": "instance mean over five matched seeds",
+    "budget": "2N wall-clock seconds for ALNS and both CSG-NI policies",
+    "instances": 18,
+    "minimum_selected_actions_per_scale_for_direct_estimation": 200,
+    "maximum_unsupported_intervention_fraction": 0.1,
+    "maximum_coverage_ratio": 8.0,
+    "coverage_range": "DESCRIPTIVE_ONLY_NOT_A_MANDATORY_GATE",
+    "low_count_support_aware_exception": "when selected count is below 200, require at least 120 forced-evaluated predicted-abstained actions in that scale, mean best forced utility <= 0 or no positive lift over fallback, grouped-bootstrap upper bound <= 0.0025, and solver non-inferiority to ALNS on that scale",
+    "coverage_imbalance_exception": "a ratio above 8 is allowed only with the low-coverage abstention evidence and no scale quality collapse; otherwise it fails",
+    "forced_diagnostic_states_per_run": 10,
+    "forced_diagnostic_rule": "fixed progress quantiles evaluated post-trajectory with the same four outcome-blind roles",
+    "forbidden_methods": ["GA", "DCGA", "GUROBI", "CB1_CORE", "CB1_SENSITIVITY", "LEGACY_130"]
+  },
+  "statistics": {
+    "bootstrap_unit": "instance_id",
+    "bootstrap_replicates": 10000,
+    "confidence_level": 0.95,
+    "wilcoxon": "exact one-sided paired Wilcoxon on instance means; report statistic, p-value, direction, zero handling",
+    "probability_reference": {
+      "ece": 0.029953,
+      "brier": 0.076154,
+      "nll": 0.288516,
+      "maximum_relative_brier_regression": 0.1,
+      "maximum_relative_nll_regression": 0.1
+    }
+  },
+  "promotion_gates": {
+    "required_feasibility_rate": 1.0,
+    "require_trace_and_integrity_complete": true,
+    "minimum_overall_per_instance_utility_spearman_exclusive": 0.0,
+    "preferred_overall_per_instance_utility_spearman": 0.2,
+    "minimum_each_scale_mean_utility_spearman": 0.0,
+    "require_selected_immediate_utility_positive_and_above_fallback": true,
+    "minimum_selected_actions_per_scale_for_direct_estimation": 200,
+    "maximum_unsupported_intervention_fraction": 0.1,
+    "coverage_gate": "support-aware count/forced-abstention/no-collapse rule from r11_protocol; no universal minimum intervention percentage",
+    "maximum_probability_ece": 0.1,
+    "maximum_relative_brier_regression": 0.1,
+    "maximum_relative_nll_regression": 0.1,
+    "alns_noninferiority_margin_relative_makespan": 0.01,
+    "preferred_improvement_vs_alns": 0.005,
+    "catastrophic_collapse": "any scale or CF-group mean relative makespan worse than ALNS by more than 0.02, or any instance mean worse by more than 0.05",
+    "efficiency_gate": "at least one strong advantage without final-quality loss",
+    "preferred_decoder_evaluation_reduction_vs_alns": 0.25,
+    "preferred_normalized_gap_auc_improvement_vs_alns": 0.1,
+    "continuation_gate_if_u2h": {
+      "minimum_overall_per_instance_spearman": 0.2,
+      "minimum_each_scale_mean_spearman": 0.0,
+      "require_selected_value_positive_and_above_fallback": true
+    }
+  },
+  "runtime_fairness": {
+    "hardware_claim_scope": "DECLARED_PLATFORM_ONLY",
+    "required_environment": ["CPU_model", "CPU_threads", "GPU_model", "worker_count", "batch_size", "solver_concurrency", "warmup_policy", "checkpoint_load_handling"],
+    "required_metrics": ["wall_clock", "decoder_evaluations", "time_to_target", "evaluations_to_target", "normalized_gap_auc", "time_and_evaluations_to_final_best", "proposal_time", "csg_time", "neural_time", "calibration_gate_time", "repair_time", "decoder_time"],
+    "forbidden_claim": "hardware-independent neural solver speed superiority from raw wall-clock alone"
+  },
+  "decision_logic": {
+    "PROCEED_FREEZE_V1": "all required promotion gates pass",
+    "MODEL_REVISION": "correctness and solver non-inferiority pass but at least one reliability or efficiency gate fails",
+    "HOLD": "correctness, leakage integrity, feasibility, or aggregate solver stability fails materially"
+  },
+  "forbidden": [
+    "PHASE6H_CAL_HOLDOUT_R08_REUSE_OR_INSPECTION_FOR_DEVELOPMENT",
+    "PHASE6G_DEV_HOLDOUT",
+    "CB1_CORE",
+    "CB1_SENSITIVITY",
+    "LEGACY_130",
+    "GUROBI_OR_TINY_RERUN",
+    "PPO_OR_ACTOR_CRITIC",
+    "NEURAL_REPAIR_OR_MULTI_TRAJECTORY_V2",
+    "CANDIDATE_BANK_OR_REPAIR_SEMANTICS_CHANGE",
+    "R10_REFIT_OR_ITERATIVE_INSPECTION",
+    "R11_CONTENT_ACCESS_BEFORE_ARTIFACT_FREEZE",
+    "GIT_PUSH"
+  ]
+}

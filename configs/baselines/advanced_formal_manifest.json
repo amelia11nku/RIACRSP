@@ -1,0 +1,17 @@
+{
+  "schema": "advanced-baseline-formal-manifest-v1",
+  "suite": "RCIAS-CB1 Core",
+  "instance_manifest": "instances/controlled/RCIAS-CB1/manifests/core_manifest.csv",
+  "instance_manifest_sha256": "63f748389d16b5f740a221533dae8987c112ab523a29ba8dd491efdff1388173",
+  "instance_checksums": "instances/controlled/RCIAS-CB1/manifests/checksums.sha256",
+  "instance_checksums_sha256": "1aa8fec9887b97d8251d3527d409cc334d26801dae81337eed6f5b6daaf3a9d7",
+  "instance_count": 45,
+  "benchmark_freeze_hash": "3d97e6a3f84d930213c424a633fa9e8192b16ec4eb9c2f169f65c0b48e691f0a",
+  "seed_manifest": "configs/phase5c_baseline_seeds.json",
+  "seed_manifest_sha256": "2987c9bdcaa9f4ea9a0fbc5eb51cf88b02df71dd4780de2a590970f47b6df091",
+  "runs_per_instance": 10,
+  "methods": ["DABC-RIACRSP", "LG_HGA-RIACRSP"],
+  "time_limit_seconds": "2 * number_of_operations",
+  "expected_records": 900,
+  "status": "FROZEN_BEFORE_FORMAL_EVALUATION"
+}

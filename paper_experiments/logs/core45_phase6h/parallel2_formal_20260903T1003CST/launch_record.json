@@ -1,0 +1,44 @@
+{
+  "schema": "initial-manuscript-phase6h-parallel-launch-v1",
+  "status": "RUNNING",
+  "algorithm": "CSG_NI_PROVISIONAL_PHASE6H",
+  "execution_revision": "PARALLEL2_DISJOINT_SHARDS",
+  "started_at_cst": "2026-09-03T10:02:36+08:00",
+  "services": [
+    {
+      "unit": "paper-phase6h-core-p2-s0.service",
+      "pid_at_launch": 338044,
+      "shard_index": 0,
+      "log": "paper_experiments/logs/core45_phase6h/parallel2_formal_20260903T1003CST/shard_0.log"
+    },
+    {
+      "unit": "paper-phase6h-core-p2-s1.service",
+      "pid_at_launch": 338049,
+      "shard_index": 1,
+      "log": "paper_experiments/logs/core45_phase6h/parallel2_formal_20260903T1003CST/shard_1.log"
+    }
+  ],
+  "shard_count": 2,
+  "records_per_shard": 225,
+  "total_records": 450,
+  "total_budget_seconds": 107260,
+  "budget_seconds_per_shard": 53630,
+  "central_expected_completion_cst": "2026-09-04T00:56:26+08:00",
+  "expected_completion_window_cst": [
+    "2026-09-04T00:55:00+08:00",
+    "2026-09-04T01:20:00+08:00"
+  ],
+  "config_sha256": "2983a62cca794000962503d48cc64a219496190c19fb91f209fd454d59511d49",
+  "implementation_manifest_sha256": "c32c725ecac22fe20125aea1f31625a23775adadcb671705a3235acf91739de3",
+  "runner_sha256": "7b5645ffc0343fe3194185da6c1ead7099fce16615940bc5167a074eb5d7b3c4",
+  "result_root": "paper_experiments/raw_results/core45/CSG_NI_PROVISIONAL_PHASE6H",
+  "progress_file": "paper_experiments/raw_results/core45/CSG_NI_PROVISIONAL_PHASE6H/progress.json",
+  "restart_policy": "on-failure after 30 seconds; each shard validates and skips complete atomic results",
+  "resource_gate": {
+    "parallel4_status": "REJECTED",
+    "parallel4_mean_decoder_evaluation_retention": 0.567835660270813,
+    "parallel2_status": "PASS",
+    "parallel2_mean_decoder_evaluation_retention": 0.9359903834242407,
+    "minimum_required_retention": 0.9
+  }
+}

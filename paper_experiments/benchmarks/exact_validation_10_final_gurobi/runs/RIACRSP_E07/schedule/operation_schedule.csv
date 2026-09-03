@@ -1,0 +1,9 @@
+product,operation,actual_sequence_position,technological_predecessors,actual_predecessor,island,required_configuration,previous_island_configuration,reconfiguration_start,reconfiguration_end,process_start,process_end,product_ready_time,island_ready_time,config_ready_time,w_ready_time,f_ready_time,W_required,W_AGV,W_pickup,W_destination,W_empty_start,W_empty_end,W_loaded_start,W_loaded_end,W_arrival,F_AGV,F_departure_WH,F_arrival_island,F_return_WH,binding_resource
+J1,o11,1,,NONE,M1,C2,C2,0.0,0.0,39.0,65.0,0.0,0.0,0.0,24.0,39.0,True,W1,WH,M1,0.0,0.0,0.0,24.0,24.0,F1,22.0,39.0,53.0,F_AGV
+J1,o12,2,o11,o11,M3,C3,C1,39.0,43.0,109.0,133.0,65.0,39.0,43.0,76.0,109.0,True,W2,M1,M3,51.0,59.0,65.0,76.0,76.0,F1,97.0,109.0,119.0,F_AGV
+J1,o13,3,o11,o12,M1,C1,C2,65.0,67.0,180.0,204.0,133.0,65.0,67.0,144.0,180.0,True,W2,M3,M1,76.0,76.0,133.0,144.0,144.0,F1,163.0,180.0,194.0,F_AGV
+J1,o14,4,o12;o13,o13,M1,C2,C1,239.0,242.0,242.0,259.0,204.0,239.0,242.0,204.0,242.0,False,NONE,NA,NA,NA,NA,NA,NA,NA,F1,225.0,242.0,256.0,ISLAND_CONFIG;F_AGV
+J2,o21,1,,NONE,M3,C1,C3,0.0,4.0,12.0,39.0,0.0,0.0,4.0,12.0,12.0,True,W2,WH,M3,0.0,0.0,0.0,12.0,12.0,F1,0.0,12.0,22.0,W_AGV;F_AGV
+J2,o22,2,o21,o21,M2,C2,C2,0.0,0.0,77.0,84.0,39.0,0.0,0.0,51.0,77.0,True,W2,M3,M2,12.0,12.0,39.0,51.0,51.0,F1,53.0,77.0,97.0,F_AGV
+J2,o23,3,o21,o22,M2,C3,C2,84.0,88.0,143.0,162.0,84.0,84.0,88.0,84.0,143.0,False,NONE,NA,NA,NA,NA,NA,NA,NA,F1,119.0,143.0,163.0,F_AGV
+J2,o24,4,o22;o23,o23,M1,C1,C1,204.0,204.0,211.0,239.0,162.0,204.0,204.0,169.0,211.0,True,W2,M2,M1,144.0,152.0,162.0,169.0,169.0,F1,194.0,211.0,225.0,F_AGV

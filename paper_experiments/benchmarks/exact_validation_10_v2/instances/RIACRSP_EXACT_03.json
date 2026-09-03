@@ -1,0 +1,467 @@
+{
+  "islands": {
+    "M1": {
+      "coordinate": [
+        9,
+        16
+      ],
+      "initial_configuration": "C2",
+      "supported_configurations": [
+        "C1",
+        "C2"
+      ]
+    },
+    "M2": {
+      "coordinate": [
+        17,
+        18
+      ],
+      "initial_configuration": "C2",
+      "supported_configurations": [
+        "C2",
+        "C3"
+      ]
+    },
+    "M3": {
+      "coordinate": [
+        13,
+        4
+      ],
+      "initial_configuration": "C3",
+      "supported_configurations": [
+        "C1",
+        "C3"
+      ]
+    }
+  },
+  "logistics": {
+    "F": {
+      "outbound_cost_per_distance": {
+        "F1": 0.318
+      },
+      "outbound_time": {
+        "F1": {
+          "M1": 17,
+          "M2": 24,
+          "M3": 12
+        }
+      },
+      "return_cost_per_distance": {
+        "F1": 0.285
+      },
+      "return_time": {
+        "F1": {
+          "M1": 14,
+          "M2": 20,
+          "M3": 10
+        }
+      }
+    },
+    "W": {
+      "empty_cost_per_distance": {
+        "W1": 0.169,
+        "W2": 0.207
+      },
+      "empty_time": {
+        "W1": {
+          "M1": {
+            "M1": 0,
+            "M2": 6,
+            "M3": 9,
+            "WH": 14
+          },
+          "M2": {
+            "M1": 6,
+            "M2": 0,
+            "M3": 10,
+            "WH": 19
+          },
+          "M3": {
+            "M1": 9,
+            "M2": 10,
+            "M3": 0,
+            "WH": 9
+          },
+          "WH": {
+            "M1": 14,
+            "M2": 19,
+            "M3": 9,
+            "WH": 0
+          }
+        },
+        "W2": {
+          "M1": {
+            "M1": 0,
+            "M2": 8,
+            "M3": 13,
+            "WH": 19
+          },
+          "M2": {
+            "M1": 8,
+            "M2": 0,
+            "M3": 14,
+            "WH": 27
+          },
+          "M3": {
+            "M1": 13,
+            "M2": 14,
+            "M3": 0,
+            "WH": 13
+          },
+          "WH": {
+            "M1": 19,
+            "M2": 27,
+            "M3": 13,
+            "WH": 0
+          }
+        }
+      },
+      "loaded_cost_per_distance": {
+        "W1": 0.39,
+        "W2": 0.451
+      },
+      "loaded_time": {
+        "W1": {
+          "M1": {
+            "M1": 0,
+            "M2": 10,
+            "M3": 16,
+            "WH": 24
+          },
+          "M2": {
+            "M1": 10,
+            "M2": 0,
+            "M3": 17,
+            "WH": 33
+          },
+          "M3": {
+            "M1": 16,
+            "M2": 17,
+            "M3": 0,
+            "WH": 16
+          },
+          "WH": {
+            "M1": 24,
+            "M2": 33,
+            "M3": 16,
+            "WH": 0
+          }
+        },
+        "W2": {
+          "M1": {
+            "M1": 0,
+            "M2": 7,
+            "M3": 11,
+            "WH": 17
+          },
+          "M2": {
+            "M1": 7,
+            "M2": 0,
+            "M3": 12,
+            "WH": 23
+          },
+          "M3": {
+            "M1": 11,
+            "M2": 12,
+            "M3": 0,
+            "WH": 12
+          },
+          "WH": {
+            "M1": 17,
+            "M2": 23,
+            "M3": 12,
+            "WH": 0
+          }
+        }
+      }
+    },
+    "distance": {
+      "M1": {
+        "M1": 0,
+        "M2": 10,
+        "M3": 16,
+        "WH": 25
+      },
+      "M2": {
+        "M1": 10,
+        "M2": 0,
+        "M3": 18,
+        "WH": 35
+      },
+      "M3": {
+        "M1": 16,
+        "M2": 18,
+        "M3": 0,
+        "WH": 17
+      },
+      "WH": {
+        "M1": 25,
+        "M2": 35,
+        "M3": 17,
+        "WH": 0
+      }
+    },
+    "warehouse": "WH"
+  },
+  "meta": {
+    "dag_pattern": "fork_join",
+    "design_status": "PRE_HEURISTIC_NOT_FROZEN",
+    "eligibility_pattern": "narrow",
+    "generation_rationale": "balanced branching jobs with asymmetric fleets and two explicit routing choices",
+    "generator": "initial-manuscript-exact-v1",
+    "instance_id": "RIACRSP_EXACT_03",
+    "schema": "RCIAS-2.0",
+    "seed": 730103,
+    "static_problem": true,
+    "suite": "INITIAL_MANUSCRIPT_EXACT_VALIDATION_CANDIDATE"
+  },
+  "objective_parameters": {
+    "cost_weight": 0.05,
+    "makespan_weight": 1.0
+  },
+  "operations": {
+    "o11": {
+      "eligible_islands": [
+        "M1",
+        "M2"
+      ],
+      "processing_time": {
+        "M1": 26,
+        "M2": 21
+      },
+      "product": "J1",
+      "required_configuration": "C2"
+    },
+    "o12": {
+      "eligible_islands": [
+        "M2",
+        "M3"
+      ],
+      "processing_time": {
+        "M2": 20,
+        "M3": 24
+      },
+      "product": "J1",
+      "required_configuration": "C3"
+    },
+    "o13": {
+      "eligible_islands": [
+        "M1"
+      ],
+      "processing_time": {
+        "M1": 24
+      },
+      "product": "J1",
+      "required_configuration": "C1"
+    },
+    "o14": {
+      "eligible_islands": [
+        "M1"
+      ],
+      "processing_time": {
+        "M1": 17
+      },
+      "product": "J1",
+      "required_configuration": "C2"
+    },
+    "o21": {
+      "eligible_islands": [
+        "M3"
+      ],
+      "processing_time": {
+        "M3": 27
+      },
+      "product": "J2",
+      "required_configuration": "C1"
+    },
+    "o22": {
+      "eligible_islands": [
+        "M2"
+      ],
+      "processing_time": {
+        "M2": 7
+      },
+      "product": "J2",
+      "required_configuration": "C2"
+    },
+    "o23": {
+      "eligible_islands": [
+        "M2"
+      ],
+      "processing_time": {
+        "M2": 19
+      },
+      "product": "J2",
+      "required_configuration": "C3"
+    },
+    "o24": {
+      "eligible_islands": [
+        "M1"
+      ],
+      "processing_time": {
+        "M1": 28
+      },
+      "product": "J2",
+      "required_configuration": "C1"
+    }
+  },
+  "products": {
+    "J1": {
+      "operations": [
+        "o11",
+        "o12",
+        "o13",
+        "o14"
+      ],
+      "precedence": [
+        [
+          "o11",
+          "o12"
+        ],
+        [
+          "o11",
+          "o13"
+        ],
+        [
+          "o12",
+          "o14"
+        ],
+        [
+          "o13",
+          "o14"
+        ]
+      ]
+    },
+    "J2": {
+      "operations": [
+        "o21",
+        "o22",
+        "o23",
+        "o24"
+      ],
+      "precedence": [
+        [
+          "o21",
+          "o22"
+        ],
+        [
+          "o21",
+          "o23"
+        ],
+        [
+          "o22",
+          "o24"
+        ],
+        [
+          "o23",
+          "o24"
+        ]
+      ]
+    }
+  },
+  "reconfiguration": {
+    "cost": {
+      "M1": {
+        "C1": {
+          "C1": 0.0,
+          "C2": 2.99
+        },
+        "C2": {
+          "C1": 2.42,
+          "C2": 0.0
+        }
+      },
+      "M2": {
+        "C2": {
+          "C2": 0.0,
+          "C3": 2.44
+        },
+        "C3": {
+          "C2": 2.85,
+          "C3": 0.0
+        }
+      },
+      "M3": {
+        "C1": {
+          "C1": 0.0,
+          "C3": 3.45
+        },
+        "C3": {
+          "C1": 3.6,
+          "C3": 0.0
+        }
+      }
+    },
+    "time": {
+      "M1": {
+        "C1": {
+          "C1": 0,
+          "C2": 3
+        },
+        "C2": {
+          "C1": 2,
+          "C2": 0
+        }
+      },
+      "M2": {
+        "C2": {
+          "C2": 0,
+          "C3": 4
+        },
+        "C3": {
+          "C2": 3,
+          "C3": 0
+        }
+      },
+      "M3": {
+        "C1": {
+          "C1": 0,
+          "C3": 4
+        },
+        "C3": {
+          "C1": 4,
+          "C3": 0
+        }
+      }
+    }
+  },
+  "sets": {
+    "agvs_f": [
+      "F1"
+    ],
+    "agvs_w": [
+      "W1",
+      "W2"
+    ],
+    "configurations": [
+      "C1",
+      "C2",
+      "C3"
+    ],
+    "islands": [
+      "M1",
+      "M2",
+      "M3"
+    ],
+    "nodes": [
+      "WH",
+      "M1",
+      "M2",
+      "M3"
+    ],
+    "operations": [
+      "o11",
+      "o12",
+      "o13",
+      "o14",
+      "o21",
+      "o22",
+      "o23",
+      "o24"
+    ],
+    "products": [
+      "J1",
+      "J2"
+    ]
+  }
+}

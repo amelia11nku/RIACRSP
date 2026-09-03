@@ -1,0 +1,451 @@
+{
+  "islands": {
+    "M1": {
+      "coordinate": [
+        18,
+        16
+      ],
+      "initial_configuration": "C1",
+      "supported_configurations": [
+        "C1",
+        "C2",
+        "C3"
+      ]
+    },
+    "M2": {
+      "coordinate": [
+        12,
+        18
+      ],
+      "initial_configuration": "C2",
+      "supported_configurations": [
+        "C1",
+        "C2",
+        "C3"
+      ]
+    }
+  },
+  "logistics": {
+    "F": {
+      "outbound_cost_per_distance": {
+        "F1": 0.217
+      },
+      "outbound_time": {
+        "F1": {
+          "M1": 27,
+          "M2": 23
+        }
+      },
+      "return_cost_per_distance": {
+        "F1": 0.267
+      },
+      "return_time": {
+        "F1": {
+          "M1": 19,
+          "M2": 16
+        }
+      }
+    },
+    "W": {
+      "empty_cost_per_distance": {
+        "W1": 0.294
+      },
+      "empty_time": {
+        "W1": {
+          "M1": {
+            "M1": 0,
+            "M2": 6,
+            "WH": 22
+          },
+          "M2": {
+            "M1": 6,
+            "M2": 0,
+            "WH": 20
+          },
+          "WH": {
+            "M1": 22,
+            "M2": 20,
+            "WH": 0
+          }
+        }
+      },
+      "loaded_cost_per_distance": {
+        "W1": 0.365
+      },
+      "loaded_time": {
+        "W1": {
+          "M1": {
+            "M1": 0,
+            "M2": 6,
+            "WH": 23
+          },
+          "M2": {
+            "M1": 6,
+            "M2": 0,
+            "WH": 20
+          },
+          "WH": {
+            "M1": 23,
+            "M2": 20,
+            "WH": 0
+          }
+        }
+      }
+    },
+    "distance": {
+      "M1": {
+        "M1": 0,
+        "M2": 8,
+        "WH": 34
+      },
+      "M2": {
+        "M1": 8,
+        "M2": 0,
+        "WH": 30
+      },
+      "WH": {
+        "M1": 34,
+        "M2": 30,
+        "WH": 0
+      }
+    },
+    "warehouse": "WH"
+  },
+  "meta": {
+    "dag_pattern": "fork_join",
+    "design_status": "PRE_HEURISTIC_NOT_FROZEN",
+    "eligibility_pattern": "wide",
+    "generation_rationale": "operation-cap branching case sized below the restricted-license model boundary",
+    "generator": "initial-manuscript-exact-v1",
+    "instance_id": "RIACRSP_EXACT_07",
+    "schema": "RCIAS-2.0",
+    "seed": 730107,
+    "static_problem": true,
+    "suite": "INITIAL_MANUSCRIPT_EXACT_VALIDATION_CANDIDATE"
+  },
+  "objective_parameters": {
+    "cost_weight": 0.05,
+    "makespan_weight": 1.0
+  },
+  "operations": {
+    "o11": {
+      "eligible_islands": [
+        "M1",
+        "M2"
+      ],
+      "processing_time": {
+        "M1": 10,
+        "M2": 13
+      },
+      "product": "J1",
+      "required_configuration": "C2"
+    },
+    "o12": {
+      "eligible_islands": [
+        "M1",
+        "M2"
+      ],
+      "processing_time": {
+        "M1": 16,
+        "M2": 11
+      },
+      "product": "J1",
+      "required_configuration": "C3"
+    },
+    "o13": {
+      "eligible_islands": [
+        "M1"
+      ],
+      "processing_time": {
+        "M1": 12
+      },
+      "product": "J1",
+      "required_configuration": "C1"
+    },
+    "o14": {
+      "eligible_islands": [
+        "M2"
+      ],
+      "processing_time": {
+        "M2": 16
+      },
+      "product": "J1",
+      "required_configuration": "C2"
+    },
+    "o21": {
+      "eligible_islands": [
+        "M2"
+      ],
+      "processing_time": {
+        "M2": 18
+      },
+      "product": "J2",
+      "required_configuration": "C1"
+    },
+    "o22": {
+      "eligible_islands": [
+        "M1"
+      ],
+      "processing_time": {
+        "M1": 22
+      },
+      "product": "J2",
+      "required_configuration": "C2"
+    },
+    "o23": {
+      "eligible_islands": [
+        "M2"
+      ],
+      "processing_time": {
+        "M2": 10
+      },
+      "product": "J2",
+      "required_configuration": "C3"
+    },
+    "o24": {
+      "eligible_islands": [
+        "M2"
+      ],
+      "processing_time": {
+        "M2": 17
+      },
+      "product": "J2",
+      "required_configuration": "C1"
+    },
+    "o31": {
+      "eligible_islands": [
+        "M1"
+      ],
+      "processing_time": {
+        "M1": 25
+      },
+      "product": "J3",
+      "required_configuration": "C3"
+    },
+    "o32": {
+      "eligible_islands": [
+        "M2"
+      ],
+      "processing_time": {
+        "M2": 21
+      },
+      "product": "J3",
+      "required_configuration": "C1"
+    },
+    "o33": {
+      "eligible_islands": [
+        "M2"
+      ],
+      "processing_time": {
+        "M2": 26
+      },
+      "product": "J3",
+      "required_configuration": "C2"
+    },
+    "o34": {
+      "eligible_islands": [
+        "M2"
+      ],
+      "processing_time": {
+        "M2": 18
+      },
+      "product": "J3",
+      "required_configuration": "C3"
+    }
+  },
+  "products": {
+    "J1": {
+      "operations": [
+        "o11",
+        "o12",
+        "o13",
+        "o14"
+      ],
+      "precedence": [
+        [
+          "o11",
+          "o12"
+        ],
+        [
+          "o11",
+          "o13"
+        ],
+        [
+          "o12",
+          "o14"
+        ],
+        [
+          "o13",
+          "o14"
+        ]
+      ]
+    },
+    "J2": {
+      "operations": [
+        "o21",
+        "o22",
+        "o23",
+        "o24"
+      ],
+      "precedence": [
+        [
+          "o21",
+          "o22"
+        ],
+        [
+          "o21",
+          "o23"
+        ],
+        [
+          "o22",
+          "o24"
+        ],
+        [
+          "o23",
+          "o24"
+        ]
+      ]
+    },
+    "J3": {
+      "operations": [
+        "o31",
+        "o32",
+        "o33",
+        "o34"
+      ],
+      "precedence": [
+        [
+          "o31",
+          "o32"
+        ],
+        [
+          "o31",
+          "o33"
+        ],
+        [
+          "o32",
+          "o34"
+        ],
+        [
+          "o33",
+          "o34"
+        ]
+      ]
+    }
+  },
+  "reconfiguration": {
+    "cost": {
+      "M1": {
+        "C1": {
+          "C1": 0.0,
+          "C2": 2.41,
+          "C3": 3.83
+        },
+        "C2": {
+          "C1": 2.94,
+          "C2": 0.0,
+          "C3": 2.88
+        },
+        "C3": {
+          "C1": 3.66,
+          "C2": 2.79,
+          "C3": 0.0
+        }
+      },
+      "M2": {
+        "C1": {
+          "C1": 0.0,
+          "C2": 2.57,
+          "C3": 3.46
+        },
+        "C2": {
+          "C1": 3.08,
+          "C2": 0.0,
+          "C3": 2.92
+        },
+        "C3": {
+          "C1": 3.9,
+          "C2": 2.33,
+          "C3": 0.0
+        }
+      }
+    },
+    "time": {
+      "M1": {
+        "C1": {
+          "C1": 0,
+          "C2": 3,
+          "C3": 5
+        },
+        "C2": {
+          "C1": 4,
+          "C2": 0,
+          "C3": 2
+        },
+        "C3": {
+          "C1": 5,
+          "C2": 4,
+          "C3": 0
+        }
+      },
+      "M2": {
+        "C1": {
+          "C1": 0,
+          "C2": 3,
+          "C3": 5
+        },
+        "C2": {
+          "C1": 3,
+          "C2": 0,
+          "C3": 4
+        },
+        "C3": {
+          "C1": 5,
+          "C2": 3,
+          "C3": 0
+        }
+      }
+    }
+  },
+  "sets": {
+    "agvs_f": [
+      "F1"
+    ],
+    "agvs_w": [
+      "W1"
+    ],
+    "configurations": [
+      "C1",
+      "C2",
+      "C3"
+    ],
+    "islands": [
+      "M1",
+      "M2"
+    ],
+    "nodes": [
+      "WH",
+      "M1",
+      "M2"
+    ],
+    "operations": [
+      "o11",
+      "o12",
+      "o13",
+      "o14",
+      "o21",
+      "o22",
+      "o23",
+      "o24",
+      "o31",
+      "o32",
+      "o33",
+      "o34"
+    ],
+    "products": [
+      "J1",
+      "J2",
+      "J3"
+    ]
+  }
+}

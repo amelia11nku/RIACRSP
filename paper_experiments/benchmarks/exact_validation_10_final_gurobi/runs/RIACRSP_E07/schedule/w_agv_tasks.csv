@@ -1,0 +1,7 @@
+vehicle,product,operation,actual_predecessor,vehicle_previous_location,pickup,destination,empty_start,empty_end,loaded_start,loaded_end,arrival
+W1,J1,o11,NONE,WH,WH,M1,0.0,0.0,0.0,24.0,24.0
+W2,J2,o21,NONE,WH,WH,M3,0.0,0.0,0.0,12.0,12.0
+W2,J2,o22,o21,M3,M3,M2,12.0,12.0,39.0,51.0,51.0
+W2,J1,o12,o11,M2,M1,M3,51.0,59.0,65.0,76.0,76.0
+W2,J1,o13,o12,M3,M3,M1,76.0,76.0,133.0,144.0,144.0
+W2,J2,o24,o23,M1,M2,M1,144.0,152.0,162.0,169.0,169.0

@@ -1,0 +1,16 @@
+{
+  "schema": "initial-manuscript-superseded-run-record-v1",
+  "status": "SUPERSEDED_NOT_FOR_ANALYSIS",
+  "algorithm": "CSG_NI_PROVISIONAL_PHASE6H",
+  "execution_revision": "PARALLEL2_DISJOINT_SHARDS_PILOT",
+  "completed_records": 2,
+  "config_sha256": "531fadb259b9b72dc25ffe10e77817159cfef9d1e3524f8082cf44c9a41d54fb",
+  "implementation_manifest_sha256": "c32c725ecac22fe20125aea1f31625a23775adadcb671705a3235acf91739de3",
+  "mean_decoder_evaluation_retention_vs_serial": 0.9359903834242407,
+  "mean_iteration_retention_vs_serial": 0.9360967825309834,
+  "adoption_threshold": 0.9,
+  "observed_gpu_sm_percent_range": [36, 44],
+  "observed_gpu_memory_mib_range": [912, 934],
+  "superseded_at_cst": "2026-09-03T10:01:11+08:00",
+  "reason": "Resource pilot passed and was archived so the promoted final execution revision could restart with one uniform config hash across all 450 analysis records."
+}

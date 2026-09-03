@@ -1,0 +1,46 @@
+{
+  "all_incumbent_traces_validated": true,
+  "all_schedules_feasible": true,
+  "cal_holdout_used_for_selection": false,
+  "common_reference_type": "POOLED_BKS",
+  "instance_count": 9,
+  "live_state_drift": "HIGH",
+  "manuscript_identity": {
+    "ALNS": "ALNS efficiency comparator only",
+    "PHASE6H_CSGNI": "CSG-NI Phase6H provisional"
+  },
+  "matched_runs_per_method": 45,
+  "methods": [
+    "ALNS",
+    "PHASE6H_CSGNI"
+  ],
+  "output_row_counts": {
+    "anytime_curves.csv": 540,
+    "anytime_runs.csv": 90,
+    "anytime_summary.csv": 2,
+    "csgni_runtime_efficiency_by_run.csv": 45,
+    "csgni_runtime_efficiency_summary.csv": 1,
+    "efficiency_instance_summary.csv": 18,
+    "efficiency_method_summary.csv": 2,
+    "efficiency_pairwise.csv": 1,
+    "efficiency_runs.csv": 90,
+    "target_hit_summary.csv": 8
+  },
+  "reporting_limit": "Phase6H remains provisional; ALNS evidence is for efficiency/anytime only, not the five-method Core ranking",
+  "schema": "initial-manuscript-phase6h-alns-efficiency-v1",
+  "source_artifact_manifest_sha256": "8726b7ec4fcf49adb93dc9efcae2fbf00444c6d8fe0e9322736a702a517e4fcc",
+  "source_hashes": {
+    "outputs/phase6h_validation/anytime/method_anytime_summary.csv": "7a91d63f3fac9e70688fe0ea7b6d58809901134d7ff557c135cc4a369b67284c",
+    "outputs/phase6h_validation/anytime/normalized_budget_checkpoints.csv": "752b95694cee2692747dd7205d6eba8b1b01b55a5dccfcc2f876e24b5fe80a32",
+    "outputs/phase6h_validation/anytime/run_anytime_summary.csv": "0b93fdc504dced39ebb482607ad151a71990cb605d4623b27f6c4b8e694409fd",
+    "outputs/phase6h_validation/anytime/target_hit_summary.csv": "dbe0ee280102981f4a31aa2c9dd1a6153dff81f165f526a3db440f298e6c7f49",
+    "outputs/phase6h_validation/statistics/csgni_runtime_efficiency_by_run.csv": "28abf158f40357395a4f9ee1b48d5eb2d02bed2653c8ef75b397f61cc7a02d94",
+    "outputs/phase6h_validation/statistics/csgni_runtime_efficiency_summary.csv": "6893a8a8d1dbc1fa24cfe00773ff6c17f8f95bf782b7910d1c28c2d6e3fdb7ee",
+    "outputs/phase6h_validation/statistics/instance_method_summary.csv": "4894279132c605006ffb45d970f1d7383f66340366a85d41f808392216de8092",
+    "outputs/phase6h_validation/statistics/method_summary.csv": "c7407259de7c2072161ccd23bc887d9c6b13b4f23de1a7999e225ef8cffbcd66",
+    "outputs/phase6h_validation/statistics/pairwise_statistics.csv": "9d33563fcd8d6ad10957043c7d18a18e438dd8599ec4b904a8600766aef15109",
+    "outputs/phase6h_validation/validation_run_summary.csv": "9ad4eb976a8658cc261b72b7a8b249663a4090ae1258c442129b341f9faca3d2"
+  },
+  "source_integrity_sha256": "acaeca626a286a9fe00a9590c4e5089c7014d6d0d86262e1e6e817b8358cd9a3",
+  "status": "PASS_REUSED_PHASE6H_CAL_HOLDOUT"
+}

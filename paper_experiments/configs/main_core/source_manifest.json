@@ -1,0 +1,54 @@
+{
+  "schema": "initial-manuscript-core-source-manifest-v2",
+  "sources": [
+    {
+      "method": "GA",
+      "result_label": "GA",
+      "root": "outputs/phase5c/search/cb1_core/formal/ga",
+      "schema": "phase5c-search-run-v1",
+      "expected_all_seed_records": 225
+    },
+    {
+      "method": "Adapted DCGA",
+      "result_label": "Adapted DCGA",
+      "root": "outputs/phase5c/search/cb1_core/formal/adapted_dcga",
+      "schema": "phase5c-search-run-v1",
+      "expected_all_seed_records": 225,
+      "reporting_note": "faithful adaptation; do not silently relabel as an exact source implementation"
+    },
+    {
+      "method": "DABC-RIACRSP",
+      "result_label": "DABC-RIACRSP",
+      "root": "outputs/baselines/comparison_advanced/formal/dabc_riacrsp",
+      "schema": "advanced-baseline-run-v1",
+      "expected_all_seed_records": 225,
+      "formal_manifest": "configs/baselines/advanced_formal_manifest.json",
+      "formal_manifest_sha256": "1895f418f15f9bf01f29d50891cdef4c13eae083445140b4a0c615492887868e",
+      "implementation_manifest": "configs/baselines/advanced_implementation_manifest.json",
+      "implementation_manifest_sha256": "d27206cf25fa74abd0a7d7767a277ff2ced0713f1876f639471b36c9d2840c8a"
+    },
+    {
+      "method": "LG_HGA-RIACRSP-v2-N4M",
+      "result_label": "LG_HGA-RIACRSP-v2-N4M",
+      "root": "outputs/baselines/comparison_advanced_v2/formal/lg_hga_riacrsp_v2_n4m",
+      "schema": "advanced-baseline-run-v2",
+      "expected_all_seed_records": 225,
+      "formal_manifest": "configs/baselines/advanced_formal_manifest.json",
+      "formal_manifest_sha256": "1895f418f15f9bf01f29d50891cdef4c13eae083445140b4a0c615492887868e",
+      "implementation_manifest": "configs/baselines/lghga_v2_implementation_manifest.json",
+      "implementation_manifest_sha256": "9dbf3c5e468d749831d2cef05aec10023373bdedc437bf3584175f7d67975223"
+    },
+    {
+      "method": "CSG-NI Phase6H provisional",
+      "result_label": "CSG_NI_PROVISIONAL_PHASE6H",
+      "root": "paper_experiments/raw_results/core45/CSG_NI_PROVISIONAL_PHASE6H/runs",
+      "schema": "initial-manuscript-core-run-v1",
+      "expected_all_seed_records": 225,
+      "config_manifest": "paper_experiments/configs/main_core/phase6h_provisional.json",
+      "config_manifest_sha256": "466dc049448d9308ade09e8c00625d7da90c70d5f4e119428c9b57e9228f2f07",
+      "implementation_manifest": "paper_experiments/configs/main_core/phase6h_provisional_implementation.json",
+      "implementation_manifest_sha256": "b4141ea57aec7a3c5023f24a37fd5f4f39c09efe2ff797d63448d28c8dd5da0d",
+      "reporting_note": "provisional frozen Phase 6H artifact collected with an empirically validated disjoint-shard concurrency; retain exact raw identity until the complete Phase 6I-MR decision"
+    }
+  ]
+}

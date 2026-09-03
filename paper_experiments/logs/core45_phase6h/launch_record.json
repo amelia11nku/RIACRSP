@@ -1,0 +1,50 @@
+{
+  "schema": "initial-manuscript-phase6h-core-persistent-launch-v1",
+  "status": "RUNNING_VERIFIED_WITH_FIRST_RESULT",
+  "unit": "paper-phase6h-core-provisional.service",
+  "main_pid": 335699,
+  "session_mode": "systemd_user_transient_service",
+  "command": [
+    "/home/liulei/miniconda3/envs/gnn311/bin/python",
+    "-u",
+    "scripts/run_paper_phase6h_core.py",
+    "--device",
+    "cuda"
+  ],
+  "working_directory": "/home/liulei/ayx/RI-ACRSP",
+  "algorithm": "CSG_NI_PROVISIONAL_PHASE6H",
+  "experiment_status": "PROVISIONAL",
+  "common_seeds": [530101, 530102, 530103, 530104, 530105, 530106, 530107, 530108, 530109, 530110],
+  "expected_records": 450,
+  "solver_concurrency": 1,
+  "wall_clock_seconds_per_operation": 2.0,
+  "started_at_cst": "2026-09-03T09:33:18+08:00",
+  "pure_budget_hours": 29.794444444444444,
+  "expected_completion_window_cst": "2026-09-04T15:15:00+08:00 to 2026-09-04T16:30:00+08:00",
+  "log_path": "paper_experiments/logs/core45_phase6h/phase6h_core_20260903T0931CST.log",
+  "output_directory": "paper_experiments/raw_results/core45/CSG_NI_PROVISIONAL_PHASE6H",
+  "progress_path": "paper_experiments/raw_results/core45/CSG_NI_PROVISIONAL_PHASE6H/progress.json",
+  "config_path": "paper_experiments/configs/main_core/phase6h_provisional.json",
+  "config_sha256": "f268a4a55a1650a1eca0d336038f76b462c0c915f60b7fb2f86572b976b6f1e0",
+  "implementation_manifest_sha256": "7ea920f0e8f82d96d2f7ef1c2b84833c2965a2c93dbf491a7542de4044128ead",
+  "phase6h_policy_sha256": "4d2da03e13a036569bebf3897135e5da139e292e3260a2f452754d5c9ae3d239",
+  "checkpoint_sha256": "f1ccceb607b0e453dfb74e7aa7a946616001db8ec08c12dc9900a66c6f165fc7",
+  "first_result_health_check": {
+    "instance_id": "CB1_CORE_S_CF1_R01",
+    "seed": 530101,
+    "time_limit_seconds": 124.0,
+    "runtime_seconds": 124.00233822298469,
+    "best_makespan": 1776.0,
+    "live_state_rows": 2104,
+    "live_log_hash_matches": true,
+    "feasible": true,
+    "independent_feasibility_audit_passed": true
+  },
+  "r11_pause_record": "outputs/phase6i_mr/r11_validation/pause_record_20260903T0930CST.json",
+  "gurobi_policy": "EXTERNAL_LICENSED_WORKSTATION_RESULTS_PENDING_SYNC",
+  "status_commands": [
+    "systemctl --user status paper-phase6h-core-provisional.service --no-pager",
+    "tail -n 40 paper_experiments/logs/core45_phase6h/phase6h_core_20260903T0931CST.log",
+    "cat paper_experiments/raw_results/core45/CSG_NI_PROVISIONAL_PHASE6H/progress.json"
+  ]
+}
