@@ -18,7 +18,9 @@ from rcias_clgri.data.instance import Instance
 from rcias_clgri.env.feasibility import check_schedule
 from rcias_clgri.env.insertion_decoder import Action
 from rcias_clgri.env.objective import ObjectiveBreakdown, calculate_objective
+from rcias_clgri.env.objective import ObjectiveBreakdown, calculate_objective
 from rcias_clgri.env.rcias_env import RCIASConstructionEnv
+from rcias_clgri.env.schedule import FTask, OperationSchedule, Schedule, WTask
 from rcias_clgri.env.schedule import FTask, OperationSchedule, Schedule, WTask
 from rcias_clgri.heuristic.dispatching import solve_dispatching
 
@@ -43,6 +45,10 @@ class GeneralGurobiResult:
     action_replay_feasible: bool
     action_replay_matches_solver: bool
     action_replay_schedule: Schedule
+    action_replay_makespan: float
+    action_replay_feasible: bool
+    action_replay_matches_solver: bool
+    action_replay_schedule: Schedule
     island_assignments: Mapping[str, str]
     w_assignments: Mapping[str, str | None]
     f_assignments: Mapping[str, str]
@@ -52,6 +58,7 @@ class GeneralGurobiResult:
     f_sequences: Mapping[str, tuple[str, ...]]
     variable_count: int
     constraint_count: int
+    node_count: float
     node_count: float
     h1_upper_bound: float
     h1_mip_start_used: bool
@@ -72,6 +79,9 @@ class GeneralGurobiResult:
             "action_replay_makespan": self.action_replay_makespan,
             "action_replay_feasible": self.action_replay_feasible,
             "action_replay_matches_solver": self.action_replay_matches_solver,
+            "action_replay_makespan": self.action_replay_makespan,
+            "action_replay_feasible": self.action_replay_feasible,
+            "action_replay_matches_solver": self.action_replay_matches_solver,
             "objective_breakdown": self.objective.to_dict(),
             "actions": [action.__dict__ for action in self.actions],
             "island_assignments": dict(self.island_assignments),
@@ -88,9 +98,12 @@ class GeneralGurobiResult:
             "variable_count": self.variable_count,
             "constraint_count": self.constraint_count,
             "node_count": self.node_count,
+            "node_count": self.node_count,
             "h1_upper_bound": self.h1_upper_bound,
             "h1_mip_start_used": self.h1_mip_start_used,
+            "h1_mip_start_used": self.h1_mip_start_used,
             "schedule": self.schedule.to_dict(),
+            "action_replay_schedule": self.action_replay_schedule.to_dict(),
             "action_replay_schedule": self.action_replay_schedule.to_dict(),
         }
 
@@ -130,6 +143,13 @@ def _selected_path(
     if sequence:
         raise RuntimeError("selected MILP route does not reach its sink")
     return ()
+
+
+def _clean_time(value: float) -> float:
+    """Remove ordinary MILP feasibility-tolerance noise from integral event times."""
+
+    nearest = round(float(value))
+    return float(nearest) if math.isclose(value, nearest, abs_tol=1e-5) else float(value)
 
 
 def _clean_time(value: float) -> float:
@@ -1052,6 +1072,210 @@ def solve_general_gurobi(
             f"{solver_makespan} != {replay_makespan}"
         )
 
+    # Reconstruct the selected MILP schedule from all four independent path
+    # systems.  A single operation-action ordering cannot, in general, encode
+    # an F-kit order that differs from the operation order (or an independent
+    # W route order).  The former start-time-only replay therefore changed
+    # valid time-limited incumbents on Core-S.  The reconstructed Schedule is
+    # the lossless representation audited for exact-solver evidence; the old
+    # action projection is retained below as an explicit diagnostic only.
+    product_predecessor: dict[str, str | None] = {}
+    product_successor: dict[str, str | None] = {}
+    for sequence in product_sequences.values():
+        for index, op in enumerate(sequence):
+            product_predecessor[op] = sequence[index - 1] if index else None
+            product_successor[op] = sequence[index + 1] if index + 1 < len(sequence) else None
+
+    selected_detail: dict[str, tuple[str, str, str, str]] = {}
+    for op, details in details_by_operation.items():
+        selected = [key for key, variable in details if variable.X > 0.5]
+        if len(selected) != 1:
+            raise RuntimeError(f"expected one selected product/location detail for {op}")
+        selected_detail[op] = selected[0]
+
+    f_timelines: dict[str, list[FTask]] = {vehicle: [] for vehicle in instance.agvs_f}
+    f_task_by_operation: dict[str, FTask] = {}
+    for vehicle, sequence in f_sequences.items():
+        for op in sequence:
+            island = island_assignment[op]
+            departure = _clean_time(f_depart[op].X)
+            outbound = float(instance.f_outbound_time[(vehicle, island)])
+            return_duration = float(instance.f_return_time[(vehicle, island)])
+            task = FTask(
+                task_id=f"F:{op}",
+                vehicle_id=vehicle,
+                operation_id=op,
+                island_id=island,
+                departure_wh=departure,
+                arrival_island=departure + outbound,
+                return_wh=departure + outbound + return_duration,
+                outbound_time=outbound,
+                return_time=return_duration,
+                outbound_distance=instance.distance[("WH", island)],
+                return_distance=instance.distance[(island, "WH")],
+            )
+            f_timelines[vehicle].append(task)
+            f_task_by_operation[op] = task
+
+    w_timelines: dict[str, list[WTask]] = {vehicle: [] for vehicle in instance.agvs_w}
+    w_task_by_operation: dict[str, WTask] = {}
+    for vehicle, sequence in w_sequences.items():
+        previous_location = "WH"
+        previous_arrival = 0.0
+        for op in sequence:
+            _, _, pickup, destination = selected_detail[op]
+            predecessor = product_predecessor[op]
+            expected_pickup = (
+                "WH" if predecessor is None else island_assignment[predecessor]
+            )
+            if pickup != expected_pickup or destination != island_assignment[op]:
+                raise RuntimeError(f"selected W route disagrees with product path for {op}")
+            empty_duration = float(
+                instance.w_empty_time[(vehicle, previous_location, pickup)]
+            )
+            loaded_duration = float(
+                instance.w_loaded_time[(vehicle, pickup, destination)]
+            )
+            loaded_start = _clean_time(w_loaded_start[op].X)
+            release = (
+                0.0 if predecessor is None
+                else _clean_time(
+                    start[predecessor].X
+                    + instance.processing_time[(predecessor, island_assignment[predecessor])]
+                )
+            )
+            task = WTask(
+                task_id=f"W:{op}",
+                vehicle_id=vehicle,
+                product_id=instance.product_of[op],
+                predecessor_op=predecessor,
+                operation_id=op,
+                pickup=pickup,
+                destination=destination,
+                release_time=release,
+                empty_origin=previous_location,
+                empty_start=previous_arrival,
+                empty_arrival=previous_arrival + empty_duration,
+                loaded_start=loaded_start,
+                arrival_time=loaded_start + loaded_duration,
+                empty_travel_time=empty_duration,
+                loaded_travel_time=loaded_duration,
+                empty_distance=instance.distance[(previous_location, pickup)],
+                loaded_distance=instance.distance[(pickup, destination)],
+            )
+            w_timelines[vehicle].append(task)
+            w_task_by_operation[op] = task
+            previous_location = destination
+            previous_arrival = task.arrival_time
+
+    island_predecessor: dict[str, str | None] = {}
+    accumulated_reconfiguration_cost = 0.0
+    for island, sequence in island_sequences.items():
+        previous: str | None = None
+        previous_config = instance.island_data[island].initial_config
+        for op in sequence:
+            island_predecessor[op] = previous
+            config = instance.operation_data[op].required_config
+            accumulated_reconfiguration_cost += instance.reconfiguration_cost[
+                (island, previous_config, config)
+            ]
+            previous = op
+            previous_config = config
+
+    operation_schedules: dict[str, OperationSchedule] = {}
+    for op in operations:
+        island = island_assignment[op]
+        config = instance.operation_data[op].required_config
+        op_start = _clean_time(start[op].X)
+        op_completion = _clean_time(
+            op_start + instance.processing_time[(op, island)]
+        )
+        product_previous = product_predecessor[op]
+        product_ready = (
+            0.0 if product_previous is None
+            else _clean_time(
+                start[product_previous].X
+                + instance.processing_time[
+                    (product_previous, island_assignment[product_previous])
+                ]
+            )
+        )
+        island_previous = island_predecessor[op]
+        island_ready = (
+            0.0 if island_previous is None
+            else _clean_time(
+                start[island_previous].X
+                + instance.processing_time[
+                    (island_previous, island_assignment[island_previous])
+                ]
+            )
+        )
+        previous_config = (
+            instance.island_data[island].initial_config
+            if island_previous is None
+            else instance.operation_data[island_previous].required_config
+        )
+        setup = float(instance.reconfiguration_time[(island, previous_config, config)])
+        config_ready = island_ready + setup
+        w_task = w_task_by_operation.get(op)
+        w_ready = product_ready if w_task is None else w_task.arrival_time
+        f_ready = f_task_by_operation[op].arrival_island
+        readiness = {
+            "PRODUCT": product_ready,
+            "ISLAND_CONFIG": config_ready,
+            "W_AGV": w_ready,
+            "F_AGV": f_ready,
+        }
+        binding = tuple(
+            name for name, value in readiness.items()
+            if math.isclose(value, op_start, rel_tol=0.0, abs_tol=1e-6)
+        ) or ("MILP_SLACK",)
+        operation_schedules[op] = OperationSchedule(
+            op_id=op,
+            product_id=instance.product_of[op],
+            island_id=island,
+            config_id=config,
+            product_predecessor=product_previous,
+            processing_time=instance.processing_time[(op, island)],
+            product_ready_time=product_ready,
+            island_ready_time=island_ready,
+            config_ready_time=config_ready,
+            w_ready_time=w_ready,
+            f_ready_time=f_ready,
+            reconfiguration_start=island_ready,
+            reconfiguration_end=config_ready,
+            start_time=op_start,
+            completion_time=op_completion,
+            binding_resource=binding,
+            w_task_id=None if w_task is None else w_task.task_id,
+            f_task_id=f_task_by_operation[op].task_id,
+        )
+
+    reconstructed_schedule = Schedule(
+        instance_id=instance.instance_id,
+        operation_schedules=operation_schedules,
+        product_sequences={key: list(value) for key, value in product_sequences.items()},
+        product_predecessor=product_predecessor,
+        product_successor=product_successor,
+        island_timelines={key: list(value) for key, value in island_sequences.items()},
+        w_timelines=w_timelines,
+        f_timelines=f_timelines,
+        accumulated_reconfiguration_cost=accumulated_reconfiguration_cost,
+    )
+    audit = check_schedule(instance, reconstructed_schedule)
+    if not audit["feasible"]:
+        raise RuntimeError(
+            f"reconstructed Gurobi schedule is infeasible: {audit['violations']}"
+        )
+    solver_makespan = _clean_time(makespan.X)
+    reconstructed_objective = calculate_objective(instance, reconstructed_schedule)
+    replay_makespan = float(reconstructed_objective.makespan)
+    if not math.isclose(solver_makespan, replay_makespan, rel_tol=0.0, abs_tol=1e-6):
+        raise RuntimeError(
+            "general Gurobi reconstructed makespan mismatch: "
+            f"{solver_makespan} != {replay_makespan}"
+        )
+
     canonical_index = {op: index for index, op in enumerate(operations)}
     ordered_operations = sorted(
         operations,
@@ -1100,5 +1324,6 @@ def solve_general_gurobi(
         constraint_count=int(model.NumConstrs + model.NumGenConstrs),
         node_count=float(model.NodeCount),
         h1_upper_bound=makespan_upper,
+        h1_mip_start_used=bool(use_h1_mip_start),
         h1_mip_start_used=bool(use_h1_mip_start),
     )

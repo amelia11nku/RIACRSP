@@ -41,7 +41,11 @@ def test_general_gurobi_proves_all_frozen_tiny_optima(general_results):
         assert result.best_bound == pytest.approx(result.solver_makespan, abs=1e-6)
         assert result.runtime_seconds >= 0.0
         assert result.total_runtime_seconds >= result.runtime_seconds
+        assert result.node_count >= 0.0
+        assert result.h1_mip_start_used
         assert result.replay_feasible
+        assert result.action_replay_feasible
+        assert result.action_replay_matches_solver
         assert check_schedule(instance, result.schedule)["feasible"]
         assert json.loads(json.dumps(result.to_dict()))["status"] == "OPTIMAL"
 

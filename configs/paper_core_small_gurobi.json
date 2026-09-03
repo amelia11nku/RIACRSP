@@ -1,0 +1,48 @@
+{
+  "schema": "paper-core-small-gurobi-protocol-v1",
+  "status": "FROZEN_BEFORE_EXECUTION",
+  "source_commit": "7c448000be69084511af181f52cad0a8db71479a",
+  "selection_rule": "All 15 Small instances in the fixed CB1-Core benchmark stratum: S x CF1/CF2/CF3 x R01-R05. No instance was selected after observing solver performance.",
+  "historical_tiny_anchors": {
+    "tiny_01": 157.0,
+    "tiny_03": 36.0
+  },
+  "current_workstation_smoke_evidence": {
+    "instance_id": "tiny_02",
+    "status": "OPTIMAL",
+    "objective_makespan": 57.0,
+    "replay_feasible": true,
+    "gurobi_version": "13.0.3",
+    "result_path": "outputs/paper_gurobi_validation/runs/tiny_smoke/tiny_02/result.json"
+  },
+  "runs": [
+    {"instance_id": "CB1_CORE_S_CF1_R01", "suite": "core_small", "cf_level": "CF1", "replicate": "R01", "relative_path": "instances/controlled/RCIAS-CB1/core/CB1_CORE_S_CF1_R01.json"},
+    {"instance_id": "CB1_CORE_S_CF1_R02", "suite": "core_small", "cf_level": "CF1", "replicate": "R02", "relative_path": "instances/controlled/RCIAS-CB1/core/CB1_CORE_S_CF1_R02.json"},
+    {"instance_id": "CB1_CORE_S_CF1_R03", "suite": "core_small", "cf_level": "CF1", "replicate": "R03", "relative_path": "instances/controlled/RCIAS-CB1/core/CB1_CORE_S_CF1_R03.json"},
+    {"instance_id": "CB1_CORE_S_CF1_R04", "suite": "core_small", "cf_level": "CF1", "replicate": "R04", "relative_path": "instances/controlled/RCIAS-CB1/core/CB1_CORE_S_CF1_R04.json"},
+    {"instance_id": "CB1_CORE_S_CF1_R05", "suite": "core_small", "cf_level": "CF1", "replicate": "R05", "relative_path": "instances/controlled/RCIAS-CB1/core/CB1_CORE_S_CF1_R05.json"},
+    {"instance_id": "CB1_CORE_S_CF2_R01", "suite": "core_small", "cf_level": "CF2", "replicate": "R01", "relative_path": "instances/controlled/RCIAS-CB1/core/CB1_CORE_S_CF2_R01.json"},
+    {"instance_id": "CB1_CORE_S_CF2_R02", "suite": "core_small", "cf_level": "CF2", "replicate": "R02", "relative_path": "instances/controlled/RCIAS-CB1/core/CB1_CORE_S_CF2_R02.json"},
+    {"instance_id": "CB1_CORE_S_CF2_R03", "suite": "core_small", "cf_level": "CF2", "replicate": "R03", "relative_path": "instances/controlled/RCIAS-CB1/core/CB1_CORE_S_CF2_R03.json"},
+    {"instance_id": "CB1_CORE_S_CF2_R04", "suite": "core_small", "cf_level": "CF2", "replicate": "R04", "relative_path": "instances/controlled/RCIAS-CB1/core/CB1_CORE_S_CF2_R04.json"},
+    {"instance_id": "CB1_CORE_S_CF2_R05", "suite": "core_small", "cf_level": "CF2", "replicate": "R05", "relative_path": "instances/controlled/RCIAS-CB1/core/CB1_CORE_S_CF2_R05.json"},
+    {"instance_id": "CB1_CORE_S_CF3_R01", "suite": "core_small", "cf_level": "CF3", "replicate": "R01", "relative_path": "instances/controlled/RCIAS-CB1/core/CB1_CORE_S_CF3_R01.json"},
+    {"instance_id": "CB1_CORE_S_CF3_R02", "suite": "core_small", "cf_level": "CF3", "replicate": "R02", "relative_path": "instances/controlled/RCIAS-CB1/core/CB1_CORE_S_CF3_R02.json"},
+    {"instance_id": "CB1_CORE_S_CF3_R03", "suite": "core_small", "cf_level": "CF3", "replicate": "R03", "relative_path": "instances/controlled/RCIAS-CB1/core/CB1_CORE_S_CF3_R03.json"},
+    {"instance_id": "CB1_CORE_S_CF3_R04", "suite": "core_small", "cf_level": "CF3", "replicate": "R04", "relative_path": "instances/controlled/RCIAS-CB1/core/CB1_CORE_S_CF3_R04.json"},
+    {"instance_id": "CB1_CORE_S_CF3_R05", "suite": "core_small", "cf_level": "CF3", "replicate": "R05", "relative_path": "instances/controlled/RCIAS-CB1/core/CB1_CORE_S_CF3_R05.json"}
+  ],
+  "gurobi": {
+    "model": "rcias_clgri/exact/general_gurobi.py",
+    "objective": "makespan",
+    "time_limit_seconds": 3600.0,
+    "seed": 671501,
+    "threads": 1,
+    "mip_gap": 0.0,
+    "use_h1_mip_start": true
+  },
+  "reporting": {
+    "output_root": "outputs/paper_core_small_gurobi",
+    "report_path": "docs/reports/paper_core_small_gurobi_report.md"
+  }
+}
