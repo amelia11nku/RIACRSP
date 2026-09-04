@@ -1325,5 +1325,4 @@ def solve_general_gurobi(
         node_count=float(model.NodeCount),
         h1_upper_bound=makespan_upper,
         h1_mip_start_used=bool(use_h1_mip_start),
-        h1_mip_start_used=bool(use_h1_mip_start),
     )

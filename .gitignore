@@ -14,3 +14,11 @@ outputs/
 *.pth
 *.pdf
 *.png
+
+# Local experiment/runtime artifacts.
+artifacts/
+**/.progress.lock
+**/*.pid
+**/live_logs/
+.mypy_cache/
+.ruff_cache/

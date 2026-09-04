@@ -11,7 +11,6 @@ import json
 import os
 from pathlib import Path
 import platform
-import shutil
 import subprocess
 import sys
 
@@ -36,6 +35,7 @@ CONFIG_PATH = ABLATION_ROOT / "configs/p1_ablation_protocol.json"
 IMPLEMENTATION_PATH = ABLATION_ROOT / "configs/p1_implementation_manifest.json"
 AUDIT_PATH = ABLATION_ROOT / "audit/reference_replay_audit.csv"
 INVENTORY_PATH = ABLATION_ROOT / "audit/reference_source_inventory.json"
+CANONICAL_REFERENCE_PATH = ABLATION_ROOT / "audit/canonical_reference_manifest.csv"
 PROVENANCE_PATH = ABLATION_ROOT / "audit/environment_provenance.json"
 SEEDS = (530101, 530102, 530103, 530104, 530105)
 
@@ -73,15 +73,6 @@ def atomic_csv(path: Path, rows: list[dict[str, object]]) -> None:
         writer.writeheader()
         writer.writerows(rows)
     temporary.replace(path)
-
-
-def atomic_copy(source: Path, destination: Path) -> None:
-    destination.parent.mkdir(parents=True, exist_ok=True)
-    temporary = destination.with_name(f"{destination.name}.tmp.{os.getpid()}")
-    shutil.copy2(source, temporary)
-    temporary.replace(destination)
-    if digest(source) != digest(destination):
-        raise RuntimeError(f"copied raw result hash mismatch: {destination}")
 
 
 def replay(instance_path: Path, payload: dict) -> dict[str, object]:
@@ -161,20 +152,17 @@ def main() -> int:
         (
             "CSG-NI Full",
             PAPER_ROOT / "raw_results/core45/CSG_NI_PROVISIONAL_PHASE6H/runs",
-            ABLATION_ROOT / "raw_results/full_reference/runs",
         ),
         (
             "No NI intervention (ALNS-H1 equivalence)",
-            ROOT / "outputs/phase5c/search/cb1_core/formal/alns_h1",
             ABLATION_ROOT / "raw_results/no_ni_alns_h1_equivalence/runs",
         ),
     )
-    for arm, source_root, destination_root in arms:
+    for arm, source_root in arms:
         for row in manifest_rows:
             instance_path = ROOT / str(row["instance_path"])
             for seed in SEEDS:
                 source = source_root / str(row["instance_id"]) / f"seed_{seed}.json"
-                destination = destination_root / str(row["instance_id"]) / f"seed_{seed}.json"
                 if not source.is_file():
                     raise RuntimeError(f"missing reused P1 source result: {source}")
                 payload = read_json(source)
@@ -187,7 +175,7 @@ def main() -> int:
                 ):
                     raise RuntimeError(f"reused result metadata mismatch: {source}")
                 replay_result = replay(instance_path, payload)
-                atomic_copy(source, destination)
+                source_hash = digest(source)
                 audit_rows.append({
                     "arm": arm,
                     "instance_id": row["instance_id"],
@@ -198,26 +186,27 @@ def main() -> int:
                     "stored_makespan": float(payload["best_makespan"]),
                     **replay_result,
                     "source_path": str(source.relative_to(ROOT)),
-                    "source_sha256": digest(source),
-                    "copied_raw_path": str(destination.relative_to(ROOT)),
-                    "copied_raw_sha256": digest(destination),
+                    "source_sha256": source_hash,
+                    "storage_policy": "single_tracked_canonical_result",
                 })
                 inventory_rows.append({
                     "arm": arm,
                     "instance_id": row["instance_id"],
                     "seed": seed,
-                    "source_path": str(source.relative_to(ROOT)),
-                    "source_sha256": digest(source),
-                    "copied_raw_path": str(destination.relative_to(ROOT)),
-                    "copied_raw_sha256": digest(destination),
+                    "canonical_result_path": str(source.relative_to(ROOT)),
+                    "canonical_result_sha256": source_hash,
+                    "storage_policy": "single_tracked_canonical_result",
+                    "source_audit": str(AUDIT_PATH.relative_to(ROOT)),
                 })
     if len(audit_rows) != 180 or not all(row["replay_feasible"] for row in audit_rows):
         raise RuntimeError("P1 reused-arm replay gate failed")
     atomic_csv(AUDIT_PATH, audit_rows)
+    atomic_csv(CANONICAL_REFERENCE_PATH, inventory_rows)
     atomic_json(INVENTORY_PATH, {
-        "schema": "initial-manuscript-p1-reference-inventory-v1",
+        "schema": "initial-manuscript-p1-reference-inventory-v2",
         "status": "PASS_REPLAY_VALIDATED",
-        "copied_raw_files": len(inventory_rows),
+        "canonical_raw_files": len(inventory_rows),
+        "storage_policy": "single_tracked_canonical_result",
         "records": inventory_rows,
     })
 

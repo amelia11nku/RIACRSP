@@ -30,13 +30,14 @@ MANIFEST_PATH = ABLATION_ROOT / "ablation_instance_manifest.csv"
 OUTPUT_ROOT = ABLATION_ROOT / "processed_data"
 TABLE_ROOT = ABLATION_ROOT / "tables"
 SNIPPET_ROOT = ROOT / "paper_experiments/reports/snippets"
+REFERENCE_MANIFEST_PATH = ABLATION_ROOT / "audit/canonical_reference_manifest.csv"
 ARMS = (
     "CSG-NI Full",
     "Uniform full-bank selection",
     "No NI (ALNS-H1)",
 )
 ARM_ROOTS = {
-    "CSG-NI Full": ABLATION_ROOT / "raw_results/full_reference/runs",
+    "CSG-NI Full": ROOT / "paper_experiments/raw_results/core45/CSG_NI_PROVISIONAL_PHASE6H/runs",
     "Uniform full-bank selection": ABLATION_ROOT / "raw_results/random_full_bank_frozen_gate/runs",
     "No NI (ALNS-H1)": ABLATION_ROOT / "raw_results/no_ni_alns_h1_equivalence/runs",
 }
@@ -122,6 +123,13 @@ def main() -> int:
     manifest = read_csv(MANIFEST_PATH)
     if len(manifest) != 18:
         raise RuntimeError("P1 manifest must contain 18 instances")
+    reference_rows = read_csv(REFERENCE_MANIFEST_PATH)
+    reference_lookup = {
+        (row["arm"], row["instance_id"], int(row["seed"])): row
+        for row in reference_rows
+    }
+    if len(reference_rows) != 180 or len(reference_lookup) != 180:
+        raise RuntimeError("P1 canonical reference manifest must contain 180 unique reused results")
 
     runs: list[dict[str, object]] = []
     for instance_row in manifest:
@@ -130,6 +138,16 @@ def main() -> int:
         for arm in ARMS:
             for seed in config["seeds"]:
                 path = ARM_ROOTS[arm] / instance_id / f"seed_{seed}.json"
+                reference = reference_lookup.get((arm, instance_id, int(seed)))
+                relative_path = str(path.relative_to(ROOT))
+                result_hash = digest(path)
+                if arm != "Uniform full-bank selection":
+                    if (
+                        reference is None
+                        or reference["canonical_result_path"] != relative_path
+                        or reference["canonical_result_sha256"] != result_hash
+                    ):
+                        raise RuntimeError(f"P1 canonical result manifest mismatch: {path}")
                 payload = json.loads(path.read_text(encoding="utf-8"))
                 if (
                     payload.get("instance_id") != instance_id
@@ -153,8 +171,8 @@ def main() -> int:
                     "iterations": int(payload["iterations"]),
                     "feasible": True,
                     "replay_feasible": True,
-                    "result_path": str(path.relative_to(ROOT)),
-                    "result_sha256": digest(path),
+                    "result_path": relative_path,
+                    "result_sha256": result_hash,
                 })
     if len(runs) != 270:
         raise RuntimeError("P1 requires 270 total arm-instance-seed records")
