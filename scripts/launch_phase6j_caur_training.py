@@ -7,6 +7,7 @@ from datetime import datetime, timedelta, timezone
 import json
 import os
 from pathlib import Path
+import signal
 import subprocess
 import sys
 import time
@@ -37,6 +38,22 @@ def atomic_json(payload: dict, path: Path) -> None:
     temporary = path.with_name(path.name + f".tmp.{os.getpid()}")
     temporary.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
     temporary.replace(path)
+
+
+def wait_for_epoch_liveness(
+    process: subprocess.Popen, log_path: Path, timeout_seconds: float = 30.0
+) -> tuple[bool, str]:
+    deadline = time.monotonic() + timeout_seconds
+    log_text = ""
+    while time.monotonic() < deadline:
+        return_code = process.poll()
+        log_text = log_path.read_text(encoding="utf-8", errors="replace")
+        if "phase6j_caur_epoch" in log_text:
+            return True, log_text
+        if return_code is not None:
+            return False, log_text
+        time.sleep(1.0)
+    return False, log_text
 
 
 def main() -> None:
@@ -95,14 +112,14 @@ def main() -> None:
             stdin=subprocess.DEVNULL, stdout=stream, stderr=subprocess.STDOUT,
             start_new_session=True,
         )
-    time.sleep(5.0)
-    return_code = process.poll()
-    log_text = log_path.read_text(encoding="utf-8", errors="replace")
-    if return_code is not None:
-        raise RuntimeError(f"R12 training exited with {return_code}; inspect {log_path}")
-    if "phase6j_caur_epoch" not in log_text:
-        process.terminate()
-        raise RuntimeError("R12 training did not emit an epoch liveness event")
+    alive, _ = wait_for_epoch_liveness(process, log_path)
+    if not alive:
+        return_code = process.poll()
+        if return_code is None:
+            os.killpg(process.pid, signal.SIGTERM)
+        raise RuntimeError(
+            f"R12 training failed its 30-second epoch liveness check; inspect {log_path}"
+        )
     payload = {
         "schema": "phase6j-caur-r12-training-launch-v1",
         "status": "RUNNING_VERIFIED",
