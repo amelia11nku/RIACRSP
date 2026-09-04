@@ -1,0 +1,16 @@
+{
+  "decoder_evaluation_boundary": "Recorded but excluded from the shared figure because one evaluation does not represent an equivalent computational operation across all algorithm families.",
+  "independent_instances": 45,
+  "matched_seeds_per_method_instance": 5,
+  "pareto_claim": "not made",
+  "schema": "initial-manuscript-p3-quality-runtime-v1",
+  "source": "paper_experiments/processed_data/main/main_runs.csv",
+  "source_sha256": "929f4ed6cd5e5070577a6406693e00900421f32ad00c0423a6dfd126342d56ed",
+  "status": "PASS_DESCRIPTIVE_EXISTING_CORE45",
+  "supported_findings": {
+    "budget_use": "Median utilization is CSG-NI 1.000, GA 1.000, DABC 1.000, and LG_HGA 0.130.",
+    "termination_disclosure": "LG_HGA retains its source-compatible MAXGEN=100 stopping rule, so its shorter runtime is expected and is not evidence of missing runs.",
+    "time_to_best": "Median time-to-best fraction is CSG-NI 0.314, GA 0.938, and DABC 0.940."
+  },
+  "time_to_best_scope": "logged consistently for all five methods"
+}

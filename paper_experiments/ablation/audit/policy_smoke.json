@@ -1,0 +1,25 @@
+{
+  "checkpoint_sha256": "f1ccceb607b0e453dfb74e7aa7a946616001db8ec08c12dc9900a66c6f165fc7",
+  "completed_at_utc": "2026-09-03T16:32:52.173523+00:00",
+  "device": "cuda",
+  "duplicate_target_count": 0,
+  "instance_id": "CB1_CORE_L_CF1_R01",
+  "phase6h_policy_sha256": "4d2da03e13a036569bebf3897135e5da139e292e3260a2f452754d5c9ae3d239",
+  "policy_name": "P1_UNIFORM_FULL_BANK_AT_FROZEN_GATE",
+  "requested_rule_count": 24,
+  "schema": "initial-manuscript-p1-policy-smoke-v1",
+  "selected_target_set_id": "ts_ced2ce266568cd602b47",
+  "selected_target_size": 28,
+  "status": "PASS",
+  "timings_ms": {
+    "action_scoring": 20.03421600056754,
+    "calibration_gate": 0.18060399997921195,
+    "csg_build": 20.03216000048269,
+    "model_inference": 266.72487299947534,
+    "proposal_bank": 3.92503700004454,
+    "tensorization_and_transfer": 16.220725000493985,
+    "total": 331.2319769993337,
+    "uniform_selection_bank_rebuild": 4.061799999362847
+  },
+  "unique_target_count": 24
+}

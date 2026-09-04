@@ -1,0 +1,27 @@
+{
+  "candidate_bank_rule_count": 24,
+  "friedman": {
+    "arm_count": 3,
+    "chi_square": 24.87499999999997,
+    "instance_count": 18,
+    "p_value": 3.967001651986469e-06
+  },
+  "independent_unit": "18 instance-level medians over five matched seeds",
+  "multiplicity": "Holm correction across the two Full-versus-ablation paired comparisons",
+  "pooled_best_definition": "minimum makespan across all three arms and five seeds on each of the 18 instances",
+  "post_hoc": {
+    "No NI (ALNS-H1)": {
+      "holm_adjusted_p": 0.0008755543891493271,
+      "paired_rank_biserial_positive_favors_full": 1.0,
+      "wilcoxon_two_sided_p_raw": 0.00043777719457466354
+    },
+    "Uniform full-bank selection": {
+      "holm_adjusted_p": 0.008360653818070695,
+      "paired_rank_biserial_positive_favors_full": 0.75,
+      "wilcoxon_two_sided_p_raw": 0.008360653818070695
+    }
+  },
+  "schedule_replay": "270/270 feasible and exact-makespan reproducing",
+  "schema": "initial-manuscript-p1-ablation-analysis-v1",
+  "status": "PASS_COMPLETE_REPLAY_VALIDATED"
+}

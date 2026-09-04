@@ -1,0 +1,44 @@
+{
+  "alignment": {
+    "overlay": "paper_experiments/figures/figure3_quality_runtime_tradeoff.alignment.svg",
+    "report": "paper_experiments/figures/figure3_quality_runtime_tradeoff.alignment.json",
+    "tolerance_pt": 1.5,
+    "verdict": "PASS"
+  },
+  "archetype": "quantitative grid",
+  "backend": "python-matplotlib",
+  "center_and_spread": "median and interquartile range across 45 overall or 15 scale-specific instances",
+  "core_conclusion": "Core45 quality differences are interpreted jointly with realized wall-clock cost and source-compatible stopping rules.",
+  "exclusions": "none",
+  "exports": [
+    "paper_experiments/figures/figure3_quality_runtime_tradeoff.svg",
+    "paper_experiments/figures/figure3_quality_runtime_tradeoff.pdf",
+    "paper_experiments/figures/figure3_quality_runtime_tradeoff.eps",
+    "paper_experiments/figures/figure3_quality_runtime_tradeoff.tiff",
+    "paper_experiments/figures/figure3_quality_runtime_tradeoff.png"
+  ],
+  "figure": "Figure 3",
+  "final_width_mm": 180.0,
+  "font": "Times New Roman",
+  "font_file": "Times_New_Roman.ttf",
+  "minimum_rendered_glyph_pt": 5,
+  "pdf_audits": {
+    "collision_audit": "paper_experiments/figures/figure3_quality_runtime_tradeoff.collision-audit.json",
+    "collision_overlay": null,
+    "collision_verdict": "PASS",
+    "pdf_text_audit": "paper_experiments/figures/figure3_quality_runtime_tradeoff.pdf-text-audit.json"
+  },
+  "replicate_unit": "Core instance; each point summarizes instance medians over five matched seeds",
+  "reporting_boundary": "descriptive quality-runtime analysis; decoder evaluations excluded from the common plot because evaluation semantics differ across algorithm families; no Pareto claim",
+  "schema": "initial-manuscript-figure-qa-v1",
+  "source_data": [
+    "paper_experiments/processed_data/runtime/core_quality_runtime_overall.csv",
+    "paper_experiments/processed_data/runtime/core_quality_runtime_by_scale.csv"
+  ],
+  "source_sha256": {
+    "paper_experiments/processed_data/runtime/core_quality_runtime_by_scale.csv": "f67e530dfe71a0a27012a99ef5d1c6eb3bd25ca6bd406f7e44f9833c22754d56",
+    "paper_experiments/processed_data/runtime/core_quality_runtime_overall.csv": "bda366438653eb8c8696b51b48fe290258c343158482282c4b304ebca832d5f6"
+  },
+  "status": "AUTOMATED_QA_PASS",
+  "termination_disclosure": "LG_HGA retains the original MAXGEN=100 cap and commonly terminates before the wall-clock ceiling"
+}

@@ -1,0 +1,78 @@
+{
+  "advantage_definition": "competitor median RPD minus CSG-NI median RPD; positive favors CSG-NI",
+  "cell_medians_percent_points": {
+    "L_DABC_CF1": 24.33839479392625,
+    "L_DABC_CF2": 21.219822109275732,
+    "L_DABC_CF3": 24.739809193408497,
+    "L_DCGA_CF1": 27.58399315215065,
+    "L_DCGA_CF2": 29.197884530630233,
+    "L_DCGA_CF3": 35.41017653167186,
+    "L_GA_CF1": 16.941431670281997,
+    "L_GA_CF2": 15.72775350655323,
+    "L_GA_CF3": 20.381613183000866,
+    "L_LG_HGA_CF1": 17.744034707158352,
+    "L_LG_HGA_CF2": 12.232697171763624,
+    "L_LG_HGA_CF3": 14.744145706851691,
+    "M_DABC_CF1": 10.849208911850177,
+    "M_DABC_CF2": 10.362364907819453,
+    "M_DABC_CF3": 11.36761105281567,
+    "M_DCGA_CF1": 15.903465346534656,
+    "M_DCGA_CF2": 18.312265117868126,
+    "M_DCGA_CF3": 18.420067390490455,
+    "M_GA_CF1": 6.522441072005166,
+    "M_GA_CF2": 4.41830896376351,
+    "M_GA_CF3": 2.0523005627275737,
+    "M_LG_HGA_CF1": 4.592016955139527,
+    "M_LG_HGA_CF2": 2.1184778344448807,
+    "M_LG_HGA_CF3": 3.177755710029791,
+    "S_DABC_CF1": 0.7488479262672811,
+    "S_DABC_CF2": 0.30376670716889453,
+    "S_DABC_CF3": 0.6044325050369377,
+    "S_DCGA_CF1": 5.5224688684353005,
+    "S_DCGA_CF2": 8.930741190765492,
+    "S_DCGA_CF3": 8.865010073875084,
+    "S_GA_CF1": -0.09398496240601495,
+    "S_GA_CF2": -1.518833535844471,
+    "S_GA_CF3": -3.212373587150506,
+    "S_LG_HGA_CF1": 1.973684210526316,
+    "S_LG_HGA_CF2": 1.3291139240506329,
+    "S_LG_HGA_CF3": -0.234879624192601
+  },
+  "independent_instances_per_cell": 5,
+  "inference_boundary": "Post-hoc descriptive heterogeneity analysis; no cellwise significance tests and no seed-level pseudo-replication.",
+  "matched_seeds_per_method_instance": 5,
+  "nonpositive_cell_medians": {
+    "L": [],
+    "M": [],
+    "S": [
+      {
+        "CF_level": "CF1",
+        "competitor": "GA",
+        "median_advantage": -0.09398496240601495
+      },
+      {
+        "CF_level": "CF2",
+        "competitor": "GA",
+        "median_advantage": -1.518833535844471
+      },
+      {
+        "CF_level": "CF3",
+        "competitor": "GA",
+        "median_advantage": -3.212373587150506
+      },
+      {
+        "CF_level": "CF3",
+        "competitor": "LG_HGA",
+        "median_advantage": -0.234879624192601
+      }
+    ]
+  },
+  "schema": "initial-manuscript-p0-scale-cf-summary-v1",
+  "source": "paper_experiments/processed_data/supplementary/core_paired_advantage_scale_cf.csv",
+  "source_sha256": "fb94ec0f2ace7fe7c6ae6344f74f72e076ac9066602cdc7c7d38a529e82312e6",
+  "status": "PASS_DESCRIPTIVE_EXPLORATORY",
+  "supported_findings": {
+    "medium_large": "All 24 competitor-by-CF cell medians at Medium and Large scale are positive, although positive medians do not imply wins on every instance.",
+    "small": "The Small-scale weakness against GA occurs in all three CF strata (-0.094, -1.519, -3.212 percentage points); against LG_HGA, the cell median reverses only in CF3 (-0.235 percentage points)."
+  }
+}

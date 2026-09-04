@@ -28,7 +28,7 @@ METHODS = (
 )
 DISPLAY = {
     "GA": "GA",
-    "Adapted DCGA": "Adapted DCGA",
+    "Adapted DCGA": "DCGA",
     "DABC-RIACRSP": "DABC",
     "LG_HGA-RIACRSP-v2-N4M": "LG_HGA",
     CSG: "CSG-NI",

@@ -182,6 +182,10 @@ def _run_pdf_audits(pdf_path: Path, base_path: Path) -> dict[str, object]:
 
     collision_json = base_path.with_suffix(".collision-audit.json")
     collision_overlay = base_path.with_suffix(".collision-audit.pdf")
+    # The audit tool may omit an overlay when the new render has no findings.
+    # Remove any prior diagnostic first so a passed rerender cannot retain stale
+    # labels from an older figure revision.
+    collision_overlay.unlink(missing_ok=True)
     collision_result = subprocess.run(
         [
             sys.executable,
@@ -217,7 +221,10 @@ def _run_pdf_audits(pdf_path: Path, base_path: Path) -> dict[str, object]:
     return {
         "pdf_text_audit": str(base_path.with_suffix(".pdf-text-audit.json").relative_to(ROOT)),
         "collision_audit": str(collision_json.relative_to(ROOT)),
-        "collision_overlay": str(collision_overlay.relative_to(ROOT)),
+        "collision_overlay": (
+            str(collision_overlay.relative_to(ROOT))
+            if collision_overlay.is_file() else None
+        ),
         "collision_verdict": collision_verdict,
     }
 

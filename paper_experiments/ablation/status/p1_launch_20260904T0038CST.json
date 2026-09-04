@@ -1,0 +1,36 @@
+{
+  "schema": "initial-manuscript-p1-launch-record-v1",
+  "status": "RUNNING_HEALTHY",
+  "launched_at_cst": "2026-09-04T00:39:05+08:00",
+  "expected_completion_cst": "2026-09-04T03:50:00+08:00",
+  "expected_completion_window_cst": [
+    "2026-09-04T03:45:00+08:00",
+    "2026-09-04T04:05:00+08:00"
+  ],
+  "basis": "two balanced disjoint shards with frozen budget sums 11052 and 10998 seconds plus model loading and per-run serialization",
+  "algorithm": "CSG_NI_UNIFORM_FULL_BANK_FROZEN_GATE",
+  "completed_runs_at_health_check": 0,
+  "total_runs": 90,
+  "services": [
+    {
+      "unit": "riacrsp-p1-ablation-s0.service",
+      "main_pid_at_health_check": 11423,
+      "shard_index": 0,
+      "assigned_runs": 45,
+      "budget_seconds_sum": 11052,
+      "log": "paper_experiments/ablation/logs/p1_shard0_20260904T0038CST.log"
+    },
+    {
+      "unit": "riacrsp-p1-ablation-s1.service",
+      "main_pid_at_health_check": 11429,
+      "shard_index": 1,
+      "assigned_runs": 45,
+      "budget_seconds_sum": 10998,
+      "log": "paper_experiments/ablation/logs/p1_shard1_20260904T0038CST.log"
+    }
+  ],
+  "output_directory": "paper_experiments/ablation/raw_results/random_full_bank_frozen_gate",
+  "progress_file": "paper_experiments/ablation/raw_results/random_full_bank_frozen_gate/progress.json",
+  "completion_command": "/home/liulei/miniconda3/envs/gnn311/bin/python paper_experiments/ablation/finalize_p1_extension.py",
+  "status_command": "systemctl --user show riacrsp-p1-ablation-s0.service riacrsp-p1-ablation-s1.service --property=Id,ActiveState,SubState,MainPID,Result"
+}

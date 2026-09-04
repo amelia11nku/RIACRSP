@@ -11,9 +11,10 @@ Current boundaries:
   first five preregistered seeds and matched across all five methods. Existing
   results for `530106` through `530110` are preserved but excluded from this
   manuscript analysis.
-- The five primary manuscript method names are GA, Adapted DCGA, DABC,
+- The five primary manuscript method names are GA, DCGA, DABC,
   LG_HGA, and CSG-NI. The longer LG_HGA implementation identifier is retained
-  only in raw and provenance records.
+  only in raw and provenance records. The internal baseline identifier
+  `Adapted DCGA` is likewise retained only in raw data and code-level mappings.
 - ALNS-H1 is not part of the five-method ranking; it is reserved for CSG-NI
   efficiency and anytime comparisons.
 - BKS, RPD, rankings, and significance tests must not be generated until all
@@ -82,6 +83,19 @@ BKS/RPD gate. No plotting script permits an implicit fallback font or an
 unaudited multi-panel export. Supplementary scale-by-CF and stability results
 are explicitly post-hoc descriptive analyses and do not alter the primary
 Friedman/Wilcoxon family.
+
+The P0/P1/P3 extension package is built after the 90-run P1 uniform-selection
+arm reaches `COMPLETE`:
+
+```bash
+/home/liulei/miniconda3/envs/gnn311/bin/python \
+  paper_experiments/ablation/finalize_p1_extension.py
+```
+
+Its integrated report is `reports/P0_P1_P3_EXTENSION_REPORT.md`. P1 raw,
+processed, table and figure artifacts are indexed in
+`ablation/ABLATION_REPORT.md`; the primary scale-stratified ablation figure and
+the descriptive mechanism diagnostic are stored in `ablation/figures/`.
 
 Run the final package validator at any time to obtain a machine-readable list
 of passed and open gates:

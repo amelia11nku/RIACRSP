@@ -1,0 +1,44 @@
+{
+  "alignment": {
+    "overlay": "paper_experiments/ablation/figures/supplementary_p1_mechanism_diagnostics.alignment.svg",
+    "report": "paper_experiments/ablation/figures/supplementary_p1_mechanism_diagnostics.alignment.json",
+    "tolerance_pt": 1.5,
+    "verdict": "PASS"
+  },
+  "archetype": "quantitative grid",
+  "backend": "python-matplotlib",
+  "candidate_bank_boundary": "both arms request all 24 production rules and deduplicate only identical target sets",
+  "center_and_spread": "panels b-c show median, IQR and 1.5-IQR whiskers over 30 runs per arm and scale",
+  "core_conclusion": "The learned-selection contrast is interpreted alongside target provenance, frozen-gate coverage and measured NI overhead.",
+  "exclusions": "none",
+  "exports": [
+    "paper_experiments/ablation/figures/supplementary_p1_mechanism_diagnostics.svg",
+    "paper_experiments/ablation/figures/supplementary_p1_mechanism_diagnostics.pdf",
+    "paper_experiments/ablation/figures/supplementary_p1_mechanism_diagnostics.eps",
+    "paper_experiments/ablation/figures/supplementary_p1_mechanism_diagnostics.tiff",
+    "paper_experiments/ablation/figures/supplementary_p1_mechanism_diagnostics.png"
+  ],
+  "figure": "P1 supplementary mechanism diagnostics",
+  "final_width_mm": 180.0,
+  "font": "Times New Roman",
+  "font_file": "Times_New_Roman.ttf",
+  "minimum_rendered_glyph_pt": 5,
+  "pdf_audits": {
+    "collision_audit": "paper_experiments/ablation/figures/supplementary_p1_mechanism_diagnostics.collision-audit.json",
+    "collision_overlay": null,
+    "collision_verdict": "PASS",
+    "pdf_text_audit": "paper_experiments/ablation/figures/supplementary_p1_mechanism_diagnostics.pdf-text-audit.json"
+  },
+  "replicate_unit": "run summaries for panels b-c; panel a is a pooled state-level process composition",
+  "reporting_boundary": "descriptive process audit; state-level selection counts are not independent inferential replicates",
+  "schema": "initial-manuscript-figure-qa-v1",
+  "source_data": [
+    "paper_experiments/ablation/processed_data/mechanism_run_summary.csv",
+    "paper_experiments/ablation/processed_data/mechanism_selection_family.csv"
+  ],
+  "source_sha256": {
+    "paper_experiments/ablation/processed_data/mechanism_run_summary.csv": "1da8ea8bf9a5489864f5d365ca791cefd3f99852e803fd43c70221b9c28daf2e",
+    "paper_experiments/ablation/processed_data/mechanism_selection_family.csv": "08209619d467bea0d0034d10d6cf76a1319fef65f881a6050c71d59be4a08e93"
+  },
+  "status": "AUTOMATED_QA_PASS"
+}

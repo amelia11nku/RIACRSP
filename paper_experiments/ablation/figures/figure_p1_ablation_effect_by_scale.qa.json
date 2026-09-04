@@ -1,0 +1,37 @@
+{
+  "alignment": {
+    "overlay": "paper_experiments/ablation/figures/figure_p1_ablation_effect_by_scale.alignment.svg",
+    "report": "paper_experiments/ablation/figures/figure_p1_ablation_effect_by_scale.alignment.json",
+    "tolerance_pt": 1.5,
+    "verdict": "PASS"
+  },
+  "archetype": "quantitative grid",
+  "backend": "python-matplotlib",
+  "center_and_spread": "boxplots show median, IQR and 1.5-IQR whiskers; all six instance differences per scale are shown",
+  "core_conclusion": "The quality cost of removing learned selection or NI is evaluated as an instance-paired contrast across scale.",
+  "exclusions": "none",
+  "exports": [
+    "paper_experiments/ablation/figures/figure_p1_ablation_effect_by_scale.svg",
+    "paper_experiments/ablation/figures/figure_p1_ablation_effect_by_scale.pdf",
+    "paper_experiments/ablation/figures/figure_p1_ablation_effect_by_scale.eps",
+    "paper_experiments/ablation/figures/figure_p1_ablation_effect_by_scale.tiff",
+    "paper_experiments/ablation/figures/figure_p1_ablation_effect_by_scale.png"
+  ],
+  "figure": "P1 ablation figure",
+  "final_width_mm": 180.0,
+  "font": "Times New Roman",
+  "font_file": "Times_New_Roman.ttf",
+  "minimum_rendered_glyph_pt": 5,
+  "pdf_audits": {
+    "collision_audit": "paper_experiments/ablation/figures/figure_p1_ablation_effect_by_scale.collision-audit.json",
+    "collision_overlay": null,
+    "collision_verdict": "PASS",
+    "pdf_text_audit": "paper_experiments/ablation/figures/figure_p1_ablation_effect_by_scale.pdf-text-audit.json"
+  },
+  "replicate_unit": "independent Core instance; each paired difference uses arm medians over five matched seeds",
+  "reporting_boundary": "separate controlled ablation analysis; positive differences favor Full and do not imply universal per-seed superiority",
+  "schema": "initial-manuscript-figure-qa-v1",
+  "source_data": "paper_experiments/ablation/processed_data/ablation_paired_differences.csv",
+  "source_sha256": "bf051a30f74924526694d0a2a2e57d60f33b17b4d01944df4e14a674a79f5d2a",
+  "status": "AUTOMATED_QA_PASS"
+}

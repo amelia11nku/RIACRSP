@@ -29,12 +29,12 @@ DATA_ROOT = PAPER_ROOT / "processed_data/supplementary"
 FIGURE_ROOT = PAPER_ROOT / "figures"
 METHODS = (
     ("GA", PALETTE["ga"]),
-    ("Adapted DCGA", PALETTE["dcga"]),
+    ("DCGA", PALETTE["dcga"]),
     ("DABC", PALETTE["dabc"]),
     ("LG_HGA", PALETTE["lghga"]),
     ("CSG-NI", PALETTE["csgni"]),
 )
-TICK_LABELS = {"Adapted DCGA": "DCGA"}
+TICK_LABELS = {}
 SCALES = (("S", "Small"), ("M", "Medium"), ("L", "Large"))
 
 

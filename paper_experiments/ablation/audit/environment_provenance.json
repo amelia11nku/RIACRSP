@@ -1,0 +1,24 @@
+{
+  "core_artifact_hashes": {
+    "checkpoint": "f1ccceb607b0e453dfb74e7aa7a946616001db8ec08c12dc9900a66c6f165fc7",
+    "main_runs.csv": "929f4ed6cd5e5070577a6406693e00900421f32ad00c0423a6dfd126342d56ed",
+    "main_scale_summary.csv": "f57f2f177a7bb56edce4bbe0b906e1adc4fa1f2189a50ff7727ed6dd5624fcc9",
+    "phase6h_policy.json": "4d2da03e13a036569bebf3897135e5da139e292e3260a2f452754d5c9ae3d239",
+    "statistical_analysis.json": "c8d12a42ebdc67d0dff1ad75ce10b2b6dea2dd3a782aa823dcad785d990f72d3"
+  },
+  "git_commit": "6a8ac523adc2186c7cb359c2902c207d90184b5b",
+  "gpu_note": "GPU availability is verified separately at launch because the workspace sandbox does not expose CUDA devices.",
+  "packages": {
+    "matplotlib": "3.10.9",
+    "numpy": "1.26.4",
+    "pandas": "2.0.3",
+    "pyarrow": "25.0.1",
+    "scikit-learn": "1.9.0",
+    "scipy": "1.17.1",
+    "torch": "2.11.0+cu128"
+  },
+  "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+  "python": "3.11.15",
+  "recorded_at_utc": "2026-09-03T16:32:25.580122+00:00",
+  "schema": "initial-manuscript-p0-p1-p3-provenance-v1"
+}

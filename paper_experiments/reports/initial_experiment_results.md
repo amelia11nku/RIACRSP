@@ -12,9 +12,9 @@ source_sha256:
   paper_experiments/processed_data/efficiency/efficiency_pairwise.csv: 0f0fec2db4211887900dfdf442c2ef51b208a2806c6dc35a3060bdedc130ca30
   paper_experiments/processed_data/efficiency/anytime_summary.csv: c8b69e98c563a05846ad13da6ab4554253f8a5e36068493f786e04a2ef83656a
   paper_experiments/processed_data/supplementary/core_best_baseline_advantage.csv: f3f4ea6444c077c35c2a249dd29dfb6748ab8a0590d0e7f1036dadd9f3bdb98a
-  paper_experiments/processed_data/supplementary/core_paired_advantage_scale_cf.csv: 1782a49abcedb210dca09c690d1c17a036e8de5f95196f53edd32ad8efca2a0b
-  paper_experiments/processed_data/supplementary/core_seed_variability.csv: ef7a80070599540a373610de67c98062bfe7c26077bec1361f2762f25aa1c386
-  paper_experiments/processed_data/supplementary/core_runtime_utilization.csv: c1aee988724064d23e887c8e7abbad9990aa63cc23d88dc0356d6ea89d832cfd
+  paper_experiments/processed_data/supplementary/core_paired_advantage_scale_cf.csv: fb94ec0f2ace7fe7c6ae6344f74f72e076ac9066602cdc7c7d38a529e82312e6
+  paper_experiments/processed_data/supplementary/core_seed_variability.csv: bc270452322708404e71e3c10b459030f9921b6cbeac28ccd763f4c6a1ead96d
+  paper_experiments/processed_data/supplementary/core_runtime_utilization.csv: 2c0cc69bcbed7716f0f9d6379d6817fe52d5632d1e03d6a853e7d31cf6155af5
   paper_experiments/processed_data/supplementary/supplementary_analysis.json: bc0066c0a7a72061e5aeefd568358058fb39bf1481e3873c78a948808b176138
 ---
 
@@ -30,14 +30,14 @@ Across the frozen five-seed Core45 protocol, CSG-NI (Phase6H provisional) provid
 |---|---|
 | RCIAS-CB1 Core (Core45) | The frozen 45-instance primary comparison benchmark, with 15 Small, 15 Medium and 15 Large instances. |
 | CSG-NI (Phase6H provisional) | The current proposed-method column; retain the provisional label until the preregistered Phase6I-MR decision. |
-| Adapted DCGA | A faithful RI-ACRSP adaptation; do not describe it as an exact source implementation. |
+| DCGA | The RI-ACRSP-adapted DCGA implementation; retain the shorter original-paper name in manuscript-facing outputs. |
 | LG_HGA | Manuscript display name following the original paper; the longer implementation identifier is retained only in provenance data. |
 | Draft BKS | The minimum makespan over five methods and five matched seeds for each Core45 instance. |
 | RPD | Relative percentage deviation from the draft BKS; lower is better. |
 
 ## Draft: Experimental setup
 
-We evaluated GA, Adapted DCGA, DABC, LG_HGA and CSG-NI on the frozen RCIAS-CB1 Core benchmark. Core45 contains 45 instances equally divided among Small, Medium and Large scales. Each method was run with the same five matched stochastic seeds (530101–530105) and a common maximum wall-clock budget of 2 s per operation, giving 225 runs per method and 1,125 runs in total. All returned schedules were independently replayed and feasible. LG_HGA also retained the original-paper MAXGEN=100 termination rule and therefore could stop before exhausting the common wall-clock ceiling. For each instance, the draft best-known solution (BKS) was defined as the minimum makespan observed across the five methods and five matched seeds, and RPD was computed relative to this value. The main descriptive unit was the instance-level median across five seeds; the 45 instances, rather than the 225 seed-runs per method, were the independent paired units for inference.
+We evaluated GA, DCGA, DABC, LG_HGA and CSG-NI on the frozen RCIAS-CB1 Core benchmark. Core45 contains 45 instances equally divided among Small, Medium and Large scales. Each method was run with the same five matched stochastic seeds (530101–530105) and a common maximum wall-clock budget of 2 s per operation, giving 225 runs per method and 1,125 runs in total. All returned schedules were independently replayed and feasible. LG_HGA also retained the original-paper MAXGEN=100 termination rule and therefore could stop before exhausting the common wall-clock ceiling. For each instance, the draft best-known solution (BKS) was defined as the minimum makespan observed across the five methods and five matched seeds, and RPD was computed relative to this value. The main descriptive unit was the instance-level median across five seeds; the 45 instances, rather than the 225 seed-runs per method, were the independent paired units for inference.
 
 The dedicated exact-validation benchmark comprised ten resized and scale-renamed instances with 6–9 operations. Gurobi was executed on an external licensed workstation and proved the optimum for every instance. Each heuristic was evaluated for five matched seeds under the same 2 s-per-operation budget. Optimum-hit time was measured from the first incumbent equal to the proven optimum; runs that did not reach the optimum were retained as right-censored observations rather than assigned an artificial time.
 
@@ -47,7 +47,7 @@ AUTHOR_INPUT_NEEDED: provide the CPU, GPU, memory and operating-system specifica
 
 ## Draft: Exact validation
 
-All 250 heuristic runs on the exact-validation set returned feasible schedules. Aggregate optimum hits were GA 45/50, Adapted DCGA 50/50, DABC 50/50, LG_HGA 43/50, CSG-NI (Phase6H provisional) 44/50. Thus, the exact set primarily supports implementation correctness and optimum-recovery capability rather than a claim that the proposed method dominates on very small instances. The E10 reference optimum remains 129 and its native Gurobi schedule replay is feasible; the separately decoded Gurobi action-sequence diagnostic yields a feasible makespan of 131 and is retained as a decoder-representation diagnostic, not as a replacement for the proven reference objective.
+All 250 heuristic runs on the exact-validation set returned feasible schedules. Aggregate optimum hits were GA 45/50, DCGA 50/50, DABC 50/50, LG_HGA 43/50, CSG-NI (Phase6H provisional) 44/50. Thus, the exact set primarily supports implementation correctness and optimum-recovery capability rather than a claim that the proposed method dominates on very small instances. The E10 reference optimum remains 129 and its native Gurobi schedule replay is feasible; the separately decoded Gurobi action-sequence diagnostic yields a feasible makespan of 131 and is retained as a decoder-representation diagnostic, not as a replacement for the proven reference objective.
 
 ## Draft: Comparative performance on Core45
 
@@ -55,13 +55,13 @@ CSG-NI achieved the lowest overall mean RPD (3.567%), the lowest median RPD (3.1
 
 ## Draft: Statistical analysis
 
-The Friedman test rejected equal method performance across the 45 paired instances (χ²=129.369, p=5.313e-27). In the prespecified post-hoc comparisons, CSG-NI had lower median RPD on 33–45 of 45 instances depending on the competitor, and every Holm-adjusted comparison remained below 0.05. Specifically, versus GA: 33/0/12 wins/ties/losses, Holm-adjusted p=1.04e-05, rank-biserial=0.712; versus Adapted DCGA: 45/0/0 wins/ties/losses, Holm-adjusted p=2.27e-13, rank-biserial=1.000; versus DABC: 40/0/5 wins/ties/losses, Holm-adjusted p=9.79e-10, rank-biserial=0.929; versus LG_HGA: 36/0/9 wins/ties/losses, Holm-adjusted p=9.83e-07, rank-biserial=0.793. These effects support the overall Core45 ranking while retaining the Small-scale reversal as a substantive boundary.
+The Friedman test rejected equal method performance across the 45 paired instances (χ²=129.369, p=5.313e-27). In the prespecified post-hoc comparisons, CSG-NI had lower median RPD on 33–45 of 45 instances depending on the competitor, and every Holm-adjusted comparison remained below 0.05. Specifically, versus GA: 33/0/12 wins/ties/losses, Holm-adjusted p=1.04e-05, rank-biserial=0.712; versus DCGA: 45/0/0 wins/ties/losses, Holm-adjusted p=2.27e-13, rank-biserial=1.000; versus DABC: 40/0/5 wins/ties/losses, Holm-adjusted p=9.79e-10, rank-biserial=0.929; versus LG_HGA: 36/0/9 wins/ties/losses, Holm-adjusted p=9.83e-07, rank-biserial=0.793. These effects support the overall Core45 ranking while retaining the Small-scale reversal as a substantive boundary.
 
 ## Draft: Exploratory heterogeneity, stability and budget diagnostics
 
 The paired advantage over the best-performing baseline selected separately on each instance changed from a median of -2.138 percentage points on Small instances (3 wins, 12 losses) to 2.118 on Medium instances (12 wins, 3 losses) and 16.549 on Large instances (14 wins, 1 loss; Supplementary Fig. 1). Operation count was positively associated with this post-hoc advantage (Spearman ρ=0.831, unadjusted two-sided p=1.699e-12, n=45). Because operation count is confounded with the predefined scale classes and other instance characteristics, this association is descriptive and neither causal nor predictive.
 
-Across Medium and Large instances, the median within-instance seed RPD s.d. for CSG-NI was 1.253 and 1.608 percentage points, respectively, below GA (4.290, 3.922), DABC (3.547, 2.724) and LG_HGA (3.823, 2.889); Adapted DCGA was still less variable despite its poorer objective quality (Supplementary Fig. 2). On Small instances, CSG-NI's median seed RPD s.d. was 2.096. These are descriptive stability estimates from only five seeds and do not convert low variability into evidence of superior quality.
+Across Medium and Large instances, the median within-instance seed RPD s.d. for CSG-NI was 1.253 and 1.608 percentage points, respectively, below GA (4.290, 3.922), DABC (3.547, 2.724) and LG_HGA (3.823, 2.889); DCGA was still less variable despite its poorer objective quality (Supplementary Fig. 2). On Small instances, CSG-NI's median seed RPD s.d. was 2.096. These are descriptive stability estimates from only five seeds and do not convert low variability into evidence of superior quality.
 
 The median observed runtime divided by the allowed maximum was 0.132 for LG_HGA, which reached the preregistered 100-generation cap, while GA, DABC and CSG-NI were each approximately 1.000 (Supplementary Table 1). LG_HGA's shorter runtime is therefore a disclosed consequence of retaining its source termination rule, not a missing-run or feasibility failure. CSG-NI found its final incumbent after a median 27.8% of the allowed budget, compared with 93.2% for GA and 94.0% for DABC. These timing diagnostics are descriptive because the algorithms have different internal stopping and evaluation mechanics.
 
@@ -108,7 +108,7 @@ Three boundaries remain. First, the Core45 BKS and proposed-method column are pr
 | CSG-NI is strongest overall on Core45 under the frozen five-seed protocol. | Mean/median RPD, average rank, BKS count and paired tests over 45 instances. | Supported, provisional artifact. |
 | The advantage increases on Medium and Large instances. | Scale-specific summaries; Large BKS count 15/15; Small-scale GA reversal. | Supported within Core45. |
 | The scale trend persists against the best baseline selected per instance. | Median paired advantage shifts from negative on Small to strongly positive on Large; exploratory operation-count association. | Descriptively supported; post hoc and confounded. |
-| CSG-NI is comparatively stable over seeds on Medium and Large instances. | Per-instance sample s.d. of RPD over five matched seeds. | Descriptively supported against GA, DABC and LG_HGA; not against Adapted DCGA. |
+| CSG-NI is comparatively stable over seeds on Medium and Large instances. | Per-instance sample s.d. of RPD over five matched seeds. | Descriptively supported against GA, DABC and LG_HGA; not against DCGA. |
 | CSG-NI is more search efficient than ALNS. | Lower evaluations, time-to-best and gap AUC on nine CAL-HOLDOUT instances. | Descriptively supported; confirmatory final-quality superiority not established. |
 | Heuristic results are feasible and can recover exact optima. | 250 feasible exact-set runs and optimum-hit records against ten proven optima. | Supported on the dedicated small exact set. |
 | CSG-NI's mechanism causes the scale-dependent gain. | No causal ablation in the current main package. | Not established; do not claim. |

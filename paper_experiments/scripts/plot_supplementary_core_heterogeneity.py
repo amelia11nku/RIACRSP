@@ -26,7 +26,7 @@ ROOT = Path(__file__).resolve().parents[2]
 PAPER_ROOT = ROOT / "paper_experiments"
 DATA_ROOT = PAPER_ROOT / "processed_data/supplementary"
 FIGURE_ROOT = PAPER_ROOT / "figures"
-COMPETITORS = ("GA", "Adapted DCGA", "DABC", "LG_HGA")
+COMPETITORS = ("GA", "DCGA", "DABC", "LG_HGA")
 CF_LEVELS = ("CF1", "CF2", "CF3")
 SCALES = (("S", "Small"), ("M", "Medium"), ("L", "Large"))
 

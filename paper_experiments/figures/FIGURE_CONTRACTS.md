@@ -7,8 +7,8 @@ experiment manual, and SVG/PDF/EPS/TIFF/PNG exports.
 
 ## Figure 1 — Core45 solution-quality distribution
 
-- Core conclusion: relative solution-quality differences among GA, Adapted
-  DCGA, DABC, LG_HGA and provisional Phase6H CSG-NI are assessed across
+- Core conclusion: relative solution-quality differences among GA, DCGA,
+  DABC, LG_HGA and provisional Phase6H CSG-NI are assessed across
   Small, Medium and Large Core45 instances.
 - Results question: does the comparative quality pattern persist or change
   with problem scale?
@@ -78,6 +78,25 @@ experiment manual, and SVG/PDF/EPS/TIFF/PNG exports.
   raw instance-level points are overlaid.
 - Reviewer risks: low variance is not evidence of good objective quality, and
   five seeds give only a coarse stability estimate.
+
+## Figure 3 — Core45 quality and realized runtime
+
+- Core conclusion: final Core45 quality must be interpreted jointly with the
+  computational cost realized under each method's frozen stopping rule.
+- Results question: where do the five methods lie in quality--runtime space,
+  overall and across Small, Medium and Large instances?
+- Archetype: quantitative grid.
+- Panel roles: `a`, overall median RPD versus normalized budget utilization;
+  `b`, scale-specific median RPD versus realized runtime.
+- Evidence unit: one Core instance. Each method--instance value is the median
+  over five matched seeds; error bars summarize the interquartile range across
+  45 overall or 15 scale-specific instances.
+- Exclusions: decoder evaluations are retained in processed data but excluded
+  from the shared plot because one evaluation is not computationally equivalent
+  across the five algorithm families.
+- Reviewer risks: LG_HGA retains its original `MAXGEN=100` stopping rule and
+  therefore terminates well before the common ceiling; short runtime is not a
+  missing-run signal. The figure supports no Pareto-optimality claim.
 
 ## Blocking delivery gates
 

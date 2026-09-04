@@ -1,0 +1,15 @@
+\begin{table}[t]
+\centering
+\caption{Ablation analysis of the principal CSG-NI mechanisms on 18 independent instances, using five matched seeds per arm. Best is the number of pooled-best attainments; Dec. evals is the median decoder-evaluation count; W/T/L reports Full wins, ties, and losses against each ablation. Holm-adjusted two-sided Wilcoxon $p$ values and paired rank-biserial effects use instance medians; positive effects favor Full. All 270 schedules were feasible on replay.}
+\label{tab:p1_ablation}
+\footnotesize
+\begin{tabular}{lrrrrrrrr}
+\toprule
+Arm & Mean RPD & Median RPD & Rank & Best & Dec. evals & W/T/L & Holm $p$ & $r_{rb}$ \\
+\midrule
+CSG-NI Full & 2.38 & 2.39 & 1.28 & 13 & 16044 & -- & -- & -- \\
+Uniform full-bank selection & 3.19 & 3.00 & 1.89 & 5 & 18232 & 13/2/3 & 0.00836 & +0.75 \\
+No NI (ALNS-H1) & 4.79 & 4.61 & 2.83 & 1 & 10861 & 16/2/0 & 0.000876 & +1.00 \\
+\bottomrule
+\end{tabular}
+\end{table}
