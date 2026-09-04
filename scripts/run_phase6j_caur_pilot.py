@@ -415,6 +415,7 @@ def collect_state(
     raw_rows: list[dict] = []
     grouped_rows: list[dict] = []
     arm_by_id = {arm.target_set_id: arm for arm in bank.arms}
+    generated_by_id = {arm.target_set_id: arm for arm in generated.arms}
     for target_id, arm_continuations in continuations.items():
         arm = arm_by_id[target_id]
         decoded = decoded_by_id[target_id]
@@ -431,7 +432,7 @@ def collect_state(
             "fallback_target_set_id": fallback_id,
             "target_operation_ids": json.dumps(arm.destroyed_operations),
             "origin_rules": json.dumps(arm.origin_rules),
-            "origin_families": json.dumps(arm.origin_families),
+            "origin_families": json.dumps(generated_by_id[target_id].origin_families),
             "frozen_raw_score": arm.raw_score,
             "frozen_calibrated_probability": arm.calibrated_probability,
             "frozen_immediate_utility_prediction": arm.calibrated_utility,

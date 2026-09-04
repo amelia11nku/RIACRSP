@@ -177,6 +177,7 @@ def test_true_full_bank_features_are_complete_deterministic_and_outcome_blind():
     assert REDUCED_AUDIT_SCOPE == "REDUCED_TOP8_AUDIT_ONLY"
     assert set(CANDIDATE_INPUT_COLUMNS).isdisjoint(LABEL_COLUMNS)
     assert sum(bool(row["is_fallback"]) for row in first) == 1
+    assert all(arm.origin_families for arm in generated.arms)
 
     labels = [{
         **row,
