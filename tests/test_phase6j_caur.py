@@ -3,7 +3,9 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import pandas as pd
 import pytest
+import torch
 
 from rcias_clgri.analysis.phase6j_caur import (
     CANDIDATE_INPUT_COLUMNS,
@@ -34,11 +36,20 @@ from rcias_clgri.data.phase6j_access import (
     verify_r12_collection_authorization,
 )
 from rcias_clgri.heuristic.dispatching import solve_dispatching
+from rcias_clgri.ni.encoder import NIModelConfig
+from rcias_clgri.ni.phase6j_caur_model import (
+    CAURModel,
+    CandidateContinuationHeads,
+    caur_grouped_state_loss,
+)
+from rcias_clgri.ni.scorer import CSGTargetSetScorer
+from rcias_clgri.ni.tensorize import CSGTensorizer
 from rcias_clgri.search.alns import ALNSConfig
 from rcias_clgri.search.common import candidate_from_actions, decode_candidate
 from rcias_clgri.search.phase6c import generate_revised_target_arms
 from scripts.run_phase6j_caur_pilot import SnapshotObserver, build_tasks
 from scripts.run_phase6j_caur_collection import build_collection_tasks
+from scripts.build_phase6j_caur_tensor_cache import records_for_tensorization
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -346,6 +357,7 @@ def test_phase6j_learning_and_stage_sources_do_not_name_r11_payload_paths():
         ROOT / "scripts/generate_phase6j_caur_instances.py",
         ROOT / "scripts/run_phase6j_caur_pilot.py",
         ROOT / "scripts/run_phase6j_caur_collection.py",
+        ROOT / "scripts/build_phase6j_caur_tensor_cache.py",
     ]
     forbidden = ("outputs/phase6i_mr/r11_validation", "r11_live_rev_holdout")
     for path in sources:
@@ -384,3 +396,88 @@ def test_r12_collection_tasks_cover_every_fit_instance_and_both_trajectories():
     assert {task["trajectory_seed"] for task in tasks} == {691201, 691202}
     assert {task["cell_replicate"] for task in tasks} == {"C01", "C02"}
     assert all("_R12" in task["instance_id"] for task in tasks)
+
+
+def test_r12_tensor_records_use_continuation_labels_and_stable_tie_breaks():
+    frame = pd.DataFrame([
+        {
+            "state_id": "s", "target_set_id": "b", "target_operation_ids": '["o2"]',
+            "continuation_advantage_mean": 0.2, "origin_family": "B",
+            "origin_destroy_operator": "related", "origin_rules": '["r2"]',
+            "origin_families": '["B"]',
+        },
+        {
+            "state_id": "s", "target_set_id": "a", "target_operation_ids": '["o1"]',
+            "continuation_advantage_mean": 0.2, "origin_family": "A",
+            "origin_destroy_operator": "critical", "origin_rules": '["r1"]',
+            "origin_families": '["A"]',
+        },
+        {
+            "state_id": "s", "target_set_id": "c", "target_operation_ids": '["o3"]',
+            "continuation_advantage_mean": -0.1, "origin_family": "C",
+            "origin_destroy_operator": "random", "origin_rules": '["r3"]',
+            "origin_families": '["C"]',
+        },
+    ])
+    rows = records_for_tensorization(frame)
+    assert [row["target_set_id"] for row in rows] == ["a", "b", "c"]
+    assert [row["rank_within_state"] for row in rows] == [1, 2, 3]
+    assert [row["mean_relative_improvement"] for row in rows] == [0.2, 0.2, -0.1]
+
+
+def test_caur_heads_and_grouped_loss_are_shape_safe_and_rank_sensitive():
+    heads = CandidateContinuationHeads((25, 8, 6), dropout=0.0)
+    embeddings = torch.randn(5, 128)
+    state_index = torch.tensor([0, 0, 0, 1, 1])
+    fallback = torch.tensor([1, 3])
+    categorical = torch.zeros((5, 3), dtype=torch.long)
+    numeric = torch.zeros((5, 12))
+    advantage, beats, immediate = heads(
+        embeddings, state_index, fallback, categorical, numeric
+    )
+    assert advantage.shape == beats.shape == immediate.shape == (5,)
+    target = torch.tensor([0.2, 0.0, -0.1, 0.1, 0.0])
+    aligned = caur_grouped_state_loss(
+        target,
+        torch.zeros(5),
+        torch.zeros(5),
+        target,
+        (target > 0).float(),
+        torch.zeros(5),
+        torch.tensor([0, 3, 5]),
+        gap_scale=0.05,
+        immediate_delta=0.05,
+    )
+    reversed_loss = caur_grouped_state_loss(
+        -target,
+        torch.zeros(5),
+        torch.zeros(5),
+        target,
+        (target > 0).float(),
+        torch.zeros(5),
+        torch.tensor([0, 3, 5]),
+        gap_scale=0.05,
+        immediate_delta=0.05,
+    )
+    assert torch.isfinite(aligned["loss"])
+    assert aligned["pairwise_loss"] < reversed_loss["pairwise_loss"]
+    assert int(aligned["pair_count"]) == 4
+
+
+def test_caur_j1_j2_parameter_caps_hold_for_frozen_phase6f_shape():
+    freeze = json.loads((ROOT / "outputs/phase6f/audit/experiment_freeze.json").read_text())
+    checkpoint = torch.load(
+        freeze["selected_checkpoint_path"], map_location="cpu", weights_only=False
+    )
+    config = NIModelConfig(**checkpoint["model_config"])
+    counts = {}
+    for family in ("J1_CONT_FROZEN", "J2_CONT_LASTBLOCK"):
+        base = CSGTargetSetScorer(CSGTensorizer(), config)
+        base.load_state_dict(checkpoint["model_state"])
+        model = CAURModel(base, (25, 8, 6), family=family)
+        counts[family] = model.parameter_counts()
+    assert counts["J1_CONT_FROZEN"][0] <= 5_350_000
+    assert counts["J1_CONT_FROZEN"][1] <= 500_000
+    assert counts["J2_CONT_LASTBLOCK"][0] <= 5_350_000
+    assert counts["J2_CONT_LASTBLOCK"][1] <= 2_600_000
+    assert counts["J1_CONT_FROZEN"][1] < counts["J2_CONT_LASTBLOCK"][1]
