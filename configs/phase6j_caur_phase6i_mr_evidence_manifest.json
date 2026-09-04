@@ -1,0 +1,45 @@
+{
+  "schema": "phase6j-caur-phase6i-mr-read-only-evidence-manifest-v1",
+  "status": "IMMUTABLE_HISTORICAL_MOTIVATION_ONLY",
+  "source_commit_in_ancestry": "6a8ac523adc2186c7cb359c2902c207d90184b5b",
+  "phase6j_starting_commit": "a6ef53df2d18fbf31320b49f5a5859ab0bddb62a",
+  "phase6j_code_access_policy": "training selection calibration threshold feature and hyperparameter code may read this manifest but never the source R11 payloads",
+  "files": [
+    {
+      "role": "final_decision",
+      "path": "outputs/phase6i_mr/r11_validation/final_decision.json",
+      "sha256": "400c3d4c4cb4759463dcfd3d46fbaeaeef0758b7c24ad64357f32ef5074ca235",
+      "size_bytes": 1302
+    },
+    {
+      "role": "selected_artifact",
+      "path": "outputs/phase6i_mr/frozen/selected_artifact.json",
+      "sha256": "dc59abbe34be21480c8f855e2bd62e5253fdf3f15f947c94bc124c5cbd4ec89a",
+      "size_bytes": 23588
+    },
+    {
+      "role": "r11_result_manifest",
+      "path": "outputs/phase6i_mr/r11_validation/r11_result_hash_manifest.csv",
+      "sha256": "48341eb15b4f467195094058b743e389c67bfce7bc367328e9307431bb3847a8",
+      "size_bytes": 67785
+    },
+    {
+      "role": "completion_integrity_audit",
+      "path": "outputs/phase6i_mr/r11_validation/completion_integrity_audit.json",
+      "sha256": "890c8aac4e2c169fbb124dd1d98f7e2983b475a818081dc814e2a9a11ce7e3d1",
+      "size_bytes": 1138
+    },
+    {
+      "role": "ranking_calibration_report",
+      "path": "outputs/phase6i_mr/r11_validation/r11_ranking_calibration.json",
+      "sha256": "cb09de8d892a838bdf38507e3c3139c237fdb59ee6b67f2be208ca1267864d71",
+      "size_bytes": 8652
+    },
+    {
+      "role": "anytime_runtime_report",
+      "path": "outputs/phase6i_mr/r11_validation/r11_anytime_runtime.json",
+      "sha256": "504881af8ac59c13ab1fcbcd0f48487421e1e9b22a05bcea7d600007828c3176",
+      "size_bytes": 4455
+    }
+  ]
+}

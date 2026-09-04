@@ -1,0 +1,98 @@
+{
+  "schema": "phase6j-caur-command-manifest-v1",
+  "status": "FROZEN_COMMAND_SHAPES_BEFORE_R12_PILOT",
+  "config": "configs/phase6j_caur.json",
+  "config_sha256": "399f03e33fad4567b8ffade5d632b2c6f32da4a9f3a51c3fea0ceb87e4da03d5",
+  "python": "/home/liulei/miniconda3/envs/gnn311/bin/python",
+  "implemented_entrypoint": "scripts/run_phase6j_caur_stage.py",
+  "stages": [
+    {
+      "id": "00_starting_boundary_audit",
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/audit_phase6j_caur_boundary.py --baseline-pytest '250 passed in 12.88s'",
+      "output": "outputs/phase6j_caur/setup/starting_boundary_audit.json",
+      "completeness": "status PASS and all six Phase6I-MR evidence hashes match"
+    },
+    {
+      "id": "01_verify_split_suite",
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/generate_phase6j_caur_instances.py --verify-only",
+      "output": "instances/controlled/RCIAS-CB1-TRAIN-CAUR-R12R14/manifests/phase6j_integrity_audit.json",
+      "completeness": "54 unique instances, 18 per split, all disjointness checks PASS"
+    },
+    {
+      "id": "02_bounded_setup_tests",
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python -m pytest -q tests/test_phase6j_caur.py",
+      "output": "stdout",
+      "completeness": "all Phase6J setup tests pass"
+    },
+    {
+      "id": "03_r12_horizon_full_bank_pilot",
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/launch_phase6j_caur_pilot.py",
+      "worker_command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/run_phase6j_caur_pilot.py --device cuda",
+      "output": "outputs/phase6j_caur/r12_pilot",
+      "completeness": "27 states, every unique bank arm, two CRN seeds, H4/H8/H12 prefix results, integrity PASS",
+      "implementation_gate": "enabled only after full regression, config hash, code diff, and one-state GPU smoke pass"
+    },
+    {
+      "id": "04_freeze_horizon",
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/run_phase6j_caur_stage.py --stage freeze-horizon --execute",
+      "output": "outputs/phase6j_caur/r12_pilot/horizon_decision.json",
+      "completeness": "shortest adequate horizon selected without solver-outcome input",
+      "implementation_gate": "stage 03 complete"
+    },
+    {
+      "id": "05_r12_full_collection",
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/run_phase6j_caur_stage.py --stage r12-collect --execute",
+      "output": "outputs/phase6j_caur/r12_collection",
+      "completeness": "288 state groups and full-bank labels, or the preregistered cost fallback with propensities",
+      "implementation_gate": "stage 04 frozen and collection implementation tested"
+    },
+    {
+      "id": "06_r12_grouped_oof_training",
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/run_phase6j_caur_stage.py --stage r12-train --execute",
+      "output": "outputs/phase6j_caur/training",
+      "completeness": "three seeds per activated family, grouped OOF predictions, selected-winner calibration and latency audit",
+      "implementation_gate": "stage 05 complete"
+    },
+    {
+      "id": "07_freeze_r13_bundle",
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/run_phase6j_caur_stage.py --stage freeze-r13 --execute",
+      "output": "outputs/phase6j_caur/frozen/r13_freeze.json",
+      "completeness": "eligible artifacts, normalization, calibrators, gates, code and selection logic hashed",
+      "implementation_gate": "all essential R12 gates pass"
+    },
+    {
+      "id": "08_r13_selection_once",
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/run_phase6j_caur_stage.py --stage r13-select --execute",
+      "output": "outputs/phase6j_caur/r13_selection",
+      "completeness": "one complete resumable access ledger, immutable selection and 1N solver translation",
+      "implementation_gate": "valid R13 freeze hash"
+    },
+    {
+      "id": "09_freeze_r14_artifact",
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/run_phase6j_caur_stage.py --stage freeze-r14 --execute",
+      "output": "outputs/phase6j_caur/frozen/r14_freeze.json",
+      "completeness": "one deployable artifact and every dependency hash frozen",
+      "implementation_gate": "R13 selection and translation PASS"
+    },
+    {
+      "id": "10_r14_holdout_once",
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/run_phase6j_caur_stage.py --stage r14-holdout --execute",
+      "output": "outputs/phase6j_caur/r14_holdout",
+      "completeness": "288 runs, integrity PASS, promotion table and runtime/anytime/coverage reports complete",
+      "implementation_gate": "valid R14 artifact freeze hash"
+    },
+    {
+      "id": "11_finalize",
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/run_phase6j_caur_stage.py --stage finalize --execute",
+      "output": "outputs/phase6j_caur/final/final_status.json",
+      "completeness": "exactly one of PROCEED_FREEZE_V1, MODEL_REVISION, HOLD with all gates recorded",
+      "implementation_gate": "R14 access ledger COMPLETE"
+    }
+  ],
+  "protected_access": {
+    "phase6i_mr_r11": "forbidden to all Phase6J design fit calibration threshold selection and feature code",
+    "r13": "reject until family bundle is frozen; one resumable access ledger",
+    "r14": "reject until deployable artifact is frozen; one resumable access ledger"
+  },
+  "git_policy": "local commits allowed; git push and history rewriting forbidden"
+}

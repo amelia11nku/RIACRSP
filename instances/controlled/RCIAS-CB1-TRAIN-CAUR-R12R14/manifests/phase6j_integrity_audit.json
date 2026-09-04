@@ -1,0 +1,19 @@
+{
+  "checks": {
+    "cell_replicates_exact": true,
+    "exactly_18_per_split": true,
+    "exactly_54_unique_instances": true,
+    "experiment_and_generation_seeds_disjoint": true,
+    "fixed_ri2_ti2": true,
+    "historical_ids_hashes_seeds_disjoint": true,
+    "manifest_hashes_unique": true,
+    "r14_not_loaded_for_metrics": true,
+    "split_hashes_disjoint": true,
+    "two_instances_per_scale_cf_cell": true
+  },
+  "failures": [],
+  "manifest_sha256": "dc06cc3b49e0724bf3bc54255ba95f6a8b29ca07d383f96bcd01f0f6d8f17619",
+  "r14_access_scope": "MANIFEST_ID_HASH_SIZE_ONLY",
+  "schema": "phase6j-caur-instance-integrity-v1",
+  "status": "PASS"
+}

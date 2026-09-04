@@ -1,0 +1,358 @@
+{
+  "schema": "phase6j-caur-config-v1",
+  "phase": "Phase 6J",
+  "family": "phase6j_caur",
+  "status": "PREREGISTERED_BEFORE_R12_PILOT_OR_R13_R14_CONTENT_ACCESS",
+  "starting_commit": "a6ef53df2d18fbf31320b49f5a5859ab0bddb62a",
+  "mission": "continuation-aware fallback-relative full-bank utility ranking and selection-aware gating",
+  "immutable_prior_decision": "MODEL_REVISION",
+  "phase6i_mr_evidence_manifest": "configs/phase6j_caur_phase6i_mr_evidence_manifest.json",
+  "locked_inputs": {
+    "phase6f_experiment_freeze": "outputs/phase6f/audit/experiment_freeze.json",
+    "phase6f_checkpoint_sha256": "f1ccceb607b0e453dfb74e7aa7a946616001db8ec08c12dc9900a66c6f165fc7",
+    "phase6h_policy": "outputs/phase6h_calibration/frozen/phase6h_policy.json",
+    "phase6h_policy_sha256": "4d2da03e13a036569bebf3897135e5da139e292e3260a2f452754d5c9ae3d239",
+    "frozen_alns_config": "configs/phase5c_alns.json",
+    "frozen_alns_config_sha256": "eecab30e446b680d31edb57988c112dbe6bcc9cea6c9d113eae8f56815dcd8cd"
+  },
+  "scope": {
+    "version": "CSG-NI v1 model revision",
+    "frozen_solver_semantics": true,
+    "forbidden_extensions": [
+      "PPO",
+      "ACTOR_CRITIC",
+      "NEURAL_REPAIR",
+      "MULTI_START",
+      "CURRICULUM_LEARNING",
+      "ADAPTIVE_COMPUTE"
+    ]
+  },
+  "instance_suite": {
+    "root": "instances/controlled/RCIAS-CB1-TRAIN-CAUR-R12R14",
+    "manifest": "instances/controlled/RCIAS-CB1-TRAIN-CAUR-R12R14/manifests/phase6j_instance_manifest.csv",
+    "manifest_sha256": "dc06cc3b49e0724bf3bc54255ba95f6a8b29ca07d383f96bcd01f0f6d8f17619",
+    "base_seed_namespace": 690000,
+    "second_cell_replicate_seed_offset": 5000,
+    "splits": {
+      "R12": "CAUR_FIT",
+      "R13": "CAUR_SELECT",
+      "R14": "CAUR_HOLDOUT"
+    },
+    "instances_per_split": 18,
+    "instances_per_cell": 2,
+    "scales": ["S", "M", "L"],
+    "cf_levels": ["CF1", "CF2", "CF3"],
+    "ri_level": "RI2",
+    "ti_level": "TI2",
+    "cell_replicates": ["C01", "C02"],
+    "r13_access": "ONE_RESUMABLE_SELECTION_PASS_AFTER_FROZEN_FAMILY_BUNDLE",
+    "r14_access": "ONE_RESUMABLE_PROMOTION_PASS_AFTER_DEPLOYABLE_ARTIFACT_FREEZE"
+  },
+  "rng": {
+    "source_trajectory_namespace": 691000000,
+    "source_acceptance_namespace": 691000001,
+    "source_diagnostics_namespace": 691000002,
+    "proposal_namespace": 692000000,
+    "repair_namespace": 693000000,
+    "continuation_namespace": 694000000,
+    "pilot_trajectory_seeds": [691101],
+    "r12_trajectory_seeds": [691201, 691202],
+    "r13_label_trajectory_seeds": [691301],
+    "r13_solver_translation_seeds": [691501, 691502],
+    "r14_solver_seeds": [691401, 691402, 691403, 691404, 691405],
+    "continuation_crn_seeds": [695101, 695102],
+    "model_seeds": [696101, 696102, 696103],
+    "grouped_bootstrap_seed": 697001
+  },
+  "candidate_bank": {
+    "proposal_rules": 24,
+    "deduplicate_by": "sorted target operation set",
+    "candidate_trials_meaning": "transport-aware repair and decoder trials per target",
+    "candidate_trials_per_target": 8,
+    "training_scope": "TRUE_FULL_DEDUPLICATED_24_RULE_BANK",
+    "top8_scope": "REDUCED_TOP8_AUDIT_ONLY",
+    "reduce_states_before_candidates": true
+  },
+  "r12_pilot": {
+    "instances": "nine C02 instances, one per Scale x CF cell",
+    "source_policy": "frozen Phase 6H CSG-NI",
+    "source_budget_seconds_per_instance": "0.25N",
+    "progress_anchors": [0.15, 0.50, 0.85],
+    "expected_states": 27,
+    "candidate_scope": "TRUE_FULL_DEDUPLICATED_24_RULE_BANK",
+    "horizons": [4, 8, 12],
+    "reference_horizon": 12,
+    "horizon_selection": {
+      "rule": "shortest passing horizon, else H12",
+      "median_within_state_spearman_min": 0.70,
+      "mean_ndcg_at_1_min": 0.80,
+      "top1_agreement_min": 0.60,
+      "minimum_mean_spearman_each_scale": 0.0,
+      "downstream_solver_performance_may_select_horizon": false
+    },
+    "estimated_unique_candidates_per_state": 23.3,
+    "maximum_unique_candidates_per_state": 24,
+    "continuation_stream_policy": "same state and rollout seed for candidate and fallback",
+    "output_root": "outputs/phase6j_caur/r12_pilot",
+    "completeness": "27 states with every deduplicated candidate, both CRN seeds, and H4/H8/H12 labels"
+  },
+  "r12_collection": {
+    "instances": 18,
+    "source_trajectories_per_instance": 2,
+    "states_per_trajectory": 8,
+    "progress_anchors": [0.05, 0.18, 0.32, 0.45, 0.58, 0.72, 0.85, 0.95],
+    "expected_states": 288,
+    "candidate_scope": "TRUE_FULL_DEDUPLICATED_24_RULE_BANK",
+    "continuation_horizon": "selected only by frozen R12 pilot horizon-agreement rule",
+    "output_root": "outputs/phase6j_caur/r12_collection",
+    "fallback_if_cost_excessive": {
+      "activation": "before collection only, if projected decoder evaluations exceed 1500000 or pilot-throughput ETA exceeds 8 hours",
+      "decoder_evaluation_cap": 1500000,
+      "elapsed_time_cap_hours": 8.0,
+      "first_trajectory": "full bank",
+      "second_trajectory": "fallback, frozen top2, origin coverage, diversity coverage, then uniform without replacement",
+      "record_inclusion_probability": true
+    }
+  },
+  "continuation_target": {
+    "primary": "A_H=(V_H(fallback)-V_H(candidate))/pre_action_incumbent",
+    "aggregation": "arithmetic mean over both preregistered CRN seeds",
+    "positive_is_better": true,
+    "immediate_utility_role": "auxiliary regression and bounded-harm signal only"
+  },
+  "candidate_features": {
+    "categorical": [
+      "primary_origin_rule",
+      "origin_destroy_operator",
+      "origin_family"
+    ],
+    "numeric": [
+      "origin_rule_count",
+      "origin_family_count",
+      "destroy_target_cardinality",
+      "destroy_target_fraction",
+      "fallback_overlap_fraction",
+      "fallback_jaccard",
+      "critical_overlap_fraction",
+      "bottleneck_overlap_fraction",
+      "best_frozen_score_jaccard",
+      "normalized_frozen_score_rank",
+      "normalized_diversity_rank",
+      "is_fallback"
+    ],
+    "outcome_fields_forbidden": [
+      "continuation_advantage_mean",
+      "beats_fallback",
+      "immediate_utility",
+      "decoded_candidate_makespan"
+    ],
+    "critical_region": "all operations on the deterministic processing critical path proxy",
+    "bottleneck_region": {
+      "PRECEDENCE_SEQUENCE": "processing critical path proxy",
+      "ISLAND_PROCESSING_LOAD": "all operations tied at maximum island_relative_load",
+      "RECONFIGURATION": "all operations tied at maximum positive local_reconfiguration_contribution",
+      "W_LOGISTICS": "all operations tied at maximum positive W_waiting_or_delay_contribution",
+      "F_LOGISTICS": "all operations tied at maximum positive F_waiting_or_delay_contribution",
+      "CROSS_RESOURCE_SYNCHRONIZATION": "all operations tied at maximum positive synchronization_wait_contribution, falling back to critical or resource-critical operations if zero",
+      "MIXED_OR_UNCERTAIN": "union of processing-critical and resource-critical operations"
+    }
+  },
+  "normalization": {
+    "fit_split": "R12_ONLY",
+    "numeric": "median and IQR with 1e-6 denominator floor",
+    "clip_robust_z": [-8.0, 8.0],
+    "ranking_standardization": "within state only for ranking losses",
+    "deployed_advantage_head": "preserve cross-state magnitude"
+  },
+  "grouped_oof": {
+    "grouping": "whole instance and structural cell",
+    "fold_0": ["S_CF1", "M_CF2", "L_CF3"],
+    "fold_1": ["S_CF2", "M_CF3", "L_CF1"],
+    "fold_2": ["S_CF3", "M_CF1", "L_CF2"],
+    "calibration_rows": "argmax-selected held-out winner versus fallback only"
+  },
+  "model_families": {
+    "J0_PHASE6H_REFERENCE": {
+      "eligible_for_promotion": false,
+      "training": "none"
+    },
+    "J1_CONT_FROZEN": {
+      "trainable": ["candidate_context_projection", "continuation_advantage_head", "beats_fallback_head", "immediate_utility_head"],
+      "frozen": ["Phase6F_Phase6H_graph_state_action_encoder", "all_message_passing_blocks", "final_action_projection"],
+      "total_parameter_cap": 5350000,
+      "trainable_parameter_cap": 500000
+    },
+    "J2_CONT_LASTBLOCK": {
+      "trainable": ["last_state_relation_block", "final_action_projection", "candidate_context_projection", "continuation_advantage_head", "beats_fallback_head", "immediate_utility_head"],
+      "frozen": ["all_earlier_encoder_blocks"],
+      "total_parameter_cap": 5350000,
+      "trainable_parameter_cap": 2600000
+    },
+    "J3_CONT_RELATIONAL": {
+      "activation": "max(J1,J2) grouped-OOF pairwise accuracy < 0.60 or any scale mean Spearman < 0",
+      "trainable": ["compact_state_candidate_fallback_origin_interaction", "J2_trainable_modules"],
+      "forbidden": ["policy_network", "decoder_network", "repair_network", "RL_loop"],
+      "total_parameter_cap": 5350000,
+      "trainable_parameter_cap": 2600000
+    }
+  },
+  "training": {
+    "seeds_per_activated_family": 3,
+    "selection_unit": "three-seed family ensemble",
+    "losses": {
+      "pairwise_logistic_advantage": 1.0,
+      "listnet_state_list": 0.75,
+      "huber_advantage": 0.5,
+      "bce_beats_fallback": 0.25,
+      "huber_immediate_utility_auxiliary": 0.10
+    },
+    "gap_weight_clip": [0.25, 4.0],
+    "optimizer": "AdamW",
+    "learning_rate": {
+      "J1_CONT_FROZEN": 0.0003,
+      "J2_CONT_LASTBLOCK": 0.0001,
+      "J3_CONT_RELATIONAL": 0.0001
+    },
+    "weight_decay": 0.0001,
+    "state_groups_per_batch": 8,
+    "gradient_norm_clip": 1.0,
+    "deterministic_torch_algorithms": true,
+    "early_stopping": "R12 grouped-OOF mean selected-lift LCB, patience 12 epochs, maximum 120 epochs",
+    "r13_refit": false
+  },
+  "selection_aware_calibration": {
+    "fit_rows": "R12 grouped-OOF selected winners only",
+    "candidate_methods": ["platt", "isotonic"],
+    "isotonic_minimum_selected_rows": 200,
+    "selection": "lowest ECE, then Brier score, then Platt simplicity",
+    "ece_max": 0.10
+  },
+  "gate": {
+    "winner": "maximum ensemble mean continuation advantage; target_set_id tie break",
+    "p_min_grid": [0.55, 0.65, 0.75],
+    "lcb_lambda_grid": [0.5, 1.0],
+    "delta_min_grid": [0.0, 0.0025, 0.005],
+    "immediate_harm_floor": -0.005,
+    "support": "all categorical origins seen in R12 train fold and every robust numeric z within [-8,8]",
+    "fallback": "frozen ALNS-related candidate",
+    "no_intervention_rate_target": true,
+    "minimum_direct_interventions_per_scale": 20,
+    "forced_abstention_exception": "at least 40 forced abstention outcomes in the scale and a nonpositive 95 percent upper confidence bound for fallback-relative lift",
+    "threshold_selection": [
+      "retain only gates with positive overall selected lift and positive grouped-bootstrap LCB",
+      "retain only gates with nonnegative selected lift in every scale",
+      "require direct intervention support or the frozen forced-abstention exception in every scale",
+      "maximize grouped-bootstrap selected-lift LCB",
+      "minimize selection regret",
+      "minimize selected-winner ECE",
+      "maximize supported intervention count",
+      "lexicographically minimize p_min then lambda then delta_min"
+    ]
+  },
+  "r12_acceptance": {
+    "essential": {
+      "replay_feasibility": "PASS",
+      "full_bank_completeness": "PASS",
+      "overall_spearman_gt": 0.0,
+      "minimum_scale_mean_spearman": 0.0,
+      "selected_lift_gt": 0.0,
+      "selected_bootstrap_lcb_gt": 0.0,
+      "selected_winner_ece_max": 0.10,
+      "candidate_origin_collapse": false
+    },
+    "preferred": {
+      "overall_spearman_min": 0.25,
+      "pairwise_accuracy_min": 0.60,
+      "ndcg_at_1_min": 0.75
+    },
+    "failure_decision": "MODEL_REVISION_BEFORE_R13"
+  },
+  "r13": {
+    "label_states": "18 instances x one trajectory x eight fixed-progress states = 144",
+    "progress_anchors": [0.05, 0.18, 0.32, 0.45, 0.58, 0.72, 0.85, 0.95],
+    "selection_access": "exactly one resumable frozen pass",
+    "selection_order": [
+      "integrity_replay_feasibility",
+      "positive_spearman",
+      "nonnegative_scale_means",
+      "positive_selected_lift",
+      "no_scale_selection_collapse",
+      "highest_selected_lift_lcb",
+      "lowest_selection_regret",
+      "highest_ndcg1_then_ndcg2",
+      "seed_stability",
+      "selected_winner_calibration",
+      "latency",
+      "model_size",
+      "lexical_model_id"
+    ],
+    "solver_translation": {
+      "instances": "nine C02 instances, one per Scale x CF cell",
+      "methods": ["H1", "ALNS", "PHASE6H_CSGNI", "PHASE6J_CAUR_CSGNI"],
+      "budget_seconds_per_iterative_method": "1N",
+      "matched_seeds": [691501, 691502],
+      "aggregate_noninferiority_vs_alns_max": 0.005,
+      "aggregate_noninferiority_vs_phase6h_max": 0.0025,
+      "failure_decision": "MODEL_REVISION_BEFORE_R14"
+    },
+    "output_root": "outputs/phase6j_caur/r13_selection"
+  },
+  "r14": {
+    "methods": ["H1", "ALNS", "PHASE6H_CSGNI", "PHASE6J_CAUR_CSGNI"],
+    "expected_runs": 288,
+    "budget_seconds_per_iterative_method": "2N",
+    "diagnostic_full_bank_states": "five fixed-progress states on the first matched Phase6J seed for each instance",
+    "diagnostic_progress_anchors": [0.10, 0.30, 0.50, 0.70, 0.90],
+    "mandatory": {
+      "accepted_feasibility_rate": 1.0,
+      "replay_integrity": "PASS",
+      "leakage_integrity": "PASS",
+      "overall_continuation_spearman_gt": 0.0,
+      "minimum_scale_mean_spearman": 0.0,
+      "selected_lift_gt": 0.0,
+      "selected_winner_ece_max": 0.10,
+      "aggregate_noninferiority_vs_alns_max": 0.0025,
+      "aggregate_noninferiority_vs_phase6h_max": 0.0025,
+      "catastrophic_group_collapse": false,
+      "runtime_and_decoder_accounting": "COMPLETE"
+    },
+    "preferred": {
+      "mean_improvement_vs_alns_min": 0.005,
+      "decoder_evaluation_reduction_vs_alns_min": 0.25,
+      "normalized_gap_auc_not_materially_worse_than_phase6h": true
+    },
+    "efficiency_gate": "decoder evaluations at least 25 percent below ALNS or median time-to-final-best at least 10 percent lower, with all final-quality gates passing",
+    "decisions": ["PROCEED_FREEZE_V1", "MODEL_REVISION", "HOLD"],
+    "output_root": "outputs/phase6j_caur/r14_holdout"
+  },
+  "runtime": {
+    "device_preference": "cuda after host-level driver and gnn311 tensor verification; CPU remains the frozen decoder and continuation execution path",
+    "verified_gpu": "NVIDIA GeForce RTX 4060 Ti 8188 MiB, driver 575.64.03, torch CUDA 12.8",
+    "p90_neural_decision_ms_max": 30.0,
+    "p90_total_decision_ms_max": 100.0,
+    "long_jobs": "persistent, resumable, single authorized worker with log/progress/output liveness check"
+  },
+  "outputs": {
+    "root": "outputs/phase6j_caur",
+    "setup": "outputs/phase6j_caur/setup",
+    "r12_pilot": "outputs/phase6j_caur/r12_pilot",
+    "r12_collection": "outputs/phase6j_caur/r12_collection",
+    "training": "outputs/phase6j_caur/training",
+    "r13": "outputs/phase6j_caur/r13_selection",
+    "frozen": "outputs/phase6j_caur/frozen",
+    "r14": "outputs/phase6j_caur/r14_holdout",
+    "final": "outputs/phase6j_caur/final"
+  },
+  "stopping_rules": [
+    "stop before R13 if any essential R12 acceptance gate fails",
+    "stop before R14 if R13 selection or solver translation fails",
+    "never weaken a gate after R13 or R14 content access",
+    "stop with HOLD on integrity, leakage, feasibility, or solver stability failure"
+  ],
+  "forbidden_data": [
+    "Phase6I-MR R11 outcome payloads for any Phase6J design, fit, calibration, threshold, or selection",
+    "R13 refitting",
+    "R14 access before deployable artifact hash freeze",
+    "Core45, Sensitivity, Legacy-130, and final paper suites for Phase6J tuning"
+  ]
+}

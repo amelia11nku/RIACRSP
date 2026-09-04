@@ -1,0 +1,35 @@
+{
+  "base_seed_namespace": 690000,
+  "factorial_design": {
+    "CF": [
+      "CF1",
+      "CF2",
+      "CF3"
+    ],
+    "RI": [
+      "RI2"
+    ],
+    "TI": [
+      "TI2"
+    ],
+    "cell_replicate": [
+      "C01",
+      "C02"
+    ],
+    "replicate_split": {
+      "R12": "CAUR_FIT",
+      "R13": "CAUR_SELECT",
+      "R14": "CAUR_HOLDOUT"
+    },
+    "scale": [
+      "S",
+      "M",
+      "L"
+    ]
+  },
+  "r14_boundary": "instance payload access is locked until deployable artifact freeze",
+  "r14_pre_freeze_metrics": "WITHHELD",
+  "schema": "phase6j-caur-generation-spec-v1",
+  "second_cell_replicate_seed_offset": 5000,
+  "source_generation_spec_sha256": "272d2108b095593adb7df3a3db3b52d56ff7863acfe68c7c09279fbf4178f92c"
+}
