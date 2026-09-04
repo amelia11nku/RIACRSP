@@ -17,7 +17,12 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from scripts.run_phase6j_caur_pilot import digest  # noqa: E402
-from scripts.train_phase6j_caur import validate_protocol  # noqa: E402
+from scripts.train_phase6j_caur import (  # noqa: E402
+    FAMILIES,
+    run_paths,
+    valid_run,
+    validate_protocol,
+)
 
 
 PYTHON = "/home/liulei/miniconda3/envs/gnn311/bin/python"
@@ -31,6 +36,22 @@ def process_alive(pid: int) -> bool:
         return True
     except OSError:
         return False
+
+
+def active_training_processes() -> list[int]:
+    listing = subprocess.run(
+        ["ps", "-eo", "pid=,args="], check=True, capture_output=True, text=True
+    ).stdout
+    markers = (
+        "scripts/supervise_phase6j_caur_training.py",
+        "scripts/run_phase6j_caur_stage.py --stage r12-train --execute",
+        "scripts/train_phase6j_caur.py --device cuda",
+    )
+    return sorted({
+        int(line.strip().split(maxsplit=1)[0])
+        for line in listing.splitlines()
+        if line.strip() and any(marker in line for marker in markers)
+    })
 
 
 def atomic_json(payload: dict, path: Path) -> None:
@@ -64,6 +85,9 @@ def main() -> None:
     if worktree:
         raise RuntimeError("R12 training requires a clean committed implementation boundary")
     protocol = validate_protocol()
+    active = active_training_processes()
+    if active:
+        raise RuntimeError(f"R12 training worker already exists: {active}")
     implementation_commit = subprocess.run(
         ["git", "rev-parse", "HEAD"], cwd=ROOT, check=True,
         capture_output=True, text=True,
@@ -73,11 +97,17 @@ def main() -> None:
          "print(torch.cuda.get_device_name(0)); print(torch.ones(1,device='cuda').item())"],
         cwd=ROOT, check=True, capture_output=True, text=True,
     ).stdout.strip().splitlines()
-    progress_path = OUT / "progress.json"
-    progress = json.loads(progress_path.read_text()) if progress_path.exists() else {}
-    completed = int(progress.get("completed_runs", 0))
-    expected = 18
-    if completed >= expected and progress.get("status") == "COMPLETE_J1_J2":
+    protocol_sha256 = digest(PROTOCOL)
+    completed_paths = []
+    for family in FAMILIES:
+        for seed in protocol["training"]["seeds"]:
+            for held_fold in range(3):
+                paths = run_paths(family, int(seed), held_fold)
+                if valid_run(paths, protocol_sha256):
+                    completed_paths.append(paths)
+    completed = len(completed_paths)
+    expected = len(FAMILIES) * len(protocol["training"]["seeds"]) * 3
+    if completed >= expected:
         raise RuntimeError("R12 J1/J2 OOF training is already complete")
     launch_path = OUT / "launch_record.json"
     if launch_path.exists():
@@ -85,12 +115,10 @@ def main() -> None:
         if process_alive(int(previous["pid"])):
             raise RuntimeError(f"R12 training worker is already alive: {previous['pid']}")
 
-    completed_records = sorted(OUT.glob("oof/*/seed_*/fold_*.json"))
-    observed = []
-    for path in completed_records:
-        record = json.loads(path.read_text(encoding="utf-8"))
-        if record.get("status") == "COMPLETE":
-            observed.append(float(record["runtime_seconds"]))
+    observed = [
+        float(json.loads(paths[2].read_text(encoding="utf-8"))["runtime_seconds"])
+        for paths in completed_paths
+    ]
     per_run_seconds = float(sum(observed) / len(observed)) if observed else 900.0
     projected_seconds = max(60.0, per_run_seconds * (expected - completed))
     started = datetime.now(timezone.utc)
