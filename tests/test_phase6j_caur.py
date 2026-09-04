@@ -50,6 +50,12 @@ from rcias_clgri.search.phase6c import generate_revised_target_arms
 from scripts.run_phase6j_caur_pilot import SnapshotObserver, build_tasks
 from scripts.run_phase6j_caur_collection import build_collection_tasks
 from scripts.build_phase6j_caur_tensor_cache import records_for_tensorization
+from scripts.train_phase6j_caur import (
+    FeatureTransform,
+    grouped_bootstrap_interval,
+    nested_fold_roles,
+    transform_features,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -358,6 +364,10 @@ def test_phase6j_learning_and_stage_sources_do_not_name_r11_payload_paths():
         ROOT / "scripts/run_phase6j_caur_pilot.py",
         ROOT / "scripts/run_phase6j_caur_collection.py",
         ROOT / "scripts/build_phase6j_caur_tensor_cache.py",
+        ROOT / "scripts/freeze_phase6j_caur_training.py",
+        ROOT / "scripts/train_phase6j_caur.py",
+        ROOT / "scripts/launch_phase6j_caur_training.py",
+        ROOT / "scripts/supervise_phase6j_caur_training.py",
     ]
     forbidden = ("outputs/phase6i_mr/r11_validation", "r11_live_rev_holdout")
     for path in sources:
@@ -481,3 +491,66 @@ def test_caur_j1_j2_parameter_caps_hold_for_frozen_phase6f_shape():
     assert counts["J2_CONT_LASTBLOCK"][0] <= 5_350_000
     assert counts["J2_CONT_LASTBLOCK"][1] <= 2_600_000
     assert counts["J1_CONT_FROZEN"][1] < counts["J2_CONT_LASTBLOCK"][1]
+
+
+def test_caur_outer_predictions_use_strict_nested_epoch_selection_folds():
+    assert nested_fold_roles(0) == (2, 1)
+    assert nested_fold_roles(1) == (0, 2)
+    assert nested_fold_roles(2) == (1, 0)
+    for held in range(3):
+        inner_fit, inner_validation = nested_fold_roles(held)
+        assert {held, inner_fit, inner_validation} == {0, 1, 2}
+    with pytest.raises(ValueError, match="invalid held"):
+        nested_fold_roles(3)
+
+
+def test_caur_feature_support_and_instance_grouped_bootstrap_are_deterministic():
+    transform = FeatureTransform(
+        vocabularies={
+            "primary_origin_rule": ("known",),
+            "origin_destroy_operator": ("related",),
+            "origin_family": ("ORIGINAL_OPERATOR",),
+        },
+        medians={column: 0.0 for column in (
+            "origin_rule_count", "origin_family_count",
+            "destroy_target_cardinality", "destroy_target_fraction",
+            "fallback_overlap_fraction", "fallback_jaccard",
+            "critical_overlap_fraction", "bottleneck_overlap_fraction",
+            "best_frozen_score_jaccard", "normalized_frozen_score_rank",
+            "normalized_diversity_rank", "is_fallback",
+        )},
+        iqrs={column: 1.0 for column in (
+            "origin_rule_count", "origin_family_count",
+            "destroy_target_cardinality", "destroy_target_fraction",
+            "fallback_overlap_fraction", "fallback_jaccard",
+            "critical_overlap_fraction", "bottleneck_overlap_fraction",
+            "best_frozen_score_jaccard", "normalized_frozen_score_rank",
+            "normalized_diversity_rank", "is_fallback",
+        )},
+    )
+    rows = pd.DataFrame([{
+        "primary_origin_rule": "known",
+        "origin_destroy_operator": "related",
+        "origin_family": "ORIGINAL_OPERATOR",
+        **{column: 0.0 for column in transform.medians},
+    }, {
+        "primary_origin_rule": "unseen",
+        "origin_destroy_operator": "related",
+        "origin_family": "ORIGINAL_OPERATOR",
+        **{column: 9.0 if column == "origin_rule_count" else 0.0
+           for column in transform.medians},
+    }])
+    categorical, numeric, supported = transform_features(rows, transform)
+    assert categorical.tolist() == [[1, 1, 1], [0, 1, 1]]
+    assert numeric[1, 0] == 8.0
+    assert supported.tolist() == [True, False]
+
+    state_rows = pd.DataFrame({
+        "instance_id": ["a", "a", "b"],
+        "lift": [1.0, 3.0, 10.0],
+    })
+    first = grouped_bootstrap_interval(state_rows, "lift", seed=7, resamples=200)
+    second = grouped_bootstrap_interval(state_rows, "lift", seed=7, resamples=200)
+    assert first == second
+    assert first[0] >= 2.0
+    assert first[1] <= 10.0

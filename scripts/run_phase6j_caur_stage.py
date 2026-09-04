@@ -29,7 +29,10 @@ INSTANCE_AUDIT = (
 PILOT_OUT = ROOT / "outputs/phase6j_caur/r12_pilot"
 R12_COLLECTION_SCRIPT = ROOT / "scripts/run_phase6j_caur_collection.py"
 R12_FREEZE = ROOT / "outputs/phase6j_caur/frozen/r12_horizon_freeze.json"
-IMPLEMENTED_STAGES = {"preflight", "pilot-cost", "freeze-horizon", "r12-collect"}
+R12_TRAINING_PROTOCOL = ROOT / "outputs/phase6j_caur/frozen/r12_training_protocol.json"
+IMPLEMENTED_STAGES = {
+    "preflight", "pilot-cost", "freeze-horizon", "r12-collect", "r12-train"
+}
 
 
 def digest(path: Path) -> str:
@@ -282,6 +285,18 @@ def main() -> None:
         command = [
             "/home/liulei/miniconda3/envs/gnn311/bin/python",
             "scripts/run_phase6j_caur_collection.py",
+            "--device",
+            os.environ.get("PHASE6J_DEVICE", "cuda"),
+        ]
+        raise SystemExit(subprocess.run(command, cwd=ROOT, check=False).returncode)
+    if args.stage == "r12-train":
+        if not args.execute:
+            raise RuntimeError("r12-train requires --execute")
+        if not R12_TRAINING_PROTOCOL.is_file():
+            raise RuntimeError("r12-train requires a frozen R12 training protocol")
+        command = [
+            "/home/liulei/miniconda3/envs/gnn311/bin/python",
+            "scripts/train_phase6j_caur.py",
             "--device",
             os.environ.get("PHASE6J_DEVICE", "cuda"),
         ]
