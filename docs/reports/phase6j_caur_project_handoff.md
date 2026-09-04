@@ -2,19 +2,27 @@
 
 ## Current state
 
-- Substage decision: `BOUNDED_SETUP_IN_PROGRESS`; no Phase 6J scientific final
-  decision has been made.
+- Substage decision: `R12_PILOT_PASS`; no Phase 6J scientific final decision
+  has been made.
 - Selected model: none.
 - CSG-NI v1 frozen: no.
 - Phase 6H replacement authorized: none; Phase 6H remains the reference.
-- R12 pilot accessed: no.
+- R12 pilot accessed: yes, through the preregistered 27-state pilot only.
+- R12 pilot completeness: `PASS` with 27/27 states, 640 unique
+  state-candidate pairs, 3,840 paired-seed/horizon rows, and every integrity
+  check true.
+- Frozen continuation horizon: H=4. It is the shortest horizon satisfying the
+  preregistered agreement rule against H=12 and was selected without solver
+  outcome evidence.
 - R13 content accessed: no; locked.
 - R14 content accessed: no; locked.
-- Starting boundary, historical evidence hashes, fresh split generation, and
-  split-integrity checks pass.
+- The full R12 collection implementation uses all 18 fit instances, two source
+  trajectories per instance, eight states per trajectory, the true full bank,
+  both CRN seeds, and the frozen horizon: 288 state lists in total.
 - Phase 6J setup tests cover the access locks, CRN continuation target,
   H4/H8/H12 prefix equivalence, full-bank label completeness, outcome-blind
-  candidate-source features, grouped OOF assignment, and deterministic LCB gate.
+  candidate-source features, grouped OOF assignment, deterministic LCB gate,
+  R12 collection authorization hashes, and the 36-trajectory task boundary.
 
 ## Frozen files
 
@@ -28,16 +36,17 @@ The authoritative hashes are recorded at the top of the preregistered
 protocol. R11 evidence remains immutable and may not be used to adjust Phase
 6J.
 
-## Current blocker and authorized next action
+## Current gate and authorized next action
 
-Host-level GPU verification now passes on the RTX 4060 Ti using the `gnn311`
+Host-level GPU verification passes on the RTX 4060 Ti using the `gnn311`
 environment; the restricted command sandbox alone cannot see the driver. The
-R12 pilot collector, supervisor, and persistent launcher are implemented and
-must pass the final full regression plus a one-state host-GPU smoke before the
-remaining worker is launched.
+pilot projects approximately 0.49 million decoder evaluations and about 1.35
+hours for the full H4 collection. Even the conservative H12 projection remains
+below the preregistered eight-hour cap, so the cost fallback is not activated.
 
-The exact authorized next action is to implement and validate only the R12
-horizon/full-bank pilot collector. After a device choice passes runtime
-preflight, launch the single R12 pilot worker, verify the first state and
-replace the 20–35 minute provisional ETA with measured throughput. R13/R14 and
-full R12 collection remain unauthorized.
+The exact authorized stage is the resumable full-bank R12 collection. First
+freeze the pilot hashes, H4 decision, cost projection, and collection-script
+hash; then run one host-GPU state as a smoke check and launch or resume exactly
+one persistent worker. Runtime status is authoritative in
+`outputs/phase6j_caur/r12_collection/progress.json`. Training begins only after
+the 288-state integrity audit passes. R13 and R14 remain unauthorized.

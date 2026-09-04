@@ -26,6 +26,9 @@ _LOCK_CONTRACTS = {
     R14_SPLIT: ("phase6j-caur-r14-freeze-v1", "FROZEN_BEFORE_R14"),
 }
 
+R12_COLLECTION_FREEZE_SCHEMA = "phase6j-caur-r12-horizon-freeze-v1"
+R12_COLLECTION_FREEZE_STATUS = "FROZEN_BEFORE_R12_COLLECTION"
+
 
 class Phase6JAccessError(RuntimeError):
     """Raised when a Phase 6J split is accessed outside its frozen boundary."""
@@ -33,6 +36,44 @@ class Phase6JAccessError(RuntimeError):
 
 def sha256_file(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def verify_r12_collection_authorization(
+    freeze_record_path: Path,
+    *,
+    project_root: Path,
+    config_path: Path,
+    collection_script_path: Path,
+) -> dict[str, Any]:
+    """Verify the post-pilot horizon and full-bank collection freeze."""
+    freeze_record_path = Path(freeze_record_path)
+    project_root = Path(project_root)
+    config_path = Path(config_path)
+    collection_script_path = Path(collection_script_path)
+    if not freeze_record_path.is_file():
+        raise Phase6JAccessError("R12 collection remains locked until the pilot is frozen")
+    record = json.loads(freeze_record_path.read_text(encoding="utf-8"))
+    artifact_hashes = record.get("pilot_artifact_sha256", {})
+    artifact_checks = bool(artifact_hashes) and all(
+        (project_root / relative_path).is_file()
+        and sha256_file(project_root / relative_path) == expected_hash
+        for relative_path, expected_hash in artifact_hashes.items()
+    )
+    checks = (
+        record.get("schema") == R12_COLLECTION_FREEZE_SCHEMA,
+        record.get("status") == R12_COLLECTION_FREEZE_STATUS,
+        record.get("selected_horizon") in (4, 8, 12),
+        record.get("collection_scope") == "TRUE_FULL_DEDUPLICATED_24_RULE_BANK",
+        record.get("cost_fallback_activated") is False,
+        record.get("r13_accessed") is False,
+        record.get("r14_accessed") is False,
+        record.get("config_sha256") == sha256_file(config_path),
+        record.get("collection_script_sha256") == sha256_file(collection_script_path),
+        artifact_checks,
+    )
+    if not all(checks):
+        raise Phase6JAccessError("invalid or stale R12 collection authorization")
+    return record
 
 
 def is_forbidden_phase6i_r11_path(path: Path) -> bool:

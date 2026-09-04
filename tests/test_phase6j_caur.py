@@ -31,12 +31,14 @@ from rcias_clgri.data.phase6j_access import (
     complete_one_time_split_access,
     load_phase6j_instance,
     sha256_file,
+    verify_r12_collection_authorization,
 )
 from rcias_clgri.heuristic.dispatching import solve_dispatching
 from rcias_clgri.search.alns import ALNSConfig
 from rcias_clgri.search.common import candidate_from_actions, decode_candidate
 from rcias_clgri.search.phase6c import generate_revised_target_arms
 from scripts.run_phase6j_caur_pilot import SnapshotObserver, build_tasks
+from scripts.run_phase6j_caur_collection import build_collection_tasks
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -144,6 +146,43 @@ def test_r12_loader_accepts_only_registered_phase6j_paths(tmp_path):
     assert load_phase6j_instance(path).instance_id == "tiny_03"
     with pytest.raises(Phase6JAccessError, match="not a registered"):
         load_phase6j_instance(ROOT / "instances/tiny/tiny_03.json")
+
+
+def test_r12_collection_authorization_hashes_code_config_and_pilot(tmp_path):
+    config = tmp_path / "config.json"
+    script = tmp_path / "collector.py"
+    pilot = tmp_path / "pilot.json"
+    freeze = tmp_path / "freeze.json"
+    config.write_text('{"frozen":true}\n')
+    script.write_text("# frozen collector\n")
+    pilot.write_text('{"status":"PASS"}\n')
+    freeze.write_text(json.dumps({
+        "schema": "phase6j-caur-r12-horizon-freeze-v1",
+        "status": "FROZEN_BEFORE_R12_COLLECTION",
+        "selected_horizon": 4,
+        "collection_scope": "TRUE_FULL_DEDUPLICATED_24_RULE_BANK",
+        "cost_fallback_activated": False,
+        "r13_accessed": False,
+        "r14_accessed": False,
+        "config_sha256": sha256_file(config),
+        "collection_script_sha256": sha256_file(script),
+        "pilot_artifact_sha256": {"pilot.json": sha256_file(pilot)},
+    }))
+    record = verify_r12_collection_authorization(
+        freeze,
+        project_root=tmp_path,
+        config_path=config,
+        collection_script_path=script,
+    )
+    assert record["selected_horizon"] == 4
+    pilot.write_text('{"status":"TAMPERED"}\n')
+    with pytest.raises(Phase6JAccessError, match="invalid or stale"):
+        verify_r12_collection_authorization(
+            freeze,
+            project_root=tmp_path,
+            config_path=config,
+            collection_script_path=script,
+        )
 
 
 def test_true_full_bank_features_are_complete_deterministic_and_outcome_blind():
@@ -306,6 +345,7 @@ def test_phase6j_learning_and_stage_sources_do_not_name_r11_payload_paths():
         ROOT / "scripts/run_phase6j_caur_stage.py",
         ROOT / "scripts/generate_phase6j_caur_instances.py",
         ROOT / "scripts/run_phase6j_caur_pilot.py",
+        ROOT / "scripts/run_phase6j_caur_collection.py",
     ]
     forbidden = ("outputs/phase6i_mr/r11_validation", "r11_live_rev_holdout")
     for path in sources:
@@ -333,3 +373,14 @@ def test_r12_pilot_task_and_snapshot_selection_are_frozen_and_deterministic():
     selected = observer.selected()
     assert [row["state_id"] for row in selected] == ["state-1", "state-5", "state-8"]
     assert [row["target_progress"] for row in selected] == [0.15, 0.5, 0.85]
+
+
+def test_r12_collection_tasks_cover_every_fit_instance_and_both_trajectories():
+    config = json.loads((ROOT / "configs/phase6j_caur.json").read_text())
+    tasks = build_collection_tasks(config)
+    assert len(tasks) == 36
+    assert len({task["instance_id"] for task in tasks}) == 18
+    assert len({(task["instance_id"], task["trajectory_seed"]) for task in tasks}) == 36
+    assert {task["trajectory_seed"] for task in tasks} == {691201, 691202}
+    assert {task["cell_replicate"] for task in tasks} == {"C01", "C02"}
+    assert all("_R12" in task["instance_id"] for task in tasks)
