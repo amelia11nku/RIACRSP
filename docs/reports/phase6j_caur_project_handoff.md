@@ -2,8 +2,7 @@
 
 ## Current state
 
-- Substage decision: `R12_DATA_AUDIT_COMPLETE_J1_DEPLOYMENT_RUNNING`; no Phase 6J scientific
-  final decision has been made.
+- Final decision: `MODEL_REVISION`, stop boundary `BEFORE_R13`; integrity PASS.
 - Selected model: none.
 - CSG-NI v1 frozen: no.
 - Phase 6H replacement authorized: none; Phase 6H remains the reference.
@@ -18,7 +17,7 @@
 - J1/J2 pairwise accuracies: 0.562392 / 0.561150. Their maximum is below the
   preregistered 0.60 activation threshold, so J3 is required.
 - J1 has six retained gates; J2/J3 have none. J1 alone passes the audited R12
-  data gates. Deployment fitting, parity, latency and the bundle remain pending.
+  data gates but fails the frozen neural-latency cap. No family is R13 eligible.
 - Frozen continuation horizon: H=4. It is the shortest horizon satisfying the
   preregistered agreement rule against H=12 and was selected without solver
   outcome evidence.
@@ -41,8 +40,19 @@
 - Origin shares by scale and intervention lift by scale/CF/stage are under
   `outputs/phase6j_caur/r12_acceptance/`. No single-origin degeneration was
   observed in J1's scale-level raw winners or interventions.
-- Full regression with deployment preparation: 287 tests passed, including
-  eleven new parity, outcome-isolation, gate and resumability checks.
+- J1 full-R12 fitting is complete, 3/3 seeds, with fixed 5/16/4 epochs and
+  validated checkpoint hashes. Deployment worker exit code is zero.
+- Shared-encoder output and decision parity: exact on 288/288 states, maximum
+  absolute output difference zero. All 864 timing records are complete.
+- Neural p90: 32.716758 ms > frozen 30 ms cap (9.0559% over); S/M/L p90:
+  32.237169/32.868555/32.761459 ms. No favorable latency rerun was performed.
+- Cached-total p90: 38.031468 ms, excluding live graph/proposal/source-feature
+  construction. Full online total latency is unmeasured, not PASS.
+- The independent CPU audit reproduces the OOF evidence, validates complete
+  final-fit artifacts and recomputes timing quantiles/gates from the raw CSV.
+- Final regression: `300 passed in 13.60s` (baseline 287 plus thirteen
+  terminal-audit checks for completeness, corrupt samples, gate boundaries
+  and immutable results).
 
 ## Frozen files
 
@@ -64,52 +74,39 @@ protocol. R11 evidence remains immutable and may not be used to adjust Phase
 
 ## Current gate and authorized next action
 
-The authorized stage is J1 three-seed full-R12 fitting and deployment
-validation. Host-level CUDA verification passes on the RTX 4060 Ti in
-`gnn311`; the restricted sandbox does not expose the GPU. All OOF training
-is complete; do not launch J3 again.
+This Phase 6J run is closed with `MODEL_REVISION` before R13. Do not relaunch
+training or profiling, implement the live adapter as if the gate passed, or
+unlock R13/R14. No artifact may replace Phase 6H; CSG-NI v1 is not frozen.
 
-R12 data readiness and the separate J3 audit are under
-`outputs/phase6j_caur/r12_acceptance/`. The immutable J1/J2 audit and all
-original J1/J2/J3 outputs remain in their original locations.
+Authoritative final decision and status:
 
-The independent deployment addendum fixes full-fit epochs to the median of
-each seed's three nested-OOF epoch counts: 5,16,4. It retains the original
-OOF-selected-winner calibrator and gate. All three base encoders are identical;
-shared-encoder inference must match three independent evaluations exactly.
-Freeze before fitting and launch/resume only missing hash-validated seeds:
+- `outputs/phase6j_caur/final/final_decision.json`
+- `outputs/phase6j_caur/final/final_status.json`
+- `outputs/phase6j_caur/deployment/j1_full_r12/completion_integrity_audit.json`
+
+Reproduce the terminal audit (CPU, no retraining or timing rerun):
 
 ```bash
-/home/liulei/miniconda3/envs/gnn311/bin/python scripts/prepare_phase6j_caur_deployment.py --mode freeze
-/home/liulei/miniconda3/envs/gnn311/bin/python scripts/prepare_phase6j_caur_deployment.py --mode launch
+/home/liulei/miniconda3/envs/gnn311/bin/python scripts/finalize_phase6j_caur_r12.py
 ```
 
-Deployment output root: `outputs/phase6j_caur/deployment/j1_full_r12/`.
-Implementation commit: `91a0347`. The verified detached worker was launched
-at 2026-09-05 03:05:36 UTC (11:05:36 CST), PID 91577, with log
-`j1_deployment_20260905T030536Z.log`. These are launch facts, not an assertion
-that the worker is still running when this handoff is read.
-Inspect `launch_record.json`, `progress.json`, `worker_status.json`, three
-seed checkpoint/record pairs and `cached_latency_report.json`. The worker
-holds a file lock and the launcher records the PID before its startup probe.
-Corrupt or orphaned checkpoints require inspection, not silent replacement.
+Original deployment evidence stays at
+`outputs/phase6j_caur/deployment/j1_full_r12/`: three seed checkpoints/records,
+`cached_latency_samples.csv`, `cached_latency_report.json`, log, progress and
+worker status. Implementation commit: `91a0347`. Worker PID 91577 completed
+at 2026-09-05 11:08:04 CST and was confirmed no longer present during this
+audit. The old running snapshot and ETA are superseded by completion evidence.
 
-Verified startup snapshot, 2026-09-05 11:06:51 CST: 3/3 full-fit seed
-checkpoints are present and SHA-256 validated (5/16/4 epochs; respective
-runtimes 9.757/29.885/7.592 seconds). The detached worker is alive and its log
-is advancing. Profiling has reached 72/288 states, with bit-exact independent
-versus shared inference checks passing on those states. Initial profile
-throughput is approximately 2.88 states/second; projected finish is about
-11:08 CST, not a completion assertion. Interactive polling stops after this
-healthy launch. Read the final worker status and report on return; do not
-start a second worker from an old ETA.
+The only proposed next revision is separately preregistered, runtime-only,
+exact-equivalent J1 implementation work: profile the real bottleneck before
+changing execution, keep model/normalization/calibrator/gate/candidate bank
+and latency caps fixed, and preserve this failed result. This proposal has
+not been launched and requires a new explicit continuation decision.
+Do not infer solver improvement from R12 continuation lift or substitute
+Core/Sensitivity/Legacy results for the unopened promotion gates.
 
-Cached latency does not include live CSG construction, proposals or frozen
-score feature generation. A completed cached profile is not R13 clearance.
-After fitting, audit hashes and parity, implement and verify the live adapter,
-measure complete live decision latency, then freeze the R13 bundle and
-one-time selection execution protocol. R13/R14 remain locked.
-
-Implementation details and bounded commands:
-`docs/reports/phase6j_caur_j1_deployment_addendum.md`.
-Historical J3 implementation: `1d54200`, with unchanged J3 protocol addendum.
+Failure diagnosis and proposal:
+`docs/reports/phase6j_caur_r12_final_report.md`.
+Historical implementation details remain in the unchanged J3 and J1
+deployment protocol addenda. All six registered historical Phase 6I-MR
+evidence files retain their original hashes and sizes.
