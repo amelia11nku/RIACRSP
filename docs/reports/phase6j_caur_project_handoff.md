@@ -27,8 +27,11 @@
 - Conditional J3 adds one rank-eight state/candidate/fallback/origin
   interaction: 3,168 new parameters, 5,336,159 total, 2,597,855 trainable.
 - J3 uses the unchanged R12 objective, features, seeds, nested OOF folds,
-  calibration and gate grid. Its independent protocol was frozen before R12
-  optimization; the real-data GPU smoke passed.
+  calibration and gate grid. Its independent protocol was frozen before the
+  first J3 optimizer step; the real-data GPU smoke passed.
+- The first formal J3 fold (seed 696101, held fold 0) completed in 66.51 s,
+  using 26 inner epochs and 14 outer refit epochs. Checkpoint reload reproduced
+  all 2,270 predictions from 96 held states exactly (maximum absolute error 0).
 - Full regression after the J3 implementation: `276 passed in 13.02s`.
 
 ## Frozen files
