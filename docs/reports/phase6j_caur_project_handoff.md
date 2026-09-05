@@ -2,7 +2,7 @@
 
 ## Current state
 
-- Substage decision: `R12_DATA_AUDIT_COMPLETE_J1_DEPLOYMENT_PENDING`; no Phase 6J scientific
+- Substage decision: `R12_DATA_AUDIT_COMPLETE_J1_DEPLOYMENT_RUNNING`; no Phase 6J scientific
   final decision has been made.
 - Selected model: none.
 - CSG-NI v1 frozen: no.
@@ -55,6 +55,8 @@
   (`a73d9c914a0803305a1246e746970ed14302d7e86f87d8f337a8aa7c642786b3`)
 - `outputs/phase6j_caur/frozen/r12_j3_training_protocol.json`
   (`bf596e506b5fbe832e25c9ed8e5edd49db2da14d94cad0c28da29222ef656ac7`)
+- `outputs/phase6j_caur/frozen/r12_j1_deployment_protocol.json`
+  (`6691d6655b249ba1a1c2a92c30044aa252e2eec3b5d8f40588b798b3ef49c882`)
 
 The authoritative hashes are recorded at the top of the preregistered
 protocol. R11 evidence remains immutable and may not be used to adjust Phase
@@ -83,10 +85,24 @@ Freeze before fitting and launch/resume only missing hash-validated seeds:
 ```
 
 Deployment output root: `outputs/phase6j_caur/deployment/j1_full_r12/`.
+Implementation commit: `91a0347`. The verified detached worker was launched
+at 2026-09-05 03:05:36 UTC (11:05:36 CST), PID 91577, with log
+`j1_deployment_20260905T030536Z.log`. These are launch facts, not an assertion
+that the worker is still running when this handoff is read.
 Inspect `launch_record.json`, `progress.json`, `worker_status.json`, three
 seed checkpoint/record pairs and `cached_latency_report.json`. The worker
 holds a file lock and the launcher records the PID before its startup probe.
 Corrupt or orphaned checkpoints require inspection, not silent replacement.
+
+Verified startup snapshot, 2026-09-05 11:06:51 CST: 3/3 full-fit seed
+checkpoints are present and SHA-256 validated (5/16/4 epochs; respective
+runtimes 9.757/29.885/7.592 seconds). The detached worker is alive and its log
+is advancing. Profiling has reached 72/288 states, with bit-exact independent
+versus shared inference checks passing on those states. Initial profile
+throughput is approximately 2.88 states/second; projected finish is about
+11:08 CST, not a completion assertion. Interactive polling stops after this
+healthy launch. Read the final worker status and report on return; do not
+start a second worker from an old ETA.
 
 Cached latency does not include live CSG construction, proposals or frozen
 score feature generation. A completed cached profile is not R13 clearance.
