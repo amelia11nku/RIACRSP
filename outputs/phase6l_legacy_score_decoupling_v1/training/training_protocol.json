@@ -1,0 +1,268 @@
+{
+  "base_checkpoint": {
+    "path": "outputs/phase6f/training/final_seeds/seed_660301/checkpoint_best.pt",
+    "sha256": "f1ccceb607b0e453dfb74e7aa7a946616001db8ec08c12dc9900a66c6f165fc7"
+  },
+  "bootstrap": {
+    "confidence_interval": 0.95,
+    "resamples": 2000,
+    "seed": 707001,
+    "unit": "instance mean"
+  },
+  "calibration": {
+    "candidate_methods": [
+      "PLATT",
+      "ISOTONIC"
+    ],
+    "ece_max": 0.1,
+    "fit_rows": "outer grouped-OOF selected winners only",
+    "isotonic_minimum_selected_rows": 200,
+    "selection": "lowest ECE, then Brier score, then Platt simplicity"
+  },
+  "code_hashes": {
+    "rcias_clgri/analysis/phase6l_legacy_score.py": "32aec85595acd394c3c189a4082681de1e7961b8acd5cf4cf85c6bfcf533fc9b",
+    "rcias_clgri/ni/phase6l_score_free_model.py": "1baff3dca1cba66d064f61660b9446d54cc49fa768468be7c75c98744d1ab671",
+    "scripts/build_phase6l_score_free_dataset.py": "77b97e6759dae2320b7063fda4fb0400919324799e1a987bd8b24bb15388649c",
+    "scripts/freeze_phase6l_training.py": "4456a666ad38d97949c84ba4bb62f88a4ee843454a8617f9f9c45a76bf767d27",
+    "scripts/train_phase6l_score_free.py": "fd5edce582e9783dc3c809a012b6571b87e637e25177edbbdb8e4c410b270ae1"
+  },
+  "config_sha256": "2df803475796ca129b8a33e17eab79b4fe3a054cfc74b583cf8abfbebfd7326e",
+  "families": {
+    "L1_SCORE_FREE_CONT_FROZEN": {
+      "total_parameter_cap": 5350000,
+      "total_parameters": 5332927,
+      "trainable_parameter_cap": 500000,
+      "trainable_parameters": 36799
+    }
+  },
+  "feature_schema": {
+    "categorical_columns": [
+      "primary_origin_rule",
+      "origin_destroy_operator",
+      "origin_family"
+    ],
+    "categorical_sizes_with_unknown": [
+      25,
+      8,
+      6
+    ],
+    "fold_training_audit": [
+      {
+        "categorical_vocabulary_sizes": {
+          "origin_destroy_operator": 7,
+          "origin_family": 5,
+          "primary_origin_rule": 24
+        },
+        "held_fold": 0,
+        "training_actions": 4539,
+        "training_instances": 12,
+        "training_states": 192
+      },
+      {
+        "categorical_vocabulary_sizes": {
+          "origin_destroy_operator": 7,
+          "origin_family": 5,
+          "primary_origin_rule": 24
+        },
+        "held_fold": 1,
+        "training_actions": 4540,
+        "training_instances": 12,
+        "training_states": 192
+      },
+      {
+        "categorical_vocabulary_sizes": {
+          "origin_destroy_operator": 7,
+          "origin_family": 5,
+          "primary_origin_rule": 24
+        },
+        "held_fold": 2,
+        "training_actions": 4539,
+        "training_instances": 12,
+        "training_states": 192
+      }
+    ],
+    "normalization_fit": "training folds only",
+    "numeric_columns": [
+      "origin_rule_count",
+      "origin_family_count",
+      "destroy_target_cardinality",
+      "destroy_target_fraction",
+      "fallback_overlap_fraction",
+      "fallback_jaccard",
+      "critical_overlap_fraction",
+      "bottleneck_overlap_fraction",
+      "normalized_diversity_rank",
+      "is_fallback"
+    ],
+    "numeric_normalization": "median/IQR, denominator floor 1e-6",
+    "robust_z_clip": [
+      -8.0,
+      8.0
+    ]
+  },
+  "freeze_implementation_commit": "875e76b2a931646b8569fa3a7752f5aca70a183b",
+  "gate": {
+    "delta_min_grid": [
+      0.0,
+      0.0025,
+      0.005
+    ],
+    "forced_abstention_exception": "at least 40 forced-abstention outcomes in the scale and a non-positive 95 percent upper confidence bound on lift",
+    "forced_abstention_minimum": 40,
+    "immediate_harm_floor": -0.005,
+    "lcb_lambda_grid": [
+      0.5,
+      1.0
+    ],
+    "minimum_direct_interventions_per_scale": 20,
+    "p_min_grid": [
+      0.55,
+      0.65,
+      0.75
+    ],
+    "selection_order": [
+      "retain only gates with positive overall selected lift and positive grouped-bootstrap LCB",
+      "retain only gates with nonnegative selected lift in every scale",
+      "require direct intervention support or the frozen forced-abstention exception in every scale",
+      "maximize grouped-bootstrap selected-lift LCB",
+      "minimize selection regret",
+      "minimize selected-winner ECE",
+      "maximize supported intervention count",
+      "lexicographically minimize p_min then lambda then delta_min"
+    ],
+    "winner": "maximum ensemble mean continuation advantage; target_set_id tie break"
+  },
+  "grouped_oof": {
+    "calibration_rows": "argmax-selected outer held-fold winners only",
+    "fold_0": [
+      "S_CF1",
+      "M_CF2",
+      "L_CF3"
+    ],
+    "fold_1": [
+      "S_CF2",
+      "M_CF3",
+      "L_CF1"
+    ],
+    "fold_2": [
+      "S_CF3",
+      "M_CF1",
+      "L_CF2"
+    ],
+    "formal_r12_predictions": "exactly one outer held-fold prediction per state/candidate/seed",
+    "grouping": "whole instance and structural cell",
+    "nested_epoch_selection": "for held fold h, train on (h+2)%3 and validate on (h+1)%3; refit on both non-held folds for selected epoch count"
+  },
+  "input_hashes": {
+    "dataset_manifest": "efc939ec1ccc227bbc6f32f52c9de7a17a770ba5b00e69b023cd7b88d0c7d930",
+    "feature_provenance": "55805f01ee653862a6ccc241ad7c48e98c8c3a5a4b75ff3d22ebfdcb77ff14b4",
+    "feature_schema": "023338f9e0639cbad7f0dc1d54b3b5454f67fe8a2e4e87b23864c6bf5bba88ce",
+    "normalization_manifest": "05b3eac89e0d0ccccfb2e0f8e75c4ce6aa3989340aeda211324203f2006db4e2",
+    "phase6j_tensor_cache_integrity": "d3fe40741eacf5a1bb8a555c7be720f3c96beb5c67d7826a160babf6d5b8242b",
+    "score_free_grouped_labels": "461e644c2b2d924c2ab17d9fd7ce6d03787712ef18f26eec01dd4a761d178daa",
+    "score_free_seed_labels": "74c13c47077f0e904f27a3acc825e71d729c5e1ef89272584a61a5ff559aa584"
+  },
+  "latency": {
+    "compiler": "NONE",
+    "complete_live_p90_ms_max": 100.0,
+    "continuous_formal_process": true,
+    "cross_decision_cache": false,
+    "cuda_graphs": false,
+    "device": "cuda",
+    "dropped_samples": false,
+    "favorable_reruns": false,
+    "fresh_complete_live_decision_each_repetition": true,
+    "historical_score_forward_calls": 0,
+    "neural_p90_ms_max": 30.0,
+    "per_state_measured_repetitions": 5,
+    "per_state_warmups": 3,
+    "precision": "FP32_ONLY_FOR_PHASE6L_NEURAL_AND_NEW_OPTIMIZATIONS",
+    "report_percentiles": [
+      "p50",
+      "p90",
+      "p99"
+    ],
+    "report_scales": [
+      "overall",
+      "S",
+      "M",
+      "L"
+    ],
+    "retain_all_samples": true,
+    "states": 288
+  },
+  "objective": {
+    "gap_weight_clip": [
+      0.25,
+      4.0
+    ],
+    "immediate_huber_delta": 0.06125535891414354,
+    "pair_gap_scale": 0.02131782945736434,
+    "positive_ordered_pair_gaps": 153858,
+    "ranking_standardization": "within-state only for pairwise and ListNet terms",
+    "state_balanced": true,
+    "weights": {
+      "bce_beats_fallback": 0.25,
+      "huber_advantage": 0.5,
+      "huber_immediate_utility_auxiliary": 0.1,
+      "listnet_state_list": 0.75,
+      "pairwise_logistic_advantage": 1.0
+    }
+  },
+  "optimizer_steps_started": false,
+  "preregistration_sha256": "307d7da83458a67f0ba3763bfaff69c025652781c1fe018ad75f4653b96d146f",
+  "prerequisite_checks": {
+    "candidates": true,
+    "dataset_hash": true,
+    "dataset_pass": true,
+    "live_feature_parity": true,
+    "preregistration_frozen": true,
+    "r13_locked": true,
+    "r14_locked": true,
+    "reanchored_states": true,
+    "states": true,
+    "zero_historical_forward": true
+  },
+  "r12_acceptance": {
+    "development_failure_decision": "MODEL_REVISION_QUALITY",
+    "essential": {
+      "candidate_origin_collapse": false,
+      "full_bank_completeness": "PASS",
+      "minimum_scale_mean_spearman": 0.0,
+      "overall_spearman_gt": 0.0,
+      "replay_feasibility": "PASS",
+      "selected_bootstrap_lcb_gt": 0.0,
+      "selected_lift_gt": 0.0,
+      "selected_winner_ece_max": 0.1
+    },
+    "preferred": {
+      "ndcg_at_1_min": 0.75,
+      "overall_spearman_min": 0.25,
+      "pairwise_accuracy_min": 0.6
+    },
+    "r12_failure_decision": "MODEL_REVISION_QUALITY"
+  },
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "schema": "phase6l-score-free-training-protocol-v1",
+  "status": "FROZEN_BEFORE_FIRST_OPTIMIZER_STEP",
+  "training": {
+    "deterministic_torch_algorithms": true,
+    "gradient_norm_clip": 1.0,
+    "learning_rate": {
+      "L1_SCORE_FREE_CONT_FROZEN": 0.0003
+    },
+    "maximum_epochs": 120,
+    "minimum_lcb_improvement": 1e-08,
+    "optimizer": "AdamW",
+    "patience": 12,
+    "r13_refit": false,
+    "seeds": [
+      706101,
+      706102,
+      706103
+    ],
+    "state_groups_per_batch": 8,
+    "weight_decay": 0.0001
+  }
+}

@@ -1,0 +1,665 @@
+{
+  "fit_policy": "separate inner and outer training-fold transforms; full transform only for final deployment after R12 qualification",
+  "fold_transforms": {
+    "outer_held_fold_0": {
+      "inner_epoch_training": {
+        "categorical_columns": [
+          "primary_origin_rule",
+          "origin_destroy_operator",
+          "origin_family"
+        ],
+        "iqrs": {
+          "bottleneck_overlap_fraction": 0.034482758620689655,
+          "critical_overlap_fraction": 1e-06,
+          "destroy_target_cardinality": 19.0,
+          "destroy_target_fraction": 0.0019435524759168488,
+          "fallback_jaccard": 0.5993265993265993,
+          "fallback_overlap_fraction": 0.7063492063492064,
+          "is_fallback": 1e-06,
+          "normalized_diversity_rank": 0.5454545454545454,
+          "origin_family_count": 1e-06,
+          "origin_rule_count": 1e-06
+        },
+        "medians": {
+          "bottleneck_overlap_fraction": 0.0,
+          "critical_overlap_fraction": 0.0,
+          "destroy_target_cardinality": 18.0,
+          "destroy_target_fraction": 0.14912280701754385,
+          "fallback_jaccard": 0.2857142857142857,
+          "fallback_overlap_fraction": 0.4444444444444444,
+          "is_fallback": 0.0,
+          "normalized_diversity_rank": 0.5,
+          "origin_family_count": 1.0,
+          "origin_rule_count": 1.0
+        },
+        "numeric_clip": [
+          -8.0,
+          8.0
+        ],
+        "numeric_columns": [
+          "origin_rule_count",
+          "origin_family_count",
+          "destroy_target_cardinality",
+          "destroy_target_fraction",
+          "fallback_overlap_fraction",
+          "fallback_jaccard",
+          "critical_overlap_fraction",
+          "bottleneck_overlap_fraction",
+          "normalized_diversity_rank",
+          "is_fallback"
+        ],
+        "unknown_category_index": 0,
+        "vocabularies": {
+          "origin_destroy_operator": [
+            "critical",
+            "f_bottleneck",
+            "high_reconfiguration",
+            "overloaded_island",
+            "random",
+            "related",
+            "w_bottleneck"
+          ],
+          "origin_family": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "primary_origin_rule": [
+            "matched_random_1",
+            "matched_random_2",
+            "matched_random_3",
+            "near_high_F_delay",
+            "near_high_W_delay",
+            "near_low_slack",
+            "near_precedence_neighbor",
+            "near_same_island_chain",
+            "near_same_product",
+            "one_operation_swap",
+            "operator_critical",
+            "operator_f_bottleneck",
+            "operator_high_reconfiguration",
+            "operator_overloaded_island",
+            "operator_random",
+            "operator_related",
+            "operator_w_bottleneck",
+            "related_replace_25",
+            "related_replace_50",
+            "related_variant_1",
+            "related_variant_2",
+            "related_variant_3",
+            "related_variant_4",
+            "two_operation_swap"
+          ]
+        }
+      },
+      "inner_training_states": 96,
+      "outer_training": {
+        "categorical_columns": [
+          "primary_origin_rule",
+          "origin_destroy_operator",
+          "origin_family"
+        ],
+        "iqrs": {
+          "bottleneck_overlap_fraction": 0.03571428571428571,
+          "critical_overlap_fraction": 1e-06,
+          "destroy_target_cardinality": 17.0,
+          "destroy_target_fraction": 0.0036218070911170352,
+          "fallback_jaccard": 0.5993265993265993,
+          "fallback_overlap_fraction": 0.7063492063492064,
+          "is_fallback": 1e-06,
+          "normalized_diversity_rank": 0.5454545454545454,
+          "origin_family_count": 1e-06,
+          "origin_rule_count": 1e-06
+        },
+        "medians": {
+          "bottleneck_overlap_fraction": 0.0,
+          "critical_overlap_fraction": 0.0,
+          "destroy_target_cardinality": 18.0,
+          "destroy_target_fraction": 0.14948453608247422,
+          "fallback_jaccard": 0.2857142857142857,
+          "fallback_overlap_fraction": 0.4444444444444444,
+          "is_fallback": 0.0,
+          "normalized_diversity_rank": 0.5,
+          "origin_family_count": 1.0,
+          "origin_rule_count": 1.0
+        },
+        "numeric_clip": [
+          -8.0,
+          8.0
+        ],
+        "numeric_columns": [
+          "origin_rule_count",
+          "origin_family_count",
+          "destroy_target_cardinality",
+          "destroy_target_fraction",
+          "fallback_overlap_fraction",
+          "fallback_jaccard",
+          "critical_overlap_fraction",
+          "bottleneck_overlap_fraction",
+          "normalized_diversity_rank",
+          "is_fallback"
+        ],
+        "unknown_category_index": 0,
+        "vocabularies": {
+          "origin_destroy_operator": [
+            "critical",
+            "f_bottleneck",
+            "high_reconfiguration",
+            "overloaded_island",
+            "random",
+            "related",
+            "w_bottleneck"
+          ],
+          "origin_family": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "primary_origin_rule": [
+            "matched_random_1",
+            "matched_random_2",
+            "matched_random_3",
+            "near_high_F_delay",
+            "near_high_W_delay",
+            "near_low_slack",
+            "near_precedence_neighbor",
+            "near_same_island_chain",
+            "near_same_product",
+            "one_operation_swap",
+            "operator_critical",
+            "operator_f_bottleneck",
+            "operator_high_reconfiguration",
+            "operator_overloaded_island",
+            "operator_random",
+            "operator_related",
+            "operator_w_bottleneck",
+            "related_replace_25",
+            "related_replace_50",
+            "related_variant_1",
+            "related_variant_2",
+            "related_variant_3",
+            "related_variant_4",
+            "two_operation_swap"
+          ]
+        }
+      },
+      "outer_training_states": 192
+    },
+    "outer_held_fold_1": {
+      "inner_epoch_training": {
+        "categorical_columns": [
+          "primary_origin_rule",
+          "origin_destroy_operator",
+          "origin_family"
+        ],
+        "iqrs": {
+          "bottleneck_overlap_fraction": 0.037037037037037035,
+          "critical_overlap_fraction": 1e-06,
+          "destroy_target_cardinality": 18.0,
+          "destroy_target_fraction": 0.0020653156060410627,
+          "fallback_jaccard": 0.5714285714285714,
+          "fallback_overlap_fraction": 0.6944444444444444,
+          "is_fallback": 1e-06,
+          "normalized_diversity_rank": 0.5454545454545454,
+          "origin_family_count": 1e-06,
+          "origin_rule_count": 1e-06
+        },
+        "medians": {
+          "bottleneck_overlap_fraction": 0.0,
+          "critical_overlap_fraction": 0.0,
+          "destroy_target_cardinality": 19.0,
+          "destroy_target_fraction": 0.14754098360655737,
+          "fallback_jaccard": 0.2857142857142857,
+          "fallback_overlap_fraction": 0.4444444444444444,
+          "is_fallback": 0.0,
+          "normalized_diversity_rank": 0.5,
+          "origin_family_count": 1.0,
+          "origin_rule_count": 1.0
+        },
+        "numeric_clip": [
+          -8.0,
+          8.0
+        ],
+        "numeric_columns": [
+          "origin_rule_count",
+          "origin_family_count",
+          "destroy_target_cardinality",
+          "destroy_target_fraction",
+          "fallback_overlap_fraction",
+          "fallback_jaccard",
+          "critical_overlap_fraction",
+          "bottleneck_overlap_fraction",
+          "normalized_diversity_rank",
+          "is_fallback"
+        ],
+        "unknown_category_index": 0,
+        "vocabularies": {
+          "origin_destroy_operator": [
+            "critical",
+            "f_bottleneck",
+            "high_reconfiguration",
+            "overloaded_island",
+            "random",
+            "related",
+            "w_bottleneck"
+          ],
+          "origin_family": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "primary_origin_rule": [
+            "matched_random_1",
+            "matched_random_2",
+            "matched_random_3",
+            "near_high_F_delay",
+            "near_high_W_delay",
+            "near_low_slack",
+            "near_precedence_neighbor",
+            "near_same_island_chain",
+            "near_same_product",
+            "one_operation_swap",
+            "operator_critical",
+            "operator_f_bottleneck",
+            "operator_high_reconfiguration",
+            "operator_overloaded_island",
+            "operator_random",
+            "operator_related",
+            "operator_w_bottleneck",
+            "related_replace_25",
+            "related_replace_50",
+            "related_variant_1",
+            "related_variant_2",
+            "related_variant_3",
+            "related_variant_4",
+            "two_operation_swap"
+          ]
+        }
+      },
+      "inner_training_states": 96,
+      "outer_training": {
+        "categorical_columns": [
+          "primary_origin_rule",
+          "origin_destroy_operator",
+          "origin_family"
+        ],
+        "iqrs": {
+          "bottleneck_overlap_fraction": 0.03571428571428571,
+          "critical_overlap_fraction": 1e-06,
+          "destroy_target_cardinality": 18.0,
+          "destroy_target_fraction": 0.0020653156060410627,
+          "fallback_jaccard": 0.5993265993265993,
+          "fallback_overlap_fraction": 0.7063492063492064,
+          "is_fallback": 1e-06,
+          "normalized_diversity_rank": 0.5454545454545454,
+          "origin_family_count": 1e-06,
+          "origin_rule_count": 1e-06
+        },
+        "medians": {
+          "bottleneck_overlap_fraction": 0.0,
+          "critical_overlap_fraction": 0.0,
+          "destroy_target_cardinality": 18.0,
+          "destroy_target_fraction": 0.14893617021276595,
+          "fallback_jaccard": 0.2857142857142857,
+          "fallback_overlap_fraction": 0.4444444444444444,
+          "is_fallback": 0.0,
+          "normalized_diversity_rank": 0.5,
+          "origin_family_count": 1.0,
+          "origin_rule_count": 1.0
+        },
+        "numeric_clip": [
+          -8.0,
+          8.0
+        ],
+        "numeric_columns": [
+          "origin_rule_count",
+          "origin_family_count",
+          "destroy_target_cardinality",
+          "destroy_target_fraction",
+          "fallback_overlap_fraction",
+          "fallback_jaccard",
+          "critical_overlap_fraction",
+          "bottleneck_overlap_fraction",
+          "normalized_diversity_rank",
+          "is_fallback"
+        ],
+        "unknown_category_index": 0,
+        "vocabularies": {
+          "origin_destroy_operator": [
+            "critical",
+            "f_bottleneck",
+            "high_reconfiguration",
+            "overloaded_island",
+            "random",
+            "related",
+            "w_bottleneck"
+          ],
+          "origin_family": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "primary_origin_rule": [
+            "matched_random_1",
+            "matched_random_2",
+            "matched_random_3",
+            "near_high_F_delay",
+            "near_high_W_delay",
+            "near_low_slack",
+            "near_precedence_neighbor",
+            "near_same_island_chain",
+            "near_same_product",
+            "one_operation_swap",
+            "operator_critical",
+            "operator_f_bottleneck",
+            "operator_high_reconfiguration",
+            "operator_overloaded_island",
+            "operator_random",
+            "operator_related",
+            "operator_w_bottleneck",
+            "related_replace_25",
+            "related_replace_50",
+            "related_variant_1",
+            "related_variant_2",
+            "related_variant_3",
+            "related_variant_4",
+            "two_operation_swap"
+          ]
+        }
+      },
+      "outer_training_states": 192
+    },
+    "outer_held_fold_2": {
+      "inner_epoch_training": {
+        "categorical_columns": [
+          "primary_origin_rule",
+          "origin_destroy_operator",
+          "origin_family"
+        ],
+        "iqrs": {
+          "bottleneck_overlap_fraction": 0.038461538461538464,
+          "critical_overlap_fraction": 1e-06,
+          "destroy_target_cardinality": 16.0,
+          "destroy_target_fraction": 0.0046110665597433875,
+          "fallback_jaccard": 0.6060606060606061,
+          "fallback_overlap_fraction": 0.7189542483660131,
+          "is_fallback": 1e-06,
+          "normalized_diversity_rank": 0.5454545454545454,
+          "origin_family_count": 1e-06,
+          "origin_rule_count": 1e-06
+        },
+        "medians": {
+          "bottleneck_overlap_fraction": 0.0,
+          "critical_overlap_fraction": 0.0,
+          "destroy_target_cardinality": 18.0,
+          "destroy_target_fraction": 0.15060240963855423,
+          "fallback_jaccard": 0.23809523809523808,
+          "fallback_overlap_fraction": 0.38461538461538464,
+          "is_fallback": 0.0,
+          "normalized_diversity_rank": 0.5,
+          "origin_family_count": 1.0,
+          "origin_rule_count": 1.0
+        },
+        "numeric_clip": [
+          -8.0,
+          8.0
+        ],
+        "numeric_columns": [
+          "origin_rule_count",
+          "origin_family_count",
+          "destroy_target_cardinality",
+          "destroy_target_fraction",
+          "fallback_overlap_fraction",
+          "fallback_jaccard",
+          "critical_overlap_fraction",
+          "bottleneck_overlap_fraction",
+          "normalized_diversity_rank",
+          "is_fallback"
+        ],
+        "unknown_category_index": 0,
+        "vocabularies": {
+          "origin_destroy_operator": [
+            "critical",
+            "f_bottleneck",
+            "high_reconfiguration",
+            "overloaded_island",
+            "random",
+            "related",
+            "w_bottleneck"
+          ],
+          "origin_family": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "primary_origin_rule": [
+            "matched_random_1",
+            "matched_random_2",
+            "matched_random_3",
+            "near_high_F_delay",
+            "near_high_W_delay",
+            "near_low_slack",
+            "near_precedence_neighbor",
+            "near_same_island_chain",
+            "near_same_product",
+            "one_operation_swap",
+            "operator_critical",
+            "operator_f_bottleneck",
+            "operator_high_reconfiguration",
+            "operator_overloaded_island",
+            "operator_random",
+            "operator_related",
+            "operator_w_bottleneck",
+            "related_replace_25",
+            "related_replace_50",
+            "related_variant_1",
+            "related_variant_2",
+            "related_variant_3",
+            "related_variant_4",
+            "two_operation_swap"
+          ]
+        }
+      },
+      "inner_training_states": 96,
+      "outer_training": {
+        "categorical_columns": [
+          "primary_origin_rule",
+          "origin_destroy_operator",
+          "origin_family"
+        ],
+        "iqrs": {
+          "bottleneck_overlap_fraction": 0.037037037037037035,
+          "critical_overlap_fraction": 1e-06,
+          "destroy_target_cardinality": 17.0,
+          "destroy_target_fraction": 0.0032970052202582756,
+          "fallback_jaccard": 0.6060606060606061,
+          "fallback_overlap_fraction": 0.7189542483660131,
+          "is_fallback": 1e-06,
+          "normalized_diversity_rank": 0.5454545454545454,
+          "origin_family_count": 1e-06,
+          "origin_rule_count": 1e-06
+        },
+        "medians": {
+          "bottleneck_overlap_fraction": 0.0,
+          "critical_overlap_fraction": 0.0,
+          "destroy_target_cardinality": 18.0,
+          "destroy_target_fraction": 0.14960629921259844,
+          "fallback_jaccard": 0.2682926829268293,
+          "fallback_overlap_fraction": 0.4230769230769231,
+          "is_fallback": 0.0,
+          "normalized_diversity_rank": 0.5,
+          "origin_family_count": 1.0,
+          "origin_rule_count": 1.0
+        },
+        "numeric_clip": [
+          -8.0,
+          8.0
+        ],
+        "numeric_columns": [
+          "origin_rule_count",
+          "origin_family_count",
+          "destroy_target_cardinality",
+          "destroy_target_fraction",
+          "fallback_overlap_fraction",
+          "fallback_jaccard",
+          "critical_overlap_fraction",
+          "bottleneck_overlap_fraction",
+          "normalized_diversity_rank",
+          "is_fallback"
+        ],
+        "unknown_category_index": 0,
+        "vocabularies": {
+          "origin_destroy_operator": [
+            "critical",
+            "f_bottleneck",
+            "high_reconfiguration",
+            "overloaded_island",
+            "random",
+            "related",
+            "w_bottleneck"
+          ],
+          "origin_family": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "primary_origin_rule": [
+            "matched_random_1",
+            "matched_random_2",
+            "matched_random_3",
+            "near_high_F_delay",
+            "near_high_W_delay",
+            "near_low_slack",
+            "near_precedence_neighbor",
+            "near_same_island_chain",
+            "near_same_product",
+            "one_operation_swap",
+            "operator_critical",
+            "operator_f_bottleneck",
+            "operator_high_reconfiguration",
+            "operator_overloaded_island",
+            "operator_random",
+            "operator_related",
+            "operator_w_bottleneck",
+            "related_replace_25",
+            "related_replace_50",
+            "related_variant_1",
+            "related_variant_2",
+            "related_variant_3",
+            "related_variant_4",
+            "two_operation_swap"
+          ]
+        }
+      },
+      "outer_training_states": 192
+    }
+  },
+  "full_r12_transform": {
+    "categorical_columns": [
+      "primary_origin_rule",
+      "origin_destroy_operator",
+      "origin_family"
+    ],
+    "iqrs": {
+      "bottleneck_overlap_fraction": 0.03571428571428571,
+      "critical_overlap_fraction": 1e-06,
+      "destroy_target_cardinality": 17.0,
+      "destroy_target_fraction": 0.0030614260319968556,
+      "fallback_jaccard": 0.5993265993265993,
+      "fallback_overlap_fraction": 0.7063492063492064,
+      "is_fallback": 1e-06,
+      "normalized_diversity_rank": 0.5454545454545454,
+      "origin_family_count": 1e-06,
+      "origin_rule_count": 1e-06
+    },
+    "medians": {
+      "bottleneck_overlap_fraction": 0.0,
+      "critical_overlap_fraction": 0.0,
+      "destroy_target_cardinality": 18.0,
+      "destroy_target_fraction": 0.14912280701754385,
+      "fallback_jaccard": 0.2857142857142857,
+      "fallback_overlap_fraction": 0.4444444444444444,
+      "is_fallback": 0.0,
+      "normalized_diversity_rank": 0.5,
+      "origin_family_count": 1.0,
+      "origin_rule_count": 1.0
+    },
+    "numeric_clip": [
+      -8.0,
+      8.0
+    ],
+    "numeric_columns": [
+      "origin_rule_count",
+      "origin_family_count",
+      "destroy_target_cardinality",
+      "destroy_target_fraction",
+      "fallback_overlap_fraction",
+      "fallback_jaccard",
+      "critical_overlap_fraction",
+      "bottleneck_overlap_fraction",
+      "normalized_diversity_rank",
+      "is_fallback"
+    ],
+    "unknown_category_index": 0,
+    "vocabularies": {
+      "origin_destroy_operator": [
+        "critical",
+        "f_bottleneck",
+        "high_reconfiguration",
+        "overloaded_island",
+        "random",
+        "related",
+        "w_bottleneck"
+      ],
+      "origin_family": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "primary_origin_rule": [
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_high_W_delay",
+        "near_low_slack",
+        "near_precedence_neighbor",
+        "near_same_island_chain",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_critical",
+        "operator_f_bottleneck",
+        "operator_high_reconfiguration",
+        "operator_overloaded_island",
+        "operator_random",
+        "operator_related",
+        "operator_w_bottleneck",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_3",
+        "related_variant_4",
+        "two_operation_swap"
+      ]
+    }
+  },
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "schema": "phase6l-score-free-normalization-manifest-v1",
+  "status": "FROZEN_FROM_AUTHORIZED_TRAINING_FOLDS"
+}

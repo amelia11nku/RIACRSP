@@ -1,0 +1,58 @@
+{
+  "categorical_columns": [
+    "primary_origin_rule",
+    "origin_destroy_operator",
+    "origin_family"
+  ],
+  "fallback": {
+    "failure": "fail closed if absent, non-unique, or canonical target differs",
+    "label_reanchor_source": "existing per-candidate per-CRN-seed continuation outcomes only",
+    "label_reanchor_states": 10,
+    "legacy_fallback_equal_states": 278,
+    "new_continuation_rollouts": false,
+    "rule": "unique deduplicated arm containing operator_related provenance and equal to canonical_related_target",
+    "selection_time": "before neural inference"
+  },
+  "forbidden_outcome_columns": [
+    "continuation_advantage_mean",
+    "continuation_advantage_std",
+    "beats_fallback",
+    "immediate_utility",
+    "candidate_decoded_makespan",
+    "continuation_best_makespan",
+    "fallback_continuation_best_makespan"
+  ],
+  "historical_score_forward_calls": 0,
+  "numeric_columns": [
+    "origin_rule_count",
+    "origin_family_count",
+    "destroy_target_cardinality",
+    "destroy_target_fraction",
+    "fallback_overlap_fraction",
+    "fallback_jaccard",
+    "critical_overlap_fraction",
+    "bottleneck_overlap_fraction",
+    "normalized_diversity_rank",
+    "is_fallback"
+  ],
+  "online_input_columns": [
+    "primary_origin_rule",
+    "origin_destroy_operator",
+    "origin_family",
+    "origin_rule_count",
+    "origin_family_count",
+    "destroy_target_cardinality",
+    "destroy_target_fraction",
+    "fallback_overlap_fraction",
+    "fallback_jaccard",
+    "critical_overlap_fraction",
+    "bottleneck_overlap_fraction",
+    "normalized_diversity_rank",
+    "is_fallback"
+  ],
+  "removed_legacy_columns": [
+    "best_frozen_score_jaccard",
+    "normalized_frozen_score_rank"
+  ],
+  "schema": "phase6l-score-free-feature-schema-v1"
+}
