@@ -1,0 +1,30 @@
+{
+  "gurobi_run": false,
+  "input_sha256": {
+    "configs/phase6m_selective_confidence_v1.json": "9a37c5ff9fc9144ce5472a57d36dce1b759cd9b8d56f42798f6d2737fc8b6bf5",
+    "docs/reports/phase6m_selective_confidence_preregistered_protocol.md": "29aa5ba72e8850110c1e8af79c7da80e03375f82f362c72bd0e1296647831709",
+    "outputs/phase6l_legacy_score_decoupling_v1/data/r12_score_free_grouped_labels.parquet": "461e644c2b2d924c2ab17d9fd7ce6d03787712ef18f26eec01dd4a761d178daa",
+    "outputs/phase6l_legacy_score_decoupling_v1/data/r12_score_free_seed_labels.parquet": "74c13c47077f0e904f27a3acc825e71d729c5e1ef89272584a61a5ff559aa584",
+    "outputs/phase6l_legacy_score_decoupling_v1/training/oof_predictions.parquet": "1d10e1dd4b50b40e30735d691bc64d7fd948623258fa1dc06d15e3ffee1fa7fe",
+    "outputs/phase6l_legacy_score_decoupling_v1/training/training_protocol.json": "4f03f38514ce69941012c35fa70e7192002587598266619bb3ca01bc91f45fe7",
+    "outputs/phase6m_selective_confidence_v1/audit/candidate_selection_uncertainty.csv": "3b582c20631953c85a9c7d729206b16b06d851ee6311aa95313391e722f6fbbd",
+    "outputs/phase6m_selective_confidence_v1/audit/confidence_diagnostics.csv": "b3c21854eb6d347b8d77cb62579e6465acd01264e5c9afc591c8c02aa4808902",
+    "outputs/phase6m_selective_confidence_v1/audit/failure_attribution.json": "4faa79609c2a87b8981d14f193266ca5ea0f4006fb41151645d4ce5d8681a4c9",
+    "outputs/phase6m_selective_confidence_v1/audit/gate_rejection_waterfall.csv": "e9f188bdaa36946697d6f8ba0a1375ed8f73c98481b8465020dcb3527975d904",
+    "outputs/phase6m_selective_confidence_v1/audit/support_rejection_breakdown.csv": "552b75be515a96a3f6ca3a875332f76a00f9150602e8a05612aab62ad033c693",
+    "scripts/freeze_phase6m_preregistration.py": "551093cc6a180ec1b89d74cafe88bc6676f8a097a7ab32352ced3754ad768f9e"
+  },
+  "optimizer_steps_started": false,
+  "outer_oof_generated": false,
+  "primary_family": "M1_SCORE_FREE_SELECTIVE_RISK",
+  "protected_phase6l_manifest": {
+    "path": "outputs/phase6m_selective_confidence_v1/audit/protected_phase6l_evidence.json",
+    "sha256": "5bc21165b6e6663b9cb8bb1deacc80548e39ee3cdac60dd3a2531c24cec48598"
+  },
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "schema": "phase6m-selective-confidence-preregistration-v1",
+  "starting_commit": "6f99e2da4e31a809fc00a7b646076c5790643f68",
+  "status": "FROZEN_BEFORE_PHASE6M_OUTER_OOF_OR_OPTIMIZER_STEP",
+  "teacher_ablation": "NOT_RUN"
+}

@@ -1,0 +1,228 @@
+{
+  "schema": "phase6m-selective-confidence-config-v1",
+  "phase": "Phase 6M",
+  "namespace": "phase6m_selective_confidence_v1",
+  "status": "PREREGISTERED_BEFORE_PHASE6M_OUTER_OOF_OR_OPTIMIZER_STEP",
+  "starting_commit": "6f99e2da4e31a809fc00a7b646076c5790643f68",
+  "inherited_terminal_decision": "MODEL_REVISION_QUALITY",
+  "primary_family": "M1_SCORE_FREE_SELECTIVE_RISK",
+  "hypothesis": "a score-free ranker can recover a cross-scale deployable intervention set when confidence and support model selective continuation risk explicitly",
+  "boundaries": {
+    "development_split": "R12_CAUR_FIT_ONLY",
+    "r13": "LOCKED_UNTIL_QUALITY_RUNTIME_BUNDLE_AND_R12_SOLVER_PASS",
+    "r14": "LOCKED_UNTIL_R13_PASSES",
+    "historical_score_online_forward_calls": 0,
+    "candidate_generator_rules": 24,
+    "candidate_scope": "FULL_DEDUPLICATED_PRODUCTION_BANK",
+    "fallback": "Phase6L canonical operator_related fallback",
+    "repair_trials_per_candidate": 8,
+    "precision": "FP32_ONLY",
+    "gurobi": "DO_NOT_RUN",
+    "teacher_ablation": null
+  },
+  "ranker": {
+    "architecture": "Phase6L L1_SCORE_FREE_CONT_FROZEN unchanged",
+    "loss": "Phase6L objective unchanged",
+    "outer_held_predictions": "reuse frozen Phase6L three-seed OOF predictions",
+    "outer_held_prediction_reason": "already generated without each held structural fold and frozen before Phase6M",
+    "selector_training_features": "new ranker predictions cross-fitted inside each two-fold outer training partition",
+    "inner_cross_fit": "for each outer held fold, train on one remaining structural fold and predict the other, then reverse",
+    "inner_training_epochs": 12,
+    "inner_epoch_source": "preregistered global median of the nine frozen Phase6L best epochs",
+    "seeds": [706101, 706102, 706103],
+    "candidate_winner": "maximum ranker ensemble mean advantage with target_set_id lexical tie break"
+  },
+  "selector": {
+    "unit": "candidate",
+    "application": "apply to the ranker-selected winner after full-bank ranking",
+    "training_seeds": [716101, 716102, 716103],
+    "hidden_layers": [32, 16],
+    "activation": "GELU",
+    "dropout": 0.1,
+    "heads": ["continuation_mean", "continuation_scale", "seed_positive_logit"],
+    "continuation_scale": "softplus(raw_scale)+0.0001",
+    "target_rows": "two archived CRN continuation advantages per candidate",
+    "loss": {
+      "gaussian_negative_log_likelihood": 1.0,
+      "seed_positive_binary_cross_entropy": 0.5,
+      "candidate_mean_huber": 0.25,
+      "huber_delta": 0.02,
+      "state_balanced": true
+    },
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_unit": "whole_state",
+    "states_per_batch": 16,
+    "maximum_epochs": 100,
+    "patience": 12,
+    "minimum_validation_loss_improvement": 1e-6,
+    "gradient_norm_clip": 1.0,
+    "epoch_selection": "within each outer training partition use fold (held+2)%3 for selector fit and fold (held+1)%3 for validation, then refit on both for selected epochs",
+    "confidence_probability": "mean sigmoid(seed_positive_logit) over three selector seeds",
+    "predictive_mean": "mean continuation_mean over three selector seeds",
+    "total_predictive_scale": "sqrt(mean(selector_scale^2+selector_mean^2)-ensemble_selector_mean^2+ranker_ensemble_advantage_std^2)",
+    "calibration": "NONE_PRIMARY_DIRECT_SEED_LEVEL_PROBABILITY"
+  },
+  "selector_features": {
+    "ranker_candidate": [
+      "ranker_advantage_mean",
+      "ranker_advantage_std",
+      "ranker_beats_fallback_logit_mean",
+      "ranker_beats_fallback_logit_std",
+      "ranker_beats_fallback_probability_mean",
+      "ranker_beats_fallback_probability_std",
+      "ranker_immediate_utility_mean",
+      "ranker_immediate_utility_std",
+      "candidate_fallback_advantage_margin",
+      "candidate_best_other_advantage_margin",
+      "seed_top1_vote_fraction",
+      "seed_rank_mean_normalized",
+      "seed_rank_std_normalized"
+    ],
+    "candidate_bank": [
+      "candidate_bank_size_div_24",
+      "hard_supported_candidate_fraction",
+      "candidate_score_std",
+      "candidate_score_spread",
+      "candidate_score_normalized_entropy",
+      "fraction_candidates_predicted_above_fallback"
+    ],
+    "support": [
+      "fine_rule_oov",
+      "maximum_absolute_robust_z",
+      "root_mean_square_robust_z",
+      "fraction_numeric_abs_z_above_4",
+      "fraction_numeric_outside_training_range",
+      "continuous_support_score"
+    ],
+    "structural_numeric": [
+      "origin_rule_count",
+      "origin_family_count",
+      "destroy_target_cardinality",
+      "destroy_target_fraction",
+      "fallback_overlap_fraction",
+      "fallback_jaccard",
+      "critical_overlap_fraction",
+      "bottleneck_overlap_fraction",
+      "normalized_diversity_rank",
+      "is_fallback",
+      "target_progress",
+      "search_progress",
+      "bottleneck_proxy"
+    ],
+    "categorical_one_hot": [
+      "primary_origin_rule_with_UNK",
+      "origin_destroy_operator_with_UNK",
+      "origin_family_with_UNK",
+      "scale"
+    ],
+    "forbidden": [
+      "continuation outcomes as input features",
+      "repair outcomes",
+      "candidate decoded makespan",
+      "future search outcomes",
+      "historical frozen scores or ranks",
+      "R13 or R14 metadata"
+    ]
+  },
+  "support": {
+    "fit_scope": "per outer fold using outer training states only; inner epoch selection uses selector-fit fold only",
+    "continuous_numeric_columns": [
+      "origin_rule_count",
+      "origin_family_count",
+      "destroy_target_cardinality",
+      "destroy_target_fraction",
+      "fallback_overlap_fraction",
+      "fallback_jaccard",
+      "critical_overlap_fraction",
+      "bottleneck_overlap_fraction",
+      "normalized_diversity_rank"
+    ],
+    "excluded_from_continuous_distance": ["is_fallback"],
+    "center": "training median",
+    "scale": "max(IQR,1.4826*MAD,0.05*(max-min),0.001)",
+    "continuous_score": "exp(-max(maximum_absolute_robust_z-2,0)/4-fraction_numeric_outside_training_range)",
+    "fine_rule_oov": "allowed with explicit UNK token and indicator",
+    "hard_fail": [
+      "unknown origin_family",
+      "unknown origin_destroy_operator",
+      "nonfinite required numeric feature",
+      "maximum_absolute_robust_z greater than 12"
+    ],
+    "hard_support_boundary": 12.0
+  },
+  "cross_fit": {
+    "outer_folds": 3,
+    "fold_definition": "inherit Phase6L whole-instance structural folds",
+    "held_outcome_use": "exactly once for final outer-OOF qualification metrics",
+    "selector_train_features": "ranker predictions are OOF with respect to every training state and exclude the held outer fold",
+    "normalization": "fit on permitted selector training rows only",
+    "support_statistics": "fit on permitted selector training rows only",
+    "candidate_order": "state_id then target_set_id stable lexical order",
+    "outer_selector_models": 9
+  },
+  "gate": {
+    "p_min_grid": [0.55, 0.65, 0.75],
+    "lcb_lambda_grid": [0.5, 1.0],
+    "delta_min_grid": [0.0, 0.0025, 0.005],
+    "lcb": "selector_predictive_mean-lambda*total_predictive_scale",
+    "immediate_harm_prediction": "unchanged Phase6L ranker ensemble immediate-utility head",
+    "immediate_harm_floor": -0.005,
+    "minimum_direct_interventions_per_scale": 20,
+    "forced_abstention_minimum": 40,
+    "forced_abstention_exception": "at least 40 scale abstentions and grouped-bootstrap 95 percent lift UCB <= 0",
+    "hard_support_required": true,
+    "retention": [
+      "overall gated selected lift > 0",
+      "grouped-bootstrap gated selected-lift LCB > 0",
+      "every scale gated selected lift >= 0",
+      "each scale direct intervention coverage or frozen forced-abstention exception",
+      "selected-winner ECE <= 0.1"
+    ]
+  },
+  "bootstrap": {
+    "unit": "instance mean",
+    "resamples": 2000,
+    "seed": 717001,
+    "confidence_interval": 0.95
+  },
+  "quality": {
+    "ranker_must_reproduce_phase6l_outer_oof": true,
+    "raw_ranker_requirements": {
+      "overall_spearman_gt": 0.0,
+      "minimum_scale_mean_spearman": 0.0,
+      "selected_lift_gt": 0.0,
+      "selected_lift_lcb_gt": 0.0
+    },
+    "confidence_reporting": [
+      "ECE", "Brier", "AUROC", "AUPRC", "Brier resolution",
+      "calibration slope and intercept", "probability sharpness",
+      "lift versus confidence", "lift versus coverage"
+    ],
+    "candidate_origin_collapse": false,
+    "failure_decision": "MODEL_REVISION_QUALITY"
+  },
+  "runtime": {
+    "authorized_only_after_quality_pass": true,
+    "development_targets_ms": {"neural_p90": 25.0, "complete_live_p90": 85.0},
+    "formal_limits_ms": {"neural_p90": 30.0, "complete_live_p90": 100.0},
+    "states": 288,
+    "warmups_per_state": 3,
+    "measurements_per_state": 5,
+    "continuous_process": true,
+    "fresh_live_decision_each_measurement": true,
+    "cross_decision_cache": false
+  },
+  "ordered_stages": [
+    "M0_FROZEN_FAILURE_ATTRIBUTION",
+    "M1_PREREGISTRATION",
+    "M2_IMPLEMENTATION",
+    "M3_THREE_SEED_GROUPED_OOF",
+    "M4_DEVELOPMENT_QUALITY",
+    "M5_DEVELOPMENT_RUNTIME_IF_QUALITY_PASS",
+    "M6_FORMAL_RUNTIME_IF_MARGIN",
+    "M7_BUNDLE_AND_R12_SOLVER_IF_AUTHORIZED",
+    "M8_R13_THEN_R14_IF_AUTHORIZED"
+  ]
+}
