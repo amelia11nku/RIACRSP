@@ -1,0 +1,147 @@
+{
+  "authoritative_existing_oof": {
+    "metrics": {
+      "action_count": 6809,
+      "mean_selected_lift_by_scale": {
+        "L": 0.012296832478651312,
+        "M": 0.006536144531150676,
+        "S": 0.0026346946373895785
+      },
+      "mean_spearman_by_scale": {
+        "L": 0.2090065744063815,
+        "M": 0.1459416869170961,
+        "S": 0.17303780945054273
+      },
+      "model_family": "J1_CONT_FROZEN",
+      "ndcg_at_1": 0.6181951019653739,
+      "overall_spearman": 0.17599535692467344,
+      "pairwise_accuracy": 0.5623919919111571,
+      "selected_lift": 0.007155890549063854,
+      "selected_lift_lcb": 0.0032218513638156117,
+      "selected_lift_ucb": 0.011413163390830018,
+      "selected_origin_counts": {
+        "LOCAL_PERTURBATION": 12,
+        "MATCHED_RANDOM": 24,
+        "ORIGINAL_OPERATOR": 110,
+        "RELATED_VARIANT": 53,
+        "STRUCTURED_NEAR_NEIGHBOR": 89
+      },
+      "selection_regret": 0.03469778934405579,
+      "state_count": 288,
+      "top1_agreement": 0.12152777777777778
+    },
+    "scope": "Phase 6J original frozen fallback labels and existing OOF predictions",
+    "selected_gate": {
+      "coverage_pass": true,
+      "delta_min": 0.0,
+      "forced_abstention": "{\"L\": {\"count\": 60, \"exception_pass\": false, \"upper_confidence_bound\": 0.02168994121206746}, \"M\": {\"count\": 58, \"exception_pass\": false, \"upper_confidence_bound\": 0.009983819285216229}, \"S\": {\"count\": 68, \"exception_pass\": false, \"upper_confidence_bound\": 0.0023240733565066036}}",
+      "interventions": 94,
+      "lcb_lambda": 1.0,
+      "model_family": "J1_CONT_FROZEN",
+      "p_min": 0.55,
+      "retained": true,
+      "scale_L_interventions": 34,
+      "scale_L_lift": 0.007735791002926419,
+      "scale_M_interventions": 35,
+      "scale_M_lift": 0.004032148801543997,
+      "scale_S_interventions": 25,
+      "scale_S_lift": 0.0031588780655184326,
+      "selected_lift": 0.0049756059566629495,
+      "selected_lift_lcb": 0.001925946675211661,
+      "selected_lift_ucb": 0.008342100527431973,
+      "selected_winner_ece": 0.04775835123713266,
+      "selection_regret": 0.03687807393645669
+    },
+    "selected_winner_ece": 0.04775835123713266,
+    "source_sha256": "b7a72f99e34749f62e84cc5d63eac7e3326ff61e91e89cabea81306f8aa17ea6"
+  },
+  "common_reanchored_target_diagnostic": {
+    "eligible_gate_count": 6,
+    "limitation": "no J1 reinference; ten changed fallback states retain their historical J1 input context",
+    "metrics": {
+      "action_count": 6809,
+      "mean_selected_lift_by_scale": {
+        "L": 0.012296832478651312,
+        "M": 0.005706131378371469,
+        "S": 0.00204945374150186
+      },
+      "mean_spearman_by_scale": {
+        "L": 0.2090065744063815,
+        "M": 0.14605040620646767,
+        "S": 0.17303780945054273
+      },
+      "model_family": "J1_CONT_FROZEN",
+      "ndcg_at_1": 0.6181951019653739,
+      "overall_spearman": 0.17603159668779733,
+      "pairwise_accuracy": 0.5623919919111571,
+      "selected_lift": 0.006684139199508213,
+      "selected_lift_lcb": 0.0027983109162950394,
+      "selected_lift_ucb": 0.010828334463673938,
+      "selected_origin_counts": {
+        "LOCAL_PERTURBATION": 12,
+        "MATCHED_RANDOM": 24,
+        "ORIGINAL_OPERATOR": 110,
+        "RELATED_VARIANT": 53,
+        "STRUCTURED_NEAR_NEIGHBOR": 89
+      },
+      "selection_regret": 0.03469778934405579,
+      "state_count": 288,
+      "top1_agreement": 0.12152777777777778
+    },
+    "scope": "existing Phase 6J J1 OOF predictions re-scored only against Phase 6L canonical-fallback labels",
+    "selected_gate": {
+      "coverage_pass": true,
+      "delta_min": 0.0,
+      "forced_abstention": "{\"L\": {\"count\": 65, \"exception_pass\": false, \"upper_confidence_bound\": 0.02209331400746077}, \"M\": {\"count\": 61, \"exception_pass\": false, \"upper_confidence_bound\": 0.008985877604070687}, \"S\": {\"count\": 69, \"exception_pass\": false, \"upper_confidence_bound\": 0.0023426540981575004}}",
+      "interventions": 84,
+      "lcb_lambda": 1.0,
+      "model_family": "J1_CONT_FROZEN",
+      "p_min": 0.55,
+      "retained": true,
+      "scale_L_interventions": 29,
+      "scale_L_lift": 0.006613567808000438,
+      "scale_M_interventions": 31,
+      "scale_M_lift": 0.0033394721537814026,
+      "scale_S_interventions": 24,
+      "scale_S_lift": 0.003178569306854286,
+      "selected_lift": 0.004377203089545375,
+      "selected_lift_lcb": 0.001405377919629264,
+      "selected_lift_ucb": 0.007734669482514588,
+      "selected_winner_ece": 0.04633657889123406,
+      "selection_regret": 0.037004725454018624
+    },
+    "selected_winner_ece": 0.04633657889123406
+  },
+  "direct_reported_metric_comparison": {
+    "ndcg_at_1": {
+      "phase6j_j1": 0.6181951019653739,
+      "phase6l_minus_phase6j": 0.009271045887785045,
+      "phase6l_score_free": 0.6274661478531589
+    },
+    "overall_spearman": {
+      "phase6j_j1": 0.17599535692467344,
+      "phase6l_minus_phase6j": 0.0017274252265758738,
+      "phase6l_score_free": 0.17772278215124931
+    },
+    "pairwise_accuracy": {
+      "phase6j_j1": 0.5623919919111571,
+      "phase6l_minus_phase6j": 0.0007113580500142103,
+      "phase6l_score_free": 0.5631033499611713
+    },
+    "selected_lift": {
+      "phase6j_j1": 0.007155890549063854,
+      "phase6l_minus_phase6j": 0.00036046362159051614,
+      "phase6l_score_free": 0.00751635417065437
+    },
+    "selected_lift_lcb": {
+      "phase6j_j1": 0.0032218513638156117,
+      "phase6l_minus_phase6j": -0.00035560133564079737,
+      "phase6l_score_free": 0.0028662500281748144
+    },
+    "selection_regret": {
+      "phase6j_j1": 0.03469778934405579,
+      "phase6l_minus_phase6j": -0.0008322149711461613,
+      "phase6l_score_free": 0.03386557437290963
+    }
+  }
+}

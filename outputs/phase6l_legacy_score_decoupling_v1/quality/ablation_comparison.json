@@ -1,0 +1,49 @@
+{
+  "ablation_minus_primary": {
+    "ndcg_at_1": 0.005666788023879321,
+    "overall_spearman": -0.011627818849737015,
+    "pairwise_accuracy": -0.004398803380653238,
+    "selected_lift": 0.0005777383954914698,
+    "selected_lift_lcb": -4.888027574720703e-05,
+    "selection_regret": -0.0005777383954914742
+  },
+  "comparison_scope": "matching seed 706101 outer OOF predictions",
+  "elapsed_seconds": 342.7543233899996,
+  "eligible_for_selection_or_promotion": false,
+  "no_fallback_context_seed_706101": {
+    "mean_spearman_by_scale": {
+      "L": 0.19597015681882665,
+      "M": 0.1627302046885967,
+      "S": 0.159556338397683
+    },
+    "ndcg_at_1": 0.6261900592462973,
+    "overall_spearman": 0.17275223330170209,
+    "pairwise_accuracy": 0.561104731975698,
+    "selected_lift": 0.007419088992714253,
+    "selected_lift_lcb": 0.0020801444527139296,
+    "selected_lift_ucb": 0.012711057917090686,
+    "selection_regret": 0.03396283955084974,
+    "state_count": 288
+  },
+  "primary_seed_706101": {
+    "mean_spearman_by_scale": {
+      "L": 0.22503802155918842,
+      "M": 0.15424265783853153,
+      "S": 0.17385947705659732
+    },
+    "ndcg_at_1": 0.620523271222418,
+    "overall_spearman": 0.1843800521514391,
+    "pairwise_accuracy": 0.5655035353563512,
+    "selected_lift": 0.006841350597222783,
+    "selected_lift_lcb": 0.0021290247284611367,
+    "selected_lift_ucb": 0.011843838386145502,
+    "selection_regret": 0.03454057794634122,
+    "state_count": 288
+  },
+  "removed_online_inputs": [
+    "fallback_overlap_fraction",
+    "fallback_jaccard",
+    "is_fallback"
+  ],
+  "status": "PASS_NONSELECTABLE_AUDIT"
+}

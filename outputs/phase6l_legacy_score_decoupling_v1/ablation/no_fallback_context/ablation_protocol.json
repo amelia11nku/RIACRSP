@@ -1,0 +1,21 @@
+{
+  "eligible_for_selection_or_promotion": false,
+  "implementation": "retain semantic fallback index; replace the three model inputs by constant zero and exclude them from support",
+  "model_id": "L1_NO_FALLBACK_CONTEXT_ABLATION",
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "removed_online_inputs": [
+    "fallback_overlap_fraction",
+    "fallback_jaccard",
+    "is_fallback"
+  ],
+  "schema": "phase6l-fallback-context-ablation-protocol-v1",
+  "seed": 706101,
+  "source_hashes": {
+    "configs/phase6l_legacy_score_decoupling_v1.json": "2df803475796ca129b8a33e17eab79b4fe3a054cfc74b583cf8abfbebfd7326e",
+    "outputs/phase6l_legacy_score_decoupling_v1/data/r12_score_free_grouped_labels.parquet": "461e644c2b2d924c2ab17d9fd7ce6d03787712ef18f26eec01dd4a761d178daa",
+    "outputs/phase6l_legacy_score_decoupling_v1/training/training_protocol.json": "4f03f38514ce69941012c35fa70e7192002587598266619bb3ca01bc91f45fe7",
+    "scripts/train_phase6l_fallback_ablation.py": "9a428bc22c4c2ac58cea93927740d7ef261f5e545c23d428cbe03b1f8254987b"
+  },
+  "status": "FROZEN_BEFORE_ABLATION_OPTIMIZER_STEP"
+}

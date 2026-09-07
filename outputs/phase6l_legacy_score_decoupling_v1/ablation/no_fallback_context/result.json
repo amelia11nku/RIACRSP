@@ -1,0 +1,71 @@
+{
+  "elapsed_seconds": 342.7543233899996,
+  "eligible_for_selection_or_promotion": false,
+  "metrics": {
+    "action_count": 6809,
+    "mean_spearman_by_scale": {
+      "L": 0.19597015681882665,
+      "M": 0.1627302046885967,
+      "S": 0.159556338397683
+    },
+    "ndcg_at_1": 0.6261900592462973,
+    "overall_spearman": 0.17275223330170209,
+    "pairwise_accuracy": 0.561104731975698,
+    "selected_lift": 0.007419088992714253,
+    "selected_lift_lcb": 0.0020801444527139296,
+    "selected_lift_ucb": 0.012711057917090686,
+    "selection_regret": 0.03396283955084974,
+    "state_count": 288
+  },
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "removed_online_inputs": [
+    "fallback_overlap_fraction",
+    "fallback_jaccard",
+    "is_fallback"
+  ],
+  "runs": [
+    {
+      "best_epoch": 5,
+      "checkpoint_sha256": "0bdf37a754fabc06b82b4a063f61aaa40f8d569af18b2480c6860a1602dff28c",
+      "held_fold": 0,
+      "inner_epochs_run": 17,
+      "predictions_sha256": "0495700662d7ae04418790305cf0923ca0a62d69c1bb5f565eed0fe3c5a6cc2f",
+      "r13_accessed": false,
+      "r14_accessed": false,
+      "runtime_seconds": 35.50193592999858,
+      "schema": "phase6l-fallback-context-ablation-run-v1",
+      "status": "COMPLETE",
+      "training_seed": 706101
+    },
+    {
+      "best_epoch": 49,
+      "checkpoint_sha256": "8909e415ffe9874295c09757764906c3ff9a58394b5b2e5323c8ca1f85f0721a",
+      "held_fold": 1,
+      "inner_epochs_run": 61,
+      "predictions_sha256": "34ab7f1d3529628ad24bfee2cb94325693fab841f56229093e9abae675f9dddd",
+      "r13_accessed": false,
+      "r14_accessed": false,
+      "runtime_seconds": 174.08616408399757,
+      "schema": "phase6l-fallback-context-ablation-run-v1",
+      "status": "COMPLETE",
+      "training_seed": 706101
+    },
+    {
+      "best_epoch": 36,
+      "checkpoint_sha256": "3b683558896e9a697cec2256fefd076a623098972335b95712ba566627d09e9a",
+      "held_fold": 2,
+      "inner_epochs_run": 48,
+      "predictions_sha256": "6ef8d1081532059c79ec20e56b319f9583289240749fd61371e7ac54e6624c77",
+      "r13_accessed": false,
+      "r14_accessed": false,
+      "runtime_seconds": 133.03293942699747,
+      "schema": "phase6l-fallback-context-ablation-run-v1",
+      "status": "COMPLETE",
+      "training_seed": 706101
+    }
+  ],
+  "schema": "phase6l-fallback-context-ablation-result-v1",
+  "seed": 706101,
+  "status": "COMPLETE_NONSELECTABLE"
+}

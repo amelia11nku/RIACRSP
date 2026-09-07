@@ -1,0 +1,48 @@
+{
+  "background_processes": {
+    "active_jobs": [],
+    "training_pid": 36703,
+    "training_pid_exited": true
+  },
+  "decision": "MODEL_REVISION_QUALITY",
+  "deployable_bundle": "NOT_CREATED_QUALITY_GATE_FAILED",
+  "development_runtime": "NOT_RUN_STOPPED_ON_L4_QUALITY",
+  "eligible_gate_count": 0,
+  "failed_checks": [
+    "retained_gate_with_scale_coverage",
+    "positive_gated_lift_lcb",
+    "nonnegative_gated_scale_lift"
+  ],
+  "formal_r12_qualification": "NOT_RUN_STOPPED_ON_L4_QUALITY",
+  "head_before_terminal_evidence_commit": "45de6a8528d1d42b4a50ac94de4959e35950ea17",
+  "inherited_phase6k_decision_path": "outputs/phase6k_runtime_v1/final/final_decision_v2.json",
+  "inherited_phase6k_decision_sha256": "d3b506aa830767886f5875238619241d07fa35029cb5c226564312c775cd13fe",
+  "intervention_readiness_checks_pass": false,
+  "next_step": "a separately preregistered model revision focused on score-free confidence/support; do not retune this frozen result or access R13/R14",
+  "primary_model": "L1_SCORE_FREE_CONT_FROZEN",
+  "primary_model_qualified": false,
+  "protected_evidence_unchanged": true,
+  "quality_audit_path": "outputs/phase6l_legacy_score_decoupling_v1/quality/development_quality.json",
+  "quality_audit_sha256": "a3bffcf6135afa224921ab24e5546fabd5802369d168c55db96cb264afb6c973",
+  "r12_solver_gate": "NOT_RUN_QUALITY_GATE_FAILED",
+  "r13_accessed": false,
+  "r13_locked": true,
+  "r14_accessed": false,
+  "r14_locked": true,
+  "raw_essential_checks_pass": true,
+  "reason": "raw OOF quality has signal, but no frozen gate satisfies retained scale coverage and gated-lift readiness",
+  "regression": {
+    "command": "/home/liulei/miniconda3/envs/gnn311/bin/python -m pytest -q",
+    "failed": 0,
+    "passed": 352,
+    "schema": "phase6l-terminal-regression-v1",
+    "seconds": 16.27,
+    "status": "PASS",
+    "stdout_tail": "352 passed in 16.27s"
+  },
+  "schema": "phase6l-terminal-decision-v1",
+  "selected_gate": null,
+  "starting_commit": "c52a37f64573d3fa822282960a6a9cbf6222f375",
+  "status": "COMPLETE",
+  "stop_boundary": "L4_BEFORE_DEVELOPMENT_RUNTIME_AND_R12_QUALIFICATION"
+}
