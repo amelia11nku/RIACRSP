@@ -1,0 +1,61 @@
+{
+  "schema": "phase6k-runtime-v1-e4r-amendment-v5",
+  "status": "E4R_FROZEN_BEFORE_IMPLEMENTATION",
+  "parent_config": "configs/phase6k_runtime_v1_e4s.json",
+  "selection_trigger": {
+    "e4s_config": "configs/phase6k_runtime_v1_e4s.json",
+    "e4s_config_sha256": "3e9acb6dedc66fbfc11eca284466ccdea9fab2bfc79d78ff0bfdd5295728832d",
+    "e4s_result": "outputs/phase6k_runtime_v1/runtime/e4s_equivalence/result.json",
+    "e4s_result_sha256": "3a4baec6eea099603302a5d186dcc3b6575468c2cae99b1f5172003c701336f0"
+  },
+  "candidate": "E4R",
+  "single_integration_cleanup": "within one live decision, reuse the historical preprocessor's already materialized tensor graph and CUDA graph batch for J1 instead of tensorizing and transferring that graph a second time",
+  "candidate_membership": "reorder the already materialized historical membership tensors by frozen target_set_id; do not regenerate candidates or project destroyed-operation IDs again",
+  "retained_runtime": {
+    "hoisted_qkv": true,
+    "vectorized_three_seed_heads": true,
+    "compile_mode": "reduce-overhead",
+    "fullgraph": true,
+    "dynamic": true,
+    "triton_cudagraph_skip_dynamic_graphs": true
+  },
+  "live_boundary": {
+    "historical_preprocessing_runs_fresh_for_every_decision": true,
+    "historical_cuda_fp16_autocast_unchanged": true,
+    "cross_decision_cache": false,
+    "shared_same_decision_tensors_only": true,
+    "j1_and_new_optimization_dtype": "FP32"
+  },
+  "forbidden_in_this_amendment": [
+    "changes to historical preprocessing operators, dtype, candidate generation, ordering, calibration, or output cast",
+    "cross-decision or cross-repetition caching",
+    "concurrent CUDA streams",
+    "additional model-kernel cleanup",
+    "compiler-mode sweep",
+    "padding or graph-shape bucketing",
+    "mixed precision",
+    "model, feature, normalization, or gate changes"
+  ],
+  "equivalence": {
+    "r12_states": 288,
+    "candidate_rows": 6809,
+    "repeated_realization_states": 5,
+    "repetitions_per_repeated_state": 30,
+    "atol": 1e-5,
+    "rtol": 1e-5,
+    "all_decisions_identical": true,
+    "reused_graph_and_membership_must_equal_fresh_reconstruction": true
+  },
+  "formal": {
+    "continuous_process": true,
+    "warmups_per_state": 3,
+    "measured_repetitions_per_state": 5,
+    "neural_p90_cap_ms": 30,
+    "full_live_p90_cap_ms": 100,
+    "no_chunking_or_cache_clearing": true,
+    "no_favorable_reruns": true
+  },
+  "terminal_rule": "if E4R fails equivalence, memory stability, or either formal latency cap, close MODEL_REVISION_RUNTIME without another optimization candidate",
+  "r13_accessed": false,
+  "r14_accessed": false
+}

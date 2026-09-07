@@ -1,0 +1,109 @@
+{
+  "schema": "phase6k-runtime-v1-amended-config-v2",
+  "status": "PROTOCOL_AMENDMENT_APPROVED",
+  "required_ancestor": "3db49d5c347ba278a3da0d16d1f6d0e7f3f59a8b",
+  "output_root": "outputs/phase6k_runtime_v1",
+  "primary_comparator": "PHASE6H_CSGNI",
+  "comparators": [
+    "PHASE6H_CSGNI",
+    "LG_HGA-2O",
+    "ALNS",
+    "H1"
+  ],
+  "precision_contract": {
+    "user_amendment": "Historical Phase 6J frozen-score preprocessing: FP16 preserved; J1 model inference and all new Phase 6K acceleration: FP32 only",
+    "historical_preprocessor": "rcias_clgri.analysis.phase6i_mr.score_frozen_candidate_bank",
+    "historical_output_cast": "output.scores.detach().float().cpu().numpy()",
+    "preserve": [
+      "operators",
+      "dtype",
+      "sorting",
+      "lexical_tie_breaking",
+      "output_cast"
+    ],
+    "compile_boundary": "J1 neural/ensemble subgraph only; historical preprocessing excluded",
+    "all_r12_required": [
+      "historical_structure_and_support_identity",
+      "paired_realized_input_equivalence",
+      "identical_selected_action"
+    ],
+    "historical_deterministic_algorithms": false
+  },
+  "frozen_j1_seeds": [
+    696101,
+    696102,
+    696103
+  ],
+  "frozen_j1_epochs": [
+    5,
+    16,
+    4
+  ],
+  "runtime_caps_ms": {
+    "neural_p90": 30,
+    "full_live_p90": 100
+  },
+  "formal_measured_repetitions_per_state": 5,
+  "candidate_rules": 24,
+  "candidate_trials_per_target": 8,
+  "iterative_budget_seconds": "2 * instance.num_operations",
+  "blocked_at": null,
+  "runtime_candidate_selected": null,
+  "deployable_bundle_frozen": false,
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "csg_ni_v1_frozen": false,
+  "historical_configuration": {
+    "path": "configs/phase6k_runtime_v1.json",
+    "sha256": "4188d6dd99e73710b0dea834d1a7eba68f31a4938779917f77fe17fe388e95bb"
+  },
+  "equivalence": {
+    "reference": "one historical preprocessing realization shared by E0 and candidate",
+    "states": 288,
+    "atol": 1e-05,
+    "rtol": 1e-05,
+    "e1_raw_outputs_bit_exact": true,
+    "required_identity": [
+      "candidate_identity",
+      "candidate_order",
+      "support_mask",
+      "neural_preferred",
+      "fallback_candidate",
+      "intervention",
+      "final_target_set_id"
+    ],
+    "repeated_realization_protocol": "outputs/phase6k_runtime_v1/diagnostics/preprocessing_v2/protocol.json",
+    "repeated_realizations_per_state": 30,
+    "archive_score_identity_required": false
+  },
+  "runtime_audit": {
+    "threads": 1,
+    "interop_threads": 1,
+    "pythonhashseed": "0",
+    "cublas_workspace_config": ":4096:8",
+    "j1_deterministic_algorithms": true,
+    "tf32": false,
+    "profiling_states": "lexically first R12 state in each S/M/L x CF cell",
+    "profile_warmup": 3,
+    "diagnostic_repetitions": 3,
+    "formal_warmup_per_state": 3,
+    "formal_repetitions_per_state": 5,
+    "variant_order": [
+      "E1",
+      "E2",
+      "E3"
+    ],
+    "selection": "first equivalent variant in ladder order with diagnostic neural p90 <=27 and live p90 <=100; otherwise first with neural <=30 and live <=100; no quality-based selection",
+    "compile": {
+      "mode": "reduce-overhead",
+      "fullgraph": true,
+      "dynamic": true,
+      "timeout_seconds": 240,
+      "attempts": 1,
+      "boundary": "E2 J1 neural subgraph only",
+      "fallback": "retain eligible eager E1/E2; no TorchScript sweep"
+    },
+    "e4_enabled": false,
+    "formal_live_preprocessing": "fresh original execution every measured repetition; no cached graph/features/input"
+  }
+}

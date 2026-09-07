@@ -1,0 +1,29 @@
+{
+  "schema": "phase6k-runtime-v1-config-v1",
+  "status": "HOLD_BEFORE_RUNTIME_PREREGISTRATION",
+  "required_ancestor": "3db49d5c347ba278a3da0d16d1f6d0e7f3f59a8b",
+  "output_root": "outputs/phase6k_runtime_v1",
+  "primary_comparator": "PHASE6H_CSGNI",
+  "comparators": ["PHASE6H_CSGNI", "LG_HGA-2O", "ALNS", "H1"],
+  "precision_contract": {
+    "user_amendment": "Historical Phase 6J frozen-score preprocessing: FP16 preserved; J1 model inference and all new Phase 6K acceleration: FP32 only",
+    "historical_preprocessor": "rcias_clgri.analysis.phase6i_mr.score_frozen_candidate_bank",
+    "historical_output_cast": "output.scores.detach().float().cpu().numpy()",
+    "preserve": ["operators", "dtype", "sorting", "lexical_tie_breaking", "output_cast"],
+    "compile_boundary": "J1 neural/ensemble subgraph only; historical preprocessing excluded",
+    "all_r12_required": ["exact_frozen_score_values", "exact_candidate_order", "exact_derived_score_features", "identical_selected_action"]
+  },
+  "frozen_j1_seeds": [696101, 696102, 696103],
+  "frozen_j1_epochs": [5, 16, 4],
+  "runtime_caps_ms": {"neural_p90": 30, "full_live_p90": 100},
+  "formal_measured_repetitions_per_state": 5,
+  "candidate_rules": 24,
+  "candidate_trials_per_target": 8,
+  "iterative_budget_seconds": "2 * instance.num_operations",
+  "blocked_at": "HISTORICAL_PREPROCESSING_EQUIVALENCE",
+  "runtime_candidate_selected": null,
+  "deployable_bundle_frozen": false,
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "csg_ni_v1_frozen": false
+}

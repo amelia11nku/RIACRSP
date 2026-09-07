@@ -1,0 +1,45 @@
+{
+  "schema": "phase6k-runtime-v1-stability-amendment-v3",
+  "status": "E3_STABILITY_AMENDMENT_FROZEN_BEFORE_EXECUTION",
+  "parent_config": "configs/phase6k_runtime_v1_amended.json",
+  "trigger_evidence": "outputs/phase6k_runtime_v1/runtime/formal_latency/result.json",
+  "change_scope": "compiler CUDA Graph retention only",
+  "compiler": {
+    "mode": "reduce-overhead",
+    "fullgraph": true,
+    "dynamic": true,
+    "triton_cudagraph_skip_dynamic_graphs": true,
+    "attempts": 1,
+    "mode_sweep": false,
+    "torchscript_sweep": false
+  },
+  "scientific_contract_unchanged": [
+    "historical Phase 6J preprocessing",
+    "J1 FP32 encoder and three seed heads",
+    "normalization",
+    "calibrator and gate",
+    "candidate identity and ordering",
+    "paired realized-input equivalence tolerances",
+    "30 ms neural cap",
+    "100 ms full-live cap"
+  ],
+  "required_before_formal": {
+    "r12_states": 288,
+    "candidate_rows": 6809,
+    "repeated_realization_states": 5,
+    "repetitions_per_repeated_state": 30,
+    "atol": 1e-5,
+    "rtol": 1e-5,
+    "decision_identity": 1.0,
+    "memory_stream_states": 288
+  },
+  "formal": {
+    "warmups_per_state": 3,
+    "measured_repetitions_per_state": 5,
+    "fresh_historical_preprocessing_each_repetition": true,
+    "slow_sample_filtering": false,
+    "favorable_rerun_selection": false
+  },
+  "r13_accessed": false,
+  "r14_accessed": false
+}

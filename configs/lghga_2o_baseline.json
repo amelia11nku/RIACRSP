@@ -1,0 +1,14 @@
+{
+  "schema": "phase6k-lghga-2o-budget-adapter-v1",
+  "method": "LG_HGA-2O",
+  "canonical_method": "LG_HGA-RIACRSP-v2-N4M",
+  "canonical_config": "configs/baselines/lghga_v2_riacrsp.json",
+  "model_root": "outputs/baselines/lghga_kb_v2/models",
+  "online_generation_ceiling": null,
+  "dtr_source_generation_denominator": 100,
+  "dtr_post_100_rule": "generation / 100; frozen trees retain their rightmost leaf",
+  "budget_seconds": "2 * instance.num_operations",
+  "timer_boundary": "before population initialization through final search result",
+  "within_generation_budget_checks": "unchanged canonical mechanics",
+  "status": "IMPLEMENTATION_ONLY_NOT_FORMALLY_FROZEN"
+}

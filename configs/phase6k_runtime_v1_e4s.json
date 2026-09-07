@@ -1,0 +1,50 @@
+{
+  "schema": "phase6k-runtime-v1-e4s-amendment-v4",
+  "status": "E4S_FROZEN_BEFORE_IMPLEMENTATION",
+  "parent_config": "configs/phase6k_runtime_v1_stability_amended.json",
+  "selection_trigger": {
+    "component_profile": "outputs/phase6k_runtime_v1/runtime/e0_components/result.json",
+    "component_profile_sha256": "5731d3115891f0d7ccbbdd740295ef00c325037a99f88e18f301c89a39137c73",
+    "e3s_result": "outputs/phase6k_runtime_v1/runtime/e3_stability/result.json",
+    "e3s_result_sha256": "89bc007d75a4fdbfdd52d646c1eb33f8ea1069f665d151ad9016382f96732d36",
+    "e3s_selection": "outputs/phase6k_runtime_v1/runtime/selection_v4.json",
+    "e3s_selection_sha256": "01cafefdbd2ed456e1e2733997ecf32173f6944486f984384ca6d7cd592b556a"
+  },
+  "candidate": "E4S",
+  "single_kernel_cleanup": "hoist node-type Q/K/V projections once per relation layer and index their results per relation",
+  "retained_runtime": {
+    "vectorized_three_seed_heads": true,
+    "compile_mode": "reduce-overhead",
+    "fullgraph": true,
+    "dynamic": true,
+    "triton_cudagraph_skip_dynamic_graphs": true
+  },
+  "forbidden_in_this_amendment": [
+    "other E4 optimizations",
+    "compiler-mode sweep",
+    "TorchScript sweep",
+    "padding or graph-shape bucketing",
+    "mixed precision",
+    "model or gate changes"
+  ],
+  "equivalence": {
+    "r12_states": 288,
+    "candidate_rows": 6809,
+    "repeated_realization_states": 5,
+    "repetitions_per_repeated_state": 30,
+    "atol": 1e-5,
+    "rtol": 1e-5,
+    "all_decisions_identical": true
+  },
+  "formal": {
+    "continuous_process": true,
+    "warmups_per_state": 3,
+    "measured_repetitions_per_state": 5,
+    "neural_p90_cap_ms": 30,
+    "full_live_p90_cap_ms": 100,
+    "no_chunking_or_cache_clearing": true,
+    "no_favorable_reruns": true
+  },
+  "r13_accessed": false,
+  "r14_accessed": false
+}
