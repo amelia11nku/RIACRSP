@@ -1,0 +1,433 @@
+{
+  "architecture": {
+    "actual_phase6l_path": [
+      "CSGState -> CSGTensorizer(float32, canonical plus reverse relations)",
+      "two-layer FULL_CSG CSGStateEncoder once per state",
+      "final node embeddings remain available for all eight node types",
+      "graph embedding pools each node type then adds progress and bottleneck category",
+      "TargetSetEncoder indexes target OP embeddings for every candidate",
+      "target mean, max, graph-query attention, graph embedding and normalized size",
+      "Phase6L fuses candidate, fallback, their difference and score-free cheap features",
+      "direct continuation, beats-fallback and auxiliary immediate heads"
+    ],
+    "candidate_identity_entry": "batch.target_operation_indices and batch.target_action_index select the actual destroyed OP membership before target mean/max/attention pooling",
+    "candidate_identity_present": true,
+    "code_sha256": {
+      "configs/csg_v1_schema.json": "c76f5e0af972f31e2e2b0f53c8f2b1fff1afa48c08481357db3c32ac9c0a6c69",
+      "rcias_clgri/ni/action_encoder.py": "8cc8d76efc76633fc6c82be0a98e1406b015963f12ee48ea8870716376b2f16a",
+      "rcias_clgri/ni/batching.py": "1d333b7b0f977cb64ef44ccc765d6aa82f0cb926473ef6ed90a8aeb94566c6e9",
+      "rcias_clgri/ni/encoder.py": "3bb038d555fd9341df238b686e83a21ff2861299515a6eb08ab685ee66551c7a",
+      "rcias_clgri/ni/phase6l_score_free_model.py": "1baff3dca1cba66d064f61660b9446d54cc49fa768468be7c75c98744d1ab671",
+      "rcias_clgri/ni/tensorize.py": "a75d1dc9e4434a486a2a3ca8fd45e2a8dec8d21ba1acbe612c1388fc2a6f471c"
+    },
+    "graph_construction": {
+      "actual_tensor_relation_types": 40,
+      "canonical_relation_types": 20,
+      "derived_reverse_relations": true,
+      "node_types": 8,
+      "schema": "CSG-1.0",
+      "tensor_dtype": "torch.float32",
+      "tensor_schema_hash": "7ad59f9c715302a45647210c87aa4130d69bcc6f8eeb19d208f83944e9a7a531"
+    },
+    "important_interpretation": "Phase6L is already target-membership-conditioned; Phase6N tests whether explicit candidate boundary and critical/bottleneck structure adds material discrimination",
+    "information_lost_by_current_aggregation": [
+      "which typed relations cross from target OP nodes to non-target boundary nodes",
+      "direction-separated and relation-family-separated boundary identities",
+      "explicit embeddings of candidate intersect critical operations",
+      "explicit embeddings of candidate intersect active bottleneck operations",
+      "explicit critical synchronization-chain boundary embeddings",
+      "individual target node identities after permutation-invariant pooling"
+    ],
+    "initialization_checkpoint": {
+      "model_config": {
+        "dropout": 0.1,
+        "heads": 4,
+        "hidden_dim": 128,
+        "layers": 2,
+        "message_passing": true,
+        "relation_mode": "FULL_CSG",
+        "use_edge_features": true,
+        "utility_head": true
+      },
+      "path": "outputs/phase6f/training/final_seeds/seed_660301/checkpoint_best.pt",
+      "schema": "phase6f-training-checkpoint-v1",
+      "sha256": "f1ccceb607b0e453dfb74e7aa7a946616001db8ec08c12dc9900a66c6f165fc7",
+      "state_tensors": 494,
+      "stored_parameters": 5329410
+    },
+    "phase6l_checkpoint": {
+      "base_checkpoint_sha256": "f1ccceb607b0e453dfb74e7aa7a946616001db8ec08c12dc9900a66c6f165fc7",
+      "model_family": "L1_SCORE_FREE_CONT_FROZEN",
+      "path": "outputs/phase6l_legacy_score_decoupling_v1/training/oof/L1_SCORE_FREE_CONT_FROZEN/seed_706101/fold_0.pt",
+      "reported_total_parameters": 5332927,
+      "schema": "phase6l-score-free-oof-checkpoint-v1",
+      "sha256": "2ec379c18a170a0b605b81356c51b288e3e8704db654087e75b0d5bf1af298cc",
+      "trainable_parameters": 36799,
+      "trainable_state_tensors": 23
+    }
+  },
+  "candidate_representation_collision": {
+    "candidates_without_same_family_peer": 2,
+    "conditional_bucket_variance": {
+      "bucket_width": 0.1,
+      "candidate_weighted_population_variance_approximation": 0.0002642528045993611,
+      "candidates_in_multi_candidate_buckets": 1313,
+      "median_bucket_population_variance": 0.00010079255901015596,
+      "multi_candidate_buckets": 633,
+      "p90_bucket_population_variance": 0.0006961702198395203
+    },
+    "continuation_best_candidate_separation": {
+      "poorly_separated_best_candidates": 218,
+      "poorly_separated_fraction_of_all_states": 0.7569444444444444,
+      "poorly_separated_fraction_when_peer_exists": 0.7569444444444444,
+      "states": 288,
+      "states_with_same_family_neighbor_for_best": 288
+    },
+    "directional_nearest_neighbor_rows": 6807,
+    "distance": "root-mean-square difference over six naturally [0,1] features",
+    "features": [
+      "destroy_target_fraction",
+      "critical_overlap_fraction",
+      "bottleneck_overlap_fraction",
+      "fallback_overlap_fraction",
+      "fallback_jaccard",
+      "normalized_diversity_rank"
+    ],
+    "interpretation": "Cheap-context collisions are measured within state and origin family. Material outcome gaps among these neighbors support testing explicit target/boundary graph structure; this diagnostic alone does not prove that the new representation will win.",
+    "largest_collision_examples": [
+      {
+        "absolute_continuation_advantage_gap": 0.21331930246542397,
+        "anchor_target_set_id": "ts_a239b43d30c56093587d",
+        "cheap_feature_rms_distance": 0.0725918829304791,
+        "neighbor_target_set_id": "ts_637761b63023c9fa12f6",
+        "origin_family": "ORIGINAL_OPERATOR",
+        "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12_C02__seed691201__it0000010",
+        "target_operation_jaccard": 0.14893617021276595
+      },
+      {
+        "absolute_continuation_advantage_gap": 0.2112146722790138,
+        "anchor_target_set_id": "ts_151ac97b790e6610adf4",
+        "cheap_feature_rms_distance": 0.02331702268274125,
+        "neighbor_target_set_id": "ts_fc7dc5ae086c7edde43d",
+        "origin_family": "RELATED_VARIANT",
+        "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12_C02__seed691201__it0000010",
+        "target_operation_jaccard": 0.0
+      },
+      {
+        "absolute_continuation_advantage_gap": 0.13957185247986434,
+        "anchor_target_set_id": "ts_1b42d3915705fdd095b1",
+        "cheap_feature_rms_distance": 0.06367581140631251,
+        "neighbor_target_set_id": "ts_8e18e0d486a3eb960e81",
+        "origin_family": "ORIGINAL_OPERATOR",
+        "state_id": "CB1_CAUR_L_CF2_RI2_TI2_R12_C02__seed691201__it0000045",
+        "target_operation_jaccard": 0.07407407407407407
+      },
+      {
+        "absolute_continuation_advantage_gap": 0.1261462205700124,
+        "anchor_target_set_id": "ts_2f9c0598ff964c52bbaf",
+        "cheap_feature_rms_distance": 0.02528188259465437,
+        "neighbor_target_set_id": "ts_5215542e376eed83e110",
+        "origin_family": "ORIGINAL_OPERATOR",
+        "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12_C02__seed691201__it0000046",
+        "target_operation_jaccard": 0.125
+      },
+      {
+        "absolute_continuation_advantage_gap": 0.1261462205700124,
+        "anchor_target_set_id": "ts_5215542e376eed83e110",
+        "cheap_feature_rms_distance": 0.02528188259465437,
+        "neighbor_target_set_id": "ts_2f9c0598ff964c52bbaf",
+        "origin_family": "ORIGINAL_OPERATOR",
+        "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12_C02__seed691201__it0000046",
+        "target_operation_jaccard": 0.125
+      },
+      {
+        "absolute_continuation_advantage_gap": 0.123714131023281,
+        "anchor_target_set_id": "ts_171528f0de924d52f6aa",
+        "cheap_feature_rms_distance": 0.09682887782495399,
+        "neighbor_target_set_id": "ts_835df42e50cd6e79bb4f",
+        "origin_family": "ORIGINAL_OPERATOR",
+        "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12_C02__seed691202__it0000046",
+        "target_operation_jaccard": 0.125
+      },
+      {
+        "absolute_continuation_advantage_gap": 0.12182154415164123,
+        "anchor_target_set_id": "ts_754c7b9dd401da6f90f2",
+        "cheap_feature_rms_distance": 0.038567746163717345,
+        "neighbor_target_set_id": "ts_cd0d619912cc062ec2f8",
+        "origin_family": "RELATED_VARIANT",
+        "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12_C02__seed691202__it0000193",
+        "target_operation_jaccard": 0.0
+      },
+      {
+        "absolute_continuation_advantage_gap": 0.12154447115384615,
+        "anchor_target_set_id": "ts_d7b91d4c665c6ee648d3",
+        "cheap_feature_rms_distance": 0.02986236980074508,
+        "neighbor_target_set_id": "ts_0351f15dd5a2463a44c8",
+        "origin_family": "STRUCTURED_NEAR_NEIGHBOR",
+        "state_id": "CB1_CAUR_M_CF1_RI2_TI2_R12__seed691202__it0000057",
+        "target_operation_jaccard": 0.36
+      },
+      {
+        "absolute_continuation_advantage_gap": 0.12086590499098018,
+        "anchor_target_set_id": "ts_637761b63023c9fa12f6",
+        "cheap_feature_rms_distance": 0.05535487727180649,
+        "neighbor_target_set_id": "ts_d55a420ceaba292d78de",
+        "origin_family": "ORIGINAL_OPERATOR",
+        "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12_C02__seed691201__it0000010",
+        "target_operation_jaccard": 0.17391304347826086
+      },
+      {
+        "absolute_continuation_advantage_gap": 0.12086590499098018,
+        "anchor_target_set_id": "ts_d55a420ceaba292d78de",
+        "cheap_feature_rms_distance": 0.05535487727180649,
+        "neighbor_target_set_id": "ts_637761b63023c9fa12f6",
+        "origin_family": "ORIGINAL_OPERATOR",
+        "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12_C02__seed691201__it0000010",
+        "target_operation_jaccard": 0.17391304347826086
+      },
+      {
+        "absolute_continuation_advantage_gap": 0.12000928505106778,
+        "anchor_target_set_id": "ts_b9852aa2a44fcd87471e",
+        "cheap_feature_rms_distance": 0.05324977701702561,
+        "neighbor_target_set_id": "ts_0a45b1aded145e0e752f",
+        "origin_family": "ORIGINAL_OPERATOR",
+        "state_id": "CB1_CAUR_S_CF2_RI2_TI2_R12_C02__seed691202__it0000221",
+        "target_operation_jaccard": 0.125
+      },
+      {
+        "absolute_continuation_advantage_gap": 0.1193637621023513,
+        "anchor_target_set_id": "ts_5db93fba579487e3217a",
+        "cheap_feature_rms_distance": 0.08606981155224593,
+        "neighbor_target_set_id": "ts_cd01ddf72dfecdbaa68d",
+        "origin_family": "RELATED_VARIANT",
+        "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12_C02__seed691202__it0000010",
+        "target_operation_jaccard": 0.0
+      }
+    ],
+    "material_advantage_gap": 0.01,
+    "material_collisions": 3968,
+    "nearest_distance_vs_outcome_gap": {
+      "pearson": 0.006605239938959042,
+      "spearman": 0.013880229998745523
+    },
+    "same_origin_family_required": true,
+    "similar_distance_threshold": 0.1,
+    "similar_nearest_neighbors": 5465,
+    "strong_advantage_gap": 0.02,
+    "strong_collisions": 2656
+  },
+  "data_integrity": {
+    "candidate_identity_order_preserved": true,
+    "candidate_rows": 6809,
+    "canonical_fallback_exactly_one_per_state": true,
+    "full_bank_scope": "TRUE_FULL_DEDUPLICATED_24_RULE_BANK",
+    "grouped_path": "outputs/phase6l_legacy_score_decoupling_v1/data/r12_score_free_grouped_labels.parquet",
+    "grouped_sha256": "461e644c2b2d924c2ab17d9fd7ce6d03787712ef18f26eec01dd4a761d178daa",
+    "instances": 18,
+    "phase6l_ensemble_path": "outputs/phase6l_legacy_score_decoupling_v1/training/ensemble_oof.parquet",
+    "phase6l_ensemble_sha256": "80807edd7793c9e6a99b4ec56d1e2a5d41dbeb1e0e1d120b7d60ecb7d58d168f",
+    "raw_path": "outputs/phase6l_legacy_score_decoupling_v1/data/r12_score_free_seed_labels.parquet",
+    "raw_sha256": "74c13c47077f0e904f27a3acc825e71d729c5e1ef89272584a61a5ff559aa584",
+    "states": 288
+  },
+  "decision": "PROCEED_TO_PREREGISTRATION",
+  "effective_sample_size_and_label_noise": {
+    "candidate_rows": 6809,
+    "candidates_per_state": {
+      "maximum": 24,
+      "mean": 23.64236111111111,
+      "minimum": 21
+    },
+    "clustering_descriptives": {
+      "note": "These are descriptive variance components, not an independence-adjusted effective sample-size estimator. Inferential resampling remains instance-grouped.",
+      "raw_label_population_variance": 0.001285299444445816,
+      "variance_of_instance_means": 2.3900514195375062e-05,
+      "variance_of_state_means": 0.0004047094812209167
+    },
+    "independence_interpretation": {
+      "candidate_rows_are_independent_examples": false,
+      "instance_level_qualification_units": 18,
+      "required_split": "whole instance/structural cell",
+      "state_clusters": 288
+    },
+    "instances": 18,
+    "raw_crn_rows": 13618,
+    "states": 288,
+    "states_per_instance": {
+      "maximum": 16,
+      "mean": 16.0,
+      "minimum": 16
+    },
+    "structural_folds": {
+      "0": {
+        "candidates": 2270,
+        "instances": 6,
+        "states": 96
+      },
+      "1": {
+        "candidates": 2269,
+        "instances": 6,
+        "states": 96
+      },
+      "2": {
+        "candidates": 2270,
+        "instances": 6,
+        "states": 96
+      }
+    },
+    "two_crn_label_noise": {
+      "candidate_mean_population_std_mean": 0.011657775528350386,
+      "candidate_mean_population_std_p90": 0.029151408160923,
+      "continuation_seeds": [
+        695101,
+        695102
+      ],
+      "mean_absolute_seed_difference": 0.02331555105670077,
+      "median_absolute_seed_difference": 0.01555652936021034,
+      "p90_absolute_seed_difference": 0.058302816321846,
+      "p99_absolute_seed_difference": 0.11330740436475983,
+      "seed_outcome_pearson": 0.5310432529299777,
+      "sign_disagreement_fraction": 0.2650903216331326
+    }
+  },
+  "gurobi_run": false,
+  "historical_score_online_forward_calls": 0,
+  "immediate_vs_continuation": {
+    "by_scale": {
+      "L": {
+        "blocked_mean_continuation_advantage": -0.0030306400465218257,
+        "blocked_positive_rate": 0.4434108527131783,
+        "candidates": 2294,
+        "continuation_positive": 1006,
+        "continuation_positive_with_negative_realized_immediate": 647,
+        "continuation_positive_with_realized_immediate_below_minus_0_005": 582,
+        "old_predicted_gate_blocked": 1935,
+        "old_predicted_gate_blocked_fraction": 0.8435047951176984,
+        "useful_positive_candidates_blocked": 858
+      },
+      "M": {
+        "blocked_mean_continuation_advantage": -0.0029082720040451366,
+        "blocked_positive_rate": 0.4303388918773534,
+        "candidates": 2284,
+        "continuation_positive": 989,
+        "continuation_positive_with_negative_realized_immediate": 681,
+        "continuation_positive_with_realized_immediate_below_minus_0_005": 630,
+        "old_predicted_gate_blocked": 1859,
+        "old_predicted_gate_blocked_fraction": 0.813922942206655,
+        "useful_positive_candidates_blocked": 800
+      },
+      "S": {
+        "blocked_mean_continuation_advantage": -0.002472594390795161,
+        "blocked_positive_rate": 0.4509681449094316,
+        "candidates": 2231,
+        "continuation_positive": 1016,
+        "continuation_positive_with_negative_realized_immediate": 678,
+        "continuation_positive_with_realized_immediate_below_minus_0_005": 634,
+        "old_predicted_gate_blocked": 1601,
+        "old_predicted_gate_blocked_fraction": 0.7176154190945764,
+        "useful_positive_candidates_blocked": 722
+      }
+    },
+    "conclusion": "The old predicted immediate gate removes many continuation-positive actions and its prediction is nearly uncorrelated with continuation advantage; it is not a valid Phase6N promotion dependency. Structural best-so-far safety remains mandatory.",
+    "correlation": {
+      "predicted_immediate_vs_continuation_pearson": 0.024797965920661143,
+      "predicted_immediate_vs_continuation_spearman": 0.007243661809611845,
+      "realized_immediate_vs_continuation_pearson": 0.34600292723276527,
+      "realized_immediate_vs_continuation_spearman": 0.3513139727140943
+    },
+    "definition": "realized immediate utility diagnoses local deterioration; the historical hard gate used the Phase6L ensemble immediate-utility prediction at -0.005",
+    "diagnostic_immediate_argmax_winners": {
+      "continuation_positive": 105,
+      "mean_continuation_advantage": -0.00881142870474508,
+      "states": 288
+    },
+    "old_gate_floor": -0.005,
+    "overall": {
+      "blocked_mean_continuation_advantage": -0.0028228711334944753,
+      "blocked_positive_rate": 0.4411492122335496,
+      "candidates": 6809,
+      "continuation_positive": 3011,
+      "continuation_positive_with_negative_realized_immediate": 2006,
+      "continuation_positive_with_realized_immediate_below_minus_0_005": 1846,
+      "old_predicted_gate_blocked": 5395,
+      "old_predicted_gate_blocked_fraction": 0.7923336760170363,
+      "useful_positive_candidates_blocked": 2380
+    }
+  },
+  "new_continuation_rollouts": false,
+  "optimizer_steps_started": false,
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "schema": "phase6n-architecture-data-audit-v1",
+  "search_safety": {
+    "accepted_worse_current_events": 19,
+    "checks": {
+      "accepted_worse_current_observed": true,
+      "accepted_worse_never_overwrites_best": true,
+      "all_decoded_candidates_feasible": true,
+      "best_so_far_monotone_nonincreasing": true,
+      "deterministic_repeated_execution": true,
+      "returned_best_equals_final_best": true
+    },
+    "code_sha256": {
+      "rcias_clgri/search/alns.py": "fa2c1141052dc8e5fe2dae9daadf69881f7d15a383574e25e25eb596d775e559",
+      "rcias_clgri/search/common.py": "837298d3b1289a3078f822aafae274984424d9bbfa68f794d972f0610c8ddfdf",
+      "rcias_clgri/search/csgni.py": "54eba7de9f0d946346c0249cc5f6bedde53b89726f16bba783eb378e4a92f275"
+    },
+    "initial_best_makespan": 39.0,
+    "instance": "tiny_03",
+    "interpretation": "The current solution may deteriorate under simulated annealing, while the independently stored best remains feasible and monotone. No production solver change is needed before Phase6N qualification.",
+    "iterations": 20,
+    "maximum_accepted_current_makespan": 70.0,
+    "returned_best_makespan": 39.0,
+    "seed": 1,
+    "status": "PASS"
+  },
+  "starting_boundary": {
+    "gurobi_run": false,
+    "head_at_n0": "8efe396e6cca44493a18c07720c4effaf2add7c1",
+    "manual": {
+      "path": "/home/liulei/\u4e0b\u8f7d/phase6n_candidate_conditioned_csg_codex_instructions.md",
+      "sha256": "64c66583b16bdcc63cb29e495e20cda38af41c2b36d2303620dbf0a9dc98dbf8"
+    },
+    "phase6m_terminal": {
+      "decision": "MODEL_REVISION_QUALITY",
+      "path": "outputs/phase6m_selective_confidence_v1/final/final_decision.json",
+      "sha256": "4dfdf56b5c76aa61d24a63ab9ffe51d5caa102d3d017f3dcf54a8cbe85161703"
+    },
+    "pre_phase6l_chained_manifest_verification": {
+      "manifest_hashes_match_l0": true,
+      "phase6i_phase6j": {
+        "bytes": 1763645455,
+        "files": 6636,
+        "status": "PASS"
+      },
+      "phase6k": {
+        "bytes": 638852260,
+        "files": 21365,
+        "status": "PASS"
+      },
+      "tracked_predecessor": {
+        "bytes": 0,
+        "files": 139,
+        "status": "PASS"
+      }
+    },
+    "protected_phase6l_phase6m": {
+      "bytes": 36230480,
+      "files": 208,
+      "manifest_path": "outputs/phase6n_candidate_conditioned_csg_v1/audit/protected_phase6l_phase6m_evidence.json"
+    },
+    "r13_accessed": false,
+    "r13_r14_checked_paths": [
+      "outputs/phase6j_caur/r13_selection/access_ledger.json",
+      "outputs/phase6j_caur/r14_holdout/access_ledger.json",
+      "outputs/phase6n_candidate_conditioned_csg_v1/r13_selection/access_ledger.json",
+      "outputs/phase6n_candidate_conditioned_csg_v1/r14_holdout/access_ledger.json"
+    ],
+    "r14_accessed": false,
+    "starting_commit": "8efe396e6cca44493a18c07720c4effaf2add7c1",
+    "starting_commit_is_ancestor": true
+  },
+  "status": "N0_COMPLETE"
+}
