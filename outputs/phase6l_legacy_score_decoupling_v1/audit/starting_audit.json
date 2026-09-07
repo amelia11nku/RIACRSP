@@ -1,0 +1,32 @@
+{
+  "current_phase6l_worktree_paths": [
+    "?? rcias_clgri/analysis/phase6l_legacy_score.py",
+    "?? scripts/audit_phase6l_dependencies.py",
+    "?? tests/test_phase6l_legacy_score.py"
+  ],
+  "protected_evidence": {
+    "phase6i_phase6j_files": 6636,
+    "phase6i_phase6j_files_verified": true,
+    "phase6i_phase6j_manifest_path": "outputs/phase6k_runtime_v1/audit/protected_evidence.json",
+    "phase6i_phase6j_manifest_sha256": "9d4203b7542fa9b95dd99fdc188c79b4698bfad34c1132bbf88b52f28abb4ec5",
+    "phase6k_bytes": 638852260,
+    "phase6k_files": 21365,
+    "phase6k_manifest_path": "outputs/phase6l_legacy_score_decoupling_v1/audit/protected_phase6k_evidence.json",
+    "phase6k_manifest_sha256": "cc88386a524d9bf211d029d3cefa13dfd471a0d3c55b8605af48c37287895662",
+    "tracked_predecessor_files": 139,
+    "tracked_predecessor_manifest_path": "outputs/phase6l_legacy_score_decoupling_v1/audit/protected_tracked_predecessor_files.json",
+    "tracked_predecessor_manifest_sha256": "5c0b9136abb7d8fe067067dfe09c8dfbe535480f96e6bc258da34a301ef65d76"
+  },
+  "r13_accessed": false,
+  "r13_r14_access_paths": [],
+  "r14_accessed": false,
+  "schema": "phase6l-start-audit-v1",
+  "starting_commit": "c52a37f64573d3fa822282960a6a9cbf6222f375",
+  "starting_regression": {
+    "failed": 0,
+    "passed": 342,
+    "seconds": 16.58
+  },
+  "starting_worktree": "CLEAN_VERIFIED_BEFORE_PHASE6L_EDITS",
+  "status": "PASS"
+}

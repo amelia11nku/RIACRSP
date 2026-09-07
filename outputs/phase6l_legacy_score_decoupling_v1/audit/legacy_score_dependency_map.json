@@ -1,0 +1,357 @@
+{
+  "action_space_changed_by_legacy_score": false,
+  "candidate_generation_intrinsically_score_independent": true,
+  "data_scope": "existing authorized R12_CAUR_FIT development/OOF evidence only",
+  "decision": "PROCEED_TO_L1_PREREGISTRATION",
+  "dependencies": [
+    {
+      "classification": "REMOVE",
+      "dependency": "direct",
+      "evidence": "phase6i_mr.py:114-190; phase6l_legacy_score.py",
+      "interface": "historical scorer forward",
+      "resolution": "Phase 6L online path exposes no policy/model parameter to its feature builder"
+    },
+    {
+      "classification": "OFFLINE_TEACHER_ONLY",
+      "dependency": "direct",
+      "evidence": "phase6i_mr.py:114-190; Phase 6J grouped label schema",
+      "interface": "frozen_raw_score and calibrated historical outputs",
+      "resolution": "excluded from all online inputs; no teacher is selected for the primary model"
+    },
+    {
+      "classification": "KEEP",
+      "dependency": "none",
+      "evidence": "phase6c.py:126-217; dynamic replay trace",
+      "interface": "24-rule proposal generation",
+      "resolution": "retain generate_revised_target_arms unchanged"
+    },
+    {
+      "classification": "KEEP",
+      "dependency": "none",
+      "evidence": "phase6c.py:205-225; dynamic replay trace",
+      "interface": "target-set deduplication and identity",
+      "resolution": "retain insertion-order deduplication by sorted operation tuple and target_set_id"
+    },
+    {
+      "classification": "KEEP",
+      "dependency": "none",
+      "evidence": "phase6c.py:205-225; phase6j_caur.py:466-470",
+      "interface": "candidate order and target_set_id tie breaks",
+      "resolution": "retain generator order for live features and lexical target ID for model ties"
+    },
+    {
+      "classification": "REMOVE",
+      "dependency": "direct",
+      "evidence": "phase6i_mr.py:238-286",
+      "interface": "forced FROZEN_NEURAL_TOP1/TOP2 roles",
+      "resolution": "not used by the full-bank Phase 6L live decision"
+    },
+    {
+      "classification": "REMOVE",
+      "dependency": "direct",
+      "evidence": "phase6i_mr.py:289-305",
+      "interface": "reduced top-8 audit roles",
+      "resolution": "Phase 6L formal claims use the complete deduplicated bank"
+    },
+    {
+      "classification": "REPLACE",
+      "dependency": "indirect",
+      "evidence": "phase6i_mr.py:213-266; full R12 provenance audit",
+      "interface": "ALNS_RELATED_FALLBACK role",
+      "resolution": "select the unique deduplicated operator_related canonical target before scoring"
+    },
+    {
+      "classification": "REPLACE",
+      "dependency": "indirect",
+      "evidence": "phase6j_caur.py:398-399; phase6l_legacy_score.py",
+      "interface": "fallback_overlap_fraction and fallback_jaccard",
+      "resolution": "recompute against the deterministic operator_related fallback"
+    },
+    {
+      "classification": "REPLACE",
+      "dependency": "indirect",
+      "evidence": "phase6j_caur.py:405; phase6l_legacy_score.py",
+      "interface": "is_fallback",
+      "resolution": "derive from the deterministic operator_related fallback"
+    },
+    {
+      "classification": "REMOVE",
+      "dependency": "direct",
+      "evidence": "phase6j_caur.py:402",
+      "interface": "best_frozen_score_jaccard",
+      "resolution": "remove from the feature schema"
+    },
+    {
+      "classification": "REMOVE",
+      "dependency": "direct",
+      "evidence": "phase6j_caur.py:366-367,403",
+      "interface": "normalized_frozen_score_rank",
+      "resolution": "remove from the feature schema"
+    },
+    {
+      "classification": "KEEP",
+      "dependency": "none",
+      "evidence": "phase6j_caur.py:368-376,404",
+      "interface": "normalized_diversity_rank",
+      "resolution": "recompute from target-set Jaccard distances and target ID ties only"
+    },
+    {
+      "classification": "REPLACE",
+      "dependency": "indirect",
+      "evidence": "run_phase6j_caur_collection.py:323-414",
+      "interface": "continuation advantage and beats-fallback labels",
+      "resolution": "re-anchor stored per-seed candidate outcomes to operator_related without new rollouts"
+    },
+    {
+      "classification": "REPLACE",
+      "dependency": "indirect",
+      "evidence": "train_phase6j_caur.py:55-110",
+      "interface": "feature normalization and categorical vocabulary",
+      "resolution": "fit within each authorized training fold on the Phase 6L schema only"
+    },
+    {
+      "classification": "REPLACE",
+      "dependency": "indirect",
+      "evidence": "Phase 6J support contract and train_phase6j_caur.py",
+      "interface": "support mask",
+      "resolution": "recompute from the Phase 6L fold transform and score-free inputs"
+    },
+    {
+      "classification": "REPLACE",
+      "dependency": "indirect",
+      "evidence": "Phase 6J J1 model and Phase 6L execution manual",
+      "interface": "candidate context and three prediction heads",
+      "resolution": "train a separately named continuation ranker; no E4R equivalence claim"
+    },
+    {
+      "classification": "REPLACE",
+      "dependency": "indirect",
+      "evidence": "phase6j_caur.json gate and calibration contracts",
+      "interface": "OOF calibrator and decision thresholds",
+      "resolution": "refit/select only from authorized grouped OOF predictions"
+    },
+    {
+      "classification": "KEEP",
+      "dependency": "none after retraining",
+      "evidence": "phase6j_caur.py:449-491; phase6j_caur.json",
+      "interface": "gate winner, LCB, support and harm formulation",
+      "resolution": "retain the Phase 6J decision rule and frozen threshold grid"
+    },
+    {
+      "classification": "KEEP",
+      "dependency": "none",
+      "evidence": "run_phase6j_caur_collection.py:291-319",
+      "interface": "repair, decoder and feasibility semantics",
+      "resolution": "retain eight deterministic trials per target and existing decoder checks"
+    }
+  ],
+  "dynamic_trace": [
+    {
+      "candidate_generation_api_accepts_historical_policy_or_scores": false,
+      "candidate_generation_repeat_exact": true,
+      "candidate_ids_equal_archived_generation_order": true,
+      "fallback_changed_by_score_reversal": true,
+      "legacy_fallback_target_set_id": "ts_8ca45bbd0ebb6705bdae",
+      "legacy_feature_rows_changed_by_score_reversal": true,
+      "removed_legacy_input_columns": [
+        "best_frozen_score_jaccard",
+        "normalized_frozen_score_rank"
+      ],
+      "requested_rule_count": 24,
+      "reversed_score_fallback_target_set_id": "ts_2a9a75a42f0b05e62705",
+      "scale": "S",
+      "score_free_candidate_ids_in_generation_order": [
+        "ts_ac1bfcd65eb639344823",
+        "ts_c1a11fcb6b4064b9336b",
+        "ts_91d0ee42107f82d970de",
+        "ts_9a0c465927ae759b08c0",
+        "ts_eda771d0bd5543ec0416",
+        "ts_9f48b95b97dd8fe9a73a",
+        "ts_2a9a75a42f0b05e62705",
+        "ts_8ca45bbd0ebb6705bdae",
+        "ts_2b8763ab657829dca3fb",
+        "ts_8fe1cda619381be1cd44",
+        "ts_9ed3f85ee1a671a753a9",
+        "ts_71eb82e3f5fd4a010171",
+        "ts_df7552a1ada7a2de9f5d",
+        "ts_abfc8dd931e594c29f15",
+        "ts_f1e306534a90e542235f",
+        "ts_95aca20024a77b9251e4",
+        "ts_9a8a4e03e4b00193d7c2",
+        "ts_eff932cd11014d01e51d",
+        "ts_2e785594d82af63b0137",
+        "ts_5249814aa479c1eb199a",
+        "ts_70f36e3b491a1b6b1876",
+        "ts_77eafbebe3af051d958a",
+        "ts_63aad0e5d40a656794c9"
+      ],
+      "score_free_fallback_target_set_id": "ts_2a9a75a42f0b05e62705",
+      "score_free_input_columns": [
+        "primary_origin_rule",
+        "origin_destroy_operator",
+        "origin_family",
+        "origin_rule_count",
+        "origin_family_count",
+        "destroy_target_cardinality",
+        "destroy_target_fraction",
+        "fallback_overlap_fraction",
+        "fallback_jaccard",
+        "critical_overlap_fraction",
+        "bottleneck_overlap_fraction",
+        "normalized_diversity_rank",
+        "is_fallback"
+      ],
+      "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__seed691201__it0000130",
+      "unique_candidate_count": 23
+    },
+    {
+      "candidate_generation_api_accepts_historical_policy_or_scores": false,
+      "candidate_generation_repeat_exact": true,
+      "candidate_ids_equal_archived_generation_order": true,
+      "fallback_changed_by_score_reversal": true,
+      "legacy_fallback_target_set_id": "ts_5a907c4e627306865c11",
+      "legacy_feature_rows_changed_by_score_reversal": true,
+      "removed_legacy_input_columns": [
+        "best_frozen_score_jaccard",
+        "normalized_frozen_score_rank"
+      ],
+      "requested_rule_count": 24,
+      "reversed_score_fallback_target_set_id": "ts_ad51214bb470b81dbf07",
+      "scale": "M",
+      "score_free_candidate_ids_in_generation_order": [
+        "ts_76e2dc434235ee148437",
+        "ts_38ea05bb17431637c18d",
+        "ts_7097b242fac9b8fd5014",
+        "ts_5ddca0e693b5e24645ae",
+        "ts_61c6b360bd0488bb1e6e",
+        "ts_22d6602d1789bf20691b",
+        "ts_ad51214bb470b81dbf07",
+        "ts_5a907c4e627306865c11",
+        "ts_e10b5be91cf28b682a3a",
+        "ts_13a12e2651132f7cf429",
+        "ts_60c398ae650947cd7950",
+        "ts_9282eb52d5986de2b5d8",
+        "ts_190805b29243de997de8",
+        "ts_e7014fbb36b060e495fa",
+        "ts_168a5c4d04f6f7102357",
+        "ts_cf5d211d91569f28b509",
+        "ts_0a16f6e9d6e2e50bedbd",
+        "ts_b9b4952dd5e6e81d012c",
+        "ts_70bd2249561a50bac791",
+        "ts_294b89364825ca9c5cd8",
+        "ts_687a63d0d06046f157fd",
+        "ts_cc45754d1e1cb5139e84",
+        "ts_b38bc70e5287fafb28cb",
+        "ts_73e2de23e0933a2a6718"
+      ],
+      "score_free_fallback_target_set_id": "ts_ad51214bb470b81dbf07",
+      "score_free_input_columns": [
+        "primary_origin_rule",
+        "origin_destroy_operator",
+        "origin_family",
+        "origin_rule_count",
+        "origin_family_count",
+        "destroy_target_cardinality",
+        "destroy_target_fraction",
+        "fallback_overlap_fraction",
+        "fallback_jaccard",
+        "critical_overlap_fraction",
+        "bottleneck_overlap_fraction",
+        "normalized_diversity_rank",
+        "is_fallback"
+      ],
+      "state_id": "CB1_CAUR_M_CF1_RI2_TI2_R12_C02__seed691201__it0000014",
+      "unique_candidate_count": 24
+    },
+    {
+      "candidate_generation_api_accepts_historical_policy_or_scores": false,
+      "candidate_generation_repeat_exact": true,
+      "candidate_ids_equal_archived_generation_order": true,
+      "fallback_changed_by_score_reversal": false,
+      "legacy_fallback_target_set_id": "ts_9157be4990e22e0cb713",
+      "legacy_feature_rows_changed_by_score_reversal": true,
+      "removed_legacy_input_columns": [
+        "best_frozen_score_jaccard",
+        "normalized_frozen_score_rank"
+      ],
+      "requested_rule_count": 24,
+      "reversed_score_fallback_target_set_id": "ts_9157be4990e22e0cb713",
+      "scale": "L",
+      "score_free_candidate_ids_in_generation_order": [
+        "ts_cb271199ea0b8fd122f1",
+        "ts_e9a826292993e3d1202a",
+        "ts_bc5ca10075e62c65dcd0",
+        "ts_c320bbf3ca51b6b6b93b",
+        "ts_0de3b1351d0ad9a7ffcb",
+        "ts_3d361943999c344a5c43",
+        "ts_9157be4990e22e0cb713",
+        "ts_0490a9b53c4a61611349",
+        "ts_8592ef8e60cfd27f049f",
+        "ts_18ffe70309a11fb1e3da",
+        "ts_12310acabfc9c56134b7",
+        "ts_1ec6506d042f1ab5ef3c",
+        "ts_aaabe4fbca12327a9c12",
+        "ts_89c1c24cbf4a70772211",
+        "ts_83f85fffa0331ee96623",
+        "ts_1d964f82e8fa83bf73f7",
+        "ts_7b5df09ff03b82c4cc9f",
+        "ts_13ca9e2256a4009b045c",
+        "ts_9f796f6df0d1f9720e12",
+        "ts_1b5ddd3def6ca9e6ac1b",
+        "ts_87932a52bc810f8ad8bd",
+        "ts_0c2a65cc3b481aa97397",
+        "ts_32e016acacc67d473d54",
+        "ts_0b582a760c30728b549d"
+      ],
+      "score_free_fallback_target_set_id": "ts_9157be4990e22e0cb713",
+      "score_free_input_columns": [
+        "primary_origin_rule",
+        "origin_destroy_operator",
+        "origin_family",
+        "origin_rule_count",
+        "origin_family_count",
+        "destroy_target_cardinality",
+        "destroy_target_fraction",
+        "fallback_overlap_fraction",
+        "fallback_jaccard",
+        "critical_overlap_fraction",
+        "bottleneck_overlap_fraction",
+        "normalized_diversity_rank",
+        "is_fallback"
+      ],
+      "state_id": "CB1_CAUR_L_CF1_RI2_TI2_R12_C02__seed691201__it0000012",
+      "unique_candidate_count": 24
+    }
+  ],
+  "existing_labels_reusable_without_new_rollouts": true,
+  "fallback_requires_score_independent_replacement": true,
+  "historical_forward_calls_during_dynamic_candidate_trace": 0,
+  "known_live_interfaces_covered": 20,
+  "label_reanchoring_required_states": 10,
+  "r12_caur_fit_structure": {
+    "candidates": 6809,
+    "differing_state_ids": [
+      "CB1_CAUR_M_CF1_RI2_TI2_R12_C02__seed691201__it0000014",
+      "CB1_CAUR_M_CF1_RI2_TI2_R12_C02__seed691201__it0000230",
+      "CB1_CAUR_M_CF2_RI2_TI2_R12__seed691202__it0000140",
+      "CB1_CAUR_M_CF3_RI2_TI2_R12_C02__seed691201__it0000294",
+      "CB1_CAUR_M_CF3_RI2_TI2_R12_C02__seed691202__it0000260",
+      "CB1_CAUR_M_CF3_RI2_TI2_R12__seed691201__it0000136",
+      "CB1_CAUR_S_CF1_RI2_TI2_R12__seed691201__it0000130",
+      "CB1_CAUR_S_CF2_RI2_TI2_R12_C02__seed691201__it0000098",
+      "CB1_CAUR_S_CF2_RI2_TI2_R12__seed691202__it0000178",
+      "CB1_CAUR_S_CF3_RI2_TI2_R12__seed691201__it0000014"
+    ],
+    "legacy_fallback_differs_from_operator_related_states": 10,
+    "legacy_fallback_equals_operator_related_states": 278,
+    "requested_rules_per_state": 24,
+    "states": 288,
+    "unique_candidates_max": 24,
+    "unique_candidates_min": 21,
+    "unique_operator_related_candidates_per_state": 1
+  },
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "schema": "phase6l-legacy-score-dependency-map-v1",
+  "status": "PASS"
+}
