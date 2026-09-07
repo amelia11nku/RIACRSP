@@ -1,0 +1,363 @@
+{
+  "action_frequency": {
+    "deployable_interventions": 0,
+    "fallback_decisions_without_retained_gate": 288,
+    "raw_neural_argmax_fallback": 2,
+    "raw_neural_argmax_nonfallback": 286
+  },
+  "artifact_sha256": {
+    "configs/phase6m_selective_confidence_v1.json": "9a37c5ff9fc9144ce5472a57d36dce1b759cd9b8d56f42798f6d2737fc8b6bf5",
+    "outputs/phase6j_caur/training/J1_CONT_FROZEN_oof_summary.json": "b7a72f99e34749f62e84cc5d63eac7e3326ff61e91e89cabea81306f8aa17ea6",
+    "outputs/phase6l_legacy_score_decoupling_v1/training/oof_summary.json": "88adfccbc40a836e21789fef3ac34d5fa7652f7daacf54a85f4ad1fb6bdfa532",
+    "outputs/phase6m_selective_confidence_v1/audit/failure_attribution.json": "4faa79609c2a87b8981d14f193266ca5ea0f4006fb41151645d4ce5d8681a4c9",
+    "outputs/phase6m_selective_confidence_v1/implementation/implementation_protocol_v2.json": "ccfcd786898cc59debd1332217c737b2c6d8ad159f25c9c82bff60fcac235244",
+    "outputs/phase6m_selective_confidence_v1/preregistration/amendment_m2_schema.json": "1c951c124740b9aeb7673031cc701129c66dac8eadbcb147ee063a071591b8ec",
+    "outputs/phase6m_selective_confidence_v1/preregistration/preregistration.json": "9c9cf0e2b6f0ed931abf1dfd2a80604713811f8975db5b7e57fd39fb77a2e2d1",
+    "outputs/phase6m_selective_confidence_v1/training/completion_integrity_audit.json": "348d75beee90abc40d7ca1853fb7bcb1a72f0721838c762ab32c3c5301c64f7f",
+    "outputs/phase6m_selective_confidence_v1/training/ensemble_oof.parquet": "99219bd6a65d81df73e3f0dfd75ea88c03df212fb9aeaa5d0c00eff32026d3f4",
+    "outputs/phase6m_selective_confidence_v1/training/oof_predictions.parquet": "11be0b5aa64c028322d0f74d17aa87e480301ef978b122de72325e457b84c36b",
+    "outputs/phase6m_selective_confidence_v1/training/selected_winners.parquet": "8a4708bd495042747676759794db5c1674655c6dcc2d5e0a06719bb21cfdc176"
+  },
+  "audit_code_sha256": "57ebbb5ce127831b1d6deec6ac8385bb24adc548a776b50d25ba1277eda5befd",
+  "candidate_bank": {
+    "all_frozen_repairs_feasible": true,
+    "candidate_identity_order_matches_phase6l": true,
+    "candidates": 6809,
+    "requested_rules_per_state": 24,
+    "states": 288,
+    "unique_candidates_max": 24,
+    "unique_candidates_min": 21
+  },
+  "comparison": {
+    "phase6j_j1": {
+      "confidence": {
+        "auprc": 0.5945482431091013,
+        "auroc": 0.581207400194742,
+        "brier_identity_residual": -0.0008595837223030756,
+        "brier_score": 0.24032176752874326,
+        "calibration_intercept": 0.04740610494839238,
+        "calibration_slope": 0.7458662227176008,
+        "confidence_advantage_pearson": 0.09722663031671434,
+        "confidence_advantage_spearman": 0.11644658755184584,
+        "expected_calibration_error": 0.04775835123713268,
+        "fraction_above": {
+          "0.55": 0.5173611111111112,
+          "0.65": 0.14583333333333334,
+          "0.75": 0.024305555555555556
+        },
+        "mean_predicted_probability": 0.5507968733718974,
+        "method": "10_equal_width_bin_approximation",
+        "negative_log_likelihood": 0.6711842041463549,
+        "probability_iqr": 0.1170953917997567,
+        "probability_quantiles": {
+          "0.0": 0.055746454484651695,
+          "0.05": 0.43267146126775374,
+          "0.1": 0.4532694587424152,
+          "0.25": 0.49993182634296274,
+          "0.5": 0.5530567530943784,
+          "0.75": 0.6170272181427194,
+          "0.9": 0.6850542520696651,
+          "0.95": 0.7130673911771419,
+          "1.0": 0.8025820096798486
+        },
+        "probability_std": 0.11516808149511581,
+        "realized_positive_fraction": 0.5486111111111112,
+        "reliability": 0.009771986853251579,
+        "resolution": 0.016227595478748465,
+        "uncertainty": 0.24763695987654322
+      },
+      "raw_metrics": {
+        "ndcg_at_1": 0.6181951019653739,
+        "overall_spearman": 0.17599535692467344,
+        "pairwise_accuracy": 0.5623919919111571,
+        "selected_lift": 0.007155890549063854,
+        "selected_lift_lcb": 0.0032218513638156117,
+        "selection_regret": 0.03469778934405579
+      },
+      "retained_gate_count": 1,
+      "selected_gate": {
+        "coverage_pass": true,
+        "delta_min": 0.0,
+        "forced_abstention": "{\"L\": {\"count\": 60, \"exception_pass\": false, \"upper_confidence_bound\": 0.02168994121206746}, \"M\": {\"count\": 58, \"exception_pass\": false, \"upper_confidence_bound\": 0.009983819285216229}, \"S\": {\"count\": 68, \"exception_pass\": false, \"upper_confidence_bound\": 0.0023240733565066036}}",
+        "interventions": 94,
+        "lcb_lambda": 1.0,
+        "model_family": "J1_CONT_FROZEN",
+        "p_min": 0.55,
+        "retained": true,
+        "scale_L_interventions": 34,
+        "scale_L_lift": 0.007735791002926419,
+        "scale_M_interventions": 35,
+        "scale_M_lift": 0.004032148801543997,
+        "scale_S_interventions": 25,
+        "scale_S_lift": 0.0031588780655184326,
+        "selected_lift": 0.0049756059566629495,
+        "selected_lift_lcb": 0.001925946675211661,
+        "selected_lift_ucb": 0.008342100527431973,
+        "selected_winner_ece": 0.04775835123713266,
+        "selection_regret": 0.03687807393645669
+      }
+    },
+    "phase6l_score_free": {
+      "confidence": {
+        "auprc": 0.6536749021805863,
+        "auroc": 0.5960245398773006,
+        "brier_identity_residual": -0.00048011410796730547,
+        "brier_score": 0.23771850317150386,
+        "calibration_intercept": 0.02114457659990787,
+        "calibration_slope": 0.9003279119706078,
+        "confidence_advantage_pearson": 0.15851869266370236,
+        "confidence_advantage_spearman": 0.17811003968966277,
+        "expected_calibration_error": 0.010883838598119991,
+        "fraction_above": {
+          "0.55": 0.5555555555555556,
+          "0.65": 0.21180555555555555,
+          "0.75": 0.020833333333333332
+        },
+        "mean_predicted_probability": 0.5673297488005566,
+        "method": "10_equal_width_bin_approximation",
+        "negative_log_likelihood": 0.6668855396248787,
+        "probability_iqr": 0.14170855705314134,
+        "probability_quantiles": {
+          "0.0": 0.03806398044122525,
+          "0.05": 0.4395381158003038,
+          "0.1": 0.45616548256734885,
+          "0.25": 0.49785783104421955,
+          "0.5": 0.561250128737532,
+          "0.75": 0.6395663880973609,
+          "0.9": 0.6909338029837966,
+          "0.95": 0.7170405028273037,
+          "1.0": 0.8618965960435646
+        },
+        "probability_std": 0.09906154239186804,
+        "realized_positive_fraction": 0.5659722222222222,
+        "reliability": 0.00034374582971142273,
+        "resolution": 0.007792794445301982,
+        "uncertainty": 0.24564766589506173
+      },
+      "raw_metrics": {
+        "ndcg_at_1": 0.6274661478531589,
+        "overall_spearman": 0.17772278215124931,
+        "pairwise_accuracy": 0.5631033499611713,
+        "selected_lift": 0.00751635417065437,
+        "selected_lift_lcb": 0.0028662500281748144,
+        "selection_regret": 0.03386557437290963
+      },
+      "retained_gate_count": 0,
+      "selected_gate": null
+    },
+    "phase6m": {
+      "confidence": {
+        "auprc": 0.6337913974631333,
+        "auroc": 0.5782576687116564,
+        "brier_identity_residual": 0.0004515459735767169,
+        "brier_score": 0.2489202243003462,
+        "calibration_intercept": 0.3633721248623716,
+        "calibration_slope": 0.9664403911667621,
+        "confidence_advantage_pearson": 0.1014765724390935,
+        "confidence_advantage_spearman": 0.10238332629829783,
+        "expected_calibration_error": 0.09080883777803844,
+        "fraction_above": {
+          "0.55": 0.04861111111111111,
+          "0.65": 0.0,
+          "0.75": 0.0
+        },
+        "mean_predicted_probability": 0.4764787512313988,
+        "method": "10_equal_width_bin_approximation",
+        "negative_log_likelihood": 0.6914206292158729,
+        "probability_iqr": 0.08068019151687622,
+        "probability_max": 0.5873010754585266,
+        "probability_min": 0.18941281735897064,
+        "probability_quantiles": {
+          "0.0": 0.18941281735897064,
+          "0.05": 0.3402207359671593,
+          "0.1": 0.37078024744987487,
+          "0.25": 0.44492214918136597,
+          "0.5": 0.5014601945877075,
+          "0.75": 0.5256023406982422,
+          "0.9": 0.5397504687309265,
+          "0.95": 0.5495058953762054,
+          "1.0": 0.5873010754585266
+        },
+        "probability_std": 0.06885132981606293,
+        "realized_positive_fraction": 0.5659722222222222,
+        "reliability": 0.009295709790591179,
+        "resolution": 0.006474697358883454,
+        "uncertainty": 0.24564766589506173
+      },
+      "raw_metrics": {
+        "ndcg_at_1": 0.6274661478531589,
+        "overall_spearman": 0.17772278215124931,
+        "pairwise_accuracy": 0.5631033499611713,
+        "selected_lift": 0.00751635417065437,
+        "selected_lift_lcb": 0.0028898258208839497,
+        "selection_regret": 0.03386557437290963
+      },
+      "retained_gate_count": 0,
+      "selected_gate": null
+    }
+  },
+  "confidence": {
+    "auprc": 0.6337913974631333,
+    "auroc": 0.5782576687116564,
+    "brier_identity_residual": 0.0004515459735767169,
+    "brier_score": 0.2489202243003462,
+    "calibration_intercept": 0.3633721248623716,
+    "calibration_slope": 0.9664403911667621,
+    "confidence_advantage_pearson": 0.1014765724390935,
+    "confidence_advantage_spearman": 0.10238332629829783,
+    "expected_calibration_error": 0.09080883777803844,
+    "fraction_above": {
+      "0.55": 0.04861111111111111,
+      "0.65": 0.0,
+      "0.75": 0.0
+    },
+    "mean_predicted_probability": 0.4764787512313988,
+    "method": "10_equal_width_bin_approximation",
+    "negative_log_likelihood": 0.6914206292158729,
+    "probability_iqr": 0.08068019151687622,
+    "probability_max": 0.5873010754585266,
+    "probability_min": 0.18941281735897064,
+    "probability_quantiles": {
+      "0.0": 0.18941281735897064,
+      "0.05": 0.3402207359671593,
+      "0.1": 0.37078024744987487,
+      "0.25": 0.44492214918136597,
+      "0.5": 0.5014601945877075,
+      "0.75": 0.5256023406982422,
+      "0.9": 0.5397504687309265,
+      "0.95": 0.5495058953762054,
+      "1.0": 0.5873010754585266
+    },
+    "probability_std": 0.06885132981606293,
+    "realized_positive_fraction": 0.5659722222222222,
+    "reliability": 0.009295709790591179,
+    "resolution": 0.006474697358883454,
+    "uncertainty": 0.24564766589506173
+  },
+  "decision": "MODEL_REVISION_QUALITY",
+  "eligible_gate_count": 0,
+  "failed_checks": [
+    "retained_cross_scale_gate",
+    "positive_gated_lift",
+    "positive_grouped_bootstrap_lcb",
+    "nonnegative_all_scale_gated_lift",
+    "cross_scale_coverage"
+  ],
+  "formal_intervention_readiness_checks": {
+    "cross_scale_coverage": false,
+    "nonnegative_all_scale_gated_lift": false,
+    "positive_gated_lift": false,
+    "positive_grouped_bootstrap_lcb": false,
+    "retained_cross_scale_gate": false
+  },
+  "gurobi_run": false,
+  "historical_score_online_forward_calls": 0,
+  "least_restrictive_component_pass_counts": {
+    "all_conditions": 0,
+    "immediate_harm": 84,
+    "lower_bound": 0,
+    "nonfallback": 286,
+    "probability": 14,
+    "support": 288
+  },
+  "model_family": "M1_SCORE_FREE_SELECTIVE_RISK",
+  "protected_phase6l": {
+    "bytes": 16687216,
+    "files": 77,
+    "status": "PASS"
+  },
+  "r13_accessed": false,
+  "r13_locked": true,
+  "r14_accessed": false,
+  "r14_locked": true,
+  "raw_quality_checks": {
+    "candidate_origin_not_collapsed": true,
+    "full_bank_identity_and_feasibility": true,
+    "positive_all_scale_mean_spearman": true,
+    "positive_overall_spearman": true,
+    "positive_raw_selected_lift": true,
+    "positive_raw_selected_lift_lcb": true,
+    "selected_winner_ece_at_most_0_1": true
+  },
+  "raw_ranking": {
+    "action_count": 6809,
+    "exactly_reproduces_frozen_phase6l": true,
+    "mean_selected_lift_by_scale": {
+      "L": 0.01093291656322712,
+      "M": 0.007739436052496832,
+      "S": 0.0038767098962391535
+    },
+    "mean_spearman_by_scale": {
+      "L": 0.22204545396900074,
+      "M": 0.14566710725932477,
+      "S": 0.16545578522542248
+    },
+    "model_family": "M1_SCORE_FREE_SELECTIVE_RISK",
+    "ndcg_at_1": 0.6274661478531589,
+    "overall_spearman": 0.17772278215124931,
+    "pairwise_accuracy": 0.5631033499611713,
+    "ranker_definition": "frozen Phase6L score-free continuation ranker",
+    "selected_lift": 0.00751635417065437,
+    "selected_lift_lcb": 0.0028898258208839497,
+    "selected_lift_ucb": 0.012373610249503203,
+    "selection_regret": 0.03386557437290963,
+    "state_count": 288,
+    "top1_agreement": 0.1111111111111111
+  },
+  "raw_winner_origin_distribution_by_scale": {
+    "L": {
+      "LOCAL_PERTURBATION": 2,
+      "MATCHED_RANDOM": 1,
+      "ORIGINAL_OPERATOR": 34,
+      "RELATED_VARIANT": 7,
+      "STRUCTURED_NEAR_NEIGHBOR": 52
+    },
+    "M": {
+      "LOCAL_PERTURBATION": 11,
+      "MATCHED_RANDOM": 6,
+      "ORIGINAL_OPERATOR": 24,
+      "RELATED_VARIANT": 9,
+      "STRUCTURED_NEAR_NEIGHBOR": 46
+    },
+    "S": {
+      "LOCAL_PERTURBATION": 15,
+      "MATCHED_RANDOM": 9,
+      "ORIGINAL_OPERATOR": 23,
+      "RELATED_VARIANT": 25,
+      "STRUCTURED_NEAR_NEIGHBOR": 24
+    }
+  },
+  "runtime_stage": "NOT_RUN_STOPPED_ON_M4_QUALITY",
+  "schema": "phase6m-development-quality-audit-v1",
+  "selected_gate": null,
+  "selector_lcb_diagnostics": {
+    "lambda_0_5_max": -0.012257233157073551,
+    "lambda_0_5_median": -0.23070253925495146,
+    "lambda_0_5_min": -1.22547829742852,
+    "lambda_0_5_positive_count": 0,
+    "lambda_1_0_max": -0.03227869586510478,
+    "lambda_1_0_median": -0.4194409426152023,
+    "lambda_1_0_min": -2.014114063891235,
+    "lambda_1_0_positive_count": 0
+  },
+  "solver_gate": "NOT_RUN_QUALITY_GATE_FAILED",
+  "status": "M4_COMPLETE",
+  "stop_boundary": "M4_BEFORE_DEVELOPMENT_RUNTIME",
+  "support": {
+    "candidate_support_rate": 0.9919224555735057,
+    "fine_rule_oov_candidates_allowed": 0,
+    "multiple_reason_candidates": 10,
+    "numeric_boundary_failures": 55,
+    "rejection_reason_frequencies": {
+      "numeric_robust_z:bottleneck_overlap_fraction": 14,
+      "numeric_robust_z:critical_overlap_fraction": 7,
+      "numeric_robust_z:origin_family_count": 34,
+      "numeric_robust_z:origin_rule_count": 10
+    },
+    "selected_winner_support_rate": 1.0,
+    "unknown_origin_destroy_operator": 0,
+    "unknown_origin_family": 0,
+    "unsupported_candidates": 55,
+    "unsupported_selected_winners": 0
+  }
+}
