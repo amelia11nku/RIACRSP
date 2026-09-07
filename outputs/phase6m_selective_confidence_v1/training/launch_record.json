@@ -1,0 +1,24 @@
+{
+  "command": [
+    "/home/liulei/miniconda3/envs/gnn311/bin/python",
+    "scripts/train_phase6m_selective_confidence.py",
+    "--device",
+    "cuda"
+  ],
+  "eta_basis": "18 fixed-12-epoch one-fold ranker fits plus nine small selector fits; Phase 6L run timings imply about 8-10 minutes",
+  "expected_completion_utc": "2026-09-07T14:20:46.429598+00:00",
+  "implementation_commit": "f99cdc45f08ba721cd1f1d8dc185b2d7c70257b0",
+  "liveness_evidence": "first ranker epoch event present in log and worker alive",
+  "log_path": "outputs/phase6m_selective_confidence_v1/training/formal_training_20260907T141046Z.log",
+  "output_directory": "outputs/phase6m_selective_confidence_v1/training",
+  "pid": 52577,
+  "progress_path": "outputs/phase6m_selective_confidence_v1/training/progress.json",
+  "projected_seconds": 600.0,
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "resume": "rerun the identical command; completed ranker and selector records are hash-validated and skipped",
+  "schema": "phase6m-formal-training-launch-v1",
+  "started_at_utc": "2026-09-07T14:10:46.429598+00:00",
+  "status": "RUNNING_VERIFIED",
+  "working_directory": "/home/liulei/ayx/RI-ACRSP"
+}

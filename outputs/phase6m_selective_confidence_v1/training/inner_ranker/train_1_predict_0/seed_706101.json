@@ -1,0 +1,127 @@
+{
+  "checkpoint_sha256": "55a063eb871b087131473b83d38d562b5e341a3f34bf2ec0111b8c5b6da43b06",
+  "epochs": 12,
+  "history": [
+    {
+      "advantage_huber_loss": 0.030078354757279158,
+      "beats_fallback_bce_loss": 0.7149029423793157,
+      "epoch": 1,
+      "immediate_huber_loss": 0.041462248812119164,
+      "listnet_loss": 3.608450392882029,
+      "loss": 3.9879725575447083,
+      "pairwise_loss": 1.083723599712054
+    },
+    {
+      "advantage_huber_loss": 0.034424057230353355,
+      "beats_fallback_bce_loss": 0.6989862521489462,
+      "epoch": 2,
+      "immediate_huber_loss": 0.028068070920805138,
+      "listnet_loss": 3.4890169501304626,
+      "loss": 3.7905835111935935,
+      "pairwise_loss": 0.9790554245313009
+    },
+    {
+      "advantage_huber_loss": 0.03570413372168938,
+      "beats_fallback_bce_loss": 0.6858956615130106,
+      "epoch": 3,
+      "immediate_huber_loss": 0.020261317491531372,
+      "listnet_loss": 3.401589334011078,
+      "loss": 3.679405073324839,
+      "pairwise_loss": 0.9368609488010406
+    },
+    {
+      "advantage_huber_loss": 0.03537609986960888,
+      "beats_fallback_bce_loss": 0.6829114804665247,
+      "epoch": 4,
+      "immediate_huber_loss": 0.014163026275734106,
+      "listnet_loss": 3.373459299405416,
+      "loss": 3.662106136480967,
+      "pairwise_loss": 0.9421794265508652
+    },
+    {
+      "advantage_huber_loss": 0.030432238709181547,
+      "beats_fallback_bce_loss": 0.6815154204765955,
+      "epoch": 5,
+      "immediate_huber_loss": 0.01145012901785473,
+      "listnet_loss": 3.3353028694788613,
+      "loss": 3.609901567300161,
+      "pairwise_loss": 0.9216844340165457
+    },
+    {
+      "advantage_huber_loss": 0.022894832771271467,
+      "beats_fallback_bce_loss": 0.6810975074768066,
+      "epoch": 6,
+      "immediate_huber_loss": 0.0097344647316883,
+      "listnet_loss": 3.329831620057424,
+      "loss": 3.618473172187805,
+      "pairwise_loss": 0.9384042719999949
+    },
+    {
+      "advantage_huber_loss": 0.01519484274710218,
+      "beats_fallback_bce_loss": 0.6744256615638733,
+      "epoch": 7,
+      "immediate_huber_loss": 0.008912694950898489,
+      "listnet_loss": 3.3058443864186606,
+      "loss": 3.5832144618034363,
+      "pairwise_loss": 0.9267361164093018
+    },
+    {
+      "advantage_huber_loss": 0.011029568500816822,
+      "beats_fallback_bce_loss": 0.674824262658755,
+      "epoch": 8,
+      "immediate_huber_loss": 0.008123570121824741,
+      "listnet_loss": 3.2946295738220215,
+      "loss": 3.5670097867647805,
+      "pairwise_loss": 0.9210044493277868
+    },
+    {
+      "advantage_huber_loss": 0.011505269755919775,
+      "beats_fallback_bce_loss": 0.6709036827087402,
+      "epoch": 9,
+      "immediate_huber_loss": 0.006793930932569007,
+      "listnet_loss": 3.280868192513784,
+      "loss": 3.537053922812144,
+      "pairwise_loss": 0.9022448857625326
+    },
+    {
+      "advantage_huber_loss": 0.011400236980989575,
+      "beats_fallback_bce_loss": 0.6728868881861368,
+      "epoch": 10,
+      "immediate_huber_loss": 0.006006248450527589,
+      "listnet_loss": 3.2699470122655234,
+      "loss": 3.5330863992373147,
+      "pairwise_loss": 0.9061037103335062
+    },
+    {
+      "advantage_huber_loss": 0.010172775791337093,
+      "beats_fallback_bce_loss": 0.6689561953147253,
+      "epoch": 11,
+      "immediate_huber_loss": 0.005187660261678199,
+      "listnet_loss": 3.2775747974713645,
+      "loss": 3.5428057511647544,
+      "pairwise_loss": 0.911780466636022
+    },
+    {
+      "advantage_huber_loss": 0.010273089477171501,
+      "beats_fallback_bce_loss": 0.6674032161633173,
+      "epoch": 12,
+      "immediate_huber_loss": 0.00488039917157342,
+      "listnet_loss": 3.2664117217063904,
+      "loss": 3.5237413247426352,
+      "pairwise_loss": 0.9014571259419123
+    }
+  ],
+  "implementation_protocol_sha256": "ccfcd786898cc59debd1332217c737b2c6d8ad159f25c9c82bff60fcac235244",
+  "prediction_fold": 0,
+  "prediction_rows": 2270,
+  "prediction_sha256": "60accd2dce05b4b16cf823f8ad7dd37be9eade86da0a5b5342dd5cfe50bfc7dd",
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "runtime_seconds": 10.880011930996261,
+  "schema": "phase6m-inner-ranker-run-v1",
+  "states_predicted": 96,
+  "states_trained": 96,
+  "status": "COMPLETE",
+  "training_fold": 1,
+  "training_seed": 706101
+}
