@@ -1,0 +1,40 @@
+{
+  "code_sha256": {
+    "rcias_clgri/ni/phase6m_selective_risk.py": "94ac67ae5678a2fc101b65b5bc2375b62680e41594a5ead3d6304f57730d1c27",
+    "scripts/freeze_phase6m_implementation.py": "3237d10d1b8289c8783c0da0bcba68b634861e9ebf960932f7e88c7ecaa9e289",
+    "scripts/freeze_phase6m_schema_amendment.py": "b3f6369313ca3f9b1915af283a01755cb077838549a42aba4131cdf5c4f0c8da",
+    "scripts/launch_phase6m_training.py": "de16e0e1a0a0664ada4579c7db00e0c325eb77b213028b69e35738516f1a9e7f",
+    "scripts/train_phase6m_selective_confidence.py": "4edf88abfb71293f9347280c2d87e676082d08ab2754f96302f76d120f3016f1"
+  },
+  "feature_schema": {
+    "path": "outputs/phase6m_selective_confidence_v1/implementation/feature_schema_v2.json",
+    "sha256": "1914f733915884b505aa1aaf7f2eab34589ef410ff020aedd3d2c766bcf1eba2"
+  },
+  "historical_score_online_forward_calls": 0,
+  "inner_ranker_runs": 18,
+  "input_sha256": {
+    "configs/phase6m_selective_confidence_v1.json": "9a37c5ff9fc9144ce5472a57d36dce1b759cd9b8d56f42798f6d2737fc8b6bf5",
+    "outputs/phase6l_legacy_score_decoupling_v1/data/r12_score_free_grouped_labels.parquet": "461e644c2b2d924c2ab17d9fd7ce6d03787712ef18f26eec01dd4a761d178daa",
+    "outputs/phase6l_legacy_score_decoupling_v1/data/r12_score_free_seed_labels.parquet": "74c13c47077f0e904f27a3acc825e71d729c5e1ef89272584a61a5ff559aa584",
+    "outputs/phase6l_legacy_score_decoupling_v1/training/ensemble_oof.parquet": "80807edd7793c9e6a99b4ec56d1e2a5d41dbeb1e0e1d120b7d60ecb7d58d168f",
+    "outputs/phase6l_legacy_score_decoupling_v1/training/oof_predictions.parquet": "1d10e1dd4b50b40e30735d691bc64d7fd948623258fa1dc06d15e3ffee1fa7fe",
+    "outputs/phase6l_legacy_score_decoupling_v1/training/selected_winners.parquet": "5d4a195010a2bc55d72ddef2c8082670e6e81ca9353e88d1fa3e59be70d78b2b",
+    "outputs/phase6l_legacy_score_decoupling_v1/training/training_protocol.json": "4f03f38514ce69941012c35fa70e7192002587598266619bb3ca01bc91f45fe7",
+    "outputs/phase6m_selective_confidence_v1/preregistration/amendment_m2_schema.json": "1c951c124740b9aeb7673031cc701129c66dac8eadbcb147ee063a071591b8ec",
+    "outputs/phase6m_selective_confidence_v1/preregistration/preregistration.json": "9c9cf0e2b6f0ed931abf1dfd2a80604713811f8975db5b7e57fd39fb77a2e2d1"
+  },
+  "model_family": "M1_SCORE_FREE_SELECTIVE_RISK",
+  "optimizer_steps_started": false,
+  "outer_oof_generated": false,
+  "preregistration_sha256": "9c9cf0e2b6f0ed931abf1dfd2a80604713811f8975db5b7e57fd39fb77a2e2d1",
+  "protected_phase6l_manifest": {
+    "path": "outputs/phase6m_selective_confidence_v1/audit/protected_phase6l_evidence.json",
+    "sha256": "5bc21165b6e6663b9cb8bb1deacc80548e39ee3cdac60dd3a2531c24cec48598"
+  },
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "schema": "phase6m-selective-risk-implementation-protocol-v2",
+  "schema_amendment_sha256": "1c951c124740b9aeb7673031cc701129c66dac8eadbcb147ee063a071591b8ec",
+  "selector_runs": 9,
+  "status": "FROZEN_BEFORE_FIRST_PHASE6M_OPTIMIZER_STEP"
+}

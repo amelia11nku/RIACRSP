@@ -1,0 +1,37 @@
+{
+  "code_sha256": {
+    "rcias_clgri/ni/phase6m_selective_risk.py": "aadccb7530ccf85301d7bfd474e35c1b7b049fd55400331b104a2aae8cc6b2c3",
+    "scripts/freeze_phase6m_implementation.py": "62229a6ba87a3f3b61cf35778b2987fa8c070ead5b9458f03d6865a4d97da10a",
+    "scripts/launch_phase6m_training.py": "de16e0e1a0a0664ada4579c7db00e0c325eb77b213028b69e35738516f1a9e7f",
+    "scripts/train_phase6m_selective_confidence.py": "0bbb1d15d3aab72f33e05fd1768d60052eeceda5f4411db30a79653741b3fe62"
+  },
+  "feature_schema": {
+    "path": "outputs/phase6m_selective_confidence_v1/implementation/feature_schema.json",
+    "sha256": "6faf277a8f82e8928c42af1d17706ce7fcf1f8af718715e53a245968cab061c6"
+  },
+  "historical_score_online_forward_calls": 0,
+  "inner_ranker_runs": 18,
+  "input_sha256": {
+    "configs/phase6m_selective_confidence_v1.json": "9a37c5ff9fc9144ce5472a57d36dce1b759cd9b8d56f42798f6d2737fc8b6bf5",
+    "outputs/phase6l_legacy_score_decoupling_v1/data/r12_score_free_grouped_labels.parquet": "461e644c2b2d924c2ab17d9fd7ce6d03787712ef18f26eec01dd4a761d178daa",
+    "outputs/phase6l_legacy_score_decoupling_v1/data/r12_score_free_seed_labels.parquet": "74c13c47077f0e904f27a3acc825e71d729c5e1ef89272584a61a5ff559aa584",
+    "outputs/phase6l_legacy_score_decoupling_v1/training/ensemble_oof.parquet": "80807edd7793c9e6a99b4ec56d1e2a5d41dbeb1e0e1d120b7d60ecb7d58d168f",
+    "outputs/phase6l_legacy_score_decoupling_v1/training/oof_predictions.parquet": "1d10e1dd4b50b40e30735d691bc64d7fd948623258fa1dc06d15e3ffee1fa7fe",
+    "outputs/phase6l_legacy_score_decoupling_v1/training/selected_winners.parquet": "5d4a195010a2bc55d72ddef2c8082670e6e81ca9353e88d1fa3e59be70d78b2b",
+    "outputs/phase6l_legacy_score_decoupling_v1/training/training_protocol.json": "4f03f38514ce69941012c35fa70e7192002587598266619bb3ca01bc91f45fe7",
+    "outputs/phase6m_selective_confidence_v1/preregistration/preregistration.json": "9c9cf0e2b6f0ed931abf1dfd2a80604713811f8975db5b7e57fd39fb77a2e2d1"
+  },
+  "model_family": "M1_SCORE_FREE_SELECTIVE_RISK",
+  "optimizer_steps_started": false,
+  "outer_oof_generated": false,
+  "preregistration_sha256": "9c9cf0e2b6f0ed931abf1dfd2a80604713811f8975db5b7e57fd39fb77a2e2d1",
+  "protected_phase6l_manifest": {
+    "path": "outputs/phase6m_selective_confidence_v1/audit/protected_phase6l_evidence.json",
+    "sha256": "5bc21165b6e6663b9cb8bb1deacc80548e39ee3cdac60dd3a2531c24cec48598"
+  },
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "schema": "phase6m-selective-risk-implementation-protocol-v1",
+  "selector_runs": 9,
+  "status": "FROZEN_BEFORE_FIRST_PHASE6M_OPTIMIZER_STEP"
+}

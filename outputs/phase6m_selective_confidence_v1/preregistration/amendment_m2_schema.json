@@ -1,0 +1,26 @@
+{
+  "active_feature_patch": {
+    "add_to_categorical_one_hot": [
+      "bottleneck_proxy"
+    ],
+    "remove_from_structural_numeric": [
+      "bottleneck_proxy"
+    ]
+  },
+  "all_other_protocol_fields_unchanged": true,
+  "amendment_report_sha256": "c881e744cd21956661bed73d2fd10e6336c1c32c37f520113d1684589a36c3c8",
+  "base_config_sha256": "9a37c5ff9fc9144ce5472a57d36dce1b759cd9b8d56f42798f6d2737fc8b6bf5",
+  "base_preregistration_sha256": "9c9cf0e2b6f0ed931abf1dfd2a80604713811f8975db5b7e57fd39fb77a2e2d1",
+  "freeze_code_sha256": "b3f6369313ca3f9b1915af283a01755cb077838549a42aba4131cdf5c4f0c8da",
+  "optimizer_steps_started": false,
+  "outer_oof_generated": false,
+  "preflight_failure": {
+    "path": "outputs/phase6m_selective_confidence_v1/implementation/preflight_failure_v1.json",
+    "sha256": "3c58ddfe8173162d18c6b4891624e55a9576f9f45aa3d790014d3f4f3fd273f6"
+  },
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "reason": "correct observed categorical dtype without changing scientific model choices",
+  "schema": "phase6m-preregistration-schema-amendment-v1",
+  "status": "FROZEN_SCHEMA_CORRECTION_BEFORE_FIRST_OPTIMIZER_STEP"
+}

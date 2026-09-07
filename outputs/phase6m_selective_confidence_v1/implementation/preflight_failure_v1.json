@@ -1,0 +1,20 @@
+{
+  "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/train_phase6m_selective_confidence.py --device cpu --preflight",
+  "error": "could not convert string to float: W_LOGISTICS",
+  "error_type": "ValueError",
+  "invalid_feature_schema_sha256": "6faf277a8f82e8928c42af1d17706ce7fcf1f8af718715e53a245968cab061c6",
+  "invalid_implementation_protocol_sha256": "6bc3542258e0e2b0342aed2e6a9fe1e867a3eaab1cf0deb01ba989b2aadf553b",
+  "observed_categories": [
+    "CROSS_RESOURCE_SYNCHRONIZATION",
+    "F_LOGISTICS",
+    "RECONFIGURATION",
+    "W_LOGISTICS"
+  ],
+  "optimizer_steps_started": false,
+  "outer_oof_generated": false,
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "root_cause": "bottleneck_proxy was preregistered as structural_numeric but is categorical in the frozen input",
+  "schema": "phase6m-m2-preflight-failure-v1",
+  "status": "INVALIDATED_BEFORE_FIRST_OPTIMIZER_STEP"
+}
