@@ -1,0 +1,74 @@
+{
+  "completed_runs": 9,
+  "elapsed_seconds": 456.33539475200087,
+  "expected_runs": 9,
+  "new_runs": 9,
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "schema": "phase6l-score-free-training-progress-v1",
+  "status": "COMPLETE",
+  "summary": {
+    "calibration": {
+      "deployment_calibrator": {
+        "method": "PLATT",
+        "parameters": {
+          "coefficient": 1.682435961830697,
+          "intercept": 0.12334542046598089
+        }
+      },
+      "isotonic_eligible": false,
+      "metrics": [
+        {
+          "brier_score": 0.23771850317150386,
+          "expected_calibration_error": 0.010883838598119923,
+          "mean_predicted_probability": 0.5673297488005566,
+          "method": "PLATT",
+          "negative_log_likelihood": 0.6668855396248787,
+          "realized_positive_fraction": 0.5659722222222222
+        }
+      ],
+      "minimum_cross_fit_train_rows": 192,
+      "selected_method": "PLATT",
+      "selected_rows": 288
+    },
+    "eligible_gate_count": 0,
+    "metrics": {
+      "action_count": 6809,
+      "mean_selected_lift_by_scale": {
+        "L": 0.01093291656322712,
+        "M": 0.007739436052496832,
+        "S": 0.0038767098962391535
+      },
+      "mean_spearman_by_scale": {
+        "L": 0.22204545396900074,
+        "M": 0.14566710725932477,
+        "S": 0.16545578522542248
+      },
+      "model_family": "L1_SCORE_FREE_CONT_FROZEN",
+      "ndcg_at_1": 0.6274661478531589,
+      "overall_spearman": 0.17772278215124931,
+      "pairwise_accuracy": 0.5631033499611713,
+      "selected_lift": 0.00751635417065437,
+      "selected_lift_lcb": 0.0028662500281748144,
+      "selected_lift_ucb": 0.012541176573704238,
+      "selected_origin_counts": {
+        "LOCAL_PERTURBATION": 28,
+        "MATCHED_RANDOM": 16,
+        "ORIGINAL_OPERATOR": 81,
+        "RELATED_VARIANT": 41,
+        "STRUCTURED_NEAR_NEIGHBOR": 122
+      },
+      "selection_regret": 0.03386557437290963,
+      "state_count": 288,
+      "top1_agreement": 0.1111111111111111
+    },
+    "model_family": "L1_SCORE_FREE_CONT_FROZEN",
+    "r13_accessed": false,
+    "r14_accessed": false,
+    "schema": "phase6l-score-free-oof-summary-v1",
+    "selected_gate": null,
+    "status": "COMPLETE"
+  },
+  "training_protocol_sha256": "4f03f38514ce69941012c35fa70e7192002587598266619bb3ca01bc91f45fe7",
+  "updated_at_utc": "2026-09-07T11:44:44.327192+00:00"
+}

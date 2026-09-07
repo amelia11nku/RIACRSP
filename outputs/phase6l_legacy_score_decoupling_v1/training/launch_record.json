@@ -1,0 +1,24 @@
+{
+  "command": [
+    "/home/liulei/miniconda3/envs/gnn311/bin/python",
+    "scripts/train_phase6l_score_free.py",
+    "--device",
+    "cuda"
+  ],
+  "eta_basis": "Phase 6J J1 nine-run total 332.33 s plus Phase 6L summary margin",
+  "expected_completion_utc": "2026-09-07T11:43:05.617324+00:00",
+  "implementation_commit": "48ec809b3c1dd430cd741c19faa0bc9af275d06a",
+  "liveness_evidence": "first training epoch event present in log and process alive",
+  "log_path": "outputs/phase6l_legacy_score_decoupling_v1/training/formal_training_20260907T113705Z.log",
+  "output_directory": "outputs/phase6l_legacy_score_decoupling_v1/training",
+  "pid": 36703,
+  "progress_path": "outputs/phase6l_legacy_score_decoupling_v1/training/progress.json",
+  "projected_seconds": 360.0,
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "resume": "rerun the identical command; completed fold records are hash-validated and skipped",
+  "schema": "phase6l-formal-training-launch-v1",
+  "started_at_utc": "2026-09-07T11:37:05.617324+00:00",
+  "status": "RUNNING_VERIFIED",
+  "working_directory": "/home/liulei/ayx/RI-ACRSP"
+}
