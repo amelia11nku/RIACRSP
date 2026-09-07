@@ -1,0 +1,30 @@
+{
+  "data_generation_plan_path": "outputs/phase6n_candidate_conditioned_csg_v1/preregistration/data_generation_plan.json",
+  "data_generation_plan_sha256": "5a4310b664b8abab2b3b172bae285c418ddb499245db11856ac87a657b30e333",
+  "gurobi_run": false,
+  "head_at_freeze": "f38725a61e6340bd3047401d2e570fe88fcb7493",
+  "historical_score_deployable_runtime_calls": 0,
+  "historical_score_primary_input_calls": 0,
+  "n0_commit": "f38725a",
+  "new_rollouts_started": false,
+  "optimizer_steps_started": false,
+  "outer_oof_generated": false,
+  "primary_family": "N1_CANDIDATE_CONDITIONED_CSG",
+  "promotable_families": [
+    "N1_CANDIDATE_CONDITIONED_CSG"
+  ],
+  "protected_predecessor": {
+    "bytes": 36230480,
+    "files": 208,
+    "manifest_path": "outputs/phase6n_candidate_conditioned_csg_v1/audit/protected_phase6l_phase6m_evidence.json",
+    "manifest_sha256": "397db7ccaec99684cad89a23d85970d681fd28960a8b2270470e8c3ccddf39b7",
+    "status": "PASS"
+  },
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "schema": "phase6n-candidate-conditioned-csg-preregistration-v1",
+  "source_hashes_path": "outputs/phase6n_candidate_conditioned_csg_v1/preregistration/source_hashes.json",
+  "source_hashes_sha256": "653ea4bfb91ed4431cb0518d7abcf348b33db894626134f61df3338d55e260c0",
+  "starting_commit": "8efe396e6cca44493a18c07720c4effaf2add7c1",
+  "status": "FROZEN_BEFORE_NEW_ROLLOUT_OR_OPTIMIZER_STEP"
+}

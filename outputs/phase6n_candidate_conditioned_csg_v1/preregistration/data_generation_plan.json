@@ -1,0 +1,61 @@
+{
+  "candidate_rules": 24,
+  "candidate_scope": "TRUE_FULL_DEDUPLICATED_24_RULE_BANK",
+  "candidate_trials_per_target": 8,
+  "combined_states": 864,
+  "continuation_crn_seeds": [
+    695101,
+    695102
+  ],
+  "continuation_horizon": 4,
+  "estimate": {
+    "basis": "Phase6J formal 288-state collection",
+    "basis_bytes": 41549687,
+    "basis_decoder_evaluations": 490248,
+    "basis_process_seconds": 4793.508288179,
+    "basis_state_seconds": 3722.366569613805,
+    "disk_free_bytes_observed_before_freeze": 60129542144,
+    "feasible": true,
+    "gpu_observed": "NVIDIA GeForce RTX 4060 Ti, 8188 MiB",
+    "projected_new_bytes": 83099374,
+    "projected_new_decoder_evaluations": 980496,
+    "projected_new_hours": 2.6630601600994446,
+    "projected_new_process_seconds": 9587.016576358
+  },
+  "fallback": "operator_related",
+  "historical_score_calls": 0,
+  "instances": 18,
+  "new_source_trajectories": 72,
+  "new_states": 576,
+  "new_trajectory_seeds": [
+    721201,
+    721202,
+    721203,
+    721204
+  ],
+  "outcome_independent_stop_rule": "complete all 72 source trajectories and all 576 states; resumable infrastructure errors may pause but model quality cannot change the count",
+  "progress_anchors": [
+    0.05,
+    0.18,
+    0.32,
+    0.45,
+    0.58,
+    0.72,
+    0.85,
+    0.95
+  ],
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "schema": "phase6n-data-generation-plan-v1",
+  "seed_namespaces": {
+    "continuation": 694000000,
+    "proposal": 692000000,
+    "repair": 693000000
+  },
+  "source_budget_seconds_per_instance": "0.25 * instance.num_operations",
+  "source_sampler": "frozen H1-seeded ALNS with no neural intervention",
+  "split": "R12_CAUR_FIT",
+  "states_per_instance": 48,
+  "states_per_new_trajectory": 8,
+  "status": "FROZEN_BEFORE_OUTCOME_GENERATION"
+}

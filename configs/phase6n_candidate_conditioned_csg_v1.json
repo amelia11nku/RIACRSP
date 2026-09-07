@@ -1,0 +1,405 @@
+{
+  "schema": "phase6n-candidate-conditioned-csg-config-v1",
+  "phase": "Phase 6N",
+  "namespace": "phase6n_candidate_conditioned_csg_v1",
+  "status": "PREREGISTERED_BEFORE_NEW_ROLLOUT_OR_OPTIMIZER_STEP",
+  "starting_commit": "8efe396e6cca44493a18c07720c4effaf2add7c1",
+  "n0_commit": "f38725a",
+  "inherited_terminal_decision": "MODEL_REVISION_QUALITY",
+  "primary_family": "N1_CANDIDATE_CONDITIONED_CSG",
+  "promotable_families": [
+    "N1_CANDIDATE_CONDITIONED_CSG"
+  ],
+  "mission": "test whether explicit destroy-set boundary and critical synchronization context materially improves direct fallback-relative continuation ranking",
+  "boundaries": {
+    "initializer": "H1",
+    "csg_schema": "CSG-1.0",
+    "candidate_generator_rules": 24,
+    "candidate_scope": "TRUE_FULL_DEDUPLICATED_24_RULE_BANK",
+    "deduplication": "sorted target operation set in frozen proposal insertion order",
+    "fallback": "unique deduplicated operator_related arm equal to canonical_related_target",
+    "decoder": "existing deterministic transport-aware forced repair followed by check_schedule",
+    "historical_score_primary_input_calls": 0,
+    "historical_score_deployable_runtime_calls": 0,
+    "phase6m_selective_risk_in_promotable_path": false,
+    "heteroscedastic_scale_head": false,
+    "phase6m_total_predictive_scale": false,
+    "immediate_utility_hard_gate": false,
+    "precision": "FP32_ONLY",
+    "gurobi_run": false,
+    "r13": "LOCKED_UNTIL_REPRESENTATION_DECISION_RUNTIME_BUNDLE_AND_R12_SOLVER_GATES_PASS",
+    "r14": "LOCKED_UNTIL_PREREGISTERED_R13_GATE_PASSES"
+  },
+  "locked_inputs": {
+    "instance_root": "instances/controlled/RCIAS-CB1-TRAIN-CAUR-R12R14",
+    "instance_manifest": "instances/controlled/RCIAS-CB1-TRAIN-CAUR-R12R14/manifests/phase6j_instance_manifest.csv",
+    "phase6j_config": "configs/phase6j_caur.json",
+    "phase6j_horizon_freeze": "outputs/phase6j_caur/frozen/r12_horizon_freeze.json",
+    "phase6f_base_checkpoint": "outputs/phase6f/training/final_seeds/seed_660301/checkpoint_best.pt",
+    "phase6l_grouped_labels": "outputs/phase6l_legacy_score_decoupling_v1/data/r12_score_free_grouped_labels.parquet",
+    "phase6l_raw_labels": "outputs/phase6l_legacy_score_decoupling_v1/data/r12_score_free_seed_labels.parquet",
+    "phase6l_ensemble_oof": "outputs/phase6l_legacy_score_decoupling_v1/training/ensemble_oof.parquet",
+    "phase6l_training_protocol": "outputs/phase6l_legacy_score_decoupling_v1/training/training_protocol.json",
+    "phase6n_n0_audit": "outputs/phase6n_candidate_conditioned_csg_v1/audit/architecture_data_audit.json"
+  },
+  "data_generation": {
+    "split": "R12_CAUR_FIT",
+    "instances": 18,
+    "existing_states_per_instance": 16,
+    "existing_states": 288,
+    "existing_source_trajectory_seeds": [
+      691201,
+      691202
+    ],
+    "new_source_sampler": "frozen H1-seeded ALNS with no neural intervention",
+    "source_budget_seconds_per_instance": "0.25 * instance.num_operations",
+    "new_trajectory_seeds": [
+      721201,
+      721202,
+      721203,
+      721204
+    ],
+    "states_per_new_trajectory": 8,
+    "progress_anchors": [
+      0.05,
+      0.18,
+      0.32,
+      0.45,
+      0.58,
+      0.72,
+      0.85,
+      0.95
+    ],
+    "new_source_trajectories": 72,
+    "new_states": 576,
+    "total_states_per_instance": 48,
+    "total_states": 864,
+    "equal_state_count_required": true,
+    "candidate_generator": "frozen Phase6C 24-rule full bank",
+    "candidate_trials_per_target": 8,
+    "canonical_fallback": "operator_related",
+    "continuation_horizon": 4,
+    "continuation_crn_seeds": [
+      695101,
+      695102
+    ],
+    "proposal_seed_namespace": 692000000,
+    "repair_seed_namespace": 693000000,
+    "continuation_seed_namespace": 694000000,
+    "new_output_root": "outputs/phase6n_candidate_conditioned_csg_v1/data/new_r12_collection",
+    "combined_output_root": "outputs/phase6n_candidate_conditioned_csg_v1/data/combined",
+    "outcome_independent_stop_rule": "complete all 72 source trajectories and all 576 states; resumable infrastructure errors may pause but model quality cannot change the count",
+    "historical_score_policy": "not used by the new source sampler, candidate features, labels, model, calibration, decision, or runtime",
+    "estimate": {
+      "basis": "Phase6J formal 288-state collection",
+      "basis_process_seconds": 4793.508288179,
+      "basis_state_seconds": 3722.366569613805,
+      "basis_decoder_evaluations": 490248,
+      "basis_bytes": 41549687,
+      "projected_new_process_seconds": 9587.016576358,
+      "projected_new_hours": 2.6630601600994445,
+      "projected_new_decoder_evaluations": 980496,
+      "projected_new_bytes": 83099374,
+      "disk_free_bytes_observed_before_freeze": 60129542144,
+      "gpu_observed": "NVIDIA GeForce RTX 4060 Ti, 8188 MiB",
+      "feasible": true
+    }
+  },
+  "structural_folds": {
+    "grouping": "whole instance; both C01/C02 instances remain indivisible",
+    "fold_0": [
+      "S_CF1",
+      "M_CF2",
+      "L_CF3"
+    ],
+    "fold_1": [
+      "S_CF2",
+      "M_CF3",
+      "L_CF1"
+    ],
+    "fold_2": [
+      "S_CF3",
+      "M_CF1",
+      "L_CF2"
+    ],
+    "outer_held_instances": 6,
+    "outer_training_instances": 12,
+    "outer_held_states_after_expansion": 288,
+    "outer_training_states_after_expansion": 576,
+    "inner_fit_rule": "(outer_held + 2) % 3",
+    "inner_validation_and_calibration_rule": "(outer_held + 1) % 3",
+    "candidate_row_split_forbidden": true
+  },
+  "primary_model": {
+    "model_id": "N1_CANDIDATE_CONDITIONED_CSG",
+    "graph_encoder": {
+      "initialization": "Phase6F checkpoint state_encoder",
+      "hidden_dim": 128,
+      "relation_blocks": 2,
+      "relation_mode": "FULL_CSG",
+      "edge_features": true,
+      "canonical_relations": 20,
+      "derived_reverse_relations": 20,
+      "execution": "once per state",
+      "frozen": [
+        "all input projections",
+        "relation block 0",
+        "graph projection"
+      ],
+      "trainable": [
+        "relation block 1"
+      ]
+    },
+    "target_pool": {
+      "inputs": "final OP embeddings selected by target_operation_indices",
+      "statistics": [
+        "mean",
+        "max",
+        "graph-query attention",
+        "target-size / operation-count"
+      ],
+      "projection": "Linear(3H+1,256)-GELU-Dropout(0.1)-Linear(256,H)-LayerNorm(H)"
+    },
+    "relation_boundary": {
+      "definition": "for each canonical edge incident to a target OP, pool the non-target endpoint; OP-OP edges require exactly one endpoint in target",
+      "direction_channels": [
+        "outgoing_from_target",
+        "incoming_to_target"
+      ],
+      "families": {
+        "precedence": [
+          "OP__PRECEDES__OP"
+        ],
+        "island_resource": [
+          "OP__ELIGIBLE_ON__ISLAND",
+          "OP__ASSIGNED_TO__ISLAND",
+          "OP__ISLAND_NEXT__OP"
+        ],
+        "reconfiguration": [
+          "OP__REQUIRES__CONFIG",
+          "RECONF_EVENT__ENABLES__OP",
+          "OP__TRIGGERS_RECONF__RECONF_EVENT"
+        ],
+        "w_agv_transport": [
+          "W_EVENT__ENABLES__OP",
+          "OP__RELEASES_WORKPIECE_TO__W_EVENT"
+        ],
+        "f_agv_delivery": [
+          "F_EVENT__ENABLES__OP"
+        ],
+        "synchronization": [
+          "OP__PRECEDES__OP",
+          "OP__PRODUCT_NEXT__OP",
+          "OP__ISLAND_NEXT__OP",
+          "W_EVENT__ENABLES__OP",
+          "F_EVENT__ENABLES__OP",
+          "RECONF_EVENT__ENABLES__OP",
+          "OP__TRIGGERS_RECONF__RECONF_EVENT",
+          "OP__RELEASES_WORKPIECE_TO__W_EVENT"
+        ]
+      },
+      "synchronization_filter": "temporal binding_indicator == 1",
+      "per_channel_pool": "mean, max, log1p(count)/log1p(node_count); zero vector plus zero count when empty",
+      "per_channel_projection": "Linear(2H+1,32)-GELU",
+      "batching": "all candidates indexed and pooled together from one shared node/edge tensor"
+    },
+    "critical_conditioning": {
+      "sets": [
+        "candidate intersection current critical operations",
+        "candidate intersection active bottleneck operations",
+        "external nodes on binding synchronization edges incident to candidate-critical operations"
+      ],
+      "pool": "mean, max, presence; independent Linear(2H+1,32)-GELU projections"
+    },
+    "global_and_cheap_context": {
+      "global": "frozen graph embedding containing normalized search progress and bottleneck one-hot",
+      "categorical": [
+        "primary_origin_rule",
+        "origin_destroy_operator",
+        "origin_family"
+      ],
+      "numeric": [
+        "origin_rule_count",
+        "origin_family_count",
+        "destroy_target_cardinality",
+        "destroy_target_fraction",
+        "fallback_overlap_fraction",
+        "fallback_jaccard",
+        "critical_overlap_fraction",
+        "bottleneck_overlap_fraction",
+        "normalized_diversity_rank",
+        "is_fallback"
+      ],
+      "normalization": "training-fold median/IQR, denominator floor 1e-6, clip [-8,8]",
+      "context_projection": "three width-4 category embeddings plus ten numeric values -> Linear(22,32)-GELU"
+    },
+    "candidate_projection": "target H + 12 boundary channels x32 + three conditioned pools x32 + graph H + cheap32 -> Linear(768,256)-GELU-Dropout(0.1)-Linear(256,H)-LayerNorm(H)",
+    "fallback_relative_fusion": "candidate embedding, canonical fallback embedding, and their difference -> Linear(3H,256)-GELU-Dropout(0.1)-Linear(256,H)-LayerNorm(H)",
+    "heads": [
+      "continuation_advantage: Linear(H,64)-GELU-Dropout(0.1)-Linear(64,1)",
+      "beats_fallback_logit: Linear(H,64)-GELU-Dropout(0.1)-Linear(64,1)"
+    ],
+    "excluded_heads": [
+      "immediate utility",
+      "heteroscedastic scale",
+      "winner-only selector"
+    ],
+    "total_parameter_cap": 8000000,
+    "trainable_parameter_cap": 4000000,
+    "precision": "FP32_ONLY",
+    "compiler": "NONE_UNTIL_SEPARATE_RUNTIME_QUALIFICATION"
+  },
+  "training": {
+    "seeds": [
+      726101,
+      726102,
+      726103
+    ],
+    "maximum_epochs": 80,
+    "patience": 10,
+    "state_groups_per_batch": 4,
+    "optimizer": "AdamW",
+    "learning_rate_new_modules": 0.0003,
+    "learning_rate_final_relation_block": 0.00005,
+    "weight_decay": 0.0001,
+    "gradient_norm_clip": 1.0,
+    "deterministic_torch_algorithms": true,
+    "precision": "FP32_ONLY",
+    "epoch_selection": "per seed maximize inner-validation instance-grouped raw selected-lift LCB; tie by lower joint validation loss then earliest epoch",
+    "outer_refit": "reinitialize and fit both non-held folds for the selected epoch count",
+    "objective": {
+      "pairwise_logistic_advantage": 1.0,
+      "listnet_state_list": 0.75,
+      "huber_advantage": 0.5,
+      "bce_beats_fallback": 0.25,
+      "ranking_standardization": "within state for pairwise and ListNet only",
+      "pair_gap_weight": "absolute training-fold label gap / median positive training-fold gap, clipped [0.25,4]",
+      "huber_delta": "training-fold median absolute deviation from its median, clipped [0.005,0.05]"
+    }
+  },
+  "raw_representation_gate": {
+    "comparison_baseline": "frozen Phase6L outer OOF on the common original 288 states",
+    "phase6l_reference": {
+      "overall_spearman": 0.17772278215124931,
+      "pairwise_accuracy": 0.5631033499611713,
+      "ndcg_at_1": 0.6274661478531589,
+      "raw_selected_lift": 0.00751635417065437,
+      "raw_selected_lift_lcb": 0.0028662500281748144
+    },
+    "preferred_diagnostics": {
+      "overall_spearman_min": 0.25,
+      "pairwise_accuracy_min": 0.6,
+      "ndcg_at_1_min": 0.75
+    },
+    "hard_requirements": [
+      "overall and S/M/L raw selected lift are strictly positive on common 288 states",
+      "overall Spearman is positive and no S/M/L Spearman is negative on common or expanded OOF",
+      "instance-grouped bootstrap raw selected-lift LCB is strictly positive on common and expanded OOF",
+      "paired instance-bootstrap LCB for selected-lift improvement over Phase6L is strictly positive on common 288 states",
+      "overall Spearman exceeds Phase6L by at least 0.02 on common 288 states",
+      "at least two of Spearman, pairwise accuracy, and NDCG@1 strictly improve over Phase6L",
+      "candidate origin diversity has at least three represented families and no family exceeds 75 percent of selected winners",
+      "full-bank identity, feasibility, finite predictions, and whole-instance isolation pass"
+    ],
+    "bootstrap": {
+      "unit": "instance mean",
+      "resamples": 5000,
+      "confidence_interval": 0.95,
+      "seed": 727001
+    },
+    "failure_decision": "MODEL_REVISION_REPRESENTATION",
+    "stop_before_calibration_if_failed": true
+  },
+  "residual_calibration": {
+    "enabled_only_after_raw_gate": true,
+    "fit_scope": "inner-validation state winners selected by the corresponding inner critic ensemble",
+    "residual": "predicted continuation advantage - realized continuation advantage",
+    "one_sided_quantile": 0.9,
+    "quantile_method": "numpy linear empirical quantile",
+    "grouping": "equal states per instance; report coverage overall and by instance/scale",
+    "outer_fold_isolation": "quantile and probability calibrator frozen before outer held predictions",
+    "empirical_lcb": "ensemble predicted advantage - q_overprediction",
+    "beats_probability_calibration": "Platt logistic regression on inner-validation selected winners; fail closed if both classes are absent",
+    "held_coverage_target_diagnostic": 0.9
+  },
+  "direct_decision": {
+    "winner": "maximum ensemble mean continuation advantage with lexical target_set_id tie-break",
+    "intervene_conditions": [
+      "winner is not canonical fallback",
+      "empirical_lcb > 0",
+      "calibrated beats-fallback probability >= 0.55",
+      "candidate identity, full-bank, semantic-index, finite-value, and decoder support all pass"
+    ],
+    "probability_threshold": 0.55,
+    "distance_support_gate": false,
+    "phase6m_selector": false,
+    "immediate_utility_gate": false,
+    "fallback_on_failure": "canonical operator_related",
+    "quality_requirements": [
+      "overall gated continuation lift > 0",
+      "instance-grouped bootstrap gated-lift LCB > 0",
+      "S/M/L gated lift >= 0",
+      "at least 10 direct interventions in every scale",
+      "at least three selected origin families and no family above 75 percent",
+      "full-bank integrity and feasibility pass"
+    ],
+    "failure_decision": "MODEL_REVISION_DECISION_CALIBRATION"
+  },
+  "ablations": {
+    "eligibility_for_selection_or_promotion": false,
+    "run_only_after_primary_architecture_is_frozen": true,
+    "families": [
+      "N_ABLATION_CHEAP_ONLY",
+      "N_ABLATION_GLOBAL_PLUS_CHEAP",
+      "N_ABLATION_TARGET_POOL",
+      "N_ABLATION_FULL_TARGET_RELATION_BOUNDARY"
+    ],
+    "may_change_primary_design": false
+  },
+  "runtime": {
+    "eligible_only_after_raw_and_direct_decision_gates": true,
+    "device": "cuda",
+    "precision": "FP32_ONLY",
+    "graph_encoder_executions_per_state": 1,
+    "candidate_pooling": "batched over all 21-24 unique candidates",
+    "per_candidate_graph_rerun": false,
+    "historical_score_forward_calls": 0,
+    "cuda_graphs": false,
+    "neural_p90_ms_max": 30.0,
+    "complete_live_p90_ms_max": 100.0,
+    "warmups_per_state": 3,
+    "retained_repetitions_per_state": 5,
+    "retain_all_samples": true,
+    "favorable_reruns": false
+  },
+  "solver_gate": {
+    "eligible_only_after_exact_bundle_and_runtime_pass": true,
+    "split": "R12_CAUR_FIT",
+    "matched_budget_seconds": "2 * instance.num_operations",
+    "gurobi_rerun": false,
+    "failure_decision": "NO_GO_R12_SOLVER"
+  },
+  "stage_order": [
+    "N0 architecture/data audit",
+    "N1 preregistration",
+    "N2 expanded data generation",
+    "N3 implementation and smoke",
+    "N4 whole-instance nested OOF training",
+    "N5 raw representation gate",
+    "N6 empirical calibration and direct-decision gate",
+    "N7 non-promotable ablations",
+    "N8 runtime qualification",
+    "N9 bundle and R12 solver gate",
+    "R13 only if all prior gates pass",
+    "R14 only if R13 passes"
+  ],
+  "terminal_decisions": [
+    "HOLD_AUDIT_INCONSISTENCY",
+    "MODEL_REVISION_REPRESENTATION",
+    "MODEL_REVISION_DECISION_CALIBRATION",
+    "MODEL_REVISION_RUNTIME",
+    "NO_GO_R12_SOLVER",
+    "PASS_TO_R13",
+    "PASS_TO_R14"
+  ]
+}
