@@ -90,3 +90,24 @@ def test_online_feature_builder_cannot_receive_a_historical_model_or_scores():
     assert "policy" not in parameters
     assert "model" not in parameters
     assert "frozen_scores" not in parameters
+
+
+def test_phase6l_preregistered_feature_and_runtime_boundaries():
+    import json
+    from pathlib import Path
+
+    config = json.loads(Path("configs/phase6l_legacy_score_decoupling_v1.json").read_text())
+    assert config["production_search"]["proposal_rules"] == 24
+    assert config["production_search"]["candidate_trials_per_target"] == 8
+    assert config["online_features"]["historical_score_forward_calls"] == 0
+    assert tuple(config["online_features"]["numeric"]) == tuple(ONLINE_INPUT_COLUMNS[3:])
+    assert tuple(config["online_features"]["removed"]) == REMOVED_LEGACY_INPUT_COLUMNS
+    assert config["primary_model"]["precision"] == "FP32_ONLY"
+    assert config["primary_model"]["compiler"] == "NONE"
+    assert config["optional_fallback_model"] is None
+    assert config["runtime"]["neural_p90_ms_max"] == 30.0
+    assert config["runtime"]["complete_live_p90_ms_max"] == 100.0
+    assert config["runtime"]["per_state_warmups"] == 3
+    assert config["runtime"]["per_state_measured_repetitions"] == 5
+    assert config["data_boundaries"]["r13_access"].startswith("LOCKED")
+    assert config["data_boundaries"]["r14_access"].startswith("LOCKED")

@@ -1,0 +1,38 @@
+{
+  "git_commit_before_l1_files": "15d466fc539f2e9db0d72ffaef95f153d235bed4",
+  "locked_input_hashes": {
+    "outputs/phase6f/training/final_seeds/seed_660301/checkpoint_best.pt": "f1ccceb607b0e453dfb74e7aa7a946616001db8ec08c12dc9900a66c6f165fc7",
+    "outputs/phase6j_caur/r12_collection/collection_integrity.json": "4313c32494115b33cd1580d48a5b68530ff81e5342aef760f5a466c2ffa59ea8",
+    "outputs/phase6j_caur/r12_collection/r12_grouped_labels.parquet": "616a0f20ea76eaf88b5f0c51d5bdb023aada4c42bada416b4d81d739bea637af",
+    "outputs/phase6j_caur/r12_collection/r12_seed_labels.parquet": "d821cf426da82eacbea2a501f0a4f87acb1089e82b32314a076a919d860fe86e",
+    "outputs/phase6j_caur/tensor_cache/tensor_cache_integrity.json": "d3fe40741eacf5a1bb8a555c7be720f3c96beb5c67d7826a160babf6d5b8242b",
+    "outputs/phase6j_caur/tensor_cache/tensor_manifest.csv": "708987db755fa67981e74984eef871da09b22a65546b7b92573a5ab5aecf584d"
+  },
+  "optional_fallback_model": null,
+  "primary_model": "L1_SCORE_FREE_CONT_FROZEN",
+  "primary_seeds": [
+    706101,
+    706102,
+    706103
+  ],
+  "r12_bundle_count": 1,
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "schema": "phase6l-preregistration-freeze-v1",
+  "source_hashes": {
+    "configs/phase6j_caur.json": "399f03e33fad4567b8ffade5d632b2c6f32da4a9f3a51c3fea0ceb87e4da03d5",
+    "configs/phase6l_legacy_score_decoupling_v1.json": "2df803475796ca129b8a33e17eab79b4fe3a054cfc74b583cf8abfbebfd7326e",
+    "docs/reports/phase6l_legacy_score_decoupling_preregistered_protocol.md": "a5b0fb578a2f8dd29937cbff6eb2108f7b4a58190b7f9ff900bbb66f6b889256",
+    "outputs/phase6j_caur/frozen/r12_training_protocol.json": "a73d9c914a0803305a1246e746970ed14302d7e86f87d8f337a8aa7c642786b3",
+    "outputs/phase6l_legacy_score_decoupling_v1/audit/legacy_score_dependency_map.json": "95b2cd57c5879459c7ba997d7494d6bea2c2af439007fbcabf5df3e8c8b3f02b",
+    "rcias_clgri/analysis/phase6l_legacy_score.py": "32aec85595acd394c3c189a4082681de1e7961b8acd5cf4cf85c6bfcf533fc9b",
+    "scripts/freeze_phase6l_preregistration.py": "ad70913e5406bef42b6ef46c1f0d5975bfef08bd6cf5bf3e9c2b73682bbb02a8"
+  },
+  "status": "FROZEN_BEFORE_PHASE6L_DATASET_DERIVATION_OR_OPTIMIZER_STEP",
+  "worktree_at_freeze": [
+    " M tests/test_phase6l_legacy_score.py",
+    "?? configs/phase6l_legacy_score_decoupling_v1.json",
+    "?? docs/reports/phase6l_legacy_score_decoupling_preregistered_protocol.md",
+    "?? scripts/freeze_phase6l_preregistration.py"
+  ]
+}

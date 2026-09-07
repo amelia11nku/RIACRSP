@@ -1,0 +1,294 @@
+{
+  "schema": "phase6l-legacy-score-decoupling-config-v1",
+  "phase": "Phase 6L",
+  "namespace": "phase6l_legacy_score_decoupling_v1",
+  "status": "PREREGISTERED_BEFORE_PHASE6L_DATASET_DERIVATION_OR_OPTIMIZER_STEP",
+  "inherited_terminal_decision": "MODEL_REVISION_RUNTIME",
+  "mission": "remove the historical Phase 6J score-network forward from the online continuation-value decision path",
+  "starting_commit": "c52a37f64573d3fa822282960a6a9cbf6222f375",
+  "l0_commit": "15d466fc539f2e9db0d72ffaef95f153d235bed4",
+  "data_boundaries": {
+    "authoritative_manifest": "instances/controlled/RCIAS-CB1-TRAIN-CAUR-R12R14/manifests/phase6j_instance_manifest.csv",
+    "manifest_sha256": "dc06cc3b49e0724bf3bc54255ba95f6a8b29ca07d383f96bcd01f0f6d8f17619",
+    "R12": "CAUR_FIT",
+    "R13": "CAUR_SELECT",
+    "R14": "CAUR_HOLDOUT",
+    "r12_role": "authorized continuation-label fit and grouped nested-OOF qualification split inherited from Phase 6J",
+    "r12_states": 288,
+    "r12_candidates": 6809,
+    "r12_instances": 18,
+    "r12_access_rule": "one frozen Phase 6L primary bundle evaluated by outer held-fold OOF predictions; no alternative bundle selection or favorable rerun",
+    "r13_access": "LOCKED_UNTIL_PHASE6L_MODEL_RUNTIME_AND_R12_SOLVER_GATES_PASS",
+    "r14_access": "LOCKED_UNTIL_R13_PASSES",
+    "forbidden_sources": [
+      "Phase6I-MR R11 outcome payloads",
+      "CAUR_SELECT outcomes before R13 authorization",
+      "CAUR_HOLDOUT outcomes before R14 authorization",
+      "Core45",
+      "Sensitivity",
+      "Legacy-130",
+      "paper final suites"
+    ]
+  },
+  "locked_inputs": {
+    "phase6j_config": "configs/phase6j_caur.json",
+    "phase6j_grouped_labels": "outputs/phase6j_caur/r12_collection/r12_grouped_labels.parquet",
+    "phase6j_grouped_labels_sha256": "616a0f20ea76eaf88b5f0c51d5bdb023aada4c42bada416b4d81d739bea637af",
+    "phase6j_raw_seed_labels": "outputs/phase6j_caur/r12_collection/r12_seed_labels.parquet",
+    "phase6j_raw_seed_labels_sha256": "d821cf426da82eacbea2a501f0a4f87acb1089e82b32314a076a919d860fe86e",
+    "phase6j_collection_integrity": "outputs/phase6j_caur/r12_collection/collection_integrity.json",
+    "phase6j_collection_integrity_sha256": "4313c32494115b33cd1580d48a5b68530ff81e5342aef760f5a466c2ffa59ea8",
+    "phase6j_tensor_cache_integrity": "outputs/phase6j_caur/tensor_cache/tensor_cache_integrity.json",
+    "phase6j_tensor_cache_integrity_sha256": "d3fe40741eacf5a1bb8a555c7be720f3c96beb5c67d7826a160babf6d5b8242b",
+    "phase6j_tensor_manifest": "outputs/phase6j_caur/tensor_cache/tensor_manifest.csv",
+    "phase6j_tensor_manifest_sha256": "708987db755fa67981e74984eef871da09b22a65546b7b92573a5ab5aecf584d",
+    "phase6j_training_protocol": "outputs/phase6j_caur/frozen/r12_training_protocol.json",
+    "phase6f_base_checkpoint": "outputs/phase6f/training/final_seeds/seed_660301/checkpoint_best.pt",
+    "phase6f_base_checkpoint_sha256": "f1ccceb607b0e453dfb74e7aa7a946616001db8ec08c12dc9900a66c6f165fc7",
+    "phase6l_dependency_map": "outputs/phase6l_legacy_score_decoupling_v1/audit/legacy_score_dependency_map.json"
+  },
+  "production_search": {
+    "initialization": "H1",
+    "csg_semantics": "frozen predecessor implementation",
+    "proposal_rules": 24,
+    "deduplicate_by": "sorted target operation set in proposal insertion order",
+    "production_scope": "TRUE_FULL_DEDUPLICATED_24_RULE_BANK",
+    "model_input_order": "stable target_set_id lexical order with aligned action memberships and feature rows",
+    "candidate_trials_per_target": 8,
+    "decoder": "existing deterministic transport-aware repair and feasibility decoder",
+    "cross_decision_cache": false
+  },
+  "fallback": {
+    "rule": "unique deduplicated arm containing operator_related provenance and equal to canonical_related_target",
+    "selection_time": "before neural inference",
+    "failure": "fail closed if absent, non-unique, or canonical target differs",
+    "legacy_fallback_equal_states": 278,
+    "label_reanchor_states": 10,
+    "label_reanchor_source": "existing per-candidate per-CRN-seed continuation outcomes only",
+    "new_continuation_rollouts": false
+  },
+  "online_features": {
+    "categorical": [
+      "primary_origin_rule",
+      "origin_destroy_operator",
+      "origin_family"
+    ],
+    "numeric": [
+      "origin_rule_count",
+      "origin_family_count",
+      "destroy_target_cardinality",
+      "destroy_target_fraction",
+      "fallback_overlap_fraction",
+      "fallback_jaccard",
+      "critical_overlap_fraction",
+      "bottleneck_overlap_fraction",
+      "normalized_diversity_rank",
+      "is_fallback"
+    ],
+    "removed": [
+      "best_frozen_score_jaccard",
+      "normalized_frozen_score_rank"
+    ],
+    "historical_score_forward_calls": 0,
+    "historical_teacher": "DISABLED_FOR_PRIMARY_MODEL",
+    "forbidden_outcome_fields": [
+      "continuation_advantage_mean",
+      "continuation_advantage_std",
+      "beats_fallback",
+      "immediate_utility",
+      "candidate_decoded_makespan",
+      "continuation_best_makespan",
+      "fallback_continuation_best_makespan",
+      "repair_trial_makespans"
+    ]
+  },
+  "normalization": {
+    "fit_scope": "training folds only for every inner and outer fit",
+    "numeric": "median and IQR with denominator floor 1e-6",
+    "clip_robust_z": [-8.0, 8.0],
+    "categorical_unknown_index": 0,
+    "support": "all categorical origins present in the fitted fold and every unclipped robust numeric z within [-8,8]",
+    "ranking_standardization": "within state only for ranking losses",
+    "deployed_advantage_head": "preserve cross-state magnitude"
+  },
+  "primary_model": {
+    "model_id": "L1_SCORE_FREE_CONT_FROZEN",
+    "selection_unit": "three-seed ensemble",
+    "base_encoder": "frozen Phase6F Phase6H graph-state-action encoder",
+    "numeric_dim": 10,
+    "categorical_embeddings": "three vocabularies, embedding width 4 each",
+    "context_projection": "Linear(22,32)-GELU",
+    "candidate_fusion": "action, fallback, action-minus-fallback, context -> Linear(416,48)-GELU-Dropout(0.1)-Linear(48,128)-LayerNorm(128)",
+    "heads": [
+      "continuation_advantage: Linear(128,24)-GELU-Dropout(0.1)-Linear(24,1)",
+      "beats_fallback_logit: Linear(128,24)-GELU-Dropout(0.1)-Linear(24,1)",
+      "immediate_utility: Linear(128,24)-GELU-Dropout(0.1)-Linear(24,1)"
+    ],
+    "trainable": [
+      "categorical_embeddings",
+      "context_projection",
+      "candidate_context_projection",
+      "continuation_advantage_head",
+      "beats_fallback_head",
+      "immediate_utility_head"
+    ],
+    "frozen": [
+      "all graph message-passing blocks",
+      "state encoder",
+      "action encoder and final action projection"
+    ],
+    "total_parameter_cap": 5350000,
+    "trainable_parameter_cap": 500000,
+    "precision": "FP32_ONLY",
+    "compiler": "NONE",
+    "runtime_implementation": "Phase6K-E4R-style explicit FP32 vectorized ensemble arithmetic without CUDA graphs"
+  },
+  "optional_fallback_model": null,
+  "nonselectable_ablation": {
+    "model_id": "L1_NO_FALLBACK_CONTEXT_ABLATION",
+    "purpose": "measure contribution of deterministic replacement fallback features",
+    "seed": 706101,
+    "removed_online_inputs": [
+      "fallback_overlap_fraction",
+      "fallback_jaccard",
+      "is_fallback"
+    ],
+    "eligibility_for_selection_or_promotion": false,
+    "may_change_primary_design": false
+  },
+  "grouped_oof": {
+    "grouping": "whole instance and structural cell",
+    "fold_0": ["S_CF1", "M_CF2", "L_CF3"],
+    "fold_1": ["S_CF2", "M_CF3", "L_CF1"],
+    "fold_2": ["S_CF3", "M_CF1", "L_CF2"],
+    "nested_epoch_selection": "for held fold h, train on (h+2)%3 and validate on (h+1)%3; refit on both non-held folds for selected epoch count",
+    "formal_r12_predictions": "exactly one outer held-fold prediction per state/candidate/seed",
+    "calibration_rows": "argmax-selected outer held-fold winners only"
+  },
+  "training": {
+    "seeds": [706101, 706102, 706103],
+    "maximum_epochs": 120,
+    "patience": 12,
+    "minimum_lcb_improvement": 1e-8,
+    "state_groups_per_batch": 8,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "gradient_norm_clip": 1.0,
+    "deterministic_torch_algorithms": true,
+    "precision": "FP32_ONLY",
+    "objective": {
+      "pairwise_logistic_advantage": 1.0,
+      "listnet_state_list": 0.75,
+      "huber_advantage": 0.5,
+      "bce_beats_fallback": 0.25,
+      "huber_immediate_utility_auxiliary": 0.1,
+      "gap_weight_clip": [0.25, 4.0],
+      "pair_gap_scale": "derive once from the Phase6L reanchored dataset as median positive absolute within-state label gap before optimizer step",
+      "immediate_huber_delta": "derive once from the Phase6L dataset immediate-utility IQR before optimizer step"
+    }
+  },
+  "calibration": {
+    "fit_rows": "outer grouped-OOF selected winners only",
+    "candidate_methods": ["PLATT", "ISOTONIC"],
+    "isotonic_minimum_selected_rows": 200,
+    "selection": "lowest ECE, then Brier score, then Platt simplicity",
+    "ece_max": 0.1
+  },
+  "gate": {
+    "winner": "maximum ensemble mean continuation advantage; target_set_id tie break",
+    "p_min_grid": [0.55, 0.65, 0.75],
+    "lcb_lambda_grid": [0.5, 1.0],
+    "delta_min_grid": [0.0, 0.0025, 0.005],
+    "immediate_harm_floor": -0.005,
+    "minimum_direct_interventions_per_scale": 20,
+    "forced_abstention_minimum": 40,
+    "forced_abstention_exception": "at least 40 forced-abstention outcomes in the scale and a non-positive 95 percent upper confidence bound on lift",
+    "selection_order": [
+      "retain only gates with positive overall selected lift and positive grouped-bootstrap LCB",
+      "retain only gates with nonnegative selected lift in every scale",
+      "require direct intervention support or the frozen forced-abstention exception in every scale",
+      "maximize grouped-bootstrap selected-lift LCB",
+      "minimize selection regret",
+      "minimize selected-winner ECE",
+      "maximize supported intervention count",
+      "lexicographically minimize p_min then lambda then delta_min"
+    ]
+  },
+  "bootstrap": {
+    "unit": "instance mean",
+    "confidence_interval": 0.95,
+    "resamples": 2000,
+    "seed": 707001
+  },
+  "quality_gates": {
+    "essential": {
+      "replay_feasibility": "PASS",
+      "full_bank_completeness": "PASS",
+      "overall_spearman_gt": 0.0,
+      "minimum_scale_mean_spearman": 0.0,
+      "selected_lift_gt": 0.0,
+      "selected_bootstrap_lcb_gt": 0.0,
+      "selected_winner_ece_max": 0.1,
+      "candidate_origin_collapse": false
+    },
+    "preferred": {
+      "overall_spearman_min": 0.25,
+      "pairwise_accuracy_min": 0.6,
+      "ndcg_at_1_min": 0.75
+    },
+    "development_failure_decision": "MODEL_REVISION_QUALITY",
+    "r12_failure_decision": "MODEL_REVISION_QUALITY"
+  },
+  "development_gates": {
+    "inner_validation_required": [
+      "finite losses and predictions",
+      "three seeds complete",
+      "no scale mean Spearman below zero in the frozen outer OOF result",
+      "full bank and origin integrity",
+      "no leakage or normalization provenance failure"
+    ],
+    "runtime_engineering_targets_ms": {
+      "neural_p90": 25.0,
+      "complete_live_p90": 85.0
+    }
+  },
+  "runtime": {
+    "device": "cuda",
+    "precision": "FP32_ONLY_FOR_PHASE6L_NEURAL_AND_NEW_OPTIMIZATIONS",
+    "historical_score_forward_calls": 0,
+    "per_state_warmups": 3,
+    "per_state_measured_repetitions": 5,
+    "states": 288,
+    "continuous_formal_process": true,
+    "retain_all_samples": true,
+    "fresh_complete_live_decision_each_repetition": true,
+    "cross_decision_cache": false,
+    "report_percentiles": ["p50", "p90", "p99"],
+    "report_scales": ["overall", "S", "M", "L"],
+    "neural_p90_ms_max": 30.0,
+    "complete_live_p90_ms_max": 100.0,
+    "compiler": "NONE",
+    "cuda_graphs": false,
+    "favorable_reruns": false,
+    "dropped_samples": false
+  },
+  "ordered_stages": [
+    "L0_DEPENDENCY_AUDIT",
+    "L1_PREREGISTRATION",
+    "L2_SCORE_FREE_DATA_AND_FEATURES",
+    "L3_PRIMARY_TRAINING",
+    "L4_DEVELOPMENT_QUALITY_AND_ABLATION",
+    "L5_DEVELOPMENT_RUNTIME",
+    "L6_ONE_SHOT_R12_QUALIFICATION",
+    "L7_BUNDLE_AND_R12_SOLVER_IF_AUTHORIZED",
+    "L8_R13_THEN_R14_IF_AUTHORIZED"
+  ],
+  "terminal_decisions": [
+    "HOLD_DEPENDENCY_AUDIT",
+    "MODEL_REVISION_QUALITY",
+    "MODEL_REVISION_RUNTIME",
+    "NO_GO_R12_SOLVER",
+    "PASS_TO_R13"
+  ]
+}
