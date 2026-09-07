@@ -1,0 +1,58 @@
+{
+  "background_processes": {
+    "active_jobs": [],
+    "training_pid": 52577,
+    "training_pid_exited": true
+  },
+  "decision": "MODEL_REVISION_QUALITY",
+  "deployable_bundle": "NOT_CREATED_QUALITY_GATE_FAILED",
+  "development_runtime": "NOT_RUN_STOPPED_ON_M4_QUALITY",
+  "eligible_gate_count": 0,
+  "failed_checks": [
+    "retained_cross_scale_gate",
+    "positive_gated_lift",
+    "positive_grouped_bootstrap_lcb",
+    "nonnegative_all_scale_gated_lift",
+    "cross_scale_coverage"
+  ],
+  "formal_runtime": "NOT_RUN_STOPPED_ON_M4_QUALITY",
+  "gurobi_run": false,
+  "head_before_terminal_evidence_commit": "4af628e5d9229c7cf37432765c6b853c361a6287",
+  "historical_score_online_forward_calls": 0,
+  "intervention_readiness_checks_pass": false,
+  "next_step": "a separately preregistered model revision targeting selector scale, fold shift, immediate utility, or a non-promotable offline-teacher diagnostic",
+  "phase6m_preterminal_manifest_path": "outputs/phase6m_selective_confidence_v1/final/preterminal_manifest.json",
+  "primary_model": "M1_SCORE_FREE_SELECTIVE_RISK",
+  "primary_model_qualified": false,
+  "protected_evidence_unchanged": true,
+  "quality_audit_path": "outputs/phase6m_selective_confidence_v1/quality/development_quality.json",
+  "quality_audit_sha256": "2c9f270fcbf6688c70796ecfd132d6634da2412df5476433abfa1455855babdb",
+  "r12_solver_gate": "NOT_RUN_QUALITY_GATE_FAILED",
+  "r13_accessed": false,
+  "r13_locked": true,
+  "r14_accessed": false,
+  "r14_locked": true,
+  "raw_quality_checks_pass": true,
+  "reason": "raw score-free ranking and revised support pass, but all preregistered selector lower bounds are negative and no gate retains any intervention",
+  "regression": {
+    "command": "/home/liulei/miniconda3/envs/gnn311/bin/python -m pytest -q",
+    "failed": 0,
+    "passed": 372,
+    "schema": "phase6m-terminal-regression-v1",
+    "seconds": 16.28,
+    "status": "PASS",
+    "stdout_tail": "372 passed in 16.28s"
+  },
+  "schema": "phase6m-terminal-decision-v1",
+  "selected_gate": null,
+  "stage_commits": {
+    "M0_failure_attribution": "6f99e2d",
+    "M1_preregistration": "1c42559",
+    "M2_implementation": "f99cdc4",
+    "M3_training": "be74fe2",
+    "M4_quality": "4af628e"
+  },
+  "starting_commit": "8f0d37397af82e6a8bfdb437c88459712cdf5ec7",
+  "status": "COMPLETE",
+  "stop_boundary": "M4_BEFORE_DEVELOPMENT_RUNTIME"
+}
