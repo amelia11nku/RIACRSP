@@ -1,0 +1,28 @@
+{
+  "amended_code_sha256": {
+    "rcias_clgri/analysis/phase6i_mr.py": "04feecf1a0973e3c9d7b1a6fa8a55da9273ce01f6b42e093c98f87a453dc1853",
+    "rcias_clgri/analysis/phase6j_caur.py": "e137064fafa654fb75a461e7433ab7e6df19a9b405a4db8527e8cedcb86d560e",
+    "rcias_clgri/analysis/phase6l_legacy_score.py": "32aec85595acd394c3c189a4082681de1e7961b8acd5cf4cf85c6bfcf533fc9b",
+    "rcias_clgri/data/phase6j_access.py": "4c3c5a06878d3c8f57945a07726ee83df03565a1c7a2738d52e72cd79202cb00",
+    "rcias_clgri/env/feasibility.py": "74589a70f77260c7943186a58951d9f5c53661f95ed7e2c6f96e0c2ab2d2e073",
+    "rcias_clgri/search/alns.py": "fa2c1141052dc8e5fe2dae9daadf69881f7d15a383574e25e25eb596d775e559",
+    "rcias_clgri/search/common.py": "837298d3b1289a3078f822aafae274984424d9bbfa68f794d972f0610c8ddfdf",
+    "rcias_clgri/search/phase6c.py": "0e738f7f2ccb7074403aa1109a325b5bc52bf6ca8c4389560334c6c5d1e49c9a",
+    "scripts/run_phase6j_caur_pilot.py": "fde0c2ef6a2537b535e06fc781a3f76ba27dae7b4c65d611bd901a503e3bb72d",
+    "scripts/run_phase6o_targeted_relabeling.py": "97a7fced684e20b2f5573669751899049a1d3d69c1198b170156f8ffe6460163"
+  },
+  "amended_implementation_commit": "490bd8ddaf3e2bec5ba106290771a08aad8e6780",
+  "base_implementation_commit": "20fe195e2c8af7395ecdebe7eb84727abd93b817",
+  "base_worker_sha256": "05aaf16bdf21dcb4abe05edfcc6c2d8a20d4eed0e27e675a81433c3a2421e9da",
+  "completed_states_preserved": 288,
+  "failed_state_outcome_before_amendment": false,
+  "gurobi_run": false,
+  "historical_score_calls": 0,
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "reason": "validate canonical fallback against the frozen Phase 6O union instead of the obsolete Phase 6J role-unique replay fallback",
+  "recovery_diagnosis_sha256": "e3674998dde8d6f0ae93f09b33bc8a0ed150c639cfaf0a43bdc5e61c235dbbed",
+  "schema": "phase6o-targeted-relabel-runtime-recovery-amendment-v1",
+  "scientific_calculation_changed": false,
+  "status": "VALIDATION_ONLY_RECOVERY_AFTER_288_COMPLETE_STATES"
+}
