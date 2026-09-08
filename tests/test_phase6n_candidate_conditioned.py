@@ -4,6 +4,7 @@ from dataclasses import replace
 from functools import cache
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 import torch
 
@@ -206,3 +207,45 @@ def test_phase6n_objective_scales_and_whole_instance_roles_are_reproducible():
         assert held.isdisjoint(train)
         assert len(held) == 6
         assert len(train) == 12
+
+
+def test_phase6n_training_protocol_freezes_implemented_boundary_before_formal_oof():
+    protocol = json.loads(training.PROTOCOL.read_text())
+    assert protocol["status"] == "FROZEN_BEFORE_FIRST_OPTIMIZER_STEP"
+    assert protocol["optimizer_steps_started"] is False
+    assert protocol["outer_oof_generated"] is False
+    assert protocol["model"]["family"] == FAMILY
+    assert protocol["model"]["total_parameters"] == 5766462
+    assert protocol["model"]["trainable_parameters"] == 3060926
+    assert protocol["model"]["historical_score_calls"] == 0
+    assert all(row["instance_overlap"] == [] for row in protocol["fold_audit"])
+    for relative, expected in protocol["code_hashes"].items():
+        assert training.digest(ROOT / relative) == expected
+    assert protocol["r13_accessed"] is False
+    assert protocol["r14_accessed"] is False
+
+
+def test_phase6n_smoke_has_finite_checkpoint_and_both_prediction_scopes():
+    smoke = training.OUT / "smoke"
+    progress = json.loads((smoke / "progress.json").read_text())
+    record = json.loads(
+        (smoke / "oof/seed_726101/fold_0.json").read_text()
+    )
+    assert progress["status"] == "SMOKE_COMPLETE"
+    assert progress["completed_runs"] == 1
+    assert record["status"] == "COMPLETE"
+    assert record["inner_epochs_run"] == 1
+    assert record["outer_final_epochs_run"] == 1
+    assert np.isfinite(record["history"]["inner_epoch_selection"][0]["loss"])
+    assert training.digest(smoke / "oof/seed_726101/fold_0.pt") == record[
+        "checkpoint_sha256"
+    ]
+    assert training.digest(smoke / "oof/seed_726101/fold_0.parquet") == record[
+        "predictions_sha256"
+    ]
+    assert training.digest(
+        smoke / "oof/seed_726101/fold_0_inner_validation.parquet"
+    ) == record["inner_predictions_sha256"]
+    assert record["historical_score_calls"] == 0
+    assert record["r13_accessed"] is False
+    assert record["r14_accessed"] is False
