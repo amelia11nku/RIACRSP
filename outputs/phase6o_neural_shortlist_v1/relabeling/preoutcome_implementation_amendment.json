@@ -1,0 +1,51 @@
+{
+  "corrected_code_sha256": {
+    "rcias_clgri/analysis/phase6i_mr.py": "04feecf1a0973e3c9d7b1a6fa8a55da9273ce01f6b42e093c98f87a453dc1853",
+    "rcias_clgri/analysis/phase6j_caur.py": "e137064fafa654fb75a461e7433ab7e6df19a9b405a4db8527e8cedcb86d560e",
+    "rcias_clgri/analysis/phase6l_legacy_score.py": "32aec85595acd394c3c189a4082681de1e7961b8acd5cf4cf85c6bfcf533fc9b",
+    "rcias_clgri/data/phase6j_access.py": "4c3c5a06878d3c8f57945a07726ee83df03565a1c7a2738d52e72cd79202cb00",
+    "rcias_clgri/env/feasibility.py": "74589a70f77260c7943186a58951d9f5c53661f95ed7e2c6f96e0c2ab2d2e073",
+    "rcias_clgri/search/alns.py": "fa2c1141052dc8e5fe2dae9daadf69881f7d15a383574e25e25eb596d775e559",
+    "rcias_clgri/search/common.py": "837298d3b1289a3078f822aafae274984424d9bbfa68f794d972f0610c8ddfdf",
+    "rcias_clgri/search/phase6c.py": "0e738f7f2ccb7074403aa1109a325b5bc52bf6ca8c4389560334c6c5d1e49c9a",
+    "scripts/run_phase6j_caur_pilot.py": "fde0c2ef6a2537b535e06fc781a3f76ba27dae7b4c65d611bd901a503e3bb72d",
+    "scripts/run_phase6o_targeted_relabeling.py": "05aaf16bdf21dcb4abe05edfcc6c2d8a20d4eed0e27e675a81433c3a2421e9da"
+  },
+  "corrected_implementation_commit": "20fe195e2c8af7395ecdebe7eb84727abd93b817",
+  "failure": "KeyError: rng",
+  "gurobi_run": false,
+  "historical_score_calls": 0,
+  "outcome_files_before_correction": 0,
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "reason": "preflight failed before candidate generation because the worker read Phase 6J rng from the Phase 6O config object",
+  "schema": "phase6o-targeted-relabel-preoutcome-amendment-v1",
+  "status": "CORRECTED_BEFORE_FIRST_ADDITIONAL_OUTCOME",
+  "superseded_implementation": {
+    "candidate_union_sha256": "835b006a8a10d567b8210c0506b6b5ec1201c0d27a48e5a5bd416e972a4b0579",
+    "code_sha256": {
+      "rcias_clgri/analysis/phase6i_mr.py": "04feecf1a0973e3c9d7b1a6fa8a55da9273ce01f6b42e093c98f87a453dc1853",
+      "rcias_clgri/analysis/phase6j_caur.py": "e137064fafa654fb75a461e7433ab7e6df19a9b405a4db8527e8cedcb86d560e",
+      "rcias_clgri/analysis/phase6l_legacy_score.py": "32aec85595acd394c3c189a4082681de1e7961b8acd5cf4cf85c6bfcf533fc9b",
+      "rcias_clgri/data/phase6j_access.py": "4c3c5a06878d3c8f57945a07726ee83df03565a1c7a2738d52e72cd79202cb00",
+      "rcias_clgri/env/feasibility.py": "74589a70f77260c7943186a58951d9f5c53661f95ed7e2c6f96e0c2ab2d2e073",
+      "rcias_clgri/search/alns.py": "fa2c1141052dc8e5fe2dae9daadf69881f7d15a383574e25e25eb596d775e559",
+      "rcias_clgri/search/common.py": "837298d3b1289a3078f822aafae274984424d9bbfa68f794d972f0610c8ddfdf",
+      "rcias_clgri/search/phase6c.py": "0e738f7f2ccb7074403aa1109a325b5bc52bf6ca8c4389560334c6c5d1e49c9a",
+      "scripts/run_phase6j_caur_pilot.py": "fde0c2ef6a2537b535e06fc781a3f76ba27dae7b4c65d611bd901a503e3bb72d",
+      "scripts/run_phase6o_targeted_relabeling.py": "642bfb5f3fd3fe015a8ca04b51923887d787130b7e4cb0fcab1a959314e36e58"
+    },
+    "gurobi_run": false,
+    "historical_score_calls": 0,
+    "implementation_commit": "30e18758d8de5c48bf3bac9417f3aceff27d88bc",
+    "plan_sha256": "88228aea7f3a197de170ba445451ecfc66fa0b2b2f07cdfd7e4b201d1e01bd8e",
+    "preregistration_sha256": "8b595fdacfdd441dd9f5ee13b997b64a66f43099f565fbf3e132f16c2894348f",
+    "r13_accessed": false,
+    "r14_accessed": false,
+    "runtime_dependency_sha256": {
+      "configs/phase6j_caur.json": "399f03e33fad4567b8ffade5d632b2c6f32da4a9f3a51c3fea0ceb87e4da03d5"
+    },
+    "schema": "phase6o-targeted-relabel-implementation-v1",
+    "status": "FROZEN_BEFORE_FIRST_ADDITIONAL_OUTCOME"
+  }
+}

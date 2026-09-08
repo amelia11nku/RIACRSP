@@ -1,0 +1,54 @@
+{
+  "checkpoint_resume": "completed state shards are hash-validated and skipped",
+  "command": [
+    "/home/liulei/miniconda3/envs/gnn311/bin/python",
+    "-u",
+    "scripts/run_phase6o_targeted_relabeling.py"
+  ],
+  "direct_resume_command": [
+    "/home/liulei/miniconda3/envs/gnn311/bin/python",
+    "-u",
+    "scripts/run_phase6o_targeted_relabeling.py"
+  ],
+  "gurobi_run": false,
+  "historical_score_calls": 0,
+  "log_path": "outputs/phase6o_neural_shortlist_v1/relabeling/formal_targeted_relabeling_systemd_20260908T1204Z.log",
+  "main_pid": 107774,
+  "output_path": "outputs/phase6o_neural_shortlist_v1/relabeling",
+  "progress_observed": {
+    "additional_rows_complete": 132,
+    "additional_rows_expected": 14358,
+    "gurobi_run": false,
+    "historical_score_calls": 0,
+    "measured_remaining_state_seconds": 8342.093298395208,
+    "measured_seconds_per_state": 9.722719461999077,
+    "measured_state_seconds": 58.33631677199446,
+    "process_elapsed_seconds": 50.79320437699789,
+    "r13_accessed": false,
+    "r14_accessed": false,
+    "schema": "phase6o-targeted-relabel-progress-v1",
+    "state_candidate_rows_complete": 44,
+    "state_candidate_rows_expected": 4786,
+    "states_complete": 6,
+    "states_expected": 864,
+    "status": "RUNNING"
+  },
+  "progress_path": "outputs/phase6o_neural_shortlist_v1/relabeling/progress.json",
+  "projected_completion_at_utc": "2026-09-08T14:24:36.537740+00:00",
+  "projected_remaining_seconds": 8342.093298395208,
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "resume_command": [
+    "systemctl",
+    "--user",
+    "restart",
+    "phase6o-targeted-relabel-v1.service"
+  ],
+  "schema": "phase6o-targeted-relabel-systemd-launch-v1",
+  "service": "phase6o-targeted-relabel-v1.service",
+  "started_at_local": "2026-09-08T20:04:40+08:00",
+  "status": "RUNNING_VERIFIED",
+  "supersedes_failed_launch_record": "outputs/phase6o_neural_shortlist_v1/relabeling/launch_record.json",
+  "verified_at_utc": "2026-09-08T12:05:34.444442+00:00",
+  "working_directory": "/home/liulei/ayx/RI-ACRSP"
+}
