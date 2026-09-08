@@ -1,0 +1,41 @@
+{
+  "gurobi_run": false,
+  "phase6n_decision": "MODEL_REVISION_REPRESENTATION",
+  "phase6n_decision_path": "outputs/phase6n_candidate_conditioned_csg_v1/final/final_decision.json",
+  "phase6n_decision_sha256": "ba6c6623615d0ec01e4f603362420fc9e88565eaf65877e5c5d72c27d92a8a4f",
+  "pre_phase6l_chained_manifest_verification": {
+    "manifest_hashes_match_l0": true,
+    "phase6i_phase6j": {
+      "bytes": 1763645455,
+      "files": 6636,
+      "status": "PASS"
+    },
+    "phase6k": {
+      "bytes": 638852260,
+      "files": 21365,
+      "status": "PASS"
+    },
+    "tracked_predecessor": {
+      "bytes": 0,
+      "files": 139,
+      "status": "PASS"
+    }
+  },
+  "protected_phase6l_phase6m_files": 208,
+  "protected_phase6n_bytes": 376276500,
+  "protected_phase6n_files": 2504,
+  "protected_phase6n_manifest_path": "outputs/phase6o_neural_shortlist_v1/audit/protected_phase6n_evidence.json",
+  "r13_accessed": false,
+  "r13_r14_checked_paths": [
+    "outputs/phase6j_caur/r13_selection/access_ledger.json",
+    "outputs/phase6j_caur/r14_holdout/access_ledger.json",
+    "outputs/phase6n_candidate_conditioned_csg_v1/r13_selection/access_ledger.json",
+    "outputs/phase6n_candidate_conditioned_csg_v1/r14_holdout/access_ledger.json",
+    "outputs/phase6o_neural_shortlist_v1/r13_selection/access_ledger.json",
+    "outputs/phase6o_neural_shortlist_v1/r14_holdout/access_ledger.json"
+  ],
+  "r14_accessed": false,
+  "schema": "phase6o-starting-boundary-v1",
+  "starting_commit": "3ec6996123737e034595236b9bea81dc1ca6817a",
+  "starting_commit_is_ancestor": true
+}

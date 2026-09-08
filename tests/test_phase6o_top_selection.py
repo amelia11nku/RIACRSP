@@ -1,6 +1,13 @@
+import json
+from pathlib import Path
+
 import pandas as pd
 
 from scripts.audit_phase6o_top_selection import rank_indices, route_decision, topk_metrics
+
+
+ROOT = Path(__file__).resolve().parents[1]
+AUDIT = ROOT / "outputs/phase6o_neural_shortlist_v1/audit"
 
 
 def _candidate_rows() -> pd.DataFrame:
@@ -74,3 +81,42 @@ def test_phase6o_route_fails_closed_when_shortlist_recall_is_weak():
     decision = route_decision(pd.DataFrame(rows))
     assert decision["decision"] == "PROCEED_TOP_UTILITY_RETRAIN"
     assert decision["selected_shortlist_k"] is None
+
+
+def test_phase6o_o0_route_is_frozen_from_complete_topk_evidence():
+    result = json.loads((AUDIT / "loss_alignment_audit.json").read_text())
+    topk = pd.read_csv(AUDIT / "topk_metrics.csv")
+    assert result["status"] == "PASS"
+    assert result["route"]["decision"] == "PROCEED_TOP_UTILITY_RETRAIN"
+    assert result["route"]["selected_shortlist_k"] is None
+    assert set(topk.k) == {1, 2, 3, 4, 6, 8}
+    assert {"common_original_288", "expanded_864"}.issubset(set(topk.slice_value))
+    assert {"S", "M", "L"}.issubset(set(topk.slice_value))
+    assert {"CF1", "CF2", "CF3"}.issubset(set(topk.slice_value))
+    assert result["crn_summary"]["winner_disagreement_states"] == 501
+    assert result["crn_summary"]["targeted_relabeling_recommended_for_o1"] is True
+    assert result["optimizer_steps_started"] is False
+    assert result["live_solver_runs_started"] is False
+    assert result["r13_accessed"] is False
+    assert result["r14_accessed"] is False
+
+
+def test_phase6o_o0_error_shift_and_protection_evidence_are_complete():
+    result = json.loads((AUDIT / "loss_alignment_audit.json").read_text())
+    errors = pd.read_csv(AUDIT / "top_selection_error.csv")
+    shift = pd.read_csv(AUDIT / "source_shift_metrics.csv")
+    protected = json.loads((AUDIT / "protected_phase6n_evidence.json").read_text())
+    assert len(errors) == 864
+    assert errors.state_id.nunique() == 864
+    assert len(protected) == result["starting_boundary"]["protected_phase6n_files"]
+    assert result["relation_block_drift_summary"]["runs_complete"] == 9
+    assert result["relation_block_drift_summary"]["maximum_checkpoint_replay_error"] == 0.0
+    assert set(shift.source) == {"ORIGINAL_PHASE6J_CAUR", "NEW_ALNS_EXPANSION"}
+    assert {
+        "candidate_origin_distribution",
+        "continuation_advantage",
+        "crn_disagreement",
+        "fine_tuned_relation_block_prediction_drift",
+        "model_error",
+        "true_top_candidate_origin",
+    }.issubset(set(shift.category))

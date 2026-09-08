@@ -594,7 +594,6 @@ def relation_drift_shards(device_name: str, max_new_runs: int | None) -> tuple[p
         "status": "PASS",
         "runs_complete": 9,
         "runs_expected": 9,
-        "new_runs": new_runs,
         "records": run_records,
         "maximum_checkpoint_replay_error": max(row["maximum_checkpoint_replay_error"] for row in run_records),
         "mean_relation_parameter_relative_l2_delta": float(np.mean([
@@ -796,13 +795,13 @@ def render_report(result: dict, topk: pd.DataFrame) -> str:
 
 common 288 中，Phase 6N 的 state-level pairwise accuracy 改善、但 top candidate regret 同时变差的状态为 {errors['pairwise_improves_but_top_candidate_worsens_states']}。paired selected-lift delta 为 {errors['mean_paired_selected_lift_delta']:.6f}；最差 {errors['worst_states_for_50_percent_of_negative_deficit']} 个负向状态贡献全部负 deficit 的 50%，最差 10 个贡献 {errors['worst_10_states_negative_deficit_fraction']:.3%}。按 scale 的 delta 为 `{errors['paired_delta_by_scale']}`。
 
-两条 CRN continuation seeds 在 {crn['winner_disagreement_states']}/{crn['states']} 个状态上给出不同 top candidate（{crn['winner_disagreement_rate']:.3%}）。这超过 O1 建议采用 targeted high-fidelity relabeling 的 25% 预注册触发线；原 Phase 6L/6N truth 不得覆盖。
+两条 CRN continuation seeds 在 {crn['winner_disagreement_states']}/{crn['states']} 个状态上给出不同 top candidate（{crn['winner_disagreement_rate']:.3%}）。这是显著的 top-label instability，O1 应在任何新标签生成前冻结 targeted high-fidelity relabeling 的 candidate union、额外 seeds 与停止边界；原 Phase 6L/6N truth 不得覆盖。
 
 ## 目标函数与来源偏移
 
 Phase 6N 每 state 平均有 {loss['all_ordered_candidate_pairs']['mean']:.1f} 个 ordered pairs，但 true-best-vs-rest 仅 {loss['true_best_vs_rest_pairs']['mean']:.1f} 个；其 pairwise-loss contribution 均值占比 {loss['top_vs_rest_pairwise_loss_share']['mean']:.3%}。ListNet 给 best/top-3/top-6 的平均 target mass 为 {loss['listnet_target_mass_best']['mean']:.3%}/{loss['listnet_target_mass_top3']['mean']:.3%}/{loss['listnet_target_mass_top6']['mean']:.3%}。现有 pairwise + standard-z ListNet objective 因而主要优化 broad ordering，而非 top-1 expected utility。
 
-Phase 6N 训练以 state 等权处理 288 个 ORIGINAL_PHASE6J_CAUR 与 576 个 NEW_ALNS_EXPANSION，实际 aggregate weight 为 1/3 与 2/3。反事实恢复 Phase 6F relation block 后，fine-tuned block 引起的 mean absolute prediction drift 在 ORIGINAL 为 {drift['by_source']['ORIGINAL_PHASE6J_CAUR']['mean_absolute_prediction_drift']:.6f}，NEW 为 {drift['by_source']['NEW_ALNS_EXPANSION']['mean_absolute_prediction_drift']:.6f}；`larger_on_original={drift['larger_on_original']}`。完整 feature/origin/advantage/error/composition 分布见 `source_shift_metrics.csv`。
+Phase 6N 训练以 state 等权处理 288 个 ORIGINAL_PHASE6J_CAUR 与 576 个 NEW_ALNS_EXPANSION，实际 aggregate weight 为 1/3 与 2/3。反事实恢复 Phase 6F relation block 后，fine-tuned block 引起的 mean absolute prediction drift 在 ORIGINAL 为 {drift['by_source']['ORIGINAL_PHASE6J_CAUR']['mean_absolute_prediction_drift']:.6f}，NEW 为 {drift['by_source']['NEW_ALNS_EXPANSION']['mean_absolute_prediction_drift']:.6f}；ORIGINAL 仅高 {drift['original_minus_new_mean_absolute']:.6f}（比值 {drift['original_to_new_mean_absolute_ratio']:.4f}），没有观察到大的 source-specific drift 差距。完整 feature/origin/advantage/error/composition 分布见 `source_shift_metrics.csv`。
 
 ## 边界
 
@@ -854,8 +853,8 @@ def main() -> None:
         "states": len(errors),
         "winner_disagreement_states": int(errors.crn_seed_winner_disagreement.sum()),
         "winner_disagreement_rate": float(errors.crn_seed_winner_disagreement.mean()),
-        "targeted_relabeling_trigger_rate": 0.25,
-        "targeted_relabeling_triggered": bool(errors.crn_seed_winner_disagreement.mean() > 0.25),
+        "targeted_relabeling_recommended_for_o1": True,
+        "recommendation_basis": "substantial two-seed top-candidate instability; O1 must freeze scope before generating new labels",
     }
     loss_summary = metric_summary(alignment, (
         "all_ordered_candidate_pairs",
@@ -881,6 +880,8 @@ def main() -> None:
         **drift_audit,
         "by_source": drift_by_source,
         "larger_on_original": drift_by_source["ORIGINAL_PHASE6J_CAUR"]["mean_absolute_prediction_drift"] > drift_by_source["NEW_ALNS_EXPANSION"]["mean_absolute_prediction_drift"],
+        "original_minus_new_mean_absolute": drift_by_source["ORIGINAL_PHASE6J_CAUR"]["mean_absolute_prediction_drift"] - drift_by_source["NEW_ALNS_EXPANSION"]["mean_absolute_prediction_drift"],
+        "original_to_new_mean_absolute_ratio": drift_by_source["ORIGINAL_PHASE6J_CAUR"]["mean_absolute_prediction_drift"] / drift_by_source["NEW_ALNS_EXPANSION"]["mean_absolute_prediction_drift"],
     }
 
     atomic_csv(TOPK_PATH, topk)
@@ -892,6 +893,7 @@ def main() -> None:
         "route": route,
         "top_selection_error_summary": concentration,
         "loss_alignment_summary": loss_summary,
+        "loss_alignment_method": "frozen ensemble OOF predictions evaluated with the exact Phase 6N within-state standardization, gap weighting, pairwise logistic, and ListNet target formula",
         "crn_summary": crn_summary,
         "source_state_counts": {
             str(name): int(group.state_id.nunique())
