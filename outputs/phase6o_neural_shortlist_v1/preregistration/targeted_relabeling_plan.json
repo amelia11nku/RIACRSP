@@ -1,0 +1,48 @@
+{
+  "actual_additional_continuation_rows": 14358,
+  "actual_state_candidate_rows": 4786,
+  "additional_continuation_rows": 14358,
+  "additional_crn_seeds": [
+    735101,
+    735102,
+    735103
+  ],
+  "candidate_trials_per_target": 8,
+  "candidate_union": {
+    "deduplicate": true,
+    "new_state_candidate_rows": 2810,
+    "new_states": "Phase 6N top-4 union canonical fallback because frozen Phase 6L OOF is unavailable",
+    "original_state_candidate_rows": 1976,
+    "original_states": "Phase 6L top-4 union Phase 6N top-4 union canonical fallback",
+    "ranking_tie_break": "lexical target_set_id",
+    "state_candidate_rows": 4786,
+    "states": 864
+  },
+  "candidate_union_path": "outputs/phase6o_neural_shortlist_v1/preregistration/targeted_relabel_candidate_union.csv",
+  "candidate_union_sha256": "835b006a8a10d567b8210c0506b6b5ec1201c0d27a48e5a5bd416e972a4b0579",
+  "continuation_horizon": 4,
+  "continuation_seed_namespace": 694000000,
+  "diagnostic_basis": "O0 observed two-CRN top-candidate disagreement in 501 of 864 states",
+  "enabled": true,
+  "estimated_basis": "14358 additional continuations are 52.7 percent of Phase 6N continuation count, with only 35.1 percent of its forced repairs",
+  "estimated_seconds": 3600,
+  "existing_crn_seeds": [
+    695101,
+    695102
+  ],
+  "gurobi_run": false,
+  "historical_score_calls": 0,
+  "label_merge": "targeted candidates use the mean and empirical beats-fallback frequency across all five seeds; non-targeted candidates retain the original two-seed truth",
+  "outcome_independent_stop_rule": "complete every frozen union row for all three additional seeds; infrastructure failures may resume but outcomes cannot change scope",
+  "output_root": "outputs/phase6o_neural_shortlist_v1/relabeling",
+  "overwrite_predecessor_truth": false,
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "repair_seed_namespace": 693000000,
+  "schema": "phase6o-targeted-relabeling-plan-v1",
+  "state_replay": {
+    "new": "outputs/phase6n_candidate_conditioned_csg_v1/data/new_r12_collection/state_replays",
+    "original": "outputs/phase6j_caur/r12_collection/state_replays"
+  },
+  "status": "FROZEN_BEFORE_ADDITIONAL_CONTINUATION"
+}

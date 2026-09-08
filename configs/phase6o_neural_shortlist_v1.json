@@ -1,0 +1,204 @@
+{
+  "schema": "phase6o-neural-shortlist-config-v1",
+  "phase": "Phase 6O - Neural Shortlist Screening and Top-Utility Alignment",
+  "namespace": "phase6o_neural_shortlist_v1",
+  "starting_commit": "3ec6996123737e034595236b9bea81dc1ca6817a",
+  "o0_route_commit": "93ee70e",
+  "route": {
+    "decision": "PROCEED_TOP_UTILITY_RETRAIN",
+    "primary_family": "O1_TOP_UTILITY_FROZEN_ENCODER",
+    "route_a_started": false,
+    "route_a_reason_rejected": "no k <= 6 reached strong exact or epsilon-near-best recall on common and expanded frozen evidence"
+  },
+  "locked_inputs": {
+    "phase6n_predictions": "outputs/phase6n_candidate_conditioned_csg_v1/training/ensemble_oof.parquet",
+    "phase6n_grouped_labels": "outputs/phase6n_candidate_conditioned_csg_v1/data/combined/r12_expanded_grouped_labels.parquet",
+    "phase6n_seed_labels": "outputs/phase6n_candidate_conditioned_csg_v1/data/combined/r12_expanded_seed_labels.parquet",
+    "phase6n_training_protocol": "outputs/phase6n_candidate_conditioned_csg_v1/training/training_protocol.json",
+    "phase6l_predictions": "outputs/phase6l_legacy_score_decoupling_v1/training/ensemble_oof.parquet",
+    "phase6f_base_checkpoint": "outputs/phase6f/training/final_seeds/seed_660301/checkpoint_best.pt",
+    "instance_root": "instances/controlled/RCIAS-CB1-TRAIN-CAUR-R12R14",
+    "split": "R12_CAUR_FIT",
+    "states": 864,
+    "instances": 18,
+    "candidates": 20441
+  },
+  "inherited_semantics": {
+    "initializer": "H1",
+    "candidate_generator": "frozen Phase 6C 24-rule full bank",
+    "candidate_generation_before_any_model_filter": true,
+    "deduplication_and_order": "unchanged from Phase 6N",
+    "canonical_fallback": "operator_related",
+    "decoder_and_feasibility": "existing deterministic decode_candidate and check_schedule",
+    "best_so_far_preserved": true,
+    "historical_score_online_calls": 0,
+    "gurobi_run": false
+  },
+  "targeted_relabeling": {
+    "enabled": true,
+    "diagnostic_basis": "O0 observed two-CRN top-candidate disagreement in 501 of 864 states",
+    "candidate_union": {
+      "original_states": "Phase 6L top-4 union Phase 6N top-4 union canonical fallback",
+      "new_states": "Phase 6N top-4 union canonical fallback because frozen Phase 6L OOF is unavailable",
+      "ranking_tie_break": "lexical target_set_id",
+      "deduplicate": true,
+      "states": 864,
+      "state_candidate_rows": 4786,
+      "original_state_candidate_rows": 1976,
+      "new_state_candidate_rows": 2810
+    },
+    "existing_crn_seeds": [695101, 695102],
+    "additional_crn_seeds": [735101, 735102, 735103],
+    "continuation_seed_namespace": 694000000,
+    "repair_seed_namespace": 693000000,
+    "continuation_horizon": 4,
+    "candidate_trials_per_target": 8,
+    "additional_continuation_rows": 14358,
+    "state_replay": {
+      "original": "outputs/phase6j_caur/r12_collection/state_replays",
+      "new": "outputs/phase6n_candidate_conditioned_csg_v1/data/new_r12_collection/state_replays"
+    },
+    "output_root": "outputs/phase6o_neural_shortlist_v1/relabeling",
+    "outcome_independent_stop_rule": "complete every frozen union row for all three additional seeds; infrastructure failures may resume but outcomes cannot change scope",
+    "label_merge": "targeted candidates use the mean and empirical beats-fallback frequency across all five seeds; non-targeted candidates retain the original two-seed truth",
+    "overwrite_predecessor_truth": false,
+    "estimated_seconds": 3600,
+    "estimated_basis": "14358 additional continuations are 52.7 percent of Phase 6N continuation count, with only 35.1 percent of its forced repairs"
+  },
+  "model": {
+    "architecture": "Phase 6N candidate-conditioned pooler, fallback fusion, continuation head, and beats-fallback head",
+    "precision": "FP32_ONLY",
+    "frozen_modules": [
+      "all Phase 6F state-encoder input projections",
+      "all Phase 6F RT-HGT relation blocks",
+      "Phase 6F graph projection"
+    ],
+    "trainable_modules": [
+      "candidate-conditioned pooler",
+      "fallback-relative fusion",
+      "continuation advantage head",
+      "beats-fallback head"
+    ],
+    "final_relation_block_trainable_primary": false,
+    "final_relation_block_variant": "NON_PROMOTABLE_DIAGNOSTIC_ONLY"
+  },
+  "training": {
+    "seeds": [736101, 736102, 736103],
+    "maximum_epochs": 50,
+    "state_groups_per_batch": 4,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "gradient_norm_clip": 1.0,
+    "deterministic_torch_algorithms": true,
+    "source_balancing": {
+      "ORIGINAL_PHASE6J_CAUR_aggregate_weight": 0.5,
+      "NEW_ALNS_EXPANSION_aggregate_weight": 0.5,
+      "within_source_instance_weight": "1 / number of training instances in source",
+      "within_source_instance_state_weight": "1 / number of training states for that source-instance",
+      "whole_state_loss": true,
+      "renormalize_final_batch_weights_to_mean_one": true
+    },
+    "noise_margin": {
+      "candidate_noise": "1.4826 * median absolute deviation of available CRN advantages around their candidate median",
+      "fold_margin": "training-fold 75th percentile of candidate_noise clipped to [0.0025, 0.03]",
+      "near_optimal_set": "candidate mean advantage >= state maximum mean advantage - fold_margin",
+      "pair_filter": "exclude pairs with absolute mean-advantage gap <= fold_margin",
+      "held_fold_labels_forbidden": true
+    },
+    "opportunity_weight": {
+      "raw": "max(state q90 advantage - q10 advantage, max advantage - fallback advantage, 0)",
+      "scale": "training-fold median positive raw opportunity clipped to minimum 0.005",
+      "clipped": "clip(raw / scale, 0.5, 2.0)",
+      "normalization": "renormalize to mean one within each source-instance before multiplying source-balanced state weight"
+    },
+    "fold_scales": {
+      "policy_temperature": "training-fold median within-state advantage IQR clipped to [0.005, 0.05]",
+      "utility_scale": "training-fold median positive state utility spread clipped to [0.005, 0.05]",
+      "regret_scale": "training-fold median positive near-best-vs-rest gap clipped to [0.0025, 0.05]",
+      "huber_delta": "training-fold median absolute deviation of candidate mean advantages clipped to [0.005, 0.05]"
+    },
+    "objective": {
+      "top_set_cross_entropy": {
+        "weight": 1.0,
+        "target": "uniform probability mass over training-fold noise-margin near-optimal set"
+      },
+      "near_best_vs_rest_regret_logistic": {
+        "weight": 1.0,
+        "pairs": "near-optimal candidates against candidates below the noise margin",
+        "pair_weight": "clip(truth gap / regret_scale, 0.25, 4.0)"
+      },
+      "soft_expected_utility": {
+        "weight": 1.0,
+        "policy": "softmax(predicted advantage / policy_temperature)",
+        "loss": "-sum(policy * truth advantage) / utility_scale"
+      },
+      "advantage_huber": {
+        "weight": 0.1,
+        "delta": "fold_scales.huber_delta"
+      },
+      "beats_fallback_bce": {
+        "weight": 0.1
+      },
+      "broad_all_pairs_phase6n_loss_used": false,
+      "phase6n_standard_z_listnet_used": false,
+      "spearman_optimized": false
+    },
+    "inner_selection": {
+      "method": "symmetric two-way structural-fold validation for each outer fold and seed",
+      "direction_a": "fit structural fold X and validate Y",
+      "direction_b": "fit Y and validate X",
+      "epoch_rule": "maximize mean selected lift, then maximize mean near-best hit rate, then minimize mean top-1 regret, then minimize joint loss, then choose earliest epoch",
+      "refit": "use selected epoch count to fit both outer-training folds",
+      "single_validation_fold_selection_forbidden": true
+    }
+  },
+  "structural_folds": {
+    "grouping": "whole instance",
+    "fold_0": ["S_CF1", "M_CF2", "L_CF3"],
+    "fold_1": ["S_CF2", "M_CF3", "L_CF1"],
+    "fold_2": ["S_CF3", "M_CF1", "L_CF2"],
+    "outer_held_instances": 6,
+    "outer_training_instances": 12,
+    "candidate_row_split_forbidden": true
+  },
+  "oof_quality_gate": {
+    "common_raw_selected_lift_min": 0.00751635417065437,
+    "expanded_raw_selected_lift_positive": true,
+    "expanded_grouped_lcb_positive": true,
+    "common_top1_regret_max": 0.03386557437290963,
+    "all_scale_selected_lift_nonnegative": true,
+    "candidate_origin_diversity_min_families": 3,
+    "candidate_origin_max_fraction": 0.75,
+    "full_bank_feasibility_fold_isolation_required": true,
+    "paired_bootstrap": {
+      "seed": 737001,
+      "resamples": 5000,
+      "unit": "instance mean",
+      "confidence_interval": 0.95,
+      "significance_alone_blocks_development_pilot": false
+    },
+    "failure_decision": "MODEL_REVISION_TOP_UTILITY"
+  },
+  "development_solver_pilot": {
+    "eligible_only_after_oof_gate": true,
+    "seeds": [738101, 738102, 738103],
+    "budget": "2 * instance.num_operations seconds",
+    "split": "R12_CAUR_FIT",
+    "promotable": false,
+    "favorable_reruns_forbidden": true
+  },
+  "formal_runtime": {
+    "eligible_only_after_promising_development_pilot": true,
+    "neural_p90_ms_max": 30.0,
+    "complete_live_p90_ms_max": 100.0,
+    "shortlist_cost_must_be_separate": true
+  },
+  "locks": {
+    "r13_accessed": false,
+    "r14_accessed": false,
+    "r13_locked_until_formal_r12_pass": true,
+    "r14_locked_until_r13_pass": true,
+    "gurobi_run": false,
+    "protected_predecessor_evidence_immutable": true
+  }
+}
