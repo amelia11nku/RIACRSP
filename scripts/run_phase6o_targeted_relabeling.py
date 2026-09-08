@@ -48,10 +48,13 @@ RAW_SHARDS = OUT / "raw_additional_seed_labels"
 STATUS_SHARDS = OUT / "state_status"
 IMPLEMENTATION = OUT / "implementation.json"
 PREOUTCOME_AMENDMENT = OUT / "preoutcome_implementation_amendment.json"
+RECOVERY_DIAGNOSIS = OUT / "runtime_recovery_diagnosis.json"
+RECOVERY_AMENDMENT = OUT / "runtime_recovery_amendment.json"
 PROGRESS = OUT / "progress.json"
 REPORT = ROOT / "docs/reports/phase6o_targeted_relabeling_report.md"
 PHASE6N_GROUPED = ROOT / "outputs/phase6n_candidate_conditioned_csg_v1/data/combined/r12_expanded_grouped_labels.parquet"
 PHASE6N_RAW = ROOT / "outputs/phase6n_candidate_conditioned_csg_v1/data/combined/r12_expanded_seed_labels.parquet"
+WORKER_KEY = "scripts/run_phase6o_targeted_relabeling.py"
 
 
 def require(condition: bool, message: str) -> None:
@@ -104,6 +107,42 @@ def prediction(arm) -> FrozenArmPrediction:
         calibrated_probability=0.0,
         calibrated_utility=0.0,
     )
+
+
+def active_commit(implementation: dict) -> str:
+    return str(implementation.get(
+        "active_implementation_commit", implementation["implementation_commit"]
+    ))
+
+
+def active_worker_sha256(implementation: dict) -> str:
+    return str(implementation.get(
+        "active_worker_sha256", implementation["code_sha256"][WORKER_KEY]
+    ))
+
+
+def validate_fallback_reference(
+    *,
+    source: str,
+    state_id: str,
+    canonical_fallback_id: str,
+    frozen_union_fallback_ids: list[str],
+    historical_replay_fallback_id: str,
+    known_reanchoring: dict[str, tuple[str, str]],
+) -> bool:
+    require(
+        frozen_union_fallback_ids == [canonical_fallback_id],
+        "frozen Phase 6O union fallback differs from canonical fallback",
+    )
+    if historical_replay_fallback_id == canonical_fallback_id:
+        return False
+    require(source == "ORIGINAL_PHASE6J_CAUR", "new-state replay fallback changed")
+    require(
+        known_reanchoring.get(state_id)
+        == (historical_replay_fallback_id, canonical_fallback_id),
+        "unregistered historical-to-canonical fallback reanchoring",
+    )
+    return True
 
 
 def validate_boundary() -> tuple[dict, dict, dict, pd.DataFrame, str]:
@@ -175,27 +214,90 @@ def freeze_implementation(preregistration_sha256: str) -> dict:
         require(frozen["runtime_dependency_sha256"] == runtime_dependency_sha256, "relabel runtime dependency changed after outcomes")
         if frozen["code_sha256"] != code_sha256:
             outcome_files = list(RAW_SHARDS.glob("*.parquet")) + list(STATUS_SHARDS.glob("*.json"))
-            require(not outcome_files, "relabel implementation changed after outcomes")
-            amendment = {
-                "schema": "phase6o-targeted-relabel-preoutcome-amendment-v1",
-                "status": "CORRECTED_BEFORE_FIRST_ADDITIONAL_OUTCOME",
-                "reason": "preflight failed before candidate generation because the worker read Phase 6J rng from the Phase 6O config object",
-                "failure": "KeyError: rng",
-                "outcome_files_before_correction": 0,
-                "superseded_implementation": frozen,
-                "corrected_implementation_commit": subprocess.check_output(
-                    ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
-                ).strip(),
-                "corrected_code_sha256": code_sha256,
-                "historical_score_calls": 0,
-                "gurobi_run": False,
-                "r13_accessed": False,
-                "r14_accessed": False,
-            }
-            if PREOUTCOME_AMENDMENT.exists():
-                require(load_json(PREOUTCOME_AMENDMENT) == amendment, "pre-outcome amendment changed")
+            if outcome_files:
+                require(RECOVERY_DIAGNOSIS.exists(), "missing runtime recovery diagnosis")
+                diagnosis = load_json(RECOVERY_DIAGNOSIS)
+                require(
+                    diagnosis["status"]
+                    == "VALIDATION_REFERENCE_BUG_BEFORE_FAILED_STATE_OUTCOME",
+                    "runtime recovery diagnosis is not approved for resume",
+                )
+                require(diagnosis["worker_sha256"] == frozen["code_sha256"][WORKER_KEY], "diagnosed worker mismatch")
+                require(diagnosis["completed_states"] == 288, "recovery boundary changed")
+                require(diagnosis["failed_state_raw_or_status_exists"] is False, "failed state already has an outcome")
+                changed = [
+                    key for key in code_sha256
+                    if code_sha256[key] != frozen["code_sha256"].get(key)
+                ]
+                require(changed == [WORKER_KEY], "scientific dependency changed during recovery")
+                if RECOVERY_AMENDMENT.exists():
+                    amendment = load_json(RECOVERY_AMENDMENT)
+                else:
+                    require(len(outcome_files) == 576, "recovery amendment must start at the frozen 288-state boundary")
+                    amendment = {
+                        "schema": "phase6o-targeted-relabel-runtime-recovery-amendment-v1",
+                        "status": "VALIDATION_ONLY_RECOVERY_AFTER_288_COMPLETE_STATES",
+                        "reason": "validate canonical fallback against the frozen Phase 6O union instead of the obsolete Phase 6J role-unique replay fallback",
+                        "scientific_calculation_changed": False,
+                        "completed_states_preserved": 288,
+                        "failed_state_outcome_before_amendment": False,
+                        "base_implementation_commit": frozen["implementation_commit"],
+                        "base_worker_sha256": frozen["code_sha256"][WORKER_KEY],
+                        "amended_implementation_commit": subprocess.check_output(
+                            ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
+                        ).strip(),
+                        "amended_code_sha256": code_sha256,
+                        "recovery_diagnosis_sha256": digest(RECOVERY_DIAGNOSIS),
+                        "historical_score_calls": 0,
+                        "gurobi_run": False,
+                        "r13_accessed": False,
+                        "r14_accessed": False,
+                    }
+                    atomic_json(RECOVERY_AMENDMENT, amendment)
+                require(amendment["base_implementation_commit"] == frozen["implementation_commit"], "recovery base commit changed")
+                require(amendment["base_worker_sha256"] == frozen["code_sha256"][WORKER_KEY], "recovery base worker changed")
+                require(amendment["amended_code_sha256"] == code_sha256, "recovery worker changed after amendment")
+                require(amendment["recovery_diagnosis_sha256"] == digest(RECOVERY_DIAGNOSIS), "recovery diagnosis changed")
+                require(
+                    subprocess.run(
+                        ["git", "merge-base", "--is-ancestor", amendment["amended_implementation_commit"], "HEAD"],
+                        cwd=ROOT,
+                        check=False,
+                    ).returncode == 0,
+                    "amended implementation commit is not an ancestor of HEAD",
+                )
+                active = dict(frozen)
+                active["accepted_implementation_commits"] = [
+                    frozen["implementation_commit"], amendment["amended_implementation_commit"]
+                ]
+                active["accepted_worker_sha256s"] = [
+                    frozen["code_sha256"][WORKER_KEY], code_sha256[WORKER_KEY]
+                ]
+                active["active_implementation_commit"] = amendment["amended_implementation_commit"]
+                active["active_worker_sha256"] = code_sha256[WORKER_KEY]
+                active["recovery_amendment_sha256"] = digest(RECOVERY_AMENDMENT)
+                return active
             else:
-                atomic_json(PREOUTCOME_AMENDMENT, amendment)
+                amendment = {
+                    "schema": "phase6o-targeted-relabel-preoutcome-amendment-v1",
+                    "status": "CORRECTED_BEFORE_FIRST_ADDITIONAL_OUTCOME",
+                    "reason": "preflight failed before candidate generation because the worker read Phase 6J rng from the Phase 6O config object",
+                    "failure": "KeyError: rng",
+                    "outcome_files_before_correction": 0,
+                    "superseded_implementation": frozen,
+                    "corrected_implementation_commit": subprocess.check_output(
+                        ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
+                    ).strip(),
+                    "corrected_code_sha256": code_sha256,
+                    "historical_score_calls": 0,
+                    "gurobi_run": False,
+                    "r13_accessed": False,
+                    "r14_accessed": False,
+                }
+                if PREOUTCOME_AMENDMENT.exists():
+                    require(load_json(PREOUTCOME_AMENDMENT) == amendment, "pre-outcome amendment changed")
+                else:
+                    atomic_json(PREOUTCOME_AMENDMENT, amendment)
         else:
             require(
                 subprocess.run(
@@ -248,12 +350,18 @@ def valid_state(state_id: str, implementation: dict, expected_candidates: int, s
         status = load_json(status_path)
     except (OSError, json.JSONDecodeError):
         return None
+    accepted_commits = implementation.get(
+        "accepted_implementation_commits", [implementation["implementation_commit"]]
+    )
+    accepted_workers = implementation.get(
+        "accepted_worker_sha256s", [implementation["code_sha256"][WORKER_KEY]]
+    )
     expected = (
         status.get("schema") == "phase6o-targeted-relabel-state-v1"
         and status.get("status") == "COMPLETE"
         and status.get("state_id") == state_id
-        and status.get("implementation_commit") == implementation["implementation_commit"]
-        and status.get("worker_sha256") == implementation["code_sha256"]["scripts/run_phase6o_targeted_relabeling.py"]
+        and status.get("implementation_commit") in accepted_commits
+        and status.get("worker_sha256") in accepted_workers
         and status.get("candidate_count") == expected_candidates
         and status.get("additional_rows") == expected_candidates * len(seeds)
         and status.get("additional_crn_seeds") == seeds
@@ -303,7 +411,23 @@ def collect_state(
     replay_ids = replay.get("full_bank_target_ids_in_generator_order", replay.get("full_bank_target_ids"))
     require([arm.target_set_id for arm in generated.arms] == replay_ids, "full-bank candidate identity/order changed")
     fallback = select_score_free_fallback(generated)
-    require(fallback.target_set_id == replay["fallback_target_set_id"], "canonical fallback changed")
+    diagnosis = load_json(RECOVERY_DIAGNOSIS) if RECOVERY_DIAGNOSIS.exists() else {"known_mismatches": []}
+    known_reanchoring = {
+        str(row["state_id"]): (
+            str(row["historical_replay_fallback"]),
+            str(row["canonical_phase6l_phase6n_fallback"]),
+        )
+        for row in diagnosis["known_mismatches"]
+    }
+    fallback_ids = sorted(state_union.loc[state_union.is_fallback.astype(bool), "target_set_id"].astype(str))
+    fallback_reanchored = validate_fallback_reference(
+        source=source,
+        state_id=state_id,
+        canonical_fallback_id=fallback.target_set_id,
+        frozen_union_fallback_ids=fallback_ids,
+        historical_replay_fallback_id=str(replay["fallback_target_set_id"]),
+        known_reanchoring=known_reanchoring,
+    )
     selected_ids = set(state_union.target_set_id.astype(str))
     require(fallback.target_set_id in selected_ids, "targeted union omitted fallback")
     arms = [arm for arm in generated.arms if arm.target_set_id in selected_ids]
@@ -379,8 +503,11 @@ def collect_state(
         "state_id": state_id,
         "instance_id": replay["instance_id"],
         "phase6n_data_origin": source,
-        "implementation_commit": implementation["implementation_commit"],
-        "worker_sha256": implementation["code_sha256"]["scripts/run_phase6o_targeted_relabeling.py"],
+        "implementation_commit": active_commit(implementation),
+        "worker_sha256": active_worker_sha256(implementation),
+        "historical_replay_fallback_target_set_id": replay["fallback_target_set_id"],
+        "canonical_fallback_target_set_id": fallback.target_set_id,
+        "fallback_reanchored_from_historical_replay": fallback_reanchored,
         "candidate_count": len(arms),
         "additional_rows": len(raw),
         "additional_crn_seeds": seeds,
@@ -486,7 +613,10 @@ def summarize(union: pd.DataFrame, statuses: list[dict], implementation: dict) -
     audit = {
         "schema": "phase6o-targeted-relabel-integrity-v1",
         "status": "PASS",
-        "implementation_commit": implementation["implementation_commit"],
+        "implementation_commit": active_commit(implementation),
+        "base_implementation_commit": implementation["implementation_commit"],
+        "worker_sha256": active_worker_sha256(implementation),
+        "runtime_recovery_amendment_sha256": implementation.get("recovery_amendment_sha256"),
         "states": 864,
         "instances": int(grouped.instance_id.nunique()),
         "full_bank_candidates": len(grouped),

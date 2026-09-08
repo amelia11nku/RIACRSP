@@ -1,0 +1,90 @@
+{
+  "completed_additional_rows": 4800,
+  "completed_states": 288,
+  "completed_states_with_historical_vs_canonical_fallback_mismatch": 0,
+  "diagnosed_at_utc": "2026-09-08T13:16:08.093272+00:00",
+  "failed_log_path": "outputs/phase6o_neural_shortlist_v1/relabeling/formal_targeted_relabeling_systemd_20260908T1204Z.log",
+  "failed_log_sha256": "f49afa199eadc864ab733e28bcafe0f93235700b1172951aef53438f5f65f5dd",
+  "failed_service": "phase6o-targeted-relabel-v1.service",
+  "failed_state": "CB1_CAUR_M_CF1_RI2_TI2_R12_C02__seed691201__it0000014",
+  "failed_state_raw_or_status_exists": false,
+  "failure": "RuntimeError: canonical fallback changed",
+  "gurobi_run": false,
+  "historical_score_calls": 0,
+  "implementation_sha256": "80bab38013e7732b55ae1bc8480e5bdd61d65272c002b7f7f27522b8a960f710",
+  "known_mismatches": [
+    {
+      "canonical_phase6l_phase6n_fallback": "ts_ad51214bb470b81dbf07",
+      "historical_replay_fallback": "ts_5a907c4e627306865c11",
+      "scale": "M",
+      "state_id": "CB1_CAUR_M_CF1_RI2_TI2_R12_C02__seed691201__it0000014"
+    },
+    {
+      "canonical_phase6l_phase6n_fallback": "ts_45a8e84c82ea2979d074",
+      "historical_replay_fallback": "ts_f8bf50f59365cdbb702d",
+      "scale": "M",
+      "state_id": "CB1_CAUR_M_CF1_RI2_TI2_R12_C02__seed691201__it0000230"
+    },
+    {
+      "canonical_phase6l_phase6n_fallback": "ts_f556e9455210ed459016",
+      "historical_replay_fallback": "ts_296267e74e52b5ca4891",
+      "scale": "M",
+      "state_id": "CB1_CAUR_M_CF2_RI2_TI2_R12__seed691202__it0000140"
+    },
+    {
+      "canonical_phase6l_phase6n_fallback": "ts_e0602973aef1f8f5c646",
+      "historical_replay_fallback": "ts_f7d0ff4467f84e4afc39",
+      "scale": "M",
+      "state_id": "CB1_CAUR_M_CF3_RI2_TI2_R12_C02__seed691201__it0000294"
+    },
+    {
+      "canonical_phase6l_phase6n_fallback": "ts_689606180a0d5dcf990d",
+      "historical_replay_fallback": "ts_17cb02d2c2888d5c58af",
+      "scale": "M",
+      "state_id": "CB1_CAUR_M_CF3_RI2_TI2_R12_C02__seed691202__it0000260"
+    },
+    {
+      "canonical_phase6l_phase6n_fallback": "ts_3e40619ccd09f6a89cb7",
+      "historical_replay_fallback": "ts_0c4da100bea2d02879e4",
+      "scale": "M",
+      "state_id": "CB1_CAUR_M_CF3_RI2_TI2_R12__seed691201__it0000136"
+    },
+    {
+      "canonical_phase6l_phase6n_fallback": "ts_2a9a75a42f0b05e62705",
+      "historical_replay_fallback": "ts_8ca45bbd0ebb6705bdae",
+      "scale": "S",
+      "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__seed691201__it0000130"
+    },
+    {
+      "canonical_phase6l_phase6n_fallback": "ts_66e2aa200e7d3c4e05be",
+      "historical_replay_fallback": "ts_9ac2d7b883475e84ce06",
+      "scale": "S",
+      "state_id": "CB1_CAUR_S_CF2_RI2_TI2_R12_C02__seed691201__it0000098"
+    },
+    {
+      "canonical_phase6l_phase6n_fallback": "ts_ec66dee31266f6a22731",
+      "historical_replay_fallback": "ts_1cf2c13646af7abab3e3",
+      "scale": "S",
+      "state_id": "CB1_CAUR_S_CF2_RI2_TI2_R12__seed691202__it0000178"
+    },
+    {
+      "canonical_phase6l_phase6n_fallback": "ts_631b24a002ccfffbcb35",
+      "historical_replay_fallback": "ts_8e2166966c5250c6004d",
+      "scale": "S",
+      "state_id": "CB1_CAUR_S_CF3_RI2_TI2_R12__seed691201__it0000014"
+    }
+  ],
+  "known_original_states_with_historical_vs_canonical_fallback_mismatch": 10,
+  "pre_recovery_manifest_path": "outputs/phase6o_neural_shortlist_v1/relabeling/pre_recovery_completed_shard_manifest.csv",
+  "pre_recovery_manifest_sha256": "e60ffc8494825e0e56b40af11c7d48becf73ea7e37d395c405090f7e06246a55",
+  "progress_sha256": "4f5e0719e612e7fbad3238d23d88f1a366dba0b18d011f520c07349188eb92e0",
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "recovery": "validate canonical fallback against the frozen Phase 6O union and Phase 6N grouped-label source; retain the old replay fallback only as provenance",
+  "root_cause": "worker computed canonical Phase 6L/6N fallback but validated it against the obsolete Phase 6J role-unique replay fallback",
+  "schema": "phase6o-targeted-relabel-runtime-recovery-diagnosis-v1",
+  "scientific_calculation_change_required": false,
+  "service_exit_status": 1,
+  "status": "VALIDATION_REFERENCE_BUG_BEFORE_FAILED_STATE_OUTCOME",
+  "worker_sha256": "05aaf16bdf21dcb4abe05edfcc6c2d8a20d4eed0e27e675a81433c3a2421e9da"
+}

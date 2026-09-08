@@ -2,6 +2,7 @@ from pathlib import Path
 import inspect
 
 import pandas as pd
+import pytest
 
 from scripts import run_phase6o_targeted_relabeling as relabel
 
@@ -54,3 +55,49 @@ def test_phase6o_union_keeps_one_fallback_and_never_replaces_full_bank():
     assert source.groupby("state_id").size().between(21, 24).all()
     assert union.groupby("state_id").size().between(4, 9).all()
     assert (union.groupby("state_id").size() < source.groupby("state_id").size()).all()
+
+
+def test_phase6o_fallback_reference_accepts_only_registered_reanchoring():
+    assert relabel.validate_fallback_reference(
+        source="ORIGINAL_PHASE6J_CAUR",
+        state_id="known",
+        canonical_fallback_id="canonical",
+        frozen_union_fallback_ids=["canonical"],
+        historical_replay_fallback_id="historical",
+        known_reanchoring={"known": ("historical", "canonical")},
+    )
+    assert not relabel.validate_fallback_reference(
+        source="NEW_ALNS_EXPANSION",
+        state_id="same",
+        canonical_fallback_id="canonical",
+        frozen_union_fallback_ids=["canonical"],
+        historical_replay_fallback_id="canonical",
+        known_reanchoring={},
+    )
+    with pytest.raises(RuntimeError, match="unregistered"):
+        relabel.validate_fallback_reference(
+            source="ORIGINAL_PHASE6J_CAUR",
+            state_id="unknown",
+            canonical_fallback_id="canonical",
+            frozen_union_fallback_ids=["canonical"],
+            historical_replay_fallback_id="historical",
+            known_reanchoring={},
+        )
+    with pytest.raises(RuntimeError, match="new-state"):
+        relabel.validate_fallback_reference(
+            source="NEW_ALNS_EXPANSION",
+            state_id="new",
+            canonical_fallback_id="canonical",
+            frozen_union_fallback_ids=["canonical"],
+            historical_replay_fallback_id="historical",
+            known_reanchoring={"new": ("historical", "canonical")},
+        )
+
+
+def test_phase6o_recovery_diagnosis_matches_frozen_phase6l_reanchoring():
+    diagnosis = relabel.load_json(relabel.RECOVERY_DIAGNOSIS)
+    assert diagnosis["completed_states"] == 288
+    assert diagnosis["failed_state_raw_or_status_exists"] is False
+    assert len(diagnosis["known_mismatches"]) == 10
+    assert {row["scale"] for row in diagnosis["known_mismatches"]} == {"M", "S"}
+    assert diagnosis["completed_states_with_historical_vs_canonical_fallback_mismatch"] == 0
