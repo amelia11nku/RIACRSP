@@ -1,0 +1,461 @@
+{
+  "base_checkpoint": {
+    "path": "outputs/phase6f/training/final_seeds/seed_660301/checkpoint_best.pt",
+    "sha256": "f1ccceb607b0e453dfb74e7aa7a946616001db8ec08c12dc9900a66c6f165fc7"
+  },
+  "bootstrap": {
+    "confidence_interval": 0.95,
+    "resamples": 5000,
+    "seed": 737001,
+    "significance_alone_blocks_development_pilot": false,
+    "unit": "instance mean"
+  },
+  "code_hashes": {
+    "rcias_clgri/ni/batching.py": "1d333b7b0f977cb64ef44ccc765d6aa82f0cb926473ef6ed90a8aeb94566c6e9",
+    "rcias_clgri/ni/cache.py": "73ebbb91db7534eee963a2780e4be032c4f07c3ee63fcdb59b59ea1fc7fa11b7",
+    "rcias_clgri/ni/encoder.py": "3bb038d555fd9341df238b686e83a21ff2861299515a6eb08ab685ee66551c7a",
+    "rcias_clgri/ni/phase6n_candidate_conditioned.py": "040ca69d4c221b5e0d7dd899e3fcb74d583d03626d4f5f05d074f75c1d69f2c3",
+    "rcias_clgri/ni/phase6o_top_utility.py": "9e40ef24f0c57ba8fad672619c248b874fc2fa6cbb00458166edacc771623f4f",
+    "rcias_clgri/ni/scorer.py": "6e38ef9b985d82324253d789d9a9ae69f8e25de2c8db65f9f59d14dbceb2016e",
+    "rcias_clgri/ni/tensorize.py": "a75d1dc9e4434a486a2a3ca8fd45e2a8dec8d21ba1acbe612c1388fc2a6f471c",
+    "scripts/freeze_phase6o_training.py": "1ccffaf5f108cd3572770ea08583c06ec169bdfb2c99ad3282d6f36bd61f6a62",
+    "scripts/train_phase6j_caur.py": "8fa126f76460d6fd30ccb3a99e9d6d8dfc09210cbe9178cfbcbddab665061526",
+    "scripts/train_phase6n_candidate_conditioned.py": "63af4a8f80f48658470880ab7ff26b2147af4efc3e6ab54526a25981d0f061f0",
+    "scripts/train_phase6o_top_utility.py": "2194f55d5929e90a417418e90bd14d8d4471b2fc359126cb27211f5fd3ade091"
+  },
+  "feature_schema": {
+    "categorical_columns": [
+      "primary_origin_rule",
+      "origin_destroy_operator",
+      "origin_family"
+    ],
+    "categorical_sizes_with_unknown": [
+      25,
+      8,
+      6
+    ],
+    "normalization": "training-fold median/IQR, denominator floor 1e-6, clip [-8,8]",
+    "numeric_columns": [
+      "origin_rule_count",
+      "origin_family_count",
+      "destroy_target_cardinality",
+      "destroy_target_fraction",
+      "fallback_overlap_fraction",
+      "fallback_jaccard",
+      "critical_overlap_fraction",
+      "bottleneck_overlap_fraction",
+      "normalized_diversity_rank",
+      "is_fallback"
+    ],
+    "outcome_inputs": []
+  },
+  "fold_audit": [
+    {
+      "held_candidates": 6816,
+      "held_fold": 0,
+      "held_instances": 6,
+      "held_states": 288,
+      "held_training_instance_overlap": [],
+      "outer_contract": {
+        "huber_delta": 0.019081996434937607,
+        "near_candidate_count": 3186,
+        "noise_margin": 0.02411609613983977,
+        "opportunity_scale": 0.05879289403175514,
+        "policy_temperature": 0.028786327884936767,
+        "regret_scale": 0.043533523991102635,
+        "retained_pair_count": 36503,
+        "scale_weight_totals": {
+          "L": 0.3333333333333333,
+          "M": 0.3333333333333333,
+          "S": 0.3333333333333333
+        },
+        "source_weight_totals": {
+          "NEW_ALNS_EXPANSION": 0.49999999999999994,
+          "ORIGINAL_PHASE6J_CAUR": 0.5
+        },
+        "state_weight_count": 576,
+        "state_weight_sha256": "e7409324c0dfdcff1d428efec33a99e5e6689c093214ff86c1a3744c668dd617",
+        "utility_scale": 0.05
+      },
+      "outer_training_candidates": 13625,
+      "outer_training_instances": 12,
+      "outer_training_states": 576,
+      "symmetric_inner_directions": [
+        {
+          "contract": {
+            "huber_delta": 0.018424267207388777,
+            "near_candidate_count": 1778,
+            "noise_margin": 0.024979786652465155,
+            "opportunity_scale": 0.05750306528073014,
+            "policy_temperature": 0.028682973048848964,
+            "regret_scale": 0.0437753036437247,
+            "retained_pair_count": 18533,
+            "scale_weight_totals": {
+              "L": 0.3333333333333333,
+              "M": 0.3333333333333333,
+              "S": 0.3333333333333333
+            },
+            "source_weight_totals": {
+              "NEW_ALNS_EXPANSION": 0.5,
+              "ORIGINAL_PHASE6J_CAUR": 0.5
+            },
+            "state_weight_count": 288,
+            "state_weight_sha256": "f7050b7d0fe2d22ef2c090e535dc19e408dcc220bc7a6be5bf23d1301b93c425",
+            "utility_scale": 0.05
+          },
+          "instance_overlap": [],
+          "training_fold": 1,
+          "training_instances": 6,
+          "validation_fold": 2,
+          "validation_instances": 6
+        },
+        {
+          "contract": {
+            "huber_delta": 0.019717480871100646,
+            "near_candidate_count": 1422,
+            "noise_margin": 0.023332972136222905,
+            "opportunity_scale": 0.0596291758301277,
+            "policy_temperature": 0.029110144406700806,
+            "regret_scale": 0.04333030852994556,
+            "retained_pair_count": 17883,
+            "scale_weight_totals": {
+              "L": 0.3333333333333333,
+              "M": 0.3333333333333333,
+              "S": 0.3333333333333333
+            },
+            "source_weight_totals": {
+              "NEW_ALNS_EXPANSION": 0.5,
+              "ORIGINAL_PHASE6J_CAUR": 0.49999999999999994
+            },
+            "state_weight_count": 288,
+            "state_weight_sha256": "7b4cfaf05dc9fd68ae041cfeda22705f32f45843d57509e0b13c3cfe0c795b50",
+            "utility_scale": 0.05
+          },
+          "instance_overlap": [],
+          "training_fold": 2,
+          "training_instances": 6,
+          "validation_fold": 1,
+          "validation_instances": 6
+        }
+      ]
+    },
+    {
+      "held_candidates": 6816,
+      "held_fold": 1,
+      "held_instances": 6,
+      "held_states": 288,
+      "held_training_instance_overlap": [],
+      "outer_contract": {
+        "huber_delta": 0.019267648248163623,
+        "near_candidate_count": 3197,
+        "noise_margin": 0.024510495963091117,
+        "opportunity_scale": 0.05873798763493313,
+        "policy_temperature": 0.028847076192741364,
+        "regret_scale": 0.04372546604886009,
+        "retained_pair_count": 36960,
+        "scale_weight_totals": {
+          "L": 0.3333333333333333,
+          "M": 0.3333333333333333,
+          "S": 0.3333333333333333
+        },
+        "source_weight_totals": {
+          "NEW_ALNS_EXPANSION": 0.49999999999999994,
+          "ORIGINAL_PHASE6J_CAUR": 0.49999999999999994
+        },
+        "state_weight_count": 576,
+        "state_weight_sha256": "7522008f63a2015f8de2a3d9eb04e5822e80ff2e72718cecbf32e29d8f1aeebf",
+        "utility_scale": 0.05
+      },
+      "outer_training_candidates": 13625,
+      "outer_training_instances": 12,
+      "outer_training_states": 576,
+      "symmetric_inner_directions": [
+        {
+          "contract": {
+            "huber_delta": 0.018786058342804567,
+            "near_candidate_count": 1788,
+            "noise_margin": 0.02576759758674734,
+            "opportunity_scale": 0.05693896957006996,
+            "policy_temperature": 0.028719264798834684,
+            "regret_scale": 0.044156271830680854,
+            "retained_pair_count": 18766,
+            "scale_weight_totals": {
+              "L": 0.3333333333333333,
+              "M": 0.3333333333333333,
+              "S": 0.3333333333333333
+            },
+            "source_weight_totals": {
+              "NEW_ALNS_EXPANSION": 0.49999999999999994,
+              "ORIGINAL_PHASE6J_CAUR": 0.5
+            },
+            "state_weight_count": 288,
+            "state_weight_sha256": "2e3d1d2373ece47990e81ffe2e1868d7a875024d12eda006ce84b0800b619102",
+            "utility_scale": 0.05
+          },
+          "instance_overlap": [],
+          "training_fold": 0,
+          "training_instances": 6,
+          "validation_fold": 2,
+          "validation_instances": 6
+        },
+        {
+          "contract": {
+            "huber_delta": 0.019717480871100646,
+            "near_candidate_count": 1422,
+            "noise_margin": 0.023332972136222905,
+            "opportunity_scale": 0.0596291758301277,
+            "policy_temperature": 0.029110144406700806,
+            "regret_scale": 0.04333030852994556,
+            "retained_pair_count": 17883,
+            "scale_weight_totals": {
+              "L": 0.3333333333333333,
+              "M": 0.3333333333333333,
+              "S": 0.3333333333333333
+            },
+            "source_weight_totals": {
+              "NEW_ALNS_EXPANSION": 0.5,
+              "ORIGINAL_PHASE6J_CAUR": 0.49999999999999994
+            },
+            "state_weight_count": 288,
+            "state_weight_sha256": "7b4cfaf05dc9fd68ae041cfeda22705f32f45843d57509e0b13c3cfe0c795b50",
+            "utility_scale": 0.05
+          },
+          "instance_overlap": [],
+          "training_fold": 2,
+          "training_instances": 6,
+          "validation_fold": 0,
+          "validation_instances": 6
+        }
+      ]
+    },
+    {
+      "held_candidates": 6809,
+      "held_fold": 2,
+      "held_instances": 6,
+      "held_states": 288,
+      "held_training_instance_overlap": [],
+      "outer_contract": {
+        "huber_delta": 0.018619272630912738,
+        "near_candidate_count": 3572,
+        "noise_margin": 0.025420145291273313,
+        "opportunity_scale": 0.05711917388539612,
+        "policy_temperature": 0.028682973048848964,
+        "regret_scale": 0.04399548966170586,
+        "retained_pair_count": 37284,
+        "scale_weight_totals": {
+          "L": 0.3333333333333333,
+          "M": 0.3333333333333333,
+          "S": 0.3333333333333333
+        },
+        "source_weight_totals": {
+          "NEW_ALNS_EXPANSION": 0.5,
+          "ORIGINAL_PHASE6J_CAUR": 0.49999999999999994
+        },
+        "state_weight_count": 576,
+        "state_weight_sha256": "a72444d260caa17dfc365a8662ae3cb88d62a26dd1d1f66c12dac3a147519be5",
+        "utility_scale": 0.05
+      },
+      "outer_training_candidates": 13632,
+      "outer_training_instances": 12,
+      "outer_training_states": 576,
+      "symmetric_inner_directions": [
+        {
+          "contract": {
+            "huber_delta": 0.018786058342804567,
+            "near_candidate_count": 1788,
+            "noise_margin": 0.02576759758674734,
+            "opportunity_scale": 0.05693896957006996,
+            "policy_temperature": 0.028719264798834684,
+            "regret_scale": 0.044156271830680854,
+            "retained_pair_count": 18766,
+            "scale_weight_totals": {
+              "L": 0.3333333333333333,
+              "M": 0.3333333333333333,
+              "S": 0.3333333333333333
+            },
+            "source_weight_totals": {
+              "NEW_ALNS_EXPANSION": 0.49999999999999994,
+              "ORIGINAL_PHASE6J_CAUR": 0.5
+            },
+            "state_weight_count": 288,
+            "state_weight_sha256": "2e3d1d2373ece47990e81ffe2e1868d7a875024d12eda006ce84b0800b619102",
+            "utility_scale": 0.05
+          },
+          "instance_overlap": [],
+          "training_fold": 0,
+          "training_instances": 6,
+          "validation_fold": 1,
+          "validation_instances": 6
+        },
+        {
+          "contract": {
+            "huber_delta": 0.018424267207388777,
+            "near_candidate_count": 1778,
+            "noise_margin": 0.024979786652465155,
+            "opportunity_scale": 0.05750306528073014,
+            "policy_temperature": 0.028682973048848964,
+            "regret_scale": 0.0437753036437247,
+            "retained_pair_count": 18533,
+            "scale_weight_totals": {
+              "L": 0.3333333333333333,
+              "M": 0.3333333333333333,
+              "S": 0.3333333333333333
+            },
+            "source_weight_totals": {
+              "NEW_ALNS_EXPANSION": 0.5,
+              "ORIGINAL_PHASE6J_CAUR": 0.5
+            },
+            "state_weight_count": 288,
+            "state_weight_sha256": "f7050b7d0fe2d22ef2c090e535dc19e408dcc220bc7a6be5bf23d1301b93c425",
+            "utility_scale": 0.05
+          },
+          "instance_overlap": [],
+          "training_fold": 1,
+          "training_instances": 6,
+          "validation_fold": 0,
+          "validation_instances": 6
+        }
+      ]
+    }
+  ],
+  "fold_isolation": "whole instance",
+  "freeze_implementation_commit": "fcbf8e64496ab3f9964c60affc59185e43c76be7",
+  "frozen_at_utc": "2026-09-08T16:10:22.054536+00:00",
+  "gurobi_run": false,
+  "historical_score_calls": 0,
+  "input_hashes": {
+    "additional_seed_labels": "e27ea82e83c1801f330480755f45d064ab61394a106068b80d17f73de4e3a6df",
+    "combined_seed_labels": "2e0f10136b6d866dda304d6e65f33fe7c473a8db634dbeb261b7a10f221ab28d",
+    "config": "645e3a6607e5814bae5636245316dc00ea0558be89583d1f72714aeaadb8367f",
+    "relabel_completion_audit": "474f9a89a92a7a965fc98794cd0210a0ac536541ee56aea2deadb9ead29a42ac",
+    "tensor_cache_integrity": "b9b402eb0d37b9b133e1ddabea2173f0a2d491520c70876c95bae70d66b57068",
+    "tensor_manifest": "1bee532ad99d9db85e737449ddc26a6f0f85d77d318202dca55fad91a4632a35",
+    "training_grouped_labels": "0fc03d3192cd824765483f88af0201f176a263fb9667f8b1049996bec2d481d3"
+  },
+  "model": {
+    "boundary_direction_order": [
+      "outgoing_from_target",
+      "incoming_to_target"
+    ],
+    "boundary_family_order": [
+      "precedence",
+      "island_resource",
+      "reconfiguration",
+      "w_agv_transport",
+      "f_agv_delivery",
+      "synchronization"
+    ],
+    "family": "O1_TOP_UTILITY_FROZEN_ENCODER",
+    "frozen_encoder_parameters": 5098624,
+    "frozen_modules": [
+      "entire Phase 6F RT-HGT state encoder"
+    ],
+    "graph_encoder_executions_per_state": 1,
+    "per_candidate_graph_rerun": false,
+    "precision": "FP32_ONLY",
+    "total_parameters": 5766462,
+    "trainable_modules": [
+      "candidate-conditioned pooler",
+      "fallback-relative fusion",
+      "continuation advantage head",
+      "beats-fallback head"
+    ],
+    "trainable_parameters": 667838
+  },
+  "optimizer_steps_started": false,
+  "outer_oof_generated": false,
+  "preregistration_sha256": "8b595fdacfdd441dd9f5ee13b997b64a66f43099f565fbf3e132f16c2894348f",
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "schema": "phase6o-top-utility-training-protocol-v1",
+  "source_hashes_sha256": "176c5897ebd0b74c56cfa671857ea5fc80bb3e6c3b4054eb65708dee87e6882f",
+  "status": "FROZEN_BEFORE_FIRST_OPTIMIZER_STEP",
+  "symmetric_two_way_inner_validation": true,
+  "training": {
+    "deterministic_torch_algorithms": true,
+    "fold_scales": {
+      "huber_delta": "training-fold median absolute deviation of candidate mean advantages clipped to [0.005, 0.05]",
+      "policy_temperature": "training-fold median within-state advantage IQR clipped to [0.005, 0.05]",
+      "regret_scale": "training-fold median positive near-best-vs-rest gap clipped to [0.0025, 0.05]",
+      "utility_scale": "training-fold median positive state utility spread clipped to [0.005, 0.05]"
+    },
+    "gradient_norm_clip": 1.0,
+    "inner_selection": {
+      "direction_a": "fit structural fold X and validate Y",
+      "direction_b": "fit Y and validate X",
+      "epoch_rule": "maximize mean selected lift, then maximize mean near-best hit rate, then minimize mean top-1 regret, then minimize joint loss, then choose earliest epoch",
+      "method": "symmetric two-way structural-fold validation for each outer fold and seed",
+      "refit": "use selected epoch count to fit both outer-training folds",
+      "single_validation_fold_selection_forbidden": true
+    },
+    "learning_rate": 0.0003,
+    "maximum_epochs": 50,
+    "noise_margin": {
+      "candidate_noise": "1.4826 * median absolute deviation of available CRN advantages around their candidate median",
+      "fold_margin": "training-fold 75th percentile of candidate_noise clipped to [0.0025, 0.03]",
+      "held_fold_labels_forbidden": true,
+      "near_optimal_set": "candidate mean advantage >= state maximum mean advantage - fold_margin",
+      "pair_filter": "exclude pairs with absolute mean-advantage gap <= fold_margin"
+    },
+    "objective": {
+      "advantage_huber": {
+        "delta": "fold_scales.huber_delta",
+        "weight": 0.1
+      },
+      "beats_fallback_bce": {
+        "weight": 0.1
+      },
+      "broad_all_pairs_phase6n_loss_used": false,
+      "near_best_vs_rest_regret_logistic": {
+        "pair_weight": "clip(truth gap / regret_scale, 0.25, 4.0)",
+        "pairs": "near-optimal candidates against candidates below the noise margin",
+        "weight": 1.0
+      },
+      "phase6n_standard_z_listnet_used": false,
+      "soft_expected_utility": {
+        "loss": "-sum(policy * truth advantage) / utility_scale",
+        "policy": "softmax(predicted advantage / policy_temperature)",
+        "weight": 1.0
+      },
+      "spearman_optimized": false,
+      "top_set_cross_entropy": {
+        "target": "uniform probability mass over training-fold noise-margin near-optimal set",
+        "weight": 1.0
+      }
+    },
+    "objective_weights": {
+      "advantage_huber": 0.1,
+      "beats_fallback_bce": 0.1,
+      "near_best_vs_rest_regret_logistic": 1.0,
+      "soft_expected_utility": 1.0,
+      "top_set_cross_entropy": 1.0
+    },
+    "opportunity_weight": {
+      "clipped": "clip(raw / scale, 0.5, 2.0)",
+      "normalization": "renormalize to mean one within each source-instance before multiplying source-balanced state weight",
+      "raw": "max(state q90 advantage - q10 advantage, max advantage - fallback advantage, 0)",
+      "scale": "training-fold median positive raw opportunity clipped to minimum 0.005"
+    },
+    "rng": {
+      "epoch_shuffle_seed": "seed + epoch * 1000003 + direction-specific frozen salt",
+      "initialization_seed": "training seed",
+      "inner_direction_salts": "held_fold * 10007 + direction_index * 1009 + 101",
+      "outer_refit_salt": "held_fold * 10007 + 303"
+    },
+    "seeds": [
+      736101,
+      736102,
+      736103
+    ],
+    "source_balancing": {
+      "NEW_ALNS_EXPANSION_aggregate_weight": 0.5,
+      "ORIGINAL_PHASE6J_CAUR_aggregate_weight": 0.5,
+      "renormalize_final_batch_weights_to_mean_one": true,
+      "whole_state_loss": true,
+      "within_source_instance_state_weight": "1 / number of training states for that source-instance",
+      "within_source_instance_weight": "1 / number of training instances in source"
+    },
+    "state_groups_per_batch": 4,
+    "weight_decay": 0.0001
+  }
+}
