@@ -47,6 +47,7 @@ OUT = ROOT / "outputs/phase6o_neural_shortlist_v1/relabeling"
 RAW_SHARDS = OUT / "raw_additional_seed_labels"
 STATUS_SHARDS = OUT / "state_status"
 IMPLEMENTATION = OUT / "implementation.json"
+PREOUTCOME_AMENDMENT = OUT / "preoutcome_implementation_amendment.json"
 PROGRESS = OUT / "progress.json"
 REPORT = ROOT / "docs/reports/phase6o_targeted_relabeling_report.md"
 PHASE6N_GROUPED = ROOT / "outputs/phase6n_candidate_conditioned_csg_v1/data/combined/r12_expanded_grouped_labels.parquet"
@@ -171,17 +172,40 @@ def freeze_implementation(preregistration_sha256: str) -> dict:
         require(frozen["preregistration_sha256"] == preregistration_sha256, "relabel preregistration changed after outcomes")
         require(frozen["plan_sha256"] == digest(PLAN), "relabel plan changed after outcomes")
         require(frozen["candidate_union_sha256"] == digest(UNION), "relabel union changed after outcomes")
-        require(frozen["code_sha256"] == code_sha256, "relabel implementation changed after outcomes")
         require(frozen["runtime_dependency_sha256"] == runtime_dependency_sha256, "relabel runtime dependency changed after outcomes")
-        require(
-            subprocess.run(
-                ["git", "merge-base", "--is-ancestor", frozen["implementation_commit"], "HEAD"],
-                cwd=ROOT,
-                check=False,
-            ).returncode == 0,
-            "frozen relabel implementation commit is not an ancestor of HEAD",
-        )
-        return frozen
+        if frozen["code_sha256"] != code_sha256:
+            outcome_files = list(RAW_SHARDS.glob("*.parquet")) + list(STATUS_SHARDS.glob("*.json"))
+            require(not outcome_files, "relabel implementation changed after outcomes")
+            amendment = {
+                "schema": "phase6o-targeted-relabel-preoutcome-amendment-v1",
+                "status": "CORRECTED_BEFORE_FIRST_ADDITIONAL_OUTCOME",
+                "reason": "preflight failed before candidate generation because the worker read Phase 6J rng from the Phase 6O config object",
+                "failure": "KeyError: rng",
+                "outcome_files_before_correction": 0,
+                "superseded_implementation": frozen,
+                "corrected_implementation_commit": subprocess.check_output(
+                    ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
+                ).strip(),
+                "corrected_code_sha256": code_sha256,
+                "historical_score_calls": 0,
+                "gurobi_run": False,
+                "r13_accessed": False,
+                "r14_accessed": False,
+            }
+            if PREOUTCOME_AMENDMENT.exists():
+                require(load_json(PREOUTCOME_AMENDMENT) == amendment, "pre-outcome amendment changed")
+            else:
+                atomic_json(PREOUTCOME_AMENDMENT, amendment)
+        else:
+            require(
+                subprocess.run(
+                    ["git", "merge-base", "--is-ancestor", frozen["implementation_commit"], "HEAD"],
+                    cwd=ROOT,
+                    check=False,
+                ).returncode == 0,
+                "frozen relabel implementation commit is not an ancestor of HEAD",
+            )
+            return frozen
     payload = {
         "schema": "phase6o-targeted-relabel-implementation-v1",
         "status": "FROZEN_BEFORE_FIRST_ADDITIONAL_OUTCOME",
@@ -244,6 +268,7 @@ def valid_state(state_id: str, implementation: dict, expected_candidates: int, s
 def collect_state(
     state_union: pd.DataFrame,
     config: dict,
+    phase6j_config: dict,
     plan: dict,
     implementation: dict,
     alns_config,
@@ -272,7 +297,7 @@ def collect_state(
         current,
         state_id,
         destroy_count,
-        int(config["rng"]["proposal_namespace"]),
+        int(phase6j_config["rng"]["proposal_namespace"]),
     )
     require(generated.requested_arm_count == 24, "full 24-rule bank was not generated")
     replay_ids = replay.get("full_bank_target_ids_in_generator_order", replay.get("full_bank_target_ids"))
@@ -513,7 +538,9 @@ def main() -> None:
         if existing is None:
             if args.max_new_states is not None and new_states >= args.max_new_states:
                 continue
-            existing = collect_state(group, config, plan, implementation, alns_config)
+            existing = collect_state(
+                group, config, phase6j_config, plan, implementation, alns_config
+            )
             new_states += 1
         statuses.append(existing)
         running = progress_payload(statuses, started, "RUNNING")

@@ -1,4 +1,5 @@
 from pathlib import Path
+import inspect
 
 import pandas as pd
 
@@ -42,6 +43,7 @@ def test_phase6o_relabel_worker_has_no_historical_scorer_dependency():
     assert "score_frozen_candidate_bank" not in source
     assert "FrozenLiveInference" not in source
     assert "load_policy" not in source
+    assert "phase6j_config" in inspect.signature(relabel.collect_state).parameters
 
 
 def test_phase6o_union_keeps_one_fallback_and_never_replaces_full_bank():
