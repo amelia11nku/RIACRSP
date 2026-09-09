@@ -1,0 +1,287 @@
+{
+  "created_at_utc": "2026-09-09T05:18:40.846811+00:00",
+  "entries": [
+    {
+      "aggregate_summary_path": "outputs/frozen_2o_baselines/alns/summary.json",
+      "algorithm_display_name": "ALNS-H1",
+      "algorithm_id": "ALNS",
+      "budget_formula": "2 * instance.num_operations seconds",
+      "completed_at_utc": null,
+      "config_sha256": "0cc4acc162ff15301f37e4d66e3bbc7a8d8b02ec93079ea5d52ad6ed85ff1c06",
+      "decoder_accounting": "all decoder calls inside wall-clock budget",
+      "feasibility_evidence": null,
+      "historical_evidence": [
+        "outputs/phase6h_validation/validation_run_summary.csv",
+        "outputs/phase6j_caur/r12_collection/source_runs/CB1_CAUR_S_CF1_RI2_TI2_R12__seed691201.json"
+      ],
+      "initialization_accounting": "inside wall-clock budget",
+      "instance_ids": [
+        "CB1_CAUR_L_CF1_RI2_TI2_R12",
+        "CB1_CAUR_L_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_L_CF2_RI2_TI2_R12",
+        "CB1_CAUR_L_CF2_RI2_TI2_R12_C02",
+        "CB1_CAUR_L_CF3_RI2_TI2_R12",
+        "CB1_CAUR_L_CF3_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF1_RI2_TI2_R12",
+        "CB1_CAUR_M_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF2_RI2_TI2_R12",
+        "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF3_RI2_TI2_R12",
+        "CB1_CAUR_M_CF3_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF1_RI2_TI2_R12",
+        "CB1_CAUR_S_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF2_RI2_TI2_R12",
+        "CB1_CAUR_S_CF2_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF3_RI2_TI2_R12",
+        "CB1_CAUR_S_CF3_RI2_TI2_R12_C02"
+      ],
+      "instance_manifest_sha256": "5fb1d78201fd62dcc64fb1db4bbb5de9cffa11bed07bbd5c890a71c8e130b8af",
+      "machine_environment_sha256": "c79268ef89078b2fe7a4b7260e53f72c1bba8637b3ba12ef3ad4c283fd21b794",
+      "mismatches": [
+        "no canonical frozen_2o registry result exists",
+        "historical 2|O| ALNS validation used CAL R08 instances and seeds 671301-671305",
+        "historical R12 collection used different seeds and a 15.25 s budget for 61 operations, not 2|O|=122 s"
+      ],
+      "model_checkpoint_hashes": {},
+      "raw_result_paths": [
+        "outputs/frozen_2o_baselines/alns/runs"
+      ],
+      "regression_integrity_result": null,
+      "seed_list": [
+        746101,
+        746102,
+        746103
+      ],
+      "shared_source_files": {
+        "rcias_clgri/env/feasibility.py": "74589a70f77260c7943186a58951d9f5c53661f95ed7e2c6f96e0c2ab2d2e073",
+        "rcias_clgri/env/insertion_decoder.py": "55897c60d20b4b4193d765546ee31b30d2952f221e98765b413aeedc2225be44",
+        "rcias_clgri/heuristic/dispatching.py": "9b5a89509192c68ce788b112cc4bf92ae52e451a6cc56737e950f983ef6cbe08",
+        "rcias_clgri/search/common.py": "837298d3b1289a3078f822aafae274984424d9bbfa68f794d972f0610c8ddfdf"
+      },
+      "source_commit": "04db639b764b05a5402980883f3182bd2bd1b5cb",
+      "source_files": {
+        "rcias_clgri/search/alns.py": "fa2c1141052dc8e5fe2dae9daadf69881f7d15a383574e25e25eb596d775e559"
+      },
+      "started_at_utc": null,
+      "status": "RERUN_REQUIRED",
+      "superseded_by": null,
+      "supersedes": null
+    },
+    {
+      "aggregate_summary_path": "outputs/frozen_2o_baselines/phase6h/summary.json",
+      "algorithm_display_name": "Phase 6H CSG-NI",
+      "algorithm_id": "PHASE6H",
+      "budget_formula": "2 * instance.num_operations seconds",
+      "completed_at_utc": null,
+      "config_sha256": "0cc4acc162ff15301f37e4d66e3bbc7a8d8b02ec93079ea5d52ad6ed85ff1c06",
+      "decoder_accounting": "all decoder calls inside wall-clock budget",
+      "feasibility_evidence": null,
+      "historical_evidence": [
+        "outputs/phase6h_validation/validation_run_summary.csv",
+        "outputs/phase6i_mr/r11_validation/r11_anytime_runtime.json"
+      ],
+      "initialization_accounting": "inside wall-clock budget",
+      "instance_ids": [
+        "CB1_CAUR_L_CF1_RI2_TI2_R12",
+        "CB1_CAUR_L_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_L_CF2_RI2_TI2_R12",
+        "CB1_CAUR_L_CF2_RI2_TI2_R12_C02",
+        "CB1_CAUR_L_CF3_RI2_TI2_R12",
+        "CB1_CAUR_L_CF3_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF1_RI2_TI2_R12",
+        "CB1_CAUR_M_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF2_RI2_TI2_R12",
+        "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF3_RI2_TI2_R12",
+        "CB1_CAUR_M_CF3_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF1_RI2_TI2_R12",
+        "CB1_CAUR_S_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF2_RI2_TI2_R12",
+        "CB1_CAUR_S_CF2_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF3_RI2_TI2_R12",
+        "CB1_CAUR_S_CF3_RI2_TI2_R12_C02"
+      ],
+      "instance_manifest_sha256": "5fb1d78201fd62dcc64fb1db4bbb5de9cffa11bed07bbd5c890a71c8e130b8af",
+      "machine_environment_sha256": "c79268ef89078b2fe7a4b7260e53f72c1bba8637b3ba12ef3ad4c283fd21b794",
+      "mismatches": [
+        "no canonical frozen_2o registry result exists",
+        "Phase 6H validation used CAL R08 instances and seeds 671301-671305",
+        "Phase 6I R11 evidence used different LIVE_REV instances and seeds 681401-681405"
+      ],
+      "model_checkpoint_hashes": {
+        "phase6h_policy": "4d2da03e13a036569bebf3897135e5da139e292e3260a2f452754d5c9ae3d239"
+      },
+      "raw_result_paths": [
+        "outputs/frozen_2o_baselines/phase6h/runs"
+      ],
+      "regression_integrity_result": null,
+      "seed_list": [
+        746101,
+        746102,
+        746103
+      ],
+      "shared_source_files": {
+        "rcias_clgri/env/feasibility.py": "74589a70f77260c7943186a58951d9f5c53661f95ed7e2c6f96e0c2ab2d2e073",
+        "rcias_clgri/env/insertion_decoder.py": "55897c60d20b4b4193d765546ee31b30d2952f221e98765b413aeedc2225be44",
+        "rcias_clgri/heuristic/dispatching.py": "9b5a89509192c68ce788b112cc4bf92ae52e451a6cc56737e950f983ef6cbe08",
+        "rcias_clgri/search/common.py": "837298d3b1289a3078f822aafae274984424d9bbfa68f794d972f0610c8ddfdf"
+      },
+      "source_commit": "04db639b764b05a5402980883f3182bd2bd1b5cb",
+      "source_files": {
+        "rcias_clgri/ni/live_inference.py": "a14ee5cedfc16166710a165bb63080045f8e209ecaf17a6d167f066888333065",
+        "rcias_clgri/ni/live_policy.py": "50ceb622ba7786df5da76a2c87d2985ba2d67e41678a8ee8416556610d4db437",
+        "rcias_clgri/search/csgni.py": "54eba7de9f0d946346c0249cc5f6bedde53b89726f16bba783eb378e4a92f275"
+      },
+      "started_at_utc": null,
+      "status": "RERUN_REQUIRED",
+      "superseded_by": null,
+      "supersedes": null
+    },
+    {
+      "aggregate_summary_path": "outputs/frozen_2o_baselines/phase6n/summary.json",
+      "algorithm_display_name": "Phase 6N deterministic top-1",
+      "algorithm_id": "PHASE6N_TOP1",
+      "budget_formula": "2 * instance.num_operations seconds",
+      "completed_at_utc": null,
+      "config_sha256": "0cc4acc162ff15301f37e4d66e3bbc7a8d8b02ec93079ea5d52ad6ed85ff1c06",
+      "decoder_accounting": "all decoder calls inside wall-clock budget",
+      "feasibility_evidence": null,
+      "historical_evidence": [],
+      "initialization_accounting": "inside wall-clock budget",
+      "instance_ids": [
+        "CB1_CAUR_L_CF1_RI2_TI2_R12",
+        "CB1_CAUR_L_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_L_CF2_RI2_TI2_R12",
+        "CB1_CAUR_L_CF2_RI2_TI2_R12_C02",
+        "CB1_CAUR_L_CF3_RI2_TI2_R12",
+        "CB1_CAUR_L_CF3_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF1_RI2_TI2_R12",
+        "CB1_CAUR_M_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF2_RI2_TI2_R12",
+        "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF3_RI2_TI2_R12",
+        "CB1_CAUR_M_CF3_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF1_RI2_TI2_R12",
+        "CB1_CAUR_S_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF2_RI2_TI2_R12",
+        "CB1_CAUR_S_CF2_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF3_RI2_TI2_R12",
+        "CB1_CAUR_S_CF3_RI2_TI2_R12_C02"
+      ],
+      "instance_manifest_sha256": "5fb1d78201fd62dcc64fb1db4bbb5de9cffa11bed07bbd5c890a71c8e130b8af",
+      "machine_environment_sha256": "c79268ef89078b2fe7a4b7260e53f72c1bba8637b3ba12ef3ad4c283fd21b794",
+      "mismatches": [
+        "no prior live deterministic top-1 solver result exists",
+        "the comparator was first implemented after Phase 6P preregistration"
+      ],
+      "model_checkpoint_hashes": {
+        "phase6n_checkpoint_manifest": "739e7b778056b83710d1204e2d2573f9fa565ace4f40179dbfe9252421f496c1"
+      },
+      "raw_result_paths": [
+        "outputs/frozen_2o_baselines/phase6n/runs"
+      ],
+      "regression_integrity_result": null,
+      "seed_list": [
+        746101,
+        746102,
+        746103
+      ],
+      "shared_source_files": {
+        "rcias_clgri/env/feasibility.py": "74589a70f77260c7943186a58951d9f5c53661f95ed7e2c6f96e0c2ab2d2e073",
+        "rcias_clgri/env/insertion_decoder.py": "55897c60d20b4b4193d765546ee31b30d2952f221e98765b413aeedc2225be44",
+        "rcias_clgri/heuristic/dispatching.py": "9b5a89509192c68ce788b112cc4bf92ae52e451a6cc56737e950f983ef6cbe08",
+        "rcias_clgri/search/common.py": "837298d3b1289a3078f822aafae274984424d9bbfa68f794d972f0610c8ddfdf"
+      },
+      "source_commit": "04db639b764b05a5402980883f3182bd2bd1b5cb",
+      "source_files": {
+        "rcias_clgri/ni/phase6p_live_inference.py": "c7cb03db9efad9832458a2f91dc67506aace4cd3d2008fb06482822d064a2201",
+        "rcias_clgri/search/phase6p_adaptive.py": "8ffaa1c7d1bbcf368fe1a8b2491c36458efd0d66c9092fda51f79e2faf42fd40"
+      },
+      "started_at_utc": null,
+      "status": "RERUN_REQUIRED",
+      "superseded_by": null,
+      "supersedes": null
+    },
+    {
+      "aggregate_summary_path": "outputs/frozen_2o_baselines/lg_hga_2o/summary.json",
+      "algorithm_display_name": "LG_HGA-2O",
+      "algorithm_id": "LG_HGA_2O",
+      "budget_formula": "2 * instance.num_operations seconds",
+      "completed_at_utc": null,
+      "config_sha256": "0cc4acc162ff15301f37e4d66e3bbc7a8d8b02ec93079ea5d52ad6ed85ff1c06",
+      "decoder_accounting": "all decoder calls inside wall-clock budget",
+      "feasibility_evidence": null,
+      "historical_evidence": [
+        "outputs/phase6k_runtime_v1/audit/lghga_2o_real_clock_smoke.json"
+      ],
+      "initialization_accounting": "inside wall-clock budget",
+      "instance_ids": [
+        "CB1_CAUR_L_CF1_RI2_TI2_R12",
+        "CB1_CAUR_L_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_L_CF2_RI2_TI2_R12",
+        "CB1_CAUR_L_CF2_RI2_TI2_R12_C02",
+        "CB1_CAUR_L_CF3_RI2_TI2_R12",
+        "CB1_CAUR_L_CF3_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF1_RI2_TI2_R12",
+        "CB1_CAUR_M_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF2_RI2_TI2_R12",
+        "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF3_RI2_TI2_R12",
+        "CB1_CAUR_M_CF3_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF1_RI2_TI2_R12",
+        "CB1_CAUR_S_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF2_RI2_TI2_R12",
+        "CB1_CAUR_S_CF2_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF3_RI2_TI2_R12",
+        "CB1_CAUR_S_CF3_RI2_TI2_R12_C02"
+      ],
+      "instance_manifest_sha256": "5fb1d78201fd62dcc64fb1db4bbb5de9cffa11bed07bbd5c890a71c8e130b8af",
+      "machine_environment_sha256": "c79268ef89078b2fe7a4b7260e53f72c1bba8637b3ba12ef3ad4c283fd21b794",
+      "mismatches": [
+        "no canonical frozen_2o registry result exists",
+        "the only 2|O| evidence is a 12 s tiny_01 smoke",
+        "the smoke used seed 696101 rather than the Phase 6P development seeds"
+      ],
+      "model_checkpoint_hashes": {
+        "lghga_v2_model_manifest": "231ea9802174161004ab3777ca8997d187410a1ed3a06c9c5a6c6208edf567ea"
+      },
+      "raw_result_paths": [
+        "outputs/frozen_2o_baselines/lg_hga_2o/runs"
+      ],
+      "regression_integrity_result": null,
+      "seed_list": [
+        746101,
+        746102,
+        746103
+      ],
+      "shared_source_files": {
+        "rcias_clgri/env/feasibility.py": "74589a70f77260c7943186a58951d9f5c53661f95ed7e2c6f96e0c2ab2d2e073",
+        "rcias_clgri/env/insertion_decoder.py": "55897c60d20b4b4193d765546ee31b30d2952f221e98765b413aeedc2225be44",
+        "rcias_clgri/heuristic/dispatching.py": "9b5a89509192c68ce788b112cc4bf92ae52e451a6cc56737e950f983ef6cbe08",
+        "rcias_clgri/search/common.py": "837298d3b1289a3078f822aafae274984424d9bbfa68f794d972f0610c8ddfdf"
+      },
+      "source_commit": "04db639b764b05a5402980883f3182bd2bd1b5cb",
+      "source_files": {
+        "rcias_clgri/search/lghga.py": "e410568753fb38ec2c2c91cd4dbd3d1ae98d9379955d49c593a488e6bce902d7",
+        "rcias_clgri/search/lghga_2o.py": "546180b8036ac9f1c198124a96744ec127b74ecad703057ef23d9cfdabc04dc8",
+        "rcias_clgri/search/lghga_learning.py": "78bccc814031bc8316bda85fe70c606cf7c77ac0930be0df5fd71c3c23f368f2",
+        "rcias_clgri/search/lghga_neighborhoods.py": "7b6de729a3096b5b59c119b0a095980ca77b45eef6dd680fe2d15df89a41bb70",
+        "rcias_clgri/search/lghga_neighborhoods_v2.py": "b97a808389aaad8b757b7cae8e99a37e80848be2c74b91eecd35f93b20775a8b",
+        "rcias_clgri/search/lghga_v2.py": "0085b97d63502fd83900f50a5089a44c82948d863ebe9d76fdaf3d96e3ebaf45"
+      },
+      "started_at_utc": null,
+      "status": "RERUN_REQUIRED",
+      "superseded_by": null,
+      "supersedes": null
+    }
+  ],
+  "no_favorable_reruns": true,
+  "schema": "frozen-2o-baseline-registry-v1",
+  "scope": "Phase 6P R12 CAUR-FIT development and reusable future 2|O| comparators",
+  "status": "INITIALIZED_ALL_REQUIRED_RUNS_PENDING",
+  "valid_actions": [
+    "REUSE_FROZEN_RESULT",
+    "EXTEND_MISSING_SEEDS",
+    "RERUN_REQUIRED"
+  ]
+}

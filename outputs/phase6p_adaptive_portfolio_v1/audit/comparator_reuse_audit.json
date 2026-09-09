@@ -1,0 +1,98 @@
+{
+  "budget_formula": "2 * instance.num_operations",
+  "comparators_may_start": true,
+  "completed_at_utc": "2026-09-09T05:18:40.847345+00:00",
+  "development_seeds": [
+    746101,
+    746102,
+    746103
+  ],
+  "entries": [
+    {
+      "action": "RERUN_REQUIRED",
+      "algorithm_checkpoint_config_match": false,
+      "algorithm_id": "ALNS",
+      "budget_accounting_matches": false,
+      "canonical_registry_run_exists": false,
+      "historical_evidence": [
+        "outputs/phase6h_validation/validation_run_summary.csv",
+        "outputs/phase6j_caur/r12_collection/source_runs/CB1_CAUR_S_CF1_RI2_TI2_R12__seed691201.json"
+      ],
+      "instance_hashes_match": false,
+      "machine_runtime_matches": null,
+      "prior_2o_run_exists": true,
+      "reasons": [
+        "no canonical frozen_2o registry result exists",
+        "historical 2|O| ALNS validation used CAL R08 instances and seeds 671301-671305",
+        "historical R12 collection used different seeds and a 15.25 s budget for 61 operations, not 2|O|=122 s"
+      ],
+      "seed_list_matches": false,
+      "shared_decoder_search_invalidates_reuse": null
+    },
+    {
+      "action": "RERUN_REQUIRED",
+      "algorithm_checkpoint_config_match": false,
+      "algorithm_id": "PHASE6H",
+      "budget_accounting_matches": false,
+      "canonical_registry_run_exists": false,
+      "historical_evidence": [
+        "outputs/phase6h_validation/validation_run_summary.csv",
+        "outputs/phase6i_mr/r11_validation/r11_anytime_runtime.json"
+      ],
+      "instance_hashes_match": false,
+      "machine_runtime_matches": null,
+      "prior_2o_run_exists": true,
+      "reasons": [
+        "no canonical frozen_2o registry result exists",
+        "Phase 6H validation used CAL R08 instances and seeds 671301-671305",
+        "Phase 6I R11 evidence used different LIVE_REV instances and seeds 681401-681405"
+      ],
+      "seed_list_matches": false,
+      "shared_decoder_search_invalidates_reuse": null
+    },
+    {
+      "action": "RERUN_REQUIRED",
+      "algorithm_checkpoint_config_match": false,
+      "algorithm_id": "PHASE6N_TOP1",
+      "budget_accounting_matches": false,
+      "canonical_registry_run_exists": false,
+      "historical_evidence": [],
+      "instance_hashes_match": false,
+      "machine_runtime_matches": null,
+      "prior_2o_run_exists": false,
+      "reasons": [
+        "no prior live deterministic top-1 solver result exists",
+        "the comparator was first implemented after Phase 6P preregistration"
+      ],
+      "seed_list_matches": false,
+      "shared_decoder_search_invalidates_reuse": null
+    },
+    {
+      "action": "RERUN_REQUIRED",
+      "algorithm_checkpoint_config_match": false,
+      "algorithm_id": "LG_HGA_2O",
+      "budget_accounting_matches": false,
+      "canonical_registry_run_exists": false,
+      "historical_evidence": [
+        "outputs/phase6k_runtime_v1/audit/lghga_2o_real_clock_smoke.json"
+      ],
+      "instance_hashes_match": false,
+      "machine_runtime_matches": null,
+      "prior_2o_run_exists": true,
+      "reasons": [
+        "no canonical frozen_2o registry result exists",
+        "the only 2|O| evidence is a 12 s tiny_01 smoke",
+        "the smoke used seed 696101 rather than the Phase 6P development seeds"
+      ],
+      "seed_list_matches": false,
+      "shared_decoder_search_invalidates_reuse": null
+    }
+  ],
+  "instance_manifest_sha256": "5fb1d78201fd62dcc64fb1db4bbb5de9cffa11bed07bbd5c890a71c8e130b8af",
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "registry_path": "outputs/frozen_2o_baselines/registry.json",
+  "registry_sha256": "11090bbb235234c096affa31fa017852e224ceddba6afc3b3b38a3aa454d68b6",
+  "schema": "phase6p-comparator-reuse-audit-v1",
+  "status": "COMPLETE_BEFORE_COMPARATOR_EXECUTION"
+}
