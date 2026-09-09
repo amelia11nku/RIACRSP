@@ -1,0 +1,89 @@
+{
+  "checkpoints": [
+    {
+      "feature_transform_sha256": "9ca730d35483833efe4f65f9978fc3bc9d09824361ccedf4780644d838fee93a",
+      "held_fold": 0,
+      "path": "outputs/phase6n_candidate_conditioned_csg_v1/training/oof/seed_726101/fold_0.pt",
+      "sha256": "ff31dffba9a882663324e8fa025739121528f6c72024e9c0095150c35146b76f",
+      "training_seed": 726101
+    },
+    {
+      "feature_transform_sha256": "b76e682f5a3e819baca7296d61a11ece646a92514cfd07a003022e07c819a4a8",
+      "held_fold": 1,
+      "path": "outputs/phase6n_candidate_conditioned_csg_v1/training/oof/seed_726101/fold_1.pt",
+      "sha256": "f296a58b79d0f42d76eb6b7aef9f6e5f6738c2547946dd3af20de90160dc64ba",
+      "training_seed": 726101
+    },
+    {
+      "feature_transform_sha256": "3d76c00a1d12d9e4191cc333f9c6d429b74c584fdd70ee314b84741cdaad7ddf",
+      "held_fold": 2,
+      "path": "outputs/phase6n_candidate_conditioned_csg_v1/training/oof/seed_726101/fold_2.pt",
+      "sha256": "6a88ee400351cc9297f0aff863463bf7660d70cd6f1523b4f0be45e465ea0b2b",
+      "training_seed": 726101
+    },
+    {
+      "feature_transform_sha256": "9ca730d35483833efe4f65f9978fc3bc9d09824361ccedf4780644d838fee93a",
+      "held_fold": 0,
+      "path": "outputs/phase6n_candidate_conditioned_csg_v1/training/oof/seed_726102/fold_0.pt",
+      "sha256": "0a18185ad4eec07796e14013a906d06191339415f5f067836346901e73296b38",
+      "training_seed": 726102
+    },
+    {
+      "feature_transform_sha256": "b76e682f5a3e819baca7296d61a11ece646a92514cfd07a003022e07c819a4a8",
+      "held_fold": 1,
+      "path": "outputs/phase6n_candidate_conditioned_csg_v1/training/oof/seed_726102/fold_1.pt",
+      "sha256": "b4d14ff93bf8b3ad9809fa09ab528fa774dbc91e1cc08b1b9a2bbe13bf722590",
+      "training_seed": 726102
+    },
+    {
+      "feature_transform_sha256": "3d76c00a1d12d9e4191cc333f9c6d429b74c584fdd70ee314b84741cdaad7ddf",
+      "held_fold": 2,
+      "path": "outputs/phase6n_candidate_conditioned_csg_v1/training/oof/seed_726102/fold_2.pt",
+      "sha256": "8b892e41f5eac8ba341f4cc980e2c0b0c8531965478b95f61cf1d2a65f7702ae",
+      "training_seed": 726102
+    },
+    {
+      "feature_transform_sha256": "9ca730d35483833efe4f65f9978fc3bc9d09824361ccedf4780644d838fee93a",
+      "held_fold": 0,
+      "path": "outputs/phase6n_candidate_conditioned_csg_v1/training/oof/seed_726103/fold_0.pt",
+      "sha256": "d86c783068359cdb39993bf194f34e99d45fd5b8a90ae4baf3c08ca981c3dc9b",
+      "training_seed": 726103
+    },
+    {
+      "feature_transform_sha256": "b76e682f5a3e819baca7296d61a11ece646a92514cfd07a003022e07c819a4a8",
+      "held_fold": 1,
+      "path": "outputs/phase6n_candidate_conditioned_csg_v1/training/oof/seed_726103/fold_1.pt",
+      "sha256": "94b1ee3313729b7ec8eb11c33ecf97dce9685cbc4f883033ba0edd45e2cac93e",
+      "training_seed": 726103
+    },
+    {
+      "feature_transform_sha256": "3d76c00a1d12d9e4191cc333f9c6d429b74c584fdd70ee314b84741cdaad7ddf",
+      "held_fold": 2,
+      "path": "outputs/phase6n_candidate_conditioned_csg_v1/training/oof/seed_726103/fold_2.pt",
+      "sha256": "a40d7be6e01c4f5c8e1af8780a9c410d02c2c007929369cb0f1f2aa882a9c5f8",
+      "training_seed": 726103
+    }
+  ],
+  "ensemble": "arithmetic mean of three seed predictions within routed held fold",
+  "family": "N1_CANDIDATE_CONDITIONED_CSG",
+  "fold_route": {
+    "L_CF1": 1,
+    "L_CF2": 2,
+    "L_CF3": 0,
+    "M_CF1": 2,
+    "M_CF2": 0,
+    "M_CF3": 1,
+    "S_CF1": 0,
+    "S_CF2": 1,
+    "S_CF3": 2
+  },
+  "historical_score_calls": 0,
+  "phase6n_completion_audit_sha256": "994f0ee8fa4fba92b42c734b8fb4650e8e22c7e4c59b024a02e1b9e332ce192b",
+  "phase6n_final_decision_sha256": "ba6c6623615d0ec01e4f603362420fc9e88565eaf65877e5c5d72c27d92a8a4f",
+  "phase6n_training_protocol_sha256": "e8e1941407ab6a4609a731ee5914b7f5865259dfe990c7049d7cc19e78b1ffdb",
+  "precision": "FP32_ONLY",
+  "qualification_boundary": "frozen OOF critic evidence; no Phase 6N deployable bundle was created",
+  "schema": "phase6p-phase6n-checkpoint-manifest-v1",
+  "status": "FROZEN_BEFORE_PHASE6P_SOLVER_OUTCOMES",
+  "whole_instance_routing": true
+}

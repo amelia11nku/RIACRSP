@@ -1,0 +1,40 @@
+{
+  "commands": [
+    {
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/run_phase6p_smoke.py",
+      "stage": "P2_smoke"
+    },
+    {
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/audit_phase6p_comparator_reuse.py",
+      "stage": "P3_comparator_reuse_audit"
+    },
+    {
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/run_phase6p_development.py --method ALNS-H1",
+      "stage": "P3_development_ALNS-H1"
+    },
+    {
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/run_phase6p_development.py --method PHASE6H_CSGNI",
+      "stage": "P3_development_PHASE6H_CSGNI"
+    },
+    {
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/run_phase6p_development.py --method PHASE6N_DETERMINISTIC_TOP1",
+      "stage": "P3_development_PHASE6N_DETERMINISTIC_TOP1"
+    },
+    {
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/run_phase6p_development.py --method P1_CSG_ADAPTIVE_PORTFOLIO",
+      "stage": "P3_development_P1_CSG_ADAPTIVE_PORTFOLIO"
+    },
+    {
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/run_phase6p_development.py --method LG_HGA_2O",
+      "stage": "P3_development_LG_HGA_2O"
+    },
+    {
+      "command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/summarize_phase6p_development.py",
+      "stage": "P3_development_summary"
+    }
+  ],
+  "comparator_guard": "do not execute any comparator before comparator_reuse_audit",
+  "python": "/home/liulei/miniconda3/envs/gnn311/bin/python",
+  "schema": "phase6p-command-manifest-v1",
+  "working_directory": "/home/liulei/ayx/RI-ACRSP"
+}

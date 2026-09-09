@@ -1,0 +1,40 @@
+{
+  "checkpoint_manifest_sha256": "739e7b778056b83710d1204e2d2573f9fa565ace4f40179dbfe9252421f496c1",
+  "command_manifest_sha256": "b56e470148e014f73bae53bb444be94b4c465800a650dab1864f37246d8188bd",
+  "config_path": "configs/phase6p_adaptive_portfolio_v1.json",
+  "config_sha256": "0cc4acc162ff15301f37e4d66e3bbc7a8d8b02ec93079ea5d52ad6ed85ff1c06",
+  "freeze_script_sha256": "98d7a7c12b9ba640edc3535442412a5db4eb6b15e48b80954c431706105cf095",
+  "frozen_at_utc": "2026-09-09T04:52:36.111833+00:00",
+  "frozen_policy_summary": {
+    "budget": "2 * instance.num_operations",
+    "candidate_trials": 8,
+    "cross_origin_destroy_weight": "mean",
+    "development_seeds": [
+      746101,
+      746102,
+      746103
+    ],
+    "formal_seeds": [
+      746101,
+      746102,
+      746103,
+      746104,
+      746105
+    ],
+    "neural_eligibility_percent": 20,
+    "primary": "P1_CSG_ADAPTIVE_PORTFOLIO",
+    "rank_prior": "1/r",
+    "top_k": 6
+  },
+  "gurobi_run": false,
+  "head_at_freeze": "f18896fdf05884a5507174392aa166ef65350058",
+  "instance_manifest_sha256": "ec7f82ab514d9ae64a464cbf5f85aa9bb37ae7620a0766468343b572d0b90767",
+  "manual_sha256": "f1fb0a7eaafdbcd82afc6d68d713d973dcc2f831f07a0e5a13304796d7084040",
+  "optimizer_steps_started": false,
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "schema": "phase6p-preregistration-v1",
+  "solver_quality_outcomes_observed": false,
+  "source_hashes_sha256": "d66f163c00995a6808c102f0e4718dca0098b1b47115d3904c7be34a136474b8",
+  "status": "FROZEN_BEFORE_ANY_PHASE6P_SOLVER_QUALITY_OUTCOME"
+}

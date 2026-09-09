@@ -1,0 +1,148 @@
+{
+  "schema": "phase6p-adaptive-portfolio-config-v1",
+  "phase": "Phase 6P",
+  "namespace": "phase6p_adaptive_portfolio_v1",
+  "status": "PREREGISTERED_BEFORE_ANY_PHASE6P_SOLVER_QUALITY_OUTCOME",
+  "starting_commit": "f18896fdf05884a5507174392aa166ef65350058",
+  "expected_pre_phase_commit": "936836445b8e7646574076645750f836a53b6d8d",
+  "primary_family": "P1_CSG_ADAPTIVE_PORTFOLIO",
+  "mission": "combine frozen Phase 6N full-bank ranking with inherited ALNS destroy and repair adaptation",
+  "primary": {
+    "initial_solution": "H1",
+    "neural_decision_schedule": {
+      "source": "inherited Phase 6H deterministic eligibility schedule",
+      "intervention_rate_percent": 20,
+      "eligibility_offset": 0,
+      "rule": "iteration % 5 == 0"
+    },
+    "candidate_bank": {
+      "generator": "rcias_clgri.search.phase6c.generate_revised_target_arms",
+      "requested_rules": 24,
+      "deduplicate_by": "exact sorted destroyed-operation set in proposal insertion order",
+      "proposal_seed_namespace": 692000000,
+      "shortlist_k": 6,
+      "shortlist_tie_break": "descending ensemble predicted continuation advantage, then ascending target_set_id",
+      "full_bank_term_reserved_for_deduplicated_24_rule_bank": true
+    },
+    "critic": {
+      "family": "N1_CANDIDATE_CONDITIONED_CSG",
+      "source": "nine frozen Phase 6N whole-instance OOF checkpoints",
+      "route": "grouped_oof_fold(scale, CF_level), then arithmetic mean over three training seeds",
+      "score": "predicted_continuation_advantage",
+      "precision": "FP32_ONLY",
+      "deterministic_algorithms": true,
+      "historical_score_calls": 0,
+      "phase6o_critic_calls": 0,
+      "checkpoint_manifest": "outputs/phase6p_adaptive_portfolio_v1/preregistration/phase6n_checkpoint_manifest.json"
+    },
+    "portfolio": {
+      "neural_rank_prior": "1 / rank for ranks 1 through 6",
+      "mapped_destroy_weight": "mean current ALNS weight over every unique proposal-origin destroy operator",
+      "target_weight": "neural_rank_prior * mapped_destroy_weight",
+      "target_selection": "roulette using the solver baseline RNG",
+      "cross_origin_update": "apply the inherited reward update once to every unique proposal-origin destroy operator",
+      "new_rule_level_adaptive_table": false
+    },
+    "fallback": {
+      "target": "unique deduplicated operator_related arm equal to canonical_related_target",
+      "always_present_in_model_context": true,
+      "normal_selection": "sampled only when it is in neural top-6",
+      "safe_fallback": "select canonical related target if scoring is non-finite, incomplete, or raises before target sampling",
+      "no_confidence_or_immediate_utility_gate": true
+    },
+    "repair": {
+      "selection": "independent roulette over five repair operators using current ALNS repair weights and solver baseline RNG",
+      "candidate_trials": 8,
+      "trial_rng": "solver baseline RNG",
+      "candidate_choice": "minimum decoded makespan with stable trial order tie-break"
+    },
+    "acceptance_and_adaptation": {
+      "initial_temperature": 0.05,
+      "cooling_rate": 0.995,
+      "destroy_fraction": 0.15,
+      "reaction_factor": 0.2,
+      "acceptance": "delta <= 0 or U < exp(-delta / max(temperature, 1e-12))",
+      "rewards": {
+        "new_global_best": 5.0,
+        "accepted_non_best": 1.0,
+        "rejected_raw": 0.0,
+        "update_floor": 0.1
+      },
+      "update": "w = (1 - 0.2) * w + 0.2 * max(score, 0.1)",
+      "current": "updated only on accepted candidate",
+      "best": "updated only on strict global makespan improvement"
+    },
+    "rng": {
+      "baseline_namespace": 0,
+      "acceptance_namespace": 670104,
+      "diagnostics_namespace": 670105,
+      "proposal_namespace": 692000000,
+      "baseline_stream": "stable_seed(solver_seed, 'baseline', namespace=0)",
+      "acceptance_stream": "stable_seed(solver_seed, 'acceptance', namespace=670104)"
+    }
+  },
+  "development": {
+    "split": "R12_CAUR_FIT",
+    "instances": "all 18 frozen R12 CAUR-FIT instances",
+    "instance_manifest": "outputs/phase6p_adaptive_portfolio_v1/preregistration/development_instance_manifest.json",
+    "seeds": [746101, 746102, 746103],
+    "methods": [
+      "ALNS-H1",
+      "PHASE6H_CSGNI",
+      "PHASE6N_DETERMINISTIC_TOP1",
+      "P1_CSG_ADAPTIVE_PORTFOLIO",
+      "LG_HGA_2O"
+    ],
+    "budget_seconds": "2 * instance.num_operations",
+    "initialization_and_all_live_overhead_inside_budget": true,
+    "outcome_independent_scope": "complete every required method-instance-seed run permitted by the comparator reuse audit",
+    "quality_interpretation": {
+      "feasibility": 1.0,
+      "better_than_phase6n_top1_overall": true,
+      "competitive_with_alns_and_phase6h": true,
+      "material_scale_collapse_allowed": false,
+      "selection_collapse_allowed": false
+    }
+  },
+  "formal_r12": {
+    "split": "R12_CAUR_FIT",
+    "instances": "all 18 frozen R12 CAUR-FIT instances",
+    "canonical_seeds": [746101, 746102, 746103, 746104, 746105],
+    "development_seed_subset": [746101, 746102, 746103],
+    "budget_seconds": "2 * instance.num_operations",
+    "run_only_after_development_and_runtime_gates": true
+  },
+  "phase6n_top1_comparator": {
+    "neural_schedule": "same deterministic 20 percent eligible iterations as primary",
+    "target": "deterministic neural rank 1 under the identical frozen critic ensemble",
+    "repair_acceptance_adaptation": "identical to primary",
+    "purpose": "isolate adaptive top-6 portfolio role from deterministic top-1"
+  },
+  "optional_preregistered_rescue": null,
+  "runtime_gates": {
+    "run_only_after_promising_development": true,
+    "neural_p90_ms_max": 30.0,
+    "complete_live_p90_ms_max": 100.0,
+    "all_overhead_inside_solver_budget": true
+  },
+  "baseline_registry": {
+    "root": "outputs/frozen_2o_baselines",
+    "audit_before_any_comparator_execution": true,
+    "valid_actions": [
+      "REUSE_FROZEN_RESULT",
+      "EXTEND_MISSING_SEEDS",
+      "RERUN_REQUIRED"
+    ],
+    "no_favorable_reruns": true
+  },
+  "commands": "outputs/phase6p_adaptive_portfolio_v1/preregistration/command_manifest.json",
+  "boundaries": {
+    "new_neural_training_before_development_pilot": false,
+    "phase6m_selector": false,
+    "phase6o_critic": false,
+    "new_uncertainty_or_immediate_utility_head": false,
+    "gurobi": false,
+    "r13": "LOCKED_UNTIL_FORMAL_R12_PASSES",
+    "r14": "LOCKED_UNTIL_PREREGISTERED_R13_CONDITION_PASSES"
+  }
+}
