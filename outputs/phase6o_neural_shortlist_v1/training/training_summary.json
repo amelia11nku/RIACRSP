@@ -1,0 +1,32 @@
+{
+  "common_original_288": {
+    "candidates": 6809,
+    "ndcg_at_1": 0.6021794485643422,
+    "pairwise_accuracy": 0.5563547813611732,
+    "selected_lift": 0.005032329495494576,
+    "selected_lift_lcb": 0.0012418242215849235,
+    "selected_lift_ucb": 0.008705139576304664,
+    "selection_regret": 0.036069044751564465,
+    "spearman": 0.15869520482172644,
+    "states": 288,
+    "top1_agreement": 0.06944444444444445
+  },
+  "expanded": {
+    "candidates": 20441,
+    "ndcg_at_1": 0.6171478723786086,
+    "pairwise_accuracy": 0.5758915813474698,
+    "selected_lift": 0.006347272094030388,
+    "selected_lift_lcb": 0.00388466038525493,
+    "selected_lift_ucb": 0.008607467475466337,
+    "selection_regret": 0.035517842560829294,
+    "spearman": 0.21280866250851183,
+    "states": 864,
+    "top1_agreement": 0.09606481481481481
+  },
+  "family": "O1_TOP_UTILITY_FROZEN_ENCODER",
+  "historical_score_calls": 0,
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "schema": "phase6o-top-utility-training-summary-v1",
+  "status": "COMPLETE"
+}

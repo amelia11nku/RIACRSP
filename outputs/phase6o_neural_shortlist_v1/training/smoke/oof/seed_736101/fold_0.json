@@ -1,0 +1,148 @@
+{
+  "checkpoint_sha256": "82111d880a67798d42b18fa4846b8d555312c043156bb801930b5ebe6f234590",
+  "held_fold": 0,
+  "historical_score_calls": 0,
+  "history": {
+    "directions": [
+      {
+        "contract": {
+          "huber_delta": 0.018424267207388777,
+          "near_candidate_count": 1778,
+          "noise_margin": 0.024979786652465155,
+          "opportunity_scale": 0.05750306528073014,
+          "policy_temperature": 0.028682973048848964,
+          "regret_scale": 0.0437753036437247,
+          "retained_pair_count": 18533,
+          "scale_weight_totals": {
+            "L": 0.3333333333333333,
+            "M": 0.3333333333333333,
+            "S": 0.3333333333333333
+          },
+          "source_weight_totals": {
+            "NEW_ALNS_EXPANSION": 0.5,
+            "ORIGINAL_PHASE6J_CAUR": 0.5
+          },
+          "state_weight_count": 288,
+          "state_weight_sha256": "f7050b7d0fe2d22ef2c090e535dc19e408dcc220bc7a6be5bf23d1301b93c425",
+          "utility_scale": 0.05
+        },
+        "history": [
+          {
+            "epoch": 1,
+            "training_advantage_huber": 0.01482667511380795,
+            "training_beats_fallback_bce": 0.7724064547154639,
+            "training_loss": 4.193135480086009,
+            "training_regret_logistic": 0.8421569267908732,
+            "training_soft_expected_utility": 0.060492121459295355,
+            "training_top_set_cross_entropy": 3.211763107114368,
+            "validation_joint_loss": 3.9468894004821777,
+            "validation_near_best_hit_rate": 0.3159722222222222,
+            "validation_selected_lift": 0.0038193498317015805,
+            "validation_top1_regret": 0.041097234575634876
+          }
+        ],
+        "train_fold": 1,
+        "validation_fold": 2
+      },
+      {
+        "contract": {
+          "huber_delta": 0.019717480871100646,
+          "near_candidate_count": 1422,
+          "noise_margin": 0.023332972136222905,
+          "opportunity_scale": 0.0596291758301277,
+          "policy_temperature": 0.029110144406700806,
+          "regret_scale": 0.04333030852994556,
+          "retained_pair_count": 17883,
+          "scale_weight_totals": {
+            "L": 0.3333333333333333,
+            "M": 0.3333333333333333,
+            "S": 0.3333333333333333
+          },
+          "source_weight_totals": {
+            "NEW_ALNS_EXPANSION": 0.5,
+            "ORIGINAL_PHASE6J_CAUR": 0.49999999999999994
+          },
+          "state_weight_count": 288,
+          "state_weight_sha256": "7b4cfaf05dc9fd68ae041cfeda22705f32f45843d57509e0b13c3cfe0c795b50",
+          "utility_scale": 0.05
+        },
+        "history": [
+          {
+            "epoch": 1,
+            "training_advantage_huber": 0.013131005262645582,
+            "training_beats_fallback_bce": 0.7481637671589851,
+            "training_loss": 4.140059659878413,
+            "training_regret_logistic": 0.8716158593694369,
+            "training_soft_expected_utility": -0.03933281435941657,
+            "training_top_set_cross_entropy": 3.231647143761317,
+            "validation_joint_loss": 3.875307083129883,
+            "validation_near_best_hit_rate": 0.3472222222222222,
+            "validation_selected_lift": 0.004786438041673242,
+            "validation_top1_regret": 0.035801260978253716
+          }
+        ],
+        "train_fold": 2,
+        "validation_fold": 1
+      }
+    ],
+    "outer_contract": {
+      "huber_delta": 0.019081996434937607,
+      "near_candidate_count": 3186,
+      "noise_margin": 0.02411609613983977,
+      "opportunity_scale": 0.05879289403175514,
+      "policy_temperature": 0.028786327884936767,
+      "regret_scale": 0.043533523991102635,
+      "retained_pair_count": 36503,
+      "scale_weight_totals": {
+        "L": 0.3333333333333333,
+        "M": 0.3333333333333333,
+        "S": 0.3333333333333333
+      },
+      "source_weight_totals": {
+        "NEW_ALNS_EXPANSION": 0.49999999999999994,
+        "ORIGINAL_PHASE6J_CAUR": 0.5
+      },
+      "state_weight_count": 576,
+      "state_weight_sha256": "e7409324c0dfdcff1d428efec33a99e5e6689c093214ff86c1a3744c668dd617",
+      "utility_scale": 0.05
+    },
+    "outer_history": [
+      {
+        "epoch": 1,
+        "training_advantage_huber": 0.008428566267765645,
+        "training_beats_fallback_bce": 0.7313800487253401,
+        "training_loss": 3.9936219172345266,
+        "training_regret_logistic": 0.8187846061256197,
+        "training_soft_expected_utility": -0.08722970375998153,
+        "training_top_set_cross_entropy": 3.1880861669778824
+      }
+    ],
+    "selected_epoch": 1,
+    "selected_metrics": {
+      "epoch": 1,
+      "mean_joint_loss": 3.9110982418060303,
+      "mean_near_best_hit_rate": 0.3315972222222222,
+      "mean_selected_lift": 0.004302893936687411,
+      "mean_top1_regret": 0.03844924777694429
+    },
+    "selection": [
+      {
+        "epoch": 1,
+        "mean_joint_loss": 3.9110982418060303,
+        "mean_near_best_hit_rate": 0.3315972222222222,
+        "mean_selected_lift": 0.004302893936687411,
+        "mean_top1_regret": 0.03844924777694429
+      }
+    ]
+  },
+  "model_family": "O1_TOP_UTILITY_FROZEN_ENCODER",
+  "predictions_sha256": "f38a477b48e462c809a2b0779aa9aed3293ad2ff58f889ea15ba48d3c3497773",
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "runtime_seconds": 37.26871041499544,
+  "schema": "phase6o-top-utility-oof-run-v1",
+  "selected_epoch": 1,
+  "status": "COMPLETE",
+  "training_protocol_sha256": "9bea6b214fa6b4d710fb2cf6c22ab1824efb727ac41d6120b160c3a9abf76576",
+  "training_seed": 736101
+}
