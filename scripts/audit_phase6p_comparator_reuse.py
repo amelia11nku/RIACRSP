@@ -88,7 +88,16 @@ def source_hashes(paths: list[str]) -> dict[str, str]:
 
 def main() -> None:
     if REGISTRY_ROOT.exists():
-        raise RuntimeError("canonical 2|O| registry already exists; audit it instead of replacing it")
+        existing = load_json(REGISTRY_ROOT / "registry.json")
+        run_files = list(REGISTRY_ROOT.glob("*/runs/**/*.json"))
+        if (
+            existing.get("status") != "INITIALIZED_ALL_REQUIRED_RUNS_PENDING"
+            or any(entry.get("status") != "RERUN_REQUIRED" for entry in existing["entries"])
+            or run_files
+        ):
+            raise RuntimeError(
+                "canonical 2|O| registry contains solver evidence and cannot be refreshed"
+            )
     config = load_json(CONFIG)
     instances = load_json(PREREG / "development_instance_manifest.json")
     if config["development"]["seeds"] != [746101, 746102, 746103]:
@@ -135,6 +144,9 @@ def main() -> None:
             "algorithm_display_name": "ALNS-H1",
             "status": "RERUN_REQUIRED",
             "source_files": source_hashes(["rcias_clgri/search/alns.py"]),
+            "algorithm_config_hashes": {
+                "configs/phase5c_alns.json": digest(ROOT / "configs/phase5c_alns.json"),
+            },
             "model_checkpoint_hashes": {},
             "historical_evidence": [
                 "outputs/phase6h_validation/validation_run_summary.csv",
@@ -158,6 +170,12 @@ def main() -> None:
                 "rcias_clgri/ni/live_inference.py",
                 "rcias_clgri/ni/live_policy.py",
             ]),
+            "algorithm_config_hashes": {
+                "configs/phase5c_alns.json": digest(ROOT / "configs/phase5c_alns.json"),
+                "configs/phase6h_live_calibration.json": digest(
+                    ROOT / "configs/phase6h_live_calibration.json"
+                ),
+            },
             "model_checkpoint_hashes": {
                 "phase6h_policy": digest(phase6h_policy),
             },
@@ -181,6 +199,9 @@ def main() -> None:
                 "rcias_clgri/search/phase6p_adaptive.py",
                 "rcias_clgri/ni/phase6p_live_inference.py",
             ]),
+            "algorithm_config_hashes": {
+                "configs/phase6p_adaptive_portfolio_v1.json": digest(CONFIG),
+            },
             "model_checkpoint_hashes": {
                 "phase6n_checkpoint_manifest": digest(checkpoint_manifest),
             },
@@ -204,6 +225,11 @@ def main() -> None:
                 "rcias_clgri/search/lghga_neighborhoods.py",
                 "rcias_clgri/search/lghga_neighborhoods_v2.py",
             ]),
+            "algorithm_config_hashes": {
+                "configs/lghga_2o_baseline.json": digest(
+                    ROOT / "configs/lghga_2o_baseline.json"
+                ),
+            },
             "model_checkpoint_hashes": {
                 "lghga_v2_model_manifest": digest(lghga_manifest),
             },

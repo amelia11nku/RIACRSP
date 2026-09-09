@@ -37,6 +37,7 @@ def test_frozen_2o_registry_has_complete_pending_contracts():
         assert entry["initialization_accounting"] == "inside wall-clock budget"
         assert entry["decoder_accounting"] == "all decoder calls inside wall-clock budget"
         assert entry["source_files"]
+        assert entry["algorithm_config_hashes"]
         assert entry["shared_source_files"]
         assert entry["raw_result_paths"]
         assert entry["aggregate_summary_path"]

@@ -337,6 +337,16 @@ def solve_phase6p(
                 "target_mode": target_mode,
                 "state_id": state_id,
                 "selected_target_set_id": target_id,
+                "canonical_fallback_target_set_id": (
+                    select_score_free_fallback(generated).target_set_id
+                    if generated is not None else None
+                ),
+                "selected_origin_rules": (
+                    selected_arm.origin_rules if eligible else ()
+                ),
+                "selected_origin_families": (
+                    selected_arm.origin_families if eligible else ()
+                ),
                 "safe_fallback": safe_fallback,
                 "scoring_error": scoring_error,
                 "requested_proposal_count": (
