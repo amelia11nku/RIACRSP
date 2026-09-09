@@ -1,0 +1,203 @@
+{
+  "alns": {
+    "acceptance": "delta <= 0 or U < exp(-delta / max(temperature, 1e-12))",
+    "best_current_semantics": "accepted candidates update current; strict global improvement updates best; return best",
+    "candidate_trials_source": "ALNSConfig.candidate_trials=8",
+    "checks": {
+      "candidate_trials_inherited": true,
+      "current_and_best_separate": true,
+      "destroy_and_repair_selected_independently": true,
+      "destroy_operators_exact": true,
+      "frozen_config_matches_defaults": true,
+      "repair_operators_exact": true,
+      "reward_and_update_inherited": true,
+      "simulated_annealing_acceptance_inherited": true
+    },
+    "config": {
+      "candidate_trials": 8,
+      "cooling_rate": 0.995,
+      "destroy_fraction": 0.15,
+      "initial_temperature": 0.05,
+      "reaction_factor": 0.2
+    },
+    "config_path": "configs/phase5c_alns.json",
+    "config_sha256": "eecab30e446b680d31edb57988c112dbe6bcc9cea6c9d113eae8f56815dcd8cd",
+    "destroy_count_source": "solve_alns; max(2, round(N * config.destroy_fraction)), capped at N when passed to _destroy",
+    "destroy_operators": [
+      "random",
+      "critical",
+      "overloaded_island",
+      "high_reconfiguration",
+      "w_bottleneck",
+      "f_bottleneck",
+      "related"
+    ],
+    "entry_point": "rcias_clgri.search.alns.solve_alns",
+    "repair_operators": [
+      "greedy",
+      "regret2",
+      "regret3",
+      "reconfiguration_aware",
+      "transport_aware"
+    ],
+    "rewards": {
+      "accepted_non_best": 1.0,
+      "new_global_best": 5.0,
+      "rejected_raw": 0.0,
+      "update_floor": 0.1
+    },
+    "roulette": "destroy and repair independently use current operator weights",
+    "source_sha256": "fa2c1141052dc8e5fe2dae9daadf69881f7d15a383574e25e25eb596d775e559",
+    "weight_update": "w <- (1 - 0.2) * w + 0.2 * max(score, 0.1)",
+    "weight_update_from_initial_one": {
+      "accepted": 1.0,
+      "best": 1.8,
+      "rejected": 0.82
+    }
+  },
+  "audited_at_utc": "2026-09-09T04:38:07.024984+00:00",
+  "candidate_bank": {
+    "authorized_states": 864,
+    "cross_destroy_duplicate_targets": 2,
+    "cross_destroy_resolution": "MEAN_CURRENT_ALNS_DESTROY_WEIGHT_ACROSS_UNIQUE_ORIGINS_REQUIRED",
+    "deduplication": "exact destroyed-operation tuple in proposal insertion order",
+    "requested_rules": 24,
+    "unique_targets": 20441
+  },
+  "checks": {
+    "alns_contract": true,
+    "candidate_bank_contract": true,
+    "expected_start_head": true,
+    "lghga_2o_runnable_smoke": true,
+    "manual_hash": true,
+    "phase6h_policy_frozen": true,
+    "phase6n_oof_checkpoint_grid_complete": true,
+    "phase6n_whole_instance_isolation": true,
+    "phase6o_final_hash": true,
+    "phase6o_terminal": true,
+    "r13_r14_locked": true
+  },
+  "constraints": {
+    "gurobi": false,
+    "new_neural_training_before_pilot": false,
+    "phase6m_selector": false,
+    "phase6o_critic": false,
+    "r13_accessed": false,
+    "r14_accessed": false
+  },
+  "lghga_2o": {
+    "adapter_sha256": "546180b8036ac9f1c198124a96744ec127b74ecad703057ef23d9cfdabc04dc8",
+    "budget": "2 * instance.num_operations seconds, including population initialization",
+    "budget_entry_point": "rcias_clgri.search.lghga_2o.operation_budget",
+    "canonical_registry_status": "ABSENT_REQUIRES_P3_COMPARATOR_REUSE_AUDIT",
+    "config_path": "configs/lghga_2o_baseline.json",
+    "config_sha256": "26800ea111a663e1ac5a6ca1b46f58321244d81668285d0870ca324805b7a17a",
+    "config_status": "IMPLEMENTATION_ONLY_NOT_FORMALLY_FROZEN",
+    "entry_point": "rcias_clgri.search.lghga_2o.solve_lghga_2o",
+    "real_clock_smoke_path": "outputs/phase6k_runtime_v1/audit/lghga_2o_real_clock_smoke.json",
+    "real_clock_smoke_sha256": "8057745961dd166fe03f04ae2b8e226f5573303d698d4bf9ad2ac3ed63cd5ffa"
+  },
+  "next_stage": "P1_PREREGISTRATION",
+  "phase6h": {
+    "budget": "2 * instance.num_operations seconds in Phase 6H validation entry",
+    "candidate_trials_source": "frozen phase5c ALNS config through solve_csgni; 8",
+    "destroy_count_source": "solve_csgni; min(max(2, round(N * alns_config.destroy_fraction)), N)",
+    "intervention_rate": 100,
+    "live_entry_points": [
+      "rcias_clgri.ni.live_inference.FrozenLiveInference.decide",
+      "rcias_clgri.search.csgni.solve_csgni"
+    ],
+    "policy_path": "outputs/phase6h_calibration/frozen/phase6h_policy.json",
+    "policy_sha256": "4d2da03e13a036569bebf3897135e5da139e292e3260a2f452754d5c9ae3d239"
+  },
+  "phase6n": {
+    "candidate_trials_source": "Phase 6N frozen data plan candidate_trials_per_target=8",
+    "checkpoint_grid": [
+      {
+        "held_fold": 0,
+        "path": "outputs/phase6n_candidate_conditioned_csg_v1/training/oof/seed_726101/fold_0.pt",
+        "record_checkpoint_sha256": "ff31dffba9a882663324e8fa025739121528f6c72024e9c0095150c35146b76f",
+        "sha256": "ff31dffba9a882663324e8fa025739121528f6c72024e9c0095150c35146b76f",
+        "training_seed": 726101
+      },
+      {
+        "held_fold": 1,
+        "path": "outputs/phase6n_candidate_conditioned_csg_v1/training/oof/seed_726101/fold_1.pt",
+        "record_checkpoint_sha256": "f296a58b79d0f42d76eb6b7aef9f6e5f6738c2547946dd3af20de90160dc64ba",
+        "sha256": "f296a58b79d0f42d76eb6b7aef9f6e5f6738c2547946dd3af20de90160dc64ba",
+        "training_seed": 726101
+      },
+      {
+        "held_fold": 2,
+        "path": "outputs/phase6n_candidate_conditioned_csg_v1/training/oof/seed_726101/fold_2.pt",
+        "record_checkpoint_sha256": "6a88ee400351cc9297f0aff863463bf7660d70cd6f1523b4f0be45e465ea0b2b",
+        "sha256": "6a88ee400351cc9297f0aff863463bf7660d70cd6f1523b4f0be45e465ea0b2b",
+        "training_seed": 726101
+      },
+      {
+        "held_fold": 0,
+        "path": "outputs/phase6n_candidate_conditioned_csg_v1/training/oof/seed_726102/fold_0.pt",
+        "record_checkpoint_sha256": "0a18185ad4eec07796e14013a906d06191339415f5f067836346901e73296b38",
+        "sha256": "0a18185ad4eec07796e14013a906d06191339415f5f067836346901e73296b38",
+        "training_seed": 726102
+      },
+      {
+        "held_fold": 1,
+        "path": "outputs/phase6n_candidate_conditioned_csg_v1/training/oof/seed_726102/fold_1.pt",
+        "record_checkpoint_sha256": "b4d14ff93bf8b3ad9809fa09ab528fa774dbc91e1cc08b1b9a2bbe13bf722590",
+        "sha256": "b4d14ff93bf8b3ad9809fa09ab528fa774dbc91e1cc08b1b9a2bbe13bf722590",
+        "training_seed": 726102
+      },
+      {
+        "held_fold": 2,
+        "path": "outputs/phase6n_candidate_conditioned_csg_v1/training/oof/seed_726102/fold_2.pt",
+        "record_checkpoint_sha256": "8b892e41f5eac8ba341f4cc980e2c0b0c8531965478b95f61cf1d2a65f7702ae",
+        "sha256": "8b892e41f5eac8ba341f4cc980e2c0b0c8531965478b95f61cf1d2a65f7702ae",
+        "training_seed": 726102
+      },
+      {
+        "held_fold": 0,
+        "path": "outputs/phase6n_candidate_conditioned_csg_v1/training/oof/seed_726103/fold_0.pt",
+        "record_checkpoint_sha256": "d86c783068359cdb39993bf194f34e99d45fd5b8a90ae4baf3c08ca981c3dc9b",
+        "sha256": "d86c783068359cdb39993bf194f34e99d45fd5b8a90ae4baf3c08ca981c3dc9b",
+        "training_seed": 726103
+      },
+      {
+        "held_fold": 1,
+        "path": "outputs/phase6n_candidate_conditioned_csg_v1/training/oof/seed_726103/fold_1.pt",
+        "record_checkpoint_sha256": "94b1ee3313729b7ec8eb11c33ecf97dce9685cbc4f883033ba0edd45e2cac93e",
+        "sha256": "94b1ee3313729b7ec8eb11c33ecf97dce9685cbc4f883033ba0edd45e2cac93e",
+        "training_seed": 726103
+      },
+      {
+        "held_fold": 2,
+        "path": "outputs/phase6n_candidate_conditioned_csg_v1/training/oof/seed_726103/fold_2.pt",
+        "record_checkpoint_sha256": "a40d7be6e01c4f5c8e1af8780a9c410d02c2c007929369cb0f1f2aa882a9c5f8",
+        "sha256": "a40d7be6e01c4f5c8e1af8780a9c410d02c2c007929369cb0f1f2aa882a9c5f8",
+        "training_seed": 726103
+      }
+    ],
+    "critic_bundle_interpretation": "nine frozen whole-instance OOF checkpoints routed by held structural fold and ensembled across three training seeds",
+    "deployable_bundle": "NOT_CREATED_REPRESENTATION_GATE_FAILED",
+    "destroy_count_source": "Phase 6N data generation; min(max(2, round(N * frozen ALNS destroy_fraction)), N)",
+    "development_entry_points": [
+      "rcias_clgri.search.phase6c.generate_revised_target_arms",
+      "scripts.run_phase6n_data_generation.collect_state",
+      "scripts.train_phase6n_candidate_conditioned.predict"
+    ],
+    "precision": "FP32_ONLY",
+    "production_live_entry_point": null,
+    "production_live_entry_status": "MUST_BE_IMPLEMENTED_IN_PHASE6P",
+    "qualification_boundary": "frozen OOF critic evidence only; Phase 6N did not pass its representation/deployment gate",
+    "terminal_decision": "MODEL_REVISION_REPRESENTATION"
+  },
+  "repository": {
+    "expected_start_commit": "936836445b8e7646574076645750f836a53b6d8d",
+    "head_at_audit": "936836445b8e7646574076645750f836a53b6d8d",
+    "manual_sha256": "f1fb0a7eaafdbcd82afc6d68d713d973dcc2f831f07a0e5a13304796d7084040",
+    "phase6o_final_decision": "MODEL_REVISION_TOP_UTILITY",
+    "phase6o_final_decision_sha256": "9bb6e06c78b5fdccf0830e67b638fbb9bfcaea4ddcfddae477baa73d9fc371b9"
+  },
+  "schema": "phase6p-live-search-integration-audit-v1",
+  "status": "PASS"
+}
