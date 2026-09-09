@@ -1,8 +1,11 @@
 {
-  "created_at_utc": "2026-09-09T05:18:40.846811+00:00",
+  "created_at_utc": "2026-09-09T06:10:15.979181+00:00",
   "entries": [
     {
       "aggregate_summary_path": "outputs/frozen_2o_baselines/alns/summary.json",
+      "algorithm_config_hashes": {
+        "configs/phase5c_alns.json": "eecab30e446b680d31edb57988c112dbe6bcc9cea6c9d113eae8f56815dcd8cd"
+      },
       "algorithm_display_name": "ALNS-H1",
       "algorithm_id": "ALNS",
       "budget_formula": "2 * instance.num_operations seconds",
@@ -36,7 +39,7 @@
         "CB1_CAUR_S_CF3_RI2_TI2_R12_C02"
       ],
       "instance_manifest_sha256": "5fb1d78201fd62dcc64fb1db4bbb5de9cffa11bed07bbd5c890a71c8e130b8af",
-      "machine_environment_sha256": "c79268ef89078b2fe7a4b7260e53f72c1bba8637b3ba12ef3ad4c283fd21b794",
+      "machine_environment_sha256": "f64e9438e255c15ed1fac0de19cb112547dad5240448e3bc6cbf7af94714c53b",
       "mismatches": [
         "no canonical frozen_2o registry result exists",
         "historical 2|O| ALNS validation used CAL R08 instances and seeds 671301-671305",
@@ -58,7 +61,7 @@
         "rcias_clgri/heuristic/dispatching.py": "9b5a89509192c68ce788b112cc4bf92ae52e451a6cc56737e950f983ef6cbe08",
         "rcias_clgri/search/common.py": "837298d3b1289a3078f822aafae274984424d9bbfa68f794d972f0610c8ddfdf"
       },
-      "source_commit": "04db639b764b05a5402980883f3182bd2bd1b5cb",
+      "source_commit": "3212ddd9e430c904c2c20d2213d36829dfb8b19f",
       "source_files": {
         "rcias_clgri/search/alns.py": "fa2c1141052dc8e5fe2dae9daadf69881f7d15a383574e25e25eb596d775e559"
       },
@@ -69,6 +72,10 @@
     },
     {
       "aggregate_summary_path": "outputs/frozen_2o_baselines/phase6h/summary.json",
+      "algorithm_config_hashes": {
+        "configs/phase5c_alns.json": "eecab30e446b680d31edb57988c112dbe6bcc9cea6c9d113eae8f56815dcd8cd",
+        "configs/phase6h_live_calibration.json": "e6ac2ab2aeaef7d799e58a6f7b2a5bcbbcc6342e8c8e7a5d2e5330eaea99fe22"
+      },
       "algorithm_display_name": "Phase 6H CSG-NI",
       "algorithm_id": "PHASE6H",
       "budget_formula": "2 * instance.num_operations seconds",
@@ -102,7 +109,7 @@
         "CB1_CAUR_S_CF3_RI2_TI2_R12_C02"
       ],
       "instance_manifest_sha256": "5fb1d78201fd62dcc64fb1db4bbb5de9cffa11bed07bbd5c890a71c8e130b8af",
-      "machine_environment_sha256": "c79268ef89078b2fe7a4b7260e53f72c1bba8637b3ba12ef3ad4c283fd21b794",
+      "machine_environment_sha256": "f64e9438e255c15ed1fac0de19cb112547dad5240448e3bc6cbf7af94714c53b",
       "mismatches": [
         "no canonical frozen_2o registry result exists",
         "Phase 6H validation used CAL R08 instances and seeds 671301-671305",
@@ -126,7 +133,7 @@
         "rcias_clgri/heuristic/dispatching.py": "9b5a89509192c68ce788b112cc4bf92ae52e451a6cc56737e950f983ef6cbe08",
         "rcias_clgri/search/common.py": "837298d3b1289a3078f822aafae274984424d9bbfa68f794d972f0610c8ddfdf"
       },
-      "source_commit": "04db639b764b05a5402980883f3182bd2bd1b5cb",
+      "source_commit": "3212ddd9e430c904c2c20d2213d36829dfb8b19f",
       "source_files": {
         "rcias_clgri/ni/live_inference.py": "a14ee5cedfc16166710a165bb63080045f8e209ecaf17a6d167f066888333065",
         "rcias_clgri/ni/live_policy.py": "50ceb622ba7786df5da76a2c87d2985ba2d67e41678a8ee8416556610d4db437",
@@ -139,6 +146,9 @@
     },
     {
       "aggregate_summary_path": "outputs/frozen_2o_baselines/phase6n/summary.json",
+      "algorithm_config_hashes": {
+        "configs/phase6p_adaptive_portfolio_v1.json": "0cc4acc162ff15301f37e4d66e3bbc7a8d8b02ec93079ea5d52ad6ed85ff1c06"
+      },
       "algorithm_display_name": "Phase 6N deterministic top-1",
       "algorithm_id": "PHASE6N_TOP1",
       "budget_formula": "2 * instance.num_operations seconds",
@@ -169,7 +179,7 @@
         "CB1_CAUR_S_CF3_RI2_TI2_R12_C02"
       ],
       "instance_manifest_sha256": "5fb1d78201fd62dcc64fb1db4bbb5de9cffa11bed07bbd5c890a71c8e130b8af",
-      "machine_environment_sha256": "c79268ef89078b2fe7a4b7260e53f72c1bba8637b3ba12ef3ad4c283fd21b794",
+      "machine_environment_sha256": "f64e9438e255c15ed1fac0de19cb112547dad5240448e3bc6cbf7af94714c53b",
       "mismatches": [
         "no prior live deterministic top-1 solver result exists",
         "the comparator was first implemented after Phase 6P preregistration"
@@ -192,10 +202,10 @@
         "rcias_clgri/heuristic/dispatching.py": "9b5a89509192c68ce788b112cc4bf92ae52e451a6cc56737e950f983ef6cbe08",
         "rcias_clgri/search/common.py": "837298d3b1289a3078f822aafae274984424d9bbfa68f794d972f0610c8ddfdf"
       },
-      "source_commit": "04db639b764b05a5402980883f3182bd2bd1b5cb",
+      "source_commit": "3212ddd9e430c904c2c20d2213d36829dfb8b19f",
       "source_files": {
         "rcias_clgri/ni/phase6p_live_inference.py": "c7cb03db9efad9832458a2f91dc67506aace4cd3d2008fb06482822d064a2201",
-        "rcias_clgri/search/phase6p_adaptive.py": "8ffaa1c7d1bbcf368fe1a8b2491c36458efd0d66c9092fda51f79e2faf42fd40"
+        "rcias_clgri/search/phase6p_adaptive.py": "2c2fe88a3863755623c52a3d73115adf179ebf487fadc91c7faccf68ca66df61"
       },
       "started_at_utc": null,
       "status": "RERUN_REQUIRED",
@@ -204,6 +214,9 @@
     },
     {
       "aggregate_summary_path": "outputs/frozen_2o_baselines/lg_hga_2o/summary.json",
+      "algorithm_config_hashes": {
+        "configs/lghga_2o_baseline.json": "26800ea111a663e1ac5a6ca1b46f58321244d81668285d0870ca324805b7a17a"
+      },
       "algorithm_display_name": "LG_HGA-2O",
       "algorithm_id": "LG_HGA_2O",
       "budget_formula": "2 * instance.num_operations seconds",
@@ -236,7 +249,7 @@
         "CB1_CAUR_S_CF3_RI2_TI2_R12_C02"
       ],
       "instance_manifest_sha256": "5fb1d78201fd62dcc64fb1db4bbb5de9cffa11bed07bbd5c890a71c8e130b8af",
-      "machine_environment_sha256": "c79268ef89078b2fe7a4b7260e53f72c1bba8637b3ba12ef3ad4c283fd21b794",
+      "machine_environment_sha256": "f64e9438e255c15ed1fac0de19cb112547dad5240448e3bc6cbf7af94714c53b",
       "mismatches": [
         "no canonical frozen_2o registry result exists",
         "the only 2|O| evidence is a 12 s tiny_01 smoke",
@@ -260,7 +273,7 @@
         "rcias_clgri/heuristic/dispatching.py": "9b5a89509192c68ce788b112cc4bf92ae52e451a6cc56737e950f983ef6cbe08",
         "rcias_clgri/search/common.py": "837298d3b1289a3078f822aafae274984424d9bbfa68f794d972f0610c8ddfdf"
       },
-      "source_commit": "04db639b764b05a5402980883f3182bd2bd1b5cb",
+      "source_commit": "3212ddd9e430c904c2c20d2213d36829dfb8b19f",
       "source_files": {
         "rcias_clgri/search/lghga.py": "e410568753fb38ec2c2c91cd4dbd3d1ae98d9379955d49c593a488e6bce902d7",
         "rcias_clgri/search/lghga_2o.py": "546180b8036ac9f1c198124a96744ec127b74ecad703057ef23d9cfdabc04dc8",

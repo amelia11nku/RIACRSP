@@ -93,6 +93,10 @@ def summarize_event(event: dict) -> dict:
 
 def main() -> None:
     started_at = datetime.now(timezone.utc)
+    require(
+        os.environ.get("PYTHONHASHSEED") == "0",
+        "Phase 6P reproducibility smoke requires PYTHONHASHSEED=0 before interpreter start",
+    )
     config = load_json(CONFIG)
     require(
         config["status"] == "PREREGISTERED_BEFORE_ANY_PHASE6P_SOLVER_QUALITY_OUTCOME",
@@ -243,6 +247,7 @@ def main() -> None:
             "cuda": torch.version.cuda,
             "gpu": torch.cuda.get_device_name(device) if device.type == "cuda" else None,
             "deterministic_algorithms": torch.are_deterministic_algorithms_enabled(),
+            "python_hash_seed": os.environ["PYTHONHASHSEED"],
             "precision": "FP32_ONLY",
         },
         "source_hashes": {
