@@ -1,0 +1,39 @@
+{
+  "background_job_status": "INACTIVE_COMPLETE",
+  "decision": "MODEL_REVISION_TOP_UTILITY",
+  "development_solver_pilot": "NOT_RUN_OOF_GATE_FAILED",
+  "failed_hard_checks": [
+    "common_raw_selected_lift_at_least_phase6l",
+    "common_top1_regret_at_most_phase6l"
+  ],
+  "formal_r12_solver": "NOT_RUN_OOF_GATE_FAILED",
+  "formal_runtime": "NOT_RUN_OOF_GATE_FAILED",
+  "gurobi_run": false,
+  "historical_score_calls": 0,
+  "oof_quality_gate_path": "outputs/phase6o_neural_shortlist_v1/quality/oof_quality_gate.json",
+  "oof_quality_gate_sha256": "dcc4f1eac219f160bd4aaa82f24d22013a831ff6ca6283f6d87503932367ee9b",
+  "preterminal_head": "4b5560b1df1d7241867b3ba518c92c57f73b0035",
+  "protected_predecessor_status": "PASS",
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "regression_passed": 425,
+  "schema": "phase6o-final-decision-v1",
+  "stage_commits": {
+    "O0_implementation": "f09710c",
+    "O0_route_decision": "93ee70e",
+    "O1_preregistration": "b5da2f3",
+    "preoutcome_boundary_fix": "20fe195",
+    "relabeling_recovery": "490bd8d",
+    "relabeling_recovery_amendment": "ea6067a",
+    "targeted_relabeling_completion": "1d06a20",
+    "targeted_relabeling_implementation": "30e1875",
+    "top_utility_training_implementation": "fcbf8e6",
+    "training_and_oof_gate": "4b5560b1df1d7241867b3ba518c92c57f73b0035",
+    "training_protocol_freeze": "e628272"
+  },
+  "starting_commit": "3ec6996123737e034595236b9bea81dc1ca6817a",
+  "status": "TERMINAL",
+  "stop_stage": "ROUTE_B_OOF_QUALITY_GATE",
+  "training_completion_audit_path": "outputs/phase6o_neural_shortlist_v1/training/completion_integrity_audit.json",
+  "training_completion_audit_sha256": "95813452768a12dc94ff16f27abc3ee8a75d0970a7dcc6e71fc4290840a10e94"
+}
