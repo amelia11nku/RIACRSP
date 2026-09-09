@@ -68,6 +68,14 @@ def main() -> None:
         "MKL_NUM_THREADS": "1",
     })
     stream = log_path.open("ab", buffering=0)
+    previous_progress_update = None
+    if PROGRESS.exists():
+        try:
+            previous_progress_update = json.loads(PROGRESS.read_text()).get(
+                "updated_at_utc"
+            )
+        except json.JSONDecodeError:
+            pass
     process = subprocess.Popen(
         command,
         cwd=ROOT,
@@ -84,7 +92,12 @@ def main() -> None:
         if PROGRESS.exists():
             try:
                 candidate = json.loads(PROGRESS.read_text())
-                if candidate.get("status") == "RUNNING":
+                if (
+                    candidate.get("status") == "RUNNING"
+                    and candidate.get("updated_at_utc") != previous_progress_update
+                    and log_path.exists()
+                    and log_path.stat().st_size > 0
+                ):
                     observed = candidate
                     break
             except json.JSONDecodeError:
