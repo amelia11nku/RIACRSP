@@ -1,0 +1,43 @@
+{
+  "checks": {
+    "better_than_phase6n_top1_overall": false,
+    "feasibility_100_percent": true,
+    "integrity_complete": true,
+    "no_material_scale_collapse_vs_top1_at_one_percent_descriptive_margin": true,
+    "optional_rescue_preregistered": false,
+    "selection_not_collapsed": true,
+    "useful_search": true,
+    "within_one_percent_of_alns_on_instance_mean_relative_improvement": true,
+    "within_one_percent_of_phase6h_on_instance_mean_relative_improvement": true
+  },
+  "completion_audit_sha256": "c1a1a9a4dcbfcb5567021a01efa1c14ef1829198da3ef249768ab1f04a23f46e",
+  "decision": "ADAPTIVE_PORTFOLIO_PILOT_NO_GO",
+  "development_promising": false,
+  "development_protocol_sha256": "72af4c96af073f581dfc1d6d96fcda30d21268aa982ab525ca357d4332895aa8",
+  "formal_five_seed_r12": "NOT_RUN_DEVELOPMENT_GATE_FAILED",
+  "gurobi_run": false,
+  "optional_preregistered_rescue": null,
+  "phase6n_top1_mean_final_makespan": 2936.203703703704,
+  "phase6n_top1_mean_rpd_percent": 5.078410745462766,
+  "primary_mean_final_makespan": 2938.296296296296,
+  "primary_mean_rpd_percent": 5.087621726653604,
+  "primary_vs_phase6n_top1": {
+    "instance_mean_losses": 9,
+    "instance_mean_pairs": 18,
+    "instance_mean_ties": 0,
+    "instance_mean_wins": 9,
+    "mean_makespan_difference_primary_minus_comparator": 2.0925925925926347,
+    "mean_relative_improvement_percent": -0.008555284333238973,
+    "primary": "P1_CSG_ADAPTIVE_PORTFOLIO",
+    "run_losses": 24,
+    "run_pairs": 54,
+    "run_ties": 5,
+    "run_wins": 25
+  },
+  "r13": "LOCKED",
+  "r14": "LOCKED",
+  "reason": "P1 did not improve overall mean makespan or mean RPD over the frozen Phase 6N deterministic top-1 comparator.",
+  "runtime_qualification": "NOT_RUN_DEVELOPMENT_GATE_FAILED",
+  "schema": "phase6p-final-decision-v1",
+  "status": "TERMINAL_BEFORE_RUNTIME_AND_FORMAL_R12"
+}

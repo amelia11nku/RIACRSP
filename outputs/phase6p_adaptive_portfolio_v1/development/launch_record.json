@@ -1,0 +1,74 @@
+{
+  "command": [
+    "/home/liulei/miniconda3/envs/gnn311/bin/python",
+    "-u",
+    "scripts/run_phase6p_development.py",
+    "--device",
+    "cuda"
+  ],
+  "eta_basis": "18.0 h exact serial solver budgets plus 5 percent inter-run overhead and 10 min setup margin; lower bound raised to 19 h",
+  "execution_concurrency": 1,
+  "expected_completion_utc": "2026-09-10T01:20:11.492423+00:00",
+  "implementation_commit": "4e9ca5efd1b6219c589a7b81b3731e9693a73cf8",
+  "liveness_evidence": {
+    "process_alive": true,
+    "progress_observed": {
+      "completed_by_method": {
+        "ALNS": 0,
+        "LG_HGA_2O": 0,
+        "P1_CSG_ADAPTIVE_PORTFOLIO": 0,
+        "PHASE6H": 0,
+        "PHASE6N_DETERMINISTIC_TOP1": 0
+      },
+      "completed_runs": 0,
+      "current_task": {
+        "CF_level": "CF1",
+        "budget_seconds": 332.0,
+        "cell_replicate": "C01",
+        "instance_id": "CB1_CAUR_L_CF1_RI2_TI2_R12",
+        "instance_relative_path": "r12_caur_fit/CB1_CAUR_L_CF1_RI2_TI2_R12.json",
+        "instance_sha256": "c0b6374d4eb72ada83b8a8452425b71b4322e61123edbb755f2cd08927288b7a",
+        "method": "P1_CSG_ADAPTIVE_PORTFOLIO",
+        "num_operations": 166,
+        "result_source": "NEW_RUN",
+        "scale": "L",
+        "seed": 746101
+      },
+      "nominal_remaining_budget_seconds": 64800.0,
+      "nominal_remaining_hours": 18.0,
+      "process_elapsed_seconds": 0.002379504992859438,
+      "progress_path": "outputs/phase6p_adaptive_portfolio_v1/development/progress.json",
+      "r13_accessed": false,
+      "r14_accessed": false,
+      "resume_command": [
+        "/home/liulei/miniconda3/envs/gnn311/bin/python",
+        "-u",
+        "scripts/run_phase6p_development.py"
+      ],
+      "schema": "phase6p-development-progress-v1",
+      "status": "RUNNING",
+      "total_runs": 270,
+      "updated_at_utc": "2026-09-09T06:16:12.679597+00:00"
+    }
+  },
+  "log_path": "outputs/phase6p_adaptive_portfolio_v1/development/formal_development_20260909T061611Z.log",
+  "output_directory": "outputs/phase6p_adaptive_portfolio_v1/development",
+  "pid": 176403,
+  "progress_path": "outputs/phase6p_adaptive_portfolio_v1/development/progress.json",
+  "projected_seconds": 68640.0,
+  "r13_accessed": false,
+  "r14_accessed": false,
+  "resume_command": [
+    "/home/liulei/miniconda3/envs/gnn311/bin/python",
+    "-u",
+    "scripts/run_phase6p_development.py",
+    "--device",
+    "cuda"
+  ],
+  "resume_semantics": "rerun identical command; complete per-run payloads are hash-validated and skipped",
+  "schema": "phase6p-development-launch-v1",
+  "session_mode": "start_new_session",
+  "started_at_utc": "2026-09-09T06:16:11.492423+00:00",
+  "status": "RUNNING_VERIFIED",
+  "working_directory": "/home/liulei/ayx/RI-ACRSP"
+}

@@ -1,18 +1,23 @@
 {
+  "completed_at_utc": "2026-09-10T00:16:56.035692+00:00",
   "created_at_utc": "2026-09-09T06:10:15.979181+00:00",
   "entries": [
     {
       "aggregate_summary_path": "outputs/frozen_2o_baselines/alns/summary.json",
+      "aggregate_summary_sha256": "68bb56fce458b669cd9bbc3afa8afcc5ffc32d23359f25f79b43fe8c7b129728",
       "algorithm_config_hashes": {
         "configs/phase5c_alns.json": "eecab30e446b680d31edb57988c112dbe6bcc9cea6c9d113eae8f56815dcd8cd"
       },
       "algorithm_display_name": "ALNS-H1",
       "algorithm_id": "ALNS",
       "budget_formula": "2 * instance.num_operations seconds",
-      "completed_at_utc": null,
+      "completed_at_utc": "2026-09-09T17:04:34.308302+00:00",
       "config_sha256": "0cc4acc162ff15301f37e4d66e3bbc7a8d8b02ec93079ea5d52ad6ed85ff1c06",
       "decoder_accounting": "all decoder calls inside wall-clock budget",
-      "feasibility_evidence": null,
+      "feasibility_evidence": {
+        "rate": 1.0,
+        "run_count": 54
+      },
       "historical_evidence": [
         "outputs/phase6h_validation/validation_run_summary.csv",
         "outputs/phase6j_caur/r12_collection/source_runs/CB1_CAUR_S_CF1_RI2_TI2_R12__seed691201.json"
@@ -49,7 +54,9 @@
       "raw_result_paths": [
         "outputs/frozen_2o_baselines/alns/runs"
       ],
-      "regression_integrity_result": null,
+      "regression_integrity_result": "PASS_PHASE6P_DEVELOPMENT_AUDIT",
+      "run_manifest_path": "outputs/frozen_2o_baselines/alns/manifest.json",
+      "run_manifest_sha256": "70ad57d4e2d348750f6fa15b2f5c0b5d4a46637d5ccfa6ac7cd1fc0e6d0ab787",
       "seed_list": [
         746101,
         746102,
@@ -65,13 +72,14 @@
       "source_files": {
         "rcias_clgri/search/alns.py": "fa2c1141052dc8e5fe2dae9daadf69881f7d15a383574e25e25eb596d775e559"
       },
-      "started_at_utc": null,
-      "status": "RERUN_REQUIRED",
+      "started_at_utc": "2026-09-09T13:28:27.127023+00:00",
+      "status": "FROZEN_CANONICAL",
       "superseded_by": null,
       "supersedes": null
     },
     {
       "aggregate_summary_path": "outputs/frozen_2o_baselines/phase6h/summary.json",
+      "aggregate_summary_sha256": "9c857e59a076c2b845dcaad8d98780e802b6c0ca1207ee3a9b8853f3eef77370",
       "algorithm_config_hashes": {
         "configs/phase5c_alns.json": "eecab30e446b680d31edb57988c112dbe6bcc9cea6c9d113eae8f56815dcd8cd",
         "configs/phase6h_live_calibration.json": "e6ac2ab2aeaef7d799e58a6f7b2a5bcbbcc6342e8c8e7a5d2e5330eaea99fe22"
@@ -79,10 +87,13 @@
       "algorithm_display_name": "Phase 6H CSG-NI",
       "algorithm_id": "PHASE6H",
       "budget_formula": "2 * instance.num_operations seconds",
-      "completed_at_utc": null,
+      "completed_at_utc": "2026-09-09T20:40:44.664420+00:00",
       "config_sha256": "0cc4acc162ff15301f37e4d66e3bbc7a8d8b02ec93079ea5d52ad6ed85ff1c06",
       "decoder_accounting": "all decoder calls inside wall-clock budget",
-      "feasibility_evidence": null,
+      "feasibility_evidence": {
+        "rate": 1.0,
+        "run_count": 54
+      },
       "historical_evidence": [
         "outputs/phase6h_validation/validation_run_summary.csv",
         "outputs/phase6i_mr/r11_validation/r11_anytime_runtime.json"
@@ -121,7 +132,9 @@
       "raw_result_paths": [
         "outputs/frozen_2o_baselines/phase6h/runs"
       ],
-      "regression_integrity_result": null,
+      "regression_integrity_result": "PASS_PHASE6P_DEVELOPMENT_AUDIT",
+      "run_manifest_path": "outputs/frozen_2o_baselines/phase6h/manifest.json",
+      "run_manifest_sha256": "4f7632f3a1255e49ab7365e600f131bd49ace9da57a646d8c507b4a49d5364a2",
       "seed_list": [
         746101,
         746102,
@@ -139,23 +152,27 @@
         "rcias_clgri/ni/live_policy.py": "50ceb622ba7786df5da76a2c87d2985ba2d67e41678a8ee8416556610d4db437",
         "rcias_clgri/search/csgni.py": "54eba7de9f0d946346c0249cc5f6bedde53b89726f16bba783eb378e4a92f275"
       },
-      "started_at_utc": null,
-      "status": "RERUN_REQUIRED",
+      "started_at_utc": "2026-09-09T17:04:34.497688+00:00",
+      "status": "FROZEN_CANONICAL",
       "superseded_by": null,
       "supersedes": null
     },
     {
       "aggregate_summary_path": "outputs/frozen_2o_baselines/phase6n/summary.json",
+      "aggregate_summary_sha256": "2e5d550d990515eff1b17d4e78608fe10c99ddab742ada9b4dfd32302d0e68d0",
       "algorithm_config_hashes": {
         "configs/phase6p_adaptive_portfolio_v1.json": "0cc4acc162ff15301f37e4d66e3bbc7a8d8b02ec93079ea5d52ad6ed85ff1c06"
       },
       "algorithm_display_name": "Phase 6N deterministic top-1",
       "algorithm_id": "PHASE6N_TOP1",
       "budget_formula": "2 * instance.num_operations seconds",
-      "completed_at_utc": null,
+      "completed_at_utc": "2026-09-09T13:28:26.963692+00:00",
       "config_sha256": "0cc4acc162ff15301f37e4d66e3bbc7a8d8b02ec93079ea5d52ad6ed85ff1c06",
       "decoder_accounting": "all decoder calls inside wall-clock budget",
-      "feasibility_evidence": null,
+      "feasibility_evidence": {
+        "rate": 1.0,
+        "run_count": 54
+      },
       "historical_evidence": [],
       "initialization_accounting": "inside wall-clock budget",
       "instance_ids": [
@@ -190,7 +207,9 @@
       "raw_result_paths": [
         "outputs/frozen_2o_baselines/phase6n/runs"
       ],
-      "regression_integrity_result": null,
+      "regression_integrity_result": "PASS_PHASE6P_DEVELOPMENT_AUDIT",
+      "run_manifest_path": "outputs/frozen_2o_baselines/phase6n/manifest.json",
+      "run_manifest_sha256": "e81204fe080cc3af9b9a3541aff0bdbea9fe9a9db0ee2928280ba891079b6719",
       "seed_list": [
         746101,
         746102,
@@ -207,23 +226,27 @@
         "rcias_clgri/ni/phase6p_live_inference.py": "c7cb03db9efad9832458a2f91dc67506aace4cd3d2008fb06482822d064a2201",
         "rcias_clgri/search/phase6p_adaptive.py": "2c2fe88a3863755623c52a3d73115adf179ebf487fadc91c7faccf68ca66df61"
       },
-      "started_at_utc": null,
-      "status": "RERUN_REQUIRED",
+      "started_at_utc": "2026-09-09T09:52:18.776325+00:00",
+      "status": "FROZEN_CANONICAL",
       "superseded_by": null,
       "supersedes": null
     },
     {
       "aggregate_summary_path": "outputs/frozen_2o_baselines/lg_hga_2o/summary.json",
+      "aggregate_summary_sha256": "7d8a29f5318357e9c10ce40445977261006c82ea2a8cc2e54a77accfb8c7a5df",
       "algorithm_config_hashes": {
         "configs/lghga_2o_baseline.json": "26800ea111a663e1ac5a6ca1b46f58321244d81668285d0870ca324805b7a17a"
       },
       "algorithm_display_name": "LG_HGA-2O",
       "algorithm_id": "LG_HGA_2O",
       "budget_formula": "2 * instance.num_operations seconds",
-      "completed_at_utc": null,
+      "completed_at_utc": "2026-09-10T00:16:56.035692+00:00",
       "config_sha256": "0cc4acc162ff15301f37e4d66e3bbc7a8d8b02ec93079ea5d52ad6ed85ff1c06",
       "decoder_accounting": "all decoder calls inside wall-clock budget",
-      "feasibility_evidence": null,
+      "feasibility_evidence": {
+        "rate": 1.0,
+        "run_count": 54
+      },
       "historical_evidence": [
         "outputs/phase6k_runtime_v1/audit/lghga_2o_real_clock_smoke.json"
       ],
@@ -261,7 +284,9 @@
       "raw_result_paths": [
         "outputs/frozen_2o_baselines/lg_hga_2o/runs"
       ],
-      "regression_integrity_result": null,
+      "regression_integrity_result": "PASS_PHASE6P_DEVELOPMENT_AUDIT",
+      "run_manifest_path": "outputs/frozen_2o_baselines/lg_hga_2o/manifest.json",
+      "run_manifest_sha256": "818cf36d49ea4b867a36b55fb964abcb91c25a0b58220bb7f188eaddc4b2362f",
       "seed_list": [
         746101,
         746102,
@@ -282,8 +307,8 @@
         "rcias_clgri/search/lghga_neighborhoods_v2.py": "b97a808389aaad8b757b7cae8e99a37e80848be2c74b91eecd35f93b20775a8b",
         "rcias_clgri/search/lghga_v2.py": "0085b97d63502fd83900f50a5089a44c82948d863ebe9d76fdaf3d96e3ebaf45"
       },
-      "started_at_utc": null,
-      "status": "RERUN_REQUIRED",
+      "started_at_utc": "2026-09-09T20:40:44.886326+00:00",
+      "status": "FROZEN_CANONICAL",
       "superseded_by": null,
       "supersedes": null
     }
@@ -291,7 +316,7 @@
   "no_favorable_reruns": true,
   "schema": "frozen-2o-baseline-registry-v1",
   "scope": "Phase 6P R12 CAUR-FIT development and reusable future 2|O| comparators",
-  "status": "INITIALIZED_ALL_REQUIRED_RUNS_PENDING",
+  "status": "FROZEN_CANONICAL_THREE_SEED_DEVELOPMENT",
   "valid_actions": [
     "REUSE_FROZEN_RESULT",
     "EXTEND_MISSING_SEEDS",

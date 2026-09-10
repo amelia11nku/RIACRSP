@@ -1,0 +1,42 @@
+{
+  "acceptance_rate": 0.057385775765118684,
+  "canonical_fallback_selections": 891,
+  "current_improvement_rate": 0.029832506110453,
+  "largest_family_share": 0.3511322649016473,
+  "largest_rank_share": 0.40861946306211855,
+  "largest_rule_origin_share": 0.10462973002276917,
+  "mean_critic_ms_per_neural_decision": 188.9643624409059,
+  "new_global_best_rate": 0.0032389149634872317,
+  "runs_with_strict_improvement_over_initializer": 48,
+  "runtime_component_fraction_of_iteration": {
+    "critic_total": 0.38972961274312234,
+    "decoder": 0.6034690115110225,
+    "repair_excluding_decoder": 0.0029248042382821944
+  },
+  "runtime_component_seconds": {
+    "critic_candidate_bank": 63.29870699511957,
+    "critic_ranking": 5.23208093480207,
+    "critic_tensorization_transfer": 588.8593320116634,
+    "critic_three_seed_inference": 4389.28110776769,
+    "critic_total": 5046.671227709274,
+    "decoder": 7814.416964035481,
+    "iteration": 12949.16029651466,
+    "repair_excluding_decoder": 37.87375891744159
+  },
+  "safe_fallbacks": 0,
+  "selected_family_count": 5,
+  "selected_rank_count": 6,
+  "selected_rule_count": 23,
+  "selection_non_collapse_checks": {
+    "all_five_origin_families_selected": true,
+    "all_six_neural_ranks_selected": true,
+    "at_least_20_of_24_rules_selected": true,
+    "largest_family_share_below_half": true,
+    "largest_rank_share_below_half": true
+  },
+  "total_iterations": 133378,
+  "total_neural_decisions": 26707,
+  "weighted_mean_probability_l1_vs_rank_prior": 0.025846143453536943,
+  "weighted_mean_total_variation_vs_rank_prior": 0.012923071726768471,
+  "weighted_portfolio_probability_changed_fraction": 0.4581944808477178
+}

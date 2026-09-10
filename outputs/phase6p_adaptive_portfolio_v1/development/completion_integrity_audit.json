@@ -1,0 +1,31 @@
+{
+  "audited_at_utc": "2026-09-10T00:16:56.035692+00:00",
+  "checks": {
+    "all_budget_contracts_match": true,
+    "all_comparator_manifests_match": true,
+    "all_feasibility_replays_match": true,
+    "all_incumbent_traces_monotone": true,
+    "all_instance_hashes_match": true,
+    "all_protocol_hashes_match": true,
+    "all_runtime_at_least_budget": true,
+    "exactly_54_per_method": true,
+    "expected_results_270": true,
+    "gurobi_not_run": true,
+    "historical_score_calls_zero_for_phase6p_and_top1": true,
+    "phase6o_calls_zero_for_phase6p_and_top1": true,
+    "r13_r14_locked": true,
+    "registry_frozen_canonical_three_seed": true
+  },
+  "development_protocol_sha256": "72af4c96af073f581dfc1d6d96fcda30d21268aa982ab525ca357d4332895aa8",
+  "method_counts": {
+    "ALNS": 54,
+    "LG_HGA_2O": 54,
+    "P1_CSG_ADAPTIVE_PORTFOLIO": 54,
+    "PHASE6H": 54,
+    "PHASE6N_DETERMINISTIC_TOP1": 54
+  },
+  "result_count": 270,
+  "result_hash_manifest": "outputs/phase6p_adaptive_portfolio_v1/development/result_hash_manifest.csv",
+  "schema": "phase6p-development-completion-audit-v1",
+  "status": "PASS"
+}

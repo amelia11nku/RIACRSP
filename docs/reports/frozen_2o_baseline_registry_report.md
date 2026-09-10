@@ -1,7 +1,5 @@
 # Frozen 2|O| baseline registry
 
-The canonical registry has been initialized for the 18 frozen R12 CAUR-FIT instances, development seeds 746101–746103, and a wall-clock budget of `2 * num_operations` seconds with initialization and decoder work included. The machine, dependency, instance, config, checkpoint, and relevant source hashes are frozen under `outputs/frozen_2o_baselines/`.
+The registry is **`FROZEN_CANONICAL_THREE_SEED_DEVELOPMENT`** for the 18 R12 CAUR-FIT instances, seeds 746101-746103, and the matched `2 * num_operations` wall-clock budget. ALNS, Phase 6H, Phase 6N deterministic top-1, and LG_HGA_2O each contain 54 feasible runs with a hash manifest and aggregate summary. The Phase 6P completion audit independently matched every manifest entry to the raw result bytes and set each registry integrity field to `PASS_PHASE6P_DEVELOPMENT_AUDIT`.
 
-No completed historical run satisfies the full canonical contract. All four Phase 6P comparators are currently `RERUN_REQUIRED`; entries remain pending until their complete three-seed results pass feasibility and integrity checks. Future phases must reuse a resulting `FROZEN_CANONICAL` entry when all ten compatibility conditions match, and may extend only missing seeds when the existing seed list is a strict valid subset.
-
-Valid results may not be rerun based on whether a new method performs well or poorly. Superseded entries must remain preserved with an explicit reason and link.
+These three-seed results are reusable canonical evidence. A future protocol requiring the same five canonical seeds must retain seeds 746101-746103 and run only missing seeds 746104-746105. No valid result may be rerun because of the observed Phase 6P outcome.
