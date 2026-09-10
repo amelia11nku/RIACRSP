@@ -1,0 +1,21 @@
+{
+  "schema": "ngas-a13-gpu-execution-v1",
+  "base_training_config": "configs/ngas_a1_development_v1.json",
+  "formal_device": "cuda:0",
+  "required_cuda_device_count": 1,
+  "precision": "FP32",
+  "mixed_precision": false,
+  "allow_tf32": false,
+  "deterministic_algorithms": true,
+  "cudnn_benchmark": false,
+  "cudnn_deterministic": true,
+  "cublas_workspace_config": ":4096:8",
+  "cpu_fallback": false,
+  "gpu_smoke_required": true,
+  "restart_from_zero": true,
+  "reuse_superseded_cpu_models": false,
+  "superseded_cpu_protocol": "outputs/ngas_a1/critic_training_v1/training_protocol.json",
+  "r13": "LOCKED",
+  "r14": "LOCKED",
+  "gurobi_run": false
+}

@@ -11,7 +11,7 @@ import time
 
 ROOT = Path(__file__).resolve().parents[1]
 PYTHON = '/home/liulei/miniconda3/envs/gnn311/bin/python'
-OUT = ROOT / 'outputs/ngas_a1/critic_training_v1'
+OUT = ROOT / 'outputs/ngas_a1/critic_training_gpu_v1'
 
 
 def atomic_json(path: Path, value: object) -> None:
@@ -35,7 +35,14 @@ def main() -> None:
     from scripts.train_ngas_joint_critic import PROTOCOL, validate_protocol
     from rcias_ngas.critic.train import digest
     protocol = validate_protocol()
-    device = 'cuda' if protocol['environment']['cuda_available'] else 'cpu'
+    if not protocol['environment']['cuda_available']:
+        raise RuntimeError('Frozen GPU environment is unavailable')
+    subprocess.run([
+        PYTHON, '-c',
+        'import torch; assert torch.cuda.is_available() and torch.cuda.device_count()==1; '
+        'print(torch.cuda.get_device_name(0)); print(torch.ones(1,device="cuda").item())'],
+        cwd=ROOT, check=True)
+    device = 'cuda'
     started = datetime.now(timezone.utc)
     stamp = started.strftime('%Y%m%dT%H%M%SZ')
     log_path = OUT / f'training_{stamp}.log'
@@ -90,7 +97,7 @@ def main() -> None:
         'log_path': str(log_path.relative_to(ROOT)),
         'output_path': str(OUT.relative_to(ROOT)),
         'progress_path': str((OUT / 'progress.json').relative_to(ROOT)),
-        'check_command': 'cat outputs/ngas_a1/critic_training_v1/progress.json',
+        'check_command': 'cat outputs/ngas_a1/critic_training_gpu_v1/progress.json',
         'resume_command': f'{PYTHON} scripts/launch_ngas_joint_critic.py',
         'resume_semantics': 'validated complete seed/fold runs are reused; only an incomplete current run is recomputed',
         'liveness_evidence': ('worker completed successfully during launch verification'

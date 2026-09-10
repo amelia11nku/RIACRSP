@@ -1,6 +1,6 @@
 # A1.3 joint critic: implementation and pre-training boundary
 
-Status: **TRAINING_RUNNER_IMPLEMENTED_AND_UNIT_TESTED; NOT_TRAINED**.
+Status: **GPU_PROTOCOL_IMPLEMENTED_AND_SMOKE_PASSED; FORMAL_GPU_TRAINING_NOT_STARTED**.
 This delivery starts from `098a58e9d42b1dcee84ca04eb288258c70bc0ccb`.
 The independently verified V2 T8_R9 label pilot passed all six gates, and all six
 source states exceeded 10% informative pairs. Expanded collection and its independent
@@ -52,11 +52,21 @@ complete hash-valid seed/fold units, publishes per-state OOF diagnostics, and pe
 the final fit only after writing a passing OOF gate. Formal optimizer steps start only
 after the training-specific protocol is committed.
 
-The formal training boundary is frozen at implementation commit `10c3c7e80722a4ab3fd545e5ee7bdb34c06d6f0b`.
-Training protocol SHA-256: `18dc256f9fc28a880028bf05e65a8f73f764d7f7d680dd0661af6973c0436fd6`;
-the freeze reran and passed all 475 project tests. The validated project environment
-is Python 3.11.15 with PyTorch 2.11.0; CUDA runtime is unavailable, so the formal
-worker will use deterministic CPU execution.
+The prior CPU protocol SHA-256 `18dc256f9fc28a880028bf05e65a8f73f764d7f7d680dd0661af6973c0436fd6`
+was started and then explicitly retired as incomplete before any OOF quality result
+was inspected. Its 29 model/prediction/run artifacts were deleted; protocol, logs,
+input cache, last-progress snapshot and a deletion-hash ledger remain. No CPU model
+or prediction may be reused by the GPU execution.
+
+The outcome-blind CUDA smoke passed on an RTX 4060 Ti with PyTorch 2.11.0+cu128.
+For the largest representative input (722 nodes, 8,148 directed edges, 90 actions),
+peak reserved memory was 90 MiB (1.15% of 8,182,628,352 bytes), leaving 7.53 GiB.
+Five measured FP32 backward steps averaged 24.63 ms/state; twenty inference repeats
+averaged 1.17 ms/state. Losses, gradients, parameters and outputs stayed finite and
+repeated inference was bitwise deterministic. Labels were synthetic and independent
+of development outcomes. The replacement protocol requires CUDA:0, FP32, TF32 off,
+deterministic algorithms, CUBLAS workspace `:4096:8`, no CPU fallback and a complete
+restart from 0/9 OOF models.
 
 R12 remains DEVELOPMENT after repeated architectural use. R13/R14 stay locked;
 no Gurobi or comparator reruns are performed. V1 and V2 raw evidence remain immutable.

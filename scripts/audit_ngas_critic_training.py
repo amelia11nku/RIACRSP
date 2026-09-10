@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import math
+import os
 from pathlib import Path
 import sys
 
@@ -26,17 +27,24 @@ def require(condition: bool, message: str) -> None:
         raise RuntimeError(message)
 
 
-def model_from_checkpoint(path: Path) -> tuple[dict, JointCritic]:
+def model_from_checkpoint(path: Path, device: str) -> tuple[dict, JointCritic]:
     checkpoint = torch.load(path, map_location='cpu', weights_only=False)
     config = checkpoint['model_config']
     model = JointCritic(hidden=int(config['hidden_dim']), layers=int(config['message_passing_layers']))
     model.load_state_dict(checkpoint['model_state'])
-    return checkpoint, model.eval()
+    return checkpoint, model.to(device).eval()
 
 
 def main() -> None:
     torch.set_num_threads(1)
     torch.use_deterministic_algorithms(True)
+    if not torch.cuda.is_available() or os.environ.get('CUBLAS_WORKSPACE_CONFIG') != ':4096:8':
+        raise RuntimeError('GPU completion audit requires the frozen CUDA environment')
+    torch.backends.cudnn.benchmark = False
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cuda.matmul.allow_tf32 = False
+    torch.backends.cudnn.allow_tf32 = False
+    device = 'cuda'
     protocol = training.validate_protocol()
     protocol_sha = digest(training.PROTOCOL)
     records = load_cache(training.CACHE, training.CACHE_MANIFEST)
@@ -51,11 +59,11 @@ def main() -> None:
         for fold in range(3):
             require(training.valid_run(seed, fold, protocol_sha), f'Invalid run {seed}/{fold}')
             checkpoint_path, prediction_path, record_path = training.run_paths(seed, fold)
-            checkpoint, model = model_from_checkpoint(checkpoint_path)
+            checkpoint, model = model_from_checkpoint(checkpoint_path, device)
             run_record = json.loads(record_path.read_text())
             held = [row for row in records if row['fold'] == fold]
             stored = training.load_prediction_file(prediction_path)
-            replayed = predict(model, held, 'cpu')
+            replayed = predict(model, held, device)
             require(replayed == stored, f'Checkpoint prediction replay mismatch: {seed}/{fold}')
             require(checkpoint['training_protocol_sha256'] == protocol_sha,
                     'Checkpoint protocol mismatch')
@@ -79,9 +87,9 @@ def main() -> None:
         require(production is not None, 'Passing OOF gate requires production critic')
         path = ROOT / production['checkpoint_path']
         require(digest(path) == production['checkpoint_sha256'], 'Production checkpoint drift')
-        checkpoint, model = model_from_checkpoint(path)
+        checkpoint, model = model_from_checkpoint(path, device)
         stored = training.load_prediction_file(OUT / 'production/development_predictions.json.gz')
-        require(predict(model, records, 'cpu') == stored, 'Production prediction replay mismatch')
+        require(predict(model, records, device) == stored, 'Production prediction replay mismatch')
         require(checkpoint['seed'] == protocol['config']['training']['production_seed'],
                 'Production seed drift')
         production_replay = True
@@ -98,7 +106,7 @@ def main() -> None:
         'zero_gurobi': final['gurobi_run'] is False,
     }
     audit = {
-        'schema': 'ngas-a13-critic-completion-audit-v1',
+        'schema': 'ngas-a13-gpu-critic-completion-audit-v1',
         'status': 'PASS' if all(checks.values()) else 'FAIL',
         'checks': checks, 'decision': expected_decision,
         'training_protocol_sha256': protocol_sha,

@@ -1,0 +1,66 @@
+{
+  "checks": {
+    "cuda_tensor_execution": true,
+    "deterministic_repeated_inference": true,
+    "finite_gradients": true,
+    "finite_losses": true,
+    "finite_outputs": true,
+    "finite_parameters": true,
+    "memory_headroom_above_1_gib": true,
+    "peak_reserved_below_80_percent": true
+  },
+  "created_at_utc": "2026-09-10T14:57:25.857820+00:00",
+  "device": {
+    "compute_capability": "8.9",
+    "index": 0,
+    "name": "NVIDIA GeForce RTX 4060 Ti",
+    "total_memory_bytes": 8182628352
+  },
+  "environment": {
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+    "cuda": "12.8",
+    "cudnn": 91900,
+    "deterministic_algorithms": true,
+    "tf32_cudnn": false,
+    "tf32_matmul": false,
+    "torch": "2.11.0+cu128"
+  },
+  "formal_optimizer_steps": 0,
+  "gurobi_run": false,
+  "input_hashes": {
+    "configs/ngas_a1_development_v1.json": "1efee314995411c13b455476b146f60b3391c7973271bd4768fccbbd6da705fa",
+    "outputs/ngas_a1/critic_training_v1/training_cache.json.gz": "b1673d86b44589735b7d01cfcae99096ff05206235c785475ccbeba28c111541",
+    "outputs/ngas_a1/critic_training_v1/training_cache_manifest.json": "4b8582f55b4169ca7dbbde7df3bcd09908a5987eb38019eeca8a70b07ea483a5"
+  },
+  "labels": {
+    "development_outcomes_used": false,
+    "source": "synthetic deterministic linspace plus shared replicate offsets"
+  },
+  "memory": {
+    "headroom_bytes": 8088256512,
+    "peak_allocated_bytes": 87968768,
+    "peak_reserved_bytes": 94371840,
+    "peak_reserved_fraction": 0.011533193973906149
+  },
+  "r13": "LOCKED",
+  "r14": "LOCKED",
+  "representative_state": {
+    "directed_edges": 8148,
+    "joint_actions": 90,
+    "nodes": 722,
+    "selection": "maximum nodes, then edges/actions; outcome blind",
+    "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF2_RI2_TI2_R12_C02:NATIVE16_746102"
+  },
+  "schema": "ngas-a13-gpu-feasibility-v1",
+  "status": "PASS",
+  "throughput": {
+    "inference_joint_actions_per_second": 76738.09601135025,
+    "inference_repeats": 20,
+    "mean_inference_ms_per_state": 1.1728203418897465,
+    "mean_training_ms_per_state": 24.625848804134876,
+    "p90_inference_ms_per_state": 1.1810879805125296,
+    "p90_training_ms_per_state": 25.319399021100253,
+    "training_joint_actions_per_second": 3654.6963605529927,
+    "training_steps": 5
+  }
+}

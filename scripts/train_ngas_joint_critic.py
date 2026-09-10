@@ -25,11 +25,12 @@ from rcias_ngas.critic.train import digest, fit, load_cache, predict
 from rcias_ngas.evaluation.bks import write_immutable
 from rcias_ngas.evaluation.ranking import state_metrics, subgroup_summaries, summarize
 
-OUT = ROOT / 'outputs/ngas_a1/critic_training_v1'
+OUT = ROOT / 'outputs/ngas_a1/critic_training_gpu_v1'
 PROTOCOL = OUT / 'training_protocol.json'
-CACHE = OUT / 'training_cache.json.gz'
-CACHE_MANIFEST = OUT / 'training_cache_manifest.json'
+CACHE = ROOT / 'outputs/ngas_a1/critic_training_v1/training_cache.json.gz'
+CACHE_MANIFEST = ROOT / 'outputs/ngas_a1/critic_training_v1/training_cache_manifest.json'
 CONFIG = ROOT / 'configs/ngas_a1_development_v1.json'
+GPU_CONFIG = ROOT / 'configs/ngas_a1_critic_training_gpu_v1.json'
 REPORT = ROOT / 'docs/reports/ngas_a1/07_joint_critic_training_report.md'
 
 
@@ -55,8 +56,8 @@ def atomic_bytes(path: Path, value: bytes) -> None:
 
 def validate_protocol() -> dict:
     protocol = json.loads(PROTOCOL.read_text())
-    if (protocol.get('schema') != 'ngas-a13-critic-training-protocol-v1'
-            or protocol.get('status') != 'FROZEN_BEFORE_FORMAL_OPTIMIZER_STEP'
+    if (protocol.get('schema') != 'ngas-a13-gpu-critic-training-protocol-v1'
+            or protocol.get('status') != 'FROZEN_BEFORE_GPU_FORMAL_OPTIMIZER_STEP'
             or protocol.get('formal_optimizer_steps_started') is not False):
         raise RuntimeError('Critic training protocol is not a valid frozen boundary')
     for relative, expected in protocol['source_hashes'].items():
@@ -69,6 +70,8 @@ def validate_protocol() -> dict:
             'outputs/ngas_a1/r13/access_ledger.json',
             'outputs/ngas_a1/r14/access_ledger.json')):
         raise RuntimeError('NGAS R13/R14 access boundary changed')
+    if protocol['gpu_execution']['formal_device'] != 'cuda:0':
+        raise RuntimeError('Formal GPU device contract changed')
     return protocol
 
 
@@ -134,14 +137,21 @@ def evaluate_seed(seed: int, records_by_id: dict[str, dict], predictions: list[d
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument('--device', choices=('cpu', 'cuda'), default='cpu')
+    parser.add_argument('--device', choices=('cuda',), default='cuda')
     args = parser.parse_args()
     protocol = validate_protocol()
     config = protocol['config']
-    if args.device == 'cuda' and not torch.cuda.is_available():
-        raise RuntimeError('CUDA requested but unavailable')
+    gpu = protocol['gpu_execution']
+    if (not torch.cuda.is_available() or torch.cuda.device_count() != gpu['required_cuda_device_count']
+            or os.environ.get('CUBLAS_WORKSPACE_CONFIG') != gpu['cublas_workspace_config']):
+        raise RuntimeError('Frozen CUDA device/count/CUBLAS contract is unavailable')
+    torch.cuda.set_device(0)
     torch.set_num_threads(1)
     torch.use_deterministic_algorithms(True)
+    torch.backends.cudnn.benchmark = False
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cuda.matmul.allow_tf32 = False
+    torch.backends.cudnn.allow_tf32 = False
     random.seed(0)
     records = load_cache(CACHE, CACHE_MANIFEST)
     records_by_id = {row['state_id']: row for row in records}
@@ -195,6 +205,7 @@ def main() -> None:
                 'schema': 'ngas-a13-joint-critic-checkpoint-v1',
                 'training_protocol_sha256': protocol_sha, 'seed': seed,
                 'held_fold': held_fold, 'model_config': config['critic'],
+                'formal_device': 'cuda:0', 'precision': 'FP32',
                 'model_state': {name: value.detach().cpu() for name, value in model.state_dict().items()},
                 'epochs': config['training']['epochs'],
             })
@@ -262,6 +273,7 @@ def main() -> None:
             'schema': 'ngas-a13-production-joint-critic-v1',
             'training_protocol_sha256': protocol_sha, 'seed': production_seed,
             'model_config': config['critic'],
+            'formal_device': 'cuda:0', 'precision': 'FP32',
             'model_state': {name: value.detach().cpu() for name, value in model.state_dict().items()},
             'epochs': config['training']['epochs'],
         })
@@ -295,7 +307,7 @@ and three held-instance folds. {pass_count}/3 seeds passed the preregistered gat
 the gate required at least 2. R12 remains development evidence.
 
 The OOF gate and all per-state, fold, scale and CF diagnostics are in
-`outputs/ngas_a1/critic_training_v1/oof_gate.json`. Fixed final epoch checkpoints
+`outputs/ngas_a1/critic_training_gpu_v1/oof_gate.json`. Fixed final epoch checkpoints
 were used; held-fold labels did not select epochs or checkpoints. The single
 production critic was {'fit only after the OOF gate passed' if gate_pass else 'not fit because the OOF gate failed'}.
 
