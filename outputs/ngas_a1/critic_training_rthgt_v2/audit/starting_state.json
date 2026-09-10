@@ -1,0 +1,56 @@
+{
+  "schema": "ngas-a13r-starting-state-v1",
+  "status": "PASS",
+  "starting_commit": "2fec6f365095385bd443f7e6481499a716e49049",
+  "clean_worktree": true,
+  "a1_4_authorized": false,
+  "new_namespace": "outputs/ngas_a1/critic_training_rthgt_v2",
+  "compact_reference": {
+    "name": "C0_COMPACT_HISTORICAL",
+    "files": 41,
+    "tree_manifest_sha256": "4239e9236cb5a5d9837def6acc70baa9155b32cb2282a85efb604a57a4b3a9f9",
+    "protocol_sha256": "a65f2ed10a725a002a818c0b75f8058588c56fe8850d98ed079f9610915ef77d",
+    "completion_audit_sha256": "db1a34f884a6c7d88f48fc87d8b82903630a3f35e8539c154b85ba04e8b34859",
+    "oof_gate_sha256": "56eda9e1ab3abb770dd674459a9bb713016516ee49667a7ea3959acfcd8ebcd8",
+    "final_decision_sha256": "e1ae7747841d4cb5b9b5cf9ffeb8be3b221f43097db160609000c7a4f60e75dd",
+    "audit_status": "PASS",
+    "seeds_passing": 3,
+    "preserve_unchanged": true
+  },
+  "label_and_cache_hashes": {
+    "outputs/ngas_a1/label_pilot_v2/result_hash_manifest.json": "a274642c9a62a2ff153a095f15d9bacb04b04a5609aff49774445cce1c4c3616",
+    "outputs/ngas_a1/label_pilot_v2/gate.json": "a2ab88e43ab2940507c8b987ab3eb1b5795ca665f9fbb5c0070e73ac1dbdba81",
+    "outputs/ngas_a1/archive/label_pilot_v2.tar.gz": "b7409be2b629c930280f125eabeff9f8192868ca4d5141bbc94e537a12ad4e87",
+    "outputs/ngas_a1/audit/v2_completion.json": "16521d6b6fecda2087a3a7c450fad53934bcdfcc091bef4c5548ead6974d8556",
+    "outputs/ngas_a1/development_v1/result_hash_manifest.json": "44e3a3deb826fb38a0d81f58957efba05fb0ee78d77cefcab07c67cec14992c1",
+    "outputs/ngas_a1/archive/development_v1.tar.gz": "4613ec34f32c663a9b20df33ec26fcbce4f1b423929070b60a02e818018d02bf",
+    "outputs/ngas_a1/audit/development_completion.json": "57fe5d3948f9a29a24d4083667cd655b255dc937ca15e964101f60a9f62be3b4",
+    "outputs/ngas_a1/critic_training_v1/training_cache.json.gz": "b1673d86b44589735b7d01cfcae99096ff05206235c785475ccbeba28c111541",
+    "outputs/ngas_a1/critic_training_v1/training_cache_manifest.json": "4b8582f55b4169ca7dbbde7df3bcd09908a5987eb38019eeca8a70b07ea483a5"
+  },
+  "source_hashes": {
+    "rcias_ngas/critic/joint_critic.py": "a9b170b2b25b58ce565159e3c621df30e64a516b23544d62669816c9e54949ef",
+    "rcias_ngas/csg/critical_sync.py": "0e4abc70210cebf4203ab7734498a3609134ca682fe43e2fbf88ed271c75cb1b",
+    "rcias_clgri/search/dabc_chdg.py": "dc535e424a28cacdae6075e8765f42d1aa2394c07e6816d9c5a3339db5560555",
+    "rcias_ngas/csg/features.py": "ce0bb6f23445799f11538f2de3a732a7872de860363db83d86228ca380c9015f",
+    "rcias_ngas/actions/repair.py": "62942f8626af392ac11d532bfc4691989cf78ce1affbaf291129f07c7cfe00d1"
+  },
+  "config_hashes": {
+    "configs/ngas_a1_critic_training_gpu_v1.json": "480c013c783bce00a02b94e2170a92dc98e5ba3b075cf156815adceb1c5fbc05",
+    "configs/ngas_a1_development_v1.json": "1efee314995411c13b455476b146f60b3391c7973271bd4768fccbbd6da705fa",
+    "configs/ngas_a1_label_pilot.json": "2db66c3c4e23ebce8c36e08d596567c030b48ac98b07593290f96de3046f5bba",
+    "configs/ngas_a1_label_pilot_v2.json": "2aac185aa72d1f5fc4d306c5bff1f55fc617e3a06507d71d69341e4baf1473c7"
+  },
+  "environment": {
+    "python": "3.11.15",
+    "torch": "2.11.0+cu128",
+    "cuda": "12.8",
+    "cuda_available": true
+  },
+  "r13": "LOCKED",
+  "r14": "LOCKED",
+  "r13_r14_access_ledgers_present": false,
+  "gurobi_run": false,
+  "frozen_comparator_sources_modified": false,
+  "long_running_job_active": false
+}
