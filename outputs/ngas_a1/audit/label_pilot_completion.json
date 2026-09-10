@@ -1,0 +1,123 @@
+{
+  "diagnostics": [
+    {
+      "below_material_gap": 2347,
+      "candidate_no_new_best_fraction": 0.9288888888888889,
+      "fallback_best_by_crn": [
+        4529.0,
+        4529.0,
+        4529.0
+      ],
+      "immediate_candidate_improvement_fraction": 0.07111111111111111,
+      "label_runtime_seconds": 35.1365956220543,
+      "late_candidate_improvement_fraction": 0.0,
+      "material_gap_but_noise_limited": 218,
+      "noise_separated": 210,
+      "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12__H1",
+      "total_pairs": 2775,
+      "zero_advantage_fraction": 0.9288888888888889
+    },
+    {
+      "below_material_gap": 1958,
+      "candidate_no_new_best_fraction": 0.88,
+      "fallback_best_by_crn": [
+        4961.0,
+        4961.0,
+        4961.0
+      ],
+      "immediate_candidate_improvement_fraction": 0.1111111111111111,
+      "label_runtime_seconds": 34.827713293081615,
+      "late_candidate_improvement_fraction": 0.022222222222222223,
+      "material_gap_but_noise_limited": 608,
+      "noise_separated": 209,
+      "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12__NATIVE4",
+      "total_pairs": 2775,
+      "zero_advantage_fraction": 0.88
+    },
+    {
+      "below_material_gap": 1957,
+      "candidate_no_new_best_fraction": 0.9022222222222223,
+      "fallback_best_by_crn": [
+        3146.0,
+        3140.0,
+        3146.0
+      ],
+      "immediate_candidate_improvement_fraction": 0.08888888888888889,
+      "label_runtime_seconds": 17.877431584172882,
+      "late_candidate_improvement_fraction": 0.013333333333333334,
+      "material_gap_but_noise_limited": 680,
+      "noise_separated": 138,
+      "state_id": "CB1_CAUR_M_CF2_RI2_TI2_R12__H1",
+      "total_pairs": 2775,
+      "zero_advantage_fraction": 0.6
+    },
+    {
+      "below_material_gap": 974,
+      "candidate_no_new_best_fraction": 0.7644444444444445,
+      "fallback_best_by_crn": [
+        3146.0,
+        3146.0,
+        3046.0
+      ],
+      "immediate_candidate_improvement_fraction": 0.06222222222222222,
+      "label_runtime_seconds": 18.045146986667532,
+      "late_candidate_improvement_fraction": 0.17333333333333334,
+      "material_gap_but_noise_limited": 1801,
+      "state_id": "CB1_CAUR_M_CF2_RI2_TI2_R12__NATIVE4",
+      "total_pairs": 2775,
+      "zero_advantage_fraction": 0.76
+    },
+    {
+      "below_material_gap": 1381,
+      "candidate_no_new_best_fraction": 0.8177777777777778,
+      "fallback_best_by_crn": [
+        1844.0,
+        1844.0,
+        1844.0
+      ],
+      "immediate_candidate_improvement_fraction": 0.16,
+      "label_runtime_seconds": 6.08851499191951,
+      "late_candidate_improvement_fraction": 0.035555555555555556,
+      "material_gap_but_noise_limited": 1078,
+      "noise_separated": 316,
+      "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__H1",
+      "total_pairs": 2775,
+      "zero_advantage_fraction": 0.8177777777777778
+    },
+    {
+      "below_material_gap": 1219,
+      "candidate_no_new_best_fraction": 0.5422222222222223,
+      "fallback_best_by_crn": [
+        1894.0,
+        1890.0,
+        1907.0
+      ],
+      "immediate_candidate_improvement_fraction": 0.17777777777777778,
+      "label_runtime_seconds": 6.125275545113254,
+      "late_candidate_improvement_fraction": 0.3022222222222222,
+      "material_gap_but_noise_limited": 1363,
+      "noise_separated": 193,
+      "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__NATIVE4",
+      "total_pairs": 2775,
+      "zero_advantage_fraction": 0.27555555555555555
+    }
+  ],
+  "fallback_crn_consistency": true,
+  "frozen_historical_evidence_unchanged": true,
+  "full_label_replays": 6,
+  "gate_reproduced_exactly": true,
+  "gate_sha256": "20387d531a3ae16f4fbbc0f70584b150049548c250233164aada8c4e0b254fe0",
+  "integrity": "PASS",
+  "pilot_decision": "NGAS_A1_REVISE_LABELS",
+  "repair_evidence": {
+    "all_within_target_size_pairs": 900,
+    "material_within_target_size_pairs": 53,
+    "noise_separated_rank_reversals": 2
+  },
+  "result_manifest_sha256": "08619fc61c5d53f784ae12719901e4e7249fe6070d2abd486b2aa327d66a30d9",
+  "schema": "ngas-a12-completion-audit-v1",
+  "state_schedule_replays": 6,
+  "verified_joint_actions": 450,
+  "verified_paired_replicates": 1350,
+  "verified_result_files": 462
+}

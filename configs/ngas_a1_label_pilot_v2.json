@@ -1,0 +1,38 @@
+{
+  "schema": "ngas-a12-label-pilot-v2",
+  "scope": "R12 DEVELOPMENT bounded label revision; six frozen v1 source states and all 450 frozen joint actions",
+  "revision": "ngas-a12-label-v2",
+  "source_pilot": "outputs/ngas_a1/label_pilot",
+  "primary_variant": "T8_R9",
+  "variants": [
+    {"id": "T2_R9", "repair_trials": 2, "role": "replication control, never a rescue"},
+    {"id": "T8_R9", "repair_trials": 8, "role": "preregistered primary aligned to intended eight-trial repair"}
+  ],
+  "canonical_root_seeds": [746101, 746102, 746103],
+  "independent_repeats_per_root": 3,
+  "replicate_seed_derivation": "RNGStreams(instance_id, root).seed(continuation_crn, ngas-a12-label-v2:state_id, repeat); repeat-major order",
+  "continuation_policy": "ngas-native-uniform-crn-v1",
+  "continuation_steps": 2,
+  "source_states": 6,
+  "actions_per_state": 75,
+  "candidate_decoder_calls": 121500,
+  "shared_fallback_decoder_calls": 1620,
+  "maximum_label_decoder_calls": 123120,
+  "fallback_cache": "same complete state/candidate hash, trials, horizon, replicate seed and frozen protocol; charge cache creation once in actual cost and amortize to actions",
+  "gates": {
+    "min_informative_pair_fraction": 0.10,
+    "min_informative_states": 3,
+    "min_positive_mean_advantage_fraction": 0.05,
+    "max_mean_seconds_per_joint_action_with_three_replicates": 30.0
+  },
+  "cost_gate_semantics": "inherited key name; same 30 second cap now applies to the whole nine-replicate action including amortized fallback cost",
+  "noise_pair_rule": "unchanged: abs(mean paired difference) > max(0.001, 2 * paired standard error)",
+  "additional_hard_checks": ["all v1 evidence unchanged", "all 450 actions present in both variants", "all repair identities and CRN keys match", "all completed schedules feasible", "exact decoder accounting"],
+  "diagnostics_only": ["first root-balanced three replicates versus all nine", "T8 versus T2 at matched CRN", "zero-advantage and new-best sparsity", "within-target repair effects and ranking reversals", "root-block consistency"],
+  "no_rescue": true,
+  "no_v1_replicates_pooled": true,
+  "no_automatic_training": true,
+  "r13": "LOCKED",
+  "r14": "LOCKED",
+  "gurobi_run": false
+}

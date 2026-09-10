@@ -1,5 +1,12 @@
 # NGAS-A1 stage delivery and continuation boundary
 
+Continuation update: A1.2 V1 completed with `NGAS_A1_REVISE_LABELS`; its result
+and `outputs/ngas_a1/final_decision.json` remain frozen. The independent completion
+audit and the new V2 protocol rationale are in report `06a_label_failure_analysis_and_v2_protocol.md`.
+The active revision uses `outputs/ngas_a1/label_pilot_v2/`; inspect its `progress.json`
+and eventual `gate.json`. A1.3 remains gated on the sole preregistered T8_R9 primary.
+V1 raw evidence is also retained in the byte-verified `archive/label_pilot_v1.tar.gz`.
+
 Starting commit: `156b017b1651e803f5a6bd4894e2713cfec1cc9d`.
 This is an incremental A1.0–A1.2 delivery, not a completed NGAS solver or a
 claim of improved algorithm quality. The current machine-readable decision is
