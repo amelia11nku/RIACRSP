@@ -52,5 +52,11 @@ complete hash-valid seed/fold units, publishes per-state OOF diagnostics, and pe
 the final fit only after writing a passing OOF gate. Formal optimizer steps start only
 after the training-specific protocol is committed.
 
+The formal training boundary is frozen at implementation commit `10c3c7e80722a4ab3fd545e5ee7bdb34c06d6f0b`.
+Training protocol SHA-256: `18dc256f9fc28a880028bf05e65a8f73f764d7f7d680dd0661af6973c0436fd6`;
+the freeze reran and passed all 475 project tests. The validated project environment
+is Python 3.11.15 with PyTorch 2.11.0; CUDA runtime is unavailable, so the formal
+worker will use deterministic CPU execution.
+
 R12 remains DEVELOPMENT after repeated architectural use. R13/R14 stay locked;
 no Gurobi or comparator reruns are performed. V1 and V2 raw evidence remain immutable.
