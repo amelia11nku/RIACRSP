@@ -6,7 +6,8 @@ import random
 
 NAMESPACES = (
     "destroy_size", "target", "repair", "portfolio", "neighbor",
-    "acceptance", "fallback", "continuation_crn",
+    "acceptance", "fallback", "continuation_crn", "neural_prior",
+    "online_exploration", "diagnostics",
 )
 
 

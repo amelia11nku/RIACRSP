@@ -1,0 +1,106 @@
+{
+  "schema": "ngas-a14-search-integration-config-v1",
+  "stage": "A1.4",
+  "representation_boundary": {
+    "production_variant": "C1",
+    "checkpoint_path": "outputs/ngas_a1/critic_training_rthgt_v2/production/revised_joint_critic.pt",
+    "checkpoint_sha256": "448b0aaf871f0629dec2d94bad63c888fbdaf71c113eb5ade58c4228647c8560",
+    "training_protocol_sha256": "0cdd5de321066c1f301afda7da86b91854d1d4b55fa2ee4df76a2dfa518d6f28",
+    "R1_role": "EXPLANATORY_ABLATION_ONLY_AFTER_MECHANISM_FREEZE"
+  },
+  "instance_source": {
+    "root": "instances/controlled/RCIAS-CB1-TRAIN-CAUR-R12R14",
+    "manifest_path": "outputs/frozen_2o_baselines/instance_manifest.json",
+    "manifest_sha256": "5fb1d78201fd62dcc64fb1db4bbb5de9cffa11bed07bbd5c890a71c8e130b8af"
+  },
+  "development_subset": [
+    {
+      "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+      "relative_path": "r12_caur_fit/CB1_CAUR_S_CF1_RI2_TI2_R12.json",
+      "sha256": "12ff9dd4ce3a668c89ba8edd8ee0c9f87232f00b8ce8dbb42a4827402c20047a",
+      "num_operations": 61,
+      "scale": "S",
+      "CF_level": "CF1",
+      "cell_replicate": "C01"
+    },
+    {
+      "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+      "relative_path": "r12_caur_fit/CB1_CAUR_M_CF2_RI2_TI2_R12_C02.json",
+      "sha256": "9a1b7de15cfd0663d92ad81a5378da0922b92dc6f7c6b042cd8daf542a21b803",
+      "num_operations": 127,
+      "scale": "M",
+      "CF_level": "CF2",
+      "cell_replicate": "C02"
+    },
+    {
+      "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12",
+      "relative_path": "r12_caur_fit/CB1_CAUR_L_CF3_RI2_TI2_R12.json",
+      "sha256": "bdb01c2b6350b572dcac6be3c542e696143bd4766ab3ae7939bff36e6234f25b",
+      "num_operations": 183,
+      "scale": "L",
+      "CF_level": "CF3",
+      "cell_replicate": "C01"
+    }
+  ],
+  "development_seeds": [746101, 746102, 746103],
+  "ablation_modes": [
+    "NEURAL_PRIOR_ONLY",
+    "ONLINE_PORTFOLIO_ONLY",
+    "NEURAL_X_PORTFOLIO",
+    "ONE_SHOT_TOP1",
+    "PERSISTENT_FIXED_REFRESH",
+    "PERSISTENT_EVENT_REFRESH"
+  ],
+  "budget": {
+    "formula": "0.5 * num_operations seconds",
+    "multiplier": 0.5,
+    "relationship_to_full_R12_budget": "one quarter of the frozen 2*num_operations-second R12 budget",
+    "accounting": "same maximum wall-clock budget for every mode within each instance-seed block; model loading is outside the budget; initialization, live refresh, search, repair and decoder are inside"
+  },
+  "search": {
+    "candidate_trials": 8,
+    "iteration_limit": null,
+    "initial_temperature_fraction": 0.05,
+    "cooling_rate": 0.995,
+    "prior_advantage_scale": 0.01,
+    "prior_uniform_mix": 0.05,
+    "online_exploration": 0.05,
+    "portfolio_segment_length": 8,
+    "portfolio_reaction": 0.25,
+    "portfolio_strength": 0.7,
+    "refresh": {
+      "fixed_horizon": 20,
+      "maximum_age": 30,
+      "minimum_spacing": 5,
+      "stagnation_horizon": 15,
+      "repeated_high_prior_failures": 3,
+      "meaningful_improvement_fraction": 0.001
+    }
+  },
+  "selection_gate": {
+    "production_candidates": [
+      "PERSISTENT_FIXED_REFRESH",
+      "PERSISTENT_EVENT_REFRESH"
+    ],
+    "internal_control": "ONLINE_PORTFOLIO_ONLY",
+    "required_run_count_per_mode": 9,
+    "hard_requirements": {
+      "feasible_replay_fraction": 1.0,
+      "minimum_median_critic_influence_fraction": 0.8,
+      "minimum_median_guided_iterations_per_critic_call": 4.0
+    },
+    "credible_quality_rule": "mean paired final gain > 0 and wins >= losses, OR mean paired anytime AUC gain >= 0.002 and mean paired final gain >= -0.001",
+    "selection_order": [
+      "highest_mean_paired_final_gain",
+      "highest_mean_paired_anytime_auc_gain",
+      "lowest_mean_effective_neural_overhead_seconds"
+    ],
+    "no_eligible_candidate_decision": "NGAS_A1_REVISE_SEARCH_INTEGRATION"
+  },
+  "post_selection": {
+    "C1_R1_ablation": "mandatory matched explanatory comparison using seed-matched held-fold-0 checkpoints; no production promotion",
+    "A1_5": "locked until A1.4 mechanism freeze, matched C1/R1 explanatory ablation, and completion audit",
+    "A1_6": "locked until A1.5 full live refresh p90 <= 30 ms"
+  },
+  "prohibited": ["A1.2_RELABEL", "A1.3R_RETRAIN", "R13", "R14", "GUROBI", "GIT_PUSH"]
+}
