@@ -1,0 +1,38 @@
+{
+  "schema": "ngas-a1-label-pilot-v1",
+  "scope": "R12 DEVELOPMENT bounded cost and noise pilot; not a solver comparison",
+  "instances": [
+    "CB1_CAUR_S_CF1_RI2_TI2_R12",
+    "CB1_CAUR_M_CF2_RI2_TI2_R12",
+    "CB1_CAUR_L_CF3_RI2_TI2_R12"
+  ],
+  "sources": ["H1", "NATIVE4"],
+  "source_seed": 746101,
+  "crn_seeds": [746101, 746102, 746103],
+  "continuation_policy": "ngas-native-uniform-crn-v1",
+  "continuation_steps": 2,
+  "repair_trials": 2,
+  "maximum_joint_actions_per_state": 75,
+  "sampling_rules": ["csg_critical_sync", "related_variant_1", "matched_random_1", "related_replace_25", "near_same_island_chain"],
+  "size_fractions": {"small": 0.08, "medium": 0.15, "large": 0.22},
+  "repairs": ["greedy", "regret2", "regret3", "reconfiguration_aware", "transport_aware"],
+  "noise_pair_rule": "abs(mean paired difference) > max(0.001, 2*paired_standard_error)",
+  "gates": {
+    "feasible_rate": 1.0,
+    "all_sizes_repairs_families_each_state": true,
+    "min_informative_pair_fraction": 0.10,
+    "min_informative_states": 3,
+    "min_positive_mean_advantage_fraction": 0.05,
+    "max_mean_seconds_per_joint_action_with_three_replicates": 30.0
+  },
+  "scope_limitations": [
+    "scale and CF are confounded in this three-instance diagnostic; do not infer subgroup quality",
+    "source mix is equal H1 and four-step native continuation; not the full live-state distribution",
+    "no neural model exists yet; critical-sync priority and fixed random controls substitute for neural-priority sampling",
+    "two-trial short continuation is a pilot policy, not the future eight-trial online evaluation policy"
+  ],
+  "training_on_pass": "requires a new preregistered expanded development labeling and training boundary",
+  "r13": "LOCKED",
+  "r14": "LOCKED",
+  "gurobi_run": false
+}
