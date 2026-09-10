@@ -1,5 +1,10 @@
 # NGAS-A1 stage delivery and continuation boundary
 
+Latest continuation: V2 T8_R9 passed and was independently audited. A1.3 now has a
+tested joint CSG critic and a frozen expanded-data/training design. See reports 07
+and 07a. Active work uses `outputs/ngas_a1/development_v1/`; model fitting awaits
+its completed data gate. The earlier V1/V2 records below remain historical boundaries.
+
 Continuation update: A1.2 V1 completed with `NGAS_A1_REVISE_LABELS`; its result
 and `outputs/ngas_a1/final_decision.json` remain frozen. The independent completion
 audit and the new V2 protocol rationale are in report `06a_label_failure_analysis_and_v2_protocol.md`.

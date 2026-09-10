@@ -1,0 +1,2476 @@
+{
+  "action_rows": 900,
+  "actual_label_compute_seconds": 931.8323837758508,
+  "actual_label_decoder_evals": 123120,
+  "canonical_root_blocks_diagnostic": {
+    "T2_R9": [
+      {
+        "action_count": 450,
+        "checks": {
+          "all_feasible": true,
+          "all_six_states": true,
+          "balanced_coverage_each_state": true,
+          "cost_usable": true,
+          "noise_usable": false,
+          "positive_opportunities": true
+        },
+        "decision": "NGAS_A1_REVISE_LABELS",
+        "mean_seconds_per_joint_action": 0.413312045110312,
+        "paired_replicates": 1350,
+        "r13": "LOCKED",
+        "r14": "LOCKED",
+        "schema": "ngas-label-pilot-gate-v1",
+        "states": [
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.025945945945945945,
+            "mean_advantage_std": 0.0009196329772139102,
+            "noise_separated_pairs": 72,
+            "noise_separated_rank_comparisons": 0,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.12,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.001914709751338146,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12__H1",
+            "target_repair_residual_rms": 0.002670972397980472,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 4,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.005045045045045045,
+            "mean_advantage_std": 0.018815250314737873,
+            "noise_separated_pairs": 14,
+            "noise_separated_rank_comparisons": 0,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.02666666666666667,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0011046432513608067,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12__NATIVE4",
+            "target_repair_residual_rms": 0.004210952461139749,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 3,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.0,
+            "mean_advantage_std": 0.0009675515863822689,
+            "noise_separated_pairs": 0,
+            "noise_separated_rank_comparisons": 0,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.18666666666666668,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0002475623117865688,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_M_CF2_RI2_TI2_R12__H1",
+            "target_repair_residual_rms": 0.0017559120757516193,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 0,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.024864864864864864,
+            "mean_advantage_std": 0.0006825077896723225,
+            "noise_separated_pairs": 69,
+            "noise_separated_rank_comparisons": 0,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.09333333333333334,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0009667607004882822,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_M_CF2_RI2_TI2_R12__NATIVE4",
+            "target_repair_residual_rms": 0.0012841074301795394,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 4,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.022342342342342343,
+            "mean_advantage_std": 0.0032229779689269397,
+            "noise_separated_pairs": 62,
+            "noise_separated_rank_comparisons": 0,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.29333333333333333,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0011818974418607157,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__H1",
+            "target_repair_residual_rms": 0.0030593972644633355,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 2,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.06954954954954955,
+            "mean_advantage_std": 0.006433524309147496,
+            "noise_separated_pairs": 193,
+            "noise_separated_rank_comparisons": 2,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.5733333333333334,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0012599705509590514,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__NATIVE4",
+            "target_repair_residual_rms": 0.003451511094667559,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 4,
+            "within_target_size_total_repair_pairs": 150
+          }
+        ],
+        "total_label_seconds": 185.99042029963994,
+        "training_started": false
+      },
+      {
+        "action_count": 450,
+        "checks": {
+          "all_feasible": true,
+          "all_six_states": true,
+          "balanced_coverage_each_state": true,
+          "cost_usable": true,
+          "noise_usable": false,
+          "positive_opportunities": true
+        },
+        "decision": "NGAS_A1_REVISE_LABELS",
+        "mean_seconds_per_joint_action": 0.413312045110312,
+        "paired_replicates": 1350,
+        "r13": "LOCKED",
+        "r14": "LOCKED",
+        "schema": "ngas-label-pilot-gate-v1",
+        "states": [
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.07315315315315316,
+            "mean_advantage_std": 0.002431638578725178,
+            "noise_separated_pairs": 203,
+            "noise_separated_rank_comparisons": 0,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.22666666666666666,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.00178897274738574,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12__H1",
+            "target_repair_residual_rms": 0.003281373008954829,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 12,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.07675675675675675,
+            "mean_advantage_std": 0.0013396172317711463,
+            "noise_separated_pairs": 213,
+            "noise_separated_rank_comparisons": 0,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.13333333333333333,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0015846724804738249,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12__NATIVE4",
+            "target_repair_residual_rms": 0.0051287350381719835,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 12,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.10306306306306307,
+            "mean_advantage_std": 0.006023021021928938,
+            "noise_separated_pairs": 286,
+            "noise_separated_rank_comparisons": 0,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.68,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.00139779776746724,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_M_CF2_RI2_TI2_R12__H1",
+            "target_repair_residual_rms": 0.0038404327100734757,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 18,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.025585585585585584,
+            "mean_advantage_std": 0.0012567998203752118,
+            "noise_separated_pairs": 71,
+            "noise_separated_rank_comparisons": 0,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.13333333333333333,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0002877808434331847,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_M_CF2_RI2_TI2_R12__NATIVE4",
+            "target_repair_residual_rms": 0.0023125639335611105,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 4,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.043963963963963966,
+            "mean_advantage_std": 0.002876229259137579,
+            "noise_separated_pairs": 122,
+            "noise_separated_rank_comparisons": 0,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.4533333333333333,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0016200403569245517,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__H1",
+            "target_repair_residual_rms": 0.002561347691125815,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 7,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.03351351351351351,
+            "mean_advantage_std": 0.004409723965073054,
+            "noise_separated_pairs": 93,
+            "noise_separated_rank_comparisons": 0,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.6,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0008847240244487071,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__NATIVE4",
+            "target_repair_residual_rms": 0.0028421067110675096,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 2,
+            "within_target_size_total_repair_pairs": 150
+          }
+        ],
+        "total_label_seconds": 185.99042029963994,
+        "training_started": false
+      },
+      {
+        "action_count": 450,
+        "checks": {
+          "all_feasible": true,
+          "all_six_states": true,
+          "balanced_coverage_each_state": true,
+          "cost_usable": true,
+          "noise_usable": false,
+          "positive_opportunities": true
+        },
+        "decision": "NGAS_A1_REVISE_LABELS",
+        "mean_seconds_per_joint_action": 0.413312045110312,
+        "paired_replicates": 1350,
+        "r13": "LOCKED",
+        "r14": "LOCKED",
+        "schema": "ngas-label-pilot-gate-v1",
+        "states": [
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.0,
+            "mean_advantage_std": 0.0010874915769892724,
+            "noise_separated_pairs": 0,
+            "noise_separated_rank_comparisons": 0,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.09333333333333334,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.00067695568099279,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12__H1",
+            "target_repair_residual_rms": 0.0031655150610641865,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 0,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.07567567567567568,
+            "mean_advantage_std": 0.0025373341375206793,
+            "noise_separated_pairs": 210,
+            "noise_separated_rank_comparisons": 0,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.2,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0032270927216985035,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12__NATIVE4",
+            "target_repair_residual_rms": 0.0055656774121975285,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 12,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.09945945945945946,
+            "mean_advantage_std": 0.0010734673290148542,
+            "noise_separated_pairs": 276,
+            "noise_separated_rank_comparisons": 0,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.16,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0008879244230620155,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_M_CF2_RI2_TI2_R12__H1",
+            "target_repair_residual_rms": 0.004600674112655965,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 16,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.02702702702702703,
+            "mean_advantage_std": 0.0009238435688782245,
+            "noise_separated_pairs": 75,
+            "noise_separated_rank_comparisons": 0,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.12,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0010503027349629092,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_M_CF2_RI2_TI2_R12__NATIVE4",
+            "target_repair_residual_rms": 0.0022986758452124357,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 4,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.0,
+            "mean_advantage_std": 0.0021722575020710426,
+            "noise_separated_pairs": 0,
+            "noise_separated_rank_comparisons": 0,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.29333333333333333,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0013041758931683389,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__H1",
+            "target_repair_residual_rms": 0.0023562553671423294,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 0,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.0,
+            "mean_advantage_std": 0.00551802363550966,
+            "noise_separated_pairs": 0,
+            "noise_separated_rank_comparisons": 0,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.25333333333333335,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0019713664400659438,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__NATIVE4",
+            "target_repair_residual_rms": 0.0028268492361580248,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 0,
+            "within_target_size_total_repair_pairs": 150
+          }
+        ],
+        "total_label_seconds": 185.99042029963994,
+        "training_started": false
+      }
+    ],
+    "T8_R9": [
+      {
+        "action_count": 450,
+        "checks": {
+          "all_feasible": true,
+          "all_six_states": true,
+          "balanced_coverage_each_state": true,
+          "cost_usable": true,
+          "noise_usable": true,
+          "positive_opportunities": true
+        },
+        "decision": "NGAS_A1_LABEL_PILOT_PASS",
+        "mean_seconds_per_joint_action": 1.6574265855026897,
+        "paired_replicates": 1350,
+        "r13": "LOCKED",
+        "r14": "LOCKED",
+        "schema": "ngas-label-pilot-gate-v1",
+        "states": [
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.1272072072072072,
+            "mean_advantage_std": 0.0016358160940611046,
+            "noise_separated_pairs": 353,
+            "noise_separated_rank_comparisons": 0,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.12,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0028175369003948453,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12__H1",
+            "target_repair_residual_rms": 0.0047410205636225135,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 20,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.17225225225225224,
+            "mean_advantage_std": 0.022275997469623013,
+            "noise_separated_pairs": 478,
+            "noise_separated_rank_comparisons": 1,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.09333333333333334,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0016387194315881917,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12__NATIVE4",
+            "target_repair_residual_rms": 0.007989105377017204,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 22,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.20144144144144144,
+            "mean_advantage_std": 0.0029124217617234258,
+            "noise_separated_pairs": 559,
+            "noise_separated_rank_comparisons": 0,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.41333333333333333,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0009651925321190748,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_M_CF2_RI2_TI2_R12__H1",
+            "target_repair_residual_rms": 0.004989609322314679,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 33,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.09693693693693693,
+            "mean_advantage_std": 0.001680048166067699,
+            "noise_separated_pairs": 269,
+            "noise_separated_rank_comparisons": 0,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.4666666666666667,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0009575528804434383,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_M_CF2_RI2_TI2_R12__NATIVE4",
+            "target_repair_residual_rms": 0.0028959828521723354,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 16,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.2172972972972973,
+            "mean_advantage_std": 0.006185431990372719,
+            "noise_separated_pairs": 603,
+            "noise_separated_rank_comparisons": 19,
+            "noise_separated_target_rank_reversals_across_repairs": 1,
+            "positive_mean_advantage_fraction": 0.5866666666666667,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.001536208080005967,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__H1",
+            "target_repair_residual_rms": 0.00389165719106917,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 7,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.19099099099099098,
+            "mean_advantage_std": 0.0239012541871771,
+            "noise_separated_pairs": 530,
+            "noise_separated_rank_comparisons": 8,
+            "noise_separated_target_rank_reversals_across_repairs": 1,
+            "positive_mean_advantage_fraction": 0.37333333333333335,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.002449489594489799,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__NATIVE4",
+            "target_repair_residual_rms": 0.005210241769695545,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 12,
+            "within_target_size_total_repair_pairs": 150
+          }
+        ],
+        "total_label_seconds": 745.84196347621,
+        "training_started": false
+      },
+      {
+        "action_count": 450,
+        "checks": {
+          "all_feasible": true,
+          "all_six_states": true,
+          "balanced_coverage_each_state": true,
+          "cost_usable": true,
+          "noise_usable": true,
+          "positive_opportunities": true
+        },
+        "decision": "NGAS_A1_LABEL_PILOT_PASS",
+        "mean_seconds_per_joint_action": 1.6574265855026897,
+        "paired_replicates": 1350,
+        "r13": "LOCKED",
+        "r14": "LOCKED",
+        "schema": "ngas-label-pilot-gate-v1",
+        "states": [
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.1354954954954955,
+            "mean_advantage_std": 0.022514175375981944,
+            "noise_separated_pairs": 376,
+            "noise_separated_rank_comparisons": 0,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.8266666666666667,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0052329940231055005,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12__H1",
+            "target_repair_residual_rms": 0.007975096417006949,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 22,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.17405405405405405,
+            "mean_advantage_std": 0.0017657153901551902,
+            "noise_separated_pairs": 483,
+            "noise_separated_rank_comparisons": 0,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.25333333333333335,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.002163627431016347,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12__NATIVE4",
+            "target_repair_residual_rms": 0.00777493274821638,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 28,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.1881081081081081,
+            "mean_advantage_std": 0.01586061857649823,
+            "noise_separated_pairs": 522,
+            "noise_separated_rank_comparisons": 1,
+            "noise_separated_target_rank_reversals_across_repairs": 1,
+            "positive_mean_advantage_fraction": 0.14666666666666667,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0009896524927919138,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_M_CF2_RI2_TI2_R12__H1",
+            "target_repair_residual_rms": 0.005518885318942363,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 32,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.11927927927927928,
+            "mean_advantage_std": 0.0018836251845698966,
+            "noise_separated_pairs": 331,
+            "noise_separated_rank_comparisons": 0,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.16,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0004981306185802592,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_M_CF2_RI2_TI2_R12__NATIVE4",
+            "target_repair_residual_rms": 0.003338708011878617,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 20,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.1881081081081081,
+            "mean_advantage_std": 0.004996014457594294,
+            "noise_separated_pairs": 522,
+            "noise_separated_rank_comparisons": 23,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.6266666666666667,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.002207405659747108,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__H1",
+            "target_repair_residual_rms": 0.002870883865649595,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 7,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.22306306306306306,
+            "mean_advantage_std": 0.01004004882145292,
+            "noise_separated_pairs": 619,
+            "noise_separated_rank_comparisons": 9,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.5466666666666666,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0015451721049799972,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__NATIVE4",
+            "target_repair_residual_rms": 0.0048042329180492446,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 19,
+            "within_target_size_total_repair_pairs": 150
+          }
+        ],
+        "total_label_seconds": 745.84196347621,
+        "training_started": false
+      },
+      {
+        "action_count": 450,
+        "checks": {
+          "all_feasible": true,
+          "all_six_states": true,
+          "balanced_coverage_each_state": true,
+          "cost_usable": true,
+          "noise_usable": true,
+          "positive_opportunities": true
+        },
+        "decision": "NGAS_A1_LABEL_PILOT_PASS",
+        "mean_seconds_per_joint_action": 1.6574265855026897,
+        "paired_replicates": 1350,
+        "r13": "LOCKED",
+        "r14": "LOCKED",
+        "schema": "ngas-label-pilot-gate-v1",
+        "states": [
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.19675675675675675,
+            "mean_advantage_std": 0.001109157364535757,
+            "noise_separated_pairs": 546,
+            "noise_separated_rank_comparisons": 0,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.14666666666666667,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0017667672136575203,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12__H1",
+            "target_repair_residual_rms": 0.005409105554899487,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 32,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.1452252252252252,
+            "mean_advantage_std": 0.0037908847448422066,
+            "noise_separated_pairs": 403,
+            "noise_separated_rank_comparisons": 0,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.37333333333333335,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0030085098510964853,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12__NATIVE4",
+            "target_repair_residual_rms": 0.006804319923293964,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 24,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.23459459459459459,
+            "mean_advantage_std": 0.0024294517330416252,
+            "noise_separated_pairs": 651,
+            "noise_separated_rank_comparisons": 2,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.28,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0010476104783993028,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_M_CF2_RI2_TI2_R12__H1",
+            "target_repair_residual_rms": 0.006044205107374671,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 36,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.07387387387387387,
+            "mean_advantage_std": 0.0017209828008624814,
+            "noise_separated_pairs": 205,
+            "noise_separated_rank_comparisons": 0,
+            "noise_separated_target_rank_reversals_across_repairs": 0,
+            "positive_mean_advantage_fraction": 0.17333333333333334,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0018524444953468265,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_M_CF2_RI2_TI2_R12__NATIVE4",
+            "target_repair_residual_rms": 0.002890886146688374,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 12,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.22126126126126125,
+            "mean_advantage_std": 0.010916217511078043,
+            "noise_separated_pairs": 614,
+            "noise_separated_rank_comparisons": 28,
+            "noise_separated_target_rank_reversals_across_repairs": 1,
+            "positive_mean_advantage_fraction": 0.30666666666666664,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0016952462316379283,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__H1",
+            "target_repair_residual_rms": 0.0036332791311738566,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 13,
+            "within_target_size_total_repair_pairs": 150
+          },
+          {
+            "action_count": 75,
+            "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+            "coverage_pass": true,
+            "families": [
+              "LOCAL_PERTURBATION",
+              "MATCHED_RANDOM",
+              "ORIGINAL_OPERATOR",
+              "RELATED_VARIANT",
+              "STRUCTURED_NEAR_NEIGHBOR"
+            ],
+            "informative_pair_fraction": 0.20144144144144144,
+            "mean_advantage_std": 0.01820359881004696,
+            "noise_separated_pairs": 559,
+            "noise_separated_rank_comparisons": 22,
+            "noise_separated_target_rank_reversals_across_repairs": 1,
+            "positive_mean_advantage_fraction": 0.56,
+            "repairs": [
+              "greedy",
+              "reconfiguration_aware",
+              "regret2",
+              "regret3",
+              "transport_aware"
+            ],
+            "size_repair_residual_rms": 0.0029504778956959904,
+            "sizes": [
+              "large",
+              "medium",
+              "small"
+            ],
+            "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__NATIVE4",
+            "target_repair_residual_rms": 0.004605752013506449,
+            "total_pairs": 2775,
+            "within_target_size_noise_separated_repair_pairs": 19,
+            "within_target_size_total_repair_pairs": 150
+          }
+        ],
+        "total_label_seconds": 745.84196347621,
+        "training_started": false
+      }
+    ]
+  },
+  "decision": "NGAS_A1_LABEL_PILOT_PASS",
+  "equivalent_uncached_label_decoder_evals": 243000,
+  "first_three_replicates_diagnostic": {
+    "T2_R9": {
+      "action_count": 450,
+      "checks": {
+        "all_feasible": true,
+        "all_six_states": true,
+        "balanced_coverage_each_state": true,
+        "cost_usable": true,
+        "noise_usable": false,
+        "positive_opportunities": true
+      },
+      "decision": "NGAS_A1_REVISE_LABELS",
+      "mean_seconds_per_joint_action": 0.413312045110312,
+      "paired_replicates": 1350,
+      "r13": "LOCKED",
+      "r14": "LOCKED",
+      "schema": "ngas-label-pilot-gate-v1",
+      "states": [
+        {
+          "action_count": 75,
+          "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+          "coverage_pass": true,
+          "families": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "informative_pair_fraction": 0.023423423423423424,
+          "mean_advantage_std": 0.0026274620801826597,
+          "noise_separated_pairs": 65,
+          "noise_separated_rank_comparisons": 0,
+          "noise_separated_target_rank_reversals_across_repairs": 0,
+          "positive_mean_advantage_fraction": 0.21333333333333335,
+          "repairs": [
+            "greedy",
+            "reconfiguration_aware",
+            "regret2",
+            "regret3",
+            "transport_aware"
+          ],
+          "size_repair_residual_rms": 0.0010700342707478559,
+          "sizes": [
+            "large",
+            "medium",
+            "small"
+          ],
+          "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12__H1",
+          "target_repair_residual_rms": 0.0033370805249002935,
+          "total_pairs": 2775,
+          "within_target_size_noise_separated_repair_pairs": 4,
+          "within_target_size_total_repair_pairs": 150
+        },
+        {
+          "action_count": 75,
+          "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+          "coverage_pass": true,
+          "families": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "informative_pair_fraction": 0.07783783783783783,
+          "mean_advantage_std": 0.01885019905193792,
+          "noise_separated_pairs": 216,
+          "noise_separated_rank_comparisons": 0,
+          "noise_separated_target_rank_reversals_across_repairs": 0,
+          "positive_mean_advantage_fraction": 0.04,
+          "repairs": [
+            "greedy",
+            "reconfiguration_aware",
+            "regret2",
+            "regret3",
+            "transport_aware"
+          ],
+          "size_repair_residual_rms": 0.0017617643057226736,
+          "sizes": [
+            "large",
+            "medium",
+            "small"
+          ],
+          "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12__NATIVE4",
+          "target_repair_residual_rms": 0.005546804244165912,
+          "total_pairs": 2775,
+          "within_target_size_noise_separated_repair_pairs": 12,
+          "within_target_size_total_repair_pairs": 150
+        },
+        {
+          "action_count": 75,
+          "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+          "coverage_pass": true,
+          "families": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "informative_pair_fraction": 0.0,
+          "mean_advantage_std": 0.0014422852389110435,
+          "noise_separated_pairs": 0,
+          "noise_separated_rank_comparisons": 0,
+          "noise_separated_target_rank_reversals_across_repairs": 0,
+          "positive_mean_advantage_fraction": 0.17333333333333334,
+          "repairs": [
+            "greedy",
+            "reconfiguration_aware",
+            "regret2",
+            "regret3",
+            "transport_aware"
+          ],
+          "size_repair_residual_rms": 0.00043118553160429655,
+          "sizes": [
+            "large",
+            "medium",
+            "small"
+          ],
+          "state_id": "CB1_CAUR_M_CF2_RI2_TI2_R12__H1",
+          "target_repair_residual_rms": 0.0025228660595495783,
+          "total_pairs": 2775,
+          "within_target_size_noise_separated_repair_pairs": 0,
+          "within_target_size_total_repair_pairs": 150
+        },
+        {
+          "action_count": 75,
+          "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+          "coverage_pass": true,
+          "families": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "informative_pair_fraction": 0.024864864864864864,
+          "mean_advantage_std": 0.001288514077326448,
+          "noise_separated_pairs": 69,
+          "noise_separated_rank_comparisons": 0,
+          "noise_separated_target_rank_reversals_across_repairs": 0,
+          "positive_mean_advantage_fraction": 0.10666666666666667,
+          "repairs": [
+            "greedy",
+            "reconfiguration_aware",
+            "regret2",
+            "regret3",
+            "transport_aware"
+          ],
+          "size_repair_residual_rms": 0.00020284343966430805,
+          "sizes": [
+            "large",
+            "medium",
+            "small"
+          ],
+          "state_id": "CB1_CAUR_M_CF2_RI2_TI2_R12__NATIVE4",
+          "target_repair_residual_rms": 0.002045037860563709,
+          "total_pairs": 2775,
+          "within_target_size_noise_separated_repair_pairs": 4,
+          "within_target_size_total_repair_pairs": 150
+        },
+        {
+          "action_count": 75,
+          "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+          "coverage_pass": true,
+          "families": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "informative_pair_fraction": 0.026306306306306305,
+          "mean_advantage_std": 0.001832136120081153,
+          "noise_separated_pairs": 73,
+          "noise_separated_rank_comparisons": 0,
+          "noise_separated_target_rank_reversals_across_repairs": 0,
+          "positive_mean_advantage_fraction": 0.21333333333333335,
+          "repairs": [
+            "greedy",
+            "reconfiguration_aware",
+            "regret2",
+            "regret3",
+            "transport_aware"
+          ],
+          "size_repair_residual_rms": 0.0008782728118884157,
+          "sizes": [
+            "large",
+            "medium",
+            "small"
+          ],
+          "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__H1",
+          "target_repair_residual_rms": 0.002650803005035916,
+          "total_pairs": 2775,
+          "within_target_size_noise_separated_repair_pairs": 4,
+          "within_target_size_total_repair_pairs": 150
+        },
+        {
+          "action_count": 75,
+          "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+          "coverage_pass": true,
+          "families": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "informative_pair_fraction": 0.07135135135135136,
+          "mean_advantage_std": 0.004523322668535105,
+          "noise_separated_pairs": 198,
+          "noise_separated_rank_comparisons": 1,
+          "noise_separated_target_rank_reversals_across_repairs": 0,
+          "positive_mean_advantage_fraction": 0.5333333333333333,
+          "repairs": [
+            "greedy",
+            "reconfiguration_aware",
+            "regret2",
+            "regret3",
+            "transport_aware"
+          ],
+          "size_repair_residual_rms": 0.0009567709403438387,
+          "sizes": [
+            "large",
+            "medium",
+            "small"
+          ],
+          "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__NATIVE4",
+          "target_repair_residual_rms": 0.00293112313293432,
+          "total_pairs": 2775,
+          "within_target_size_noise_separated_repair_pairs": 4,
+          "within_target_size_total_repair_pairs": 150
+        }
+      ],
+      "total_label_seconds": 185.99042029963994,
+      "training_started": false
+    },
+    "T8_R9": {
+      "action_count": 450,
+      "checks": {
+        "all_feasible": true,
+        "all_six_states": true,
+        "balanced_coverage_each_state": true,
+        "cost_usable": true,
+        "noise_usable": true,
+        "positive_opportunities": true
+      },
+      "decision": "NGAS_A1_LABEL_PILOT_PASS",
+      "mean_seconds_per_joint_action": 1.6574265855026897,
+      "paired_replicates": 1350,
+      "r13": "LOCKED",
+      "r14": "LOCKED",
+      "schema": "ngas-label-pilot-gate-v1",
+      "states": [
+        {
+          "action_count": 75,
+          "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+          "coverage_pass": true,
+          "families": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "informative_pair_fraction": 0.08612612612612612,
+          "mean_advantage_std": 0.02321108656420436,
+          "noise_separated_pairs": 239,
+          "noise_separated_rank_comparisons": 0,
+          "noise_separated_target_rank_reversals_across_repairs": 0,
+          "positive_mean_advantage_fraction": 0.8266666666666667,
+          "repairs": [
+            "greedy",
+            "reconfiguration_aware",
+            "regret2",
+            "regret3",
+            "transport_aware"
+          ],
+          "size_repair_residual_rms": 0.0050818405527122855,
+          "sizes": [
+            "large",
+            "medium",
+            "small"
+          ],
+          "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12__H1",
+          "target_repair_residual_rms": 0.007787119053556341,
+          "total_pairs": 2775,
+          "within_target_size_noise_separated_repair_pairs": 15,
+          "within_target_size_total_repair_pairs": 150
+        },
+        {
+          "action_count": 75,
+          "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+          "coverage_pass": true,
+          "families": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "informative_pair_fraction": 0.14882882882882884,
+          "mean_advantage_std": 0.022738847232764505,
+          "noise_separated_pairs": 413,
+          "noise_separated_rank_comparisons": 0,
+          "noise_separated_target_rank_reversals_across_repairs": 0,
+          "positive_mean_advantage_fraction": 0.09333333333333334,
+          "repairs": [
+            "greedy",
+            "reconfiguration_aware",
+            "regret2",
+            "regret3",
+            "transport_aware"
+          ],
+          "size_repair_residual_rms": 0.00258422595091526,
+          "sizes": [
+            "large",
+            "medium",
+            "small"
+          ],
+          "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12__NATIVE4",
+          "target_repair_residual_rms": 0.007440984914166933,
+          "total_pairs": 2775,
+          "within_target_size_noise_separated_repair_pairs": 24,
+          "within_target_size_total_repair_pairs": 150
+        },
+        {
+          "action_count": 75,
+          "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+          "coverage_pass": true,
+          "families": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "informative_pair_fraction": 0.1837837837837838,
+          "mean_advantage_std": 0.002810570793671547,
+          "noise_separated_pairs": 510,
+          "noise_separated_rank_comparisons": 2,
+          "noise_separated_target_rank_reversals_across_repairs": 0,
+          "positive_mean_advantage_fraction": 0.38666666666666666,
+          "repairs": [
+            "greedy",
+            "reconfiguration_aware",
+            "regret2",
+            "regret3",
+            "transport_aware"
+          ],
+          "size_repair_residual_rms": 0.0006659813400811071,
+          "sizes": [
+            "large",
+            "medium",
+            "small"
+          ],
+          "state_id": "CB1_CAUR_M_CF2_RI2_TI2_R12__H1",
+          "target_repair_residual_rms": 0.0044491049934479426,
+          "total_pairs": 2775,
+          "within_target_size_noise_separated_repair_pairs": 30,
+          "within_target_size_total_repair_pairs": 150
+        },
+        {
+          "action_count": 75,
+          "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+          "coverage_pass": true,
+          "families": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "informative_pair_fraction": 0.14270270270270272,
+          "mean_advantage_std": 0.0016097159398044516,
+          "noise_separated_pairs": 396,
+          "noise_separated_rank_comparisons": 0,
+          "noise_separated_target_rank_reversals_across_repairs": 0,
+          "positive_mean_advantage_fraction": 0.14666666666666667,
+          "repairs": [
+            "greedy",
+            "reconfiguration_aware",
+            "regret2",
+            "regret3",
+            "transport_aware"
+          ],
+          "size_repair_residual_rms": 0.00039354067322693026,
+          "sizes": [
+            "large",
+            "medium",
+            "small"
+          ],
+          "state_id": "CB1_CAUR_M_CF2_RI2_TI2_R12__NATIVE4",
+          "target_repair_residual_rms": 0.0030287347920425665,
+          "total_pairs": 2775,
+          "within_target_size_noise_separated_repair_pairs": 24,
+          "within_target_size_total_repair_pairs": 150
+        },
+        {
+          "action_count": 75,
+          "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+          "coverage_pass": true,
+          "families": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "informative_pair_fraction": 0.3016216216216216,
+          "mean_advantage_std": 0.004577237844429374,
+          "noise_separated_pairs": 837,
+          "noise_separated_rank_comparisons": 45,
+          "noise_separated_target_rank_reversals_across_repairs": 0,
+          "positive_mean_advantage_fraction": 0.4266666666666667,
+          "repairs": [
+            "greedy",
+            "reconfiguration_aware",
+            "regret2",
+            "regret3",
+            "transport_aware"
+          ],
+          "size_repair_residual_rms": 0.001120785679162507,
+          "sizes": [
+            "large",
+            "medium",
+            "small"
+          ],
+          "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__H1",
+          "target_repair_residual_rms": 0.0036952506215906958,
+          "total_pairs": 2775,
+          "within_target_size_noise_separated_repair_pairs": 17,
+          "within_target_size_total_repair_pairs": 150
+        },
+        {
+          "action_count": 75,
+          "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+          "coverage_pass": true,
+          "families": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "informative_pair_fraction": 0.21657657657657658,
+          "mean_advantage_std": 0.01042029844928371,
+          "noise_separated_pairs": 601,
+          "noise_separated_rank_comparisons": 9,
+          "noise_separated_target_rank_reversals_across_repairs": 0,
+          "positive_mean_advantage_fraction": 0.5466666666666666,
+          "repairs": [
+            "greedy",
+            "reconfiguration_aware",
+            "regret2",
+            "regret3",
+            "transport_aware"
+          ],
+          "size_repair_residual_rms": 0.0021811006423506428,
+          "sizes": [
+            "large",
+            "medium",
+            "small"
+          ],
+          "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__NATIVE4",
+          "target_repair_residual_rms": 0.004162619929366896,
+          "total_pairs": 2775,
+          "within_target_size_noise_separated_repair_pairs": 17,
+          "within_target_size_total_repair_pairs": 150
+        }
+      ],
+      "total_label_seconds": 745.84196347621,
+      "training_started": false
+    }
+  },
+  "matched_mean_advantage_T8_minus_T2": 0.001132899116310168,
+  "no_control_rescue": true,
+  "paired_replicates": 8100,
+  "primary_positive_difference_fraction": 0.4222222222222222,
+  "primary_variant": "T8_R9",
+  "protocol_sha256": "1191e386fc7a4ecaa2b0abc3b138bc73d451f1505e6bf8406e492f4da17c97fb",
+  "r13": "LOCKED",
+  "r14": "LOCKED",
+  "schema": "ngas-a12-v2-gate",
+  "sparsity_diagnostic": {
+    "T2_R9": [
+      {
+        "candidate_no_new_best_fraction": 0.92,
+        "mean_advantage_std": 0.002019992840448447,
+        "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12__H1",
+        "zero_advantage_fraction": 0.92
+      },
+      {
+        "candidate_no_new_best_fraction": 0.8118518518518518,
+        "mean_advantage_std": 0.012271274861770156,
+        "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12__NATIVE4",
+        "zero_advantage_fraction": 0.7866666666666666
+      },
+      {
+        "candidate_no_new_best_fraction": 0.8385185185185186,
+        "mean_advantage_std": 0.004097287330877902,
+        "state_id": "CB1_CAUR_M_CF2_RI2_TI2_R12__H1",
+        "zero_advantage_fraction": 0.802962962962963
+      },
+      {
+        "candidate_no_new_best_fraction": 0.9437037037037037,
+        "mean_advantage_std": 0.0012528823157275995,
+        "state_id": "CB1_CAUR_M_CF2_RI2_TI2_R12__NATIVE4",
+        "zero_advantage_fraction": 0.8414814814814815
+      },
+      {
+        "candidate_no_new_best_fraction": 0.7703703703703704,
+        "mean_advantage_std": 0.00378999138746328,
+        "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__H1",
+        "zero_advantage_fraction": 0.8222222222222222
+      },
+      {
+        "candidate_no_new_best_fraction": 0.7496296296296296,
+        "mean_advantage_std": 0.006679629869190165,
+        "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__NATIVE4",
+        "zero_advantage_fraction": 0.4948148148148148
+      }
+    ],
+    "T8_R9": [
+      {
+        "candidate_no_new_best_fraction": 0.7051851851851851,
+        "mean_advantage_std": 0.013534720551773004,
+        "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12__H1",
+        "zero_advantage_fraction": 0.802962962962963
+      },
+      {
+        "candidate_no_new_best_fraction": 0.7318518518518519,
+        "mean_advantage_std": 0.0148352061454911,
+        "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12__NATIVE4",
+        "zero_advantage_fraction": 0.6859259259259259
+      },
+      {
+        "candidate_no_new_best_fraction": 0.6696296296296296,
+        "mean_advantage_std": 0.010341900757309145,
+        "state_id": "CB1_CAUR_M_CF2_RI2_TI2_R12__H1",
+        "zero_advantage_fraction": 0.6962962962962963
+      },
+      {
+        "candidate_no_new_best_fraction": 0.8488888888888889,
+        "mean_advantage_std": 0.002071517934944775,
+        "state_id": "CB1_CAUR_M_CF2_RI2_TI2_R12__NATIVE4",
+        "zero_advantage_fraction": 0.7511111111111111
+      },
+      {
+        "candidate_no_new_best_fraction": 0.5333333333333333,
+        "mean_advantage_std": 0.008181484966321914,
+        "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__H1",
+        "zero_advantage_fraction": 0.3585185185185185
+      },
+      {
+        "candidate_no_new_best_fraction": 0.36,
+        "mean_advantage_std": 0.017772379819025946,
+        "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__NATIVE4",
+        "zero_advantage_fraction": 0.17185185185185184
+      }
+    ]
+  },
+  "training_started": false,
+  "v1_evidence_unchanged": true,
+  "variants": {
+    "T2_R9": {
+      "action_count": 450,
+      "checks": {
+        "all_feasible": true,
+        "all_six_states": true,
+        "balanced_coverage_each_state": true,
+        "cost_usable": true,
+        "noise_usable": true,
+        "positive_opportunities": true
+      },
+      "decision": "NGAS_A1_LABEL_PILOT_PASS",
+      "mean_seconds_per_joint_action": 0.413312045110312,
+      "paired_replicates": 4050,
+      "r13": "LOCKED",
+      "r14": "LOCKED",
+      "schema": "ngas-label-pilot-gate-v1",
+      "states": [
+        {
+          "action_count": 75,
+          "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+          "coverage_pass": true,
+          "families": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "informative_pair_fraction": 0.16504504504504505,
+          "mean_advantage_std": 0.002019992840448447,
+          "noise_separated_pairs": 458,
+          "noise_separated_rank_comparisons": 0,
+          "noise_separated_target_rank_reversals_across_repairs": 0,
+          "positive_mean_advantage_fraction": 0.22666666666666666,
+          "repairs": [
+            "greedy",
+            "reconfiguration_aware",
+            "regret2",
+            "regret3",
+            "transport_aware"
+          ],
+          "size_repair_residual_rms": 0.0008364845876382281,
+          "sizes": [
+            "large",
+            "medium",
+            "small"
+          ],
+          "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12__H1",
+          "target_repair_residual_rms": 0.0025246212784608615,
+          "total_pairs": 2775,
+          "within_target_size_noise_separated_repair_pairs": 28,
+          "within_target_size_total_repair_pairs": 150
+        },
+        {
+          "action_count": 75,
+          "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+          "coverage_pass": true,
+          "families": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "informative_pair_fraction": 0.13153153153153152,
+          "mean_advantage_std": 0.012271274861770156,
+          "noise_separated_pairs": 365,
+          "noise_separated_rank_comparisons": 0,
+          "noise_separated_target_rank_reversals_across_repairs": 0,
+          "positive_mean_advantage_fraction": 0.12,
+          "repairs": [
+            "greedy",
+            "reconfiguration_aware",
+            "regret2",
+            "regret3",
+            "transport_aware"
+          ],
+          "size_repair_residual_rms": 0.0018023083443055043,
+          "sizes": [
+            "large",
+            "medium",
+            "small"
+          ],
+          "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12__NATIVE4",
+          "target_repair_residual_rms": 0.004722031702032569,
+          "total_pairs": 2775,
+          "within_target_size_noise_separated_repair_pairs": 21,
+          "within_target_size_total_repair_pairs": 150
+        },
+        {
+          "action_count": 75,
+          "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+          "coverage_pass": true,
+          "families": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "informative_pair_fraction": 0.19171171171171172,
+          "mean_advantage_std": 0.004097287330877902,
+          "noise_separated_pairs": 532,
+          "noise_separated_rank_comparisons": 1,
+          "noise_separated_target_rank_reversals_across_repairs": 0,
+          "positive_mean_advantage_fraction": 0.72,
+          "repairs": [
+            "greedy",
+            "reconfiguration_aware",
+            "regret2",
+            "regret3",
+            "transport_aware"
+          ],
+          "size_repair_residual_rms": 0.0006783556438809892,
+          "sizes": [
+            "large",
+            "medium",
+            "small"
+          ],
+          "state_id": "CB1_CAUR_M_CF2_RI2_TI2_R12__H1",
+          "target_repair_residual_rms": 0.002883381438901518,
+          "total_pairs": 2775,
+          "within_target_size_noise_separated_repair_pairs": 31,
+          "within_target_size_total_repair_pairs": 150
+        },
+        {
+          "action_count": 75,
+          "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+          "coverage_pass": true,
+          "families": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "informative_pair_fraction": 0.0745945945945946,
+          "mean_advantage_std": 0.0012528823157275995,
+          "noise_separated_pairs": 207,
+          "noise_separated_rank_comparisons": 0,
+          "noise_separated_target_rank_reversals_across_repairs": 0,
+          "positive_mean_advantage_fraction": 0.16,
+          "repairs": [
+            "greedy",
+            "reconfiguration_aware",
+            "regret2",
+            "regret3",
+            "transport_aware"
+          ],
+          "size_repair_residual_rms": 0.000655128461704217,
+          "sizes": [
+            "large",
+            "medium",
+            "small"
+          ],
+          "state_id": "CB1_CAUR_M_CF2_RI2_TI2_R12__NATIVE4",
+          "target_repair_residual_rms": 0.0018169001777865914,
+          "total_pairs": 2775,
+          "within_target_size_noise_separated_repair_pairs": 12,
+          "within_target_size_total_repair_pairs": 150
+        },
+        {
+          "action_count": 75,
+          "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+          "coverage_pass": true,
+          "families": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "informative_pair_fraction": 0.08900900900900902,
+          "mean_advantage_std": 0.00378999138746328,
+          "noise_separated_pairs": 247,
+          "noise_separated_rank_comparisons": 3,
+          "noise_separated_target_rank_reversals_across_repairs": 0,
+          "positive_mean_advantage_fraction": 0.5866666666666667,
+          "repairs": [
+            "greedy",
+            "reconfiguration_aware",
+            "regret2",
+            "regret3",
+            "transport_aware"
+          ],
+          "size_repair_residual_rms": 0.0009608190215809346,
+          "sizes": [
+            "large",
+            "medium",
+            "small"
+          ],
+          "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__H1",
+          "target_repair_residual_rms": 0.0017935109115853288,
+          "total_pairs": 2775,
+          "within_target_size_noise_separated_repair_pairs": 7,
+          "within_target_size_total_repair_pairs": 150
+        },
+        {
+          "action_count": 75,
+          "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+          "coverage_pass": true,
+          "families": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "informative_pair_fraction": 0.15207207207207207,
+          "mean_advantage_std": 0.006679629869190165,
+          "noise_separated_pairs": 422,
+          "noise_separated_rank_comparisons": 6,
+          "noise_separated_target_rank_reversals_across_repairs": 0,
+          "positive_mean_advantage_fraction": 0.6266666666666667,
+          "repairs": [
+            "greedy",
+            "reconfiguration_aware",
+            "regret2",
+            "regret3",
+            "transport_aware"
+          ],
+          "size_repair_residual_rms": 0.0010520266183510346,
+          "sizes": [
+            "large",
+            "medium",
+            "small"
+          ],
+          "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__NATIVE4",
+          "target_repair_residual_rms": 0.0018301586512096736,
+          "total_pairs": 2775,
+          "within_target_size_noise_separated_repair_pairs": 6,
+          "within_target_size_total_repair_pairs": 150
+        }
+      ],
+      "total_label_seconds": 185.99042029963994,
+      "training_started": false
+    },
+    "T8_R9": {
+      "action_count": 450,
+      "checks": {
+        "all_feasible": true,
+        "all_six_states": true,
+        "balanced_coverage_each_state": true,
+        "cost_usable": true,
+        "noise_usable": true,
+        "positive_opportunities": true
+      },
+      "decision": "NGAS_A1_LABEL_PILOT_PASS",
+      "mean_seconds_per_joint_action": 1.6574265855026897,
+      "paired_replicates": 4050,
+      "r13": "LOCKED",
+      "r14": "LOCKED",
+      "schema": "ngas-label-pilot-gate-v1",
+      "states": [
+        {
+          "action_count": 75,
+          "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+          "coverage_pass": true,
+          "families": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "informative_pair_fraction": 0.1790990990990991,
+          "mean_advantage_std": 0.013534720551773004,
+          "noise_separated_pairs": 497,
+          "noise_separated_rank_comparisons": 0,
+          "noise_separated_target_rank_reversals_across_repairs": 0,
+          "positive_mean_advantage_fraction": 0.8266666666666667,
+          "repairs": [
+            "greedy",
+            "reconfiguration_aware",
+            "regret2",
+            "regret3",
+            "transport_aware"
+          ],
+          "size_repair_residual_rms": 0.002884967162011578,
+          "sizes": [
+            "large",
+            "medium",
+            "small"
+          ],
+          "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12__H1",
+          "target_repair_residual_rms": 0.005419989502865948,
+          "total_pairs": 2775,
+          "within_target_size_noise_separated_repair_pairs": 29,
+          "within_target_size_total_repair_pairs": 150
+        },
+        {
+          "action_count": 75,
+          "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+          "coverage_pass": true,
+          "families": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "informative_pair_fraction": 0.2327927927927928,
+          "mean_advantage_std": 0.0148352061454911,
+          "noise_separated_pairs": 646,
+          "noise_separated_rank_comparisons": 4,
+          "noise_separated_target_rank_reversals_across_repairs": 0,
+          "positive_mean_advantage_fraction": 0.17333333333333334,
+          "repairs": [
+            "greedy",
+            "reconfiguration_aware",
+            "regret2",
+            "regret3",
+            "transport_aware"
+          ],
+          "size_repair_residual_rms": 0.0021632385592406543,
+          "sizes": [
+            "large",
+            "medium",
+            "small"
+          ],
+          "state_id": "CB1_CAUR_L_CF3_RI2_TI2_R12__NATIVE4",
+          "target_repair_residual_rms": 0.0071621498347869475,
+          "total_pairs": 2775,
+          "within_target_size_noise_separated_repair_pairs": 33,
+          "within_target_size_total_repair_pairs": 150
+        },
+        {
+          "action_count": 75,
+          "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+          "coverage_pass": true,
+          "families": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "informative_pair_fraction": 0.2702702702702703,
+          "mean_advantage_std": 0.010341900757309145,
+          "noise_separated_pairs": 750,
+          "noise_separated_rank_comparisons": 4,
+          "noise_separated_target_rank_reversals_across_repairs": 0,
+          "positive_mean_advantage_fraction": 0.26666666666666666,
+          "repairs": [
+            "greedy",
+            "reconfiguration_aware",
+            "regret2",
+            "regret3",
+            "transport_aware"
+          ],
+          "size_repair_residual_rms": 0.0005525721905350813,
+          "sizes": [
+            "large",
+            "medium",
+            "small"
+          ],
+          "state_id": "CB1_CAUR_M_CF2_RI2_TI2_R12__H1",
+          "target_repair_residual_rms": 0.0051219196280677835,
+          "total_pairs": 2775,
+          "within_target_size_noise_separated_repair_pairs": 41,
+          "within_target_size_total_repair_pairs": 150
+        },
+        {
+          "action_count": 75,
+          "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+          "coverage_pass": true,
+          "families": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "informative_pair_fraction": 0.23315315315315316,
+          "mean_advantage_std": 0.002071517934944775,
+          "noise_separated_pairs": 647,
+          "noise_separated_rank_comparisons": 0,
+          "noise_separated_target_rank_reversals_across_repairs": 0,
+          "positive_mean_advantage_fraction": 0.24,
+          "repairs": [
+            "greedy",
+            "reconfiguration_aware",
+            "regret2",
+            "regret3",
+            "transport_aware"
+          ],
+          "size_repair_residual_rms": 0.0010216973055845924,
+          "sizes": [
+            "large",
+            "medium",
+            "small"
+          ],
+          "state_id": "CB1_CAUR_M_CF2_RI2_TI2_R12__NATIVE4",
+          "target_repair_residual_rms": 0.002642322857510654,
+          "total_pairs": 2775,
+          "within_target_size_noise_separated_repair_pairs": 40,
+          "within_target_size_total_repair_pairs": 150
+        },
+        {
+          "action_count": 75,
+          "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+          "coverage_pass": true,
+          "families": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "informative_pair_fraction": 0.37117117117117115,
+          "mean_advantage_std": 0.008181484966321914,
+          "noise_separated_pairs": 1030,
+          "noise_separated_rank_comparisons": 53,
+          "noise_separated_target_rank_reversals_across_repairs": 4,
+          "positive_mean_advantage_fraction": 0.5466666666666666,
+          "repairs": [
+            "greedy",
+            "reconfiguration_aware",
+            "regret2",
+            "regret3",
+            "transport_aware"
+          ],
+          "size_repair_residual_rms": 0.0014531270773399275,
+          "sizes": [
+            "large",
+            "medium",
+            "small"
+          ],
+          "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__H1",
+          "target_repair_residual_rms": 0.002722704491005027,
+          "total_pairs": 2775,
+          "within_target_size_noise_separated_repair_pairs": 21,
+          "within_target_size_total_repair_pairs": 150
+        },
+        {
+          "action_count": 75,
+          "caveat": "Descriptive pilot interactions, not significance tests; size-conditioned target sets differ",
+          "coverage_pass": true,
+          "families": [
+            "LOCAL_PERTURBATION",
+            "MATCHED_RANDOM",
+            "ORIGINAL_OPERATOR",
+            "RELATED_VARIANT",
+            "STRUCTURED_NEAR_NEIGHBOR"
+          ],
+          "informative_pair_fraction": 0.33297297297297296,
+          "mean_advantage_std": 0.017772379819025946,
+          "noise_separated_pairs": 924,
+          "noise_separated_rank_comparisons": 31,
+          "noise_separated_target_rank_reversals_across_repairs": 0,
+          "positive_mean_advantage_fraction": 0.4,
+          "repairs": [
+            "greedy",
+            "reconfiguration_aware",
+            "regret2",
+            "regret3",
+            "transport_aware"
+          ],
+          "size_repair_residual_rms": 0.0021536521109653036,
+          "sizes": [
+            "large",
+            "medium",
+            "small"
+          ],
+          "state_id": "CB1_CAUR_S_CF1_RI2_TI2_R12__NATIVE4",
+          "target_repair_residual_rms": 0.0029272086189857842,
+          "total_pairs": 2775,
+          "within_target_size_noise_separated_repair_pairs": 23,
+          "within_target_size_total_repair_pairs": 150
+        }
+      ],
+      "total_label_seconds": 745.84196347621,
+      "training_started": false
+    }
+  }
+}
