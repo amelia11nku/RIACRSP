@@ -1,0 +1,160 @@
+{
+  "budget": {
+    "accounting": "same maximum wall-clock budget for every mode within each instance-seed block; model loading is outside the budget; initialization, live refresh, search, repair and decoder are inside",
+    "formula": "0.5 * num_operations seconds",
+    "multiplier": 0.5,
+    "relationship_to_full_R12_budget": "one quarter of the frozen 2*num_operations-second R12 budget"
+  },
+  "checkpoint": {
+    "R1_role": "EXPLANATORY_ABLATION_ONLY_AFTER_MECHANISM_FREEZE",
+    "checkpoint_path": "outputs/ngas_a1/critic_training_rthgt_v2/production/revised_joint_critic.pt",
+    "checkpoint_sha256": "448b0aaf871f0629dec2d94bad63c888fbdaf71c113eb5ade58c4228647c8560",
+    "production_variant": "C1",
+    "training_protocol_sha256": "0cdd5de321066c1f301afda7da86b91854d1d4b55fa2ee4df76a2dfa518d6f28"
+  },
+  "config_path": "configs/ngas_a1_search_integration_v1.json",
+  "config_sha256": "3aec8be1bbee7bce32e1e2f93a601153d8de9add90409c59334c0b24bf13a182",
+  "environment": {
+    "cuda": "12.8",
+    "cuda_available": true,
+    "device_name": "NVIDIA GeForce RTX 4060 Ti",
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "python": "3.11.15 (main, Jun 11 2026, 15:20:16) [GCC 14.3.0]",
+    "torch": "2.11.0+cu128"
+  },
+  "expected_primary_runs": 54,
+  "frozen_at_utc": "2026-09-10T19:07:10.397474+00:00",
+  "implementation_commit": "7bb5983cd77cca446c4e2e3aa3b896e125b8e0db",
+  "instance_hashes": {
+    "CB1_CAUR_L_CF3_RI2_TI2_R12": "bdb01c2b6350b572dcac6be3c542e696143bd4766ab3ae7939bff36e6234f25b",
+    "CB1_CAUR_M_CF2_RI2_TI2_R12_C02": "9a1b7de15cfd0663d92ad81a5378da0922b92dc6f7c6b042cd8daf542a21b803",
+    "CB1_CAUR_S_CF1_RI2_TI2_R12": "12ff9dd4ce3a668c89ba8edd8ee0c9f87232f00b8ce8dbb42a4827402c20047a"
+  },
+  "locks": {
+    "R13": "LOCKED",
+    "R14": "LOCKED",
+    "gurobi_run": false
+  },
+  "modes": [
+    "NEURAL_PRIOR_ONLY",
+    "ONLINE_PORTFOLIO_ONLY",
+    "NEURAL_X_PORTFOLIO",
+    "ONE_SHOT_TOP1",
+    "PERSISTENT_FIXED_REFRESH",
+    "PERSISTENT_EVENT_REFRESH"
+  ],
+  "post_selection_C1_R1_template": {
+    "budget": {
+      "accounting": "same maximum wall-clock budget for every mode within each instance-seed block; model loading is outside the budget; initialization, live refresh, search, repair and decoder are inside",
+      "formula": "0.5 * num_operations seconds",
+      "multiplier": 0.5,
+      "relationship_to_full_R12_budget": "one quarter of the frozen 2*num_operations-second R12 budget"
+    },
+    "checkpoint_template": "outputs/ngas_a1/critic_training_rthgt_v2/variants/{variant}/seed_{seed}/fold_0/model.pt",
+    "held_fold": 0,
+    "instances": [
+      "CB1_CAUR_S_CF1_RI2_TI2_R12",
+      "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+      "CB1_CAUR_L_CF3_RI2_TI2_R12"
+    ],
+    "mechanism": "deterministic selected mechanism from selection_gate",
+    "role": "explanatory only; R1 is ineligible for production regardless of solver outcome",
+    "seeds": [
+      746101,
+      746102,
+      746103
+    ],
+    "variants": [
+      "C1",
+      "R1"
+    ]
+  },
+  "run_order": "instance_then_seed_then_ablation_mode",
+  "schema": "ngas-a14-search-integration-protocol-v1",
+  "seeds": [
+    746101,
+    746102,
+    746103
+  ],
+  "selection_gate": {
+    "credible_quality_rule": "mean paired final gain > 0 and wins >= losses, OR mean paired anytime AUC gain >= 0.002 and mean paired final gain >= -0.001",
+    "hard_requirements": {
+      "feasible_replay_fraction": 1.0,
+      "minimum_median_critic_influence_fraction": 0.8,
+      "minimum_median_guided_iterations_per_critic_call": 4.0
+    },
+    "internal_control": "ONLINE_PORTFOLIO_ONLY",
+    "no_eligible_candidate_decision": "NGAS_A1_REVISE_SEARCH_INTEGRATION",
+    "production_candidates": [
+      "PERSISTENT_FIXED_REFRESH",
+      "PERSISTENT_EVENT_REFRESH"
+    ],
+    "required_run_count_per_mode": 9,
+    "selection_order": [
+      "highest_mean_paired_final_gain",
+      "highest_mean_paired_anytime_auc_gain",
+      "lowest_mean_effective_neural_overhead_seconds"
+    ]
+  },
+  "smoke_path": "outputs/ngas_a1/search_integration_v1/smoke/smoke.json",
+  "smoke_sha256": "aa66fd0c8d0b5cc3cf7d0d6a5509cd826a686cd532556485e9b2e06802730048",
+  "source_hashes": {
+    "configs/ngas_a1_search_integration_v1.json": "3aec8be1bbee7bce32e1e2f93a601153d8de9add90409c59334c0b24bf13a182",
+    "rcias_clgri/data/loader.py": "f6d0a731cf8087b7ddbb7f6f6f93944701018edb33d8c9bf184d53aa811c7d88",
+    "rcias_clgri/env/feasibility.py": "74589a70f77260c7943186a58951d9f5c53661f95ed7e2c6f96e0c2ab2d2e073",
+    "rcias_clgri/env/insertion_decoder.py": "55897c60d20b4b4193d765546ee31b30d2952f221e98765b413aeedc2225be44",
+    "rcias_clgri/heuristic/dispatching.py": "9b5a89509192c68ce788b112cc4bf92ae52e451a6cc56737e950f983ef6cbe08",
+    "rcias_clgri/search/alns.py": "fa2c1141052dc8e5fe2dae9daadf69881f7d15a383574e25e25eb596d775e559",
+    "rcias_clgri/search/common.py": "837298d3b1289a3078f822aafae274984424d9bbfa68f794d972f0610c8ddfdf",
+    "rcias_ngas/__init__.py": "a369cadd90f76bb876395cb7142973c00e0e573a99cde1caa02efee29dfbe08f",
+    "rcias_ngas/actions/__init__.py": "54eee3c544911fb7f9db098455870cf1d2678aa000b93ed6a0a4a2c2543c8aed",
+    "rcias_ngas/actions/destroy_size.py": "a407c4ec8ec8512f4a2445ac0f3982d78d9bc94e98f5895a182ddd68075acf26",
+    "rcias_ngas/actions/joint_action.py": "5ab96fd6738c7baf21bf1b0bf7501b1d66a7786db7d57756ac2cd0ce4c5bf666",
+    "rcias_ngas/actions/repair.py": "108825efd0587318cf9c589780c14371cb3d0ffb112e61be1592d4c72bb9a46e",
+    "rcias_ngas/bank/__init__.py": "3bb37fe8487abc30ae26b34c0252dd29ef8a5405b6d5883f4d8dfabac3bbfe20",
+    "rcias_ngas/bank/ngas_bank_v1.py": "f3f3a9599141d30582366716660d973b4406aaf54735694b1f70483d8c39d0bd",
+    "rcias_ngas/bank/provenance.py": "842e8939dbc2f0927eaaa460f60d6529feb91d5ee90716421052b5efea9d0406",
+    "rcias_ngas/critic/__init__.py": "ecdf765baa4c2b2bd26887a571ef2cbe16dd7a33b90bdf0bcd749d9325586b40",
+    "rcias_ngas/critic/action_encoder.py": "af156e62b2cdccd29ffc5ffb1a47205b8f67d10acaefc179058cb18814d4bab1",
+    "rcias_ngas/critic/dataset.py": "1dc31958485cc871f3629a3ce08b2810614cb35daac137880ccb9d6691f76b6d",
+    "rcias_ngas/critic/development.py": "b3b4e6a610fab536e40e881be38c1a9730188e7258978e1eb8f58d839c73cb4a",
+    "rcias_ngas/critic/encoders/__init__.py": "c6ceb10e681bd387a83d3a0655ac2e6c6d98d9321f64327b53d17fecc367dbb3",
+    "rcias_ngas/critic/encoders/compact_historical.py": "7f0935d4231765bfc35571935f8b0b5c10b22aed6316fadaabf3765118675bd5",
+    "rcias_ngas/critic/encoders/compact_relational.py": "7c945fe7c895402766e10ae1a59d61139fcb8dd6f4e598ccd3886a16159be4cb",
+    "rcias_ngas/critic/encoders/rt_hgt.py": "0332b7c2a77f4bc85727ec0b5254c9d38ed29ce630a0121b6c106e107fb96704",
+    "rcias_ngas/critic/inference.py": "df369fb2e14acaf5351c4977a378379f37ab2f75c7bf91aac2100346806d1591",
+    "rcias_ngas/critic/joint_critic.py": "a9b170b2b25b58ce565159e3c621df30e64a516b23544d62669816c9e54949ef",
+    "rcias_ngas/critic/label_revision.py": "80a7764c7ce5b434c00110fb0cc4f5dfb36a77d3c8b35c09324b6496d052c1f4",
+    "rcias_ngas/critic/losses.py": "95080d02b2c3cb7bcfe31e4ce3328ae07dd6e1d4ae945efd8e66cc09ef582638",
+    "rcias_ngas/critic/pooling.py": "91c4e32d13063c8254506b2efa43003c7de4fc80f1e8071fe8080d4bfd73cad4",
+    "rcias_ngas/critic/revised_action_encoder.py": "d13ed06709b1f751606b416e836f39b8ed0e777be6f8270c775451843fbbc6e5",
+    "rcias_ngas/critic/revised_critic.py": "984852f53b000c84394c452ddda2751f98156b963d5a17f51835c6d7dc5be129",
+    "rcias_ngas/critic/revised_train.py": "a37894dba4ea1b07f86c4d0cd8351b078fbccb467400cdc025d07fd28ec55c76",
+    "rcias_ngas/critic/train.py": "fa767b44a3d502fcf4cf5501911d7dea0dcc02846c46f48cb3e74a3a5f74c26e",
+    "rcias_ngas/csg/__init__.py": "1ccb7772a18dd2272380535817cdb6653f5b2f6054029995a3503dd95f1bd050",
+    "rcias_ngas/csg/critical_mapping.py": "47e637be492ec0102ba2b248aab9610c395fcfb53315253b13437c66ae3760c3",
+    "rcias_ngas/csg/critical_sync.py": "6285c07dc405038c680ad5d57872ce806b3e2b0ab7d140f9db0bf1a1d268330c",
+    "rcias_ngas/csg/features.py": "ce0bb6f23445799f11538f2de3a732a7872de860363db83d86228ca380c9015f",
+    "rcias_ngas/csg/revised_features.py": "70a2e2506f7c27cc8745eebdfe03a498798ebf05af44a6c56e5ea6fd161c288e",
+    "rcias_ngas/csg/revised_schema.py": "e36423d8dde4db26f21a5f2314b6ebaebfc01b6866b6ceead5fdf58b5eb3c4aa",
+    "rcias_ngas/evaluation/__init__.py": "42f7651473c4653f9019accfe9a899a40a499cc9defc5a13e463fff04bdb5973",
+    "rcias_ngas/evaluation/bks.py": "2f73019457feafe2bd0e6cbd2f1065d06e6c461e64083d2a087e3ea866764a7b",
+    "rcias_ngas/evaluation/ranking.py": "05440683ca20c83a410e9e1c8679be0149cf641ce972b78732a8b6c676eab34a",
+    "rcias_ngas/evaluation/revised_ranking.py": "319eefe523e7363549921d47ec1c906c90b2716b7b585d4a3584b5dffcc769ab",
+    "rcias_ngas/evaluation/rpd.py": "488233e2ddca39095c3597026014dd9765e9f3ef4f107167f4c88972f2052212",
+    "rcias_ngas/rng.py": "517108042997aed218ffea8efb0537d38497aedf8c0b3f12103d6b397a9b1383",
+    "rcias_ngas/search/__init__.py": "9d61eeec30c03d1763298baa4ba3c85758d444ef19e8b1b3a41940b9ccf8ea10",
+    "rcias_ngas/search/a14_telemetry.py": "1e59e195028e530c839726be8dc625c16918a75d05ef4dcd4799c17640ab855c",
+    "rcias_ngas/search/ngas_solver.py": "8e5699c17f8f35142eb6d320996d8e4d42c27258265122228242e55311ab9b03",
+    "rcias_ngas/search/online_portfolio.py": "442f7b7fc4089abe61eb66bcacb260db7e716dc62ecb271721ae073cf921e8c0",
+    "rcias_ngas/search/persistent_prior.py": "71d28c290d31dbefc6f0433f060767aeae5546af7b97da6890651bffd9b00395",
+    "rcias_ngas/search/telemetry.py": "a8e9ff9a02629dd8d833939d9d590ea4c4fff53870f8fced74dc630d24e9b103",
+    "scripts/freeze_ngas_a14_protocol.py": "8d0acb4cfee2527d840962529a3df0d8c3531072857ecfa824a8b9457f1da730",
+    "scripts/launch_ngas_a14_integration.py": "9c13f806686ecc580a9805245445182cd2af3861503fd876e635b01946057875",
+    "scripts/run_ngas_a14_integration.py": "9f45d18678f35f046f2bb1dc05dcf609107cb727ddda1ee990c1969a0490dc72",
+    "scripts/smoke_ngas_a14.py": "fa6ad590292b7c8fd7c5a4eba2b33a29830db1134bed3b6e813e43c5ebdc419d"
+  },
+  "starting_state_audit_path": "outputs/ngas_a1/search_integration_v1/audit/starting_state.json",
+  "starting_state_audit_sha256": "339f1a011b536e253bbd815fedb72f7a0c6c172d5f73fa5e16911e6ff3c736fc",
+  "status": "FROZEN_BEFORE_OUTCOMES"
+}
