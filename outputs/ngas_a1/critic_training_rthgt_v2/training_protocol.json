@@ -1,0 +1,233 @@
+{
+  "checkpoint_selection": "fixed final epoch",
+  "config": {
+    "gurobi_run": false,
+    "objective": {
+      "advantage_scale": 0.01,
+      "beats_fallback_bce_weight": 0.2,
+      "listwise_weight": 0.5,
+      "minimum_material_gap": 0.001,
+      "paired_SE_multiplier": 2.0,
+      "pairwise_weight": 1.0,
+      "robust_regression_weight": 1.0
+    },
+    "oof_gate": {
+      "at_least_two_training_seeds_pass": true,
+      "material_pair_accuracy_min": 0.55,
+      "mean_selected_advantage_positive": true,
+      "mean_state_spearman_min": 0.15,
+      "top1_regret_below_uniform_expected_regret": true
+    },
+    "r13": "LOCKED",
+    "r14": "LOCKED",
+    "runtime": {
+      "allow_tf32": false,
+      "cublas_workspace_config": ":4096:8",
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": true,
+      "deterministic_algorithms": true,
+      "device": "cuda:0",
+      "latency_repetitions": 100,
+      "latency_warmup": 20,
+      "mixed_precision": false,
+      "precision": "FP32"
+    },
+    "schema": "ngas-a13r-representation-comparison-v2",
+    "scope": "R12 CAUR-FIT DEVELOPMENT only; frozen A1.2 labels",
+    "selection": {
+      "compact_matching_absolute_margins": {
+        "material_pair_accuracy": 0.01,
+        "mean_selected_advantage": 0.002,
+        "mean_state_spearman": 0.02,
+        "mean_top1_regret": 0.002
+      },
+      "compact_substantially_faster_fraction": 0.25,
+      "latency_budget_p90_ms": 30.0,
+      "rthgt_material_improvement_any": {
+        "material_pair_accuracy": 0.01,
+        "mean_selected_advantage": 0.002,
+        "mean_state_spearman": 0.02,
+        "mean_top1_regret_reduction": 0.002
+      },
+      "rule": "select R1 only if it passes the OOF gate, stays within p90 latency budget, and materially improves at least one quality metric without degrading selected advantage or regret beyond compact matching margins; otherwise select passing C1 when it matches R1 and is at least 25% faster; else representation revision"
+    },
+    "training": {
+      "checkpoint_selection": "fixed final epoch",
+      "epochs": 60,
+      "folds": 3,
+      "gradient_clip_norm": 1.0,
+      "learning_rate": 0.0003,
+      "optimizer": "AdamW",
+      "production_seed": 746101,
+      "seeds": [
+        746101,
+        746102,
+        746103
+      ],
+      "weight_decay": 0.0001
+    },
+    "variants": {
+      "C1": {
+        "description": "enhanced compact relational encoder with typed CPM features and type-critical pooling",
+        "encoder_type": "compact_relational",
+        "heads": 4,
+        "hidden_dim": 64,
+        "message_passing_layers": 2
+      },
+      "R1": {
+        "description": "RT-HGT with typed CPM features and type-critical pooling",
+        "encoder_type": "rt_hgt",
+        "heads": 4,
+        "hidden_dim": 64,
+        "message_passing_layers": 2
+      }
+    }
+  },
+  "created_at_utc": "2026-09-10T16:47:35.123123+00:00",
+  "data_hashes": {
+    "outputs/ngas_a1/critic_training_rthgt_v2/audit/critical_sync.json": "0a65c107255687c970d7cd7c20de036d435f13f74ccb960e3e13cdf09a3eb0cb",
+    "outputs/ngas_a1/critic_training_rthgt_v2/audit/gpu_smoke.json": "efdcb367a8beb176d7f3fc349697a36547f2b9901d92037d65b45f37820ef4ef",
+    "outputs/ngas_a1/critic_training_rthgt_v2/audit/label_identity.json": "7e40f64513943e6e82561324e8e966699790299a1b2306fb793460ab4f68cf84",
+    "outputs/ngas_a1/critic_training_rthgt_v2/data/training_cache_manifest_v2.json": "66f32b2c52d017a9cdb8b9b7e4d622be3a6092cb7354088fdbccdb2fe2812385",
+    "outputs/ngas_a1/critic_training_rthgt_v2/data/training_cache_v2.json.gz": "587d8de6236a4be4abed1be4cad332bd97ff2c2056d18bc6311ee1d490c4ecb2"
+  },
+  "fold_audit": [
+    {
+      "fit_instances": [
+        "CB1_CAUR_L_CF1_RI2_TI2_R12",
+        "CB1_CAUR_L_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_L_CF3_RI2_TI2_R12",
+        "CB1_CAUR_L_CF3_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF1_RI2_TI2_R12",
+        "CB1_CAUR_M_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF2_RI2_TI2_R12",
+        "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF2_RI2_TI2_R12",
+        "CB1_CAUR_S_CF2_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF3_RI2_TI2_R12",
+        "CB1_CAUR_S_CF3_RI2_TI2_R12_C02"
+      ],
+      "fit_states": 48,
+      "held_fold": 0,
+      "held_instances": [
+        "CB1_CAUR_L_CF2_RI2_TI2_R12",
+        "CB1_CAUR_L_CF2_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF3_RI2_TI2_R12",
+        "CB1_CAUR_M_CF3_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF1_RI2_TI2_R12",
+        "CB1_CAUR_S_CF1_RI2_TI2_R12_C02"
+      ],
+      "held_states": 24,
+      "instance_overlap": []
+    },
+    {
+      "fit_instances": [
+        "CB1_CAUR_L_CF1_RI2_TI2_R12",
+        "CB1_CAUR_L_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_L_CF2_RI2_TI2_R12",
+        "CB1_CAUR_L_CF2_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF2_RI2_TI2_R12",
+        "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF3_RI2_TI2_R12",
+        "CB1_CAUR_M_CF3_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF1_RI2_TI2_R12",
+        "CB1_CAUR_S_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF3_RI2_TI2_R12",
+        "CB1_CAUR_S_CF3_RI2_TI2_R12_C02"
+      ],
+      "fit_states": 48,
+      "held_fold": 1,
+      "held_instances": [
+        "CB1_CAUR_L_CF3_RI2_TI2_R12",
+        "CB1_CAUR_L_CF3_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF1_RI2_TI2_R12",
+        "CB1_CAUR_M_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF2_RI2_TI2_R12",
+        "CB1_CAUR_S_CF2_RI2_TI2_R12_C02"
+      ],
+      "held_states": 24,
+      "instance_overlap": []
+    },
+    {
+      "fit_instances": [
+        "CB1_CAUR_L_CF2_RI2_TI2_R12",
+        "CB1_CAUR_L_CF2_RI2_TI2_R12_C02",
+        "CB1_CAUR_L_CF3_RI2_TI2_R12",
+        "CB1_CAUR_L_CF3_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF1_RI2_TI2_R12",
+        "CB1_CAUR_M_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF3_RI2_TI2_R12",
+        "CB1_CAUR_M_CF3_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF1_RI2_TI2_R12",
+        "CB1_CAUR_S_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF2_RI2_TI2_R12",
+        "CB1_CAUR_S_CF2_RI2_TI2_R12_C02"
+      ],
+      "fit_states": 48,
+      "held_fold": 2,
+      "held_instances": [
+        "CB1_CAUR_L_CF1_RI2_TI2_R12",
+        "CB1_CAUR_L_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF2_RI2_TI2_R12",
+        "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF3_RI2_TI2_R12",
+        "CB1_CAUR_S_CF3_RI2_TI2_R12_C02"
+      ],
+      "held_states": 24,
+      "instance_overlap": []
+    }
+  ],
+  "formal_device": "cuda:0",
+  "gurobi_run": false,
+  "historical_C0": {
+    "files": 41,
+    "oof_gate_sha256": "56eda9e1ab3abb770dd674459a9bb713016516ee49667a7ea3959acfcd8ebcd8",
+    "oof_predictions_sha256": "c0ebd8a79cdd859ee9e17c7dddbd29faa8d91a658c854702d4efcd97dfc8df7e",
+    "output_tree_sha256": "4239e9236cb5a5d9837def6acc70baa9155b32cb2282a85efb604a57a4b3a9f9",
+    "protocol_sha256": "a65f2ed10a725a002a818c0b75f8058588c56fe8850d98ed079f9610915ef77d"
+  },
+  "precision": "FP32",
+  "pretraining_regression_sha256": "035eaae569025034fe22806c78e57f8f618d1cb5451d09b40cbf9b228a4c794b",
+  "pretraining_regression_xml_sha256": "6359909d11f5b12a06bc3ba5b254c12842c99a94230e1ad28299b99d87998eb1",
+  "r13": "LOCKED",
+  "r14": "LOCKED",
+  "repository_head_at_freeze": "7376c12b2e2c8fc615b478fc995dd2e61faf01ca",
+  "same_labels_folds_seeds_loss_epochs_for_C1_R1": true,
+  "schema": "ngas-a13r-frozen-training-protocol-v2",
+  "source_hashes": {
+    "configs/ngas_a1_critic_training_rthgt_v2.json": "6c846f208219d8271850158e94b46382b1112e0ba15b5870145929e81ec9b2e2",
+    "rcias_ngas/actions/joint_action.py": "5ab96fd6738c7baf21bf1b0bf7501b1d66a7786db7d57756ac2cd0ce4c5bf666",
+    "rcias_ngas/actions/repair.py": "108825efd0587318cf9c589780c14371cb3d0ffb112e61be1592d4c72bb9a46e",
+    "rcias_ngas/critic/dataset.py": "1dc31958485cc871f3629a3ce08b2810614cb35daac137880ccb9d6691f76b6d",
+    "rcias_ngas/critic/development.py": "b3b4e6a610fab536e40e881be38c1a9730188e7258978e1eb8f58d839c73cb4a",
+    "rcias_ngas/critic/encoders/__init__.py": "c6ceb10e681bd387a83d3a0655ac2e6c6d98d9321f64327b53d17fecc367dbb3",
+    "rcias_ngas/critic/encoders/compact_historical.py": "7f0935d4231765bfc35571935f8b0b5c10b22aed6316fadaabf3765118675bd5",
+    "rcias_ngas/critic/encoders/compact_relational.py": "7c945fe7c895402766e10ae1a59d61139fcb8dd6f4e598ccd3886a16159be4cb",
+    "rcias_ngas/critic/encoders/rt_hgt.py": "0332b7c2a77f4bc85727ec0b5254c9d38ed29ce630a0121b6c106e107fb96704",
+    "rcias_ngas/critic/losses.py": "95080d02b2c3cb7bcfe31e4ce3328ae07dd6e1d4ae945efd8e66cc09ef582638",
+    "rcias_ngas/critic/pooling.py": "91c4e32d13063c8254506b2efa43003c7de4fc80f1e8071fe8080d4bfd73cad4",
+    "rcias_ngas/critic/revised_action_encoder.py": "d13ed06709b1f751606b416e836f39b8ed0e777be6f8270c775451843fbbc6e5",
+    "rcias_ngas/critic/revised_critic.py": "984852f53b000c84394c452ddda2751f98156b963d5a17f51835c6d7dc5be129",
+    "rcias_ngas/critic/revised_train.py": "a37894dba4ea1b07f86c4d0cd8351b078fbccb467400cdc025d07fd28ec55c76",
+    "rcias_ngas/csg/critical_mapping.py": "47e637be492ec0102ba2b248aab9610c395fcfb53315253b13437c66ae3760c3",
+    "rcias_ngas/csg/critical_sync.py": "6285c07dc405038c680ad5d57872ce806b3e2b0ab7d140f9db0bf1a1d268330c",
+    "rcias_ngas/csg/revised_features.py": "70a2e2506f7c27cc8745eebdfe03a498798ebf05af44a6c56e5ea6fd161c288e",
+    "rcias_ngas/csg/revised_schema.py": "e36423d8dde4db26f21a5f2314b6ebaebfc01b6866b6ceead5fdf58b5eb3c4aa",
+    "rcias_ngas/evaluation/revised_ranking.py": "319eefe523e7363549921d47ec1c906c90b2716b7b585d4a3584b5dffcc769ab",
+    "scripts/audit_ngas_action_label_identity.py": "57713339fd30847321bb1ad6faeb1c9e8fa3516cd01516bb2f6a5b1f5ffcb6ac",
+    "scripts/build_ngas_revised_training_cache.py": "f900e5e812a4e10805f6e2468c9d22216cb51e1ca864785144fd360cbc3a98a3",
+    "scripts/run_ngas_a13r_representation.py": "c04858ac3680252145fa63a14882c3c903efcc752f5f0ea8c8ed3cda2eba2942",
+    "tests/ngas/test_bank.py": "b67fc78a869e8b4f33506a3c9738398418299cf34d66fe24038dab7c82dc1426",
+    "tests/ngas/test_critical_sync.py": "c7535e78782dce7f7ce96fbda2163d76c626b3781a83cd5b725f198f7a09942d",
+    "tests/ngas/test_development_collection.py": "bc5f9b8909000730a12b416fcc8ecfe5c1e1614b1d8024e6c655a558719bb8fb",
+    "tests/ngas/test_infrastructure.py": "a6d1d2ab877b745d03965b6be6522b6a1c59147861a62cdf56a35ea268d1d0b4",
+    "tests/ngas/test_joint_critic.py": "0ec5193648a733a8c9ea5685baac3e3de25638ba0ce030e12162fcec5cabbd2b",
+    "tests/ngas/test_joint_critic_training.py": "1e8aa68b1afcb73e8b519180ca17ff7b1d09e249686de04a0868ebd4652283dd",
+    "tests/ngas/test_label_revision.py": "2be1799906042e26a98ebdf63accc02a2dbfccc85dd3762c9e9f81dc8353f9b0",
+    "tests/ngas/test_labels.py": "6ea3fc364ae66136560eb3325cfb3fe196eb0acea063f91df5aeb212331b8cfc",
+    "tests/ngas/test_pilot_runner.py": "a98cb4f3bf04993d67ac63f6f6013fc13e2d233fc9e2b3aedf0d7cbb483a7090",
+    "tests/ngas/test_revised_representation.py": "0b61f3005eb603e561f3db33013b1c006ebd346907fdb1a47f88d28db4fac48a"
+  },
+  "starting_commit": "2fec6f365095385bd443f7e6481499a716e49049",
+  "status": "FROZEN_BEFORE_FORMAL_OPTIMIZER"
+}

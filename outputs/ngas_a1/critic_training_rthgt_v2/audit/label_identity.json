@@ -1,0 +1,52 @@
+{
+  "checks": {
+    "encoded_equals_executed": true,
+    "paired_crn_all_steps": true,
+    "provenance_permutation_invariant": true,
+    "repair_not_resampled_after_selection": true,
+    "scope": true,
+    "shared_fallback_exact": true,
+    "stable_action_ids": true,
+    "stable_target_ids": true,
+    "zero_mismatches": true
+  },
+  "continuation_evidence": {
+    "candidate_and_fallback_neighbor_and_acceptance_seeds_match_each_step": true,
+    "continuation_steps_per_replicate": 3,
+    "encoded_repair_is_the_executed_first_step_repair": true,
+    "no_rollouts_executed_by_this_audit": true
+  },
+  "counts": {
+    "actions": 6465,
+    "candidate_first_steps": 58185,
+    "fallback_payload_matches": 58185,
+    "paired_crn_steps": 174555,
+    "provenance_permutation_checks": 6465,
+    "replicates": 58185,
+    "stable_action_ids": 6465,
+    "stable_target_ids": 6465,
+    "states": 72
+  },
+  "decision": "READY_FOR_A1_3R_TRAINING",
+  "gurobi_run": false,
+  "hashes": {
+    "canonical_label_semantics_sha256": "e03fabf4b457ebb09d54be25c695a13ad3311608a0788c5d95f22ca4ef1060cf",
+    "development_protocol_sha256": "3ac3cd3a0640a3f34b4f48b2c335d445da87c89b9ec74879f330d7cb60c13cc7",
+    "development_result_manifest_sha256": "44e3a3deb826fb38a0d81f58957efba05fb0ee78d77cefcab07c67cec14992c1",
+    "raw_label_file_manifest_sha256": "b393d43056964cc5be19de11cf00098adb32735f2e8722b92079ccd93c1665da"
+  },
+  "identity": "a_encoded=(destroy_size,target_operation_set,repair_semantic_id)=a_executed",
+  "mismatch_count": 0,
+  "mismatch_examples": [],
+  "r13": "LOCKED",
+  "r14": "LOCKED",
+  "repair_ids": [
+    "greedy",
+    "regret2",
+    "regret3",
+    "reconfiguration_aware",
+    "transport_aware"
+  ],
+  "schema": "ngas-a12-joint-action-label-identity-audit-v1",
+  "status": "PASS"
+}

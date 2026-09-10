@@ -1,0 +1,107 @@
+{
+  "device": "NVIDIA GeForce RTX 4060 Ti",
+  "gurobi_run": false,
+  "precision": "FP32",
+  "r13": "LOCKED",
+  "r14": "LOCKED",
+  "schema": "ngas-a13r-gpu-profile-v2",
+  "training_protocol_sha256": "0cdd5de321066c1f301afda7da86b91854d1d4b55fa2ee4df76a2dfa518d6f28",
+  "variants": {
+    "C1": {
+      "parameters": 261762,
+      "peak_reserved_memory_bytes": 94371840,
+      "states": {
+        "L": {
+          "edges_with_reverse": 7660,
+          "joint_actions": 90,
+          "mean_ms": 1.9982019503368065,
+          "nodes": 679,
+          "p50_ms": 1.986461051274091,
+          "p90_ms": 2.01794202439487,
+          "p99_ms": 2.324566012248397,
+          "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF2_RI2_TI2_R12:NATIVE16_746103"
+        },
+        "M": {
+          "edges_with_reverse": 4798,
+          "joint_actions": 90,
+          "mean_ms": 2.0117066701641306,
+          "nodes": 429,
+          "p50_ms": 1.995874976273626,
+          "p90_ms": 2.056765020824969,
+          "p99_ms": 2.2221049875952303,
+          "state_id": "ngas-a13-development-v1:CB1_CAUR_M_CF3_RI2_TI2_R12:NATIVE16_746102"
+        },
+        "MAX": {
+          "edges_with_reverse": 8148,
+          "joint_actions": 90,
+          "mean_ms": 1.9805542600806803,
+          "nodes": 722,
+          "p50_ms": 1.9746029865927994,
+          "p90_ms": 1.9914479926228523,
+          "p99_ms": 2.043136046268046,
+          "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF2_RI2_TI2_R12_C02:NATIVE16_746102"
+        },
+        "S": {
+          "edges_with_reverse": 2048,
+          "joint_actions": 90,
+          "mean_ms": 1.9624455407029018,
+          "nodes": 219,
+          "p50_ms": 1.9473569700494409,
+          "p90_ms": 1.9664569990709424,
+          "p99_ms": 2.3351169656962156,
+          "state_id": "ngas-a13-development-v1:CB1_CAUR_S_CF2_RI2_TI2_R12_C02:NATIVE16_746101"
+        }
+      },
+      "trainable_parameters": 261762,
+      "worst_representative_p90_ms": 2.056765020824969
+    },
+    "R1": {
+      "parameters": 1457730,
+      "peak_reserved_memory_bytes": 100663296,
+      "states": {
+        "L": {
+          "edges_with_reverse": 7660,
+          "joint_actions": 90,
+          "mean_ms": 48.75702889577951,
+          "nodes": 679,
+          "p50_ms": 48.61221701139584,
+          "p90_ms": 49.8257779981941,
+          "p99_ms": 50.458313955459744,
+          "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF2_RI2_TI2_R12:NATIVE16_746103"
+        },
+        "M": {
+          "edges_with_reverse": 4798,
+          "joint_actions": 90,
+          "mean_ms": 47.77617739222478,
+          "nodes": 429,
+          "p50_ms": 47.52131400164217,
+          "p90_ms": 48.75661904225126,
+          "p99_ms": 49.48506900109351,
+          "state_id": "ngas-a13-development-v1:CB1_CAUR_M_CF3_RI2_TI2_R12:NATIVE16_746102"
+        },
+        "MAX": {
+          "edges_with_reverse": 8148,
+          "joint_actions": 90,
+          "mean_ms": 48.86304171115626,
+          "nodes": 722,
+          "p50_ms": 48.686365014873445,
+          "p90_ms": 49.572365009225905,
+          "p99_ms": 50.29204802121967,
+          "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF2_RI2_TI2_R12_C02:NATIVE16_746102"
+        },
+        "S": {
+          "edges_with_reverse": 2048,
+          "joint_actions": 90,
+          "mean_ms": 46.864618888357654,
+          "nodes": 219,
+          "p50_ms": 46.69536399887875,
+          "p90_ms": 47.63477802043781,
+          "p99_ms": 48.55948896147311,
+          "state_id": "ngas-a13-development-v1:CB1_CAUR_S_CF2_RI2_TI2_R12_C02:NATIVE16_746101"
+        }
+      },
+      "trainable_parameters": 1457730,
+      "worst_representative_p90_ms": 49.8257779981941
+    }
+  }
+}

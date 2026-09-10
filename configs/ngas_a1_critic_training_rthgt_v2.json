@@ -1,0 +1,79 @@
+{
+  "schema": "ngas-a13r-representation-comparison-v2",
+  "scope": "R12 CAUR-FIT DEVELOPMENT only; frozen A1.2 labels",
+  "variants": {
+    "C1": {
+      "encoder_type": "compact_relational",
+      "hidden_dim": 64,
+      "message_passing_layers": 2,
+      "heads": 4,
+      "description": "enhanced compact relational encoder with typed CPM features and type-critical pooling"
+    },
+    "R1": {
+      "encoder_type": "rt_hgt",
+      "hidden_dim": 64,
+      "message_passing_layers": 2,
+      "heads": 4,
+      "description": "RT-HGT with typed CPM features and type-critical pooling"
+    }
+  },
+  "training": {
+    "seeds": [746101, 746102, 746103],
+    "folds": 3,
+    "epochs": 60,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": 1.0,
+    "checkpoint_selection": "fixed final epoch",
+    "production_seed": 746101
+  },
+  "objective": {
+    "pairwise_weight": 1.0,
+    "listwise_weight": 0.5,
+    "robust_regression_weight": 1.0,
+    "beats_fallback_bce_weight": 0.2,
+    "advantage_scale": 0.01,
+    "minimum_material_gap": 0.001,
+    "paired_SE_multiplier": 2.0
+  },
+  "oof_gate": {
+    "mean_state_spearman_min": 0.15,
+    "material_pair_accuracy_min": 0.55,
+    "top1_regret_below_uniform_expected_regret": true,
+    "mean_selected_advantage_positive": true,
+    "at_least_two_training_seeds_pass": true
+  },
+  "selection": {
+    "latency_budget_p90_ms": 30.0,
+    "rthgt_material_improvement_any": {
+      "mean_state_spearman": 0.02,
+      "material_pair_accuracy": 0.01,
+      "mean_selected_advantage": 0.002,
+      "mean_top1_regret_reduction": 0.002
+    },
+    "compact_matching_absolute_margins": {
+      "mean_state_spearman": 0.02,
+      "material_pair_accuracy": 0.01,
+      "mean_selected_advantage": 0.002,
+      "mean_top1_regret": 0.002
+    },
+    "compact_substantially_faster_fraction": 0.25,
+    "rule": "select R1 only if it passes the OOF gate, stays within p90 latency budget, and materially improves at least one quality metric without degrading selected advantage or regret beyond compact matching margins; otherwise select passing C1 when it matches R1 and is at least 25% faster; else representation revision"
+  },
+  "runtime": {
+    "device": "cuda:0",
+    "precision": "FP32",
+    "mixed_precision": false,
+    "allow_tf32": false,
+    "deterministic_algorithms": true,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": true,
+    "cublas_workspace_config": ":4096:8",
+    "latency_warmup": 20,
+    "latency_repetitions": 100
+  },
+  "r13": "LOCKED",
+  "r14": "LOCKED",
+  "gurobi_run": false
+}

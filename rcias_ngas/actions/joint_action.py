@@ -1,9 +1,9 @@
 from dataclasses import asdict, dataclass
 
-from rcias_clgri.search.alns import REPAIR
 from rcias_ngas.bank.provenance import Target
 from rcias_ngas.evaluation.bks import content_hash
 from .destroy_size import SIZE_FRACTIONS
+from .repair import NGAS_REPAIR_IDS
 
 
 @dataclass(frozen=True)
@@ -13,7 +13,7 @@ class JointAction:
     repair: str
 
     def __post_init__(self):
-        if self.size not in SIZE_FRACTIONS or self.repair not in REPAIR:
+        if self.size not in SIZE_FRACTIONS or self.repair not in NGAS_REPAIR_IDS:
             raise ValueError('Invalid joint action component')
         if not self.target.operations:
             raise ValueError('Empty destroy target')

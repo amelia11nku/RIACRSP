@@ -1,0 +1,50 @@
+{
+  "actions": 6465,
+  "cache_path": "outputs/ngas_a1/critic_training_rthgt_v2/data/training_cache_v2.json.gz",
+  "cache_sha256": "587d8de6236a4be4abed1be4cad332bd97ff2c2056d18bc6311ee1d490c4ecb2",
+  "compressed_bytes": 3719725,
+  "critical_feature_names": [
+    "normalized_slack",
+    "slack_defined",
+    "zero_slack",
+    "incident_critical_edge",
+    "normalized_critical_degree",
+    "critical_category_precedence",
+    "critical_category_island",
+    "critical_category_reconfiguration",
+    "critical_category_w_logistics",
+    "critical_category_f_logistics",
+    "critical_category_synchronization",
+    "critical_category_realized_idle",
+    "normalized_min_active_margin",
+    "active_margin_defined",
+    "critical_participation_score",
+    "mapped_unreachable_fraction"
+  ],
+  "feature_manifest_sha256": "c91b363ab8982d604fe3e24b42cbc80fdd288b6a90b8d90a83899ba08ab3f185",
+  "gurobi_run": false,
+  "instances": 18,
+  "label_equality": {
+    "actions": 6465,
+    "all_historical_label_fields_equal": true,
+    "canonical_label_semantics_sha256": "d2fa9da24849644a04c7c368f6829b4309b3e59c28e810cf6eb2f514bce2dd99",
+    "replicates": 58185,
+    "states": 72
+  },
+  "no_continuation_rollout": true,
+  "node_feature_dim": 34,
+  "paired_replicates": 58185,
+  "r13": "LOCKED",
+  "r14": "LOCKED",
+  "schema": "ngas-a13r-training-cache-manifest-v2",
+  "source_hashes": {
+    "outputs/ngas_a1/critic_training_rthgt_v2/audit/label_identity.json": "7e40f64513943e6e82561324e8e966699790299a1b2306fb793460ab4f68cf84",
+    "outputs/ngas_a1/critic_training_v1/training_cache.json.gz": "b1673d86b44589735b7d01cfcae99096ff05206235c785475ccbeba28c111541",
+    "outputs/ngas_a1/critic_training_v1/training_cache_manifest.json": "4b8582f55b4169ca7dbbde7df3bcd09908a5987eb38019eeca8a70b07ea483a5",
+    "outputs/ngas_a1/development_v1/protocol.json": "3ac3cd3a0640a3f34b4f48b2c335d445da87c89b9ec74879f330d7cb60c13cc7",
+    "outputs/ngas_a1/development_v1/result_hash_manifest.json": "44e3a3deb826fb38a0d81f58957efba05fb0ee78d77cefcab07c67cec14992c1"
+  },
+  "states": 72,
+  "uncompressed_bytes": 42889744,
+  "uncompressed_sha256": "954379f1295bc09583ff378de4b5ae6a6dd16e3632503fe9d16f072da6f0bf62"
+}

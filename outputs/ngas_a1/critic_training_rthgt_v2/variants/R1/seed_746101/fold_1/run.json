@@ -1,0 +1,587 @@
+{
+  "checkpoint_selection": "fixed final epoch",
+  "checkpoint_sha256": "7db6dcb2bdf4f9588512a0379c1d5b844756d77f5be1054e379a2a10b9bb1ec9",
+  "epochs": 60,
+  "gurobi_run": false,
+  "held_fold": 1,
+  "held_instances": [
+    "CB1_CAUR_L_CF3_RI2_TI2_R12",
+    "CB1_CAUR_L_CF3_RI2_TI2_R12_C02",
+    "CB1_CAUR_M_CF1_RI2_TI2_R12",
+    "CB1_CAUR_M_CF1_RI2_TI2_R12_C02",
+    "CB1_CAUR_S_CF2_RI2_TI2_R12",
+    "CB1_CAUR_S_CF2_RI2_TI2_R12_C02"
+  ],
+  "held_states": 24,
+  "history": [
+    {
+      "beats_fallback": 0.6019522504260143,
+      "epoch": 1,
+      "listwise": 12.303424475093683,
+      "material_pairs": 1019.25,
+      "pairwise": 3.7438621912151575,
+      "regression": 11.947872904439768,
+      "total": 21.963838011026382
+    },
+    {
+      "beats_fallback": 0.5689106291780869,
+      "epoch": 2,
+      "listwise": 3.4818815564115844,
+      "material_pairs": 1019.25,
+      "pairwise": 0.7988472807531556,
+      "regression": 1.9381596396366756,
+      "total": 4.5917298545440035
+    },
+    {
+      "beats_fallback": 0.5662642742196718,
+      "epoch": 3,
+      "listwise": 3.081627449641625,
+      "material_pairs": 1019.25,
+      "pairwise": 0.6162073025479913,
+      "regression": 2.0361704813937345,
+      "total": 4.306444356838862
+    },
+    {
+      "beats_fallback": 0.5642293946196636,
+      "epoch": 4,
+      "listwise": 2.7107599303126335,
+      "material_pairs": 1019.25,
+      "pairwise": 0.5217819254224499,
+      "regression": 1.6311565019811194,
+      "total": 3.621164306998253
+    },
+    {
+      "beats_fallback": 0.5635199590275685,
+      "epoch": 5,
+      "listwise": 2.794865154971679,
+      "material_pairs": 1019.25,
+      "pairwise": 0.5291766210769614,
+      "regression": 1.51623063099881,
+      "total": 3.555543834964434
+    },
+    {
+      "beats_fallback": 0.566892466818293,
+      "epoch": 6,
+      "listwise": 2.6346690729260445,
+      "material_pairs": 1019.25,
+      "pairwise": 0.46456985361874104,
+      "regression": 1.3209170798460643,
+      "total": 3.2161999717354774
+    },
+    {
+      "beats_fallback": 0.5679260492324829,
+      "epoch": 7,
+      "listwise": 2.5335126854479313,
+      "material_pairs": 1019.25,
+      "pairwise": 0.412194836884737,
+      "regression": 1.1770033209274213,
+      "total": 2.9695397118727365
+    },
+    {
+      "beats_fallback": 0.5625391087184349,
+      "epoch": 8,
+      "listwise": 2.4805372009674707,
+      "material_pairs": 1019.25,
+      "pairwise": 0.3931733692685763,
+      "regression": 0.9911017821480831,
+      "total": 2.737051598727703
+    },
+    {
+      "beats_fallback": 0.5627516458431879,
+      "epoch": 9,
+      "listwise": 2.74412160863479,
+      "material_pairs": 1019.25,
+      "pairwise": 0.5211531597500046,
+      "regression": 1.0536154247820377,
+      "total": 3.0593797092636428
+    },
+    {
+      "beats_fallback": 0.563579902673761,
+      "epoch": 10,
+      "listwise": 2.4694727609554925,
+      "material_pairs": 1019.25,
+      "pairwise": 0.3854693118482828,
+      "regression": 1.1318042284498613,
+      "total": 2.8647259225447974
+    },
+    {
+      "beats_fallback": 0.5626932630936304,
+      "epoch": 11,
+      "listwise": 2.4904505982995033,
+      "material_pairs": 1019.25,
+      "pairwise": 0.37842499278485775,
+      "regression": 1.370307161162297,
+      "total": 3.1064961353937783
+    },
+    {
+      "beats_fallback": 0.5623893961310387,
+      "epoch": 12,
+      "listwise": 2.532193560153246,
+      "material_pairs": 1019.25,
+      "pairwise": 0.42332344067593414,
+      "regression": 1.4345394764095545,
+      "total": 3.236437571545442
+    },
+    {
+      "beats_fallback": 0.5624124345680078,
+      "epoch": 13,
+      "listwise": 2.4973714612424374,
+      "material_pairs": 1019.25,
+      "pairwise": 0.3923468974729379,
+      "regression": 1.3910160986706614,
+      "total": 3.144531207780043
+    },
+    {
+      "beats_fallback": 0.5620491380492846,
+      "epoch": 14,
+      "listwise": 2.4814410780866942,
+      "material_pairs": 1019.25,
+      "pairwise": 0.40801527940978605,
+      "regression": 1.0140593343724806,
+      "total": 2.7752050136526427
+    },
+    {
+      "beats_fallback": 0.5622771239529053,
+      "epoch": 15,
+      "listwise": 2.436102766543627,
+      "material_pairs": 1019.25,
+      "pairwise": 0.38582240262379247,
+      "regression": 0.9279056759551167,
+      "total": 2.644234888255596
+    },
+    {
+      "beats_fallback": 0.5636553410440683,
+      "epoch": 16,
+      "listwise": 2.7621933445334435,
+      "material_pairs": 1019.25,
+      "pairwise": 0.46200814424082637,
+      "regression": 1.0010801662380497,
+      "total": 2.9569160540898642
+    },
+    {
+      "beats_fallback": 0.563240629931291,
+      "epoch": 17,
+      "listwise": 2.451164409518242,
+      "material_pairs": 1019.25,
+      "pairwise": 0.4240943718080719,
+      "regression": 0.8002641890197992,
+      "total": 2.5625888779759407
+    },
+    {
+      "beats_fallback": 0.5641823100546995,
+      "epoch": 18,
+      "listwise": 2.5100668457647166,
+      "material_pairs": 1019.25,
+      "pairwise": 0.4054353203003605,
+      "regression": 0.8411073219031096,
+      "total": 2.6144125362237296
+    },
+    {
+      "beats_fallback": 0.5652569998055696,
+      "epoch": 19,
+      "listwise": 2.5076996696492038,
+      "material_pairs": 1019.25,
+      "pairwise": 0.4187074303627014,
+      "regression": 0.780362292813758,
+      "total": 2.5659709746638932
+    },
+    {
+      "beats_fallback": 0.564020657291015,
+      "epoch": 20,
+      "listwise": 2.415268304447333,
+      "material_pairs": 1019.25,
+      "pairwise": 0.3810662254691124,
+      "regression": 0.836367758611838,
+      "total": 2.537872282167276
+    },
+    {
+      "beats_fallback": 0.5632758221278588,
+      "epoch": 21,
+      "listwise": 2.406886183967193,
+      "material_pairs": 1019.25,
+      "pairwise": 0.3675042833201587,
+      "regression": 0.8466208344325423,
+      "total": 2.530223362147808
+    },
+    {
+      "beats_fallback": 0.5627766686181227,
+      "epoch": 22,
+      "listwise": 2.3896064907312393,
+      "material_pairs": 1019.25,
+      "pairwise": 0.3835321407144268,
+      "regression": 0.7245420844604572,
+      "total": 2.415432818233967
+    },
+    {
+      "beats_fallback": 0.5622747633606195,
+      "epoch": 23,
+      "listwise": 2.341309852898121,
+      "material_pairs": 1019.25,
+      "pairwise": 0.3490860612752537,
+      "regression": 1.1732024679270883,
+      "total": 2.805398421982924
+    },
+    {
+      "beats_fallback": 0.5635008023430904,
+      "epoch": 24,
+      "listwise": 2.564269468188286,
+      "material_pairs": 1019.25,
+      "pairwise": 0.4309493778273463,
+      "regression": 1.2853019470348954,
+      "total": 3.111086241900921
+    },
+    {
+      "beats_fallback": 0.5631640659024318,
+      "epoch": 25,
+      "listwise": 2.431194535146157,
+      "material_pairs": 1019.25,
+      "pairwise": 0.3763013230636716,
+      "regression": 0.8725494261210164,
+      "total": 2.5770808507998786
+    },
+    {
+      "beats_fallback": 0.5624894890934229,
+      "epoch": 26,
+      "listwise": 2.4560505226254463,
+      "material_pairs": 1019.25,
+      "pairwise": 0.35285954906915623,
+      "regression": 1.0687364156668384,
+      "total": 2.762119121849537
+    },
+    {
+      "beats_fallback": 0.5622355180482069,
+      "epoch": 27,
+      "listwise": 2.479288770506779,
+      "material_pairs": 1019.25,
+      "pairwise": 0.3590645310468972,
+      "regression": 1.3751111164068182,
+      "total": 3.086267131070296
+    },
+    {
+      "beats_fallback": 0.5628336500376463,
+      "epoch": 28,
+      "listwise": 2.482056294878324,
+      "material_pairs": 1019.25,
+      "pairwise": 0.41855597340812284,
+      "regression": 0.8475389011049023,
+      "total": 2.6196897700428963
+    },
+    {
+      "beats_fallback": 0.5631706702212492,
+      "epoch": 29,
+      "listwise": 2.3600030466914177,
+      "material_pairs": 1019.25,
+      "pairwise": 0.33131754118949175,
+      "regression": 0.8998517198488116,
+      "total": 2.523804930349191
+    },
+    {
+      "beats_fallback": 0.5630970603475968,
+      "epoch": 30,
+      "listwise": 2.4656844635804496,
+      "material_pairs": 1019.25,
+      "pairwise": 0.40066640234241885,
+      "regression": 0.7268978633607427,
+      "total": 2.4730259105563164
+    },
+    {
+      "beats_fallback": 0.5625724947700897,
+      "epoch": 31,
+      "listwise": 2.4423898880680404,
+      "material_pairs": 1019.25,
+      "pairwise": 0.39682209491729736,
+      "regression": 0.6516423883537451,
+      "total": 2.382173920671145
+    },
+    {
+      "beats_fallback": 0.562969376022617,
+      "epoch": 32,
+      "listwise": 2.2996337190270424,
+      "material_pairs": 1019.25,
+      "pairwise": 0.33864763161788386,
+      "regression": 0.7827500288064281,
+      "total": 2.383808391789595
+    },
+    {
+      "beats_fallback": 0.5629584683726231,
+      "epoch": 33,
+      "listwise": 2.400943494712313,
+      "material_pairs": 1019.25,
+      "pairwise": 0.3879789048805833,
+      "regression": 0.4868819942542662,
+      "total": 2.187924340367317
+    },
+    {
+      "beats_fallback": 0.5628144579629103,
+      "epoch": 34,
+      "listwise": 2.5144126719484725,
+      "material_pairs": 1019.25,
+      "pairwise": 0.36806187064697343,
+      "regression": 0.844333571071426,
+      "total": 2.5821646600961685
+    },
+    {
+      "beats_fallback": 0.5624289078017076,
+      "epoch": 35,
+      "listwise": 2.3699090455969176,
+      "material_pairs": 1019.25,
+      "pairwise": 0.3547212271951139,
+      "regression": 0.6306788257012764,
+      "total": 2.282840338846048
+    },
+    {
+      "beats_fallback": 0.5636825071026882,
+      "epoch": 36,
+      "listwise": 2.2709692753851414,
+      "material_pairs": 1019.25,
+      "pairwise": 0.33492847438901663,
+      "regression": 1.009146894638737,
+      "total": 2.5922965010007224
+    },
+    {
+      "beats_fallback": 0.5630901555220286,
+      "epoch": 37,
+      "listwise": 2.1820095349103212,
+      "material_pairs": 1019.25,
+      "pairwise": 0.28107730982204276,
+      "regression": 1.1248088081677754,
+      "total": 2.6095089043180146
+    },
+    {
+      "beats_fallback": 0.5643356616298357,
+      "epoch": 38,
+      "listwise": 2.3178215672572455,
+      "material_pairs": 1019.25,
+      "pairwise": 0.31309965858235955,
+      "regression": 1.0089437200998266,
+      "total": 2.593821299572786
+    },
+    {
+      "beats_fallback": 0.5649017263203859,
+      "epoch": 39,
+      "listwise": 2.250576913356781,
+      "material_pairs": 1019.25,
+      "pairwise": 0.29602308524772525,
+      "regression": 0.7130125882104039,
+      "total": 2.2473044879734516
+    },
+    {
+      "beats_fallback": 0.562769178301096,
+      "epoch": 40,
+      "listwise": 2.2264244065930447,
+      "material_pairs": 1019.25,
+      "pairwise": 0.281340844463557,
+      "regression": 1.2789680631831288,
+      "total": 2.786074941356977
+    },
+    {
+      "beats_fallback": 0.5623792645831903,
+      "epoch": 41,
+      "listwise": 2.121010994538665,
+      "material_pairs": 1019.25,
+      "pairwise": 0.27232547927026945,
+      "regression": 0.5378414522856474,
+      "total": 1.9831482792894046
+    },
+    {
+      "beats_fallback": 0.5627142017086347,
+      "epoch": 42,
+      "listwise": 2.1121745885660252,
+      "material_pairs": 1019.25,
+      "pairwise": 0.27272141134987277,
+      "regression": 0.9482512613758445,
+      "total": 2.389602802693844
+    },
+    {
+      "beats_fallback": 0.5621920116245747,
+      "epoch": 43,
+      "listwise": 2.199112132191658,
+      "material_pairs": 1019.25,
+      "pairwise": 0.28688736803208786,
+      "regression": 0.5566745729496082,
+      "total": 2.055556426445643
+    },
+    {
+      "beats_fallback": 0.5623821051170429,
+      "epoch": 44,
+      "listwise": 2.2264995742589235,
+      "material_pairs": 1019.25,
+      "pairwise": 0.27737388433888555,
+      "regression": 0.5852162865921855,
+      "total": 2.0883163859446845
+    },
+    {
+      "beats_fallback": 0.5670145656913519,
+      "epoch": 45,
+      "listwise": 2.2171725953618684,
+      "material_pairs": 1019.25,
+      "pairwise": 0.32819432361672324,
+      "regression": 0.5496326880529523,
+      "total": 2.099816237886747
+    },
+    {
+      "beats_fallback": 0.5643441534290711,
+      "epoch": 46,
+      "listwise": 2.3234152868390083,
+      "material_pairs": 1019.25,
+      "pairwise": 0.3970369628320138,
+      "regression": 0.9623714108020067,
+      "total": 2.6339848513404527
+    },
+    {
+      "beats_fallback": 0.5628475441286961,
+      "epoch": 47,
+      "listwise": 2.283396404236555,
+      "material_pairs": 1019.25,
+      "pairwise": 0.31736670915658277,
+      "regression": 0.7351441130352517,
+      "total": 2.3067785476644835
+    },
+    {
+      "beats_fallback": 0.5631122104823589,
+      "epoch": 48,
+      "listwise": 2.364955541988214,
+      "material_pairs": 1019.25,
+      "pairwise": 0.31989583124717075,
+      "regression": 0.6110413013957441,
+      "total": 2.226037360727787
+    },
+    {
+      "beats_fallback": 0.5623596217483282,
+      "epoch": 49,
+      "listwise": 2.0948435782144466,
+      "material_pairs": 1019.25,
+      "pairwise": 0.2630546176806092,
+      "regression": 0.5974910113339623,
+      "total": 2.0204393453896046
+    },
+    {
+      "beats_fallback": 0.5624007501949867,
+      "epoch": 50,
+      "listwise": 2.047633316988746,
+      "material_pairs": 1019.25,
+      "pairwise": 0.2554541261245807,
+      "regression": 0.6294856710980336,
+      "total": 2.0212365835905075
+    },
+    {
+      "beats_fallback": 0.5617293535421292,
+      "epoch": 51,
+      "listwise": 2.0187454813470445,
+      "material_pairs": 1019.25,
+      "pairwise": 0.2410514655833443,
+      "regression": 0.5586711527624478,
+      "total": 1.921441198637088
+    },
+    {
+      "beats_fallback": 0.5624609136333069,
+      "epoch": 52,
+      "listwise": 2.056188673401872,
+      "material_pairs": 1019.25,
+      "pairwise": 0.270994879771024,
+      "regression": 0.5342971977467338,
+      "total": 1.94587858269612
+    },
+    {
+      "beats_fallback": 0.5622958758225044,
+      "epoch": 53,
+      "listwise": 2.174330731232961,
+      "material_pairs": 1019.25,
+      "pairwise": 0.3278506988038619,
+      "regression": 0.5500196339562535,
+      "total": 2.0774948708713055
+    },
+    {
+      "beats_fallback": 0.5621282278249661,
+      "epoch": 54,
+      "listwise": 2.0975104924291372,
+      "material_pairs": 1019.25,
+      "pairwise": 0.3046833296927313,
+      "regression": 0.4506464779066543,
+      "total": 1.916510680069526
+    },
+    {
+      "beats_fallback": 0.5627586431801319,
+      "epoch": 55,
+      "listwise": 2.0916430869450173,
+      "material_pairs": 1019.25,
+      "pairwise": 0.3021218677361806,
+      "regression": 0.5674768813575307,
+      "total": 2.027972018967072
+    },
+    {
+      "beats_fallback": 0.5631289575248957,
+      "epoch": 56,
+      "listwise": 2.2450579553842545,
+      "material_pairs": 1019.25,
+      "pairwise": 0.37538662102694315,
+      "regression": 0.5247299147304147,
+      "total": 2.135271303355694
+    },
+    {
+      "beats_fallback": 0.5634069070219994,
+      "epoch": 57,
+      "listwise": 2.499466215570768,
+      "material_pairs": 1019.25,
+      "pairwise": 0.3896244702239831,
+      "regression": 0.7528170856336752,
+      "total": 2.504856047530969
+    },
+    {
+      "beats_fallback": 0.5626960763086876,
+      "epoch": 58,
+      "listwise": 2.333469652881225,
+      "material_pairs": 1019.25,
+      "pairwise": 0.308772798627615,
+      "regression": 0.8260033475235105,
+      "total": 2.4140501568714776
+    },
+    {
+      "beats_fallback": 0.5628813337534666,
+      "epoch": 59,
+      "listwise": 2.213612807293733,
+      "material_pairs": 1019.25,
+      "pairwise": 0.2961870428795616,
+      "regression": 0.6218793286631504,
+      "total": 2.1374490559101105
+    },
+    {
+      "beats_fallback": 0.562852157279849,
+      "epoch": 60,
+      "listwise": 2.197460470100244,
+      "material_pairs": 1019.25,
+      "pairwise": 0.2808722013918062,
+      "regression": 0.6763292221973339,
+      "total": 2.168502094844977
+    }
+  ],
+  "instance_overlap": [],
+  "parameters": 1457730,
+  "peak_reserved_memory_bytes": 180355072,
+  "predictions_sha256": "57ff37c41a66765bff2b61fbabe4b59268687c93920c40da6915f80f446ff485",
+  "r13": "LOCKED",
+  "r14": "LOCKED",
+  "runtime_seconds": 495.1490345079801,
+  "schema": "ngas-a13r-oof-run-v2",
+  "seed": 746101,
+  "train_instances": [
+    "CB1_CAUR_L_CF1_RI2_TI2_R12",
+    "CB1_CAUR_L_CF1_RI2_TI2_R12_C02",
+    "CB1_CAUR_L_CF2_RI2_TI2_R12",
+    "CB1_CAUR_L_CF2_RI2_TI2_R12_C02",
+    "CB1_CAUR_M_CF2_RI2_TI2_R12",
+    "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+    "CB1_CAUR_M_CF3_RI2_TI2_R12",
+    "CB1_CAUR_M_CF3_RI2_TI2_R12_C02",
+    "CB1_CAUR_S_CF1_RI2_TI2_R12",
+    "CB1_CAUR_S_CF1_RI2_TI2_R12_C02",
+    "CB1_CAUR_S_CF3_RI2_TI2_R12",
+    "CB1_CAUR_S_CF3_RI2_TI2_R12_C02"
+  ],
+  "train_states": 48,
+  "trainable_parameters": 1457730,
+  "training_actions_per_second": 522.8728765618292,
+  "training_protocol_sha256": "0cdd5de321066c1f301afda7da86b91854d1d4b55fa2ee4df76a2dfa518d6f28",
+  "training_states_per_second": 5.816430608335528,
+  "variant": "R1"
+}

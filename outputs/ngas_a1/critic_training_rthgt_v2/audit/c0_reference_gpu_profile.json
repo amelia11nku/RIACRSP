@@ -1,0 +1,76 @@
+{
+  "checkpoint_sha256": "2aa623b7cf16672f91be1f48b22ff07b368df5e2f8521e4eff9a7c4dff1ee995",
+  "device": "NVIDIA GeForce RTX 4060 Ti",
+  "gurobi_run": false,
+  "historical_output_modified": false,
+  "historical_protocol_sha256": "a65f2ed10a725a002a818c0b75f8058588c56fe8850d98ed079f9610915ef77d",
+  "historical_training": {
+    "formal_peak_memory_not_recorded": true,
+    "formal_peak_reserved_memory_bytes": null,
+    "mean_training_actions_per_second": 4244.040931661405,
+    "mean_training_states_per_second": 47.26513503282612,
+    "preformal_smoke_peak_reserved_memory_bytes": 94371840,
+    "runs": 9
+  },
+  "parameters": 65922,
+  "peak_inference_reserved_memory_bytes": 60817408,
+  "precision": "FP32",
+  "r13": "LOCKED",
+  "r14": "LOCKED",
+  "schema": "ngas-a13r-c0-reference-gpu-profile-v1",
+  "scope": "post-selection read-only profile of immutable historical C0",
+  "selection_effect": "none",
+  "states": {
+    "L": {
+      "edges_with_reverse": 7660,
+      "finite_outputs": true,
+      "joint_actions": 90,
+      "mean_ms": 1.1468646861612797,
+      "nodes": 679,
+      "p50_ms": 1.128253003116697,
+      "p90_ms": 1.1904000421054661,
+      "p99_ms": 1.3315490214154124,
+      "repeated_inference_bitwise_equal": true,
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF2_RI2_TI2_R12:NATIVE16_746103"
+    },
+    "M": {
+      "edges_with_reverse": 4798,
+      "finite_outputs": true,
+      "joint_actions": 90,
+      "mean_ms": 1.1413852381519973,
+      "nodes": 429,
+      "p50_ms": 1.1263220221735537,
+      "p90_ms": 1.1714970460161567,
+      "p99_ms": 1.386956952046603,
+      "repeated_inference_bitwise_equal": true,
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_M_CF3_RI2_TI2_R12:NATIVE16_746102"
+    },
+    "MAX": {
+      "edges_with_reverse": 8148,
+      "finite_outputs": true,
+      "joint_actions": 90,
+      "mean_ms": 1.1547130899270996,
+      "nodes": 722,
+      "p50_ms": 1.138119027018547,
+      "p90_ms": 1.2256070040166378,
+      "p99_ms": 1.3228989555500448,
+      "repeated_inference_bitwise_equal": true,
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF2_RI2_TI2_R12_C02:NATIVE16_746102"
+    },
+    "S": {
+      "edges_with_reverse": 2048,
+      "finite_outputs": true,
+      "joint_actions": 90,
+      "mean_ms": 1.1200852371985093,
+      "nodes": 219,
+      "p50_ms": 1.1013989569619298,
+      "p90_ms": 1.1426179553382099,
+      "p99_ms": 1.3776340056210756,
+      "repeated_inference_bitwise_equal": true,
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_S_CF2_RI2_TI2_R12_C02:NATIVE16_746101"
+    }
+  },
+  "status": "PASS",
+  "trainable_parameters": 65922,
+  "worst_representative_p90_ms": 1.2256070040166378
+}

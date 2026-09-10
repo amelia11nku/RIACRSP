@@ -2,10 +2,10 @@
 import math
 import statistics
 
-from rcias_clgri.search.alns import REPAIR, _destroy
+from rcias_clgri.search.alns import _destroy
 from rcias_ngas.actions.destroy_size import SIZE_FRACTIONS, destroy_count
 from rcias_ngas.actions.joint_action import JointAction
-from rcias_ngas.actions.repair import execute_action
+from rcias_ngas.actions.repair import NGAS_REPAIR_IDS, execute_action
 from rcias_ngas.bank.ngas_bank_v1 import build_bank
 from rcias_ngas.bank.provenance import Target
 from rcias_ngas.csg.critical_sync import critical_sync
@@ -27,7 +27,7 @@ def balanced_actions(instance, current, state_id, rngs):
         banks.append(bank)
         for rule in SAMPLING_RULES:
             target = next(t for t in bank.targets if rule in t.origin_rules)
-            for repair in REPAIR:
+            for repair in NGAS_REPAIR_IDS:
                 action = JointAction(size, target, repair)
                 selected[action.action_id] = action
     return tuple(sorted(selected.values(), key=lambda a: a.action_id)), banks
@@ -35,7 +35,7 @@ def balanced_actions(instance, current, state_id, rngs):
 
 def fallback_action(instance, current, rngs, key):
     size = rngs.stream('destroy_size', key).choice(tuple(SIZE_FRACTIONS))
-    repair = rngs.stream('repair', key).choice(REPAIR)
+    repair = rngs.stream('repair', key).choice(NGAS_REPAIR_IDS)
     operator = rngs.stream('fallback', key).choice(FALLBACK_OPERATORS)
     operations = tuple(sorted(_destroy(instance, current, operator,
                                        destroy_count(instance.num_operations, size),

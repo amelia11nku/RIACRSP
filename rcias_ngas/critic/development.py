@@ -1,11 +1,11 @@
 """Outcome-blind source plan, grouped folds and balanced full-bank sampling."""
 from dataclasses import asdict
 
-from rcias_clgri.search.alns import REPAIR
+from rcias_ngas.actions.repair import NGAS_REPAIR_IDS
 from rcias_ngas.actions.destroy_size import SIZE_FRACTIONS
 from rcias_ngas.actions.joint_action import JointAction
 from rcias_ngas.bank.ngas_bank_v1 import build_bank
-from rcias_ngas.csg.features import RULE_GROUPS
+from rcias_ngas.csg.revised_schema import RULE_GROUPS
 from rcias_ngas.csg.critical_sync import critical_sync
 from rcias_ngas.critic.dataset import fallback_action, transition
 from rcias_ngas.rng import RNGStreams
@@ -56,7 +56,7 @@ def sample_actions(instance, current, spec):
         banks.append(bank)
         for rule in selected_rules(spec['ordinal'], index):
             target = next(t for t in bank.targets if rule in t.origin_rules)
-            for repair in REPAIR:
+            for repair in NGAS_REPAIR_IDS:
                 action = JointAction(size, target, repair)
                 actions[action.action_id] = action
     return tuple(sorted(actions.values(), key=lambda a: a.action_id)), banks

@@ -1,0 +1,54 @@
+{
+  "checks": {
+    "deterministic_repeated_inference": true,
+    "finite_outputs_and_gradients": true,
+    "fp32": true,
+    "no_amp": true,
+    "one_graph_encoding_scores_all_actions": true
+  },
+  "environment": {
+    "compute_capability": "8.9",
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 4060 Ti",
+    "python": "3.11.15 (main, Jun 11 2026, 15:20:16) [GCC 14.3.0]",
+    "torch": "2.11.0+cu128",
+    "total_memory_bytes": 8182628352
+  },
+  "gurobi_run": false,
+  "r13": "LOCKED",
+  "r14": "LOCKED",
+  "schema": "ngas-a13r-gpu-smoke-v1",
+  "status": "PASS",
+  "variants": {
+    "C1": {
+      "edges_with_reverse": 8148,
+      "encoder_type": "compact_relational",
+      "finite_gradients": true,
+      "finite_outputs": true,
+      "graph_encoder_calls_for_all_actions": 1,
+      "joint_actions": 90,
+      "nodes": 722,
+      "parameters": 261762,
+      "parameters_unchanged_by_inference": true,
+      "peak_reserved_memory_bytes": 117440512,
+      "repeated_inference_bitwise_equal": true,
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF2_RI2_TI2_R12_C02:NATIVE16_746102",
+      "trainable_parameters": 261762
+    },
+    "R1": {
+      "edges_with_reverse": 8148,
+      "encoder_type": "rt_hgt",
+      "finite_gradients": true,
+      "finite_outputs": true,
+      "graph_encoder_calls_for_all_actions": 1,
+      "joint_actions": 90,
+      "nodes": 722,
+      "parameters": 1457730,
+      "parameters_unchanged_by_inference": true,
+      "peak_reserved_memory_bytes": 138412032,
+      "repeated_inference_bitwise_equal": true,
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF2_RI2_TI2_R12_C02:NATIVE16_746102",
+      "trainable_parameters": 1457730
+    }
+  }
+}

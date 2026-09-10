@@ -1,0 +1,64 @@
+{
+  "cache_manifest_sha256": "66f32b2c52d017a9cdb8b9b7e4d622be3a6092cb7354088fdbccdb2fe2812385",
+  "checks": {
+    "W_F_reconfiguration_features_type_valid": true,
+    "all_critical_nodes_satisfy_longest_path_identity": true,
+    "all_nonboundary_events_mapped_once_or_explicitly_aggregated": true,
+    "old_label_values_unchanged": true,
+    "realized_idle_separate_category": true,
+    "unreachable_nodes_are_not_zero_slack": true
+  },
+  "counts": {
+    "aggregated_events": 19733,
+    "critical_nodes": 8453,
+    "event_nodes": 49639,
+    "longest_path_identity_checks": 8453,
+    "mapped_events": 49495,
+    "unreachable_nodes": 144
+  },
+  "critical_relation_categories": {
+    "F_LOGISTICS": 5401,
+    "ISLAND": 564,
+    "PRECEDENCE": 85,
+    "RECONFIGURATION": 564,
+    "SYNCHRONIZATION": 145,
+    "W_LOGISTICS": 2593
+  },
+  "definition": "finite CPM slack within max(1e-8,1e-10*makespan)",
+  "feature_schema": {
+    "critical_feature_names": [
+      "normalized_slack",
+      "slack_defined",
+      "zero_slack",
+      "incident_critical_edge",
+      "normalized_critical_degree",
+      "critical_category_precedence",
+      "critical_category_island",
+      "critical_category_reconfiguration",
+      "critical_category_w_logistics",
+      "critical_category_f_logistics",
+      "critical_category_synchronization",
+      "critical_category_realized_idle",
+      "normalized_min_active_margin",
+      "active_margin_defined",
+      "critical_participation_score",
+      "mapped_unreachable_fraction"
+    ],
+    "node_dim": 34,
+    "schema": "ngas-csg-features-v2"
+  },
+  "gurobi_run": false,
+  "projection_reasons": {
+    "DIRECT_OPERATION": 8640,
+    "DIRECT_RECONFIGURATION": 5016,
+    "F_OUTBOUND_RETURN_AGGREGATED": 17280,
+    "INTENTIONALLY_OMITTED_GRAPH_BOUNDARY": 144,
+    "REALIZED_IDLE_PROJECTED_TO_SUCCESSOR": 3,
+    "W_EMPTY_LOADED_AGGREGATED": 14932,
+    "ZERO_DURATION_RECONFIGURATION_PROJECTED_TO_OP": 3624
+  },
+  "r13": "LOCKED",
+  "r14": "LOCKED",
+  "schema": "ngas-a13r-critical-sync-audit-v1",
+  "status": "PASS"
+}
