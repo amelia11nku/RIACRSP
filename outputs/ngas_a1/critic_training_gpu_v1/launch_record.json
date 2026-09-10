@@ -1,0 +1,31 @@
+{
+  "check_command": "cat outputs/ngas_a1/critic_training_gpu_v1/progress.json",
+  "command": [
+    "/home/liulei/miniconda3/envs/gnn311/bin/python",
+    "-u",
+    "scripts/train_ngas_joint_critic.py",
+    "--device",
+    "cuda"
+  ],
+  "device": "cuda",
+  "eta_basis": "first OOF epoch wall time times 60 epochs and at most ten fits, with 35 percent reserve",
+  "expected_completion_utc": "2026-09-10T15:25:21.786254+00:00",
+  "first_epoch_seconds": 1.506899693980813,
+  "gurobi_run": false,
+  "implementation_commit": "999e944bc4b717d23d34e73f1f0c5b09b9248b17",
+  "liveness_evidence": "worker alive and cache/protocol validation start event observed",
+  "log_path": "outputs/ngas_a1/critic_training_gpu_v1/training_20260910T150501Z.log",
+  "output_path": "outputs/ngas_a1/critic_training_gpu_v1",
+  "pid": 255592,
+  "progress_path": "outputs/ngas_a1/critic_training_gpu_v1/progress.json",
+  "projected_seconds": 1220.5887521244586,
+  "r13": "LOCKED",
+  "r14": "LOCKED",
+  "resume_command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/launch_ngas_joint_critic.py",
+  "resume_semantics": "validated complete seed/fold runs are reused; only an incomplete current run is recomputed",
+  "schema": "ngas-a13-training-launch-v1",
+  "started_at_utc": "2026-09-10T15:05:01.197502+00:00",
+  "status": "RUNNING_VERIFIED",
+  "training_protocol_sha256": "a65f2ed10a725a002a818c0b75f8058588c56fe8850d98ed079f9610915ef77d",
+  "working_directory": "/home/liulei/ayx/RI-ACRSP"
+}
