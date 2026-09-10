@@ -1,0 +1,3425 @@
+{
+  "action_count": 6465,
+  "checks": {
+    "all_feasible": true,
+    "all_rules": true,
+    "all_states": true,
+    "balanced_coverage": true,
+    "informative_each_fold": true,
+    "positive_opportunities": true
+  },
+  "decision": "READY_FOR_JOINT_CRITIC_TRAINING",
+  "informative_state_fraction_by_fold": {
+    "0": 0.8333333333333334,
+    "1": 0.8333333333333334,
+    "2": 0.9583333333333334
+  },
+  "label_compute_seconds": 10328.217911957763,
+  "label_decoder_evals": 1411992,
+  "protocol_sha256": "3ac3cd3a0640a3f34b4f48b2c335d445da87c89b9ec74879f330d7cb60c13cc7",
+  "r13": "LOCKED",
+  "r14": "LOCKED",
+  "schema": "ngas-a13-development-v1",
+  "source_search_decoder_evals": 6912,
+  "states": [
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 2,
+      "informative_pair_fraction": 0.27640449438202247,
+      "instance_id": "CB1_CAUR_L_CF1_RI2_TI2_R12",
+      "positive_action_fraction": 0.4,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_precedence_neighbor",
+        "near_same_island_chain",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_high_reconfiguration",
+        "operator_overloaded_island",
+        "operator_random",
+        "related_replace_25",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_3",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "H1",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF1_RI2_TI2_R12:H1"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 2,
+      "informative_pair_fraction": 0.16779026217228465,
+      "instance_id": "CB1_CAUR_L_CF1_RI2_TI2_R12",
+      "positive_action_fraction": 0.15555555555555556,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_W_delay",
+        "near_precedence_neighbor",
+        "near_same_island_chain",
+        "operator_high_reconfiguration",
+        "operator_overloaded_island",
+        "operator_w_bottleneck",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_2",
+        "related_variant_3",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746101",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF1_RI2_TI2_R12:NATIVE16_746101"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 2,
+      "informative_pair_fraction": 0.4,
+      "instance_id": "CB1_CAUR_L_CF1_RI2_TI2_R12",
+      "positive_action_fraction": 0.2222222222222222,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_high_W_delay",
+        "near_same_island_chain",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_high_reconfiguration",
+        "operator_w_bottleneck",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_3",
+        "related_variant_4"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746102",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF1_RI2_TI2_R12:NATIVE16_746102"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 2,
+      "informative_pair_fraction": 0.4282147315855181,
+      "instance_id": "CB1_CAUR_L_CF1_RI2_TI2_R12",
+      "positive_action_fraction": 0.23333333333333334,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_high_W_delay",
+        "near_legacy_completion_tail",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_related",
+        "operator_w_bottleneck",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746103",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF1_RI2_TI2_R12:NATIVE16_746103"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 2,
+      "informative_pair_fraction": 0.299625468164794,
+      "instance_id": "CB1_CAUR_L_CF1_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.25555555555555554,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_legacy_completion_tail",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_random",
+        "operator_related",
+        "related_replace_25",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_3",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "H1",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF1_RI2_TI2_R12_C02:H1"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 2,
+      "informative_pair_fraction": 0.3438202247191011,
+      "instance_id": "CB1_CAUR_L_CF1_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.15555555555555556,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_legacy_completion_tail",
+        "near_precedence_neighbor",
+        "near_same_product",
+        "operator_overloaded_island",
+        "operator_random",
+        "operator_related",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_3",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746101",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF1_RI2_TI2_R12_C02:NATIVE16_746101"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 2,
+      "informative_pair_fraction": 0.32808988764044944,
+      "instance_id": "CB1_CAUR_L_CF1_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.2111111111111111,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_precedence_neighbor",
+        "near_same_island_chain",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_high_reconfiguration",
+        "operator_overloaded_island",
+        "operator_random",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_3",
+        "related_variant_4"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746102",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF1_RI2_TI2_R12_C02:NATIVE16_746102"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 2,
+      "informative_pair_fraction": 0.4132334581772784,
+      "instance_id": "CB1_CAUR_L_CF1_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.35555555555555557,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_W_delay",
+        "near_precedence_neighbor",
+        "near_same_island_chain",
+        "one_operation_swap",
+        "operator_high_reconfiguration",
+        "operator_overloaded_island",
+        "operator_w_bottleneck",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746103",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF1_RI2_TI2_R12_C02:NATIVE16_746103"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 0,
+      "informative_pair_fraction": 0.2104868913857678,
+      "instance_id": "CB1_CAUR_L_CF2_RI2_TI2_R12",
+      "positive_action_fraction": 0.13333333333333333,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_high_W_delay",
+        "near_same_island_chain",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_high_reconfiguration",
+        "operator_w_bottleneck",
+        "related_replace_25",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_3",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "H1",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF2_RI2_TI2_R12:H1"
+    },
+    {
+      "actions": 85,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 0,
+      "informative_pair_fraction": 0.33585434173669465,
+      "instance_id": "CB1_CAUR_L_CF2_RI2_TI2_R12",
+      "positive_action_fraction": 0.8235294117647058,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_high_W_delay",
+        "near_legacy_completion_tail",
+        "operator_f_bottleneck",
+        "operator_related",
+        "operator_w_bottleneck",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_3",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746101",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF2_RI2_TI2_R12:NATIVE16_746101"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 0,
+      "informative_pair_fraction": 0.28863920099875157,
+      "instance_id": "CB1_CAUR_L_CF2_RI2_TI2_R12",
+      "positive_action_fraction": 0.18888888888888888,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_legacy_completion_tail",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_random",
+        "operator_related",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_3",
+        "related_variant_4"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746102",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF2_RI2_TI2_R12:NATIVE16_746102"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 0,
+      "informative_pair_fraction": 0.19425717852684146,
+      "instance_id": "CB1_CAUR_L_CF2_RI2_TI2_R12",
+      "positive_action_fraction": 0.2222222222222222,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_legacy_completion_tail",
+        "near_precedence_neighbor",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_overloaded_island",
+        "operator_random",
+        "operator_related",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746103",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF2_RI2_TI2_R12:NATIVE16_746103"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 0,
+      "informative_pair_fraction": 0.12059925093632959,
+      "instance_id": "CB1_CAUR_L_CF2_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.24444444444444444,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_precedence_neighbor",
+        "near_same_island_chain",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_high_reconfiguration",
+        "operator_overloaded_island",
+        "operator_random",
+        "related_replace_25",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_3",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "H1",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF2_RI2_TI2_R12_C02:H1"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 0,
+      "informative_pair_fraction": 0.3013732833957553,
+      "instance_id": "CB1_CAUR_L_CF2_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.32222222222222224,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_W_delay",
+        "near_precedence_neighbor",
+        "near_same_island_chain",
+        "operator_high_reconfiguration",
+        "operator_overloaded_island",
+        "operator_w_bottleneck",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_2",
+        "related_variant_3",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746101",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF2_RI2_TI2_R12_C02:NATIVE16_746101"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 0,
+      "informative_pair_fraction": 0.3208489388264669,
+      "instance_id": "CB1_CAUR_L_CF2_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.4666666666666667,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_high_W_delay",
+        "near_same_island_chain",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_high_reconfiguration",
+        "operator_w_bottleneck",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_3",
+        "related_variant_4"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746102",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF2_RI2_TI2_R12_C02:NATIVE16_746102"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 0,
+      "informative_pair_fraction": 0.06441947565543071,
+      "instance_id": "CB1_CAUR_L_CF2_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.044444444444444446,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_high_W_delay",
+        "near_legacy_completion_tail",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_related",
+        "operator_w_bottleneck",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746103",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF2_RI2_TI2_R12_C02:NATIVE16_746103"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 1,
+      "informative_pair_fraction": 0.25617977528089886,
+      "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12",
+      "positive_action_fraction": 0.15555555555555556,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_legacy_completion_tail",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_random",
+        "operator_related",
+        "related_replace_25",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_3",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "H1",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF3_RI2_TI2_R12:H1"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 1,
+      "informative_pair_fraction": 0.40124843945068667,
+      "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12",
+      "positive_action_fraction": 0.4666666666666667,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_legacy_completion_tail",
+        "near_precedence_neighbor",
+        "near_same_product",
+        "operator_overloaded_island",
+        "operator_random",
+        "operator_related",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_2",
+        "related_variant_3",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746101",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF3_RI2_TI2_R12:NATIVE16_746101"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 1,
+      "informative_pair_fraction": 0.2746566791510612,
+      "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12",
+      "positive_action_fraction": 0.5111111111111111,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_precedence_neighbor",
+        "near_same_island_chain",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_high_reconfiguration",
+        "operator_overloaded_island",
+        "operator_random",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_3",
+        "related_variant_4"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746102",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF3_RI2_TI2_R12:NATIVE16_746102"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 1,
+      "informative_pair_fraction": 0.3235955056179775,
+      "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12",
+      "positive_action_fraction": 0.43333333333333335,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_W_delay",
+        "near_precedence_neighbor",
+        "near_same_island_chain",
+        "one_operation_swap",
+        "operator_high_reconfiguration",
+        "operator_overloaded_island",
+        "operator_w_bottleneck",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746103",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF3_RI2_TI2_R12:NATIVE16_746103"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 1,
+      "informative_pair_fraction": 0.02122347066167291,
+      "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.07777777777777778,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_high_W_delay",
+        "near_same_island_chain",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_high_reconfiguration",
+        "operator_w_bottleneck",
+        "related_replace_25",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_3",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "H1",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF3_RI2_TI2_R12_C02:H1"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 1,
+      "informative_pair_fraction": 0.18701622971285892,
+      "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.15555555555555556,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_high_W_delay",
+        "near_legacy_completion_tail",
+        "operator_f_bottleneck",
+        "operator_related",
+        "operator_w_bottleneck",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_2",
+        "related_variant_3",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746101",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF3_RI2_TI2_R12_C02:NATIVE16_746101"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 1,
+      "informative_pair_fraction": 0.08564294631710362,
+      "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.08888888888888889,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_legacy_completion_tail",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_random",
+        "operator_related",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_3",
+        "related_variant_4"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746102",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF3_RI2_TI2_R12_C02:NATIVE16_746102"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 1,
+      "informative_pair_fraction": 0.3430711610486891,
+      "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.7333333333333333,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_legacy_completion_tail",
+        "near_precedence_neighbor",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_overloaded_island",
+        "operator_random",
+        "operator_related",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746103",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF3_RI2_TI2_R12_C02:NATIVE16_746103"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 1,
+      "informative_pair_fraction": 0.021972534332084893,
+      "instance_id": "CB1_CAUR_M_CF1_RI2_TI2_R12",
+      "positive_action_fraction": 0.08888888888888889,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_precedence_neighbor",
+        "near_same_island_chain",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_high_reconfiguration",
+        "operator_overloaded_island",
+        "operator_random",
+        "related_replace_25",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_3",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "H1",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_M_CF1_RI2_TI2_R12:H1"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 1,
+      "informative_pair_fraction": 0.4421972534332085,
+      "instance_id": "CB1_CAUR_M_CF1_RI2_TI2_R12",
+      "positive_action_fraction": 0.8222222222222222,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_W_delay",
+        "near_precedence_neighbor",
+        "near_same_island_chain",
+        "operator_high_reconfiguration",
+        "operator_overloaded_island",
+        "operator_w_bottleneck",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_2",
+        "related_variant_3",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746101",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_M_CF1_RI2_TI2_R12:NATIVE16_746101"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 1,
+      "informative_pair_fraction": 0.13533083645443195,
+      "instance_id": "CB1_CAUR_M_CF1_RI2_TI2_R12",
+      "positive_action_fraction": 0.12222222222222222,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_high_W_delay",
+        "near_same_island_chain",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_high_reconfiguration",
+        "operator_w_bottleneck",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_3",
+        "related_variant_4"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746102",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_M_CF1_RI2_TI2_R12:NATIVE16_746102"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 1,
+      "informative_pair_fraction": 0.5153558052434457,
+      "instance_id": "CB1_CAUR_M_CF1_RI2_TI2_R12",
+      "positive_action_fraction": 0.7111111111111111,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_high_W_delay",
+        "near_legacy_completion_tail",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_related",
+        "operator_w_bottleneck",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746103",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_M_CF1_RI2_TI2_R12:NATIVE16_746103"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 1,
+      "informative_pair_fraction": 0.37702871410736577,
+      "instance_id": "CB1_CAUR_M_CF1_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.9777777777777777,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_legacy_completion_tail",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_random",
+        "operator_related",
+        "related_replace_25",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_3",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "H1",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_M_CF1_RI2_TI2_R12_C02:H1"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 1,
+      "informative_pair_fraction": 0.41797752808988764,
+      "instance_id": "CB1_CAUR_M_CF1_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.5555555555555556,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_legacy_completion_tail",
+        "near_precedence_neighbor",
+        "near_same_product",
+        "operator_overloaded_island",
+        "operator_random",
+        "operator_related",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_2",
+        "related_variant_3",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746101",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_M_CF1_RI2_TI2_R12_C02:NATIVE16_746101"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 1,
+      "informative_pair_fraction": 0.44069912609238454,
+      "instance_id": "CB1_CAUR_M_CF1_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.3,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_precedence_neighbor",
+        "near_same_island_chain",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_high_reconfiguration",
+        "operator_overloaded_island",
+        "operator_random",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_3",
+        "related_variant_4"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746102",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_M_CF1_RI2_TI2_R12_C02:NATIVE16_746102"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 1,
+      "informative_pair_fraction": 0.41298377028714106,
+      "instance_id": "CB1_CAUR_M_CF1_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.5555555555555556,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_W_delay",
+        "near_precedence_neighbor",
+        "near_same_island_chain",
+        "one_operation_swap",
+        "operator_high_reconfiguration",
+        "operator_overloaded_island",
+        "operator_w_bottleneck",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746103",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_M_CF1_RI2_TI2_R12_C02:NATIVE16_746103"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 2,
+      "informative_pair_fraction": 0.250936329588015,
+      "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12",
+      "positive_action_fraction": 0.6333333333333333,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_high_W_delay",
+        "near_same_island_chain",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_high_reconfiguration",
+        "operator_w_bottleneck",
+        "related_replace_25",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_3",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "H1",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_M_CF2_RI2_TI2_R12:H1"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 2,
+      "informative_pair_fraction": 0.14307116104868914,
+      "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12",
+      "positive_action_fraction": 0.2111111111111111,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_high_W_delay",
+        "near_legacy_completion_tail",
+        "operator_f_bottleneck",
+        "operator_related",
+        "operator_w_bottleneck",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_2",
+        "related_variant_3",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746101",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_M_CF2_RI2_TI2_R12:NATIVE16_746101"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 2,
+      "informative_pair_fraction": 0.4389513108614232,
+      "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12",
+      "positive_action_fraction": 0.34444444444444444,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_legacy_completion_tail",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_random",
+        "operator_related",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_3",
+        "related_variant_4"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746102",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_M_CF2_RI2_TI2_R12:NATIVE16_746102"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 2,
+      "informative_pair_fraction": 0.4002496878901373,
+      "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12",
+      "positive_action_fraction": 0.25555555555555554,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_legacy_completion_tail",
+        "near_precedence_neighbor",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_overloaded_island",
+        "operator_random",
+        "operator_related",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_3",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746103",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_M_CF2_RI2_TI2_R12:NATIVE16_746103"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 2,
+      "informative_pair_fraction": 0.14431960049937578,
+      "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.7111111111111111,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_precedence_neighbor",
+        "near_same_island_chain",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_high_reconfiguration",
+        "operator_overloaded_island",
+        "operator_random",
+        "related_replace_25",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_3",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "H1",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_M_CF2_RI2_TI2_R12_C02:H1"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 2,
+      "informative_pair_fraction": 0.07740324594257178,
+      "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.23333333333333334,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_W_delay",
+        "near_precedence_neighbor",
+        "near_same_island_chain",
+        "operator_high_reconfiguration",
+        "operator_overloaded_island",
+        "operator_w_bottleneck",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_2",
+        "related_variant_3",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746101",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_M_CF2_RI2_TI2_R12_C02:NATIVE16_746101"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 2,
+      "informative_pair_fraction": 0.5300873907615481,
+      "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.5,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_high_W_delay",
+        "near_same_island_chain",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_high_reconfiguration",
+        "operator_w_bottleneck",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_3",
+        "related_variant_4"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746102",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_M_CF2_RI2_TI2_R12_C02:NATIVE16_746102"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 2,
+      "informative_pair_fraction": 0.49737827715355803,
+      "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.43333333333333335,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_high_W_delay",
+        "near_legacy_completion_tail",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_related",
+        "operator_w_bottleneck",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746103",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_M_CF2_RI2_TI2_R12_C02:NATIVE16_746103"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 0,
+      "informative_pair_fraction": 0.03920099875156055,
+      "instance_id": "CB1_CAUR_M_CF3_RI2_TI2_R12",
+      "positive_action_fraction": 0.7111111111111111,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_legacy_completion_tail",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_random",
+        "operator_related",
+        "related_replace_25",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_3",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "H1",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_M_CF3_RI2_TI2_R12:H1"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 0,
+      "informative_pair_fraction": 0.06317103620474407,
+      "instance_id": "CB1_CAUR_M_CF3_RI2_TI2_R12",
+      "positive_action_fraction": 0.9111111111111111,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_legacy_completion_tail",
+        "near_precedence_neighbor",
+        "near_same_product",
+        "operator_overloaded_island",
+        "operator_random",
+        "operator_related",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_3",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746101",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_M_CF3_RI2_TI2_R12:NATIVE16_746101"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 0,
+      "informative_pair_fraction": 0.07166042446941323,
+      "instance_id": "CB1_CAUR_M_CF3_RI2_TI2_R12",
+      "positive_action_fraction": 0.12222222222222222,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_precedence_neighbor",
+        "near_same_island_chain",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_high_reconfiguration",
+        "operator_overloaded_island",
+        "operator_random",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_3",
+        "related_variant_4"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746102",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_M_CF3_RI2_TI2_R12:NATIVE16_746102"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 0,
+      "informative_pair_fraction": 0.30586766541822724,
+      "instance_id": "CB1_CAUR_M_CF3_RI2_TI2_R12",
+      "positive_action_fraction": 0.3,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_W_delay",
+        "near_precedence_neighbor",
+        "near_same_island_chain",
+        "one_operation_swap",
+        "operator_high_reconfiguration",
+        "operator_overloaded_island",
+        "operator_w_bottleneck",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746103",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_M_CF3_RI2_TI2_R12:NATIVE16_746103"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 0,
+      "informative_pair_fraction": 0.18302122347066166,
+      "instance_id": "CB1_CAUR_M_CF3_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.13333333333333333,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_high_W_delay",
+        "near_same_island_chain",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_high_reconfiguration",
+        "operator_w_bottleneck",
+        "related_replace_25",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_3",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "H1",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_M_CF3_RI2_TI2_R12_C02:H1"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 0,
+      "informative_pair_fraction": 0.3987515605493134,
+      "instance_id": "CB1_CAUR_M_CF3_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.32222222222222224,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_high_W_delay",
+        "near_legacy_completion_tail",
+        "operator_f_bottleneck",
+        "operator_related",
+        "operator_w_bottleneck",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_2",
+        "related_variant_3",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746101",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_M_CF3_RI2_TI2_R12_C02:NATIVE16_746101"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 0,
+      "informative_pair_fraction": 0.14481897627965043,
+      "instance_id": "CB1_CAUR_M_CF3_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.12222222222222222,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_legacy_completion_tail",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_random",
+        "operator_related",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_3",
+        "related_variant_4"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746102",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_M_CF3_RI2_TI2_R12_C02:NATIVE16_746102"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 0,
+      "informative_pair_fraction": 0.24469413233458176,
+      "instance_id": "CB1_CAUR_M_CF3_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.2111111111111111,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_legacy_completion_tail",
+        "near_precedence_neighbor",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_overloaded_island",
+        "operator_random",
+        "operator_related",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746103",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_M_CF3_RI2_TI2_R12_C02:NATIVE16_746103"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 0,
+      "informative_pair_fraction": 0.22446941323345818,
+      "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+      "positive_action_fraction": 0.2,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_precedence_neighbor",
+        "near_same_island_chain",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_high_reconfiguration",
+        "operator_overloaded_island",
+        "operator_random",
+        "related_replace_25",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_3",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "H1",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_S_CF1_RI2_TI2_R12:H1"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 0,
+      "informative_pair_fraction": 0.4436953807740325,
+      "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+      "positive_action_fraction": 0.3,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_W_delay",
+        "near_precedence_neighbor",
+        "near_same_island_chain",
+        "one_operation_swap",
+        "operator_high_reconfiguration",
+        "operator_overloaded_island",
+        "operator_w_bottleneck",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_2",
+        "related_variant_3",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746101",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_S_CF1_RI2_TI2_R12:NATIVE16_746101"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 0,
+      "informative_pair_fraction": 0.26566791510611737,
+      "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+      "positive_action_fraction": 0.7,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_high_W_delay",
+        "near_same_island_chain",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_high_reconfiguration",
+        "operator_w_bottleneck",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_3",
+        "related_variant_4"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746102",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_S_CF1_RI2_TI2_R12:NATIVE16_746102"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 0,
+      "informative_pair_fraction": 0.30761548064918853,
+      "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+      "positive_action_fraction": 0.3333333333333333,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_high_W_delay",
+        "near_legacy_completion_tail",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_related",
+        "operator_w_bottleneck",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746103",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_S_CF1_RI2_TI2_R12:NATIVE16_746103"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 0,
+      "informative_pair_fraction": 0.17952559300873908,
+      "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.18888888888888888,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_legacy_completion_tail",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_random",
+        "operator_related",
+        "related_replace_25",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_3",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "H1",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_S_CF1_RI2_TI2_R12_C02:H1"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 0,
+      "informative_pair_fraction": 0.1295880149812734,
+      "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.43333333333333335,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_legacy_completion_tail",
+        "near_precedence_neighbor",
+        "near_same_product",
+        "operator_overloaded_island",
+        "operator_random",
+        "operator_related",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_2",
+        "related_variant_3",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746101",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_S_CF1_RI2_TI2_R12_C02:NATIVE16_746101"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 0,
+      "informative_pair_fraction": 0.15131086142322098,
+      "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.12222222222222222,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_precedence_neighbor",
+        "near_same_island_chain",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_high_reconfiguration",
+        "operator_overloaded_island",
+        "operator_random",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_3",
+        "related_variant_4"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746102",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_S_CF1_RI2_TI2_R12_C02:NATIVE16_746102"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 0,
+      "informative_pair_fraction": 0.14157303370786517,
+      "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.34444444444444444,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_W_delay",
+        "near_precedence_neighbor",
+        "near_same_island_chain",
+        "one_operation_swap",
+        "operator_high_reconfiguration",
+        "operator_overloaded_island",
+        "operator_w_bottleneck",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746103",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_S_CF1_RI2_TI2_R12_C02:NATIVE16_746103"
+    },
+    {
+      "actions": 85,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 1,
+      "informative_pair_fraction": 0.14649859943977592,
+      "instance_id": "CB1_CAUR_S_CF2_RI2_TI2_R12",
+      "positive_action_fraction": 0.3058823529411765,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_high_W_delay",
+        "near_same_island_chain",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_high_reconfiguration",
+        "operator_w_bottleneck",
+        "related_replace_25",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_3",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "H1",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_S_CF2_RI2_TI2_R12:H1"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 1,
+      "informative_pair_fraction": 0.36803995006242196,
+      "instance_id": "CB1_CAUR_S_CF2_RI2_TI2_R12",
+      "positive_action_fraction": 0.37777777777777777,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_high_W_delay",
+        "near_legacy_completion_tail",
+        "operator_f_bottleneck",
+        "operator_related",
+        "operator_w_bottleneck",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_2",
+        "related_variant_3",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746101",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_S_CF2_RI2_TI2_R12:NATIVE16_746101"
+    },
+    {
+      "actions": 85,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 1,
+      "informative_pair_fraction": 0.3403361344537815,
+      "instance_id": "CB1_CAUR_S_CF2_RI2_TI2_R12",
+      "positive_action_fraction": 0.23529411764705882,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_legacy_completion_tail",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_random",
+        "operator_related",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_3",
+        "related_variant_4"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746102",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_S_CF2_RI2_TI2_R12:NATIVE16_746102"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 1,
+      "informative_pair_fraction": 0.1463171036204744,
+      "instance_id": "CB1_CAUR_S_CF2_RI2_TI2_R12",
+      "positive_action_fraction": 0.4888888888888889,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_legacy_completion_tail",
+        "near_precedence_neighbor",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_overloaded_island",
+        "operator_random",
+        "operator_related",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746103",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_S_CF2_RI2_TI2_R12:NATIVE16_746103"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 1,
+      "informative_pair_fraction": 0.13982521847690388,
+      "instance_id": "CB1_CAUR_S_CF2_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.07777777777777778,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_precedence_neighbor",
+        "near_same_island_chain",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_high_reconfiguration",
+        "operator_overloaded_island",
+        "operator_random",
+        "related_replace_25",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_3",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "H1",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_S_CF2_RI2_TI2_R12_C02:H1"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 1,
+      "informative_pair_fraction": 0.09812734082397004,
+      "instance_id": "CB1_CAUR_S_CF2_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.3888888888888889,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_W_delay",
+        "near_precedence_neighbor",
+        "near_same_island_chain",
+        "operator_high_reconfiguration",
+        "operator_overloaded_island",
+        "operator_related",
+        "operator_w_bottleneck",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_2",
+        "related_variant_3",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746101",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_S_CF2_RI2_TI2_R12_C02:NATIVE16_746101"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 1,
+      "informative_pair_fraction": 0.20274656679151062,
+      "instance_id": "CB1_CAUR_S_CF2_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.044444444444444446,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_high_W_delay",
+        "near_same_island_chain",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_high_reconfiguration",
+        "operator_related",
+        "operator_w_bottleneck",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_3",
+        "related_variant_4"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746102",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_S_CF2_RI2_TI2_R12_C02:NATIVE16_746102"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 1,
+      "informative_pair_fraction": 0.15355805243445692,
+      "instance_id": "CB1_CAUR_S_CF2_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.4666666666666667,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_high_W_delay",
+        "near_legacy_completion_tail",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_related",
+        "operator_w_bottleneck",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746103",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_S_CF2_RI2_TI2_R12_C02:NATIVE16_746103"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 2,
+      "informative_pair_fraction": 0.23021223470661673,
+      "instance_id": "CB1_CAUR_S_CF3_RI2_TI2_R12",
+      "positive_action_fraction": 0.14444444444444443,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_legacy_completion_tail",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_random",
+        "operator_related",
+        "related_replace_25",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_3",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "H1",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_S_CF3_RI2_TI2_R12:H1"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 2,
+      "informative_pair_fraction": 0.24993757802746566,
+      "instance_id": "CB1_CAUR_S_CF3_RI2_TI2_R12",
+      "positive_action_fraction": 0.9777777777777777,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_legacy_completion_tail",
+        "near_precedence_neighbor",
+        "near_same_product",
+        "operator_overloaded_island",
+        "operator_random",
+        "operator_related",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_2",
+        "related_variant_3",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746101",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_S_CF3_RI2_TI2_R12:NATIVE16_746101"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 2,
+      "informative_pair_fraction": 0.26816479400749066,
+      "instance_id": "CB1_CAUR_S_CF3_RI2_TI2_R12",
+      "positive_action_fraction": 0.7333333333333333,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_precedence_neighbor",
+        "near_same_island_chain",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_high_reconfiguration",
+        "operator_overloaded_island",
+        "operator_random",
+        "operator_related",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_3",
+        "related_variant_4"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746102",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_S_CF3_RI2_TI2_R12:NATIVE16_746102"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 2,
+      "informative_pair_fraction": 0.1752808988764045,
+      "instance_id": "CB1_CAUR_S_CF3_RI2_TI2_R12",
+      "positive_action_fraction": 0.7555555555555555,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_W_delay",
+        "near_precedence_neighbor",
+        "near_same_island_chain",
+        "one_operation_swap",
+        "operator_high_reconfiguration",
+        "operator_overloaded_island",
+        "operator_related",
+        "operator_w_bottleneck",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746103",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_S_CF3_RI2_TI2_R12:NATIVE16_746103"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 2,
+      "informative_pair_fraction": 0.16803995006242198,
+      "instance_id": "CB1_CAUR_S_CF3_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.2777777777777778,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_high_W_delay",
+        "near_same_island_chain",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_high_reconfiguration",
+        "operator_w_bottleneck",
+        "related_replace_25",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_3",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "H1",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_S_CF3_RI2_TI2_R12_C02:H1"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 2,
+      "informative_pair_fraction": 0.2818976279650437,
+      "instance_id": "CB1_CAUR_S_CF3_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.6777777777777778,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_high_W_delay",
+        "near_legacy_completion_tail",
+        "near_precedence_neighbor",
+        "operator_f_bottleneck",
+        "operator_related",
+        "operator_w_bottleneck",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_2",
+        "related_variant_3",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746101",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_S_CF3_RI2_TI2_R12_C02:NATIVE16_746101"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 2,
+      "informative_pair_fraction": 0.35980024968789015,
+      "instance_id": "CB1_CAUR_S_CF3_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.7555555555555555,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_high_F_delay",
+        "near_legacy_completion_tail",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_f_bottleneck",
+        "operator_random",
+        "operator_related",
+        "related_replace_25",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_3",
+        "related_variant_4"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746102",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_S_CF3_RI2_TI2_R12_C02:NATIVE16_746102"
+    },
+    {
+      "actions": 90,
+      "families": [
+        "LOCAL_PERTURBATION",
+        "MATCHED_RANDOM",
+        "ORIGINAL_OPERATOR",
+        "RELATED_VARIANT",
+        "STRUCTURED_NEAR_NEIGHBOR"
+      ],
+      "feasible": true,
+      "fold": 2,
+      "informative_pair_fraction": 0.24794007490636705,
+      "instance_id": "CB1_CAUR_S_CF3_RI2_TI2_R12_C02",
+      "positive_action_fraction": 0.1,
+      "repairs": [
+        "greedy",
+        "reconfiguration_aware",
+        "regret2",
+        "regret3",
+        "transport_aware"
+      ],
+      "rules": [
+        "csg_critical_sync",
+        "matched_random_1",
+        "matched_random_2",
+        "matched_random_3",
+        "near_legacy_completion_tail",
+        "near_precedence_neighbor",
+        "near_same_product",
+        "one_operation_swap",
+        "operator_overloaded_island",
+        "operator_random",
+        "operator_related",
+        "related_replace_50",
+        "related_variant_1",
+        "related_variant_2",
+        "related_variant_4",
+        "two_operation_swap"
+      ],
+      "sizes": [
+        "large",
+        "medium",
+        "small"
+      ],
+      "source": "NATIVE16_746103",
+      "state_id": "ngas-a13-development-v1:CB1_CAUR_S_CF3_RI2_TI2_R12_C02:NATIVE16_746103"
+    }
+  ],
+  "training_started": false
+}

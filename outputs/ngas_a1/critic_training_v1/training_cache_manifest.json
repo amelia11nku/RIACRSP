@@ -1,0 +1,29 @@
+{
+  "actions": 6465,
+  "all_action_ids_unique_within_state": true,
+  "all_state_ids_unique": true,
+  "cache_path": "outputs/ngas_a1/critic_training_v1/training_cache.json.gz",
+  "cache_sha256": "b1673d86b44589735b7d01cfcae99096ff05206235c785475ccbeba28c111541",
+  "compressed_bytes": 2740901,
+  "gurobi_run": false,
+  "instances": 18,
+  "instances_per_fold": {
+    "0": 6,
+    "1": 6,
+    "2": 6
+  },
+  "paired_replicates": 58185,
+  "r13": "LOCKED",
+  "r14": "LOCKED",
+  "replicates_per_action": 9,
+  "schema": "ngas-a13-training-cache-manifest-v1",
+  "source_hashes": {
+    "outputs/ngas_a1/audit/development_completion.json": "57fe5d3948f9a29a24d4083667cd655b255dc937ca15e964101f60a9f62be3b4",
+    "outputs/ngas_a1/development_v1/data_gate.json": "cbccf6f1534fd8353979324540ea94046e24b1c5b57f076b1909c2e69225457a",
+    "outputs/ngas_a1/development_v1/protocol.json": "3ac3cd3a0640a3f34b4f48b2c335d445da87c89b9ec74879f330d7cb60c13cc7",
+    "outputs/ngas_a1/development_v1/result_hash_manifest.json": "44e3a3deb826fb38a0d81f58957efba05fb0ee78d77cefcab07c67cec14992c1"
+  },
+  "states": 72,
+  "uncompressed_bytes": 22874988,
+  "uncompressed_sha256": "04ae168c3fb644fbf4a4e304776bcb106517198431bd7aab03bfb5a680601ed7"
+}

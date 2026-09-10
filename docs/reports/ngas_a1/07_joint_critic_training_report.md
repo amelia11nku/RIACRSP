@@ -1,10 +1,11 @@
 # A1.3 joint critic: implementation and pre-training boundary
 
-Status: **IMPLEMENTED_AND_UNIT_TESTED; NOT_TRAINED**.
+Status: **TRAINING_RUNNER_IMPLEMENTED_AND_UNIT_TESTED; NOT_TRAINED**.
 This delivery starts from `098a58e9d42b1dcee84ca04eb288258c70bc0ccb`.
 The independently verified V2 T8_R9 label pilot passed all six gates, and all six
-source states exceeded 10% informative pairs. Expanded data collection is now the
-next gate; no learned quality, production readiness or latency qualification is claimed.
+source states exceeded 10% informative pairs. Expanded collection and its independent
+raw-contract audit passed: 72 states, 18 instances, 6,465 actions and 58,185 paired
+replicates. No learned quality, production readiness or latency claim is made yet.
 
 ## Model and input contract
 
@@ -30,13 +31,15 @@ preferences require a paired-CRN mean gap exceeding max(.001, twice paired SE).
 Noise/tie-only states generate no ranking term. Continuous advantage regression and
 frequency targets remain available. Advantage scaling/softmax temperature is .01.
 
-## Verification and subsequent training
+## Verification and training boundary
 
 Tests cover batched versus single-action scoring, finite outputs, deterministic
 save/load, distinct repair inputs, all-origin permutation invariance, finite gradients,
 noise-aware tie handling, cell-group fold isolation and full-rule sampling coverage.
 These tests use tiny schedules and synthetic loss targets; they are implementation
-checks and are not learned-model results. Full project regression runs before freeze.
+checks and are not learned-model results. The current full project regression passes
+475 tests. A deterministic 2.74 MB training cache preserves every raw paired advantage,
+CSG/action feature and semantic action record; it applies no fitted preprocessing.
 
 The frozen training plan has three seeds and three grouped OOF folds, 60 fixed epochs,
 AdamW (lr .0003, decay .0001), gradient clipping 1, and equal instance contribution.
@@ -44,9 +47,10 @@ OOF labels may not choose epochs/checkpoints. Ranking, regret, lift, top-5 oppor
 NDCG and calibration diagnostics must be reported; exact-top1 recall is not the gate.
 At least two training seeds must satisfy the preregistered OOF requirements.
 Only then fit the single production model using the fixed first seed and all
-development instances. The training runner/OOF evaluation and model fitting are the
-next implementation step after complete expanded data passes its integrity gate.
-No automatic training is attached to the long collection job.
+development instances. The runner verifies frozen code/input hashes, resumes only
+complete hash-valid seed/fold units, publishes per-state OOF diagnostics, and performs
+the final fit only after writing a passing OOF gate. Formal optimizer steps start only
+after the training-specific protocol is committed.
 
 R12 remains DEVELOPMENT after repeated architectural use. R13/R14 stay locked;
 no Gurobi or comparator reruns are performed. V1 and V2 raw evidence remain immutable.

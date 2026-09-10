@@ -1,0 +1,35 @@
+{
+  "check_command": "cat outputs/ngas_a1/development_v1/progress.json",
+  "command": [
+    "/home/liulei/miniconda3/envs/gnn311/bin/python",
+    "-u",
+    "scripts/collect_ngas_development.py"
+  ],
+  "eta_basis": "first L-state measured seconds/decoder x remaining upper bound x 1.3 + 10 min source/I/O reserve; conservative",
+  "expected_completion_utc": "2026-09-10T14:33:25.948241+00:00",
+  "expected_remaining_seconds": 21067.353396764374,
+  "implementation_commit": "643bdbf99014f27e7ded3f9f47940817f3300970",
+  "log_path": "outputs/ngas_a1/development_v1/collection_20260910T084212Z.log",
+  "observed_progress": {
+    "completed_actions": 1,
+    "completed_states": 0,
+    "maximum_actions": 6480,
+    "new_actions_this_process": 1,
+    "pid": 218826,
+    "protocol_sha256": "3ac3cd3a0640a3f34b4f48b2c335d445da87c89b9ec74879f330d7cb60c13cc7",
+    "remaining_label_decoder_upper_bound": 1414800,
+    "retained_label_compute_seconds": 4.807364274049178,
+    "retained_label_decoder_evals": 432,
+    "seconds_per_decoder": 0.011128158041780504,
+    "source_search_decoder_evals": 0,
+    "state_id": "ngas-a13-development-v1:CB1_CAUR_L_CF1_RI2_TI2_R12:H1",
+    "status": "RUNNING",
+    "total_states": 72,
+    "updated_at_utc": "2026-09-10T08:42:18.171990+00:00"
+  },
+  "output_path": "outputs/ngas_a1/development_v1",
+  "pid": 218826,
+  "resume_command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/launch_ngas_development.py",
+  "started_at_utc": "2026-09-10T08:42:12.093006+00:00",
+  "status": "RUNNING_VERIFIED"
+}
