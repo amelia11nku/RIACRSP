@@ -1,0 +1,255 @@
+{
+  "checkpoint_selection": "fixed final epoch; OOF labels never select epochs or checkpoints",
+  "config": {
+    "automatic_training_after_collection": false,
+    "canonical_root_seeds": [
+      746101,
+      746102,
+      746103
+    ],
+    "continuation_steps": 2,
+    "critic": {
+      "dropout": 0.0,
+      "hidden_dim": 64,
+      "message_passing_layers": 2,
+      "prediction": "joint continuation advantage plus beats-fallback logit"
+    },
+    "data_gates": {
+      "all_24_rules_covered": true,
+      "all_feasible": true,
+      "all_sizes_repairs_families": true,
+      "complete_planned_states": true,
+      "each_fold_informative_state_fraction_min": 0.5,
+      "informative_state_pair_fraction_min": 0.1,
+      "positive_action_fraction_min": 0.05
+    },
+    "fallback_decoder_calls": 15552,
+    "folds": "(scale_index + CF_index) mod 3, S/M/L and CF1/2/3 indexed 0..2; both cell replicates always in same fold",
+    "gurobi_run": false,
+    "maximum_actions_per_state": 90,
+    "maximum_candidate_label_decoder_calls": 1399680,
+    "maximum_label_decoder_calls": 1415232,
+    "maximum_states": 72,
+    "objective": {
+      "advantage_scale": 0.01,
+      "beats_fallback_bce_weight": 0.2,
+      "listwise_weight": 0.5,
+      "minimum_material_gap": 0.001,
+      "paired_SE_multiplier": 2.0,
+      "pairwise_weight": 1.0,
+      "robust_regression_weight": 1.0
+    },
+    "oof_gate": {
+      "additional_report_metrics": [
+        "NDCG@5",
+        "top5 fallback-beating opportunity",
+        "regret",
+        "continuation lift",
+        "beats-fallback Brier score",
+        "per-fold and per-scale/CF diagnostics"
+      ],
+      "at_least_two_training_seeds_pass": true,
+      "material_pair_accuracy_min": 0.55,
+      "mean_selected_advantage_positive": true,
+      "mean_state_spearman_min": 0.15,
+      "top1_regret_below_uniform_expected_regret": true
+    },
+    "paired_label_semantics": "unchanged V2 T8_R9; new development state IDs give disjoint CRN keys; fallback cached per state/replicate",
+    "r13": "LOCKED",
+    "r14": "LOCKED",
+    "repair_trials": 8,
+    "replicates": 9,
+    "reuse_pilot_labels_for_training": false,
+    "sampling": "complete 24-rule bank at each size; mandatory critical-sync plus one cyclic rule from each of five groups, including a second original operator; cross all five repairs; deduplicate exact actions",
+    "schema": "ngas-a13-development-v1",
+    "scope": "R12 CAUR-FIT DEVELOPMENT, all 18 canonical instances; never an untouched final test",
+    "source_search_decoder_calls": 6912,
+    "sources": "H1 once per instance, plus NATIVE16 for each canonical root; native policy with eight repair trials",
+    "training": {
+      "batching": "one complete state and all its labeled actions; equal instance contribution",
+      "checkpoint_selection": "fixed final epoch; OOF labels never select epochs or checkpoints",
+      "epochs": 60,
+      "gradient_clip_norm": 1.0,
+      "learning_rate": 0.0003,
+      "oof_models": 9,
+      "optimizer": "AdamW",
+      "production_model": "one model fit to all development instances only after OOF gate; fixed seed and architecture",
+      "production_seed": 746101,
+      "seeds": [
+        746101,
+        746102,
+        746103
+      ],
+      "weight_decay": 0.0001
+    }
+  },
+  "created_at_utc": "2026-09-10T15:03:50.300428+00:00",
+  "environment": {
+    "compute_capability": "8.9",
+    "cuda_available": true,
+    "cuda_version": "12.8",
+    "cudnn": 91900,
+    "device_count": 1,
+    "device_name": "NVIDIA GeForce RTX 4060 Ti",
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "python": "3.11.15 (main, Jun 11 2026, 15:20:16) [GCC 14.3.0]",
+    "torch": "2.11.0+cu128",
+    "total_memory_bytes": 8182628352
+  },
+  "fold_audit": [
+    {
+      "fit_instances": [
+        "CB1_CAUR_L_CF1_RI2_TI2_R12",
+        "CB1_CAUR_L_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_L_CF3_RI2_TI2_R12",
+        "CB1_CAUR_L_CF3_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF1_RI2_TI2_R12",
+        "CB1_CAUR_M_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF2_RI2_TI2_R12",
+        "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF2_RI2_TI2_R12",
+        "CB1_CAUR_S_CF2_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF3_RI2_TI2_R12",
+        "CB1_CAUR_S_CF3_RI2_TI2_R12_C02"
+      ],
+      "fit_states": 48,
+      "held_fold": 0,
+      "held_instances": [
+        "CB1_CAUR_L_CF2_RI2_TI2_R12",
+        "CB1_CAUR_L_CF2_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF3_RI2_TI2_R12",
+        "CB1_CAUR_M_CF3_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF1_RI2_TI2_R12",
+        "CB1_CAUR_S_CF1_RI2_TI2_R12_C02"
+      ],
+      "held_states": 24,
+      "instance_overlap": []
+    },
+    {
+      "fit_instances": [
+        "CB1_CAUR_L_CF1_RI2_TI2_R12",
+        "CB1_CAUR_L_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_L_CF2_RI2_TI2_R12",
+        "CB1_CAUR_L_CF2_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF2_RI2_TI2_R12",
+        "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF3_RI2_TI2_R12",
+        "CB1_CAUR_M_CF3_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF1_RI2_TI2_R12",
+        "CB1_CAUR_S_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF3_RI2_TI2_R12",
+        "CB1_CAUR_S_CF3_RI2_TI2_R12_C02"
+      ],
+      "fit_states": 48,
+      "held_fold": 1,
+      "held_instances": [
+        "CB1_CAUR_L_CF3_RI2_TI2_R12",
+        "CB1_CAUR_L_CF3_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF1_RI2_TI2_R12",
+        "CB1_CAUR_M_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF2_RI2_TI2_R12",
+        "CB1_CAUR_S_CF2_RI2_TI2_R12_C02"
+      ],
+      "held_states": 24,
+      "instance_overlap": []
+    },
+    {
+      "fit_instances": [
+        "CB1_CAUR_L_CF2_RI2_TI2_R12",
+        "CB1_CAUR_L_CF2_RI2_TI2_R12_C02",
+        "CB1_CAUR_L_CF3_RI2_TI2_R12",
+        "CB1_CAUR_L_CF3_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF1_RI2_TI2_R12",
+        "CB1_CAUR_M_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF3_RI2_TI2_R12",
+        "CB1_CAUR_M_CF3_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF1_RI2_TI2_R12",
+        "CB1_CAUR_S_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF2_RI2_TI2_R12",
+        "CB1_CAUR_S_CF2_RI2_TI2_R12_C02"
+      ],
+      "fit_states": 48,
+      "held_fold": 2,
+      "held_instances": [
+        "CB1_CAUR_L_CF1_RI2_TI2_R12",
+        "CB1_CAUR_L_CF1_RI2_TI2_R12_C02",
+        "CB1_CAUR_M_CF2_RI2_TI2_R12",
+        "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+        "CB1_CAUR_S_CF3_RI2_TI2_R12",
+        "CB1_CAUR_S_CF3_RI2_TI2_R12_C02"
+      ],
+      "held_states": 24,
+      "instance_overlap": []
+    }
+  ],
+  "formal_optimizer_steps_started": false,
+  "formal_run_starts_from_zero": true,
+  "full_regression_tests": 475,
+  "gpu_execution": {
+    "allow_tf32": false,
+    "base_training_config": "configs/ngas_a1_development_v1.json",
+    "cpu_fallback": false,
+    "cublas_workspace_config": ":4096:8",
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": true,
+    "deterministic_algorithms": true,
+    "formal_device": "cuda:0",
+    "gpu_smoke_required": true,
+    "gurobi_run": false,
+    "mixed_precision": false,
+    "precision": "FP32",
+    "r13": "LOCKED",
+    "r14": "LOCKED",
+    "required_cuda_device_count": 1,
+    "restart_from_zero": true,
+    "reuse_superseded_cpu_models": false,
+    "schema": "ngas-a13-gpu-execution-v1",
+    "superseded_cpu_protocol": "outputs/ngas_a1/critic_training_v1/training_protocol.json"
+  },
+  "gurobi_run": false,
+  "implementation_commit": "656716d76a7efc7119ec41019003c610fe4c5417",
+  "input_hashes": {
+    "outputs/ngas_a1/audit/development_completion.json": "57fe5d3948f9a29a24d4083667cd655b255dc937ca15e964101f60a9f62be3b4",
+    "outputs/ngas_a1/critic_training_gpu_v1/gpu_feasibility.json": "048e94e1d8add850e0c32ea677de59a7cce82f14a74ef5c053157956960c0f04",
+    "outputs/ngas_a1/critic_training_v1/retirement/retirement_record.json": "b8a387f4b323012060ca3831383f9f653ad4fdba9c4179e45a6875a38b720228",
+    "outputs/ngas_a1/critic_training_v1/training_cache.json.gz": "b1673d86b44589735b7d01cfcae99096ff05206235c785475ccbeba28c111541",
+    "outputs/ngas_a1/critic_training_v1/training_cache_manifest.json": "4b8582f55b4169ca7dbbde7df3bcd09908a5987eb38019eeca8a70b07ea483a5",
+    "outputs/ngas_a1/development_v1/data_gate.json": "cbccf6f1534fd8353979324540ea94046e24b1c5b57f076b1909c2e69225457a",
+    "outputs/ngas_a1/development_v1/protocol.json": "3ac3cd3a0640a3f34b4f48b2c335d445da87c89b9ec74879f330d7cb60c13cc7",
+    "outputs/ngas_a1/development_v1/result_hash_manifest.json": "44e3a3deb826fb38a0d81f58957efba05fb0ee78d77cefcab07c67cec14992c1"
+  },
+  "production_condition": "fit fixed seed on all R12 development states only if at least two OOF seeds pass",
+  "r13": "LOCKED",
+  "r14": "LOCKED",
+  "regression_xml_sha256": "afea3656fdb7abcb26d27d8e276ce3f738797b7512bd93c0f8f79ca921f68942",
+  "schema": "ngas-a13-gpu-critic-training-protocol-v1",
+  "source_hashes": {
+    "configs/ngas_a1_critic_training_gpu_v1.json": "480c013c783bce00a02b94e2170a92dc98e5ba3b075cf156815adceb1c5fbc05",
+    "configs/ngas_a1_development_v1.json": "1efee314995411c13b455476b146f60b3391c7973271bd4768fccbbd6da705fa",
+    "rcias_ngas/critic/action_encoder.py": "af156e62b2cdccd29ffc5ffb1a47205b8f67d10acaefc179058cb18814d4bab1",
+    "rcias_ngas/critic/joint_critic.py": "a9b170b2b25b58ce565159e3c621df30e64a516b23544d62669816c9e54949ef",
+    "rcias_ngas/critic/losses.py": "95080d02b2c3cb7bcfe31e4ce3328ae07dd6e1d4ae945efd8e66cc09ef582638",
+    "rcias_ngas/critic/train.py": "fa767b44a3d502fcf4cf5501911d7dea0dcc02846c46f48cb3e74a3a5f74c26e",
+    "rcias_ngas/csg/features.py": "ce0bb6f23445799f11538f2de3a732a7872de860363db83d86228ca380c9015f",
+    "rcias_ngas/evaluation/ranking.py": "05440683ca20c83a410e9e1c8679be0149cf641ce972b78732a8b6c676eab34a",
+    "scripts/audit_ngas_critic_training.py": "dcf74014128d21572a85be183241f38293f244dd9b0dcd704b83d3b60660fb09",
+    "scripts/launch_ngas_joint_critic.py": "2f0ae671f4c6b4fd1e36805a4b96620b538d47779115881fe8d510997aac4ac4",
+    "scripts/retire_ngas_cpu_training.py": "bb499fd7dafacba9f105ede6ec7955c58446077234f25213019b32f0ca89f2f4",
+    "scripts/smoke_ngas_joint_critic_gpu.py": "c75f54aea536d1ea756639da6fa040d068440e7c95c8227f224f210039307d7d",
+    "scripts/train_ngas_joint_critic.py": "507fd6fff11449de96b45c7a36404ba4bdf122ca70b96cbaebf12e2fc0a1340d"
+  },
+  "status": "FROZEN_BEFORE_GPU_FORMAL_OPTIMIZER_STEP",
+  "superseded_cpu_models_reused": false,
+  "training_scope": {
+    "actions": 6465,
+    "fixed_epochs": 60,
+    "folds": 3,
+    "instances": 18,
+    "seeds": [
+      746101,
+      746102,
+      746103
+    ],
+    "states": 72
+  }
+}

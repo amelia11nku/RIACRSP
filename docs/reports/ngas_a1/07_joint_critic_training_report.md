@@ -68,5 +68,11 @@ of development outcomes. The replacement protocol requires CUDA:0, FP32, TF32 of
 deterministic algorithms, CUBLAS workspace `:4096:8`, no CPU fallback and a complete
 restart from 0/9 OOF models.
 
+The replacement GPU protocol is frozen at implementation commit
+`656716d76a7efc7119ec41019003c610fe4c5417` with SHA-256
+`a65f2ed10a725a002a818c0b75f8058588c56fe8850d98ed079f9610915ef77d`.
+The freeze independently reran all 475 project tests and recorded zero formal GPU
+optimizer steps at the boundary.
+
 R12 remains DEVELOPMENT after repeated architectural use. R13/R14 stay locked;
 no Gurobi or comparator reruns are performed. V1 and V2 raw evidence remain immutable.
