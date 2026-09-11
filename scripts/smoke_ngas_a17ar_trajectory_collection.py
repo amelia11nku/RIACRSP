@@ -42,6 +42,8 @@ def main() -> None:
     torch.backends.cudnn.benchmark = False
     torch.backends.cuda.matmul.allow_tf32 = False
     torch.backends.cudnn.allow_tf32 = False
+    torch.empty(1, device=device).fill_(1.)
+    torch.cuda.synchronize(device)
     torch.cuda.reset_peak_memory_stats(device)
     critic = FrozenJointCritic(
         ROOT / protocol['checkpoint_path'], args.device,

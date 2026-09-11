@@ -1,8 +1,8 @@
 {
   "schema": "ngas-a17ar-trajectory-collection-config-v1",
-  "revision": 2,
-  "supersedes_protocol_sha256": "441b613936fc7f0ef59b3410dfbcd5135af3481e8b5ce43f8ce596766b1b0a73",
-  "supersession_reason": "pre-instance CUDA smoke rejected revision 1 because the memory-stat API received a string device argument",
+  "revision": 3,
+  "supersedes_protocol_sha256": "aa79611757f037394763755f15a56c8d0fbf87089e1134c414ee4f6e2e83d1ce",
+  "supersession_reason": "pre-instance CUDA smoke rejected revision 2 because peak-memory reset preceded caching-allocator initialization",
   "phase": "NGAS_A1_7A_R",
   "purpose": "clean_non_r12_development_trajectory_and_utility_audit",
   "production_solver_changed": false,
