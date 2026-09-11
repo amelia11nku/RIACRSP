@@ -1,0 +1,105 @@
+{
+  "a16r": {
+    "completion_audit_path": "outputs/ngas_a1/solver_comparison_a16r_v1/audit/completion_audit.json",
+    "report_paths": [
+      "docs/reports/ngas_a1/12_a16_solver_comparison.md",
+      "docs/reports/ngas_a1/13_a16r_integrity_diagnostic.md"
+    ],
+    "result_manifest_path": "outputs/ngas_a1/solver_comparison_a16r_v1/result_manifest.json",
+    "result_manifest_sha256": "06e937a4726690317d510d43d4582c0aad3ea6bd3d0a1886333fdeafe25a747f",
+    "terminal_decision": "NGAS_A1_6R_PASS_REVALIDATED"
+  },
+  "execution_environment": {
+    "cuda_available": true,
+    "cuda_device_count": 1,
+    "cuda_device_names": [
+      "NVIDIA GeForce RTX 4060 Ti"
+    ],
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "python_executable": "/home/liulei/miniconda3/envs/gnn311/bin/python",
+    "python_version": "3.11.15",
+    "torch_cuda_version": "12.8",
+    "torch_version": "2.11.0+cu128"
+  },
+  "frozen_c1": {
+    "checkpoint_path": "outputs/ngas_a1/critic_training_rthgt_v2/production/revised_joint_critic.pt",
+    "checkpoint_sha256": "448b0aaf871f0629dec2d94bad63c888fbdaf71c113eb5ade58c4228647c8560",
+    "completion_audit_path": "outputs/ngas_a1/critic_training_rthgt_v2/audit/completion_audit.json",
+    "completion_audit_sha256": "5a62f27dd5bc8723dba386e7f0bc53333d65fdf4f10833073ca0b2b98b4d02f9",
+    "selection": "C1"
+  },
+  "locked_evaluation": {
+    "R13": {
+      "instances": 18,
+      "performance_accessed": false,
+      "role": "LOCKED_FINAL_EVAL"
+    },
+    "R14": {
+      "instances": 18,
+      "performance_accessed": false,
+      "role": "LOCKED_GENERALIZATION_EVAL"
+    },
+    "allowed_access": "manifest metadata and byte hashes only"
+  },
+  "phase": "NGAS_A1_7A_R",
+  "r12": {
+    "consistent_source_manifest_path": "instances/controlled/RCIAS-CB1-TRAIN-CAUR-R12R14/manifests/phase6j_instance_manifest.csv",
+    "consistent_source_manifest_sha256": "dc06cc3b49e0724bf3bc54255ba95f6a8b29ca07d383f96bcd01f0f6d8f17619",
+    "instance_count": 18,
+    "manifest_path": "outputs/frozen_2o_baselines/instance_manifest.json",
+    "manifest_sha256": "5fb1d78201fd62dcc64fb1db4bbb5de9cffa11bed07bbd5c890a71c8e130b8af"
+  },
+  "schema": "ngas-a17ar-preflight-v1",
+  "split_metadata": {
+    "family_counts": {
+      "RCIAS_2_0_CANONICAL": 130,
+      "RCIAS_CB1_CORE45": 45,
+      "RCIAS_CB1_DEV18": 18,
+      "RCIAS_CB1_INTERNAL_HOLDOUT81": 81,
+      "RCIAS_CB1_R06": 81,
+      "RCIAS_CB1_R07": 9,
+      "RCIAS_CB1_R08": 9,
+      "RCIAS_CB1_R09": 18,
+      "RCIAS_CB1_R10": 18,
+      "RCIAS_CB1_R11": 18,
+      "RCIAS_CB1_R12": 18,
+      "RCIAS_CB1_R13": 18,
+      "RCIAS_CB1_R14": 18,
+      "RCIAS_CB1_SENSITIVITY45": 45,
+      "RCIAS_CB1_TRAIN243": 243,
+      "RCIAS_CB1_VALIDATION81": 81,
+      "TINY_UNIT_TEST": 3
+    },
+    "registry_path": "configs/dataset_role_registry.json",
+    "registry_sha256": "95581b08d99a7a0a51bffda1d9296c60688798a45fdb3024c36b6da277c8eb5f",
+    "reserved_from_training_and_model_selection": [
+      "RCIAS_CB1_CORE45",
+      "RCIAS_CB1_R13",
+      "RCIAS_CB1_R14"
+    ],
+    "source_manifests": [
+      {
+        "path": "instances/canonical/RCIAS-2.0/manifest.csv",
+        "sha256": "b7a40ef180260be96bc7cc5e3c4063260fec6bfb448484fdd370d403a068e7f3"
+      },
+      {
+        "path": "instances/controlled/RCIAS-CB1/manifests/core_manifest.csv",
+        "sha256": "63f748389d16b5f740a221533dae8987c112ab523a29ba8dd491efdff1388173"
+      },
+      {
+        "path": "instances/controlled/RCIAS-CB1-TRAIN/manifests/train_instance_manifest.csv",
+        "sha256": "0757c32b71919bde71ad474d57e58cc90b8c496b2727bafb02f9948371620859"
+      },
+      {
+        "path": "instances/controlled/RCIAS-CB1-TRAIN-CAUR-R12R14/manifests/phase6j_instance_manifest.csv",
+        "sha256": "dc06cc3b49e0724bf3bc54255ba95f6a8b29ca07d383f96bcd01f0f6d8f17619"
+      }
+    ]
+  },
+  "stage_entry": {
+    "branch": "main",
+    "git_sha": "2f1e27bef9e8a935bcfc8d7d263a17a4c418d8b3",
+    "observation": "captured before the first A1.7A-R file was created",
+    "working_tree": "CLEAN_BEFORE_A17AR_MODIFICATIONS"
+  }
+}

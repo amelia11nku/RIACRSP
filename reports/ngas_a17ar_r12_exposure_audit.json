@@ -1,0 +1,53 @@
+{
+  "c1_training": {
+    "cache_path": "outputs/ngas_a1/critic_training_rthgt_v2/data/training_cache_v2.json.gz",
+    "cache_sha256": "587d8de6236a4be4abed1be4cad332bd97ff2c2056d18bc6311ee1d490c4ecb2",
+    "instances": 18,
+    "joint_action_labels": 6465,
+    "no_continuation_rollout": true,
+    "sources": [
+      "H1",
+      "NATIVE16_746101",
+      "NATIVE16_746102",
+      "NATIVE16_746103"
+    ],
+    "states": 72
+  },
+  "comparison": {
+    "a16_invalid_runs": 54,
+    "a16r_comparator_runs": 216,
+    "a16r_ngas_runs": 54,
+    "instances": 18,
+    "seeds": [
+      746101,
+      746102,
+      746103
+    ]
+  },
+  "headline": "C1_FINAL_TRAIN_INSTANCE_OVERLAP_WITH_A16R_R12 = 18/18",
+  "input_hashes": {
+    "outputs/frozen_2o_baselines/instance_manifest.json": "5fb1d78201fd62dcc64fb1db4bbb5de9cffa11bed07bbd5c890a71c8e130b8af",
+    "outputs/ngas_a1/critic_training_rthgt_v2/data/training_cache_manifest_v2.json": "66f32b2c52d017a9cdb8b9b7e4d622be3a6092cb7354088fdbccdb2fe2812385",
+    "outputs/ngas_a1/development_v1/protocol.json": "3ac3cd3a0640a3f34b4f48b2c335d445da87c89b9ec74879f330d7cb60c13cc7",
+    "outputs/ngas_a1/solver_comparison_a16r_v1/raw_manifest.json": "14a2ddba1f8a1607a00791a31bc2a94bcf01ef4559e42b4f957bc9a991c69798"
+  },
+  "output_hashes": {
+    "reports/ngas_a17ar_overlap_matrix.csv": "7adbead60b7423dbc6f3b6de506d5db14bbed646a0c343aea672c0d4f1be9a11",
+    "reports/ngas_a17ar_r12_exposure_audit.md": "7ae433e75cf9761e71dc14bd21169a77037303649398f9df91bf92cbb0175f4f",
+    "reports/ngas_a17ar_r12_exposure_rows.csv": "9f01342ce0b572e51f97fae13080fffd5b4d28c501cd3bb52ebc921e93522fe5"
+  },
+  "overlap": {
+    "instance_content_hash_percent": 100.0,
+    "instance_ids": {
+      "count": 18,
+      "denominator": 18
+    },
+    "instance_seed_percent": 100.0,
+    "seeds": {
+      "count": 3,
+      "denominator": 3
+    }
+  },
+  "schema": "ngas-a17ar-r12-exposure-audit-v1",
+  "status": "PASS"
+}

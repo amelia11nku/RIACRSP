@@ -1,5 +1,10 @@
 # NGAS A1.6R Integrity-Revalidated Baseline and Search-Efficiency Diagnosis
 
+**A1.7A-R evidence-class correction:** all 18 R12 instances used here were also
+used to train the final frozen C1 critic. This report therefore establishes an
+R12 development-exposed comparison; it supplies no fresh-instance evidence for
+generalization. The A1.6R integrity decision remains unchanged.
+
 ## Failure repaired and terminal decision
 
 - Terminal decision: **`NGAS_A1_6R_PASS_REVALIDATED`**
@@ -14,7 +19,7 @@
 - R13/R14 remain locked. A1.6R does not authorize either holdout.
 - Gurobi: not run
 
-## Final quality
+## R12 development-exposed quality
 
 NGAS mean RPD is 1.4872% and median RPD is
 1.4503%. Against PHASE6N_TOP1, its mean instance-level

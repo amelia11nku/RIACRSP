@@ -1,0 +1,19 @@
+{
+  "algorithm": "sha256(canonical-json(candidate assignment arrays))",
+  "candidate_fields": [
+    "operation_order",
+    "island_assignment",
+    "w_assignment",
+    "f_assignment"
+  ],
+  "canonical_json": {
+    "separators": [
+      ",",
+      ":"
+    ],
+    "sort_keys": true
+  },
+  "exact_state_requirement": "candidate fingerprint plus recoverable runtime, RNG, temperature, portfolio, and incumbent metadata; candidate equality alone is not called exact state identity",
+  "limitations": "A1.6R retained 18 snapshots from six instances under seed 746102; the remaining historical C1 states have no comparable A1.6R snapshot.",
+  "schema": "ngas-a17ar-state-fingerprint-schema-v1"
+}

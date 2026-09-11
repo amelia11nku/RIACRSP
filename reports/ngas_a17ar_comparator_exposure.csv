@@ -1,0 +1,9 @@
+algorithm,parameter_provenance,r12_specific_tuning,evidence,interpretation
+GA,GLOBALLY_FIXED_BEFORE_R12,False,configs/phase5c_ga.json,Phase 5C configuration predates the R12 suite.
+DCGA,GLOBALLY_FIXED_BEFORE_R12,False,configs/phase5c_dcga.json; docs/reports/phase5c_dcga_adaptation_protocol.md,Adapted and frozen in Phase 5C without R12 outcome tuning.
+DABC,LITERATURE_DEFAULT_AND_PRE_R12_ADAPTATION,False,configs/baselines/dabc_riacrsp.json; docs/reports/dabc_source_fidelity.md,Source defaults and declared adaptation were frozen before R12.
+LG_HGA_2O,PRE_R12_TRAINING_AND_FIXED_CONFIGURATION,False,configs/baselines/lghga_knowledge_training_manifest.json; configs/baselines/lghga_v2_implementation_manifest.json,Knowledge data came from RCIAS-CB1-TRAIN; no R12 tuning evidence.
+ALNS,GLOBALLY_FIXED_BEFORE_R12,False,configs/phase5c_alns.json,Phase 5C configuration predates the R12 suite.
+PHASE6H,PRE_R12_R07_R08_CALIBRATION,False,configs/phase6h_live_calibration.json; docs/reports/phase6h_live_calibration_report.md,Calibration used R07/R08 and was frozen before R12.
+PHASE6N_TOP1,TUNED_AND_TRAINED_ON_R12,True,configs/phase6n_candidate_conditioned_csg_v1.json; docs/reports/phase6n_data_generation_report.md,Training and selection explicitly used R12 states and outcomes.
+NGAS_C1,TUNED_AND_TRAINED_ON_R12,True,outputs/ngas_a1/critic_training_rthgt_v2/data/training_cache_manifest_v2.json; outputs/ngas_a1/critic_training_rthgt_v2/audit/completion_audit.json,Final compact-relational C1 fit used all 18 R12 instances.
