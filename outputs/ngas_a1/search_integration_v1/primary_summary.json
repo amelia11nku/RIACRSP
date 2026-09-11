@@ -1,0 +1,412 @@
+{
+  "method_summaries": {
+    "NEURAL_PRIOR_ONLY": {
+      "feasible_replay_fraction": 1.0,
+      "mean_acceptance_rate": 0.16111908705320183,
+      "mean_anytime_auc_over_H1": 0.952032330024343,
+      "mean_critic_calls": 1.0,
+      "mean_current_improvement_rate": 0.0790472709047471,
+      "mean_decoder_evaluations": 9348.222222222223,
+      "mean_effective_neural_overhead_seconds": 0.11467152410962929,
+      "mean_final_over_H1": 0.9333891138448591,
+      "mean_new_best_rate": 0.007539227342532597,
+      "mean_unique_action_semantics": 302.3333333333333,
+      "median_critic_influence_fraction": 1.0,
+      "median_guided_iterations_per_critic_call": 1068.0,
+      "paired_control": {
+        "losses": 6,
+        "mean_anytime_auc_gain": 0.00814397254117522,
+        "mean_final_gain": 0.0026031956563092895,
+        "pairs": [
+          {
+            "anytime_auc_gain": 0.006367385000947172,
+            "final_gain": -0.009685230024213076,
+            "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+            "seed": 746101
+          },
+          {
+            "anytime_auc_gain": 0.0008144151481218358,
+            "final_gain": -0.022437841115827774,
+            "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+            "seed": 746102
+          },
+          {
+            "anytime_auc_gain": 0.04267096412556058,
+            "final_gain": 0.05434782608695652,
+            "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+            "seed": 746103
+          },
+          {
+            "anytime_auc_gain": 0.017643109932151853,
+            "final_gain": 0.018230563002680965,
+            "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+            "seed": 746101
+          },
+          {
+            "anytime_auc_gain": -4.5530824367993566e-05,
+            "final_gain": -0.015005359056806002,
+            "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+            "seed": 746102
+          },
+          {
+            "anytime_auc_gain": 0.014601639826217665,
+            "final_gain": 0.017007706617060855,
+            "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+            "seed": 746103
+          },
+          {
+            "anytime_auc_gain": 0.008942242561887036,
+            "final_gain": -0.005842486562280907,
+            "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12",
+            "seed": 746101
+          },
+          {
+            "anytime_auc_gain": 0.006712582990653038,
+            "final_gain": -0.007407407407407408,
+            "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12",
+            "seed": 746102
+          },
+          {
+            "anytime_auc_gain": -0.02441105589059421,
+            "final_gain": -0.005779010633379565,
+            "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12",
+            "seed": 746103
+          }
+        ],
+        "ties": 0,
+        "wins": 3
+      },
+      "run_count": 9
+    },
+    "NEURAL_X_PORTFOLIO": {
+      "feasible_replay_fraction": 1.0,
+      "mean_acceptance_rate": 0.15990366581483345,
+      "mean_anytime_auc_over_H1": 0.9603141107410198,
+      "mean_critic_calls": 1.0,
+      "mean_current_improvement_rate": 0.08021296095425161,
+      "mean_decoder_evaluations": 9073.111111111111,
+      "mean_effective_neural_overhead_seconds": 0.1057790842347054,
+      "mean_final_over_H1": 0.9450893135495133,
+      "mean_new_best_rate": 0.0065585225463694104,
+      "mean_unique_action_semantics": 299.77777777777777,
+      "median_critic_influence_fraction": 1.0,
+      "median_guided_iterations_per_critic_call": 1052.0,
+      "paired_control": {
+        "losses": 6,
+        "mean_anytime_auc_gain": -0.0004959787509190405,
+        "mean_final_gain": -0.009785428339791236,
+        "pairs": [
+          {
+            "anytime_auc_gain": -0.018417333275050806,
+            "final_gain": -0.017554479418886198,
+            "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+            "seed": 746101
+          },
+          {
+            "anytime_auc_gain": 0.006529864312619098,
+            "final_gain": -0.026682838083687082,
+            "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+            "seed": 746102
+          },
+          {
+            "anytime_auc_gain": 0.02798486547085205,
+            "final_gain": 0.02002288329519451,
+            "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+            "seed": 746103
+          },
+          {
+            "anytime_auc_gain": 0.005709406834342407,
+            "final_gain": 0.010455764075067025,
+            "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+            "seed": 746101
+          },
+          {
+            "anytime_auc_gain": -0.0003772554019069683,
+            "final_gain": -0.010986066452304395,
+            "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+            "seed": 746102
+          },
+          {
+            "anytime_auc_gain": 0.0024956717734295262,
+            "final_gain": 0.0013287270794578793,
+            "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+            "seed": 746103
+          },
+          {
+            "anytime_auc_gain": 0.005413158928297025,
+            "final_gain": -0.011451273662070577,
+            "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12",
+            "seed": 746101
+          },
+          {
+            "anytime_auc_gain": -0.0023860694160053393,
+            "final_gain": -0.025,
+            "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12",
+            "seed": 746102
+          },
+          {
+            "anytime_auc_gain": -0.031416117984848356,
+            "final_gain": -0.02820157189089228,
+            "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12",
+            "seed": 746103
+          }
+        ],
+        "ties": 0,
+        "wins": 3
+      },
+      "run_count": 9
+    },
+    "ONE_SHOT_TOP1": {
+      "feasible_replay_fraction": 1.0,
+      "mean_acceptance_rate": 0.15792698176744246,
+      "mean_anytime_auc_over_H1": 0.9618069948193635,
+      "mean_critic_calls": 1.0,
+      "mean_current_improvement_rate": 0.08108813737124364,
+      "mean_decoder_evaluations": 9487.666666666666,
+      "mean_effective_neural_overhead_seconds": 0.10902741668461305,
+      "mean_final_over_H1": 0.9471329438937324,
+      "mean_new_best_rate": 0.00478368907026084,
+      "mean_unique_action_semantics": 323.3333333333333,
+      "median_critic_influence_fraction": 0.0009233610341643582,
+      "median_guided_iterations_per_critic_call": 1.0,
+      "paired_control": {
+        "losses": 7,
+        "mean_anytime_auc_gain": -0.0020492415118555066,
+        "mean_final_gain": -0.01203175952744118,
+        "pairs": [
+          {
+            "anytime_auc_gain": -0.02217656744036943,
+            "final_gain": -0.04903147699757869,
+            "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+            "seed": 746101
+          },
+          {
+            "anytime_auc_gain": -0.002021494742659344,
+            "final_gain": -0.004851425106124924,
+            "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+            "seed": 746102
+          },
+          {
+            "anytime_auc_gain": 0.017783071748878974,
+            "final_gain": 0.008009153318077803,
+            "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+            "seed": 746103
+          },
+          {
+            "anytime_auc_gain": -0.005800653062288426,
+            "final_gain": 0.0,
+            "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+            "seed": 746101
+          },
+          {
+            "anytime_auc_gain": -0.0043124195080067864,
+            "final_gain": -0.01339764201500536,
+            "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+            "seed": 746102
+          },
+          {
+            "anytime_auc_gain": 0.002057949237252063,
+            "final_gain": -0.007175126229072549,
+            "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+            "seed": 746103
+          },
+          {
+            "anytime_auc_gain": 0.0033697056630408216,
+            "final_gain": -0.018462257536807667,
+            "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12",
+            "seed": 746101
+          },
+          {
+            "anytime_auc_gain": -0.005590058608182564,
+            "final_gain": -0.021527777777777778,
+            "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12",
+            "seed": 746102
+          },
+          {
+            "anytime_auc_gain": -0.0017527068943648657,
+            "final_gain": -0.0018492834026814608,
+            "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12",
+            "seed": 746103
+          }
+        ],
+        "ties": 1,
+        "wins": 1
+      },
+      "run_count": 9
+    },
+    "ONLINE_PORTFOLIO_ONLY": {
+      "feasible_replay_fraction": 1.0,
+      "mean_acceptance_rate": 0.16439588106819608,
+      "mean_anytime_auc_over_H1": 0.9599175702303975,
+      "mean_critic_calls": 0.0,
+      "mean_current_improvement_rate": 0.08430657529271056,
+      "mean_decoder_evaluations": 9039.666666666666,
+      "mean_effective_neural_overhead_seconds": 0.0,
+      "mean_final_over_H1": 0.9360389384527872,
+      "mean_new_best_rate": 0.006763925143364191,
+      "mean_unique_action_semantics": 1011.1111111111111,
+      "median_critic_influence_fraction": 0.0,
+      "median_guided_iterations_per_critic_call": null,
+      "run_count": 9
+    },
+    "PERSISTENT_EVENT_REFRESH": {
+      "feasible_replay_fraction": 1.0,
+      "mean_acceptance_rate": 0.21609563050682384,
+      "mean_anytime_auc_over_H1": 0.9551088460766031,
+      "mean_critic_calls": 123.11111111111111,
+      "mean_current_improvement_rate": 0.10590345828445974,
+      "mean_decoder_evaluations": 6977.222222222223,
+      "mean_effective_neural_overhead_seconds": 10.527525328267883,
+      "mean_final_over_H1": 0.9322301577076997,
+      "mean_new_best_rate": 0.010444030610105248,
+      "mean_unique_action_semantics": 783.7777777777778,
+      "median_critic_influence_fraction": 1.0,
+      "median_guided_iterations_per_critic_call": 6.590163934426229,
+      "paired_control": {
+        "losses": 3,
+        "mean_anytime_auc_gain": 0.004911748420327941,
+        "mean_final_gain": 0.003981988745596783,
+        "pairs": [
+          {
+            "anytime_auc_gain": 0.0038029461904970337,
+            "final_gain": -0.009685230024213076,
+            "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+            "seed": 746101
+          },
+          {
+            "anytime_auc_gain": -0.002603219848460468,
+            "final_gain": 0.001212856276531231,
+            "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+            "seed": 746102
+          },
+          {
+            "anytime_auc_gain": 0.013635089686098688,
+            "final_gain": 0.02517162471395881,
+            "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+            "seed": 746103
+          },
+          {
+            "anytime_auc_gain": 0.010969100116664991,
+            "final_gain": 0.013136729222520108,
+            "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+            "seed": 746101
+          },
+          {
+            "anytime_auc_gain": 0.0003642465949448643,
+            "final_gain": 0.0005359056806002144,
+            "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+            "seed": 746102
+          },
+          {
+            "anytime_auc_gain": 0.00808806716101005,
+            "final_gain": 0.015413234121711401,
+            "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+            "seed": 746103
+          },
+          {
+            "anytime_auc_gain": 0.01914812474741431,
+            "final_gain": -0.0030380930123860717,
+            "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12",
+            "seed": 746101
+          },
+          {
+            "anytime_auc_gain": 0.020470557708470692,
+            "final_gain": 0.018518518518518517,
+            "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12",
+            "seed": 746102
+          },
+          {
+            "anytime_auc_gain": -0.029669176573688692,
+            "final_gain": -0.025427646786870088,
+            "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12",
+            "seed": 746103
+          }
+        ],
+        "ties": 0,
+        "wins": 6
+      },
+      "run_count": 9
+    },
+    "PERSISTENT_FIXED_REFRESH": {
+      "feasible_replay_fraction": 1.0,
+      "mean_acceptance_rate": 0.18455664252046328,
+      "mean_anytime_auc_over_H1": 0.9534256481038119,
+      "mean_critic_calls": 52.111111111111114,
+      "mean_current_improvement_rate": 0.09452453192211734,
+      "mean_decoder_evaluations": 8260.111111111111,
+      "mean_effective_neural_overhead_seconds": 4.239231402649441,
+      "mean_final_over_H1": 0.9274058883364761,
+      "mean_new_best_rate": 0.00944336855347877,
+      "mean_unique_action_semantics": 891.1111111111111,
+      "median_critic_influence_fraction": 1.0,
+      "median_guided_iterations_per_critic_call": 19.830985915492956,
+      "paired_control": {
+        "losses": 3,
+        "mean_anytime_auc_gain": 0.006735387327399383,
+        "mean_final_gain": 0.00912691748296682,
+        "pairs": [
+          {
+            "anytime_auc_gain": -0.0036572394399032814,
+            "final_gain": -0.010290556900726392,
+            "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+            "seed": 746101
+          },
+          {
+            "anytime_auc_gain": 0.01579383662250409,
+            "final_gain": 0.012734990903577926,
+            "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+            "seed": 746102
+          },
+          {
+            "anytime_auc_gain": 0.03979820627802689,
+            "final_gain": 0.05491990846681922,
+            "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+            "seed": 746103
+          },
+          {
+            "anytime_auc_gain": 0.006204743500335757,
+            "final_gain": 0.010455764075067025,
+            "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+            "seed": 746101
+          },
+          {
+            "anytime_auc_gain": 0.007941876650492523,
+            "final_gain": 0.00482315112540193,
+            "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+            "seed": 746102
+          },
+          {
+            "anytime_auc_gain": 0.0031685885081500983,
+            "final_gain": -0.005314908317831517,
+            "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+            "seed": 746103
+          },
+          {
+            "anytime_auc_gain": 0.010422180859844145,
+            "final_gain": 0.0021032951624211263,
+            "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12",
+            "seed": 746101
+          },
+          {
+            "anytime_auc_gain": -0.0013594390762582892,
+            "final_gain": -0.0023148148148148147,
+            "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12",
+            "seed": 746102
+          },
+          {
+            "anytime_auc_gain": -0.01769426795659749,
+            "final_gain": 0.01502542764678687,
+            "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12",
+            "seed": 746103
+          }
+        ],
+        "ties": 0,
+        "wins": 6
+      },
+      "run_count": 9
+    }
+  },
+  "protocol_sha256": "7287f8c497dfe649818b648748e5df032275addfe05156f030c1f242e1b71ee4",
+  "run_count": 54,
+  "schema": "ngas-a14-primary-summary-v1"
+}

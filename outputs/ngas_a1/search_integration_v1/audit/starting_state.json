@@ -1,0 +1,67 @@
+{
+  "a13r": {
+    "C1_worst_representative_p90_ms": 2.056765020824969,
+    "R1_role": "EXPLANATORY_ABLATION_ONLY",
+    "R1_worst_representative_p90_ms": 49.8257779981941,
+    "completion_audit_sha256": "5a62f27dd5bc8723dba386e7f0bc53333d65fdf4f10833073ca0b2b98b4d02f9",
+    "final_decision_sha256": "852e4f6a3b364ecb3f7bf0a338e6f1958bdc74c986e11eb9e3d0c7b6c63ecea5",
+    "manifest_errors": [],
+    "manifest_extras": [],
+    "manifest_file_count": 78,
+    "production_checkpoint_path": "outputs/ngas_a1/critic_training_rthgt_v2/production/revised_joint_critic.pt",
+    "production_checkpoint_sha256": "448b0aaf871f0629dec2d94bad63c888fbdaf71c113eb5ade58c4228647c8560",
+    "result_manifest_sha256": "3638e573aad406b4bea29c0ceda096a3985ca9349b56113d52db3cd3b1cb983b",
+    "selected_variant": "C1",
+    "training_protocol_sha256": "0cdd5de321066c1f301afda7da86b91854d1d4b55fa2ee4df76a2dfa518d6f28"
+  },
+  "audited_at_utc": "2026-09-10T18:50:31.726778+00:00",
+  "authorized_next_step": "A1.4_IMPLEMENTATION_AND_SMALL_R12_DEVELOPMENT_PREREGISTRATION",
+  "checks": {
+    "A1_2_label_identity_pass": true,
+    "C1_latency_eligible": true,
+    "R13_locked": true,
+    "R14_locked": true,
+    "R1_ablation_only_runtime_ineligible": true,
+    "a13r_manifest_all_files_match": true,
+    "a13r_terminal_pass_compact": true,
+    "clean_worktree": true,
+    "gurobi_not_run": true,
+    "historical_C0_tree_unchanged": true,
+    "phase6_worktree_paths_unchanged": true,
+    "production_C1_selected": true,
+    "production_checkpoint_hash_matches": true
+  },
+  "environment": {
+    "cuda": "12.8",
+    "cuda_available_in_audit_process": true,
+    "python": "3.11.15 (main, Jun 11 2026, 15:20:16) [GCC 14.3.0]",
+    "torch": "2.11.0+cu128"
+  },
+  "frozen_boundaries": {
+    "A1_2_label_identity_sha256": "7e40f64513943e6e82561324e8e966699790299a1b2306fb793460ab4f68cf84",
+    "A1_2_label_mismatch_count": 0,
+    "gurobi_run": false,
+    "historical_C0_files": 41,
+    "historical_C0_tree_sha256": "4239e9236cb5a5d9837def6acc70baa9155b32cb2282a85efb604a57a4b3a9f9",
+    "phase6_modified_paths": [],
+    "r13": "LOCKED",
+    "r14": "LOCKED"
+  },
+  "preimplementation_regression": {
+    "result": "40 passed",
+    "text_sha256": "9d709d213998251ae3c7543dbca0ece88cdb14d4d83eaa382abc9be4ff736661",
+    "xml_sha256": "a0276ecdbe0151356a3c5bf5848ee56b703b434459f3f4a5752abc23b61238d8"
+  },
+  "prohibited": [
+    "A1.2_RELABEL",
+    "A1.3R_RETRAIN",
+    "R13",
+    "R14",
+    "GUROBI",
+    "GIT_PUSH"
+  ],
+  "schema": "ngas-a14-starting-state-audit-v1",
+  "starting_head": "d10181a6d2ccbf402b80622080ce522ebe09dfa7",
+  "status": "PASS",
+  "worktree_status": []
+}

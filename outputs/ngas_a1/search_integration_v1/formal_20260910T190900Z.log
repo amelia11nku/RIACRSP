@@ -1,0 +1,13 @@
+{"event": "run_started", "mode": "ONLINE_PORTFOLIO_ONLY", "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12", "seed": 746101, "time_limit_seconds": 30.5, "completed": 1, "expected": 54}
+Traceback (most recent call last):
+  File "/home/liulei/ayx/RI-ACRSP/scripts/run_ngas_a14_integration.py", line 315, in <module>
+    main()
+  File "/home/liulei/ayx/RI-ACRSP/scripts/run_ngas_a14_integration.py", line 311, in main
+    run_all(args.device)
+  File "/home/liulei/ayx/RI-ACRSP/scripts/run_ngas_a14_integration.py", line 130, in run_all
+    with path.open('x') as stream:
+         ^^^^^^^^^^^^^^
+  File "/home/liulei/miniconda3/envs/gnn311/lib/python3.11/pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileExistsError: [Errno 17] File exists: '/home/liulei/ayx/RI-ACRSP/outputs/ngas_a1/search_integration_v1/raw/online_portfolio_only/CB1_CAUR_S_CF1_RI2_TI2_R12/seed_746101.json'

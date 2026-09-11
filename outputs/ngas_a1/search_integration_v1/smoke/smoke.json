@@ -1,0 +1,180 @@
+{
+  "R13": "LOCKED",
+  "R14": "LOCKED",
+  "checks": {
+    "all_final_replays_feasible": true,
+    "all_six_modes_completed": true,
+    "checkpoint_hash_matches": true,
+    "cuda_available": true,
+    "event_mode_deterministic": true,
+    "representative_R12_full_bank_scored": true,
+    "representative_R12_numerically_finite": true,
+    "representative_R12_replay_feasible": true
+  },
+  "completed_at_utc": "2026-09-10T19:06:51.468798+00:00",
+  "determinism_signature": {
+    "actions": [
+      [
+        "large",
+        [
+          "o12",
+          "o21"
+        ],
+        "greedy"
+      ],
+      [
+        "small",
+        [
+          "o11",
+          "o22"
+        ],
+        "transport_aware"
+      ],
+      [
+        "large",
+        [
+          "o12",
+          "o21"
+        ],
+        "greedy"
+      ]
+    ],
+    "best_makespan": 39.0,
+    "decoder_evaluations": 7,
+    "iterations": 3,
+    "outcomes": [
+      "rejected",
+      "rejected",
+      "rejected"
+    ]
+  },
+  "device": {
+    "cuda": "12.8",
+    "name": "NVIDIA GeForce RTX 4060 Ti",
+    "peak_allocated_bytes": 42029056,
+    "peak_reserved_bytes": 60817408,
+    "torch": "2.11.0+cu128"
+  },
+  "gurobi_run": false,
+  "implementation_commit": "7bb5983cd77cca446c4e2e3aa3b896e125b8e0db",
+  "mode_results": {
+    "NEURAL_PRIOR_ONLY": {
+      "best_makespan": 39.0,
+      "critic_influence_fraction": 1.0,
+      "decoder_evaluations": 7,
+      "feasible_replay": true,
+      "iterations": 3,
+      "neural_calls": 1
+    },
+    "NEURAL_X_PORTFOLIO": {
+      "best_makespan": 39.0,
+      "critic_influence_fraction": 1.0,
+      "decoder_evaluations": 7,
+      "feasible_replay": true,
+      "iterations": 3,
+      "neural_calls": 1
+    },
+    "ONE_SHOT_TOP1": {
+      "best_makespan": 39.0,
+      "critic_influence_fraction": 0.3333333333333333,
+      "decoder_evaluations": 7,
+      "feasible_replay": true,
+      "iterations": 3,
+      "neural_calls": 1
+    },
+    "ONLINE_PORTFOLIO_ONLY": {
+      "best_makespan": 39.0,
+      "critic_influence_fraction": 0.0,
+      "decoder_evaluations": 7,
+      "feasible_replay": true,
+      "iterations": 3,
+      "neural_calls": 0
+    },
+    "PERSISTENT_EVENT_REFRESH": {
+      "best_makespan": 39.0,
+      "critic_influence_fraction": 1.0,
+      "decoder_evaluations": 7,
+      "feasible_replay": true,
+      "iterations": 3,
+      "neural_calls": 1
+    },
+    "PERSISTENT_FIXED_REFRESH": {
+      "best_makespan": 39.0,
+      "critic_influence_fraction": 1.0,
+      "decoder_evaluations": 7,
+      "feasible_replay": true,
+      "iterations": 3,
+      "neural_calls": 1
+    }
+  },
+  "representative_R12": {
+    "best_makespan": 1844.0,
+    "decoder_evaluations": 3,
+    "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+    "iterations": 1,
+    "num_operations": 61,
+    "refresh": {
+      "bank": {
+        "duplicate_targets": 1,
+        "joint_actions": 355,
+        "requested_targets": 72,
+        "targets_by_size": {
+          "large": 24,
+          "medium": 23,
+          "small": 24
+        },
+        "unique_targets": 71
+      },
+      "critic_called": true,
+      "critic_variant": "C1",
+      "critical_signature": "9eccef666818cac174043f95ea2267c6a2897cff81fc7d8df671b23f9e2b0cd2",
+      "distribution": {
+        "action_count": 355,
+        "effective_action_count": 280.20308737763816,
+        "entropy": 5.63551465232057,
+        "top_actions": [
+          {
+            "action_id": "ngas_action_52fe7315fe914944110ab730",
+            "probability": 0.015056170069943151,
+            "repair": "transport_aware",
+            "size": "small"
+          },
+          {
+            "action_id": "ngas_action_542466727d307519078be0dd",
+            "probability": 0.013608400227170404,
+            "repair": "transport_aware",
+            "size": "small"
+          },
+          {
+            "action_id": "ngas_action_29e54f8513df51ce4a7b171a",
+            "probability": 0.013284053702691343,
+            "repair": "transport_aware",
+            "size": "small"
+          },
+          {
+            "action_id": "ngas_action_ad8049e01fbc50f02c54345d",
+            "probability": 0.012566392326718306,
+            "repair": "transport_aware",
+            "size": "small"
+          },
+          {
+            "action_id": "ngas_action_69debb45dca6f75cdc71b942",
+            "probability": 0.011209960735659991,
+            "repair": "transport_aware",
+            "size": "small"
+          }
+        ],
+        "total_variation_from_uniform": 0.280934663660371
+      },
+      "dominant_bottleneck": "F_LOGISTICS",
+      "elapsed_time_sec": 0.08313065697439015,
+      "iteration": 0,
+      "reasons": [
+        "initial_state"
+      ],
+      "refresh_seconds": 0.04275528097059578
+    }
+  },
+  "schema": "ngas-a14-cuda-smoke-v1",
+  "status": "PASS"
+}

@@ -1,0 +1,32 @@
+{
+  "R13": "LOCKED",
+  "R14": "LOCKED",
+  "check_command": "cat outputs/ngas_a1/search_integration_v1/progress.json",
+  "command": [
+    "/home/liulei/miniconda3/envs/gnn311/bin/python",
+    "-u",
+    "scripts/run_ngas_a14_integration.py",
+    "--device",
+    "cuda:0"
+  ],
+  "device": "cuda:0",
+  "eta_basis": "sum of frozen per-run wall-clock caps plus 20 percent and 180 seconds overhead",
+  "expected_completion_utc": "2026-09-10T20:17:44.601868+00:00",
+  "gurobi_run": false,
+  "implementation_commit": "7bb5983cd77cca446c4e2e3aa3b896e125b8e0db",
+  "launch_commit": "c14c2ae21151fd9596be4ebaeef8c6150aef5e7e",
+  "liveness_evidence": "worker alive and emitted a frozen run_started event",
+  "log_path": "outputs/ngas_a1/search_integration_v1/formal_20260910T190757Z.log",
+  "nominal_budget_seconds": 3339.0,
+  "output_path": "outputs/ngas_a1/search_integration_v1",
+  "pid": 283166,
+  "progress_path": "outputs/ngas_a1/search_integration_v1/progress.json",
+  "projected_seconds": 4186.799999999999,
+  "protocol_sha256": "7287f8c497dfe649818b648748e5df032275addfe05156f030c1f242e1b71ee4",
+  "resume_command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/launch_ngas_a14_integration.py",
+  "resume_semantics": "validated immutable completed raw runs are reused; only missing runs execute",
+  "schema": "ngas-a14-primary-launch-v1",
+  "started_at_utc": "2026-09-10T19:07:57.801868+00:00",
+  "status": "RUNNING_VERIFIED",
+  "working_directory": "/home/liulei/ayx/RI-ACRSP"
+}

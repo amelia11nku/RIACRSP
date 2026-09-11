@@ -1,0 +1,57 @@
+{
+  "R13": "LOCKED",
+  "R14": "LOCKED",
+  "aggregate": {
+    "critic_calls": 1604,
+    "decoder_evaluations": 469674,
+    "iterations": 58722,
+    "maximum_budget_overshoot_seconds": 0.07512762903934345,
+    "minimum_budget_overshoot_seconds": 0.000120392011012882,
+    "refreshes": 2118
+  },
+  "checks": {
+    "R13_R14_locked_and_no_gurobi": true,
+    "R1_remains_explanatory_only": true,
+    "all_final_schedules_replay_exactly": true,
+    "all_json_numeric_values_finite": true,
+    "all_runtime_reaches_budget": true,
+    "critic_role_contract_pass": true,
+    "decision_is_mechanism_frozen": true,
+    "historical_phase6_worktree_unchanged": true,
+    "protocol_is_frozen": true,
+    "protocol_sha256_matches_outputs": true,
+    "raw_manifest_hashes_match": true,
+    "raw_manifest_scope_exact": true,
+    "raw_scope_exact": true,
+    "run_count_54": true,
+    "selected_mode_is_fixed_refresh": true,
+    "selected_mode_recomputed": true,
+    "selection_eligibility_recomputed": true,
+    "source_hashes_match": true,
+    "telemetry_contract_pass": true
+  },
+  "gurobi_run": false,
+  "manifest_errors": [],
+  "manifest_extras": [],
+  "next_gate": "MATCHED_C1_R1_EXPLANATORY_ABLATION",
+  "protocol_sha256": "7287f8c497dfe649818b648748e5df032275addfe05156f030c1f242e1b71ee4",
+  "raw_file_count": 54,
+  "raw_manifest_sha256": "8efad42267fb981d8fc944d2bed7082250b00362d18911f2f6e1e74a225fe713",
+  "raw_total_bytes": 86602827,
+  "schema": "ngas-a14-primary-completion-audit-v1",
+  "selection": {
+    "eligible_modes": [
+      "PERSISTENT_FIXED_REFRESH",
+      "PERSISTENT_EVENT_REFRESH"
+    ],
+    "fixed_refresh_mean_anytime_auc_gain": 0.006735387327399383,
+    "fixed_refresh_mean_final_gain": 0.00912691748296682,
+    "fixed_refresh_wins_ties_losses": [
+      6,
+      0,
+      3
+    ],
+    "selected_mode": "PERSISTENT_FIXED_REFRESH"
+  },
+  "status": "PASS"
+}
