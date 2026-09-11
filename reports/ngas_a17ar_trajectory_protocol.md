@@ -1,11 +1,14 @@
-# NGAS A1.7A-R trajectory protocol revision 1 rejection
+# NGAS A1.7A-R clean trajectory protocol
 
-Protocol revision 1 had SHA256 `441b613936fc7f0ef59b3410dfbcd5135af3481e8b5ce43f8ce596766b1b0a73`.
-The pre-instance CUDA smoke stopped before checkpoint loading, dataset access, ledger
-append, or solver execution because PyTorch 2.11 rejected a string device argument
-in `torch.cuda.reset_peak_memory_stats`.
+Protocol revision **2** is frozen before formal collection. It supersedes rejected revision 1 (`441b613936fc7f0ef59b3410dfbcd5135af3481e8b5ce43f8ce596766b1b0a73`). It does not train C1-v2 or change the production solver.
 
-No formal trajectory run started. The rejected manifest is preserved at
-`artifacts/ngas_a17ar/trajectory_protocol_manifest_rejected_v1.json`. Revision 2
-changes only the smoke-test device argument and records this supersession before a
-new protocol freeze.
+- TRAIN: **81 instances**, one balanced selection across all 81 scale×CF×RI×TI cells.
+- VALIDATION: **27 instances**, balanced across S/M/L, CF1/2/3, RI1/2/3, and TI1/2/3.
+- Each instance contributes five snapshots at normalized budget fractions `[0.1, 0.3, 0.5, 0.7, 0.9]` for **540 expected clean states**.
+- Every trajectory uses the frozen `PERSISTENT_FIXED_REFRESH` C1 solver, refresh interval 20, five repairs, and `candidate_trials=8` stochastic realizations per selected joint action.
+- Budget: `2 * |O|` seconds per trajectory; nominal serial budget is 7.28 hours before setup and final audit work.
+- Candidate-bank hash: `e64c7a1cdfbe64495a2e3175fe7060dcea745f094ea6e3f1b3839fb48367bd07`.
+- R12 is development-exposed and audit-only. R13/R14 remain locked with no solver access.
+- RCIAS-CB1-CORE45 is external-baseline-only and excluded from both training and model selection.
+
+Instance IDs and file-content SHA256 values are mutually disjoint between TRAIN and VALIDATION and from R12, R13, R14, and RCIAS-CB1-CORE45. The full per-instance list, generation seeds, trajectory seeds, budgets, checkpoint hash, collection-code hashes, and audit subset are in `artifacts/ngas_a17ar/trajectory_protocol_manifest.json`.
