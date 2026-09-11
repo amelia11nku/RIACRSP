@@ -1,0 +1,33 @@
+{
+  "R13": "LOCKED",
+  "R14": "LOCKED",
+  "R1_role": "EXPLANATORY_ONLY",
+  "check_command": "cat outputs/ngas_a1/search_integration_c1_r1_v1/progress.json",
+  "command": [
+    "/home/liulei/miniconda3/envs/gnn311/bin/python",
+    "-u",
+    "scripts/run_ngas_a14_c1_r1_ablation.py",
+    "--device",
+    "cuda:0"
+  ],
+  "device": "cuda:0",
+  "eta_basis": "sum of 18 frozen wall-clock caps plus 20 percent and 120 seconds overhead",
+  "expected_completion_utc": "2026-09-11T02:18:36.269453+00:00",
+  "gurobi_run": false,
+  "implementation_commit": "aeb3c2b230bbfc383da1dd382c3b2109a0239578",
+  "launch_commit": "777981ff05f8d6e7cf2d504a68a1a603b70b1dc7",
+  "log_path": "outputs/ngas_a1/search_integration_c1_r1_v1/formal_20260911T015420Z.log",
+  "nominal_budget_seconds": 1113.0,
+  "output_path": "outputs/ngas_a1/search_integration_c1_r1_v1",
+  "pid": 290479,
+  "production_variant": "C1",
+  "progress_path": "outputs/ngas_a1/search_integration_c1_r1_v1/progress.json",
+  "projected_seconds": 1455.6,
+  "protocol_sha256": "1bbe5f9c6b26e4d54090eb1d9fd4d5af4f493a2ed4376311f25b94deb11c0325",
+  "resume_command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/launch_ngas_a14_c1_r1.py",
+  "resume_semantics": "validated immutable completed raw runs are reused; only missing runs execute",
+  "schema": "ngas-a14-c1-r1-launch-v1",
+  "started_at_utc": "2026-09-11T01:54:20.669453+00:00",
+  "status": "RUNNING_VERIFIED",
+  "working_directory": "/home/liulei/ayx/RI-ACRSP"
+}

@@ -1,0 +1,99 @@
+{
+  "R13": "LOCKED",
+  "R14": "LOCKED",
+  "R1_role": "EXPLANATORY_ONLY",
+  "checks": {
+    "C1_and_R1_replay_feasible": true,
+    "C1_deterministic_repeat": true,
+    "both_variants_use_same_solver_mechanism": true,
+    "checkpoint_hashes_match": true,
+    "cuda_available": true
+  },
+  "completed_at_utc": "2026-09-11T01:53:25.779468+00:00",
+  "device": {
+    "cuda": "12.8",
+    "name": "NVIDIA GeForce RTX 4060 Ti",
+    "peak_allocated_bytes": 41520128,
+    "peak_reserved_bytes": 41943040,
+    "torch": "2.11.0+cu128"
+  },
+  "gurobi_run": false,
+  "implementation_commit": "aeb3c2b230bbfc383da1dd382c3b2109a0239578",
+  "production_variant": "C1",
+  "schema": "ngas-a14-c1-r1-cuda-smoke-v1",
+  "status": "PASS",
+  "variants": {
+    "C1": {
+      "checkpoint_sha256": "3cd419ada2287d377c194e24adb0b8bf29226ab9e7195e5d1d6704cba3ec591a",
+      "critic_calls": 1,
+      "feasible_replay": true,
+      "signature": {
+        "actions": [
+          [
+            "small",
+            [
+              "o12",
+              "o22"
+            ],
+            "regret3"
+          ],
+          [
+            "large",
+            [
+              "o11",
+              "o21"
+            ],
+            "transport_aware"
+          ],
+          [
+            "small",
+            [
+              "o11",
+              "o21"
+            ],
+            "transport_aware"
+          ]
+        ],
+        "best_makespan": 39.0,
+        "decoder_evaluations": 7,
+        "iterations": 3
+      }
+    },
+    "R1": {
+      "checkpoint_sha256": "532f9aa448d26c7ffd4e238eaa20daa57ae1eab50b20a405dbc21bbb936dee4f",
+      "critic_calls": 1,
+      "feasible_replay": true,
+      "signature": {
+        "actions": [
+          [
+            "small",
+            [
+              "o12",
+              "o22"
+            ],
+            "regret2"
+          ],
+          [
+            "large",
+            [
+              "o21",
+              "o22"
+            ],
+            "regret3"
+          ],
+          [
+            "small",
+            [
+              "o21",
+              "o22"
+            ],
+            "regret2"
+          ]
+        ],
+        "best_makespan": 39.0,
+        "decoder_evaluations": 7,
+        "iterations": 3
+      }
+    }
+  }
+}

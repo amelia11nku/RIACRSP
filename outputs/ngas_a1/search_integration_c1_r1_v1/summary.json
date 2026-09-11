@@ -1,0 +1,96 @@
+{
+  "interpretation_boundary": "R1 is explanatory only and cannot replace production C1",
+  "paired_R1_over_C1": {
+    "losses": 2,
+    "mean_anytime_auc_gain": 0.0060806812834354775,
+    "mean_final_gain": -0.0007345799065189689,
+    "pairs": [
+      {
+        "R1_anytime_auc_gain_over_C1": 0.018254072230228333,
+        "R1_final_gain_over_C1": 0.012559808612440191,
+        "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+        "seed": 746101
+      },
+      {
+        "R1_anytime_auc_gain_over_C1": -0.002508213746840195,
+        "R1_final_gain_over_C1": -0.034209085933223866,
+        "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+        "seed": 746101
+      },
+      {
+        "R1_anytime_auc_gain_over_C1": 0.04803665289372336,
+        "R1_final_gain_over_C1": 0.00023741690408357076,
+        "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12",
+        "seed": 746101
+      },
+      {
+        "R1_anytime_auc_gain_over_C1": 0.015378406814349488,
+        "R1_final_gain_over_C1": 0.014619883040935672,
+        "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+        "seed": 746102
+      },
+      {
+        "R1_anytime_auc_gain_over_C1": 0.007751231077877086,
+        "R1_final_gain_over_C1": 0.0023929805902685457,
+        "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+        "seed": 746102
+      },
+      {
+        "R1_anytime_auc_gain_over_C1": -0.0012676865005600425,
+        "R1_final_gain_over_C1": 0.022033509295386736,
+        "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12",
+        "seed": 746102
+      },
+      {
+        "R1_anytime_auc_gain_over_C1": -0.034022953790395716,
+        "R1_final_gain_over_C1": -0.029758214507129573,
+        "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+        "seed": 746103
+      },
+      {
+        "R1_anytime_auc_gain_over_C1": 0.002887955145633791,
+        "R1_final_gain_over_C1": 0.005284015852047556,
+        "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+        "seed": 746103
+      },
+      {
+        "R1_anytime_auc_gain_over_C1": 0.000216667426903201,
+        "R1_final_gain_over_C1": 0.0002284669865204478,
+        "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12",
+        "seed": 746103
+      }
+    ],
+    "ties": 0,
+    "wins": 7
+  },
+  "protocol_sha256": "1bbe5f9c6b26e4d54090eb1d9fd4d5af4f493a2ed4376311f25b94deb11c0325",
+  "run_count": 18,
+  "schema": "ngas-a14-c1-r1-summary-v1",
+  "selected_mechanism": "PERSISTENT_FIXED_REFRESH",
+  "variant_summaries": {
+    "C1": {
+      "feasible_replay_fraction": 1.0,
+      "mean_anytime_auc_over_H1": 0.9549989055078806,
+      "mean_critic_calls": 51.888888888888886,
+      "mean_decoder_evaluations": 8208.111111111111,
+      "mean_effective_neural_overhead_seconds": 4.274426512433113,
+      "mean_final_over_H1": 0.9325994126799978,
+      "mean_iterations": 1026.3333333333333,
+      "mean_refresh_seconds": 0.10946386721063947,
+      "p90_observed_refresh_seconds": 0.21112356998492032,
+      "run_count": 9
+    },
+    "R1": {
+      "feasible_replay_fraction": 1.0,
+      "mean_anytime_auc_over_H1": 0.9488928608916439,
+      "mean_critic_calls": 49.22222222222222,
+      "mean_decoder_evaluations": 7789.555555555556,
+      "mean_effective_neural_overhead_seconds": 5.906025746151702,
+      "mean_final_over_H1": 0.9330072283037042,
+      "mean_iterations": 973.8888888888889,
+      "mean_refresh_seconds": 0.14704569110199578,
+      "p90_observed_refresh_seconds": 0.2490500719868578,
+      "run_count": 9
+    }
+  }
+}
