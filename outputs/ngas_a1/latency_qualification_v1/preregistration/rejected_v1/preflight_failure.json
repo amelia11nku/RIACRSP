@@ -1,0 +1,11 @@
+{
+  "allowed_amendment": "replace the PyTorch memory-stat device argument with integer CUDA device index only",
+  "error": "RuntimeError: Invalid device argument from torch.cuda.reset_peak_memory_stats(torch.device('cuda:0'))",
+  "failure_phase": "before critic loading, warmup, or timing sample creation",
+  "outcomes_observed": false,
+  "protocol_path": "outputs/ngas_a1/latency_qualification_v1/preregistration/protocol.json",
+  "protocol_sha256": "d1ca17ed094c97598bbe602eedc2498c26a2090c6d983ceda45af82d8c99d34b",
+  "raw_timing_files_present": false,
+  "recorded_at_utc": "2026-09-11T02:49:08.611224+00:00",
+  "schema": "ngas-a15-protocol-v1-preflight-failure-v1"
+}
