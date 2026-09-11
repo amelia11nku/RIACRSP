@@ -1,0 +1,116 @@
+{
+  "assertions": {
+    "deterministic_best_candidate": true,
+    "deterministic_iteration_decisions": true,
+    "feasibility_100_percent": true,
+    "fixed_iteration_count": true,
+    "legacy_neural_feature_components_absent": true,
+    "one_initial_refresh_per_run": true,
+    "shared_runtime_component_present": true
+  },
+  "candidate_trials": 1,
+  "checkpoint_sha256": "448b0aaf871f0629dec2d94bad63c888fbdaf71c113eb5ade58c4228647c8560",
+  "completed_at_utc": "2026-09-11T03:44:47.558026+00:00",
+  "config_sha256": "69856f6c4470679535671a9e4c6adf680731141979f5dce37f31dd0a5af7d3d2",
+  "historical_A1_5_immutable": true,
+  "iteration_limit": 8,
+  "iterations": [
+    {
+      "accepted": false,
+      "action_id": "ngas_action_04a4da382875a545ef240ac2",
+      "best_after": 1844.0,
+      "candidate_makespan": 2090.0,
+      "current_after": 1844.0,
+      "outcome_class": "rejected"
+    },
+    {
+      "accepted": false,
+      "action_id": "ngas_action_4f4446cbe6ea608705f6a1cb",
+      "best_after": 1844.0,
+      "candidate_makespan": 2221.0,
+      "current_after": 1844.0,
+      "outcome_class": "rejected"
+    },
+    {
+      "accepted": false,
+      "action_id": "ngas_action_2daf633c43512b9d95bc74bb",
+      "best_after": 1844.0,
+      "candidate_makespan": 1880.0,
+      "current_after": 1844.0,
+      "outcome_class": "rejected"
+    },
+    {
+      "accepted": false,
+      "action_id": "ngas_action_ff3631c728403a3aee3f51f5",
+      "best_after": 1844.0,
+      "candidate_makespan": 1977.0,
+      "current_after": 1844.0,
+      "outcome_class": "rejected"
+    },
+    {
+      "accepted": false,
+      "action_id": "ngas_action_b368ce903800bb8fd9cd1980",
+      "best_after": 1844.0,
+      "candidate_makespan": 1903.0,
+      "current_after": 1844.0,
+      "outcome_class": "rejected"
+    },
+    {
+      "accepted": false,
+      "action_id": "ngas_action_506ce1cba857bc9e8023a203",
+      "best_after": 1844.0,
+      "candidate_makespan": 1956.0,
+      "current_after": 1844.0,
+      "outcome_class": "rejected"
+    },
+    {
+      "accepted": false,
+      "action_id": "ngas_action_84bd092c611fb52c10b73503",
+      "best_after": 1844.0,
+      "candidate_makespan": 2061.0,
+      "current_after": 1844.0,
+      "outcome_class": "rejected"
+    },
+    {
+      "accepted": false,
+      "action_id": "ngas_action_ac280121473dac4717fe479b",
+      "best_after": 1844.0,
+      "candidate_makespan": 2177.0,
+      "current_after": 1844.0,
+      "outcome_class": "rejected"
+    }
+  ],
+  "locks": {
+    "A1_6": "LOCKED_UNTIL_A15R_PASS",
+    "R13": "LOCKED",
+    "R14": "LOCKED",
+    "gurobi": false
+  },
+  "mode": "PERSISTENT_FIXED_REFRESH",
+  "pass": true,
+  "runtime_components": {
+    "acceptance_seconds": 0.00011002999963238835,
+    "action_sampling_seconds": 0.00023981800768524408,
+    "decoder_seconds": 0.01786348788300529,
+    "initialization_seconds": 0.02114772202912718,
+    "production_refresh_batched_action_scoring_gpu_seconds": 0.02018611145019531,
+    "production_refresh_compact_edge_update_seconds": 0.00043418799759820104,
+    "production_refresh_compact_event_critical_mapping_seconds": 0.0027492649969644845,
+    "production_refresh_compact_node_features_seconds": 0.0009048000210896134,
+    "production_refresh_compact_state_update_seconds": 0.004088253015652299,
+    "production_refresh_complete_refresh_seconds": 0.1944225300103426,
+    "production_refresh_graph_encoding_gpu_seconds": 0.15721267700195313,
+    "production_refresh_h2d_enqueue_wall_seconds": 0.00510428799316287,
+    "production_refresh_h2d_gpu_seconds": 0.005074944019317627,
+    "production_refresh_output_and_synchronization_wall_seconds": 0.002537178050260991,
+    "production_refresh_prior_construction_seconds": 8.325302042067051e-05,
+    "production_refresh_ranking_sampling_seconds": 0.0006876509869471192,
+    "production_refresh_shared_candidate_bank_seconds": 0.0028737090178765357,
+    "production_refresh_vectorized_action_features_and_tensor_views_seconds": 0.0015159350004978478,
+    "refresh_total_seconds": 0.1945488880155608,
+    "repair_construction_seconds": 0.00030407297890633345,
+    "runtime_preparation_seconds": 0.000336403027176857
+  },
+  "schema": "ngas-a15r-search-integration-audit-v1",
+  "seed": 746101
+}

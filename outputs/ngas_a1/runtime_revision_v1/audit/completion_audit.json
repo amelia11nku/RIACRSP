@@ -1,0 +1,45 @@
+{
+  "A1_6": "ELIGIBLE_TO_FREEZE_NEXT_STAGE",
+  "checks": {
+    "R13_R14_locked_no_gurobi": true,
+    "all_formal_values_finite": true,
+    "all_static_context_hits": true,
+    "checkpoint_hash_matches": true,
+    "config_hash_matches": true,
+    "development_evidence_unchanged_and_pass": true,
+    "equivalence_artifact_unchanged_and_pass": true,
+    "every_state_p90_le_30_ms": true,
+    "frozen_source_hashes_match": true,
+    "full_regression_pass": true,
+    "historical_A1_5_unchanged": true,
+    "normal_gc_formal": true,
+    "pooled_p90_le_30_ms": true,
+    "preformal_audit_unchanged": true,
+    "protocol_frozen_before_results": true,
+    "raw_protocol_hashes_match": true,
+    "raw_scope_exact_four": true,
+    "repetitions_exact_200": true,
+    "representative_hash_matches": true,
+    "search_integration_unchanged_and_pass": true,
+    "transition_trace_protocol_and_integrity_pass": true,
+    "zero_workspace_resizes": true
+  },
+  "completed_at_utc": "2026-09-11T03:51:37.074318+00:00",
+  "locks": {
+    "R13": "LOCKED",
+    "R14": "LOCKED",
+    "gurobi": false
+  },
+  "per_state_p90_ms": {
+    "L": 24.44880700786598,
+    "L_MAX": 26.511554094031453,
+    "M": 19.268754118820652,
+    "S": 11.578784423181787
+  },
+  "pooled_p90_ms": 24.937962711555883,
+  "protocol_sha256": "240d1b5380973421bc44f169899c5f3ab3013c11d4b117a4f5eacdfbffd7d717",
+  "regression_passed_tests": 492,
+  "schema": "ngas-a15r-completion-audit-v1",
+  "status": "PASS",
+  "terminal_decision": "NGAS_A15R_RUNTIME_PASS"
+}

@@ -1,0 +1,71 @@
+{
+  "checkpoint_path": "outputs/ngas_a1/critic_training_rthgt_v2/production/revised_joint_critic.pt",
+  "checkpoint_sha256": "448b0aaf871f0629dec2d94bad63c888fbdaf71c113eb5ade58c4228647c8560",
+  "config_path": "configs/ngas_a15r_runtime_revision_v1.json",
+  "config_sha256": "69856f6c4470679535671a9e4c6adf680731141979f5dce37f31dd0a5af7d3d2",
+  "decision_states": {
+    "latency_fail_with_semantics_intact": "NGAS_A15R_REVISE_RUNTIME",
+    "pass": "NGAS_A15R_RUNTIME_PASS",
+    "semantic_failure": "NGAS_A15R_SEMANTIC_HARD_FAILURE"
+  },
+  "equivalence_tolerance": 1e-07,
+  "frozen_at_utc": "2026-09-11T03:48:15.385136+00:00",
+  "historical_A1_5_completion_audit_path": "outputs/ngas_a1/latency_qualification_v1/audit/completion_audit.json",
+  "historical_A1_5_completion_audit_sha256": "914d0a47b41dd5a742cfd5a32e91e0074ba81e01f34fcaf4ff687a02d80e0d94",
+  "historical_A1_5_immutable": true,
+  "implementation_base_commit": "77c369a81127642aef9ade60cf8001ea93fc315d",
+  "locks": {
+    "A1_6": "LOCKED_UNTIL_A15R_PASS",
+    "R13": "LOCKED",
+    "R14": "LOCKED",
+    "gurobi": false
+  },
+  "measurement": {
+    "authoritative_metric": "complete_refresh_wall_ms",
+    "complete_refresh_repetitions_per_state": 200,
+    "cuda_device_class": "NVIDIA GeForce RTX 4060 Ti",
+    "device": "cuda:0",
+    "normal_gc": true,
+    "percentile_method": "linear",
+    "sample_seed": 746101,
+    "warmup_complete_refreshes": 30
+  },
+  "preformal_audit_path": "outputs/ngas_a1/runtime_revision_v1/audit/preformal_audit.json",
+  "preformal_audit_sha256": "314f625f23b0699fdfd34d6a92c519b36d1eba826a42b7901769f30e186bb672",
+  "primary_criterion": {
+    "per_state": [
+      "S",
+      "M",
+      "L",
+      "L_MAX"
+    ],
+    "require_each_state_p90": true,
+    "require_pooled_p90": true,
+    "threshold_ms": 30.0
+  },
+  "representative_states_path": "outputs/ngas_a1/latency_qualification_v1/preregistration/representative_states.json",
+  "representative_states_sha256": "e49f7a777ff398609b981fb35499550e4058d1ab95a960ffeabf7bfa7d995273",
+  "schema": "ngas-a15r-formal-protocol-v1",
+  "source_hashes": {
+    "rcias_ngas/bank/ngas_bank_v1.py": "afef264cd5e0bcd499665dcc876acd7fc061eb4572d72ee8d0cf5fd619fd9623",
+    "rcias_ngas/critic/encoders/rt_hgt.py": "0332b7c2a77f4bc85727ec0b5254c9d38ed29ce630a0121b6c106e107fb96704",
+    "rcias_ngas/critic/inference.py": "df369fb2e14acaf5351c4977a378379f37ab2f75c7bf91aac2100346806d1591",
+    "rcias_ngas/critic/revised_critic.py": "984852f53b000c84394c452ddda2751f98156b963d5a17f51835c6d7dc5be129",
+    "rcias_ngas/csg/revised_features.py": "342dd37e25a364453687d3a0cbcf268c3dd08e6794dab1dfd7e5f3b45f6d6b03",
+    "rcias_ngas/runtime/compact_state.py": "c08e60818a5e0efd31b1075f3baf89cdeeb9cd992cdf1dadc3088d523a1d760a",
+    "rcias_ngas/runtime/production_refresh.py": "4cc46a7ecd4b6de49aa32eab482eb4251e1f86d2b81b49d9578f9aa1970b1c16",
+    "rcias_ngas/search/ngas_solver.py": "17382bb0323f3187909046a82b010c5c0ae3e8a086607ad92306a6fb548a5572",
+    "rcias_ngas/search/persistent_prior.py": "71d28c290d31dbefc6f0433f060767aeae5546af7b97da6890651bffd9b00395",
+    "scripts/audit_ngas_a15r_equivalence.py": "9b5a3a930e4daa899a1f98ebaf662c5e06fa8e6a1909951e4989d2471621e2f2",
+    "scripts/audit_ngas_a15r_search_integration.py": "9da622b1080c13e0594bf6c7c5d52db1b1f2fcf7fc97037be822c14d91df4106",
+    "scripts/run_ngas_a15r_formal.py": "ad81b5250e5eefa5fca1ddd146ec07bec1b609584088fb095701761ebc196cf9",
+    "scripts/run_ngas_a15r_transition_trace.py": "a19b66cf5b8e654d4748d130b3f9123fa1a1d500367b29f38df3f0564f31b235",
+    "tests/ngas/test_a14_search_integration.py": "ed048c68b66730b923319264abb0f74c824f6d3c03d9654a65899d4b1cad09aa",
+    "tests/ngas/test_a15r_runtime.py": "211b25e54e2d28e0841fccdfad9d34bb78f5f49449cca01e4c392cdfe049cb35"
+  },
+  "status": "FROZEN_BEFORE_FORMAL_RESULTS",
+  "transition_trace": {
+    "distinct_states_per_scale": 20,
+    "seed": 746103
+  }
+}

@@ -18,6 +18,7 @@ from rcias_ngas.bank.ngas_bank_v1 import build_bank
 from rcias_ngas.csg.critical_sync import critical_sync
 from rcias_ngas.evaluation.bks import content_hash
 from rcias_ngas.rng import RNGStreams
+from rcias_ngas.runtime import ProductionRefreshRuntime
 from rcias_ngas.search.a14_telemetry import A14Telemetry
 from rcias_ngas.search.online_portfolio import OnlinePortfolio
 from rcias_ngas.search.persistent_prior import (
@@ -128,13 +129,25 @@ def _select(actions: tuple, probabilities: tuple[float, ...], streams: RNGStream
 
 
 def solve_ngas(instance, time_limit: float, seed: int, mode: str, critic=None,
-               config: NGASSearchConfig = NGASSearchConfig()) -> SearchResult:
+               config: NGASSearchConfig = NGASSearchConfig(),
+               refresh_runtime: ProductionRefreshRuntime | None = None) -> SearchResult:
     """Run one causally instrumented A1.4 ablation under a wall-clock budget."""
     if mode not in MODE_SETTINGS or time_limit <= 0 or config.candidate_trials < 1:
         raise ValueError('Invalid NGAS A1.4 run configuration')
     settings = MODE_SETTINGS[mode]
     if settings['neural'] and critic is None:
         raise ValueError(f'{mode} requires a frozen critic')
+    if settings['neural']:
+        refresh_runtime = refresh_runtime or ProductionRefreshRuntime(
+            critic,
+            prior_advantage_scale=config.prior_advantage_scale,
+            prior_uniform_mix=config.prior_uniform_mix,
+        )
+        preparation_started = time.perf_counter()
+        refresh_runtime.prepare_instance(instance)
+        preparation_seconds = time.perf_counter() - preparation_started
+    else:
+        preparation_seconds = 0.
     streams = RNGStreams(instance.instance_id, seed)
     portfolio = OnlinePortfolio(
         segment_length=config.portfolio_segment_length,
@@ -142,6 +155,7 @@ def solve_ngas(instance, time_limit: float, seed: int, mode: str, critic=None,
         strength=config.portfolio_strength,
     ) if settings['online'] else None
     runtime = defaultdict(float)
+    runtime['runtime_preparation_seconds'] = preparation_seconds
     started = time.perf_counter()
     h1_started = time.perf_counter()
     h1 = solve_dispatching(instance, 'H1')
@@ -184,25 +198,34 @@ def solve_ngas(instance, time_limit: float, seed: int, mode: str, critic=None,
         )
         if reasons:
             refresh_started = time.perf_counter()
-            analysis_started = time.perf_counter()
-            analysis = critical_sync(instance, current)
-            runtime['critical_analysis_seconds'] += time.perf_counter() - analysis_started
-            critical_signature, bottleneck = _critical_identity(analysis)
             state_id = f'{instance.instance_id}:seed{seed}:iteration{iterations}'
-            bank_started = time.perf_counter()
-            actions, bank_summary = _joint_bank(
-                instance, current, state_id, streams, analysis)
-            runtime['bank_construction_seconds'] += time.perf_counter() - bank_started
             if settings['neural']:
-                predictions, components = critic.score(
-                    instance, current, state_id, actions)
-                for name, seconds in components.items():
-                    runtime[name] += seconds
-                probabilities = normalized_prior(
-                    predictions['advantage'], config.prior_advantage_scale,
-                    config.prior_uniform_mix)
+                refresh = refresh_runtime.refresh(
+                    instance, current, state_id, streams,
+                    sample_seed=streams.seed('neural_prior', state_id, iterations))
+                actions = refresh.actions
+                bank_summary = refresh.bank_summary
+                critical_signature = refresh.critical_signature
+                bottleneck = refresh.dominant_bottleneck
+                predictions = {
+                    'advantage': refresh.advantage,
+                    'beats_fallback_probability': refresh.beats_fallback_probability,
+                    'state_feature_hash': refresh.state_feature_hash,
+                    'graph_hash': refresh.graph_hash,
+                }
+                probabilities = refresh.prior
+                for name, milliseconds in refresh.components_ms.items():
+                    runtime['production_refresh_' + name + '_seconds'] += milliseconds / 1000.
                 neural_calls += 1
             else:
+                analysis_started = time.perf_counter()
+                analysis = critical_sync(instance, current)
+                runtime['critical_analysis_seconds'] += time.perf_counter() - analysis_started
+                critical_signature, bottleneck = _critical_identity(analysis)
+                bank_started = time.perf_counter()
+                actions, bank_summary = _joint_bank(
+                    instance, current, state_id, streams, analysis)
+                runtime['bank_construction_seconds'] += time.perf_counter() - bank_started
                 predictions = {
                     'advantage': [0.] * len(actions),
                     'beats_fallback_probability': [.5] * len(actions),
@@ -328,8 +351,12 @@ def solve_ngas(instance, time_limit: float, seed: int, mode: str, critic=None,
         if (settings['refresh'] == 'event' and accepted
                 and iterations + 1 - cache.refresh_iteration >= config.refresh.minimum_spacing):
             monitor_started = time.perf_counter()
-            live_analysis = critical_sync(instance, current)
-            live_signature, live_bottleneck = _critical_identity(live_analysis)
+            if settings['neural']:
+                live_signature, live_bottleneck = refresh_runtime.structural_identity(
+                    instance, current)
+            else:
+                live_analysis = critical_sync(instance, current)
+                live_signature, live_bottleneck = _critical_identity(live_analysis)
             monitor_seconds = time.perf_counter() - monitor_started
             runtime['structural_monitor_seconds'] += monitor_seconds
             pending_structure = pending_structure or live_signature != cache.critical_signature
@@ -368,9 +395,7 @@ def solve_ngas(instance, time_limit: float, seed: int, mode: str, critic=None,
     replay_audit = check_schedule(instance, replay.schedule)
     if not replay.feasible or not replay_audit['feasible'] or replay.makespan != best.makespan:
         raise RuntimeError('Final NGAS schedule replay failed')
-    effective_neural = sum(runtime[name] for name in (
-        'state_feature_seconds', 'action_feature_seconds',
-        'tensor_transfer_seconds', 'model_forward_seconds'))
+    effective_neural = runtime['production_refresh_complete_refresh_seconds']
     diagnostics = {
         'schema': 'ngas-a14-run-diagnostics-v1',
         'mode': mode, 'seed': seed, 'time_limit_seconds': time_limit,

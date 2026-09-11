@@ -1,0 +1,1764 @@
+{
+  "accepted_transitions": [
+    {
+      "action_id": "ngas_action_a6cd7f7e0e260935fbe14f62",
+      "after_state_hash": "d3a5ab6492ce953bb4c7f9788ae1ed7714936c63c518ad5c1a1a3909b375e72a",
+      "before_state_hash": "318d94c436c041803a0e764de47cbe6896ded17444c306e072cc3e4c136c0aa8",
+      "equivalence_pass": true,
+      "repair": "greedy",
+      "resource_order_changed": true,
+      "scale": "S",
+      "state_changed": true,
+      "step": 0
+    },
+    {
+      "action_id": "ngas_action_31e5fa8d2ad2bf3878e5d766",
+      "after_state_hash": "4e4cc590ba8878876fc0beb594ceafb73584e2d67158b3e401924fbc66a58190",
+      "before_state_hash": "d3a5ab6492ce953bb4c7f9788ae1ed7714936c63c518ad5c1a1a3909b375e72a",
+      "equivalence_pass": true,
+      "repair": "regret2",
+      "resource_order_changed": true,
+      "scale": "S",
+      "state_changed": true,
+      "step": 1
+    },
+    {
+      "action_id": "ngas_action_b40fd0760a1cc4a4a4458612",
+      "after_state_hash": "f9e2f548cc0e70eeb5633a10f7e07bd184f7d082651a23c35359f7a2196f2e11",
+      "before_state_hash": "4e4cc590ba8878876fc0beb594ceafb73584e2d67158b3e401924fbc66a58190",
+      "equivalence_pass": true,
+      "repair": "regret3",
+      "resource_order_changed": true,
+      "scale": "S",
+      "state_changed": true,
+      "step": 2
+    },
+    {
+      "action_id": "ngas_action_5df54afe364e5a95c6ba42d5",
+      "after_state_hash": "bf3bbea971cacc594e8f37f5ce7897bc62a3113d7d16578624cc0ce28be770f0",
+      "before_state_hash": "f9e2f548cc0e70eeb5633a10f7e07bd184f7d082651a23c35359f7a2196f2e11",
+      "equivalence_pass": true,
+      "repair": "reconfiguration_aware",
+      "resource_order_changed": true,
+      "scale": "S",
+      "state_changed": true,
+      "step": 3
+    },
+    {
+      "action_id": "ngas_action_e2a3eda4f4bbe8b362094cb6",
+      "after_state_hash": "d5dea418dc5e78df5bc1009a89d313cdfc781fa62c5f7502eed52ad443d579ee",
+      "before_state_hash": "bf3bbea971cacc594e8f37f5ce7897bc62a3113d7d16578624cc0ce28be770f0",
+      "equivalence_pass": true,
+      "repair": "transport_aware",
+      "resource_order_changed": true,
+      "scale": "S",
+      "state_changed": true,
+      "step": 4
+    },
+    {
+      "action_id": "ngas_action_0c312a30247fdae25f3387e6",
+      "after_state_hash": "909bd08d43c4568e04a02b35dc3273ca050f339f039263064f2a6ad8a8d1e405",
+      "before_state_hash": "59408e3be4d9feb50aebdf4036ff11330a579d6e3667a3b85b11f61e42c0377d",
+      "equivalence_pass": true,
+      "repair": "greedy",
+      "resource_order_changed": true,
+      "scale": "M",
+      "state_changed": true,
+      "step": 0
+    },
+    {
+      "action_id": "ngas_action_86a8d33f53dd3ea05457434d",
+      "after_state_hash": "ae0a19e9f97124196c0a145256d8bce2ece9ed8791d86a1d4a203bf7f26f5901",
+      "before_state_hash": "909bd08d43c4568e04a02b35dc3273ca050f339f039263064f2a6ad8a8d1e405",
+      "equivalence_pass": true,
+      "repair": "regret2",
+      "resource_order_changed": true,
+      "scale": "M",
+      "state_changed": true,
+      "step": 1
+    },
+    {
+      "action_id": "ngas_action_6175914492a9471f2b859225",
+      "after_state_hash": "d1c5e11e9eb8b37dd4aa40d7280408a60c1652a22ff8883021ee95e8f1e18513",
+      "before_state_hash": "ae0a19e9f97124196c0a145256d8bce2ece9ed8791d86a1d4a203bf7f26f5901",
+      "equivalence_pass": true,
+      "repair": "regret3",
+      "resource_order_changed": true,
+      "scale": "M",
+      "state_changed": true,
+      "step": 2
+    },
+    {
+      "action_id": "ngas_action_ad0a0c3be715aae671e4f071",
+      "after_state_hash": "87fbf944c3157fd178cdc869c2d687b30e505f2ea72b38588fa553e9971a66b1",
+      "before_state_hash": "d1c5e11e9eb8b37dd4aa40d7280408a60c1652a22ff8883021ee95e8f1e18513",
+      "equivalence_pass": true,
+      "repair": "reconfiguration_aware",
+      "resource_order_changed": true,
+      "scale": "M",
+      "state_changed": true,
+      "step": 3
+    },
+    {
+      "action_id": "ngas_action_47164aa57e5a8d3cc7712b5a",
+      "after_state_hash": "93f64854e3b4f277f0efc87b750c82e38561b497c9732dceb79a532b1ebd3879",
+      "before_state_hash": "87fbf944c3157fd178cdc869c2d687b30e505f2ea72b38588fa553e9971a66b1",
+      "equivalence_pass": true,
+      "repair": "transport_aware",
+      "resource_order_changed": true,
+      "scale": "M",
+      "state_changed": true,
+      "step": 4
+    },
+    {
+      "action_id": "ngas_action_c2fd3ff53b20a5061597b325",
+      "after_state_hash": "7d41936320b1d3be8f2cb32bab76f1b46f30e0523c5749a20799e45c7c7eeb1a",
+      "before_state_hash": "6ffea277ba8a35325f1040ee292095c9bf58af4ca767098f403f33428e609f01",
+      "equivalence_pass": true,
+      "repair": "greedy",
+      "resource_order_changed": true,
+      "scale": "L",
+      "state_changed": true,
+      "step": 0
+    },
+    {
+      "action_id": "ngas_action_d95e4386d096478e7172453b",
+      "after_state_hash": "622ebf1de4dc065ec5394b1dd7a189a88d1d22058f39d54157627e530693fa9b",
+      "before_state_hash": "7d41936320b1d3be8f2cb32bab76f1b46f30e0523c5749a20799e45c7c7eeb1a",
+      "equivalence_pass": true,
+      "repair": "regret2",
+      "resource_order_changed": true,
+      "scale": "L",
+      "state_changed": true,
+      "step": 1
+    },
+    {
+      "action_id": "ngas_action_a74530511f4c74e4888190ff",
+      "after_state_hash": "b76f3283ce3724a600d653fdb617d22f2471b9c5a0c408f4f6586d46a2b70eb8",
+      "before_state_hash": "622ebf1de4dc065ec5394b1dd7a189a88d1d22058f39d54157627e530693fa9b",
+      "equivalence_pass": true,
+      "repair": "regret3",
+      "resource_order_changed": true,
+      "scale": "L",
+      "state_changed": true,
+      "step": 2
+    },
+    {
+      "action_id": "ngas_action_08870f5a987dcc1dce840ab8",
+      "after_state_hash": "3aefb38ecf54c945f983b3bc1203db1bafbb365c0ab84cbfff69e25a0680a6e9",
+      "before_state_hash": "b76f3283ce3724a600d653fdb617d22f2471b9c5a0c408f4f6586d46a2b70eb8",
+      "equivalence_pass": true,
+      "repair": "reconfiguration_aware",
+      "resource_order_changed": true,
+      "scale": "L",
+      "state_changed": true,
+      "step": 3
+    },
+    {
+      "action_id": "ngas_action_4e9893a80b49ff9d3b1ea0fb",
+      "after_state_hash": "e9814fc4dc1fa3f3f19691965364b6ebcf338376994ac47111ec3988d44ce713",
+      "before_state_hash": "3aefb38ecf54c945f983b3bc1203db1bafbb365c0ab84cbfff69e25a0680a6e9",
+      "equivalence_pass": true,
+      "repair": "transport_aware",
+      "resource_order_changed": true,
+      "scale": "L",
+      "state_changed": true,
+      "step": 4
+    },
+    {
+      "action_id": "ngas_action_08373eebfc87d7b93ef4a611",
+      "after_state_hash": "3ef201832ecd6d9ccc52ab40c120e4db9e8212ab05acc8fecf41e71361e0e3d6",
+      "before_state_hash": "cfbb79e36e419d246c22eeff562dd451e579b5772618d619ed7e76a08614eac0",
+      "equivalence_pass": true,
+      "repair": "greedy",
+      "resource_order_changed": true,
+      "scale": "L_MAX",
+      "state_changed": true,
+      "step": 0
+    },
+    {
+      "action_id": "ngas_action_a3297bad7b689801e957ab63",
+      "after_state_hash": "70255b164c4885f6974279ec46d548a669542e74ed76d8a8cba54e7daa6cd1b4",
+      "before_state_hash": "3ef201832ecd6d9ccc52ab40c120e4db9e8212ab05acc8fecf41e71361e0e3d6",
+      "equivalence_pass": true,
+      "repair": "regret2",
+      "resource_order_changed": true,
+      "scale": "L_MAX",
+      "state_changed": true,
+      "step": 1
+    },
+    {
+      "action_id": "ngas_action_9bb3810d00d742c8213baf2d",
+      "after_state_hash": "0a42ec7b9f9680d9982ee60874b79aff6f09165680097af2196a78dff3f33cfa",
+      "before_state_hash": "70255b164c4885f6974279ec46d548a669542e74ed76d8a8cba54e7daa6cd1b4",
+      "equivalence_pass": true,
+      "repair": "regret3",
+      "resource_order_changed": true,
+      "scale": "L_MAX",
+      "state_changed": true,
+      "step": 2
+    },
+    {
+      "action_id": "ngas_action_31f1582e27afe34c9bc84f60",
+      "after_state_hash": "b19ded59c788602e23d282cafca1e37c7fc22c655d8af5437b0cbd946818bcda",
+      "before_state_hash": "0a42ec7b9f9680d9982ee60874b79aff6f09165680097af2196a78dff3f33cfa",
+      "equivalence_pass": true,
+      "repair": "reconfiguration_aware",
+      "resource_order_changed": true,
+      "scale": "L_MAX",
+      "state_changed": true,
+      "step": 3
+    },
+    {
+      "action_id": "ngas_action_47a36df86165aba7e9ec385c",
+      "after_state_hash": "d8debd09972c9988ff335aef0e8f0c26e6ccfe231e1d7b568e8f677ee86c7bc0",
+      "before_state_hash": "b19ded59c788602e23d282cafca1e37c7fc22c655d8af5437b0cbd946818bcda",
+      "equivalence_pass": true,
+      "repair": "transport_aware",
+      "resource_order_changed": true,
+      "scale": "L_MAX",
+      "state_changed": true,
+      "step": 4
+    }
+  ],
+  "all_A_B_A_checks_pass": true,
+  "all_equivalence_checks_pass": true,
+  "all_transitions_distinct": true,
+  "alternating_A_B_A": [
+    {
+      "a_actions_restored": true,
+      "a_state_hash_restored": true,
+      "all_equivalent": true,
+      "scale": "S"
+    },
+    {
+      "a_actions_restored": true,
+      "a_state_hash_restored": true,
+      "all_equivalent": true,
+      "scale": "M"
+    },
+    {
+      "a_actions_restored": true,
+      "a_state_hash_restored": true,
+      "all_equivalent": true,
+      "scale": "L"
+    },
+    {
+      "a_actions_restored": true,
+      "a_state_hash_restored": true,
+      "all_equivalent": true,
+      "scale": "L_MAX"
+    }
+  ],
+  "checkpoint_sha256": "448b0aaf871f0629dec2d94bad63c888fbdaf71c113eb5ade58c4228647c8560",
+  "completed_at_utc": "2026-09-11T03:43:33.640404+00:00",
+  "config_sha256": "69856f6c4470679535671a9e4c6adf680731141979f5dce37f31dd0a5af7d3d2",
+  "coverage": {
+    "H1_states": 4,
+    "accepted_repair_states": 20,
+    "alternating_A_B_A_scales": 4,
+    "distinct_state_hashes": 27,
+    "frozen_representatives": 4,
+    "repair_operators": [
+      "greedy",
+      "regret2",
+      "regret3",
+      "reconfiguration_aware",
+      "transport_aware"
+    ],
+    "resource_order_changes": 20
+  },
+  "historical_A1_5_immutable": true,
+  "locks": {
+    "A1_6": "LOCKED_UNTIL_A15R_PASS",
+    "R13": "LOCKED",
+    "R14": "LOCKED",
+    "gurobi": false
+  },
+  "pass": true,
+  "rows": [
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 345,
+      "label": "S:representative",
+      "num_operations": 61,
+      "pass": true,
+      "resource_order_hash": "078bb55b7ea87bf7c64012747abec5f3742d7dc5436e7c6a26fa52ee49f628fe",
+      "state_hash": "318d94c436c041803a0e764de47cbe6896ded17444c306e072cc3e4c136c0aa8",
+      "state_id": "a15r-equivalence:S:representative",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 350,
+      "label": "S:H1",
+      "num_operations": 61,
+      "pass": true,
+      "resource_order_hash": "32f12a885d5539045db70374f96a1e8afde8dbeb84d18d1434bbdcecd3383600",
+      "state_hash": "28a4afb1c5f183a211f6a41fdb63cd2cdaa092e7abac07d92baedc18d7601e0f",
+      "state_id": "a15r-equivalence:S:H1",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 345,
+      "label": "S:accepted:greedy",
+      "num_operations": 61,
+      "pass": true,
+      "resource_order_hash": "60367d138bf117d69f9d82693ab809b5ca94433f5e323b0d593023f1fcee9b3f",
+      "state_hash": "d3a5ab6492ce953bb4c7f9788ae1ed7714936c63c518ad5c1a1a3909b375e72a",
+      "state_id": "a15r-equivalence:S:accepted:0:greedy",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 355,
+      "label": "S:accepted:regret2",
+      "num_operations": 61,
+      "pass": true,
+      "resource_order_hash": "40a3f5f256055abe164cbf9cc6d05574f16f4a428c6c82aa9e8f6d3647e7d0a3",
+      "state_hash": "4e4cc590ba8878876fc0beb594ceafb73584e2d67158b3e401924fbc66a58190",
+      "state_id": "a15r-equivalence:S:accepted:1:regret2",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 355,
+      "label": "S:accepted:regret3",
+      "num_operations": 61,
+      "pass": true,
+      "resource_order_hash": "590e034a4a39fd619281e311b62b7eb5845146fa9ca44d77f7b1c293a198a780",
+      "state_hash": "f9e2f548cc0e70eeb5633a10f7e07bd184f7d082651a23c35359f7a2196f2e11",
+      "state_id": "a15r-equivalence:S:accepted:2:regret3",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 355,
+      "label": "S:accepted:reconfiguration_aware",
+      "num_operations": 61,
+      "pass": true,
+      "resource_order_hash": "b1e74b5d34062349974645b725e08db4292c49dd7c23671f8642f3616236ef4d",
+      "state_hash": "bf3bbea971cacc594e8f37f5ce7897bc62a3113d7d16578624cc0ce28be770f0",
+      "state_id": "a15r-equivalence:S:accepted:3:reconfiguration_aware",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 350,
+      "label": "S:accepted:transport_aware",
+      "num_operations": 61,
+      "pass": true,
+      "resource_order_hash": "d1894b289e5617b2b1827223cc5c9c535964dc0121272015efc3ca2202f9a4b7",
+      "state_hash": "d5dea418dc5e78df5bc1009a89d313cdfc781fa62c5f7502eed52ad443d579ee",
+      "state_id": "a15r-equivalence:S:accepted:4:transport_aware",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 350,
+      "label": "S:ABA:A1",
+      "num_operations": 61,
+      "pass": true,
+      "resource_order_hash": "078bb55b7ea87bf7c64012747abec5f3742d7dc5436e7c6a26fa52ee49f628fe",
+      "state_hash": "318d94c436c041803a0e764de47cbe6896ded17444c306e072cc3e4c136c0aa8",
+      "state_id": "a15r-equivalence:S:ABA:A",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 360,
+      "label": "S:ABA:B",
+      "num_operations": 61,
+      "pass": true,
+      "resource_order_hash": "60367d138bf117d69f9d82693ab809b5ca94433f5e323b0d593023f1fcee9b3f",
+      "state_hash": "d3a5ab6492ce953bb4c7f9788ae1ed7714936c63c518ad5c1a1a3909b375e72a",
+      "state_id": "a15r-equivalence:S:ABA:B",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 350,
+      "label": "S:ABA:A2",
+      "num_operations": 61,
+      "pass": true,
+      "resource_order_hash": "078bb55b7ea87bf7c64012747abec5f3742d7dc5436e7c6a26fa52ee49f628fe",
+      "state_hash": "318d94c436c041803a0e764de47cbe6896ded17444c306e072cc3e4c136c0aa8",
+      "state_id": "a15r-equivalence:S:ABA:A",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 355,
+      "label": "M:representative",
+      "num_operations": 127,
+      "pass": true,
+      "resource_order_hash": "ea1a21deb142bf0f969a825335ac5e58043ed2c55124dc5ac6c7abaf31b8fc24",
+      "state_hash": "59408e3be4d9feb50aebdf4036ff11330a579d6e3667a3b85b11f61e42c0377d",
+      "state_id": "a15r-equivalence:M:representative",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 355,
+      "label": "M:H1",
+      "num_operations": 127,
+      "pass": true,
+      "resource_order_hash": "360be83988189d25a09191e82f078d3333d55c241bb2c8f886bfdc153fce1ea5",
+      "state_hash": "d6dd111b263ba8437e2c3c27ca6e6b96bb6b1fdf8943e3f71343e004eb3b34c6",
+      "state_id": "a15r-equivalence:M:H1",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 345,
+      "label": "M:accepted:greedy",
+      "num_operations": 127,
+      "pass": true,
+      "resource_order_hash": "090ef7c87b3df4c9bee8b7ec9cc0418a1f702f96a55bf69c0aff52bb83b275ef",
+      "state_hash": "909bd08d43c4568e04a02b35dc3273ca050f339f039263064f2a6ad8a8d1e405",
+      "state_id": "a15r-equivalence:M:accepted:0:greedy",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 355,
+      "label": "M:accepted:regret2",
+      "num_operations": 127,
+      "pass": true,
+      "resource_order_hash": "7cea1705836f57de30062c7f2ecfe7998994cdfee764142c286c706c2a1084d9",
+      "state_hash": "ae0a19e9f97124196c0a145256d8bce2ece9ed8791d86a1d4a203bf7f26f5901",
+      "state_id": "a15r-equivalence:M:accepted:1:regret2",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 360,
+      "label": "M:accepted:regret3",
+      "num_operations": 127,
+      "pass": true,
+      "resource_order_hash": "1af35af5dc6817a713be16e1ff17c5c82ccfd760a7a9ba2f2edd33f149a14f61",
+      "state_hash": "d1c5e11e9eb8b37dd4aa40d7280408a60c1652a22ff8883021ee95e8f1e18513",
+      "state_id": "a15r-equivalence:M:accepted:2:regret3",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 360,
+      "label": "M:accepted:reconfiguration_aware",
+      "num_operations": 127,
+      "pass": true,
+      "resource_order_hash": "16caaf6bcac501ae5bbab81aa71aa0d295a2e60a43cd83f991477ede5f9b39aa",
+      "state_hash": "87fbf944c3157fd178cdc869c2d687b30e505f2ea72b38588fa553e9971a66b1",
+      "state_id": "a15r-equivalence:M:accepted:3:reconfiguration_aware",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 350,
+      "label": "M:accepted:transport_aware",
+      "num_operations": 127,
+      "pass": true,
+      "resource_order_hash": "160d3e470ae9283e570d2a074d42e420d8f07006fd52babf599a71ab2084a3dc",
+      "state_hash": "93f64854e3b4f277f0efc87b750c82e38561b497c9732dceb79a532b1ebd3879",
+      "state_id": "a15r-equivalence:M:accepted:4:transport_aware",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 355,
+      "label": "M:ABA:A1",
+      "num_operations": 127,
+      "pass": true,
+      "resource_order_hash": "ea1a21deb142bf0f969a825335ac5e58043ed2c55124dc5ac6c7abaf31b8fc24",
+      "state_hash": "59408e3be4d9feb50aebdf4036ff11330a579d6e3667a3b85b11f61e42c0377d",
+      "state_id": "a15r-equivalence:M:ABA:A",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 360,
+      "label": "M:ABA:B",
+      "num_operations": 127,
+      "pass": true,
+      "resource_order_hash": "090ef7c87b3df4c9bee8b7ec9cc0418a1f702f96a55bf69c0aff52bb83b275ef",
+      "state_hash": "909bd08d43c4568e04a02b35dc3273ca050f339f039263064f2a6ad8a8d1e405",
+      "state_id": "a15r-equivalence:M:ABA:B",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 355,
+      "label": "M:ABA:A2",
+      "num_operations": 127,
+      "pass": true,
+      "resource_order_hash": "ea1a21deb142bf0f969a825335ac5e58043ed2c55124dc5ac6c7abaf31b8fc24",
+      "state_hash": "59408e3be4d9feb50aebdf4036ff11330a579d6e3667a3b85b11f61e42c0377d",
+      "state_id": "a15r-equivalence:M:ABA:A",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 355,
+      "label": "L:representative",
+      "num_operations": 183,
+      "pass": true,
+      "resource_order_hash": "2f1eae2a7eca41a3a62da266eb1b6a832218190aee05681070e8e8f2767dc7cc",
+      "state_hash": "6ffea277ba8a35325f1040ee292095c9bf58af4ca767098f403f33428e609f01",
+      "state_id": "a15r-equivalence:L:representative",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 360,
+      "label": "L:H1",
+      "num_operations": 183,
+      "pass": true,
+      "resource_order_hash": "ce6df92e57e7da40087ba215f7f2a6a2d5282f980e3efa8807bbf1636bf9e578",
+      "state_hash": "f0e12b7e87651acf1d9ac0a85c3f6c92cd64919d77f59f398057aa746e8fc4fa",
+      "state_id": "a15r-equivalence:L:H1",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 360,
+      "label": "L:accepted:greedy",
+      "num_operations": 183,
+      "pass": true,
+      "resource_order_hash": "cf11087db196cdabd47bcfe97f3fde8678e40b140080089f231f51bcbb75e5f1",
+      "state_hash": "7d41936320b1d3be8f2cb32bab76f1b46f30e0523c5749a20799e45c7c7eeb1a",
+      "state_id": "a15r-equivalence:L:accepted:0:greedy",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 360,
+      "label": "L:accepted:regret2",
+      "num_operations": 183,
+      "pass": true,
+      "resource_order_hash": "e3f8c572c8f8136756f5dfb3cabe8244949297360fdb00db3b00f92d6e34dd33",
+      "state_hash": "622ebf1de4dc065ec5394b1dd7a189a88d1d22058f39d54157627e530693fa9b",
+      "state_id": "a15r-equivalence:L:accepted:1:regret2",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 355,
+      "label": "L:accepted:regret3",
+      "num_operations": 183,
+      "pass": true,
+      "resource_order_hash": "2b2503adb1bbfe0ccf0e38a55edb77ae2c6d9e15b483889ac1089b58390dd465",
+      "state_hash": "b76f3283ce3724a600d653fdb617d22f2471b9c5a0c408f4f6586d46a2b70eb8",
+      "state_id": "a15r-equivalence:L:accepted:2:regret3",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 360,
+      "label": "L:accepted:reconfiguration_aware",
+      "num_operations": 183,
+      "pass": true,
+      "resource_order_hash": "48589a78950526d416358387e85f13a5a96ae3d4026edc8cb49ce269a189380d",
+      "state_hash": "3aefb38ecf54c945f983b3bc1203db1bafbb365c0ab84cbfff69e25a0680a6e9",
+      "state_id": "a15r-equivalence:L:accepted:3:reconfiguration_aware",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 360,
+      "label": "L:accepted:transport_aware",
+      "num_operations": 183,
+      "pass": true,
+      "resource_order_hash": "8657ccaf075c9d9a2368d58b20627cc08b8bef4b83d886423406146be6cd3c9b",
+      "state_hash": "e9814fc4dc1fa3f3f19691965364b6ebcf338376994ac47111ec3988d44ce713",
+      "state_id": "a15r-equivalence:L:accepted:4:transport_aware",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 360,
+      "label": "L:ABA:A1",
+      "num_operations": 183,
+      "pass": true,
+      "resource_order_hash": "2f1eae2a7eca41a3a62da266eb1b6a832218190aee05681070e8e8f2767dc7cc",
+      "state_hash": "6ffea277ba8a35325f1040ee292095c9bf58af4ca767098f403f33428e609f01",
+      "state_id": "a15r-equivalence:L:ABA:A",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 360,
+      "label": "L:ABA:B",
+      "num_operations": 183,
+      "pass": true,
+      "resource_order_hash": "cf11087db196cdabd47bcfe97f3fde8678e40b140080089f231f51bcbb75e5f1",
+      "state_hash": "7d41936320b1d3be8f2cb32bab76f1b46f30e0523c5749a20799e45c7c7eeb1a",
+      "state_id": "a15r-equivalence:L:ABA:B",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 360,
+      "label": "L:ABA:A2",
+      "num_operations": 183,
+      "pass": true,
+      "resource_order_hash": "2f1eae2a7eca41a3a62da266eb1b6a832218190aee05681070e8e8f2767dc7cc",
+      "state_hash": "6ffea277ba8a35325f1040ee292095c9bf58af4ca767098f403f33428e609f01",
+      "state_id": "a15r-equivalence:L:ABA:A",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 355,
+      "label": "L_MAX:representative",
+      "num_operations": 194,
+      "pass": true,
+      "resource_order_hash": "4d77125da7b75a997c1962de21d2a4dbb1caa1442b5851cefa09b442b74c5f8a",
+      "state_hash": "cfbb79e36e419d246c22eeff562dd451e579b5772618d619ed7e76a08614eac0",
+      "state_id": "a15r-equivalence:L_MAX:representative",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 360,
+      "label": "L_MAX:H1",
+      "num_operations": 194,
+      "pass": true,
+      "resource_order_hash": "4d77125da7b75a997c1962de21d2a4dbb1caa1442b5851cefa09b442b74c5f8a",
+      "state_hash": "cfbb79e36e419d246c22eeff562dd451e579b5772618d619ed7e76a08614eac0",
+      "state_id": "a15r-equivalence:L_MAX:H1",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 360,
+      "label": "L_MAX:accepted:greedy",
+      "num_operations": 194,
+      "pass": true,
+      "resource_order_hash": "da212ec97e966a717bf5081e5c85577db8f2f879a2907ca46dd5fdce454bda29",
+      "state_hash": "3ef201832ecd6d9ccc52ab40c120e4db9e8212ab05acc8fecf41e71361e0e3d6",
+      "state_id": "a15r-equivalence:L_MAX:accepted:0:greedy",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 360,
+      "label": "L_MAX:accepted:regret2",
+      "num_operations": 194,
+      "pass": true,
+      "resource_order_hash": "0fa3fa03c3228927af2cf86071c10d33968fec45a647a44d17075488af4c7139",
+      "state_hash": "70255b164c4885f6974279ec46d548a669542e74ed76d8a8cba54e7daa6cd1b4",
+      "state_id": "a15r-equivalence:L_MAX:accepted:1:regret2",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 360,
+      "label": "L_MAX:accepted:regret3",
+      "num_operations": 194,
+      "pass": true,
+      "resource_order_hash": "438dfa3e77822a66d2586c457fcef48849f33c53e6df42f33c935e4df7fbb56f",
+      "state_hash": "0a42ec7b9f9680d9982ee60874b79aff6f09165680097af2196a78dff3f33cfa",
+      "state_id": "a15r-equivalence:L_MAX:accepted:2:regret3",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 350,
+      "label": "L_MAX:accepted:reconfiguration_aware",
+      "num_operations": 194,
+      "pass": true,
+      "resource_order_hash": "d9ea2864052e7091a65cb2a7c24481cbc376796685c1f8112a43f19f95c7a996",
+      "state_hash": "b19ded59c788602e23d282cafca1e37c7fc22c655d8af5437b0cbd946818bcda",
+      "state_id": "a15r-equivalence:L_MAX:accepted:3:reconfiguration_aware",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 355,
+      "label": "L_MAX:accepted:transport_aware",
+      "num_operations": 194,
+      "pass": true,
+      "resource_order_hash": "b2bc9460eac49da4e19cf295d3aa35413a89d5a81d19d3470bc3bbd518dcdce5",
+      "state_hash": "d8debd09972c9988ff335aef0e8f0c26e6ccfe231e1d7b568e8f677ee86c7bc0",
+      "state_id": "a15r-equivalence:L_MAX:accepted:4:transport_aware",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 360,
+      "label": "L_MAX:ABA:A1",
+      "num_operations": 194,
+      "pass": true,
+      "resource_order_hash": "4d77125da7b75a997c1962de21d2a4dbb1caa1442b5851cefa09b442b74c5f8a",
+      "state_hash": "cfbb79e36e419d246c22eeff562dd451e579b5772618d619ed7e76a08614eac0",
+      "state_id": "a15r-equivalence:L_MAX:ABA:A",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 360,
+      "label": "L_MAX:ABA:B",
+      "num_operations": 194,
+      "pass": true,
+      "resource_order_hash": "da212ec97e966a717bf5081e5c85577db8f2f879a2907ca46dd5fdce454bda29",
+      "state_hash": "3ef201832ecd6d9ccc52ab40c120e4db9e8212ab05acc8fecf41e71361e0e3d6",
+      "state_id": "a15r-equivalence:L_MAX:ABA:B",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    },
+    {
+      "assertions": {
+        "action_payload_exact": true,
+        "candidate_count_exact": true,
+        "critical_identity_exact": true,
+        "fixed_seed_selection_exact": true,
+        "float_tensors_within_tolerance": true,
+        "inference_within_tolerance": true,
+        "integer_tensors_exact": true,
+        "prior_within_tolerance": true,
+        "ranking_exact": true,
+        "workspace_no_resize": true
+      },
+      "errors": {
+        "advantages": 0.0,
+        "feature_tensors": 0.0,
+        "logits": 0.0,
+        "prior": 0.0,
+        "probabilities": 0.0
+      },
+      "joint_actions": 360,
+      "label": "L_MAX:ABA:A2",
+      "num_operations": 194,
+      "pass": true,
+      "resource_order_hash": "4d77125da7b75a997c1962de21d2a4dbb1caa1442b5851cefa09b442b74c5f8a",
+      "state_hash": "cfbb79e36e419d246c22eeff562dd451e579b5772618d619ed7e76a08614eac0",
+      "state_id": "a15r-equivalence:L_MAX:ABA:A",
+      "tensor_errors": {
+        "boundary_membership": 0.0,
+        "boundary_stats": 0.0,
+        "edge_features": 0.0,
+        "membership": 0.0,
+        "provenance": 0.0,
+        "target_critical_overlap": 0.0,
+        "x": 0.0
+      }
+    }
+  ],
+  "schema": "ngas-a15r-equivalence-matrix-v1",
+  "tolerance": 1e-07,
+  "workspace_resize_events": 0
+}

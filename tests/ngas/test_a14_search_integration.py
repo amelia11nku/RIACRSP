@@ -1,9 +1,11 @@
 import pytest
+import torch
 
 from rcias_clgri.data.loader import load_instance
 from rcias_ngas.actions.joint_action import JointAction
 from rcias_ngas.bank.provenance import Target
 from rcias_ngas.rng import RNGStreams
+from rcias_ngas.critic.revised_critic import RevisedJointCritic
 from rcias_ngas.search.a14_telemetry import A14Telemetry
 from rcias_ngas.search.ngas_solver import MODE_SETTINGS, NGASSearchConfig, solve_ngas
 from rcias_ngas.search.online_portfolio import OnlinePortfolio
@@ -16,16 +18,12 @@ from rcias_ngas.search.telemetry import RunState
 class FakeCritic:
     variant = 'C1'
     sha256 = 'fake-c1'
+    device = torch.device('cpu')
 
-    def score(self, instance, current, state_id, actions):
-        return ({
-            'advantage': [index / 1000 for index in range(len(actions))],
-            'beats_fallback_probability': [.5] * len(actions),
-            'state_feature_hash': 'state', 'graph_hash': 'graph',
-        }, {
-            'state_feature_seconds': 0., 'action_feature_seconds': 0.,
-            'tensor_transfer_seconds': 0., 'model_forward_seconds': 0.,
-        })
+    def __init__(self):
+        torch.manual_seed(17)
+        self.model = RevisedJointCritic(
+            'rt_hgt', hidden=16, layers=1, heads=4).eval()
 
 
 def _action(size='small', repair='greedy'):

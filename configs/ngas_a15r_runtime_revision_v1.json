@@ -1,0 +1,48 @@
+{
+  "schema": "ngas-a15r-runtime-revision-config-v1",
+  "stage": "A1.5R",
+  "output_root": "outputs/ngas_a1/runtime_revision_v1",
+  "historical_A1_5": {
+    "completion_commit": "77c369a81127642aef9ade60cf8001ea93fc315d",
+    "completion_audit": "outputs/ngas_a1/latency_qualification_v1/audit/completion_audit.json",
+    "representative_states": "outputs/ngas_a1/latency_qualification_v1/preregistration/representative_states.json",
+    "representative_states_sha256": "e49f7a777ff398609b981fb35499550e4058d1ab95a960ffeabf7bfa7d995273",
+    "immutable": true
+  },
+  "production_checkpoint": {
+    "path": "outputs/ngas_a1/critic_training_rthgt_v2/production/revised_joint_critic.pt",
+    "sha256": "448b0aaf871f0629dec2d94bad63c888fbdaf71c113eb5ade58c4228647c8560",
+    "variant": "C1"
+  },
+  "diagnostic": {
+    "states": ["M", "L", "L_MAX"],
+    "conditions": ["NORMAL_GC", "GC_DISABLED_DURING_REFRESH"],
+    "warmup_repetitions": 20,
+    "measured_repetitions": 100,
+    "sample_seed": 746101,
+    "development_only": true
+  },
+  "development_targets": {
+    "warmup_repetitions": 20,
+    "measured_repetitions": 100,
+    "per_state_complete_refresh_p90_ms": 27.0,
+    "L_and_L_MAX_median_ms": 25.0
+  },
+  "formal_gate": {
+    "criterion": "complete live single-C1 refresh p90 <= 30 ms independently for S, M, L, L_MAX and pooled p90 <= 30 ms",
+    "per_state_repetitions": 200,
+    "percentile_method": "linear"
+  },
+  "equivalence": {
+    "external_float_max_abs_error": 1e-7,
+    "exact_action_ids_and_order": true,
+    "exact_integer_tensors": true,
+    "exact_prior_ranking_and_fixed_seed_selection": true
+  },
+  "locks": {
+    "A1_6": "LOCKED_UNTIL_A15R_PASS",
+    "R13": "LOCKED",
+    "R14": "LOCKED",
+    "gurobi": false
+  }
+}

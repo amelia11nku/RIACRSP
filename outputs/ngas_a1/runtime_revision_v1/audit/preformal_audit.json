@@ -1,0 +1,34 @@
+{
+  "checks": {
+    "A1_6_locked": true,
+    "L_L_MAX_medians_below_25_ms": true,
+    "R13_R14_locked_no_gurobi": true,
+    "all_development_p90_le_27_ms": true,
+    "development_headroom_pass": true,
+    "equivalence_matrix_pass": true,
+    "historical_A1_5_gate_failed": true,
+    "historical_A1_5_terminal_decision_preserved": true,
+    "regression_pass": true,
+    "search_integration_pass": true
+  },
+  "completed_at_utc": "2026-09-11T03:48:11.049888+00:00",
+  "config_sha256": "69856f6c4470679535671a9e4c6adf680731141979f5dce37f31dd0a5af7d3d2",
+  "development_latency_sha256": "9924b820f87a4a671b66638dccfec115fdee1d28b97a7202107b2e6900139ee2",
+  "equivalence_matrix_sha256": "7623379626db9ca80a2681a9b7d17fa15768c8e675bcc0bd71985b1eb0c597dc",
+  "historical_A1_5_immutable": true,
+  "locks": {
+    "A1_6": "LOCKED_UNTIL_A15R_PASS",
+    "R13": "LOCKED",
+    "R14": "LOCKED",
+    "gurobi": false
+  },
+  "regression": {
+    "command": "/home/liulei/miniconda3/envs/gnn311/bin/python -m pytest -q",
+    "last_output_line": "492 passed in 20.48s",
+    "passed_tests": 492,
+    "returncode": 0
+  },
+  "schema": "ngas-a15r-preformal-audit-v1",
+  "search_integration_sha256": "5a031fc25aefc8d84e6bc4349dd594bdfe33a8f36555c4ae16d37eb1f068d1fb",
+  "status": "PASS"
+}
