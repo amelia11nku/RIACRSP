@@ -1,0 +1,1080 @@
+{
+  "checks": {
+    "all_bounds_equal_allocations": true,
+    "all_h1_observations_within_bounds": true,
+    "no_resize_events": true,
+    "no_silent_truncation": true,
+    "scope_exact_18": true
+  },
+  "config_sha256": "b6f66bda534710059a400e47679561ed3f3171e2f602fe4e93e00870a5c4e88c",
+  "created_at_utc": "2026-09-11T10:51:54.949544+00:00",
+  "instance_manifest_sha256": "5fb1d78201fd62dcc64fb1db4bbb5de9cffa11bed07bbd5c890a71c8e130b8af",
+  "instances": [
+    {
+      "capacity": {
+        "allocated_capacities": {
+          "actions": 360,
+          "event_arcs": 5118,
+          "event_nodes": 1994,
+          "forward_edges": 3530,
+          "neural_nodes": 691,
+          "targets": 72
+        },
+        "derivations": {
+          "actions": "targets * len(NGAS_REPAIR_IDS)",
+          "event_arcs": "28 * num_operations + 2 * precedence_edges",
+          "event_nodes": "12 * num_operations + 2",
+          "forward_edges": "precedence + eligibility + supports + islands + 16 * num_operations",
+          "neural_nodes": "static_nodes + 3 * num_operations",
+          "targets": "len(SIZE_FRACTIONS) * len(RULES)"
+        },
+        "membership_matrix_shapes": {
+          "action_by_node_boundary": [
+            360,
+            691
+          ],
+          "action_by_operation": [
+            360,
+            166
+          ],
+          "target_by_node": [
+            72,
+            691
+          ],
+          "target_by_operation": [
+            72,
+            166
+          ]
+        },
+        "operation_nodes": 166,
+        "required_upper_bounds": {
+          "actions": 360,
+          "event_arcs": 5118,
+          "event_nodes": 1994,
+          "forward_edges": 3530,
+          "neural_nodes": 691,
+          "targets": 72
+        },
+        "resize_events": 0,
+        "resource_and_configuration_nodes": 27,
+        "schema": "ngas-compact-capacity-audit-v1",
+        "silent_truncation_allowed": false
+      },
+      "instance_id": "CB1_CAUR_L_CF1_RI2_TI2_R12",
+      "observed_h1": {
+        "actions": 360,
+        "forward_edges": 2982,
+        "neural_nodes": 593,
+        "targets": 72
+      },
+      "scale": "L"
+    },
+    {
+      "capacity": {
+        "allocated_capacities": {
+          "actions": 360,
+          "event_arcs": 5318,
+          "event_nodes": 2066,
+          "forward_edges": 3650,
+          "neural_nodes": 715,
+          "targets": 72
+        },
+        "derivations": {
+          "actions": "targets * len(NGAS_REPAIR_IDS)",
+          "event_arcs": "28 * num_operations + 2 * precedence_edges",
+          "event_nodes": "12 * num_operations + 2",
+          "forward_edges": "precedence + eligibility + supports + islands + 16 * num_operations",
+          "neural_nodes": "static_nodes + 3 * num_operations",
+          "targets": "len(SIZE_FRACTIONS) * len(RULES)"
+        },
+        "membership_matrix_shapes": {
+          "action_by_node_boundary": [
+            360,
+            715
+          ],
+          "action_by_operation": [
+            360,
+            172
+          ],
+          "target_by_node": [
+            72,
+            715
+          ],
+          "target_by_operation": [
+            72,
+            172
+          ]
+        },
+        "operation_nodes": 172,
+        "required_upper_bounds": {
+          "actions": 360,
+          "event_arcs": 5318,
+          "event_nodes": 2066,
+          "forward_edges": 3650,
+          "neural_nodes": 715,
+          "targets": 72
+        },
+        "resize_events": 0,
+        "resource_and_configuration_nodes": 27,
+        "schema": "ngas-compact-capacity-audit-v1",
+        "silent_truncation_allowed": false
+      },
+      "instance_id": "CB1_CAUR_L_CF1_RI2_TI2_R12_C02",
+      "observed_h1": {
+        "actions": 360,
+        "forward_edges": 3090,
+        "neural_nodes": 615,
+        "targets": 72
+      },
+      "scale": "L"
+    },
+    {
+      "capacity": {
+        "allocated_capacities": {
+          "actions": 360,
+          "event_arcs": 5840,
+          "event_nodes": 2258,
+          "forward_edges": 4375,
+          "neural_nodes": 779,
+          "targets": 72
+        },
+        "derivations": {
+          "actions": "targets * len(NGAS_REPAIR_IDS)",
+          "event_arcs": "28 * num_operations + 2 * precedence_edges",
+          "event_nodes": "12 * num_operations + 2",
+          "forward_edges": "precedence + eligibility + supports + islands + 16 * num_operations",
+          "neural_nodes": "static_nodes + 3 * num_operations",
+          "targets": "len(SIZE_FRACTIONS) * len(RULES)"
+        },
+        "membership_matrix_shapes": {
+          "action_by_node_boundary": [
+            360,
+            779
+          ],
+          "action_by_operation": [
+            360,
+            188
+          ],
+          "target_by_node": [
+            72,
+            779
+          ],
+          "target_by_operation": [
+            72,
+            188
+          ]
+        },
+        "operation_nodes": 188,
+        "required_upper_bounds": {
+          "actions": 360,
+          "event_arcs": 5840,
+          "event_nodes": 2258,
+          "forward_edges": 4375,
+          "neural_nodes": 779,
+          "targets": 72
+        },
+        "resize_events": 0,
+        "resource_and_configuration_nodes": 27,
+        "schema": "ngas-compact-capacity-audit-v1",
+        "silent_truncation_allowed": false
+      },
+      "instance_id": "CB1_CAUR_L_CF2_RI2_TI2_R12",
+      "observed_h1": {
+        "actions": 360,
+        "forward_edges": 3905,
+        "neural_nodes": 696,
+        "targets": 72
+      },
+      "scale": "L"
+    },
+    {
+      "capacity": {
+        "allocated_capacities": {
+          "actions": 360,
+          "event_arcs": 6012,
+          "event_nodes": 2330,
+          "forward_edges": 4522,
+          "neural_nodes": 803,
+          "targets": 72
+        },
+        "derivations": {
+          "actions": "targets * len(NGAS_REPAIR_IDS)",
+          "event_arcs": "28 * num_operations + 2 * precedence_edges",
+          "event_nodes": "12 * num_operations + 2",
+          "forward_edges": "precedence + eligibility + supports + islands + 16 * num_operations",
+          "neural_nodes": "static_nodes + 3 * num_operations",
+          "targets": "len(SIZE_FRACTIONS) * len(RULES)"
+        },
+        "membership_matrix_shapes": {
+          "action_by_node_boundary": [
+            360,
+            803
+          ],
+          "action_by_operation": [
+            360,
+            194
+          ],
+          "target_by_node": [
+            72,
+            803
+          ],
+          "target_by_operation": [
+            72,
+            194
+          ]
+        },
+        "operation_nodes": 194,
+        "required_upper_bounds": {
+          "actions": 360,
+          "event_arcs": 6012,
+          "event_nodes": 2330,
+          "forward_edges": 4522,
+          "neural_nodes": 803,
+          "targets": 72
+        },
+        "resize_events": 0,
+        "resource_and_configuration_nodes": 27,
+        "schema": "ngas-compact-capacity-audit-v1",
+        "silent_truncation_allowed": false
+      },
+      "instance_id": "CB1_CAUR_L_CF2_RI2_TI2_R12_C02",
+      "observed_h1": {
+        "actions": 360,
+        "forward_edges": 4061,
+        "neural_nodes": 720,
+        "targets": 72
+      },
+      "scale": "L"
+    },
+    {
+      "capacity": {
+        "allocated_capacities": {
+          "actions": 360,
+          "event_arcs": 5656,
+          "event_nodes": 2198,
+          "forward_edges": 4652,
+          "neural_nodes": 759,
+          "targets": 72
+        },
+        "derivations": {
+          "actions": "targets * len(NGAS_REPAIR_IDS)",
+          "event_arcs": "28 * num_operations + 2 * precedence_edges",
+          "event_nodes": "12 * num_operations + 2",
+          "forward_edges": "precedence + eligibility + supports + islands + 16 * num_operations",
+          "neural_nodes": "static_nodes + 3 * num_operations",
+          "targets": "len(SIZE_FRACTIONS) * len(RULES)"
+        },
+        "membership_matrix_shapes": {
+          "action_by_node_boundary": [
+            360,
+            759
+          ],
+          "action_by_operation": [
+            360,
+            183
+          ],
+          "target_by_node": [
+            72,
+            759
+          ],
+          "target_by_operation": [
+            72,
+            183
+          ]
+        },
+        "operation_nodes": 183,
+        "required_upper_bounds": {
+          "actions": 360,
+          "event_arcs": 5656,
+          "event_nodes": 2198,
+          "forward_edges": 4652,
+          "neural_nodes": 759,
+          "targets": 72
+        },
+        "resize_events": 0,
+        "resource_and_configuration_nodes": 27,
+        "schema": "ngas-compact-capacity-audit-v1",
+        "silent_truncation_allowed": false
+      },
+      "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12",
+      "observed_h1": {
+        "actions": 355,
+        "forward_edges": 4264,
+        "neural_nodes": 693,
+        "targets": 71
+      },
+      "scale": "L"
+    },
+    {
+      "capacity": {
+        "allocated_capacities": {
+          "actions": 360,
+          "event_arcs": 5514,
+          "event_nodes": 2150,
+          "forward_edges": 4544,
+          "neural_nodes": 743,
+          "targets": 72
+        },
+        "derivations": {
+          "actions": "targets * len(NGAS_REPAIR_IDS)",
+          "event_arcs": "28 * num_operations + 2 * precedence_edges",
+          "event_nodes": "12 * num_operations + 2",
+          "forward_edges": "precedence + eligibility + supports + islands + 16 * num_operations",
+          "neural_nodes": "static_nodes + 3 * num_operations",
+          "targets": "len(SIZE_FRACTIONS) * len(RULES)"
+        },
+        "membership_matrix_shapes": {
+          "action_by_node_boundary": [
+            360,
+            743
+          ],
+          "action_by_operation": [
+            360,
+            179
+          ],
+          "target_by_node": [
+            72,
+            743
+          ],
+          "target_by_operation": [
+            72,
+            179
+          ]
+        },
+        "operation_nodes": 179,
+        "required_upper_bounds": {
+          "actions": 360,
+          "event_arcs": 5514,
+          "event_nodes": 2150,
+          "forward_edges": 4544,
+          "neural_nodes": 743,
+          "targets": 72
+        },
+        "resize_events": 0,
+        "resource_and_configuration_nodes": 27,
+        "schema": "ngas-compact-capacity-audit-v1",
+        "silent_truncation_allowed": false
+      },
+      "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12_C02",
+      "observed_h1": {
+        "actions": 355,
+        "forward_edges": 4172,
+        "neural_nodes": 678,
+        "targets": 71
+      },
+      "scale": "L"
+    },
+    {
+      "capacity": {
+        "allocated_capacities": {
+          "actions": 360,
+          "event_arcs": 3512,
+          "event_nodes": 1370,
+          "forward_edges": 2275,
+          "neural_nodes": 476,
+          "targets": 72
+        },
+        "derivations": {
+          "actions": "targets * len(NGAS_REPAIR_IDS)",
+          "event_arcs": "28 * num_operations + 2 * precedence_edges",
+          "event_nodes": "12 * num_operations + 2",
+          "forward_edges": "precedence + eligibility + supports + islands + 16 * num_operations",
+          "neural_nodes": "static_nodes + 3 * num_operations",
+          "targets": "len(SIZE_FRACTIONS) * len(RULES)"
+        },
+        "membership_matrix_shapes": {
+          "action_by_node_boundary": [
+            360,
+            476
+          ],
+          "action_by_operation": [
+            360,
+            114
+          ],
+          "target_by_node": [
+            72,
+            476
+          ],
+          "target_by_operation": [
+            72,
+            114
+          ]
+        },
+        "operation_nodes": 114,
+        "required_upper_bounds": {
+          "actions": 360,
+          "event_arcs": 3512,
+          "event_nodes": 1370,
+          "forward_edges": 2275,
+          "neural_nodes": 476,
+          "targets": 72
+        },
+        "resize_events": 0,
+        "resource_and_configuration_nodes": 20,
+        "schema": "ngas-compact-capacity-audit-v1",
+        "silent_truncation_allowed": false
+      },
+      "instance_id": "CB1_CAUR_M_CF1_RI2_TI2_R12",
+      "observed_h1": {
+        "actions": 355,
+        "forward_edges": 1840,
+        "neural_nodes": 394,
+        "targets": 71
+      },
+      "scale": "M"
+    },
+    {
+      "capacity": {
+        "allocated_capacities": {
+          "actions": 360,
+          "event_arcs": 3628,
+          "event_nodes": 1406,
+          "forward_edges": 2360,
+          "neural_nodes": 488,
+          "targets": 72
+        },
+        "derivations": {
+          "actions": "targets * len(NGAS_REPAIR_IDS)",
+          "event_arcs": "28 * num_operations + 2 * precedence_edges",
+          "event_nodes": "12 * num_operations + 2",
+          "forward_edges": "precedence + eligibility + supports + islands + 16 * num_operations",
+          "neural_nodes": "static_nodes + 3 * num_operations",
+          "targets": "len(SIZE_FRACTIONS) * len(RULES)"
+        },
+        "membership_matrix_shapes": {
+          "action_by_node_boundary": [
+            360,
+            488
+          ],
+          "action_by_operation": [
+            360,
+            117
+          ],
+          "target_by_node": [
+            72,
+            488
+          ],
+          "target_by_operation": [
+            72,
+            117
+          ]
+        },
+        "operation_nodes": 117,
+        "required_upper_bounds": {
+          "actions": 360,
+          "event_arcs": 3628,
+          "event_nodes": 1406,
+          "forward_edges": 2360,
+          "neural_nodes": 488,
+          "targets": 72
+        },
+        "resize_events": 0,
+        "resource_and_configuration_nodes": 20,
+        "schema": "ngas-compact-capacity-audit-v1",
+        "silent_truncation_allowed": false
+      },
+      "instance_id": "CB1_CAUR_M_CF1_RI2_TI2_R12_C02",
+      "observed_h1": {
+        "actions": 360,
+        "forward_edges": 1985,
+        "neural_nodes": 420,
+        "targets": 72
+      },
+      "scale": "M"
+    },
+    {
+      "capacity": {
+        "allocated_capacities": {
+          "actions": 360,
+          "event_arcs": 3768,
+          "event_nodes": 1466,
+          "forward_edges": 2592,
+          "neural_nodes": 508,
+          "targets": 72
+        },
+        "derivations": {
+          "actions": "targets * len(NGAS_REPAIR_IDS)",
+          "event_arcs": "28 * num_operations + 2 * precedence_edges",
+          "event_nodes": "12 * num_operations + 2",
+          "forward_edges": "precedence + eligibility + supports + islands + 16 * num_operations",
+          "neural_nodes": "static_nodes + 3 * num_operations",
+          "targets": "len(SIZE_FRACTIONS) * len(RULES)"
+        },
+        "membership_matrix_shapes": {
+          "action_by_node_boundary": [
+            360,
+            508
+          ],
+          "action_by_operation": [
+            360,
+            122
+          ],
+          "target_by_node": [
+            72,
+            508
+          ],
+          "target_by_operation": [
+            72,
+            122
+          ]
+        },
+        "operation_nodes": 122,
+        "required_upper_bounds": {
+          "actions": 360,
+          "event_arcs": 3768,
+          "event_nodes": 1466,
+          "forward_edges": 2592,
+          "neural_nodes": 508,
+          "targets": 72
+        },
+        "resize_events": 0,
+        "resource_and_configuration_nodes": 20,
+        "schema": "ngas-compact-capacity-audit-v1",
+        "silent_truncation_allowed": false
+      },
+      "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12",
+      "observed_h1": {
+        "actions": 350,
+        "forward_edges": 2155,
+        "neural_nodes": 427,
+        "targets": 70
+      },
+      "scale": "M"
+    },
+    {
+      "capacity": {
+        "allocated_capacities": {
+          "actions": 360,
+          "event_arcs": 3920,
+          "event_nodes": 1526,
+          "forward_edges": 2692,
+          "neural_nodes": 528,
+          "targets": 72
+        },
+        "derivations": {
+          "actions": "targets * len(NGAS_REPAIR_IDS)",
+          "event_arcs": "28 * num_operations + 2 * precedence_edges",
+          "event_nodes": "12 * num_operations + 2",
+          "forward_edges": "precedence + eligibility + supports + islands + 16 * num_operations",
+          "neural_nodes": "static_nodes + 3 * num_operations",
+          "targets": "len(SIZE_FRACTIONS) * len(RULES)"
+        },
+        "membership_matrix_shapes": {
+          "action_by_node_boundary": [
+            360,
+            528
+          ],
+          "action_by_operation": [
+            360,
+            127
+          ],
+          "target_by_node": [
+            72,
+            528
+          ],
+          "target_by_operation": [
+            72,
+            127
+          ]
+        },
+        "operation_nodes": 127,
+        "required_upper_bounds": {
+          "actions": 360,
+          "event_arcs": 3920,
+          "event_nodes": 1526,
+          "forward_edges": 2692,
+          "neural_nodes": 528,
+          "targets": 72
+        },
+        "resize_events": 0,
+        "resource_and_configuration_nodes": 20,
+        "schema": "ngas-compact-capacity-audit-v1",
+        "silent_truncation_allowed": false
+      },
+      "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+      "observed_h1": {
+        "actions": 355,
+        "forward_edges": 2353,
+        "neural_nodes": 468,
+        "targets": 71
+      },
+      "scale": "M"
+    },
+    {
+      "capacity": {
+        "allocated_capacities": {
+          "actions": 360,
+          "event_arcs": 3642,
+          "event_nodes": 1418,
+          "forward_edges": 2738,
+          "neural_nodes": 492,
+          "targets": 72
+        },
+        "derivations": {
+          "actions": "targets * len(NGAS_REPAIR_IDS)",
+          "event_arcs": "28 * num_operations + 2 * precedence_edges",
+          "event_nodes": "12 * num_operations + 2",
+          "forward_edges": "precedence + eligibility + supports + islands + 16 * num_operations",
+          "neural_nodes": "static_nodes + 3 * num_operations",
+          "targets": "len(SIZE_FRACTIONS) * len(RULES)"
+        },
+        "membership_matrix_shapes": {
+          "action_by_node_boundary": [
+            360,
+            492
+          ],
+          "action_by_operation": [
+            360,
+            118
+          ],
+          "target_by_node": [
+            72,
+            492
+          ],
+          "target_by_operation": [
+            72,
+            118
+          ]
+        },
+        "operation_nodes": 118,
+        "required_upper_bounds": {
+          "actions": 360,
+          "event_arcs": 3642,
+          "event_nodes": 1418,
+          "forward_edges": 2738,
+          "neural_nodes": 492,
+          "targets": 72
+        },
+        "resize_events": 0,
+        "resource_and_configuration_nodes": 20,
+        "schema": "ngas-compact-capacity-audit-v1",
+        "silent_truncation_allowed": false
+      },
+      "instance_id": "CB1_CAUR_M_CF3_RI2_TI2_R12",
+      "observed_h1": {
+        "actions": 360,
+        "forward_edges": 2388,
+        "neural_nodes": 428,
+        "targets": 72
+      },
+      "scale": "M"
+    },
+    {
+      "capacity": {
+        "allocated_capacities": {
+          "actions": 360,
+          "event_arcs": 3584,
+          "event_nodes": 1394,
+          "forward_edges": 2681,
+          "neural_nodes": 484,
+          "targets": 72
+        },
+        "derivations": {
+          "actions": "targets * len(NGAS_REPAIR_IDS)",
+          "event_arcs": "28 * num_operations + 2 * precedence_edges",
+          "event_nodes": "12 * num_operations + 2",
+          "forward_edges": "precedence + eligibility + supports + islands + 16 * num_operations",
+          "neural_nodes": "static_nodes + 3 * num_operations",
+          "targets": "len(SIZE_FRACTIONS) * len(RULES)"
+        },
+        "membership_matrix_shapes": {
+          "action_by_node_boundary": [
+            360,
+            484
+          ],
+          "action_by_operation": [
+            360,
+            116
+          ],
+          "target_by_node": [
+            72,
+            484
+          ],
+          "target_by_operation": [
+            72,
+            116
+          ]
+        },
+        "operation_nodes": 116,
+        "required_upper_bounds": {
+          "actions": 360,
+          "event_arcs": 3584,
+          "event_nodes": 1394,
+          "forward_edges": 2681,
+          "neural_nodes": 484,
+          "targets": 72
+        },
+        "resize_events": 0,
+        "resource_and_configuration_nodes": 20,
+        "schema": "ngas-compact-capacity-audit-v1",
+        "silent_truncation_allowed": false
+      },
+      "instance_id": "CB1_CAUR_M_CF3_RI2_TI2_R12_C02",
+      "observed_h1": {
+        "actions": 360,
+        "forward_edges": 2411,
+        "neural_nodes": 438,
+        "targets": 72
+      },
+      "scale": "M"
+    },
+    {
+      "capacity": {
+        "allocated_capacities": {
+          "actions": 360,
+          "event_arcs": 1884,
+          "event_nodes": 734,
+          "forward_edges": 1205,
+          "neural_nodes": 260,
+          "targets": 72
+        },
+        "derivations": {
+          "actions": "targets * len(NGAS_REPAIR_IDS)",
+          "event_arcs": "28 * num_operations + 2 * precedence_edges",
+          "event_nodes": "12 * num_operations + 2",
+          "forward_edges": "precedence + eligibility + supports + islands + 16 * num_operations",
+          "neural_nodes": "static_nodes + 3 * num_operations",
+          "targets": "len(SIZE_FRACTIONS) * len(RULES)"
+        },
+        "membership_matrix_shapes": {
+          "action_by_node_boundary": [
+            360,
+            260
+          ],
+          "action_by_operation": [
+            360,
+            61
+          ],
+          "target_by_node": [
+            72,
+            260
+          ],
+          "target_by_operation": [
+            72,
+            61
+          ]
+        },
+        "operation_nodes": 61,
+        "required_upper_bounds": {
+          "actions": 360,
+          "event_arcs": 1884,
+          "event_nodes": 734,
+          "forward_edges": 1205,
+          "neural_nodes": 260,
+          "targets": 72
+        },
+        "resize_events": 0,
+        "resource_and_configuration_nodes": 16,
+        "schema": "ngas-compact-capacity-audit-v1",
+        "silent_truncation_allowed": false
+      },
+      "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+      "observed_h1": {
+        "actions": 350,
+        "forward_edges": 890,
+        "neural_nodes": 200,
+        "targets": 70
+      },
+      "scale": "S"
+    },
+    {
+      "capacity": {
+        "allocated_capacities": {
+          "actions": 360,
+          "event_arcs": 1732,
+          "event_nodes": 674,
+          "forward_edges": 1109,
+          "neural_nodes": 240,
+          "targets": 72
+        },
+        "derivations": {
+          "actions": "targets * len(NGAS_REPAIR_IDS)",
+          "event_arcs": "28 * num_operations + 2 * precedence_edges",
+          "event_nodes": "12 * num_operations + 2",
+          "forward_edges": "precedence + eligibility + supports + islands + 16 * num_operations",
+          "neural_nodes": "static_nodes + 3 * num_operations",
+          "targets": "len(SIZE_FRACTIONS) * len(RULES)"
+        },
+        "membership_matrix_shapes": {
+          "action_by_node_boundary": [
+            360,
+            240
+          ],
+          "action_by_operation": [
+            360,
+            56
+          ],
+          "target_by_node": [
+            72,
+            240
+          ],
+          "target_by_operation": [
+            72,
+            56
+          ]
+        },
+        "operation_nodes": 56,
+        "required_upper_bounds": {
+          "actions": 360,
+          "event_arcs": 1732,
+          "event_nodes": 674,
+          "forward_edges": 1109,
+          "neural_nodes": 240,
+          "targets": 72
+        },
+        "resize_events": 0,
+        "resource_and_configuration_nodes": 16,
+        "schema": "ngas-compact-capacity-audit-v1",
+        "silent_truncation_allowed": false
+      },
+      "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12_C02",
+      "observed_h1": {
+        "actions": 345,
+        "forward_edges": 850,
+        "neural_nodes": 192,
+        "targets": 69
+      },
+      "scale": "S"
+    },
+    {
+      "capacity": {
+        "allocated_capacities": {
+          "actions": 360,
+          "event_arcs": 1858,
+          "event_nodes": 722,
+          "forward_edges": 1218,
+          "neural_nodes": 256,
+          "targets": 72
+        },
+        "derivations": {
+          "actions": "targets * len(NGAS_REPAIR_IDS)",
+          "event_arcs": "28 * num_operations + 2 * precedence_edges",
+          "event_nodes": "12 * num_operations + 2",
+          "forward_edges": "precedence + eligibility + supports + islands + 16 * num_operations",
+          "neural_nodes": "static_nodes + 3 * num_operations",
+          "targets": "len(SIZE_FRACTIONS) * len(RULES)"
+        },
+        "membership_matrix_shapes": {
+          "action_by_node_boundary": [
+            360,
+            256
+          ],
+          "action_by_operation": [
+            360,
+            60
+          ],
+          "target_by_node": [
+            72,
+            256
+          ],
+          "target_by_operation": [
+            72,
+            60
+          ]
+        },
+        "operation_nodes": 60,
+        "required_upper_bounds": {
+          "actions": 360,
+          "event_arcs": 1858,
+          "event_nodes": 722,
+          "forward_edges": 1218,
+          "neural_nodes": 256,
+          "targets": 72
+        },
+        "resize_events": 0,
+        "resource_and_configuration_nodes": 16,
+        "schema": "ngas-compact-capacity-audit-v1",
+        "silent_truncation_allowed": false
+      },
+      "instance_id": "CB1_CAUR_S_CF2_RI2_TI2_R12",
+      "observed_h1": {
+        "actions": 340,
+        "forward_edges": 985,
+        "neural_nodes": 213,
+        "targets": 68
+      },
+      "scale": "S"
+    },
+    {
+      "capacity": {
+        "allocated_capacities": {
+          "actions": 360,
+          "event_arcs": 1950,
+          "event_nodes": 758,
+          "forward_edges": 1284,
+          "neural_nodes": 268,
+          "targets": 72
+        },
+        "derivations": {
+          "actions": "targets * len(NGAS_REPAIR_IDS)",
+          "event_arcs": "28 * num_operations + 2 * precedence_edges",
+          "event_nodes": "12 * num_operations + 2",
+          "forward_edges": "precedence + eligibility + supports + islands + 16 * num_operations",
+          "neural_nodes": "static_nodes + 3 * num_operations",
+          "targets": "len(SIZE_FRACTIONS) * len(RULES)"
+        },
+        "membership_matrix_shapes": {
+          "action_by_node_boundary": [
+            360,
+            268
+          ],
+          "action_by_operation": [
+            360,
+            63
+          ],
+          "target_by_node": [
+            72,
+            268
+          ],
+          "target_by_operation": [
+            72,
+            63
+          ]
+        },
+        "operation_nodes": 63,
+        "required_upper_bounds": {
+          "actions": 360,
+          "event_arcs": 1950,
+          "event_nodes": 758,
+          "forward_edges": 1284,
+          "neural_nodes": 268,
+          "targets": 72
+        },
+        "resize_events": 0,
+        "resource_and_configuration_nodes": 16,
+        "schema": "ngas-compact-capacity-audit-v1",
+        "silent_truncation_allowed": false
+      },
+      "instance_id": "CB1_CAUR_S_CF2_RI2_TI2_R12_C02",
+      "observed_h1": {
+        "actions": 355,
+        "forward_edges": 1059,
+        "neural_nodes": 227,
+        "targets": 71
+      },
+      "scale": "S"
+    },
+    {
+      "capacity": {
+        "allocated_capacities": {
+          "actions": 360,
+          "event_arcs": 1874,
+          "event_nodes": 734,
+          "forward_edges": 1296,
+          "neural_nodes": 260,
+          "targets": 72
+        },
+        "derivations": {
+          "actions": "targets * len(NGAS_REPAIR_IDS)",
+          "event_arcs": "28 * num_operations + 2 * precedence_edges",
+          "event_nodes": "12 * num_operations + 2",
+          "forward_edges": "precedence + eligibility + supports + islands + 16 * num_operations",
+          "neural_nodes": "static_nodes + 3 * num_operations",
+          "targets": "len(SIZE_FRACTIONS) * len(RULES)"
+        },
+        "membership_matrix_shapes": {
+          "action_by_node_boundary": [
+            360,
+            260
+          ],
+          "action_by_operation": [
+            360,
+            61
+          ],
+          "target_by_node": [
+            72,
+            260
+          ],
+          "target_by_operation": [
+            72,
+            61
+          ]
+        },
+        "operation_nodes": 61,
+        "required_upper_bounds": {
+          "actions": 360,
+          "event_arcs": 1874,
+          "event_nodes": 734,
+          "forward_edges": 1296,
+          "neural_nodes": 260,
+          "targets": 72
+        },
+        "resize_events": 0,
+        "resource_and_configuration_nodes": 16,
+        "schema": "ngas-compact-capacity-audit-v1",
+        "silent_truncation_allowed": false
+      },
+      "instance_id": "CB1_CAUR_S_CF3_RI2_TI2_R12",
+      "observed_h1": {
+        "actions": 345,
+        "forward_edges": 1128,
+        "neural_nodes": 231,
+        "targets": 69
+      },
+      "scale": "S"
+    },
+    {
+      "capacity": {
+        "allocated_capacities": {
+          "actions": 360,
+          "event_arcs": 1954,
+          "event_nodes": 758,
+          "forward_edges": 1360,
+          "neural_nodes": 268,
+          "targets": 72
+        },
+        "derivations": {
+          "actions": "targets * len(NGAS_REPAIR_IDS)",
+          "event_arcs": "28 * num_operations + 2 * precedence_edges",
+          "event_nodes": "12 * num_operations + 2",
+          "forward_edges": "precedence + eligibility + supports + islands + 16 * num_operations",
+          "neural_nodes": "static_nodes + 3 * num_operations",
+          "targets": "len(SIZE_FRACTIONS) * len(RULES)"
+        },
+        "membership_matrix_shapes": {
+          "action_by_node_boundary": [
+            360,
+            268
+          ],
+          "action_by_operation": [
+            360,
+            63
+          ],
+          "target_by_node": [
+            72,
+            268
+          ],
+          "target_by_operation": [
+            72,
+            63
+          ]
+        },
+        "operation_nodes": 63,
+        "required_upper_bounds": {
+          "actions": 360,
+          "event_arcs": 1954,
+          "event_nodes": 758,
+          "forward_edges": 1360,
+          "neural_nodes": 268,
+          "targets": 72
+        },
+        "resize_events": 0,
+        "resource_and_configuration_nodes": 16,
+        "schema": "ngas-compact-capacity-audit-v1",
+        "silent_truncation_allowed": false
+      },
+      "instance_id": "CB1_CAUR_S_CF3_RI2_TI2_R12_C02",
+      "observed_h1": {
+        "actions": 340,
+        "forward_edges": 1132,
+        "neural_nodes": 226,
+        "targets": 68
+      },
+      "scale": "S"
+    }
+  ],
+  "r13_r14_authorized": false,
+  "schema": "ngas-a16r-capacity-preflight-v1",
+  "scope_boundary": "current frozen 18-instance R12 development scope only",
+  "status": "PASS"
+}

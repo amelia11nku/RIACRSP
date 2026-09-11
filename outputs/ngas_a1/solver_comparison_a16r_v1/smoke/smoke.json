@@ -1,0 +1,71 @@
+{
+  "budget_overshoot_seconds": 0.003103836963418871,
+  "budget_seconds": 5.0,
+  "checkpoint_sha256": "448b0aaf871f0629dec2d94bad63c888fbdaf71c113eb5ade58c4228647c8560",
+  "checks": {
+    "a16_budget_accounting": true,
+    "a16r_diagnostics_present": true,
+    "atomic_prestart_rule": true,
+    "checkpoint_hash": true,
+    "excluded_namespace": true,
+    "feasible_replay": true,
+    "finite_runtime": true,
+    "non_formal_seed": true,
+    "preparation_charged": true
+  },
+  "completed_at_utc": "2026-09-11T10:52:29.063048+00:00",
+  "config_sha256": "b6f66bda534710059a400e47679561ed3f3171e2f602fe4e93e00870a5c4e88c",
+  "decoder_evaluations": 1852,
+  "device": {
+    "cuda": "12.8",
+    "name": "NVIDIA GeForce RTX 4060 Ti",
+    "torch": "2.11.0+cu128"
+  },
+  "end_to_end_run_elapsed_seconds": 5.005525266984478,
+  "excluded_from_formal": true,
+  "final_makespan": 1783.0,
+  "incumbent_trace": [
+    {
+      "current_best_makespan": 1844.0,
+      "decoder_evaluations": 1,
+      "elapsed_time": 0.022747335955500603
+    },
+    {
+      "current_best_makespan": 1820.0,
+      "decoder_evaluations": 25,
+      "elapsed_time": 0.2738764339592308
+    },
+    {
+      "current_best_makespan": 1816.0,
+      "decoder_evaluations": 481,
+      "elapsed_time": 1.438611751946155
+    },
+    {
+      "current_best_makespan": 1804.0,
+      "decoder_evaluations": 1353,
+      "elapsed_time": 3.7372608239529654
+    },
+    {
+      "current_best_makespan": 1783.0,
+      "decoder_evaluations": 1457,
+      "elapsed_time": 4.004702070960775
+    }
+  ],
+  "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+  "instance_sha256": "12ff9dd4ce3a668c89ba8edd8ee0c9f87232f00b8ce8dbb42a4827402c20047a",
+  "iterations": 232,
+  "locks": {
+    "R13": "LOCKED",
+    "R14": "LOCKED",
+    "bks_v001_updates": false,
+    "comparator_reruns": false,
+    "gurobi": false,
+    "retraining": false,
+    "tuning": false
+  },
+  "runtime_preparation_seconds": 0.00032911798916757107,
+  "schema": "ngas-a16r-excluded-smoke-v1",
+  "seed": 946101,
+  "solver_budget_elapsed_seconds": 5.003103836963419,
+  "status": "PASS"
+}
