@@ -1,0 +1,44 @@
+{
+  "A1_6": "LOCKED",
+  "checks": {
+    "A1_4_completion_audit_pass": true,
+    "R13_R14_locked_and_no_gurobi": true,
+    "all_samples_finite": true,
+    "ensemble_repetitions_exact": true,
+    "production_repetitions_exact": true,
+    "protocol_and_state_hashes_match": true,
+    "protocol_frozen_before_formal_results": true,
+    "raw_manifest_hashes_match": true,
+    "raw_scope_exact_8": true,
+    "source_hashes_match": true
+  },
+  "completed_at_utc": "2026-09-11T02:50:43.788389+00:00",
+  "latency_gate_pass": false,
+  "locks": {
+    "R13": "LOCKED",
+    "R14": "LOCKED",
+    "gurobi_run": false
+  },
+  "per_state_latency_gate": {
+    "L": false,
+    "L_MAX": false,
+    "M": false,
+    "S": true
+  },
+  "pooled_p90_ms": 76.33476246264763,
+  "protocol_sha256": "b09ab5c526d68ed8d17636ad40e71a7f36b2d98b569e7d9c102c6839adf78da3",
+  "raw_file_count": 8,
+  "raw_manifest_sha256": "3880d732e8ff86f35561d11fa94b8b67251175a1db324920011cdb3b6dab2271",
+  "schema": "ngas-a15-completion-audit-v1",
+  "source_checks": {
+    "rcias_clgri/csg/builder.py": true,
+    "rcias_ngas/csg/critical_sync.py": true,
+    "rcias_ngas/csg/revised_features.py": true,
+    "rcias_ngas/latency/live_refresh.py": true,
+    "scripts/finalize_ngas_a15_latency.py": true,
+    "scripts/run_ngas_a15_latency.py": true
+  },
+  "status": "PASS",
+  "terminal_decision": "NGAS_A1_REVISE_RUNTIME",
+  "threshold_ms": 30.0
+}
