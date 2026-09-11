@@ -5,6 +5,7 @@ from dataclasses import dataclass
 import math
 import os
 import random
+import threading
 import time
 
 # Frozen NGAS training and formal search use this deterministic CUDA contract.
@@ -38,7 +39,12 @@ class ProductionRefreshResult:
 
 
 class ProductionRefreshRuntime:
-    """Prepare, build, infer, and rank through one deployable C1 path."""
+    """Prepare, build, infer, and rank through one synchronous owner.
+
+    Builders and CUDA timing events reuse mutable buffers. A runtime therefore
+    belongs to the process/thread that created it and must never be shared with
+    concurrent refresh tasks.
+    """
 
     def __init__(self, critic, *, prior_advantage_scale: float = .01,
                  prior_uniform_mix: float = .05) -> None:
@@ -52,6 +58,8 @@ class ProductionRefreshRuntime:
             torch.backends.cudnn.benchmark = False
         self.prior_advantage_scale = prior_advantage_scale
         self.prior_uniform_mix = prior_uniform_mix
+        self._owner_pid = os.getpid()
+        self._owner_thread_id = threading.get_ident()
         self._builders: dict[str, CompactStateBuilder] = {}
         self._prepared_instances: dict[str, object] = {}
         self._cuda_marks = (
@@ -70,8 +78,23 @@ class ProductionRefreshRuntime:
         if self.device.type == 'cuda':
             torch.cuda.synchronize(self.device)
 
+    def _assert_owner(self) -> None:
+        if (os.getpid() != self._owner_pid
+                or threading.get_ident() != self._owner_thread_id):
+            raise RuntimeError(
+                'ProductionRefreshRuntime mutable workspace used outside its owner')
+
+    @property
+    def ownership(self) -> dict:
+        return {
+            'pid': self._owner_pid,
+            'thread_id': self._owner_thread_id,
+            'mode': 'SYNCHRONOUS_SINGLE_OWNER',
+        }
+
     def prepare_instance(self, instance) -> bool:
         """Prepare immutable context and workspace; return whether it was cached."""
+        self._assert_owner()
         key = instance.instance_id
         if self._prepared_instances.get(key) is instance:
             return True
@@ -81,6 +104,7 @@ class ProductionRefreshRuntime:
 
     def structural_identity(self, instance, current) -> tuple[str, str | None]:
         """Evaluate live structure with the same compact analyzer as refresh."""
+        self._assert_owner()
         self.prepare_instance(instance)
         builder = self._builders[instance.instance_id]
         neural = builder._neural_nodes(current.schedule)
@@ -90,6 +114,7 @@ class ProductionRefreshRuntime:
 
     def refresh(self, instance, current, state_id: str, streams: RNGStreams,
                 *, sample_seed: int = 0) -> ProductionRefreshResult:
+        self._assert_owner()
         static_hit = self.prepare_instance(instance)
         builder = self._builders[instance.instance_id]
         self._synchronize()

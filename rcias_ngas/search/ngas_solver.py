@@ -58,6 +58,20 @@ class NGASSearchConfig:
     refresh: RefreshConfig = field(default_factory=RefreshConfig)
 
 
+@dataclass(frozen=True)
+class NGASDiagnosticConfig:
+    """Purely observational A1.6R search instrumentation."""
+
+    enabled: bool = False
+    capture_fractions: tuple[float, ...] = ()
+
+    def __post_init__(self) -> None:
+        if any(not 0. < value < 1. for value in self.capture_fractions):
+            raise ValueError('diagnostic capture fractions must be inside (0, 1)')
+        if tuple(sorted(set(self.capture_fractions))) != self.capture_fractions:
+            raise ValueError('diagnostic capture fractions must be unique and sorted')
+
+
 def search_config_from_dict(value: dict) -> NGASSearchConfig:
     fields = dict(value)
     fields['refresh'] = RefreshConfig(**fields['refresh'])
@@ -114,6 +128,19 @@ def _combine(probabilities: tuple[float, ...], actions: tuple,
     return tuple(value / total for value in weights)
 
 
+def _entropy(probabilities: tuple[float, ...]) -> float:
+    return -sum(value * math.log(max(value, 1e-300)) for value in probabilities)
+
+
+def _candidate_payload(candidate) -> dict:
+    return {
+        'operation_order': list(candidate.operation_order),
+        'island_assignment': list(candidate.island_assignment),
+        'w_assignment': list(candidate.w_assignment),
+        'f_assignment': list(candidate.f_assignment),
+    }
+
+
 def _select(actions: tuple, probabilities: tuple[float, ...], streams: RNGStreams,
             state_id: str, iteration: int, neural_live: bool,
             exploration: float, force_top1: bool) -> tuple[int, bool, float]:
@@ -136,7 +163,8 @@ def _select(actions: tuple, probabilities: tuple[float, ...], streams: RNGStream
 def solve_ngas(instance, time_limit: float, seed: int, mode: str, critic=None,
                config: NGASSearchConfig = NGASSearchConfig(),
                refresh_runtime: ProductionRefreshRuntime | None = None,
-               budget_accounting: str = 'LEGACY_SEARCH_ONLY') -> SearchResult:
+               budget_accounting: str = 'LEGACY_SEARCH_ONLY',
+               diagnostic_config: NGASDiagnosticConfig | None = None) -> SearchResult:
     """Run NGAS with the selected wall-clock accounting boundary.
 
     ``A16_INSTANCE_TOTAL`` starts the solver clock immediately before the
@@ -148,6 +176,7 @@ def solve_ngas(instance, time_limit: float, seed: int, mode: str, critic=None,
             or budget_accounting not in BUDGET_ACCOUNTING_MODES):
         raise ValueError('Invalid NGAS A1.4 run configuration')
     settings = MODE_SETTINGS[mode]
+    diagnostic_config = diagnostic_config or NGASDiagnosticConfig()
     a16_accounting = budget_accounting == 'A16_INSTANCE_TOTAL'
     if settings['neural'] and critic is None:
         raise ValueError(f'{mode} requires a frozen critic')
@@ -198,7 +227,8 @@ def solve_ngas(instance, time_limit: float, seed: int, mode: str, critic=None,
     telemetry.observe(best_time, state)
     trace = [TracePoint(best_time, evaluations, best.makespan)]
     cache = None
-    refresh_log, iteration_log = [], []
+    refresh_log, iteration_log, diagnostic_snapshots = [], [], []
+    pending_capture_fractions = list(diagnostic_config.capture_fractions)
     selection_counts, outcome_counts = Counter(), Counter()
     selected_semantics = set()
     guided_iterations = high_prior_failures = 0
@@ -275,7 +305,7 @@ def solve_ngas(instance, time_limit: float, seed: int, mode: str, critic=None,
             refresh_elapsed = time.perf_counter() - refresh_started
             record_atomic('refresh', refresh_elapsed)
             runtime['refresh_total_seconds'] += refresh_elapsed
-            refresh_log.append({
+            refresh_record = {
                 'iteration': iterations, 'elapsed_time_sec': time.perf_counter() - started,
                 'reasons': list(reasons), 'critic_called': settings['neural'],
                 'critic_variant': critic.variant if settings['neural'] else None,
@@ -284,7 +314,39 @@ def solve_ngas(instance, time_limit: float, seed: int, mode: str, critic=None,
                 'dominant_bottleneck': bottleneck,
                 'distribution': distribution_summary(actions, probabilities),
                 'refresh_seconds': refresh_elapsed,
-            })
+            }
+            if diagnostic_config.enabled:
+                if refresh_log:
+                    refresh_record['changed_since_previous_refresh'] = {
+                        'critical_signature': (
+                            critical_signature != refresh_log[-1]['critical_signature']),
+                        'dominant_bottleneck': (
+                            bottleneck != refresh_log[-1]['dominant_bottleneck']),
+                    }
+                else:
+                    refresh_record['changed_since_previous_refresh'] = None
+            refresh_log.append(refresh_record)
+            if diagnostic_config.enabled and pending_capture_fractions:
+                refresh_fraction = refresh_record['elapsed_time_sec'] / time_limit
+                while (pending_capture_fractions
+                       and refresh_fraction >= pending_capture_fractions[0]):
+                    threshold = pending_capture_fractions.pop(0)
+                    diagnostic_snapshots.append({
+                        'schema': 'ngas-a16r-replayable-state-v1',
+                        'capture_fraction': threshold,
+                        'observed_budget_fraction': refresh_fraction,
+                        'iteration': iterations,
+                        'state_id': state_id,
+                        'current_makespan': current.makespan,
+                        'current_candidate': _candidate_payload(current.candidate),
+                        'action_ids': [action.action_id for action in actions],
+                        'prior': list(probabilities),
+                        'advantage': list(predictions['advantage']),
+                        'beats_fallback_probability': list(
+                            predictions['beats_fallback_probability']),
+                        'critical_signature': critical_signature,
+                        'dominant_bottleneck': bottleneck,
+                    })
             last_refresh_anchor = iterations
             pending_new_best = pending_meaningful = False
             pending_structure = pending_bottleneck = False
@@ -315,9 +377,13 @@ def solve_ngas(instance, time_limit: float, seed: int, mode: str, critic=None,
             break
         selected_semantics.add(_semantic_action(action))
         selection_counts[(action.size, action.repair)] += 1
+        selected_portfolio_factor = (
+            portfolio.factor(action) if diagnostic_config.enabled and portfolio else 1.)
 
         current_before, best_before = current, best
         candidates = []
+        trial_diagnostics = []
+        trial_best_makespan = current_before.makespan
         state_id = f'{instance.instance_id}:seed{seed}:iteration{iterations}'
         for trial in range(config.candidate_trials):
             repair_started = time.perf_counter()
@@ -340,6 +406,23 @@ def solve_ngas(instance, time_limit: float, seed: int, mode: str, critic=None,
             if not candidate.feasible:
                 raise RuntimeError('Frozen repair produced infeasible candidate')
             candidates.append(candidate)
+            if diagnostic_config.enabled:
+                previous_trial_best = trial_best_makespan
+                trial_best_makespan = min(trial_best_makespan, candidate.makespan)
+                trial_diagnostics.append({
+                    'trial': trial + 1,
+                    'repair_rng_seed': streams.seed('neighbor', state_id, trial),
+                    'candidate_makespan': candidate.makespan,
+                    'improved_current': candidate.makespan < current_before.makespan,
+                    'improvement_from_current': max(
+                        0., current_before.makespan - candidate.makespan),
+                    'best_so_far_makespan': trial_best_makespan,
+                    'marginal_best_gain': max(
+                        0., previous_trial_best - trial_best_makespan),
+                    'repair_seconds': repair_seconds,
+                    'decoder_seconds': decoder_seconds,
+                    'trial_seconds': repair_seconds + decoder_seconds,
+                })
             evaluations += 1
         if not candidates:
             atomic_max_seconds['iteration'] = max(
@@ -383,6 +466,11 @@ def solve_ngas(instance, time_limit: float, seed: int, mode: str, critic=None,
         neural_order = sorted(range(len(cache.actions)),
                               key=lambda i: (-cache.probabilities[i], cache.actions[i].action_id))
         neural_rank = neural_order.index(index) + 1
+        if diagnostic_config.enabled:
+            combined_order = sorted(
+                range(len(cache.actions)),
+                key=lambda i: (-combined[i], cache.actions[i].action_id))
+            combined_rank = combined_order.index(index) + 1
         high_prior = neural_live and neural_rank <= max(1, math.ceil(.10 * len(cache.actions)))
         if high_prior and outcome in ('rejected', 'accepted_worse_or_neutral'):
             high_prior_failures += 1
@@ -413,7 +501,7 @@ def solve_ngas(instance, time_limit: float, seed: int, mode: str, critic=None,
         state = RunState(evaluations, neural_calls, current.makespan, best.makespan,
                          iterations, accepted_moves, improving_moves, new_best_moves)
         telemetry.observe(elapsed, state)
-        iteration_log.append({
+        iteration_record = {
             'iteration': iterations, 'elapsed_time_sec': elapsed,
             'action_id': action.action_id, 'action_size': action.size,
             'target_id': action.target.target_id, 'target_operations': list(action.target.operations),
@@ -430,7 +518,37 @@ def solve_ngas(instance, time_limit: float, seed: int, mode: str, critic=None,
             'relative_current_improvement': relative_improvement,
             'portfolio_reward': reward, 'temperature': temperature,
             'structural_monitor_seconds': monitor_seconds,
-        })
+        }
+        if diagnostic_config.enabled:
+            final_trial = min(
+                range(len(trial_diagnostics)),
+                key=lambda value: (
+                    trial_diagnostics[value]['candidate_makespan'], value)) + 1
+            iteration_record['a16r_observation'] = {
+                'budget_fraction': min(1., elapsed / time_limit),
+                'prior_entropy': _entropy(base),
+                'combined_entropy': _entropy(combined),
+                'selected_advantage': cache.advantages[index] if neural_live else None,
+                'selected_fallback_probability': (
+                    cache.beats_fallback_probability[index] if neural_live else None),
+                'combined_rank': combined_rank,
+                'portfolio_factor': selected_portfolio_factor,
+                'portfolio_rank_displacement': combined_rank - neural_rank,
+                'portfolio_changed_top1': neural_order[0] != combined_order[0],
+                'portfolio_top5_overlap': len(
+                    set(neural_order[:5]) & set(combined_order[:5])),
+                'critic_top1_action_id': cache.actions[neural_order[0]].action_id,
+                'combined_top1_action_id': cache.actions[combined_order[0]].action_id,
+                'target_origin_rules': list(action.target.origin_rules),
+                'target_origin_operators': list(action.target.origin_operators),
+                'final_best_trial': final_trial,
+                'trials_improving_current': sum(
+                    row['improved_current'] for row in trial_diagnostics),
+                'best_of_trials_improvement': max(
+                    0., current_before.makespan - candidate.makespan),
+                'candidate_trials': trial_diagnostics,
+            }
+        iteration_log.append(iteration_record)
         atomic_max_seconds['iteration'] = max(
             atomic_max_seconds['iteration'], elapsed - (iteration_started - started))
         previous_stage = stage
@@ -445,7 +563,8 @@ def solve_ngas(instance, time_limit: float, seed: int, mode: str, critic=None,
         raise RuntimeError('Final NGAS schedule replay failed')
     effective_neural = runtime['production_refresh_complete_refresh_seconds']
     diagnostics = {
-        'schema': 'ngas-a14-run-diagnostics-v1',
+        'schema': ('ngas-a16r-run-diagnostics-v1' if diagnostic_config.enabled
+                   else 'ngas-a14-run-diagnostics-v1'),
         'mode': mode, 'seed': seed, 'time_limit_seconds': time_limit,
         'budget_accounting': budget_accounting,
         'solver_budget_elapsed_seconds': elapsed,
@@ -462,6 +581,13 @@ def solve_ngas(instance, time_limit: float, seed: int, mode: str, critic=None,
         'critic_variant': critic.variant if settings['neural'] else None,
         'critic_checkpoint_sha256': critic.sha256 if settings['neural'] else None,
         'refreshes': refresh_log, 'iterations': iteration_log,
+        'a16r_replayable_states': diagnostic_snapshots,
+        'a16r_instrumentation': {
+            'enabled': diagnostic_config.enabled,
+            'capture_fractions': list(diagnostic_config.capture_fractions),
+            'unreached_capture_fractions': pending_capture_fractions,
+            'observational_only': True,
+        },
         'runtime_components': dict(sorted(runtime.items())),
         'effective_neural_overhead_seconds': effective_neural,
         'guided_iterations': guided_iterations,

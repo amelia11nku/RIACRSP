@@ -132,13 +132,23 @@ class StaticInstanceContext:
         static_count = (len(operations) + len(islands) + len(configurations)
                         + len(w_resources) + len(f_resources))
         n = len(operations)
+        # Forward construction has the four static relation families plus at
+        # most 16 operation-indexed dynamic families and one edge per island.
+        max_forward_edges = (
+            len(precedence) + len(eligibility) + len(supports)
+            + len(islands) + 16 * n)
+        # The event DAG has at most 2 + 6n base events and one idle event for
+        # every non-terminal base event. Base arcs are bounded by 11n + |P|;
+        # idle anchors add at most one copy of those arcs plus 6n idle exits.
+        max_event_nodes = 12 * n + 2
+        max_event_arcs = 28 * n + 2 * len(precedence)
         return cls(
             instance, operations, op_index, islands, island_index,
             configurations, config_index, w_resources, w_index, f_resources, f_index,
             resource_index, _positive_mean(processing), _positive_mean(travel),
             _positive_mean(instance.reconfiguration_time.values()), static_count,
-            static_count + 3 * n, max(4096, 32 * n + len(eligibility)),
-            max(1024, 12 * n + 2), max(4096, 24 * n),
+            static_count + 3 * n, max_forward_edges,
+            max_event_nodes, max_event_arcs,
             precedence, eligibility, requires, supports,
         )
 
@@ -150,7 +160,7 @@ class ReusableWorkspace:
         edges = context.max_forward_edges
         events = context.max_event_nodes
         arcs = context.max_event_arcs
-        targets = 72
+        targets = len(SIZE_FRACTIONS) * len(RULES)
         actions = targets * len(NGAS_REPAIR_IDS)
         self.resize_events = 0
         self.capacities = {
@@ -264,6 +274,39 @@ class CompactStateBuilder:
     def __init__(self, instance):
         self.context = StaticInstanceContext.build(instance)
         self.workspace = ReusableWorkspace(self.context)
+
+    def capacity_audit(self) -> dict:
+        """Return derived bounds and allocated mutable-buffer shapes."""
+        c, w = self.context, self.workspace
+        n = len(c.operations)
+        resource_nodes = (
+            len(c.islands) + len(c.configurations)
+            + len(c.w_resources) + len(c.f_resources))
+        return {
+            'schema': 'ngas-compact-capacity-audit-v1',
+            'operation_nodes': n,
+            'resource_and_configuration_nodes': resource_nodes,
+            'required_upper_bounds': dict(w.capacities),
+            'allocated_capacities': dict(w.capacities),
+            'membership_matrix_shapes': {
+                'target_by_operation': list(w.target_membership.shape),
+                'target_by_node': list(w.target_node_membership.shape),
+                'action_by_operation': list(w.membership.shape),
+                'action_by_node_boundary': list(w.boundary.shape),
+            },
+            'derivations': {
+                'targets': 'len(SIZE_FRACTIONS) * len(RULES)',
+                'actions': 'targets * len(NGAS_REPAIR_IDS)',
+                'neural_nodes': 'static_nodes + 3 * num_operations',
+                'forward_edges': (
+                    'precedence + eligibility + supports + islands '
+                    '+ 16 * num_operations'),
+                'event_nodes': '12 * num_operations + 2',
+                'event_arcs': '28 * num_operations + 2 * precedence_edges',
+            },
+            'resize_events': w.resize_events,
+            'silent_truncation_allowed': False,
+        }
 
     @staticmethod
     def _position(index, length):

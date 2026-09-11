@@ -20,12 +20,14 @@ def write_new_json(path: Path, payload: object) -> None:
         temporary.unlink(missing_ok=True)
 
 
-def validate_raw_contract(payload: dict, task: dict, protocol_sha256: str) -> None:
+def validate_raw_contract(payload: dict, task: dict, protocol_sha256: str, *,
+                          schema: str = 'ngas-a16-formal-run-v1',
+                          algorithm_id: str = 'NGAS_A1_6') -> None:
     expected = {
-        'schema': 'ngas-a16-formal-run-v1',
+        'schema': schema,
         'status': 'COMPLETE',
         'protocol_sha256': protocol_sha256,
-        'algorithm_id': 'NGAS_A1_6',
+        'algorithm_id': algorithm_id,
         'instance_id': task['instance_id'],
         'instance_sha256': task['instance_sha256'],
         'seed': task['seed'],
