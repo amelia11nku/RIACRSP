@@ -15,6 +15,9 @@ ROOT = Path(__file__).resolve().parents[2]
 
 def test_clean_trajectory_manifest_has_frozen_counts_and_reserved_disjointness():
     manifest = build_manifest()
+    assert manifest['revision'] == 2
+    assert manifest['supersedes_protocol_sha256'] == (
+        '441b613936fc7f0ef59b3410dfbcd5135af3481e8b5ce43f8ce596766b1b0a73')
     assert manifest['expected_runs'] == 108
     assert manifest['expected_clean_states'] == 540
     assert len(manifest['train_instances']) == 81
@@ -41,6 +44,7 @@ def test_candidate_trials_means_eight_trials_for_each_selected_action():
     config = json.loads(
         (ROOT / 'configs/ngas_a17ar_trajectory_collection_protocol.yaml').read_text())
     assert config['production_solver']['candidate_trials'] == 8
+    assert config['revision'] == 2
     assert config['production_solver']['search']['candidate_trials'] == 8
     assert config['production_solver']['candidate_trials_semantics'] == (
         'stochastic repair/decode realizations per selected joint action')

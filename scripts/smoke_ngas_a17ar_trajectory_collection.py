@@ -36,12 +36,13 @@ def main() -> None:
     config, protocol, protocol_sha = load_boundary(require_clean=True)
     if not args.device.startswith('cuda') or not torch.cuda.is_available():
         raise RuntimeError('A1.7A-R smoke requires CUDA')
+    device = torch.device(args.device)
     torch.use_deterministic_algorithms(True)
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
     torch.backends.cuda.matmul.allow_tf32 = False
     torch.backends.cudnn.allow_tf32 = False
-    torch.cuda.reset_peak_memory_stats(args.device)
+    torch.cuda.reset_peak_memory_stats(device)
     critic = FrozenJointCritic(
         ROOT / protocol['checkpoint_path'], args.device,
         protocol['checkpoint_sha256'], 'C1')
@@ -65,9 +66,9 @@ def main() -> None:
     payload['smoke'] = {
         'status': 'PASS',
         'device': args.device,
-        'device_name': torch.cuda.get_device_name(torch.device(args.device)),
-        'peak_memory_allocated_bytes': torch.cuda.max_memory_allocated(args.device),
-        'peak_memory_reserved_bytes': torch.cuda.max_memory_reserved(args.device),
+        'device_name': torch.cuda.get_device_name(device),
+        'peak_memory_allocated_bytes': torch.cuda.max_memory_allocated(device),
+        'peak_memory_reserved_bytes': torch.cuda.max_memory_reserved(device),
         'numerical_stability': 'PASS_FINITE_OUTPUTS_AND_NORMALIZED_PRIORS',
         'completed_at_utc': datetime.now(timezone.utc).isoformat(),
     }

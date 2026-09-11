@@ -185,6 +185,9 @@ def build_manifest() -> dict:
     }
     return {
         'schema': 'ngas-a17ar-trajectory-protocol-manifest-v1',
+        'revision': config['revision'],
+        'supersedes_protocol_sha256': config['supersedes_protocol_sha256'],
+        'supersession_reason': config['supersession_reason'],
         'status': 'FROZEN_BEFORE_FORMAL_COLLECTION',
         'freeze_source_commit': subprocess.check_output(
             ['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
@@ -229,7 +232,7 @@ def main() -> None:
     nominal_seconds = sum(row['budget_seconds'] for row in manifest['instances'])
     REPORT.write_text(f'''# NGAS A1.7A-R clean trajectory protocol
 
-The protocol is frozen before formal collection. It does not train C1-v2 or change the production solver.
+Protocol revision **{manifest['revision']}** is frozen before formal collection. It supersedes rejected revision 1 (`{manifest['supersedes_protocol_sha256']}`). It does not train C1-v2 or change the production solver.
 
 - TRAIN: **{len(train)} instances**, one balanced selection across all 81 scale×CF×RI×TI cells.
 - VALIDATION: **{len(validation)} instances**, balanced across S/M/L, CF1/2/3, RI1/2/3, and TI1/2/3.
