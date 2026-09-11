@@ -27,7 +27,7 @@ from rcias_ngas.latency.live_refresh import LiveRefreshEngine, _joint_bank, _ten
 from rcias_ngas.rng import RNGStreams
 
 OUT = ROOT / 'outputs/ngas_a1/latency_qualification_v1'
-PROTOCOL = OUT / 'preregistration/protocol.json'
+PROTOCOL = OUT / 'preregistration/protocol_v2.json'
 PROGRESS = OUT / 'progress.json'
 
 
@@ -115,7 +115,9 @@ def main() -> None:
     state_manifest = json.loads((ROOT / protocol['representative_states_path']).read_text())
     measurement = protocol['measurement']
     device = torch.device(measurement['device'])
-    torch.cuda.reset_peak_memory_stats(device)
+    device_index = 0 if device.index is None else device.index
+    torch.cuda.set_device(device_index)
+    torch.cuda.reset_peak_memory_stats(device_index)
     production = FrozenJointCritic(
         ROOT / protocol['production']['checkpoint_path'], device,
         protocol['production']['checkpoint_sha256'], 'C1')
@@ -187,7 +189,7 @@ def main() -> None:
                     math.isfinite(value) for sample in component_samples
                     for value in sample.values()) and all(math.isfinite(value) for value in raw),
                 'device': {
-                    'name': torch.cuda.get_device_name(device),
+                    'name': torch.cuda.get_device_name(device_index),
                     'torch': torch.__version__, 'cuda': torch.version.cuda,
                 },
                 'locks': {'R13': 'LOCKED', 'R14': 'LOCKED', 'gurobi_run': False},
@@ -200,8 +202,8 @@ def main() -> None:
                 'completed_units': completed, 'expected_units': 8,
                 'protocol_sha256': protocol_sha256,
                 'last_completed': f"{state['label']}:{mode}",
-                'peak_allocated_bytes': torch.cuda.max_memory_allocated(device),
-                'peak_reserved_bytes': torch.cuda.max_memory_reserved(device),
+                'peak_allocated_bytes': torch.cuda.max_memory_allocated(device_index),
+                'peak_reserved_bytes': torch.cuda.max_memory_reserved(device_index),
                 'decision': 'PENDING_COMPLETION_AUDIT',
                 'next_gate': 'A1_5_COMPLETION_AUDIT',
                 'A1_6': 'LOCKED', 'R13': 'LOCKED', 'R14': 'LOCKED',

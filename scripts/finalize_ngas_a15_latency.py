@@ -11,7 +11,7 @@ import statistics
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'outputs/ngas_a1/latency_qualification_v1'
-PROTOCOL = OUT / 'preregistration/protocol.json'
+PROTOCOL = OUT / 'preregistration/protocol_v2.json'
 PROGRESS = OUT / 'progress.json'
 REPORT = ROOT / 'docs/reports/ngas_a1/09_latency_qualification.md'
 A14_RAW = ROOT / 'outputs/ngas_a1/search_integration_c1_r1_v1/raw/C1'
