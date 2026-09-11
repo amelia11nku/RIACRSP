@@ -1,0 +1,107 @@
+{
+  "A1_5_unlock_rule": "all 18 runs, immutable hashes, exact replay and completion audit pass",
+  "ablation_source_hashes": {
+    "scripts/freeze_ngas_a14_c1_r1_protocol.py": "3400a5aa45f4e7afe1b91018e604077a2cc712714b1f136cc23af3b4c790e2b4",
+    "scripts/launch_ngas_a14_c1_r1.py": "2f92f278199fcde1ef5b7735ef978f7782e875d759b4eaf4f225ce8f52e961df",
+    "scripts/run_ngas_a14_c1_r1_ablation.py": "bc47f19d8808315196844fc53ce83f2c09913bb84303ab99c66078739b8a429d",
+    "scripts/smoke_ngas_a14_c1_r1.py": "4cf5b6e60b0f9b40b098fa7b7177bb7dd13a2b4826bb88892c52b4cecb2b1aa2"
+  },
+  "budget": {
+    "accounting": "same maximum wall-clock budget for every mode within each instance-seed block; model loading is outside the budget; initialization, live refresh, search, repair and decoder are inside",
+    "formula": "0.5 * num_operations seconds",
+    "multiplier": 0.5,
+    "relationship_to_full_R12_budget": "one quarter of the frozen 2*num_operations-second R12 budget"
+  },
+  "checkpoints": {
+    "C1": {
+      "746101": {
+        "held_fold": 0,
+        "path": "outputs/ngas_a1/critic_training_rthgt_v2/variants/C1/seed_746101/fold_0/model.pt",
+        "role": "PRODUCTION",
+        "sha256": "3cd419ada2287d377c194e24adb0b8bf29226ab9e7195e5d1d6704cba3ec591a"
+      },
+      "746102": {
+        "held_fold": 0,
+        "path": "outputs/ngas_a1/critic_training_rthgt_v2/variants/C1/seed_746102/fold_0/model.pt",
+        "role": "PRODUCTION",
+        "sha256": "119347f8db7945c40c282dde094903b79ab12c57a7f300dc5c1b606c66824a5e"
+      },
+      "746103": {
+        "held_fold": 0,
+        "path": "outputs/ngas_a1/critic_training_rthgt_v2/variants/C1/seed_746103/fold_0/model.pt",
+        "role": "PRODUCTION",
+        "sha256": "be7499fdf8727ec11432005d4a51196bfb998f1f31512872b57b05f1429b63a5"
+      }
+    },
+    "R1": {
+      "746101": {
+        "held_fold": 0,
+        "path": "outputs/ngas_a1/critic_training_rthgt_v2/variants/R1/seed_746101/fold_0/model.pt",
+        "role": "EXPLANATORY_ONLY",
+        "sha256": "532f9aa448d26c7ffd4e238eaa20daa57ae1eab50b20a405dbc21bbb936dee4f"
+      },
+      "746102": {
+        "held_fold": 0,
+        "path": "outputs/ngas_a1/critic_training_rthgt_v2/variants/R1/seed_746102/fold_0/model.pt",
+        "role": "EXPLANATORY_ONLY",
+        "sha256": "66167e7b0e9f3a510337562d9c1a64e4cec9aeb4ded09d8cd68e96e5fce2aaed"
+      },
+      "746103": {
+        "held_fold": 0,
+        "path": "outputs/ngas_a1/critic_training_rthgt_v2/variants/R1/seed_746103/fold_0/model.pt",
+        "role": "EXPLANATORY_ONLY",
+        "sha256": "8cfefcbe9f93878c9c30d7804486f8b79fb554062e6d06d3efcc2121fcec59aa"
+      }
+    }
+  },
+  "environment": {
+    "cuda": "12.8",
+    "cuda_available": true,
+    "device_name": "NVIDIA GeForce RTX 4060 Ti",
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "python": "3.11.15 (main, Jun 11 2026, 15:20:16) [GCC 14.3.0]",
+    "torch": "2.11.0+cu128"
+  },
+  "expected_runs": 18,
+  "frozen_at_utc": "2026-09-11T01:53:37.342655+00:00",
+  "implementation_commit": "aeb3c2b230bbfc383da1dd382c3b2109a0239578",
+  "instances": [
+    "CB1_CAUR_L_CF3_RI2_TI2_R12",
+    "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+    "CB1_CAUR_S_CF1_RI2_TI2_R12"
+  ],
+  "interpretation_contract": {
+    "R1_cannot_be_promoted": true,
+    "R1_role": "EXPLANATORY_ONLY",
+    "outcome_cannot_change_selected_mechanism": true,
+    "production_variant": "C1",
+    "single_variable": "representation checkpoint variant C1 versus R1"
+  },
+  "locks": {
+    "R13": "LOCKED",
+    "R14": "LOCKED",
+    "gurobi_run": false
+  },
+  "primary_completion_audit_path": "outputs/ngas_a1/search_integration_v1/audit/completion_audit.json",
+  "primary_completion_audit_sha256": "b9efcb9193eb7e3f6822d86ecb3da65bde4803b61a552ba286c6139d8b918947",
+  "primary_decision_path": "outputs/ngas_a1/search_integration_v1/mechanism_decision.json",
+  "primary_decision_sha256": "d243e705456e8b47111635d566145b796a8a65b18ba83b94fbae7649ea6c3945",
+  "primary_protocol_path": "outputs/ngas_a1/search_integration_v1/preregistration/protocol.json",
+  "primary_protocol_sha256": "7287f8c497dfe649818b648748e5df032275addfe05156f030c1f242e1b71ee4",
+  "run_order": "seed_then_instance_then_C1_R1",
+  "schema": "ngas-a14-c1-r1-protocol-v1",
+  "search_config_sha256": "3aec8be1bbee7bce32e1e2f93a601153d8de9add90409c59334c0b24bf13a182",
+  "seeds": [
+    746101,
+    746102,
+    746103
+  ],
+  "selected_mechanism": "PERSISTENT_FIXED_REFRESH",
+  "smoke_path": "outputs/ngas_a1/search_integration_c1_r1_v1/smoke/smoke.json",
+  "smoke_sha256": "22a97850252927a312f7995a1607a915c229cd9e428d04dd672691235b9e48a3",
+  "status": "FROZEN_BEFORE_OUTCOMES",
+  "variants": [
+    "C1",
+    "R1"
+  ]
+}
