@@ -68,6 +68,7 @@ def build_csg_from_schedule(
     search_stage: str,
     natural_bottleneck_proxy: str | None = None,
     diagnostic_metadata: Mapping[str, object] | None = None,
+    attach_hash: bool = True,
 ) -> CSGState:
     """Build one action-independent graph from a complete feasible schedule."""
     extracted = extract_node_features(instance, schedule)
@@ -236,7 +237,7 @@ def build_csg_from_schedule(
         operation_to_node=operation_to_node,
         graph_hash="",
     )
-    return attach_graph_hash(graph)
+    return attach_graph_hash(graph) if attach_hash else graph
 
 
 def build_csg(

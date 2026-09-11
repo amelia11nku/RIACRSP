@@ -104,6 +104,7 @@ def analyze_graph(graph, absolute_tolerance=1e-8, relative_tolerance=1e-10):
             if node.resource_id:
                 resources[op].add(node.resource_id)
     edges = []
+    critical_incident = {key: [] for key in graph.nodes}
     for arc in graph.arcs:
         margin = graph.nodes[arc.target].start_time - graph.nodes[arc.source].end_time
         critical = arc.source in zero and arc.target in zero and abs(margin) <= tolerance
@@ -111,6 +112,8 @@ def analyze_graph(graph, absolute_tolerance=1e-8, relative_tolerance=1e-10):
         edges.append({'source': arc.source, 'target': arc.target, 'relation': arc.relation,
                       'category': category, 'active_margin': margin, 'critical': critical})
         if critical:
+            critical_incident[arc.source].append(edges[-1])
+            critical_incident[arc.target].append(edges[-1])
             for op in {graph.nodes[k].operation_id for k in (arc.source, arc.target)} - {None}:
                 edge_count[op] += 1
                 reasons[op].add(f"critical_edge:{category}:{arc.source}->{arc.target}:{arc.relation}")
@@ -118,8 +121,7 @@ def analyze_graph(graph, absolute_tolerance=1e-8, relative_tolerance=1e-10):
     nodes = {}
     for key, node in sorted(graph.nodes.items()):
         finite = math.isfinite(latest_start[key])
-        incident = [edge for edge in edges if edge['critical']
-                    and key in (edge['source'], edge['target'])]
+        incident = critical_incident[key]
         categories = {edge['category'] for edge in incident}
         if key in zero:
             categories.update({

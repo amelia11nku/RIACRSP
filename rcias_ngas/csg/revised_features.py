@@ -30,13 +30,9 @@ ZERO_SLACK_INDEX = BASE_NODE_DIM + CRITICAL_FEATURE_NAMES.index('zero_slack')
 MAJOR_NODE_TYPES = ('OP', 'W_EVENT', 'F_EVENT', 'RECONF_EVENT')
 
 
-def state_features(instance, current, state_id):
-    graph = build_csg_from_schedule(
-        instance, current.schedule, state_id=state_id,
-        search_progress=0., search_stage='0-20%')
-    event_graph = build_generalized_chdg(instance, current)
-    critical = analyze_graph(event_graph)
-    mapping = map_critical_events(event_graph, graph, critical)
+def state_features_from_components(instance, graph, mapping, *, include_hash=True,
+                                   include_diagnostics=True):
+    """Assemble the frozen neural inputs from already computed live graphs."""
     node_index, x, kinds, critical_masks = {}, [], [], []
     for type_index, kind in enumerate(NODE_TYPE_ORDER):
         for node in graph.nodes[kind]:
@@ -76,14 +72,14 @@ def state_features(instance, current, state_id):
         'operation_nodes': [node_index['OP', operation] for operation in operations],
         'operation_ids': operations,
         'critical_mask': critical_masks,
-        'graph_hash': graph.graph_hash,
+        'graph_hash': graph.graph_hash if include_diagnostics else '',
         'critical_mapping': {
             'mapped_events': mapping.mapped_events,
             'aggregated_events': mapping.aggregated_events,
             'omitted_boundaries': mapping.omitted_boundaries,
             'event_to_neural': {event: list(mapped) for event, mapped in sorted(mapping.event_to_neural.items())},
             'projection_reason': dict(sorted(mapping.projection_reason.items())),
-        },
+        } if include_diagnostics else {},
         'feature_schema': {
             'base_node_dim': BASE_NODE_DIM,
             'node_dim': NODE_DIM,
@@ -91,23 +87,50 @@ def state_features(instance, current, state_id):
             'edge_feature_names': ('normalized_temporal_gap', 'binding_indicator'),
         },
     }
-    payload['feature_hash'] = content_hash(payload)
+    payload['feature_hash'] = content_hash(payload) if include_hash else ''
     return payload
+
+
+def state_features(instance, current, state_id):
+    graph = build_csg_from_schedule(
+        instance, current.schedule, state_id=state_id,
+        search_progress=0., search_stage='0-20%')
+    event_graph = build_generalized_chdg(instance, current)
+    critical = analyze_graph(event_graph)
+    mapping = map_critical_events(event_graph, graph, critical)
+    return state_features_from_components(instance, graph, mapping)
 
 
 def action_features(state, actions):
     operations = state['operation_ids']
+    operation_set = set(operations)
     operation_position = {operation: index for index, operation in enumerate(operations)}
     operation_nodes = state['operation_nodes']
     memberships, provenance, boundary_memberships, boundary_stats = [], [], [], []
     critical_overlap = []
+    target_cache = {}
     original_edges = [
         (edge, relation) for edge, relation, direction in zip(
             state['edge_index'], state['edge_types'], state['edge_directions']) if direction == 1
     ]
+    incident_edges = [[] for _ in state['node_features']]
+    for edge_index, ((source, target), relation) in enumerate(original_edges):
+        record = edge_index, source, target, relation
+        incident_edges[source].append(record)
+        incident_edges[target].append(record)
     for action in actions:
+        cache_key = (action.size, action.target)
+        cached = target_cache.get(cache_key)
+        if cached is not None:
+            membership, values, boundary, relation_counts, overlap = cached
+            memberships.append(membership)
+            provenance.append(values)
+            boundary_memberships.append(boundary)
+            boundary_stats.append(relation_counts)
+            critical_overlap.append(overlap)
+            continue
         targets = set(action.target.operations)
-        if not targets <= set(operations):
+        if not targets <= operation_set:
             raise ValueError('Target operation not present in CSG')
         membership = [float(operation in targets) for operation in operations]
         selected_nodes = {operation_nodes[operation_position[operation]] for operation in targets}
@@ -117,19 +140,25 @@ def action_features(state, actions):
         provenance.append(values)
         boundary = [0.] * len(state['node_features'])
         relation_counts = [0.] * BOUNDARY_DIM
-        for (source, target), relation in original_edges:
-            source_selected, target_selected = source in selected_nodes, target in selected_nodes
-            if source_selected == target_selected:
+        candidate_edges = {
+            record for node in selected_nodes for record in incident_edges[node]
+        }
+        for _, source, target, relation in candidate_edges:
+            source_selected = source in selected_nodes
+            if source_selected == (target in selected_nodes):
                 continue
             boundary[target if source_selected else source] = 1.
             offset = len(EDGE_TYPE_ORDER) if source_selected else 0
             relation_counts[offset + relation] += 1.
         scale = max(1., float(len(targets)))
         boundary_memberships.append(boundary)
-        boundary_stats.append([value / scale for value in relation_counts])
-        critical_overlap.append(sum(
+        relation_counts = [value / scale for value in relation_counts]
+        boundary_stats.append(relation_counts)
+        overlap = sum(
             state['critical_mask'][operation_nodes[operation_position[operation]]]
-            for operation in targets) / scale)
+            for operation in targets) / scale
+        critical_overlap.append(overlap)
+        target_cache[cache_key] = membership, values, boundary, relation_counts, overlap
     return {
         'membership': memberships,
         'provenance': provenance,
