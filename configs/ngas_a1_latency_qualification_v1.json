@@ -1,0 +1,89 @@
+{
+  "schema": "ngas-a15-latency-qualification-config-v1",
+  "stage": "A1.5",
+  "output_root": "outputs/ngas_a1/latency_qualification_v1",
+  "production": {
+    "variant": "C1",
+    "checkpoint_path": "outputs/ngas_a1/critic_training_rthgt_v2/production/revised_joint_critic.pt",
+    "checkpoint_sha256": "448b0aaf871f0629dec2d94bad63c888fbdaf71c113eb5ade58c4228647c8560",
+    "role": "SINGLE_DEPLOYABLE_CRITIC"
+  },
+  "development_ensemble": [
+    {
+      "path": "outputs/ngas_a1/critic_training_rthgt_v2/variants/C1/seed_746101/fold_0/model.pt",
+      "sha256": "3cd419ada2287d377c194e24adb0b8bf29226ab9e7195e5d1d6704cba3ec591a"
+    },
+    {
+      "path": "outputs/ngas_a1/critic_training_rthgt_v2/variants/C1/seed_746102/fold_0/model.pt",
+      "sha256": "119347f8db7945c40c282dde094903b79ab12c57a7f300dc5c1b606c66824a5e"
+    },
+    {
+      "path": "outputs/ngas_a1/critic_training_rthgt_v2/variants/C1/seed_746103/fold_0/model.pt",
+      "sha256": "be7499fdf8727ec11432005d4a51196bfb998f1f31512872b57b05f1429b63a5"
+    }
+  ],
+  "instance_root": "instances/controlled/RCIAS-CB1-TRAIN-CAUR-R12R14",
+  "representative_states": [
+    {
+      "label": "S",
+      "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+      "relative_path": "r12_caur_fit/CB1_CAUR_S_CF1_RI2_TI2_R12.json",
+      "instance_sha256": "12ff9dd4ce3a668c89ba8edd8ee0c9f87232f00b8ce8dbb42a4827402c20047a",
+      "num_operations": 61,
+      "candidate_source": "outputs/ngas_a1/search_integration_c1_r1_v1/raw/C1/CB1_CAUR_S_CF1_RI2_TI2_R12/seed_746101.json",
+      "candidate_field": "best_candidate"
+    },
+    {
+      "label": "M",
+      "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+      "relative_path": "r12_caur_fit/CB1_CAUR_M_CF2_RI2_TI2_R12_C02.json",
+      "instance_sha256": "9a1b7de15cfd0663d92ad81a5378da0922b92dc6f7c6b042cd8daf542a21b803",
+      "num_operations": 127,
+      "candidate_source": "outputs/ngas_a1/search_integration_c1_r1_v1/raw/C1/CB1_CAUR_M_CF2_RI2_TI2_R12_C02/seed_746101.json",
+      "candidate_field": "best_candidate"
+    },
+    {
+      "label": "L",
+      "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12",
+      "relative_path": "r12_caur_fit/CB1_CAUR_L_CF3_RI2_TI2_R12.json",
+      "instance_sha256": "bdb01c2b6350b572dcac6be3c542e696143bd4766ab3ae7939bff36e6234f25b",
+      "num_operations": 183,
+      "candidate_source": "outputs/ngas_a1/search_integration_c1_r1_v1/raw/C1/CB1_CAUR_L_CF3_RI2_TI2_R12/seed_746101.json",
+      "candidate_field": "best_candidate"
+    },
+    {
+      "label": "L_MAX",
+      "instance_id": "CB1_CAUR_L_CF2_RI2_TI2_R12_C02",
+      "relative_path": "r12_caur_fit/CB1_CAUR_L_CF2_RI2_TI2_R12_C02.json",
+      "instance_sha256": "48a9ab11246faafcf8189c16695cbf926f0ae8bdbc42dfab76d38b2d7830b091",
+      "num_operations": 194,
+      "candidate_source": "DETERMINISTIC_H1",
+      "candidate_field": null
+    }
+  ],
+  "measurement": {
+    "device": "cuda:0",
+    "warmup_complete_refreshes": 20,
+    "production_complete_repetitions": 200,
+    "ensemble_complete_repetitions": 100,
+    "warmup_raw_inferences": 50,
+    "production_raw_repetitions": 500,
+    "ensemble_raw_repetitions": 250,
+    "percentile_method": "linear",
+    "run_order": "state_order_then_production_complete_then_ensemble_complete_then_production_raw_then_ensemble_raw",
+    "sample_seed": 746101
+  },
+  "equivalence_gate": {
+    "maximum_absolute_error": 1e-7,
+    "action_identity_and_order_exact": true,
+    "prior_ranking_exact": true
+  },
+  "latency_gate": {
+    "metric": "complete live single-C1 refresh wall-clock latency",
+    "threshold_ms": 30.0,
+    "rule": "p90 <= 30 ms independently for S, M, L and L_MAX, and pooled p90 <= 30 ms",
+    "failure_decision": "NGAS_A1_REVISE_RUNTIME"
+  },
+  "a1_6_unlock": "A1.4 PASS and every A1.5 hard check including the complete-refresh latency gate must pass",
+  "prohibited": ["DISTILLATION_AFTER_FORMAL_OUTCOMES", "AMP_WITHOUT_SEPARATE_EQUIVALENCE", "R13", "R14", "GUROBI", "GIT_PUSH"]
+}
