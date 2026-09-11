@@ -1,0 +1,86 @@
+{
+  "A1_4_completion_audit_path": "outputs/ngas_a1/search_integration_c1_r1_v1/audit/completion_audit.json",
+  "A1_4_completion_audit_sha256": "f238035347c6c1d030b59678c05209af1e70f4881127a52aa34970f314ea7ab7",
+  "a1_6_status_before_audit": "LOCKED",
+  "config_path": "configs/ngas_a1_latency_qualification_v1.json",
+  "config_sha256": "4a87848fc3d6e0b6c16eaf7c05aa6fcc155b6ee43ce6179c241fc1da15bcd550",
+  "development_ensemble": [
+    {
+      "path": "outputs/ngas_a1/critic_training_rthgt_v2/variants/C1/seed_746101/fold_0/model.pt",
+      "sha256": "3cd419ada2287d377c194e24adb0b8bf29226ab9e7195e5d1d6704cba3ec591a"
+    },
+    {
+      "path": "outputs/ngas_a1/critic_training_rthgt_v2/variants/C1/seed_746102/fold_0/model.pt",
+      "sha256": "119347f8db7945c40c282dde094903b79ab12c57a7f300dc5c1b606c66824a5e"
+    },
+    {
+      "path": "outputs/ngas_a1/critic_training_rthgt_v2/variants/C1/seed_746103/fold_0/model.pt",
+      "sha256": "be7499fdf8727ec11432005d4a51196bfb998f1f31512872b57b05f1429b63a5"
+    }
+  ],
+  "environment": {
+    "cuda": "12.8",
+    "device_name": "NVIDIA GeForce RTX 4060 Ti",
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "python": "3.11.15 (main, Jun 11 2026, 15:20:16) [GCC 14.3.0]",
+    "torch": "2.11.0+cu128"
+  },
+  "equivalence_gate": {
+    "action_identity_and_order_exact": true,
+    "maximum_absolute_error": 1e-07,
+    "prior_ranking_exact": true
+  },
+  "failure_decision": "NGAS_A1_REVISE_RUNTIME",
+  "formal_result_scope": {
+    "files": 8,
+    "modes": [
+      "SINGLE_C1",
+      "TEACHER_ENSEMBLE"
+    ],
+    "states": 4
+  },
+  "frozen_at_utc": "2026-09-11T02:47:49.074213+00:00",
+  "implementation_commit": "5a973d43f2914281d06f3c62d28d59cccc4109da",
+  "latency_gate": {
+    "failure_decision": "NGAS_A1_REVISE_RUNTIME",
+    "metric": "complete live single-C1 refresh wall-clock latency",
+    "rule": "p90 <= 30 ms independently for S, M, L and L_MAX, and pooled p90 <= 30 ms",
+    "threshold_ms": 30.0
+  },
+  "locks": {
+    "R13": "LOCKED",
+    "R14": "LOCKED",
+    "gurobi_run": false
+  },
+  "measurement": {
+    "device": "cuda:0",
+    "ensemble_complete_repetitions": 100,
+    "ensemble_raw_repetitions": 250,
+    "percentile_method": "linear",
+    "production_complete_repetitions": 200,
+    "production_raw_repetitions": 500,
+    "run_order": "state_order_then_production_complete_then_ensemble_complete_then_production_raw_then_ensemble_raw",
+    "sample_seed": 746101,
+    "warmup_complete_refreshes": 20,
+    "warmup_raw_inferences": 50
+  },
+  "pre_freeze_smoke_path": "outputs/ngas_a1/latency_qualification_v1/smoke/pre_freeze_gpu_smoke.json",
+  "pre_freeze_smoke_sha256": "000e5e65c77dedc3ae8be8c75999074730ddd98926bdb0746049e8d81a443b1c",
+  "production": {
+    "checkpoint_path": "outputs/ngas_a1/critic_training_rthgt_v2/production/revised_joint_critic.pt",
+    "checkpoint_sha256": "448b0aaf871f0629dec2d94bad63c888fbdaf71c113eb5ade58c4228647c8560",
+    "role": "SINGLE_DEPLOYABLE_CRITIC",
+    "variant": "C1"
+  },
+  "representative_states_path": "outputs/ngas_a1/latency_qualification_v1/preregistration/representative_states.json",
+  "representative_states_sha256": "e49f7a777ff398609b981fb35499550e4058d1ab95a960ffeabf7bfa7d995273",
+  "schema": "ngas-a15-latency-protocol-v1",
+  "source_hashes": {
+    "rcias_clgri/csg/builder.py": "359dfe1854bcd45bedc49b18504d553d93c4240882a197ed02e89fd5e617e56a",
+    "rcias_ngas/csg/critical_sync.py": "b2d341bdb187cbd3cdde7728e289145e8c1cdb18ba67fb1d00232ccf77392129",
+    "rcias_ngas/csg/revised_features.py": "342dd37e25a364453687d3a0cbcf268c3dd08e6794dab1dfd7e5f3b45f6d6b03",
+    "rcias_ngas/latency/live_refresh.py": "7de6b7abaf0ee5d6deb44a16e6e6218ac1c45781e1f6220e6f50a648790d77ae",
+    "scripts/finalize_ngas_a15_latency.py": "fb5ea2eb64e4ecb2b1b7fc3c4bae87fada9b8ab43d6b5739eb5b2dbc46fb8af0",
+    "scripts/run_ngas_a15_latency.py": "81a7a9ac4a0e466250536815f0376ab6b5b9a02dff8be31b59884e1c4073d27f"
+  }
+}

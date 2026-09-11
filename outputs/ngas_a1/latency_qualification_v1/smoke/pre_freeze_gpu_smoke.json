@@ -1,0 +1,66 @@
+{
+  "checks": {
+    "action_identity_and_order_exact": true,
+    "advantage_max_abs_error_le_1e-7": true,
+    "all_outputs_finite": true,
+    "checkpoint_hash_matches": true,
+    "cuda_available": true,
+    "prior_max_abs_error_le_1e-7": true,
+    "probability_max_abs_error_le_1e-7": true,
+    "ranking_exact": true,
+    "representative_replay_feasible": true,
+    "three_measured_complete_refreshes": true
+  },
+  "complete_refresh_ms": [
+    17.772655992303044,
+    17.02678098808974,
+    17.418474017176777
+  ],
+  "completed_at_utc": "2026-09-11T02:47:43.652508+00:00",
+  "device": {
+    "cuda": "12.8",
+    "name": "NVIDIA GeForce RTX 4060 Ti",
+    "peak_allocated_bytes": 42011648,
+    "peak_reserved_bytes": 60817408,
+    "torch": "2.11.0+cu128",
+    "total_memory_bytes": 8182628352
+  },
+  "implementation_commit": "5a973d43f2914281d06f3c62d28d59cccc4109da",
+  "last_component_profile_ms": {
+    "action_feature_update": 1.8036499968729913,
+    "batched_action_scoring_gpu": 0.704479992389679,
+    "candidate_joint_action_generation": 3.480222017969936,
+    "complete_refresh": 17.418474017176777,
+    "cpu_tensorization": 2.2221850231289864,
+    "critical_event_graph": 1.3511639554053545,
+    "critical_extraction": 1.0071099968627095,
+    "critical_mapping": 0.7448300020769238,
+    "csg_update_build": 2.756437985226512,
+    "ensemble_reduction_gpu": 0.048128001391887665,
+    "graph_encoding_gpu": 1.6200000047683716,
+    "h2d_enqueue_wall": 0.26138097746297717,
+    "h2d_gpu": 0.27427199482917786,
+    "output_and_synchronization_wall": 0.05887396400794387,
+    "prior_construction": 0.06748799933120608,
+    "ranking_sampling": 0.6335049984045327,
+    "state_feature_update": 0.5808910354971886
+  },
+  "locks": {
+    "R13": "LOCKED",
+    "R14": "LOCKED",
+    "gurobi_run": false
+  },
+  "numerical_equivalence": {
+    "maximum_advantage_absolute_error": 7.450580596923828e-08,
+    "maximum_prior_absolute_error": 3.650037825458918e-08,
+    "maximum_probability_absolute_error": 5.960464477539063e-08
+  },
+  "representative": {
+    "candidate_source": "outputs/ngas_a1/search_integration_c1_r1_v1/raw/C1/CB1_CAUR_S_CF1_RI2_TI2_R12/seed_746101.json",
+    "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+    "joint_actions": 355,
+    "num_operations": 61
+  },
+  "schema": "ngas-a15-pre-freeze-gpu-smoke-v1",
+  "status": "PASS"
+}
