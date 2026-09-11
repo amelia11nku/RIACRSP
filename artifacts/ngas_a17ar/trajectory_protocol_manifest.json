@@ -41,10 +41,10 @@
     "validation_count": true
   },
   "config_path": "configs/ngas_a17ar_trajectory_collection_protocol.yaml",
-  "config_sha256": "f373d5a5936b5d3c8e890d162b7191c78268744c800f6289c0ea30e1e16683f8",
+  "config_sha256": "2e69e02e48e4307f7445dedafca0fc52607221ee5fac4b69affaa853891bf68d",
   "expected_clean_states": 540,
   "expected_runs": 108,
-  "freeze_source_commit": "baddebfdf9345d99364db5614776a5e23bfc3d1d",
+  "freeze_source_commit": "f3fe9d55a140eac53cf2ebb06c7243c27f91c646",
   "full_bank_audit_tasks": [
     {
       "capture_fraction": 0.5,
@@ -2086,25 +2086,17 @@
   "production_solver_changed": false,
   "registry_path": "configs/dataset_role_registry.json",
   "registry_sha256": "95581b08d99a7a0a51bffda1d9296c60688798a45fdb3024c36b6da277c8eb5f",
-  "rejection": {
-    "formal_runs_started": 0,
-    "instance_accessed": false,
-    "ledger_entries_written": 0,
-    "original_manifest_sha256": "aa79611757f037394763755f15a56c8d0fbf87089e1134c414ee4f6e2e83d1ce",
-    "reason": "peak-memory reset was called before the CUDA caching allocator had been initialized",
-    "stage": "CUDA_SMOKE_PREFLIGHT"
-  },
   "reserved_family_counts": {
     "RCIAS_CB1_CORE45": 45,
     "RCIAS_CB1_R12": 18,
     "RCIAS_CB1_R13": 18,
     "RCIAS_CB1_R14": 18
   },
-  "revision": 2,
+  "revision": 3,
   "schema": "ngas-a17ar-trajectory-protocol-manifest-v1",
   "source_hashes": {
     "configs/dataset_role_registry.json": "95581b08d99a7a0a51bffda1d9296c60688798a45fdb3024c36b6da277c8eb5f",
-    "configs/ngas_a17ar_trajectory_collection_protocol.yaml": "f373d5a5936b5d3c8e890d162b7191c78268744c800f6289c0ea30e1e16683f8",
+    "configs/ngas_a17ar_trajectory_collection_protocol.yaml": "2e69e02e48e4307f7445dedafca0fc52607221ee5fac4b69affaa853891bf68d",
     "instances/controlled/RCIAS-CB1-TRAIN/manifests/train_instance_manifest.csv": "0757c32b71919bde71ad474d57e58cc90b8c496b2727bafb02f9948371620859",
     "rcias_ngas/bank/ngas_bank_v1.py": "afef264cd5e0bcd499665dcc876acd7fc061eb4572d72ee8d0cf5fd619fd9623",
     "rcias_ngas/critic/inference.py": "df369fb2e14acaf5351c4977a378379f37ab2f75c7bf91aac2100346806d1591",
@@ -2113,11 +2105,11 @@
     "rcias_ngas/search/ngas_solver.py": "5ca139776ec47cd150db56152b05d76ccb92788f04e218dc5b0d77190f8001a2",
     "scripts/recover_ngas_a17ar_stale_lock.py": "ddee81a4ef94910ac2f38259e12af879d8c6554a48dcdd168a47e1b8b3b7076e",
     "scripts/run_ngas_a17ar_trajectory_collection.py": "a5d19dcc5849f441fa973a0c9f6e363c237a8b269c6e35627d17ea174dbc4e0a",
-    "scripts/smoke_ngas_a17ar_trajectory_collection.py": "ce53540dd2521c1a396b9afec7b8e49e4254043f59518a717c670ad0020516b2"
+    "scripts/smoke_ngas_a17ar_trajectory_collection.py": "b006d77544a2052a0f7e1f05612e05dcace33fb3717b10519d5c40f31f48173d"
   },
-  "status": "REJECTED_BEFORE_FORMAL_COLLECTION",
-  "supersedes_protocol_sha256": "441b613936fc7f0ef59b3410dfbcd5135af3481e8b5ce43f8ce596766b1b0a73",
-  "supersession_reason": "pre-instance CUDA smoke rejected revision 1 because the memory-stat API received a string device argument",
+  "status": "FROZEN_BEFORE_FORMAL_COLLECTION",
+  "supersedes_protocol_sha256": "aa79611757f037394763755f15a56c8d0fbf87089e1134c414ee4f6e2e83d1ce",
+  "supersession_reason": "pre-instance CUDA smoke rejected revision 2 because peak-memory reset preceded caching-allocator initialization",
   "train_c1_v2": false,
   "train_instances": [
     "CB1_TRAIN_L_CF1_RI1_TI1_R03",
