@@ -1,0 +1,58 @@
+{
+  "R13": "LOCKED_UNTOUCHED",
+  "R14": "LOCKED_UNTOUCHED",
+  "diagnostic_quality_only": true,
+  "execution_concurrency_audit_path": "outputs/ngas_a1/solver_comparison_v1/audit/execution_concurrency_audit.json",
+  "execution_concurrency_audit_sha256": "4638d6d8c406c084fd665064cd709f91f1e7112eb1c31fd9885132853f216fb7",
+  "formal_quality_claim_valid": false,
+  "gurobi_run": false,
+  "integrity_failure": "DUPLICATE_FORMAL_WORKER_OVERLAPPED_FIRST_RUN",
+  "next_stage": "STOP_A1_6_R13_R14_LOCKED",
+  "primary_vs_phase6n_top1": {
+    "losses": 1,
+    "mean_relative_gain_percent": 3.429761444125288,
+    "median_relative_gain_percent": 3.870490033958077,
+    "ties": 0,
+    "wins": 17
+  },
+  "quality_gates": {
+    "hard_integrity": false,
+    "no_material_scale_collapse": {
+      "L": true,
+      "M": true,
+      "S": true
+    },
+    "primary_vs_phase6n_top1": true,
+    "strong_non_regression_vs_lg_hga_2o": true
+  },
+  "quality_result_if_execution_integrity_had_passed": "NGAS_A1_PASS_DEVELOPMENT",
+  "scale_vs_phase6n_top1": {
+    "L": {
+      "losses": 1,
+      "mean_relative_gain_percent": 1.531988636698512,
+      "ties": 0,
+      "wins": 5
+    },
+    "M": {
+      "losses": 0,
+      "mean_relative_gain_percent": 3.499175526611469,
+      "ties": 0,
+      "wins": 6
+    },
+    "S": {
+      "losses": 0,
+      "mean_relative_gain_percent": 5.258120169065883,
+      "ties": 0,
+      "wins": 6
+    }
+  },
+  "schema": "ngas-a16-final-decision-v1.1-integrity-correction",
+  "strong_vs_lg_hga_2o": {
+    "losses": 6,
+    "mean_relative_gain_percent": 1.7366452252827305,
+    "median_relative_gain_percent": 1.3873570288514077,
+    "ties": 0,
+    "wins": 12
+  },
+  "terminal_decision": "NGAS_A1_6_INVALID_COMPARISON"
+}

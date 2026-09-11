@@ -1,0 +1,31 @@
+{
+  "R13": "LOCKED",
+  "R14": "LOCKED",
+  "command": [
+    "/home/liulei/miniconda3/envs/gnn311/bin/python",
+    "-u",
+    "scripts/run_ngas_a16_worker.py"
+  ],
+  "eta_basis": "12,960 frozen solver-budget seconds plus 8 percent run overhead and 300 seconds setup/final replay reserve",
+  "exit_status_path": "outputs/ngas_a1/solver_comparison_v1/formal_exit_status.json",
+  "expected_completion_utc": "2026-09-11T08:28:23.881162+00:00",
+  "gurobi_run": false,
+  "implementation_commit": "e04873c982be166f2d25affaf05bbe2e201fb13b",
+  "inspection_command": "cat outputs/ngas_a1/solver_comparison_v1/progress.json",
+  "liveness_evidence": "worker alive and first formal run start event observed",
+  "log_path": "outputs/ngas_a1/solver_comparison_v1/logs/formal_20260911T043007Z.log",
+  "nominal_budget_seconds": 12960.0,
+  "pid": 310486,
+  "progress_path": "outputs/ngas_a1/solver_comparison_v1/progress.json",
+  "projected_seconds": 14296.800000000001,
+  "protocol_path": "outputs/ngas_a1/solver_comparison_v1/preregistration/protocol.json",
+  "protocol_sha256": "0b9e7d97440f0d24b84390b4c1aca8bf85f25d4ae76e84ec54f77e92c38d1d37",
+  "raw_output_path": "outputs/ngas_a1/solver_comparison_v1/raw",
+  "resume_command": "/home/liulei/miniconda3/envs/gnn311/bin/python scripts/launch_ngas_a16_solver_comparison.py",
+  "resume_semantics": "validate and reuse every complete immutable formal raw; never rerun a valid result",
+  "schema": "ngas-a16-launch-record-v1",
+  "session": "detached_process_group_310486",
+  "started_at_utc": "2026-09-11T04:30:07.081162+00:00",
+  "status": "RUNNING_VERIFIED",
+  "working_directory": "/home/liulei/ayx/RI-ACRSP"
+}

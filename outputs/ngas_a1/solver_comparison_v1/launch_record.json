@@ -1,0 +1,38 @@
+{
+  "R13": "LOCKED",
+  "R14": "LOCKED",
+  "command": [
+    "/home/liulei/miniconda3/envs/gnn311/bin/python",
+    "-u",
+    "scripts/run_ngas_a16_worker.py"
+  ],
+  "eta_basis": "12,960 frozen solver-budget seconds plus 8 percent run overhead and 300 seconds setup/final replay reserve",
+  "exit_status_path": "outputs/ngas_a1/solver_comparison_v1/formal_exit_status.json",
+  "expected_completion_local": "2026-09-11T16:29:33+08:00",
+  "expected_completion_utc": "2026-09-11T08:29:33.800000+00:00",
+  "gurobi_run": false,
+  "implementation_commit": "e04873c982be166f2d25affaf05bbe2e201fb13b",
+  "inspection_commands": [
+    "systemctl --user show ngas-a16-v1.service --property=ActiveState,SubState,MainPID,ExecMainStatus",
+    "cat outputs/ngas_a1/solver_comparison_v1/progress.json"
+  ],
+  "liveness_evidence": "systemd ActiveState=active, SubState=running, first formal run start event observed",
+  "log_path": "outputs/ngas_a1/solver_comparison_v1/logs/formal_systemd_20260911T043200Z.log",
+  "nominal_budget_seconds": 12960.0,
+  "pid": 310734,
+  "prior_launch_attempt_outcome": "detached child was reaped by the command execution environment before any formal raw was written",
+  "prior_launch_attempt_record": "outputs/ngas_a1/solver_comparison_v1/launch_attempts/detached_20260911T043007Z.json",
+  "progress_path": "outputs/ngas_a1/solver_comparison_v1/progress.json",
+  "projected_seconds": 14296.8,
+  "protocol_path": "outputs/ngas_a1/solver_comparison_v1/preregistration/protocol.json",
+  "protocol_sha256": "0b9e7d97440f0d24b84390b4c1aca8bf85f25d4ae76e84ec54f77e92c38d1d37",
+  "raw_output_path": "outputs/ngas_a1/solver_comparison_v1/raw",
+  "resume_command": "systemctl --user restart ngas-a16-v1.service",
+  "resume_semantics": "validate and reuse every complete immutable formal raw; never rerun a valid result",
+  "schema": "ngas-a16-launch-record-v1",
+  "service": "ngas-a16-v1.service",
+  "session": "user_systemd_service",
+  "started_at_utc": "2026-09-11T04:31:17+00:00",
+  "status": "RUNNING_VERIFIED",
+  "working_directory": "/home/liulei/ayx/RI-ACRSP"
+}

@@ -1,0 +1,76 @@
+{
+  "affected_written_raw": {
+    "budget_seconds": 332.0,
+    "completed_at_utc": "2026-09-11T04:35:40.561872+00:00",
+    "instance_id": "CB1_CAUR_L_CF1_RI2_TI2_R12",
+    "path": "outputs/ngas_a1/solver_comparison_v1/raw/CB1_CAUR_L_CF1_RI2_TI2_R12/seed_746101.json",
+    "seed": 746101,
+    "sha256": "dff40b1067c349f4dd44b54f7c32ce02808302104fc5539754f4338273203a7a",
+    "started_at_utc": "2026-09-11T04:30:08.525804+00:00",
+    "writer_identity": "primary detached worker; its embedded start time predates the duplicate service"
+  },
+  "audited_at_utc": "2026-09-11T08:11:52.501239+00:00",
+  "duplicate_write_protection": {
+    "evidence": "The duplicate worker received FileExistsError from immutable os.link creation and wrote no extra or replacement raw.",
+    "raw_file_count": 54,
+    "raw_manifest_file_count": 54,
+    "result": "PASS"
+  },
+  "evidence": {
+    "outputs/ngas_a1/solver_comparison_v1/audit/systemd_duplicate_journal.txt": "aa2cbd8ec265800891a9371dab061a0561f19ea9d75e9af8adf4a3541304438e",
+    "outputs/ngas_a1/solver_comparison_v1/audit/systemd_duplicate_status.txt": "01399782f8177ba2b87f002a1094160411384a7d223477f092c33bc80155f3f9",
+    "outputs/ngas_a1/solver_comparison_v1/formal_exit_status.json": "a075937d2a372c4bcdf0807a98fe450f9728412610b74578ae93fff05b38a9c4",
+    "outputs/ngas_a1/solver_comparison_v1/logs/formal_20260911T043007Z.log": "872a8ee4666e5ca1ee422fb989e2a382bf467779a0b4ffef834c919e71ac380a",
+    "outputs/ngas_a1/solver_comparison_v1/logs/formal_systemd_20260911T043200Z.log": "8d37a2f07ca746bbd354f975aaf4d318e3833348d6e132f880bfa1194189aafc",
+    "outputs/ngas_a1/solver_comparison_v1/raw_manifest.json": "02e489fcd029a3ce9f1ba3169fd55f01b2a28e7ea3de4240225a17c0e3d7f1fd"
+  },
+  "finding": "Two formal workers overlapped on the first 332-second instance-seed run, so the written first raw was generated under resource contention and the frozen single-worker execution boundary cannot be certified.",
+  "hard_integrity_failure": true,
+  "protocol_requirements": {
+    "execution_concurrency": 1,
+    "no_competing_gpu_heavy_execution": true,
+    "protocol_path": "outputs/ngas_a1/solver_comparison_v1/preregistration/protocol.json",
+    "protocol_sha256": "0b9e7d97440f0d24b84390b4c1aca8bf85f25d4ae76e84ec54f77e92c38d1d37",
+    "run_order": "instance_manifest_order_then_seed_order"
+  },
+  "schema": "ngas-a16-execution-concurrency-audit-v1",
+  "scientific_action": {
+    "formal_development_pass_claim_allowed": false,
+    "gurobi_run": false,
+    "quality_tables_retained_as_diagnostic_only": true,
+    "r13_r14": "LOCKED_UNTOUCHED",
+    "raw_preserved": true,
+    "rerun_prohibited": true
+  },
+  "status": "FAIL",
+  "terminal_state_required": "NGAS_A1_6_INVALID_COMPARISON",
+  "timeline_utc": {
+    "duplicate_first_run_progress_timestamp": "2026-09-11T04:31:18.560215+00:00",
+    "duplicate_service_failed": "2026-09-11T04:36:51+00:00",
+    "duplicate_service_started": "2026-09-11T04:31:17+00:00",
+    "minimum_confirmed_overlap_seconds": 262.001657,
+    "primary_first_run_completed": "2026-09-11T04:35:40.561872+00:00",
+    "primary_first_run_started": "2026-09-11T04:30:08.525804+00:00"
+  },
+  "worker_outcomes": {
+    "duplicate_systemd_worker": {
+      "exec_main_status": 1,
+      "result": "exit-code",
+      "unit": "ngas-a16-v1.service"
+    },
+    "primary_worker": {
+      "command": [
+        "/home/liulei/miniconda3/envs/gnn311/bin/python",
+        "-u",
+        "scripts/run_ngas_a16_solver_comparison.py",
+        "--device",
+        "cuda:0"
+      ],
+      "completed_at_utc": "2026-09-11T08:06:26.648163+00:00",
+      "exit_code": 0,
+      "schema": "ngas-a16-worker-exit-v1",
+      "started_at_utc": "2026-09-11T04:30:07.097650+00:00",
+      "status": "SUCCESS"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{"event": "a16_formal_start", "pending_runs": 54, "completed_runs": 0, "nominal_pending_budget_seconds": 12960.0, "model_load_seconds_outside_run_budget": 0.008435408002696931, "protocol_sha256": "0b9e7d97440f0d24b84390b4c1aca8bf85f25d4ae76e84ec54f77e92c38d1d37"}
+{"event": "a16_run_start", "pending_index": 1, "pending_total": 54, "instance_id": "CB1_CAUR_L_CF1_RI2_TI2_R12", "seed": 746101, "budget_seconds": 332.0}
+Traceback (most recent call last):
+  File "/home/liulei/ayx/RI-ACRSP/scripts/run_ngas_a16_solver_comparison.py", line 397, in <module>
+    main()
+  File "/home/liulei/ayx/RI-ACRSP/scripts/run_ngas_a16_solver_comparison.py", line 367, in main
+    write_new_json(path, payload)
+  File "/home/liulei/ayx/RI-ACRSP/rcias_ngas/evaluation/a16_io.py", line 18, in write_new_json
+    os.link(temporary, path)
+FileExistsError: [Errno 17] File exists: '/home/liulei/ayx/RI-ACRSP/outputs/ngas_a1/solver_comparison_v1/raw/CB1_CAUR_L_CF1_RI2_TI2_R12/.seed_746101.json.tmp.310736' -> '/home/liulei/ayx/RI-ACRSP/outputs/ngas_a1/solver_comparison_v1/raw/CB1_CAUR_L_CF1_RI2_TI2_R12/seed_746101.json'

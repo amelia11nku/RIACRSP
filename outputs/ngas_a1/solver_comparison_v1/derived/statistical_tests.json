@@ -1,0 +1,76 @@
+{
+  "analysis_unit": "18 instance-level three-seed means",
+  "friedman": {
+    "algorithms": [
+      "NGAS_A1_6",
+      "PHASE6N_TOP1",
+      "PHASE6H",
+      "ALNS",
+      "LG_HGA_2O"
+    ],
+    "average_ranks": {
+      "ALNS": 3.2222222222222223,
+      "LG_HGA_2O": 2.6666666666666665,
+      "NGAS_A1_6": 1.5555555555555556,
+      "PHASE6H": 3.7222222222222223,
+      "PHASE6N_TOP1": 3.8333333333333335
+    },
+    "blocks": 18,
+    "degrees_of_freedom": 4,
+    "p_value": 5.1886642525542826e-05,
+    "statistic": 24.933333333333337
+  },
+  "schema": "ngas-a16-statistical-tests-v1",
+  "tie_tolerance_makespan": 1e-09,
+  "wilcoxon_holm": [
+    {
+      "comparator": "PHASE6N_TOP1",
+      "effect_direction": "FAVORS_NGAS",
+      "holm_adjusted_p_value": 0.000152587890625,
+      "holm_reject_0_05": true,
+      "losses": 1,
+      "rank_biserial_effect": 0.9649122807017544,
+      "raw_p_value": 3.814697265625e-05,
+      "statistic": 3.0,
+      "ties": 0,
+      "wins": 17
+    },
+    {
+      "comparator": "PHASE6H",
+      "effect_direction": "FAVORS_NGAS",
+      "holm_adjusted_p_value": 0.0025787353515625,
+      "holm_reject_0_05": true,
+      "losses": 2,
+      "rank_biserial_effect": 0.8128654970760234,
+      "raw_p_value": 0.00128936767578125,
+      "statistic": 16.0,
+      "ties": 0,
+      "wins": 16
+    },
+    {
+      "comparator": "ALNS",
+      "effect_direction": "FAVORS_NGAS",
+      "holm_adjusted_p_value": 0.00043487548828125,
+      "holm_reject_0_05": true,
+      "losses": 1,
+      "rank_biserial_effect": 0.9181286549707602,
+      "raw_p_value": 0.00014495849609375,
+      "statistic": 7.0,
+      "ties": 0,
+      "wins": 17
+    },
+    {
+      "comparator": "LG_HGA_2O",
+      "effect_direction": "FAVORS_NGAS",
+      "holm_adjusted_p_value": 0.15404510498046875,
+      "holm_reject_0_05": false,
+      "losses": 6,
+      "rank_biserial_effect": 0.391812865497076,
+      "raw_p_value": 0.15404510498046875,
+      "statistic": 52.0,
+      "ties": 0,
+      "wins": 12
+    }
+  ],
+  "zero_difference_method": "pratt; all-zero comparison maps to W=0,p=1,effect=0"
+}
