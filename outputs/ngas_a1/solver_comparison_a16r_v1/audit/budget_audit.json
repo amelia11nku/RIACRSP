@@ -1,0 +1,18 @@
+{
+  "checks": {
+    "all_a16_accounting": true,
+    "all_preparation_charged": true,
+    "exact_54_runs": true,
+    "no_atomic_start_after_deadline": true,
+    "no_systematic_extension": true,
+    "per_run_overshoot_within_atomic_bound": true
+  },
+  "maximum_atomic_seconds": 0.6618908859672956,
+  "maximum_overshoot_seconds": 0.0583579060039483,
+  "median_overshoot_seconds": 0.004184072982752696,
+  "median_per_run_maximum_atomic_seconds": 0.15080383748863824,
+  "rule": "INVALID_IF_ANY_ATOMIC_START_IS_AFTER_DEADLINE_OR_ANY_RUN_OVERSHOOT_EXCEEDS_ITS_MAXIMUM_ATOMIC_DURATION_PLUS_0.01_SECONDS_OR_MEDIAN_OVERSHOOT_EXCEEDS_MEDIAN_PER_RUN_MAXIMUM_ATOMIC_DURATION",
+  "schema": "ngas-a16r-budget-audit-v1",
+  "started_after_deadline_count": 0,
+  "status": "PASS"
+}

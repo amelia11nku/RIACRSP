@@ -1,0 +1,442 @@
+{
+  "advantage_quantiles": [
+    {
+      "accepted_rate": 0.016993241082279696,
+      "iterations": 46901,
+      "mean_realized_improvement": 0.39728364000767574,
+      "new_best_rate": 0.00036246561906995585,
+      "positive_improvement_rate": 0.0063751305942304,
+      "quantile": 1,
+      "score_lower": -0.014572806656360626,
+      "score_upper": -0.009503266215324402
+    },
+    {
+      "accepted_rate": 0.034050446685571736,
+      "iterations": 46901,
+      "mean_realized_improvement": 0.9362700155647001,
+      "new_best_rate": 0.0012153258992345579,
+      "positive_improvement_rate": 0.01582055819705337,
+      "quantile": 2,
+      "score_lower": -0.009503266215324402,
+      "score_upper": -0.003436048328876495
+    },
+    {
+      "accepted_rate": 0.03957356076759062,
+      "iterations": 46900,
+      "mean_realized_improvement": 1.1574413646055437,
+      "new_best_rate": 0.002622601279317697,
+      "positive_improvement_rate": 0.02115138592750533,
+      "quantile": 3,
+      "score_lower": -0.003436048328876495,
+      "score_upper": 0.0023617044091224695
+    },
+    {
+      "accepted_rate": 0.04398626894948935,
+      "iterations": 46901,
+      "mean_realized_improvement": 1.3345984094155774,
+      "new_best_rate": 0.005074518666979382,
+      "positive_improvement_rate": 0.024796912645785804,
+      "quantile": 4,
+      "score_lower": 0.0023617044091224695,
+      "score_upper": 0.008313696086406709
+    },
+    {
+      "accepted_rate": 0.05206712010404895,
+      "iterations": 46901,
+      "mean_realized_improvement": 1.8181488667619028,
+      "new_best_rate": 0.0061405940171851345,
+      "positive_improvement_rate": 0.030532398029892754,
+      "quantile": 5,
+      "score_lower": 0.008313696086406709,
+      "score_upper": 0.023997224867343903
+    }
+  ],
+  "correlations": [
+    {
+      "advantage_vs_improvement": {
+        "n": 234504,
+        "p_value": 1.6896089481140673e-184,
+        "rho": 0.059765395621613086,
+        "statistically_valid": true
+      },
+      "fallback_probability_vs_improvement": {
+        "n": 234504,
+        "p_value": 1.841338210708219e-179,
+        "rho": 0.05893594509007365,
+        "statistically_valid": true
+      },
+      "scale": "ALL",
+      "stage": "ALL"
+    },
+    {
+      "advantage_vs_improvement": {
+        "n": 23404,
+        "p_value": 3.388137045818573e-112,
+        "rho": 0.1463483875010129,
+        "statistically_valid": true
+      },
+      "fallback_probability_vs_improvement": {
+        "n": 23404,
+        "p_value": 5.347480384472027e-103,
+        "rho": 0.14017326014732936,
+        "statistically_valid": true
+      },
+      "scale": "ALL",
+      "stage": "0-10%"
+    },
+    {
+      "advantage_vs_improvement": {
+        "n": 35351,
+        "p_value": 2.661512805756962e-57,
+        "rho": 0.08470509807773621,
+        "statistically_valid": true
+      },
+      "fallback_probability_vs_improvement": {
+        "n": 35351,
+        "p_value": 2.5863059034786365e-54,
+        "rho": 0.08240144524186892,
+        "statistically_valid": true
+      },
+      "scale": "ALL",
+      "stage": "10-25%"
+    },
+    {
+      "advantage_vs_improvement": {
+        "n": 58631,
+        "p_value": 1.8732839941231316e-27,
+        "rho": 0.044811137194147324,
+        "statistically_valid": true
+      },
+      "fallback_probability_vs_improvement": {
+        "n": 58631,
+        "p_value": 1.0148405568407567e-26,
+        "rho": 0.04417008879117274,
+        "statistically_valid": true
+      },
+      "scale": "ALL",
+      "stage": "25-50%"
+    },
+    {
+      "advantage_vs_improvement": {
+        "n": 58551,
+        "p_value": 1.666256823364444e-11,
+        "rho": 0.02781907467739539,
+        "statistically_valid": true
+      },
+      "fallback_probability_vs_improvement": {
+        "n": 58551,
+        "p_value": 7.305622874456352e-11,
+        "rho": 0.026917052758708346,
+        "statistically_valid": true
+      },
+      "scale": "ALL",
+      "stage": "50-75%"
+    },
+    {
+      "advantage_vs_improvement": {
+        "n": 58567,
+        "p_value": 1.5153269239270783e-08,
+        "rho": 0.023384384385300272,
+        "statistically_valid": true
+      },
+      "fallback_probability_vs_improvement": {
+        "n": 58567,
+        "p_value": 2.878346436577334e-08,
+        "rho": 0.02292531830435414,
+        "statistically_valid": true
+      },
+      "scale": "ALL",
+      "stage": "75-100%"
+    },
+    {
+      "advantage_vs_improvement": {
+        "n": 101213,
+        "p_value": 1.4241203159689281e-58,
+        "rho": 0.050687941113524315,
+        "statistically_valid": true
+      },
+      "fallback_probability_vs_improvement": {
+        "n": 101213,
+        "p_value": 1.1191258549773003e-60,
+        "rho": 0.05161806739309533,
+        "statistically_valid": true
+      },
+      "scale": "S",
+      "stage": "ALL"
+    },
+    {
+      "advantage_vs_improvement": {
+        "n": 10117,
+        "p_value": 5.4320161306496826e-33,
+        "rho": 0.11854924101393921,
+        "statistically_valid": true
+      },
+      "fallback_probability_vs_improvement": {
+        "n": 10117,
+        "p_value": 1.1584530678238823e-31,
+        "rho": 0.1160230885620244,
+        "statistically_valid": true
+      },
+      "scale": "S",
+      "stage": "0-10%"
+    },
+    {
+      "advantage_vs_improvement": {
+        "n": 15254,
+        "p_value": 4.6882719494830487e-17,
+        "rho": 0.06789297516587686,
+        "statistically_valid": true
+      },
+      "fallback_probability_vs_improvement": {
+        "n": 15254,
+        "p_value": 5.836181347263174e-17,
+        "rho": 0.06768499555853126,
+        "statistically_valid": true
+      },
+      "scale": "S",
+      "stage": "10-25%"
+    },
+    {
+      "advantage_vs_improvement": {
+        "n": 25290,
+        "p_value": 7.624165000615229e-14,
+        "rho": 0.04699093435815398,
+        "statistically_valid": true
+      },
+      "fallback_probability_vs_improvement": {
+        "n": 25290,
+        "p_value": 5.50517026225407e-13,
+        "rho": 0.045330656885174125,
+        "statistically_valid": true
+      },
+      "scale": "S",
+      "stage": "25-50%"
+    },
+    {
+      "advantage_vs_improvement": {
+        "n": 25289,
+        "p_value": 2.995427299640529e-07,
+        "rho": 0.03221287908141458,
+        "statistically_valid": true
+      },
+      "fallback_probability_vs_improvement": {
+        "n": 25289,
+        "p_value": 4.490616413925091e-07,
+        "rho": 0.03172999842806686,
+        "statistically_valid": true
+      },
+      "scale": "S",
+      "stage": "50-75%"
+    },
+    {
+      "advantage_vs_improvement": {
+        "n": 25263,
+        "p_value": 0.00020189351228677496,
+        "rho": 0.023381351524115405,
+        "statistically_valid": true
+      },
+      "fallback_probability_vs_improvement": {
+        "n": 25263,
+        "p_value": 0.00018669795190561156,
+        "rho": 0.02350545064656396,
+        "statistically_valid": true
+      },
+      "scale": "S",
+      "stage": "75-100%"
+    },
+    {
+      "advantage_vs_improvement": {
+        "n": 75447,
+        "p_value": 3.42482009307346e-36,
+        "rho": 0.045709954932599085,
+        "statistically_valid": true
+      },
+      "fallback_probability_vs_improvement": {
+        "n": 75447,
+        "p_value": 2.416830401567016e-35,
+        "rho": 0.0451445776462183,
+        "statistically_valid": true
+      },
+      "scale": "M",
+      "stage": "ALL"
+    },
+    {
+      "advantage_vs_improvement": {
+        "n": 7523,
+        "p_value": 1.4211928186427638e-20,
+        "rho": 0.10691868974961209,
+        "statistically_valid": true
+      },
+      "fallback_probability_vs_improvement": {
+        "n": 7523,
+        "p_value": 1.1063215698486467e-18,
+        "rho": 0.10148680320215231,
+        "statistically_valid": true
+      },
+      "scale": "M",
+      "stage": "0-10%"
+    },
+    {
+      "advantage_vs_improvement": {
+        "n": 11372,
+        "p_value": 3.8043526342627826e-12,
+        "rho": 0.06505718499644365,
+        "statistically_valid": true
+      },
+      "fallback_probability_vs_improvement": {
+        "n": 11372,
+        "p_value": 1.3463348114419857e-11,
+        "rho": 0.06336778309634875,
+        "statistically_valid": true
+      },
+      "scale": "M",
+      "stage": "10-25%"
+    },
+    {
+      "advantage_vs_improvement": {
+        "n": 18875,
+        "p_value": 4.091294893495741e-07,
+        "rho": 0.03685428937358437,
+        "statistically_valid": true
+      },
+      "fallback_probability_vs_improvement": {
+        "n": 18875,
+        "p_value": 8.77770391300873e-07,
+        "rho": 0.03578217932633364,
+        "statistically_valid": true
+      },
+      "scale": "M",
+      "stage": "25-50%"
+    },
+    {
+      "advantage_vs_improvement": {
+        "n": 18823,
+        "p_value": 2.2151981969718712e-07,
+        "rho": 0.03774724065373718,
+        "statistically_valid": true
+      },
+      "fallback_probability_vs_improvement": {
+        "n": 18823,
+        "p_value": 5.095196873139473e-07,
+        "rho": 0.036599531932346795,
+        "statistically_valid": true
+      },
+      "scale": "M",
+      "stage": "50-75%"
+    },
+    {
+      "advantage_vs_improvement": {
+        "n": 18854,
+        "p_value": 1.2990564869738808e-05,
+        "rho": 0.03174902080429385,
+        "statistically_valid": true
+      },
+      "fallback_probability_vs_improvement": {
+        "n": 18854,
+        "p_value": 2.131786025369315e-05,
+        "rho": 0.030951049393388476,
+        "statistically_valid": true
+      },
+      "scale": "M",
+      "stage": "75-100%"
+    },
+    {
+      "advantage_vs_improvement": {
+        "n": 57844,
+        "p_value": 1.4444138631339956e-59,
+        "rho": 0.06760045039664486,
+        "statistically_valid": true
+      },
+      "fallback_probability_vs_improvement": {
+        "n": 57844,
+        "p_value": 1.0606417569154224e-54,
+        "rho": 0.06469631579639662,
+        "statistically_valid": true
+      },
+      "scale": "L",
+      "stage": "ALL"
+    },
+    {
+      "advantage_vs_improvement": {
+        "n": 5764,
+        "p_value": 3.395470719350506e-39,
+        "rho": 0.1712778734351657,
+        "statistically_valid": true
+      },
+      "fallback_probability_vs_improvement": {
+        "n": 5764,
+        "p_value": 1.3965850706988064e-35,
+        "rho": 0.16292614085224025,
+        "statistically_valid": true
+      },
+      "scale": "L",
+      "stage": "0-10%"
+    },
+    {
+      "advantage_vs_improvement": {
+        "n": 8725,
+        "p_value": 2.0999956552320306e-16,
+        "rho": 0.08780361011014225,
+        "statistically_valid": true
+      },
+      "fallback_probability_vs_improvement": {
+        "n": 8725,
+        "p_value": 2.8259232860284732e-15,
+        "rho": 0.08441905265758602,
+        "statistically_valid": true
+      },
+      "scale": "L",
+      "stage": "10-25%"
+    },
+    {
+      "advantage_vs_improvement": {
+        "n": 14466,
+        "p_value": 7.231327310003624e-09,
+        "rho": 0.0480784143641987,
+        "statistically_valid": true
+      },
+      "fallback_probability_vs_improvement": {
+        "n": 14466,
+        "p_value": 6.5953557607012204e-09,
+        "rho": 0.04820669221786567,
+        "statistically_valid": true
+      },
+      "scale": "L",
+      "stage": "25-50%"
+    },
+    {
+      "advantage_vs_improvement": {
+        "n": 14439,
+        "p_value": 0.4129390564150006,
+        "rho": 0.006814061124459319,
+        "statistically_valid": true
+      },
+      "fallback_probability_vs_improvement": {
+        "n": 14439,
+        "p_value": 0.5042292767713479,
+        "rho": 0.005558334629099977,
+        "statistically_valid": true
+      },
+      "scale": "L",
+      "stage": "50-75%"
+    },
+    {
+      "advantage_vs_improvement": {
+        "n": 14450,
+        "p_value": 0.16819684090259276,
+        "rho": 0.011464237552543098,
+        "statistically_valid": true
+      },
+      "fallback_probability_vs_improvement": {
+        "n": 14450,
+        "p_value": 0.19962749151447082,
+        "rho": 0.010670557681534753,
+        "statistically_valid": true
+      },
+      "scale": "L",
+      "stage": "75-100%"
+    }
+  ],
+  "interpretation": "selected-action association only; not counterfactual ranking",
+  "schema": "ngas-a16r-passive-critic-summary-v1"
+}

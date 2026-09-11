@@ -1,0 +1,64 @@
+{
+  "R13": "LOCKED_UNTOUCHED",
+  "R14": "LOCKED_UNTOUCHED",
+  "diagnostic_recommendation": {
+    "H3_prior_staleness": "DESCRIPTIVE_ONLY_NO_IN_HORIZON_STRUCTURE_RECOMPUTATION",
+    "active_hypotheses": [
+      "H5_UNRESOLVED"
+    ],
+    "automatic_next_stage": false,
+    "implemented_in_a16r": false,
+    "recommendations": [
+      "gather more evidence before considering a structural policy upgrade"
+    ],
+    "schema": "ngas-a16r-next-stage-diagnostic-recommendation-v1"
+  },
+  "gurobi_run": false,
+  "next_stage": "STOP_AFTER_A1_6R_REPORT_RECOMMENDATION_ONLY",
+  "primary_vs_phase6n_top1": {
+    "losses": 1,
+    "mean_relative_gain_percent": 3.414132500346126,
+    "median_relative_gain_percent": 3.870490033958077,
+    "ties": 0,
+    "wins": 17
+  },
+  "quality_gates": {
+    "hard_integrity": true,
+    "no_material_scale_collapse": {
+      "L": true,
+      "M": true,
+      "S": true
+    },
+    "primary_vs_phase6n_top1": true,
+    "strong_non_regression_vs_lg_hga_2o": true
+  },
+  "scale_vs_phase6n_top1": {
+    "L": {
+      "losses": 1,
+      "mean_relative_gain_percent": 1.531988636698512,
+      "ties": 0,
+      "wins": 5
+    },
+    "M": {
+      "losses": 0,
+      "mean_relative_gain_percent": 3.499175526611469,
+      "ties": 0,
+      "wins": 6
+    },
+    "S": {
+      "losses": 0,
+      "mean_relative_gain_percent": 5.211233337728398,
+      "ties": 0,
+      "wins": 6
+    }
+  },
+  "schema": "ngas-a16r-final-decision-v1",
+  "strong_vs_lg_hga_2o": {
+    "losses": 6,
+    "mean_relative_gain_percent": 1.7200376340944967,
+    "median_relative_gain_percent": 1.3360433999515697,
+    "ties": 0,
+    "wins": 12
+  },
+  "terminal_decision": "NGAS_A1_6R_PASS_REVALIDATED"
+}

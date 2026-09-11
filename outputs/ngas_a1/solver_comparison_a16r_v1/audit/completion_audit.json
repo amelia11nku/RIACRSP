@@ -1,0 +1,167 @@
+{
+  "behavior_invariance_sha256": "243a2216048e7261c966e95f2e3847e50d80c0612a21bc9a8cf09b60b2f80c9d",
+  "capacity_audit_sha256": "08344dc03277484f0db8aec99e5a5abd4f78a95d43bf66c6a9b36bb488bcbdf8",
+  "checks": {
+    "all_comparator_runs_present": true,
+    "all_method_feasibility_one": true,
+    "all_ngas_feasible_and_replayed": true,
+    "all_numeric_values_finite": true,
+    "all_online_diagnostics_complete": true,
+    "behavior_invariance_pass": true,
+    "budget_audit_pass": true,
+    "capacity_preflight_pass": true,
+    "exact_18_replayable_states": true,
+    "exact_ngas_scope_54": true,
+    "exclusive_session_integrity_pass": true,
+    "frozen_inputs_unchanged": true,
+    "full_regression_pass": true,
+    "offline_counterfactual_audit_pass": true,
+    "r13_r14_untouched_no_gurobi": true
+  },
+  "completed_at_utc": "2026-09-11T14:51:42.794298+00:00",
+  "execution_integrity": {
+    "checks": {
+      "each_session_acquired_and_released": true,
+      "event_sequences_contiguous": true,
+      "exactly_one_process_session": true,
+      "formal_lock_released": true,
+      "formal_run_completions_exact_once": true,
+      "formal_run_starts_exact_once": true,
+      "gpu_resource_preflight_passed_once": true,
+      "heartbeat_provenance_present": true,
+      "implementation_commit_is_execution_ancestor": true,
+      "one_formal_execution_commit": true,
+      "one_logical_formal_owner": true,
+      "raw_owner_identity_complete": true,
+      "raw_session_matches_logged_session": true,
+      "session_commit_matches_raw": true
+    },
+    "formal_owner_id": "NGAS_A1_6R_FORMAL_OWNER_V1",
+    "schema": "ngas-a16r-execution-integrity-audit-v1",
+    "session_count": 1,
+    "sessions": [
+      {
+        "event_count": 547,
+        "heartbeat_count": 434,
+        "hostname": "ustb",
+        "path": "outputs/ngas_a1/solver_comparison_a16r_v1/integrity/sessions/94e7ba3e743445ab9d1bb647c32f22b1.jsonl",
+        "pid": 322359,
+        "session_id": "94e7ba3e743445ab9d1bb647c32f22b1"
+      }
+    ],
+    "status": "PASS"
+  },
+  "frozen_input_audit": {
+    "bks_path": "outputs/ngas_a1/provenance/bks_manifest_v001.json",
+    "bks_sha256": "ed05a28d0e113af6dcbb9b98bbe663031124b6ff228996d394a282177053b903",
+    "checkpoint_path": "outputs/ngas_a1/critic_training_rthgt_v2/production/revised_joint_critic.pt",
+    "checkpoint_sha256": "448b0aaf871f0629dec2d94bad63c888fbdaf71c113eb5ade58c4228647c8560",
+    "checks": {
+      "all_comparators_pass": true,
+      "bks_schema_and_scope": true,
+      "bks_sources_match": true,
+      "checkpoint_sha256": true,
+      "instance_files_match": true,
+      "instance_manifest_sha256": true,
+      "instance_scope_exact": true,
+      "registry_status": true
+    },
+    "comparators": [
+      {
+        "algorithm_id": "ALNS",
+        "feasibility_rate_one": true,
+        "instance_manifest_hash_match": true,
+        "manifest_path": "outputs/frozen_2o_baselines/alns/manifest.json",
+        "manifest_sha256": "70ad57d4e2d348750f6fa15b2f5c0b5d4a46637d5ccfa6ac7cd1fc0e6d0ab787",
+        "pass": true,
+        "payload_contract_match": true,
+        "raw_file_set_exact": true,
+        "raw_hashes_match": true,
+        "registry_manifest_hash_match": true,
+        "registry_summary_hash_match": true,
+        "scope_exact_54": true,
+        "status_frozen_canonical": true,
+        "summary_path": "outputs/frozen_2o_baselines/alns/summary.json",
+        "summary_sha256": "68bb56fce458b669cd9bbc3afa8afcc5ffc32d23359f25f79b43fe8c7b129728"
+      },
+      {
+        "algorithm_id": "PHASE6H",
+        "feasibility_rate_one": true,
+        "instance_manifest_hash_match": true,
+        "manifest_path": "outputs/frozen_2o_baselines/phase6h/manifest.json",
+        "manifest_sha256": "4f7632f3a1255e49ab7365e600f131bd49ace9da57a646d8c507b4a49d5364a2",
+        "pass": true,
+        "payload_contract_match": true,
+        "raw_file_set_exact": true,
+        "raw_hashes_match": true,
+        "registry_manifest_hash_match": true,
+        "registry_summary_hash_match": true,
+        "scope_exact_54": true,
+        "status_frozen_canonical": true,
+        "summary_path": "outputs/frozen_2o_baselines/phase6h/summary.json",
+        "summary_sha256": "9c857e59a076c2b845dcaad8d98780e802b6c0ca1207ee3a9b8853f3eef77370"
+      },
+      {
+        "algorithm_id": "PHASE6N_TOP1",
+        "feasibility_rate_one": true,
+        "instance_manifest_hash_match": true,
+        "manifest_path": "outputs/frozen_2o_baselines/phase6n/manifest.json",
+        "manifest_sha256": "e81204fe080cc3af9b9a3541aff0bdbea9fe9a9db0ee2928280ba891079b6719",
+        "pass": true,
+        "payload_contract_match": true,
+        "raw_file_set_exact": true,
+        "raw_hashes_match": true,
+        "registry_manifest_hash_match": true,
+        "registry_summary_hash_match": true,
+        "scope_exact_54": true,
+        "status_frozen_canonical": true,
+        "summary_path": "outputs/frozen_2o_baselines/phase6n/summary.json",
+        "summary_sha256": "2e5d550d990515eff1b17d4e78608fe10c99ddab742ada9b4dfd32302d0e68d0"
+      },
+      {
+        "algorithm_id": "LG_HGA_2O",
+        "feasibility_rate_one": true,
+        "instance_manifest_hash_match": true,
+        "manifest_path": "outputs/frozen_2o_baselines/lg_hga_2o/manifest.json",
+        "manifest_sha256": "818cf36d49ea4b867a36b55fb964abcb91c25a0b58220bb7f188eaddc4b2362f",
+        "pass": true,
+        "payload_contract_match": true,
+        "raw_file_set_exact": true,
+        "raw_hashes_match": true,
+        "registry_manifest_hash_match": true,
+        "registry_summary_hash_match": true,
+        "scope_exact_54": true,
+        "status_frozen_canonical": true,
+        "summary_path": "outputs/frozen_2o_baselines/lg_hga_2o/summary.json",
+        "summary_sha256": "7d8a29f5318357e9c10ce40445977261006c82ea2a8cc2e54a77accfb8c7a5df"
+      }
+    ],
+    "instance_manifest_path": "outputs/frozen_2o_baselines/instance_manifest.json",
+    "instance_manifest_sha256": "5fb1d78201fd62dcc64fb1db4bbb5de9cffa11bed07bbd5c890a71c8e130b8af",
+    "registry_path": "outputs/frozen_2o_baselines/registry.json",
+    "registry_sha256": "db84791a0ba7376c9deb42e8f965614bb70111469586bd71d865257d3c2f0662",
+    "schema": "ngas-a16-frozen-input-audit-v1",
+    "status": "PASS"
+  },
+  "locks": {
+    "R13": "LOCKED_UNTOUCHED",
+    "R14": "LOCKED_UNTOUCHED",
+    "gurobi": false
+  },
+  "offline_counterfactual_audit_sha256": "4d43db859c2483eb5836198870ef781e47e2c9ff20d8de140a1719d50184e25c",
+  "protocol_sha256": "b9e9f422acafeb73b03add523d2986086606cf70838936dc1d51c5de6ee5c8de",
+  "quality_gates": {
+    "hard_integrity": true,
+    "no_material_scale_collapse": {
+      "L": true,
+      "M": true,
+      "S": true
+    },
+    "primary_vs_phase6n_top1": true,
+    "strong_non_regression_vs_lg_hga_2o": true
+  },
+  "regression_passed_tests": 505,
+  "schema": "ngas-a16r-completion-audit-v1",
+  "status": "PASS",
+  "terminal_decision": "NGAS_A1_6R_PASS_REVALIDATED"
+}

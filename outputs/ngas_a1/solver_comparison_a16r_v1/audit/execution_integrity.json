@@ -1,0 +1,32 @@
+{
+  "checks": {
+    "each_session_acquired_and_released": true,
+    "event_sequences_contiguous": true,
+    "exactly_one_process_session": true,
+    "formal_lock_released": true,
+    "formal_run_completions_exact_once": true,
+    "formal_run_starts_exact_once": true,
+    "gpu_resource_preflight_passed_once": true,
+    "heartbeat_provenance_present": true,
+    "implementation_commit_is_execution_ancestor": true,
+    "one_formal_execution_commit": true,
+    "one_logical_formal_owner": true,
+    "raw_owner_identity_complete": true,
+    "raw_session_matches_logged_session": true,
+    "session_commit_matches_raw": true
+  },
+  "formal_owner_id": "NGAS_A1_6R_FORMAL_OWNER_V1",
+  "schema": "ngas-a16r-execution-integrity-audit-v1",
+  "session_count": 1,
+  "sessions": [
+    {
+      "event_count": 547,
+      "heartbeat_count": 434,
+      "hostname": "ustb",
+      "path": "outputs/ngas_a1/solver_comparison_a16r_v1/integrity/sessions/94e7ba3e743445ab9d1bb647c32f22b1.jsonl",
+      "pid": 322359,
+      "session_id": "94e7ba3e743445ab9d1bb647c32f22b1"
+    }
+  ],
+  "status": "PASS"
+}

@@ -1,0 +1,136 @@
+{
+  "checks": {
+    "all_complete": true,
+    "all_full_bank_larger_than_8": true,
+    "exact_18_states": true,
+    "outside_formal_budget": true
+  },
+  "completed_at_utc": "2026-09-11T14:48:15.211887+00:00",
+  "interpretation": "frozen offline counterfactual audit; excluded from formal 2|O| results",
+  "overall": {
+    "mean_ndcg_full": 0.14529302083924284,
+    "mean_recall_at_1": 0.0026564972227352307,
+    "mean_recall_at_10": 0.026564972227352306,
+    "mean_recall_at_5": 0.013282486113676153,
+    "mean_top1_realized_rank": 153.77777777777777,
+    "mean_top1_regret": 0.5555555555555556
+  },
+  "protocol_sha256": "9fd8d18b17837a08547fd8927660f5b773ca66f61bd3461f022c9c3cddb8de22",
+  "scale_and_stage": [
+    {
+      "field": "scale",
+      "mean_ndcg_full": 0.14529302083924284,
+      "mean_recall_at_5": 0.011639280125195618,
+      "mean_top1_realized_rank": 144.0,
+      "mean_top1_regret": 1.6666666666666667,
+      "states": 6,
+      "value": "L"
+    },
+    {
+      "field": "scale",
+      "mean_ndcg_full": null,
+      "mean_recall_at_5": 0.013954094940010433,
+      "mean_top1_realized_rank": 159.5,
+      "mean_top1_regret": 0.0,
+      "states": 6,
+      "value": "M"
+    },
+    {
+      "field": "scale",
+      "mean_ndcg_full": null,
+      "mean_recall_at_5": 0.014254083275822406,
+      "mean_top1_realized_rank": 157.83333333333334,
+      "mean_top1_regret": 0.0,
+      "states": 6,
+      "value": "S"
+    },
+    {
+      "field": "stage",
+      "mean_ndcg_full": 0.14529302083924284,
+      "mean_recall_at_5": 0.011773458788155665,
+      "mean_top1_realized_rank": 178.66666666666666,
+      "mean_top1_regret": 1.6666666666666667,
+      "states": 6,
+      "value": "early"
+    },
+    {
+      "field": "stage",
+      "mean_ndcg_full": null,
+      "mean_recall_at_5": 0.014118973097846337,
+      "mean_top1_realized_rank": 168.33333333333334,
+      "mean_top1_regret": 0.0,
+      "states": 6,
+      "value": "late"
+    },
+    {
+      "field": "stage",
+      "mean_ndcg_full": null,
+      "mean_recall_at_5": 0.013955026455026455,
+      "mean_top1_realized_rank": 114.33333333333333,
+      "mean_top1_regret": 0.0,
+      "states": 6,
+      "value": "mid"
+    }
+  ],
+  "schema": "ngas-a16r-offline-critic-regret-summary-v1",
+  "size_and_repair": [
+    {
+      "actions": 1281,
+      "field": "repair",
+      "mean_realized_improvement": 0.0,
+      "positive_improvement_rate": 0.0,
+      "value": "greedy"
+    },
+    {
+      "actions": 1281,
+      "field": "repair",
+      "mean_realized_improvement": 0.0,
+      "positive_improvement_rate": 0.0,
+      "value": "reconfiguration_aware"
+    },
+    {
+      "actions": 1281,
+      "field": "repair",
+      "mean_realized_improvement": 0.0,
+      "positive_improvement_rate": 0.0,
+      "value": "regret2"
+    },
+    {
+      "actions": 1281,
+      "field": "repair",
+      "mean_realized_improvement": 0.0078064012490242,
+      "positive_improvement_rate": 0.00078064012490242,
+      "value": "regret3"
+    },
+    {
+      "actions": 1281,
+      "field": "repair",
+      "mean_realized_improvement": 0.0,
+      "positive_improvement_rate": 0.0,
+      "value": "transport_aware"
+    },
+    {
+      "actions": 2145,
+      "field": "size",
+      "mean_realized_improvement": 0.0,
+      "positive_improvement_rate": 0.0,
+      "value": "large"
+    },
+    {
+      "actions": 2130,
+      "field": "size",
+      "mean_realized_improvement": 0.0,
+      "positive_improvement_rate": 0.0,
+      "value": "medium"
+    },
+    {
+      "actions": 2130,
+      "field": "size",
+      "mean_realized_improvement": 0.004694835680751174,
+      "positive_improvement_rate": 0.00046948356807511736,
+      "value": "small"
+    }
+  ],
+  "state_count": 18,
+  "status": "PASS"
+}
