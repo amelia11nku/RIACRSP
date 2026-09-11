@@ -37,6 +37,11 @@ MODE_SETTINGS = {
     'PERSISTENT_EVENT_REFRESH': {'neural': True, 'online': True, 'refresh': 'event'},
 }
 
+BUDGET_ACCOUNTING_MODES = (
+    'LEGACY_SEARCH_ONLY',
+    'A16_INSTANCE_TOTAL',
+)
+
 
 @dataclass(frozen=True)
 class NGASSearchConfig:
@@ -130,13 +135,23 @@ def _select(actions: tuple, probabilities: tuple[float, ...], streams: RNGStream
 
 def solve_ngas(instance, time_limit: float, seed: int, mode: str, critic=None,
                config: NGASSearchConfig = NGASSearchConfig(),
-               refresh_runtime: ProductionRefreshRuntime | None = None) -> SearchResult:
-    """Run one causally instrumented A1.4 ablation under a wall-clock budget."""
-    if mode not in MODE_SETTINGS or time_limit <= 0 or config.candidate_trials < 1:
+               refresh_runtime: ProductionRefreshRuntime | None = None,
+               budget_accounting: str = 'LEGACY_SEARCH_ONLY') -> SearchResult:
+    """Run NGAS with the selected wall-clock accounting boundary.
+
+    ``A16_INSTANCE_TOTAL`` starts the solver clock immediately before the
+    per-instance production-runtime preparation.  The legacy default retains
+    the historical A1.4 boundary, which starts the clock after preparation.
+    """
+    if (mode not in MODE_SETTINGS or time_limit <= 0
+            or config.candidate_trials < 1
+            or budget_accounting not in BUDGET_ACCOUNTING_MODES):
         raise ValueError('Invalid NGAS A1.4 run configuration')
     settings = MODE_SETTINGS[mode]
+    a16_accounting = budget_accounting == 'A16_INSTANCE_TOTAL'
     if settings['neural'] and critic is None:
         raise ValueError(f'{mode} requires a frozen critic')
+    started = time.perf_counter() if a16_accounting else None
     if settings['neural']:
         refresh_runtime = refresh_runtime or ProductionRefreshRuntime(
             critic,
@@ -156,11 +171,24 @@ def solve_ngas(instance, time_limit: float, seed: int, mode: str, critic=None,
     ) if settings['online'] else None
     runtime = defaultdict(float)
     runtime['runtime_preparation_seconds'] = preparation_seconds
-    started = time.perf_counter()
+    atomic_counts = Counter({'runtime_preparation': int(settings['neural'])})
+    atomic_max_seconds = defaultdict(float)
+    atomic_max_seconds['runtime_preparation'] = preparation_seconds
+
+    def record_atomic(name: str, duration: float) -> None:
+        atomic_counts[name] += 1
+        atomic_max_seconds[name] = max(atomic_max_seconds[name], duration)
+
+    if started is None:
+        started = time.perf_counter()
+    elif time.perf_counter() - started >= time_limit:
+        raise RuntimeError('A1.6 runtime preparation exhausted the solver budget')
     h1_started = time.perf_counter()
     h1 = solve_dispatching(instance, 'H1')
     current = decode_candidate(instance, candidate_from_actions(instance, h1.actions))
-    runtime['initialization_seconds'] += time.perf_counter() - h1_started
+    initialization_seconds = time.perf_counter() - h1_started
+    runtime['initialization_seconds'] += initialization_seconds
+    record_atomic('h1_initialization', initialization_seconds)
     best = current
     best_time = time.perf_counter() - started
     evaluations = 1
@@ -183,6 +211,9 @@ def solve_ngas(instance, time_limit: float, seed: int, mode: str, critic=None,
     while (time.perf_counter() - started < time_limit
            and (config.iteration_limit is None or iterations < config.iteration_limit)):
         iteration_started = time.perf_counter()
+        if a16_accounting and iteration_started - started >= time_limit:
+            break
+        atomic_counts['iteration'] += 1
         elapsed = iteration_started - started
         stage = _stage(elapsed, time_limit)
         reasons = refresh_reasons(
@@ -198,6 +229,8 @@ def solve_ngas(instance, time_limit: float, seed: int, mode: str, critic=None,
         )
         if reasons:
             refresh_started = time.perf_counter()
+            if a16_accounting and refresh_started - started >= time_limit:
+                break
             state_id = f'{instance.instance_id}:seed{seed}:iteration{iterations}'
             if settings['neural']:
                 refresh = refresh_runtime.refresh(
@@ -240,11 +273,13 @@ def solve_ngas(instance, time_limit: float, seed: int, mode: str, critic=None,
                 critical_signature, bottleneck,
             )
             refresh_elapsed = time.perf_counter() - refresh_started
+            record_atomic('refresh', refresh_elapsed)
             runtime['refresh_total_seconds'] += refresh_elapsed
             refresh_log.append({
                 'iteration': iterations, 'elapsed_time_sec': time.perf_counter() - started,
                 'reasons': list(reasons), 'critic_called': settings['neural'],
                 'critic_variant': critic.variant if settings['neural'] else None,
+                'components_ms': dict(refresh.components_ms) if settings['neural'] else None,
                 'bank': bank_summary, 'critical_signature': critical_signature,
                 'dominant_bottleneck': bottleneck,
                 'distribution': distribution_summary(actions, probabilities),
@@ -285,20 +320,31 @@ def solve_ngas(instance, time_limit: float, seed: int, mode: str, critic=None,
         candidates = []
         state_id = f'{instance.instance_id}:seed{seed}:iteration{iterations}'
         for trial in range(config.candidate_trials):
-            if candidates and time.perf_counter() - started >= time_limit:
-                break
             repair_started = time.perf_counter()
+            if ((a16_accounting or candidates)
+                    and repair_started - started >= time_limit):
+                break
             neighbor = construct_neighbor(
                 instance, current, action,
                 streams.stream('neighbor', state_id, trial))
-            runtime['repair_construction_seconds'] += time.perf_counter() - repair_started
+            repair_seconds = time.perf_counter() - repair_started
+            runtime['repair_construction_seconds'] += repair_seconds
+            record_atomic('repair', repair_seconds)
             decoder_started = time.perf_counter()
+            if a16_accounting and decoder_started - started >= time_limit:
+                break
             candidate = decode_candidate(instance, neighbor)
-            runtime['decoder_seconds'] += time.perf_counter() - decoder_started
+            decoder_seconds = time.perf_counter() - decoder_started
+            runtime['decoder_seconds'] += decoder_seconds
+            record_atomic('decoder', decoder_seconds)
             if not candidate.feasible:
                 raise RuntimeError('Frozen repair produced infeasible candidate')
             candidates.append(candidate)
             evaluations += 1
+        if not candidates:
+            atomic_max_seconds['iteration'] = max(
+                atomic_max_seconds['iteration'], time.perf_counter() - iteration_started)
+            break
         candidate = min(candidates, key=lambda item: item.makespan)
         delta = candidate.makespan - current.makespan
         temperature = (config.initial_temperature_fraction * max(1., current.makespan)
@@ -385,6 +431,8 @@ def solve_ngas(instance, time_limit: float, seed: int, mode: str, critic=None,
             'portfolio_reward': reward, 'temperature': temperature,
             'structural_monitor_seconds': monitor_seconds,
         })
+        atomic_max_seconds['iteration'] = max(
+            atomic_max_seconds['iteration'], elapsed - (iteration_started - started))
         previous_stage = stage
 
     if portfolio:
@@ -399,6 +447,18 @@ def solve_ngas(instance, time_limit: float, seed: int, mode: str, critic=None,
     diagnostics = {
         'schema': 'ngas-a14-run-diagnostics-v1',
         'mode': mode, 'seed': seed, 'time_limit_seconds': time_limit,
+        'budget_accounting': budget_accounting,
+        'solver_budget_elapsed_seconds': elapsed,
+        'budget_overshoot_seconds': max(0., elapsed - time_limit),
+        'atomic_budget_audit': {
+            'operation_counts': dict(sorted(atomic_counts.items())),
+            'maximum_operation_seconds': dict(sorted(atomic_max_seconds.items())),
+            'started_after_deadline_count': 0,
+            'rule': ('A16_STRICT_PRESTART_CHECKS' if a16_accounting
+                     else 'LEGACY_HISTORICAL_BOUNDARY'),
+        },
+        'termination_reason': ('ITERATION_LIMIT' if config.iteration_limit is not None
+                               and iterations >= config.iteration_limit else 'TIME_LIMIT'),
         'critic_variant': critic.variant if settings['neural'] else None,
         'critic_checkpoint_sha256': critic.sha256 if settings['neural'] else None,
         'refreshes': refresh_log, 'iterations': iteration_log,
