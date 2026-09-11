@@ -1,0 +1,60 @@
+{
+  "a15r_completion_audit_path": "outputs/ngas_a1/runtime_revision_v1/audit/completion_audit.json",
+  "a15r_completion_audit_sha256": "c1622f3a3ffb6a45529f5523e21ad94b5e86bacfb2d910e5bcecfc987b0c37bd",
+  "a15r_result_manifest_path": "outputs/ngas_a1/runtime_revision_v1/result_manifest.json",
+  "a15r_result_manifest_sha256": "687b7ab3f7900db0d2dfbc0d9c0d107374ea88c5ae01ab756437c467e888295c",
+  "checks": {
+    "a15r_completion_pass": true,
+    "a15r_result_manifest_valid": true,
+    "budget_accounting_regression_included": true,
+    "cuda_available": true,
+    "excluded_cuda_smoke_pass": true,
+    "frozen_input_audit_pass": true,
+    "full_regression_pass": true,
+    "immutable_resume_regression_included": true,
+    "no_competing_training_worker": true,
+    "production_search_parameters_unchanged": true,
+    "qualified_gpu_class": true,
+    "r13_r14_untouched_no_gurobi": true,
+    "schedule_replay_regression_included": true,
+    "tracked_implementation_clean": true,
+    "verified_start_commit_is_ancestor": true,
+    "zero_formal_results_before_freeze": true
+  },
+  "comparator_audit_path": "outputs/ngas_a1/solver_comparison_v1/preregistration/comparator_audit.json",
+  "comparator_audit_sha256": "666cf5af06bccea17976e495c05fcf83243c290490cc2e5054f98aa4ed84aeab",
+  "competing_workers": [],
+  "completed_at_utc": "2026-09-11T04:29:15.571315+00:00",
+  "config_path": "configs/ngas_a16_solver_comparison_v1.json",
+  "config_sha256": "895128a6c76e69d31fbad95b352121e90e35da35ab134e48a6b4d044b08c421b",
+  "formal_raw_files_before_freeze": [],
+  "implementation_commit": "c176f05ba62b1b4fc712afd0f08f3c9dfa74741b",
+  "locks": {
+    "R13": "LOCKED",
+    "R14": "LOCKED",
+    "bks_v001_updates": false,
+    "comparator_reruns": false,
+    "gurobi": false,
+    "retraining": false,
+    "tuning": false
+  },
+  "machine": {
+    "cuda_available": true,
+    "cuda_runtime": "12.8",
+    "gpu": "NVIDIA GeForce RTX 4060 Ti",
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "processor": "x86_64",
+    "python": "3.11.15",
+    "torch": "2.11.0+cu128"
+  },
+  "regression": {
+    "command": "/home/liulei/miniconda3/envs/gnn311/bin/python -m pytest -q",
+    "log_path": "outputs/ngas_a1/solver_comparison_v1/preregistration/regression.log",
+    "log_sha256": "6f3b5f2f3168713e45313733b4b179fcb349ad80d1e42e7032cec6b9a4ab25e0",
+    "passed_tests": 498
+  },
+  "schema": "ngas-a16-preformal-audit-v1",
+  "smoke_path": "outputs/ngas_a1/solver_comparison_v1/smoke/smoke.json",
+  "smoke_sha256": "0ee87f83e924d922c50fd15efdfbd412b9bed4a708e34e7aacd5cb87be54508b",
+  "status": "PASS"
+}

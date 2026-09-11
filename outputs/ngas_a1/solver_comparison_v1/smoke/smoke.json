@@ -1,0 +1,70 @@
+{
+  "budget_overshoot_seconds": 0.0017030680319294333,
+  "budget_seconds": 5.0,
+  "checkpoint_sha256": "448b0aaf871f0629dec2d94bad63c888fbdaf71c113eb5ade58c4228647c8560",
+  "checks": {
+    "a16_budget_accounting": true,
+    "atomic_prestart_rule": true,
+    "checkpoint_hash": true,
+    "excluded_namespace": true,
+    "feasible_replay": true,
+    "finite_runtime": true,
+    "non_formal_seed": true,
+    "preparation_charged": true
+  },
+  "completed_at_utc": "2026-09-11T04:28:38.353318+00:00",
+  "config_sha256": "895128a6c76e69d31fbad95b352121e90e35da35ab134e48a6b4d044b08c421b",
+  "decoder_evaluations": 1918,
+  "device": {
+    "cuda": "12.8",
+    "name": "NVIDIA GeForce RTX 4060 Ti",
+    "torch": "2.11.0+cu128"
+  },
+  "end_to_end_run_elapsed_seconds": 5.0041889940039255,
+  "excluded_from_formal": true,
+  "final_makespan": 1783.0,
+  "incumbent_trace": [
+    {
+      "current_best_makespan": 1844.0,
+      "decoder_evaluations": 1,
+      "elapsed_time": 0.024720485031139106
+    },
+    {
+      "current_best_makespan": 1820.0,
+      "decoder_evaluations": 25,
+      "elapsed_time": 0.2804705399903469
+    },
+    {
+      "current_best_makespan": 1816.0,
+      "decoder_evaluations": 481,
+      "elapsed_time": 1.4128143730340526
+    },
+    {
+      "current_best_makespan": 1804.0,
+      "decoder_evaluations": 1353,
+      "elapsed_time": 3.6320496760308743
+    },
+    {
+      "current_best_makespan": 1783.0,
+      "decoder_evaluations": 1457,
+      "elapsed_time": 3.888025022984948
+    }
+  ],
+  "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+  "instance_sha256": "12ff9dd4ce3a668c89ba8edd8ee0c9f87232f00b8ce8dbb42a4827402c20047a",
+  "iterations": 240,
+  "locks": {
+    "R13": "LOCKED",
+    "R14": "LOCKED",
+    "bks_v001_updates": false,
+    "comparator_reruns": false,
+    "gurobi": false,
+    "retraining": false,
+    "tuning": false
+  },
+  "runtime_preparation_seconds": 0.00033015699591487646,
+  "schema": "ngas-a16-excluded-smoke-v1",
+  "seed": 946101,
+  "solver_budget_elapsed_seconds": 5.001703068031929,
+  "status": "PASS"
+}

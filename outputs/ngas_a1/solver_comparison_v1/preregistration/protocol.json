@@ -1,0 +1,369 @@
+{
+  "a15r_completion_audit_path": "outputs/ngas_a1/runtime_revision_v1/audit/completion_audit.json",
+  "a15r_completion_audit_sha256": "c1622f3a3ffb6a45529f5523e21ad94b5e86bacfb2d910e5bcecfc987b0c37bd",
+  "a15r_result_manifest_path": "outputs/ngas_a1/runtime_revision_v1/result_manifest.json",
+  "a15r_result_manifest_sha256": "687b7ab3f7900db0d2dfbc0d9c0d107374ea88c5ae01ab756437c467e888295c",
+  "artifact_hashes": {
+    "configs/ngas_a16_solver_comparison_v1.json": "895128a6c76e69d31fbad95b352121e90e35da35ab134e48a6b4d044b08c421b",
+    "configs/ngas_a1_search_integration_v1.json": "3aec8be1bbee7bce32e1e2f93a601153d8de9add90409c59334c0b24bf13a182",
+    "outputs/frozen_2o_baselines/alns/manifest.json": "70ad57d4e2d348750f6fa15b2f5c0b5d4a46637d5ccfa6ac7cd1fc0e6d0ab787",
+    "outputs/frozen_2o_baselines/alns/summary.json": "68bb56fce458b669cd9bbc3afa8afcc5ffc32d23359f25f79b43fe8c7b129728",
+    "outputs/frozen_2o_baselines/instance_manifest.json": "5fb1d78201fd62dcc64fb1db4bbb5de9cffa11bed07bbd5c890a71c8e130b8af",
+    "outputs/frozen_2o_baselines/lg_hga_2o/manifest.json": "818cf36d49ea4b867a36b55fb964abcb91c25a0b58220bb7f188eaddc4b2362f",
+    "outputs/frozen_2o_baselines/lg_hga_2o/summary.json": "7d8a29f5318357e9c10ce40445977261006c82ea2a8cc2e54a77accfb8c7a5df",
+    "outputs/frozen_2o_baselines/phase6h/manifest.json": "4f7632f3a1255e49ab7365e600f131bd49ace9da57a646d8c507b4a49d5364a2",
+    "outputs/frozen_2o_baselines/phase6h/summary.json": "9c857e59a076c2b845dcaad8d98780e802b6c0ca1207ee3a9b8853f3eef77370",
+    "outputs/frozen_2o_baselines/phase6n/manifest.json": "e81204fe080cc3af9b9a3541aff0bdbea9fe9a9db0ee2928280ba891079b6719",
+    "outputs/frozen_2o_baselines/phase6n/summary.json": "2e5d550d990515eff1b17d4e78608fe10c99ddab742ada9b4dfd32302d0e68d0",
+    "outputs/frozen_2o_baselines/registry.json": "db84791a0ba7376c9deb42e8f965614bb70111469586bd71d865257d3c2f0662",
+    "outputs/ngas_a1/critic_training_rthgt_v2/production/revised_joint_critic.pt": "448b0aaf871f0629dec2d94bad63c888fbdaf71c113eb5ade58c4228647c8560",
+    "outputs/ngas_a1/provenance/bks_manifest_v001.json": "ed05a28d0e113af6dcbb9b98bbe663031124b6ff228996d394a282177053b903",
+    "outputs/ngas_a1/runtime_revision_v1/audit/completion_audit.json": "c1622f3a3ffb6a45529f5523e21ad94b5e86bacfb2d910e5bcecfc987b0c37bd",
+    "outputs/ngas_a1/runtime_revision_v1/result_manifest.json": "687b7ab3f7900db0d2dfbc0d9c0d107374ea88c5ae01ab756437c467e888295c",
+    "outputs/ngas_a1/solver_comparison_v1/preregistration/comparator_audit.json": "666cf5af06bccea17976e495c05fcf83243c290490cc2e5054f98aa4ed84aeab",
+    "outputs/ngas_a1/solver_comparison_v1/preregistration/preformal_audit.json": "43546790fd5a2eb4b6a2ada18bba2540259735795fcf62cea94f6d4fb1fc1e0a",
+    "outputs/ngas_a1/solver_comparison_v1/preregistration/regression.log": "6f3b5f2f3168713e45313733b4b179fcb349ad80d1e42e7032cec6b9a4ab25e0",
+    "outputs/ngas_a1/solver_comparison_v1/preregistration/source_hashes.json": "6d120b2903f1e3ef0a44db6390fa20ec8a073541681c0718ef744c78564675d2",
+    "outputs/ngas_a1/solver_comparison_v1/smoke/smoke.json": "0ee87f83e924d922c50fd15efdfbd412b9bed4a708e34e7aacd5cb87be54508b"
+  },
+  "bks_sha256": "ed05a28d0e113af6dcbb9b98bbe663031124b6ff228996d394a282177053b903",
+  "budget": {
+    "accounting_mode": "A16_INSTANCE_TOTAL",
+    "atomic_rule": "Never start a new iteration, refresh, repair, or decoder after the deadline. An operation started before the deadline may complete; record overshoot and terminate before another such operation.",
+    "formula": "2 * instance.num_operations seconds",
+    "inside": [
+      "ProductionRefreshRuntime.prepare_instance",
+      "workspace_and_static_context_construction",
+      "H1_initialization",
+      "neural_refresh_and_inference",
+      "bank_and_action_construction",
+      "portfolio_and_sampling",
+      "repair_and_decoding",
+      "acceptance_and_search_telemetry"
+    ],
+    "multiplier": 2.0,
+    "outside": [
+      "process_and_config_setup",
+      "instance_file_loading",
+      "checkpoint_loading",
+      "shared_cuda_context_and_library_warmup",
+      "output_directory_setup"
+    ],
+    "per_run_overshoot_measurement_allowance_seconds": 0.01,
+    "systematic_extension_rule": "INVALID_IF_ANY_ATOMIC_START_IS_AFTER_DEADLINE_OR_ANY_RUN_OVERSHOOT_EXCEEDS_ITS_MAXIMUM_ATOMIC_DURATION_PLUS_0.01_SECONDS_OR_MEDIAN_OVERSHOOT_EXCEEDS_MEDIAN_PER_RUN_MAXIMUM_ATOMIC_DURATION"
+  },
+  "checkpoint_sha256": "448b0aaf871f0629dec2d94bad63c888fbdaf71c113eb5ade58c4228647c8560",
+  "comparator_audit_path": "outputs/ngas_a1/solver_comparison_v1/preregistration/comparator_audit.json",
+  "comparator_audit_sha256": "666cf5af06bccea17976e495c05fcf83243c290490cc2e5054f98aa4ed84aeab",
+  "comparators": {
+    "algorithms": [
+      "PHASE6N_TOP1",
+      "PHASE6H",
+      "ALNS",
+      "LG_HGA_2O"
+    ],
+    "policy": "REUSE_ONLY_NO_RERUN",
+    "primary": "PHASE6N_TOP1",
+    "registry_path": "outputs/frozen_2o_baselines/registry.json",
+    "required_registry_status": "FROZEN_CANONICAL_THREE_SEED_DEVELOPMENT",
+    "strong_non_regression": "LG_HGA_2O"
+  },
+  "config_path": "configs/ngas_a16_solver_comparison_v1.json",
+  "config_sha256": "895128a6c76e69d31fbad95b352121e90e35da35ab134e48a6b4d044b08c421b",
+  "decision_rules": {
+    "integrity_failure": "NGAS_A1_6_INVALID_COMPARISON",
+    "pass": "NGAS_A1_PASS_DEVELOPMENT",
+    "primary": "mean instance-level paired gain vs PHASE6N_TOP1 > 0 and wins >= losses",
+    "quality_failure": "NGAS_A1_REVISE_QUALITY",
+    "scale": "each S/M/L mean paired gain vs PHASE6N_TOP1 >= -1.0 percent",
+    "strong_non_regression": "mean instance-level paired gain vs LG_HGA_2O >= -1.0 percent"
+  },
+  "execution_concurrency": 1,
+  "finalizer_command": [
+    "/home/liulei/miniconda3/envs/gnn311/bin/python",
+    "scripts/finalize_ngas_a16_solver_comparison.py"
+  ],
+  "formal_command": [
+    "/home/liulei/miniconda3/envs/gnn311/bin/python",
+    "-u",
+    "scripts/run_ngas_a16_solver_comparison.py",
+    "--device",
+    "cuda:0"
+  ],
+  "formal_run_count": 54,
+  "frozen_at_utc": "2026-09-11T04:29:19.711790+00:00",
+  "implementation_commit": "c176f05ba62b1b4fc712afd0f08f3c9dfa74741b",
+  "instance_manifest_sha256": "5fb1d78201fd62dcc64fb1db4bbb5de9cffa11bed07bbd5c890a71c8e130b8af",
+  "instances": [
+    {
+      "CF_level": "CF1",
+      "cell_replicate": "C01",
+      "instance_id": "CB1_CAUR_L_CF1_RI2_TI2_R12",
+      "num_operations": 166,
+      "relative_path": "r12_caur_fit/CB1_CAUR_L_CF1_RI2_TI2_R12.json",
+      "scale": "L",
+      "sha256": "c0b6374d4eb72ada83b8a8452425b71b4322e61123edbb755f2cd08927288b7a"
+    },
+    {
+      "CF_level": "CF1",
+      "cell_replicate": "C02",
+      "instance_id": "CB1_CAUR_L_CF1_RI2_TI2_R12_C02",
+      "num_operations": 172,
+      "relative_path": "r12_caur_fit/CB1_CAUR_L_CF1_RI2_TI2_R12_C02.json",
+      "scale": "L",
+      "sha256": "dd5c1ce71a5d72aad6c85617cb1718c9e57f3a6cfe23a0d18a92f0942ba56dc1"
+    },
+    {
+      "CF_level": "CF2",
+      "cell_replicate": "C01",
+      "instance_id": "CB1_CAUR_L_CF2_RI2_TI2_R12",
+      "num_operations": 188,
+      "relative_path": "r12_caur_fit/CB1_CAUR_L_CF2_RI2_TI2_R12.json",
+      "scale": "L",
+      "sha256": "74b633a78dfe171189160ec0651f63c472fd7c4b456c8aa149cbc69f56bbcc8c"
+    },
+    {
+      "CF_level": "CF2",
+      "cell_replicate": "C02",
+      "instance_id": "CB1_CAUR_L_CF2_RI2_TI2_R12_C02",
+      "num_operations": 194,
+      "relative_path": "r12_caur_fit/CB1_CAUR_L_CF2_RI2_TI2_R12_C02.json",
+      "scale": "L",
+      "sha256": "48a9ab11246faafcf8189c16695cbf926f0ae8bdbc42dfab76d38b2d7830b091"
+    },
+    {
+      "CF_level": "CF3",
+      "cell_replicate": "C01",
+      "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12",
+      "num_operations": 183,
+      "relative_path": "r12_caur_fit/CB1_CAUR_L_CF3_RI2_TI2_R12.json",
+      "scale": "L",
+      "sha256": "bdb01c2b6350b572dcac6be3c542e696143bd4766ab3ae7939bff36e6234f25b"
+    },
+    {
+      "CF_level": "CF3",
+      "cell_replicate": "C02",
+      "instance_id": "CB1_CAUR_L_CF3_RI2_TI2_R12_C02",
+      "num_operations": 179,
+      "relative_path": "r12_caur_fit/CB1_CAUR_L_CF3_RI2_TI2_R12_C02.json",
+      "scale": "L",
+      "sha256": "2373d994f8a29b3d5bc58aacb9c4f74c8c60d0950760ab044a7354c19b09f9b9"
+    },
+    {
+      "CF_level": "CF1",
+      "cell_replicate": "C01",
+      "instance_id": "CB1_CAUR_M_CF1_RI2_TI2_R12",
+      "num_operations": 114,
+      "relative_path": "r12_caur_fit/CB1_CAUR_M_CF1_RI2_TI2_R12.json",
+      "scale": "M",
+      "sha256": "f3e73b5840e8e50e51b2bf81be2d17dc60648dd4666091ef91a94a0d3544e971"
+    },
+    {
+      "CF_level": "CF1",
+      "cell_replicate": "C02",
+      "instance_id": "CB1_CAUR_M_CF1_RI2_TI2_R12_C02",
+      "num_operations": 117,
+      "relative_path": "r12_caur_fit/CB1_CAUR_M_CF1_RI2_TI2_R12_C02.json",
+      "scale": "M",
+      "sha256": "c5f935a0c647bb5931b89836d8cecd934eab4933915ffb05394716fb026d4bb9"
+    },
+    {
+      "CF_level": "CF2",
+      "cell_replicate": "C01",
+      "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12",
+      "num_operations": 122,
+      "relative_path": "r12_caur_fit/CB1_CAUR_M_CF2_RI2_TI2_R12.json",
+      "scale": "M",
+      "sha256": "d9ebab88d1a3e2d3da92e56533b0c1d062ebeb81d84c125ec61af8fe79e7087a"
+    },
+    {
+      "CF_level": "CF2",
+      "cell_replicate": "C02",
+      "instance_id": "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+      "num_operations": 127,
+      "relative_path": "r12_caur_fit/CB1_CAUR_M_CF2_RI2_TI2_R12_C02.json",
+      "scale": "M",
+      "sha256": "9a1b7de15cfd0663d92ad81a5378da0922b92dc6f7c6b042cd8daf542a21b803"
+    },
+    {
+      "CF_level": "CF3",
+      "cell_replicate": "C01",
+      "instance_id": "CB1_CAUR_M_CF3_RI2_TI2_R12",
+      "num_operations": 118,
+      "relative_path": "r12_caur_fit/CB1_CAUR_M_CF3_RI2_TI2_R12.json",
+      "scale": "M",
+      "sha256": "5ccadcfce0befc39234938c398bf932ff364dcf6a2ecd7adb51cebdb1d489239"
+    },
+    {
+      "CF_level": "CF3",
+      "cell_replicate": "C02",
+      "instance_id": "CB1_CAUR_M_CF3_RI2_TI2_R12_C02",
+      "num_operations": 116,
+      "relative_path": "r12_caur_fit/CB1_CAUR_M_CF3_RI2_TI2_R12_C02.json",
+      "scale": "M",
+      "sha256": "94cd02375f0a1e0e878aaf1591384d4eaceee39aab3ebab323e7739ac2e086d7"
+    },
+    {
+      "CF_level": "CF1",
+      "cell_replicate": "C01",
+      "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12",
+      "num_operations": 61,
+      "relative_path": "r12_caur_fit/CB1_CAUR_S_CF1_RI2_TI2_R12.json",
+      "scale": "S",
+      "sha256": "12ff9dd4ce3a668c89ba8edd8ee0c9f87232f00b8ce8dbb42a4827402c20047a"
+    },
+    {
+      "CF_level": "CF1",
+      "cell_replicate": "C02",
+      "instance_id": "CB1_CAUR_S_CF1_RI2_TI2_R12_C02",
+      "num_operations": 56,
+      "relative_path": "r12_caur_fit/CB1_CAUR_S_CF1_RI2_TI2_R12_C02.json",
+      "scale": "S",
+      "sha256": "74a7fad62f6bab915dde95c71d8cee211cc37cf7ba296a7f69869350a5c295d4"
+    },
+    {
+      "CF_level": "CF2",
+      "cell_replicate": "C01",
+      "instance_id": "CB1_CAUR_S_CF2_RI2_TI2_R12",
+      "num_operations": 60,
+      "relative_path": "r12_caur_fit/CB1_CAUR_S_CF2_RI2_TI2_R12.json",
+      "scale": "S",
+      "sha256": "539a503ec74ff5d21200fb1410004fe10142f209ce1f6e910a08abb20b2d8f23"
+    },
+    {
+      "CF_level": "CF2",
+      "cell_replicate": "C02",
+      "instance_id": "CB1_CAUR_S_CF2_RI2_TI2_R12_C02",
+      "num_operations": 63,
+      "relative_path": "r12_caur_fit/CB1_CAUR_S_CF2_RI2_TI2_R12_C02.json",
+      "scale": "S",
+      "sha256": "92d8057295dbcbc4b54e91705c109ca5182fb4203fc8d99455311346d6468af6"
+    },
+    {
+      "CF_level": "CF3",
+      "cell_replicate": "C01",
+      "instance_id": "CB1_CAUR_S_CF3_RI2_TI2_R12",
+      "num_operations": 61,
+      "relative_path": "r12_caur_fit/CB1_CAUR_S_CF3_RI2_TI2_R12.json",
+      "scale": "S",
+      "sha256": "3f232d8c25a7545c618b92d20016e072a645edcbe2b6e5247d8ed2da66733eff"
+    },
+    {
+      "CF_level": "CF3",
+      "cell_replicate": "C02",
+      "instance_id": "CB1_CAUR_S_CF3_RI2_TI2_R12_C02",
+      "num_operations": 63,
+      "relative_path": "r12_caur_fit/CB1_CAUR_S_CF3_RI2_TI2_R12_C02.json",
+      "scale": "S",
+      "sha256": "96c10a051fa514f280b12e2f8c0ccf414e920ac4610fe333af1151dc928410d4"
+    }
+  ],
+  "locks": {
+    "R13": "LOCKED",
+    "R14": "LOCKED",
+    "bks_v001_updates": false,
+    "comparator_reruns": false,
+    "gurobi": false,
+    "retraining": false,
+    "tuning": false
+  },
+  "machine": {
+    "cuda_available": true,
+    "cuda_runtime": "12.8",
+    "gpu": "NVIDIA GeForce RTX 4060 Ti",
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "processor": "x86_64",
+    "python": "3.11.15",
+    "torch": "2.11.0+cu128"
+  },
+  "metrics": {
+    "anytime": {
+      "auc": "step_integral_from_first_causally_available_incumbent_to_1; report both area and available-horizon mean",
+      "checkpoints": [
+        0.1,
+        0.25,
+        0.5,
+        0.75,
+        1.0
+      ],
+      "curve": "right_continuous_incumbent",
+      "first_passage_rpd_thresholds_percent": [
+        0.0,
+        1.0,
+        2.0,
+        5.0,
+        10.0
+      ],
+      "missing": "NULL_NO_INTERPOLATION_NO_FABRICATION",
+      "quality_axis": "incumbent_makespan_divided_by_canonical_H1_makespan",
+      "time_axis": "actual_elapsed_seconds_divided_by_budget_clipped_to_[0,1]"
+    },
+    "descriptive_unit": "54 matched instance-seed runs",
+    "paired_gain_percent": "100 * (comparator - NGAS) / comparator",
+    "primary_unit": "18 instance-level means after averaging three matched seeds",
+    "rpd_percent": "100 * (makespan - BKS_v001) / BKS_v001",
+    "tie_tolerance_makespan": 1e-09
+  },
+  "nominal_total_budget_hours": 3.6,
+  "nominal_total_budget_seconds": 12960.0,
+  "preformal_audit_path": "outputs/ngas_a1/solver_comparison_v1/preregistration/preformal_audit.json",
+  "preformal_audit_sha256": "43546790fd5a2eb4b6a2ada18bba2540259735795fcf62cea94f6d4fb1fc1e0a",
+  "registry_sha256": "db84791a0ba7376c9deb42e8f965614bb70111469586bd71d865257d3c2f0662",
+  "resume_semantics": "skip only an existing complete raw after protocol, metadata, finite-value, schedule-replay, candidate-hash, and atomic-budget validation; never overwrite or rerun it",
+  "run_order": "instance_manifest_order_then_seed_order",
+  "schema": "ngas-a16-formal-protocol-v1",
+  "seeds": [
+    746101,
+    746102,
+    746103
+  ],
+  "source_hashes": {
+    "rcias_clgri/env/feasibility.py": "74589a70f77260c7943186a58951d9f5c53661f95ed7e2c6f96e0c2ab2d2e073",
+    "rcias_clgri/env/insertion_decoder.py": "55897c60d20b4b4193d765546ee31b30d2952f221e98765b413aeedc2225be44",
+    "rcias_clgri/heuristic/dispatching.py": "9b5a89509192c68ce788b112cc4bf92ae52e451a6cc56737e950f983ef6cbe08",
+    "rcias_clgri/search/common.py": "837298d3b1289a3078f822aafae274984424d9bbfa68f794d972f0610c8ddfdf",
+    "rcias_ngas/actions/repair.py": "108825efd0587318cf9c589780c14371cb3d0ffb112e61be1592d4c72bb9a46e",
+    "rcias_ngas/bank/ngas_bank_v1.py": "afef264cd5e0bcd499665dcc876acd7fc061eb4572d72ee8d0cf5fd619fd9623",
+    "rcias_ngas/critic/encoders/rt_hgt.py": "0332b7c2a77f4bc85727ec0b5254c9d38ed29ce630a0121b6c106e107fb96704",
+    "rcias_ngas/critic/inference.py": "df369fb2e14acaf5351c4977a378379f37ab2f75c7bf91aac2100346806d1591",
+    "rcias_ngas/critic/revised_critic.py": "984852f53b000c84394c452ddda2751f98156b963d5a17f51835c6d7dc5be129",
+    "rcias_ngas/csg/revised_features.py": "342dd37e25a364453687d3a0cbcf268c3dd08e6794dab1dfd7e5f3b45f6d6b03",
+    "rcias_ngas/evaluation/a16.py": "69cd1ac48ad7826abf177e7b0f00955ad483e69d0dd9a12d4d940538781acad5",
+    "rcias_ngas/evaluation/a16_integrity.py": "9aac35cea16b424a323ef896dbbd8b4ceb7154933dd73fb5f44447785b6fb8a2",
+    "rcias_ngas/evaluation/a16_io.py": "56dfe369cdc078211203e131e8cbbba4ad7c0f25efaa7005eee2878fcca665cf",
+    "rcias_ngas/runtime/compact_state.py": "c08e60818a5e0efd31b1075f3baf89cdeeb9cd992cdf1dadc3088d523a1d760a",
+    "rcias_ngas/runtime/production_refresh.py": "4cc46a7ecd4b6de49aa32eab482eb4251e1f86d2b81b49d9578f9aa1970b1c16",
+    "rcias_ngas/search/a14_telemetry.py": "1e59e195028e530c839726be8dc625c16918a75d05ef4dcd4799c17640ab855c",
+    "rcias_ngas/search/ngas_solver.py": "0049e3df9dc740110d8cfbc3ef1080f08a01c53968e20555946ec20a75658f22",
+    "rcias_ngas/search/online_portfolio.py": "442f7b7fc4089abe61eb66bcacb260db7e716dc62ecb271721ae073cf921e8c0",
+    "rcias_ngas/search/persistent_prior.py": "71d28c290d31dbefc6f0433f060767aeae5546af7b97da6890651bffd9b00395",
+    "scripts/audit_ngas_a16_preformal.py": "c3b2fee5a28935f5684250dbd503ad73c33a1dd598365e463856d965842f7b75",
+    "scripts/finalize_ngas_a16_solver_comparison.py": "f0527cc1cf5dff7c40f0a0059f6e47662000295961a26075c81a660243ae697e",
+    "scripts/freeze_ngas_a16_solver_comparison.py": "7517813ea3dd72627f444c84b392e5bcab1e1adcd138900215903942f0bb729b",
+    "scripts/launch_ngas_a16_solver_comparison.py": "24cf2eb2d8ca88dce224545e458ccedabe635ccbe13f3d14606516807f03f0e3",
+    "scripts/run_ngas_a16_solver_comparison.py": "7dc9e5a2b40dfa8d148d940275b7bad332342171bac4a84b10c9fb02be75d1dc",
+    "scripts/run_ngas_a16_worker.py": "43800bffea20b1d8eaf7a1365065c8c1321611619b5b4a5bf76d31f8e0048521",
+    "scripts/smoke_ngas_a16.py": "aa0bc3508313b7d3158fe015f2653250c153197573ca42cc23c844589436849d",
+    "tests/ngas/test_a16_solver_comparison.py": "c8fadd4baaff250c208007c7d26ac65337213e36c448163a33efdbc5a3b96069"
+  },
+  "source_hashes_path": "outputs/ngas_a1/solver_comparison_v1/preregistration/source_hashes.json",
+  "source_hashes_sha256": "6d120b2903f1e3ef0a44db6390fa20ec8a073541681c0718ef744c78564675d2",
+  "starting_a15r_commit": "93e3573b23870ad220fc636002c1f59a9891f51c",
+  "statistics": {
+    "all_zero_differences": "statistic_0_p_1_effect_0",
+    "alpha": 0.05,
+    "block": "18 instance-level three-seed means",
+    "effect_size": "matched-pairs rank-biserial with positive direction favoring NGAS",
+    "friedman_algorithms": [
+      "NGAS_A1_6",
+      "PHASE6N_TOP1",
+      "PHASE6H",
+      "ALNS",
+      "LG_HGA_2O"
+    ],
+    "multiple_testing": "Holm across four NGAS pairwise tests",
+    "wilcoxon": "two-sided paired signed-rank with scipy method=auto",
+    "zero_difference_method": "pratt"
+  },
+  "status": "FROZEN_BEFORE_FORMAL_RESULTS"
+}
