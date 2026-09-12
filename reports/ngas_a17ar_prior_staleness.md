@@ -46,7 +46,7 @@ declared and no solver-level generalization inference is made.
 The fresh candidate bank's semantic overlap falls immediately after offset zero,
 including states whose compact operation features and typed graph are unchanged.
 Candidate construction incorporates the refreshed state identifier, so this bank
-churn is not evidence that the compact relational representation or RT-HGT encoder
+churn is not evidence that the compact-relational C1 representation or neural prior
 itself became stale. Among semantic actions common to both banks, percentile-rank
 drift stays small. U0 is sparse and neither origin shows monotonic degradation of
 the stale critic's informative-state rank correlation through offset 19.

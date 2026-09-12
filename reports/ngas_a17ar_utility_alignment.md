@@ -1,14 +1,21 @@
-# NGAS A1.7A-R utility alignment
+# NGAS A1.7A-R utility alignment (corrected)
 
-| origin | states | informative U0/U1 | mean rho | same top1 | mean top5 overlap | U1/U2 same top1* |
-|---|---|---|---|---|---|---|
-| CLEAN_NON_R12_DEVELOPMENT | 18 | 4 | 0.9330 | 0.9444 | 4.8333 | 0.8000 |
-| R12_DEVELOPMENT_EXPOSED | 18 | 5 | 0.7664 | 0.8333 | 4.4444 | 1.0000 |
+The table uses centralized action-ID tie-breaking. All-state and pair-informative
+same-Top1 rates are named separately and expose their denominators.
 
-`*` conditions on a state having positive U1 utility. U0 and U1 often share the
-same top action because most state banks contain no positive action; the
-conditional rank correlation is therefore the more useful diagnostic. U2 uses
-U1 improvement per measured repair-and-decode second and can reorder actions with
-the same raw horizon gain. No C1-v2 fitting or solver behavior change occurred.
+| origin/pair scope | all n | rho n | mean rho | same top1 all | same top1 informative |
+|---|---|---|---|---|---|
+| CLEAN_NON_R12_DEVELOPMENT U0_IMMEDIATE/U1_SHORT_HORIZON | 18 | 4 | 0.9330 | 17/18 | 4/4 |
+| CLEAN_NON_R12_DEVELOPMENT U0_IMMEDIATE/U2_COST_NORMALIZED | 18 | 4 | 0.9332 | 17/18 | 4/4 |
+| CLEAN_NON_R12_DEVELOPMENT U0_IMMEDIATE/U3_STOCHASTIC_ROBUSTNESS | 18 | 4 | 0.1246 | 0/18 | 0/4 |
+| CLEAN_NON_R12_DEVELOPMENT U1_SHORT_HORIZON/U2_COST_NORMALIZED | 18 | 5 | 1.0000 | 18/18 | 5/5 |
+| CLEAN_NON_R12_DEVELOPMENT U1_SHORT_HORIZON/U3_STOCHASTIC_ROBUSTNESS | 18 | 5 | 0.0846 | 0/18 | 0/5 |
+| CLEAN_NON_R12_DEVELOPMENT U2_COST_NORMALIZED/U3_STOCHASTIC_ROBUSTNESS | 18 | 5 | 0.0847 | 0/18 | 0/5 |
+| R12_DEVELOPMENT_EXPOSED U0_IMMEDIATE/U1_SHORT_HORIZON | 18 | 5 | 0.7664 | 15/18 | 3/5 |
+| R12_DEVELOPMENT_EXPOSED U0_IMMEDIATE/U2_COST_NORMALIZED | 18 | 5 | 0.7670 | 15/18 | 3/5 |
+| R12_DEVELOPMENT_EXPOSED U0_IMMEDIATE/U3_STOCHASTIC_ROBUSTNESS | 18 | 5 | 0.1644 | 0/18 | 0/5 |
+| R12_DEVELOPMENT_EXPOSED U1_SHORT_HORIZON/U2_COST_NORMALIZED | 18 | 6 | 1.0000 | 18/18 | 6/6 |
+| R12_DEVELOPMENT_EXPOSED U1_SHORT_HORIZON/U3_STOCHASTIC_ROBUSTNESS | 18 | 6 | 0.1971 | 0/18 | 0/6 |
+| R12_DEVELOPMENT_EXPOSED U2_COST_NORMALIZED/U3_STOCHASTIC_ROBUSTNESS | 18 | 6 | 0.1971 | 0/18 | 0/6 |
 
-Machine-readable source: `outputs/ngas_a1/trajectory_utility_a17ar_v1/derived/utility_alignment.csv`.
+The prior clean positive-U1 report-only U1/U2 value was 4/5; deterministic action-ID tie-breaking corrects it to 5/5. Raw outcomes are unchanged. R12 remains development-exposed.

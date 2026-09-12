@@ -1,0 +1,61 @@
+{
+  "boundaries": {
+    "C1_retrained": false,
+    "R12": "DEVELOPMENT_EXPOSED_NO_USE",
+    "R13": "LOCKED_FINAL_EVAL_NO_ACCESS",
+    "R14": "LOCKED_GENERALIZATION_EVAL_NO_ACCESS",
+    "RCIAS_CB1_CORE45": "EXTERNAL_BASELINE_ONLY_NO_ACCESS",
+    "adaptive_racing_implemented": false,
+    "adaptive_refresh_implemented": false,
+    "gurobi_run": false,
+    "production_solver_changed": false
+  },
+  "checks": {
+    "all_required_derived_outputs_exist": true,
+    "all_six_alignment_pairs_present": true,
+    "cell_balance_exact": true,
+    "checkpoint_hash_matches": true,
+    "completion_hashes_match_manifest": true,
+    "completions_exact_once": true,
+    "exact_27_formal_exposures": true,
+    "exact_27_raw_states": true,
+    "exactly_one_session": true,
+    "forbidden_family_access_count_zero": true,
+    "formal_exposure_multiset_exact": true,
+    "formal_rows_governed_and_bound": true,
+    "frozen_source_hashes_match": true,
+    "lock_released": true,
+    "metric_consistency_fix_pass": true,
+    "one_successful_acquire_release": true,
+    "one_terminal": true,
+    "protocol_frozen_before_results": true,
+    "raw_hash_manifest_exact": true,
+    "starts_exact_once": true,
+    "state_action_contracts_pass": true
+  },
+  "completed_actions": 9560,
+  "completed_at_utc": "2026-09-12T16:58:39.834370+00:00",
+  "completed_continuation_decoder_evaluations": 152960,
+  "completed_direct_trials": 76480,
+  "completed_states": 27,
+  "forbidden_family_access_count": 0,
+  "protocol_sha256": "b20d7e387b320ef5f7816c9673056f5f9f258899409270c13544df357dff8eae",
+  "raw_manifest_sha256": "d13e0954c70d413e562fa91fe26fe46891d08e19fe8430d60a2fffadd2950318",
+  "schema": "ngas-a17as-full-bank-completion-v1",
+  "session": {
+    "checks": {
+      "completion_hashes_match_manifest": true,
+      "completions_exact_once": true,
+      "exactly_one_session": true,
+      "lock_released": true,
+      "one_successful_acquire_release": true,
+      "one_terminal": true,
+      "starts_exact_once": true
+    },
+    "session_paths": [
+      "outputs/ngas_a1/trajectory_utility_a17as_v1/integrity/full_bank_sessions/9daa797f13544e2e9e3977df888ed1d6.jsonl"
+    ],
+    "status": "PASS"
+  },
+  "status": "PASS"
+}

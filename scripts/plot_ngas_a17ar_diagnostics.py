@@ -32,6 +32,7 @@ mpl.rcParams.update({
     'font.family': 'sans-serif',
     'font.sans-serif': ['Arial', 'Helvetica', 'DejaVu Sans', 'sans-serif'],
     'svg.fonttype': 'none',
+    'svg.hashsalt': 'ngas-a17ar-v1',
     'pdf.fonttype': 42,
     'font.size': 7,
     'axes.labelsize': 7,
@@ -88,8 +89,13 @@ def save_figure(fig, stem: str, *, panel_ids: list[str] | None = None) -> None:
         overlay_svg=FIGURES / f'{stem}.alignment.svg',
         tolerance_pt=1.5, gutter_tolerance_pt=1.5, strict=True)
     options = {'bbox_inches': 'tight', 'facecolor': 'white'}
-    fig.savefig(FIGURES / f'{stem}.pdf', **options)
-    fig.savefig(FIGURES / f'{stem}.svg', **options)
+    fig.savefig(
+        FIGURES / f'{stem}.pdf',
+        metadata={'Creator': 'RI-ACRSP NGAS A1.7A-R',
+                  'CreationDate': None, 'ModDate': None}, **options)
+    fig.savefig(
+        FIGURES / f'{stem}.svg',
+        metadata={'Creator': 'RI-ACRSP NGAS A1.7A-R', 'Date': None}, **options)
     fig.savefig(FIGURES / f'{stem}.png', dpi=600, **options)
     fig.savefig(FIGURES / f'{stem}.tiff', dpi=600,
                 pil_kwargs={'compression': 'tiff_lzw'}, **options)
@@ -266,8 +272,13 @@ def main() -> None:
         cost_normalized_figure(), staleness_figure(), trial_value_figure(),
     ]
     artifacts = {}
+    generated_suffixes = {
+        '.pdf', '.svg', '.png', '.tiff', '.alignment.json', '.csv'}
     for path in sorted(FIGURES.rglob('*')):
-        if path.is_file() and path.name != 'figure_manifest.json':
+        if (path.is_file()
+                and (''.join(path.suffixes[-2:]) == '.alignment.json'
+                     or path.suffix in generated_suffixes
+                     or path.name == 'source_validation.json')):
             artifacts[relative(path)] = sha256(path)
     manifest = {
         'schema': 'ngas-a17ar-diagnostic-figures-v1',

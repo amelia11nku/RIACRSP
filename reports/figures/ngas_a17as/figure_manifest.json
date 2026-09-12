@@ -1,0 +1,57 @@
+{
+  "archetype": "quantitative diagnostic figures",
+  "artifacts": {
+    "reports/figures/ngas_a17as/clean_critic_ranking_by_scale_stage.alignment.json": "f92e37b4a5f8de5c1858970e0977ffcf245cf8345c3f9e3284c46354b09b3219",
+    "reports/figures/ngas_a17as/clean_critic_ranking_by_scale_stage.alignment.svg": "89bbe0fef1095122a74cadb0e7e26a635b681b2f8f9279978b0a31ea35639cb1",
+    "reports/figures/ngas_a17as/clean_critic_ranking_by_scale_stage.pdf": "1930aa0d4c5d022aa5fd26f7f241818018e5b7b7b64f5cd8f5f904585bf448c9",
+    "reports/figures/ngas_a17as/clean_critic_ranking_by_scale_stage.png": "7d34f3d946ab541a4c9dc6ce42f90f2a3a9bf025185bc101e96bdbe1bd870670",
+    "reports/figures/ngas_a17as/clean_critic_ranking_by_scale_stage.svg": "43984f6dc7328817c65e873488bd33ad841b85454b1b7cacc397d6464e466a8f",
+    "reports/figures/ngas_a17as/clean_critic_ranking_by_scale_stage.tiff": "cb9422af796f14863d725c85da13b4e42ee9fd53d345ca7953393709035f6a83",
+    "reports/figures/ngas_a17as/source_data/clean_critic_ranking_by_scale_stage.csv": "9f4380b25d4c0e9f53aeb162013f2c18dd19f3a97ea703ce86a958942e1282cf",
+    "reports/figures/ngas_a17as/source_data/utility_alignment_summary.csv": "a4c706da893de9634f650e811c511d43e6bc01d960b59987163db9ec7e389d5c",
+    "reports/figures/ngas_a17as/source_data/utility_support_transitions.csv": "d91f3dc02fd0a853d1ae7ca99e7f10f50d3b6110845f1b423fc1eeac64d2a215",
+    "reports/figures/ngas_a17as/source_validation.json": "2f59d752c85f8b86b8de77cb5a145c737cf97763adf29c9871aa83ec84f56caa",
+    "reports/figures/ngas_a17as/utility_alignment_summary.alignment.json": "2f1bf48c7874f3fcb46e4c0fe334e4758e252c6e2645632c74ce180526cf8e66",
+    "reports/figures/ngas_a17as/utility_alignment_summary.alignment.svg": "282e57052ade25ccf877b270f201763dfbd3e0627385355aa84cb5c2015ace52",
+    "reports/figures/ngas_a17as/utility_alignment_summary.pdf": "8efa878b41d5dea38026784c9f1d3d97cbc98dece9aeb221b758656392a5fbad",
+    "reports/figures/ngas_a17as/utility_alignment_summary.png": "e6a3f7cc025bb92fdc1e01a7161c47f320dd4856adfd0085b2b5f8351285bc57",
+    "reports/figures/ngas_a17as/utility_alignment_summary.svg": "3dcbe189e93f7757dbc7d37dee7c8882be9864b4313c24ab60c95c8a69dbabcb",
+    "reports/figures/ngas_a17as/utility_alignment_summary.tiff": "1380b0f20095897300000f50ba9a9c063a1a9e77fd43f1c96df2dd2ec5276ed9",
+    "reports/figures/ngas_a17as/utility_support_transitions.alignment.json": "3ff5af6258b66ed5d728afbb53a50cbff1f158b8de8a1ea1bcb3dd3278a98f64",
+    "reports/figures/ngas_a17as/utility_support_transitions.alignment.svg": "0359ee60b669aad823e1a23059b338109c5299a6ff21606e418f19f3dff59c71",
+    "reports/figures/ngas_a17as/utility_support_transitions.pdf": "373d0e3685b2417c607e214281e681b164ea527788240e10eba005a1b6f9fefd",
+    "reports/figures/ngas_a17as/utility_support_transitions.png": "09cac06697ee58906b0880510624bafb6d34ec90ee1e99cdb31ba027b17f55eb",
+    "reports/figures/ngas_a17as/utility_support_transitions.svg": "e2bee9d012b50682d4dfd0a1deb848982f221629b5cb7ce9b6344082b72f92b3",
+    "reports/figures/ngas_a17as/utility_support_transitions.tiff": "7724456fea76ea30f18cdb86724366717e43cdf92cea6a1989d95b0558b7396d"
+  },
+  "backend": "python-matplotlib",
+  "contracts": [
+    {
+      "claim": "Clean rank quality varies by utility, scale, and search stage.",
+      "source_rows": 36,
+      "stem": "clean_critic_ranking_by_scale_stage"
+    },
+    {
+      "claim": "Conditional transition denominators expose utility-support recovery.",
+      "source_rows": 5,
+      "stem": "utility_support_transitions"
+    },
+    {
+      "claim": "Rank and Top-1 agreement use explicit, distinct denominators.",
+      "source_rows": 6,
+      "stem": "utility_alignment_summary"
+    }
+  ],
+  "data_integrity": {
+    "conditional_denominators_explicit": true,
+    "excluded_rows": 0,
+    "population": "27 frozen clean non-R12 development states"
+  },
+  "export_formats": [
+    "pdf",
+    "svg",
+    "png",
+    "tiff"
+  ],
+  "schema": "ngas-a17as-diagnostic-figures-v1"
+}

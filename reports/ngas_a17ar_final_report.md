@@ -210,7 +210,7 @@ evaluations. At offset 5, semantic bank Jaccard drops to 0.1413 (clean) and
 0.1325 (R12), even where compact features and typed edges are unchanged. Common
 semantic actions retain rank rho around 0.98-1.00 and mean percentile-rank drift
 around 0.03 through offset 19. The drop is therefore state-ID-conditioned
-candidate-bank churn, not evidence of RT-HGT numerical instability. Fresh Top-1
+candidate-bank churn, not evidence of compact-relational C1 numerical instability. Fresh Top-1
 does not consistently improve U0, so the frozen refresh interval is unchanged.
 
 ## Evidence locations

@@ -1,0 +1,102 @@
+{
+  "boundaries": {
+    "C1_retrained": false,
+    "R13": "LOCKED_FINAL_EVAL_NO_ACCESS",
+    "R14": "LOCKED_GENERALIZATION_EVAL_NO_ACCESS",
+    "RCIAS_CB1_CORE45": "EXTERNAL_BASELINE_ONLY_NO_ACCESS",
+    "adaptive_racing_implemented": false,
+    "adaptive_refresh_implemented": false,
+    "gurobi_run": false,
+    "production_solver_changed": false
+  },
+  "checkpoint": {
+    "path": "outputs/ngas_a1/critic_training_rthgt_v2/production/revised_joint_critic.pt",
+    "sha256": "448b0aaf871f0629dec2d94bad63c888fbdaf71c113eb5ade58c4228647c8560"
+  },
+  "checks": {
+    "a17ar_result_manifest_exists": true,
+    "a17ar_terminal_pass": true,
+    "archived_regression_545_0": true,
+    "candidate_rules_24": true,
+    "candidate_trials_8": true,
+    "checkpoint_sha_exact": true,
+    "clean_collection_108_540": true,
+    "compact_relational_encoder": true,
+    "dataset_roles_exact": true,
+    "expected_baseline_head": true,
+    "fixed_refresh_20": true,
+    "initial_worktree_clean": true,
+    "pre_modification_regression_545_0": true,
+    "repair_strategies_5": true
+  },
+  "environment": {
+    "cudnn": 91900,
+    "formal_cuda_must_be_reverified_in_persistent_host_context": true,
+    "host_gpu_query": "NVIDIA GeForce RTX 4060 Ti, 8188 MiB, driver 575.64.03",
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "python": "3.11.15 (main, Jun 11 2026, 15:20:16) [GCC 14.3.0]",
+    "sandbox_cuda_available": false,
+    "sandbox_cuda_device_count": 0,
+    "torch": "2.11.0+cu128",
+    "torch_cuda": "12.8"
+  },
+  "git": {
+    "branch": "main",
+    "head": "46b45a46b391e155b1abaf093287a468c83b543d",
+    "working_tree_status": []
+  },
+  "pre_modification_regression": {
+    "command": "/home/liulei/miniconda3/envs/gnn311/bin/python -m pytest -q",
+    "elapsed_seconds": 21.99,
+    "tests_failed": 0,
+    "tests_passed": 545
+  },
+  "production_settings": {
+    "candidate_rules_per_size_before_deduplication": 24,
+    "candidate_trials": 8,
+    "candidate_trials_semantics": "stochastic repair/decode realizations per selected joint action",
+    "checkpoint_path": "outputs/ngas_a1/critic_training_rthgt_v2/production/revised_joint_critic.pt",
+    "checkpoint_sha256": "448b0aaf871f0629dec2d94bad63c888fbdaf71c113eb5ade58c4228647c8560",
+    "encoder": "compact_relational",
+    "mode": "PERSISTENT_FIXED_REFRESH",
+    "repair_strategies": 5,
+    "search": {
+      "candidate_trials": 8,
+      "cooling_rate": 0.995,
+      "initial_temperature_fraction": 0.05,
+      "iteration_limit": null,
+      "online_exploration": 0.05,
+      "portfolio_reaction": 0.25,
+      "portfolio_segment_length": 8,
+      "portfolio_strength": 0.7,
+      "prior_advantage_scale": 0.01,
+      "prior_uniform_mix": 0.05,
+      "refresh": {
+        "fixed_horizon": 20,
+        "maximum_age": 30,
+        "meaningful_improvement_fraction": 0.001,
+        "minimum_spacing": 5,
+        "repeated_high_prior_failures": 3,
+        "stagnation_horizon": 15
+      }
+    },
+    "variant": "C1"
+  },
+  "recorded_at_utc": "2026-09-12T16:17:11.084096+00:00",
+  "roles": {
+    "RCIAS_CB1_CORE45": [
+      "EXTERNAL_BASELINE_ONLY"
+    ],
+    "RCIAS_CB1_R12": [
+      "DEVELOPMENT_EXPOSED"
+    ],
+    "RCIAS_CB1_R13": [
+      "LOCKED_FINAL_EVAL"
+    ],
+    "RCIAS_CB1_R14": [
+      "LOCKED_GENERALIZATION_EVAL"
+    ]
+  },
+  "schema": "ngas-a17as-preflight-v1",
+  "status": "PASS"
+}

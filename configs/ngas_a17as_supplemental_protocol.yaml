@@ -1,0 +1,63 @@
+{
+  "schema": "ngas-a17as-supplemental-config-v1",
+  "phase": "NGAS_A1_7A_S",
+  "baseline_head": "46b45a46b391e155b1abaf093287a468c83b543d",
+  "source_trajectory_protocol": "artifacts/ngas_a17ar/trajectory_protocol_manifest.json",
+  "source_collection_audit": "outputs/ngas_a1/trajectory_utility_a17ar_v1/audit/collection_completion_audit.json",
+  "source_raw_manifest": "outputs/ngas_a1/trajectory_utility_a17ar_v1/raw_manifest.json",
+  "dataset_role_registry": "configs/dataset_role_registry.json",
+  "checkpoint_path": "outputs/ngas_a1/critic_training_rthgt_v2/production/revised_joint_critic.pt",
+  "checkpoint_sha256": "448b0aaf871f0629dec2d94bad63c888fbdaf71c113eb5ade58c4228647c8560",
+  "production_encoder": "compact_relational",
+  "state_selection": {
+    "scales": ["S", "M", "L"],
+    "stages": {
+      "EARLY": [0.0, 0.2],
+      "MIDDLE": [0.4, 0.6],
+      "LATE": [0.8, 1.0]
+    },
+    "per_cell": {"TRAIN": 2, "VALIDATION": 1},
+    "role_order": ["TRAIN", "VALIDATION"],
+    "condition_tags": [
+      "improving",
+      "immediately_post_improvement",
+      "bottleneck_or_critical_transition",
+      "plateau_or_stagnating",
+      "high_action_entropy",
+      "low_action_entropy"
+    ],
+    "selection_rule": "maximize newly covered tags in the scale-stage cell; then maximize sum(1/tag_frequency) in the eligible scale-stage pool; then lexicographic state_key"
+  },
+  "full_bank": {
+    "scope": "FULL_UNIQUE_PRODUCTION_JOINT_BANK",
+    "candidate_rules_per_size_before_deduplication": 24,
+    "repair_strategies": 5,
+    "matched_trials_per_action": 8,
+    "short_horizon_continuation_steps": 2,
+    "refresh_horizon": 20,
+    "search_mode": "PERSISTENT_FIXED_REFRESH",
+    "utility_tolerance": 1e-12,
+    "utilities": [
+      "U0_IMMEDIATE",
+      "U1_SHORT_HORIZON",
+      "U2_COST_NORMALIZED",
+      "U3_STOCHASTIC_ROBUSTNESS"
+    ]
+  },
+  "supplemental_labels": {
+    "audit_only": true,
+    "eligible_for_future_training": false
+  },
+  "boundaries": {
+    "R12": "DEVELOPMENT_EXPOSED_NO_USE",
+    "R13": "LOCKED_FINAL_EVAL_NO_ACCESS",
+    "R14": "LOCKED_GENERALIZATION_EVAL_NO_ACCESS",
+    "RCIAS_CB1_CORE45": "EXTERNAL_BASELINE_ONLY_NO_ACCESS",
+    "gurobi_run": false,
+    "production_solver_changed": false,
+    "C1_retrained": false,
+    "adaptive_racing_implemented": false,
+    "adaptive_refresh_implemented": false
+  },
+  "output_root": "outputs/ngas_a1/trajectory_utility_a17as_v1"
+}

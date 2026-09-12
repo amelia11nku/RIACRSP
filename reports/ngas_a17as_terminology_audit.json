@@ -1,0 +1,97 @@
+{
+  "audited_at_utc": "2026-09-12T17:06:39.426036+00:00",
+  "corrected_matches": [
+    {
+      "file": "reports/ngas_a17ar_prior_staleness.md",
+      "new": "compact-relational C1 representation or neural prior itself became stale",
+      "old": "compact relational representation or RT-HGT encoder itself became stale"
+    },
+    {
+      "file": "reports/ngas_a17ar_final_report.md",
+      "new": "compact-relational C1 numerical instability",
+      "old": "RT-HGT numerical instability"
+    }
+  ],
+  "current_production_encoder": "compact_relational",
+  "files_searched": [
+    "docs/reports/ngas_a1/00_starting_state_audit.md",
+    "docs/reports/ngas_a1/01_rng_independence_audit.md",
+    "docs/reports/ngas_a1/02_anytime_and_last_best_audit.md",
+    "docs/reports/ngas_a1/03_bks_rpd_provenance_audit.md",
+    "docs/reports/ngas_a1/04_csg_critical_sync_validation.md",
+    "docs/reports/ngas_a1/05_ngas_bank_v1_audit.md",
+    "docs/reports/ngas_a1/06_joint_action_label_pilot.md",
+    "docs/reports/ngas_a1/06a_label_failure_analysis_and_v2_protocol.md",
+    "docs/reports/ngas_a1/06b_label_pilot_v2_results.md",
+    "docs/reports/ngas_a1/07_joint_critic_training_report.md",
+    "docs/reports/ngas_a1/07a_expanded_development_protocol.md",
+    "docs/reports/ngas_a1/07b_development_collection_result.md",
+    "docs/reports/ngas_a1/08_persistent_prior_search_report.md",
+    "docs/reports/ngas_a1/08a_a13r_starting_state_audit.md",
+    "docs/reports/ngas_a1/08b_a13r_critical_sync_and_feature_audit.md",
+    "docs/reports/ngas_a1/08c_a12_joint_action_label_identity.md",
+    "docs/reports/ngas_a1/08d_a13r_revised_representation_audit.md",
+    "docs/reports/ngas_a1/08e_a13r_gpu_profile.md",
+    "docs/reports/ngas_a1/08f_a13r_oof_representation_comparison.md",
+    "docs/reports/ngas_a1/08g_a13r_final_decision.md",
+    "docs/reports/ngas_a1/08h_a14_starting_state_audit.md",
+    "docs/reports/ngas_a1/08i_a14_search_integration_implementation.md",
+    "docs/reports/ngas_a1/08j_a14_frozen_development_protocol.md",
+    "docs/reports/ngas_a1/08k_a14_primary_results.md",
+    "docs/reports/ngas_a1/08l_a14_c1_r1_frozen_protocol.md",
+    "docs/reports/ngas_a1/09_latency_qualification.md",
+    "docs/reports/ngas_a1/10_ngas_a1_final_report.md",
+    "docs/reports/ngas_a1/11_a15r_runtime_revision.md",
+    "docs/reports/ngas_a1/11a_a15r_tail_diagnostic.md",
+    "docs/reports/ngas_a1/12_a16_solver_comparison.md",
+    "docs/reports/ngas_a1/13_a16r_integrity_diagnostic.md",
+    "docs/reports/ngas_a1/14_a17ar_contamination_recovery_and_diagnostics.md",
+    "docs/reports/ngas_a1/15_a17as_supplemental_closure.md",
+    "reports/ngas_a17ar_candidate_trials_audit.md",
+    "reports/ngas_a17ar_comparator_exposure_audit.md",
+    "reports/ngas_a17ar_critic_ranking_audit.md",
+    "reports/ngas_a17ar_cuda_smoke.md",
+    "reports/ngas_a17ar_final_report.md",
+    "reports/ngas_a17ar_full_bank_protocol.md",
+    "reports/ngas_a17ar_portfolio_interaction.md",
+    "reports/ngas_a17ar_preflight.md",
+    "reports/ngas_a17ar_prior_staleness.md",
+    "reports/ngas_a17ar_prior_staleness_protocol.md",
+    "reports/ngas_a17ar_prior_staleness_protocol_rejected_v1.md",
+    "reports/ngas_a17ar_prior_staleness_smoke.md",
+    "reports/ngas_a17ar_r12_exposure_audit.md",
+    "reports/ngas_a17ar_state_overlap_audit.md",
+    "reports/ngas_a17ar_terminology_audit.md",
+    "reports/ngas_a17ar_trajectory_coverage.md",
+    "reports/ngas_a17ar_trajectory_protocol.md",
+    "reports/ngas_a17ar_trajectory_protocol_rejected_v1.md",
+    "reports/ngas_a17ar_trajectory_protocol_rejected_v2.md",
+    "reports/ngas_a17ar_utility_alignment.md",
+    "reports/ngas_a17as_clean_stage_critic_audit.md",
+    "reports/ngas_a17as_final_report.md",
+    "reports/ngas_a17as_metric_consistency_fix.md",
+    "reports/ngas_a17as_state_selection.md",
+    "reports/ngas_a17as_terminology_audit.md",
+    "reports/ngas_a17as_utility_alignment.md",
+    "reports/ngas_a17as_utility_support_transitions.md"
+  ],
+  "inaccurate_matches_remaining": [],
+  "intentionally_retained_historical_matches": [
+    {
+      "classification": "RETAINED_HISTORICAL_REFERENCE",
+      "file": "docs/reports/ngas_a1/08a_a13r_starting_state_audit.md",
+      "line": 34,
+      "text": "Only `NGAS_A1_3R_PASS_RTHGT` or `NGAS_A1_3R_PASS_COMPACT` can reopen preparation for"
+    }
+  ],
+  "matches_found": [
+    {
+      "classification": "RETAINED_HISTORICAL_REFERENCE",
+      "file": "docs/reports/ngas_a1/08a_a13r_starting_state_audit.md",
+      "line": 34,
+      "text": "Only `NGAS_A1_3R_PASS_RTHGT` or `NGAS_A1_3R_PASS_COMPACT` can reopen preparation for"
+    }
+  ],
+  "schema": "ngas-a17as-terminology-audit-v1",
+  "status": "PASS"
+}

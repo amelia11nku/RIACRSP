@@ -1,0 +1,96 @@
+{
+  "baseline_head": "46b45a46b391e155b1abaf093287a468c83b543d",
+  "boundaries": {
+    "C1_retrained": false,
+    "R12": "DEVELOPMENT_EXPOSED_NO_USE",
+    "R13": "LOCKED_FINAL_EVAL_NO_ACCESS",
+    "R14": "LOCKED_GENERALIZATION_EVAL_NO_ACCESS",
+    "RCIAS_CB1_CORE45": "EXTERNAL_BASELINE_ONLY_NO_ACCESS",
+    "adaptive_racing_implemented": false,
+    "adaptive_refresh_implemented": false,
+    "gurobi_run": false,
+    "production_solver_changed": false
+  },
+  "checkpoint_sha256": "448b0aaf871f0629dec2d94bad63c888fbdaf71c113eb5ade58c4228647c8560",
+  "checks": {
+    "baseline_and_checkpoint_match": true,
+    "figure_QA_pass": true,
+    "forbidden_boundaries_preserved": true,
+    "full_bank_audit_pass": true,
+    "full_regression_suite_pass": true,
+    "metric_consistency_pass": true,
+    "protocol_frozen_before_outcomes": true,
+    "required_reports_present": true,
+    "selection_exact_and_balanced": true,
+    "terminology_audit_pass": true
+  },
+  "decided_at_utc": "2026-09-12T17:13:29.433243+00:00",
+  "figure_QA": {
+    "path": "reports/figures/ngas_a17as/figure_qa.json",
+    "status": "PASS"
+  },
+  "finalization_input_head": "46b45a46b391e155b1abaf093287a468c83b543d",
+  "full_bank": {
+    "actions": 9560,
+    "continuation_decoder_evaluations": 152960,
+    "direct_action_trial_evaluations": 76480,
+    "forbidden_family_access_count": 0
+  },
+  "metric_consistency": {
+    "corrected_clean_positive_U1_same_top1": {
+      "denominator": 5,
+      "numerator": 5,
+      "rate": 1.0
+    },
+    "legacy_clean_positive_U1_same_top1": {
+      "denominator": 5,
+      "numerator": 4,
+      "rate": 0.8
+    },
+    "status": "PASS",
+    "tie_break": "utility_desc_then_action_id_asc"
+  },
+  "recommendation": {
+    "A1.7B": "JUSTIFIED_AS_SEPARATELY_FROZEN_DEVELOPMENT_PILOT",
+    "A1.7C": "RETAIN_REGIME_AWARE_MULTI_TASK_DEVELOPMENT_DIRECTION",
+    "automatic_start": false
+  },
+  "regression": {
+    "command": "/home/liulei/miniconda3/envs/gnn311/bin/python -m pytest -q",
+    "completed_at_utc": "2026-09-12T17:13:29.325327+00:00",
+    "elapsed_seconds": 22.34,
+    "git_sha": "46b45a46b391e155b1abaf093287a468c83b543d",
+    "schema": "ngas-a17as-final-regression-test-v1",
+    "status": "PASS",
+    "tests_failed": 0,
+    "tests_passed": 557,
+    "tests_skipped": 0
+  },
+  "reports": {
+    "documentation": "docs/reports/ngas_a1/15_a17as_supplemental_closure.md",
+    "final": "reports/ngas_a17as_final_report.md"
+  },
+  "schema": "ngas-a17as-final-decision-v1",
+  "selection": {
+    "scale_stage_counts": {
+      "L|EARLY": 3,
+      "L|LATE": 3,
+      "L|MIDDLE": 3,
+      "M|EARLY": 3,
+      "M|LATE": 3,
+      "M|MIDDLE": 3,
+      "S|EARLY": 3,
+      "S|LATE": 3,
+      "S|MIDDLE": 3
+    },
+    "states": 27,
+    "train": 18,
+    "validation": 9
+  },
+  "terminal_classification": "NGAS_A1_7AS_PASS_SUPPLEMENTAL_CLOSURE",
+  "terminology_audit": {
+    "current_production_encoder": "compact_relational",
+    "status": "PASS",
+    "violations_remaining": 0
+  }
+}

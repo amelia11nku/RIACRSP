@@ -1,0 +1,10 @@
+scale,stage,states,train_states,validation_states,tag_improving,tag_immediately_post_improvement,tag_bottleneck_or_critical_transition,tag_plateau_or_stagnating,tag_high_action_entropy,tag_low_action_entropy
+S,EARLY,3,2,1,0,0,2,3,1,2
+S,MIDDLE,3,2,1,0,0,1,3,1,2
+S,LATE,3,2,1,1,0,2,2,1,2
+M,EARLY,3,2,1,2,1,3,1,2,1
+M,MIDDLE,3,2,1,0,0,2,3,2,1
+M,LATE,3,2,1,1,1,1,2,1,2
+L,EARLY,3,2,1,2,2,3,1,1,2
+L,MIDDLE,3,2,1,0,0,3,3,2,1
+L,LATE,3,2,1,0,0,0,3,1,2

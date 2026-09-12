@@ -1,0 +1,28 @@
+{
+  "boundaries": {
+    "C1_retrained": false,
+    "R12": "DEVELOPMENT_EXPOSED_NO_USE",
+    "R13": "LOCKED_FINAL_EVAL_NO_ACCESS",
+    "R14": "LOCKED_GENERALIZATION_EVAL_NO_ACCESS",
+    "RCIAS_CB1_CORE45": "EXTERNAL_BASELINE_ONLY_NO_ACCESS",
+    "adaptive_racing_implemented": false,
+    "adaptive_refresh_implemented": false,
+    "gurobi_run": false,
+    "production_solver_changed": false
+  },
+  "completed_actions": 9560,
+  "completed_direct_trials": 76480,
+  "completed_states": 27,
+  "current_state": null,
+  "elapsed_seconds": 1812.829512465978,
+  "estimated_remaining_seconds": 0.0,
+  "expected_states": 27,
+  "hostname": "ustb",
+  "pid": 385063,
+  "protocol_sha256": "b20d7e387b320ef5f7816c9673056f5f9f258899409270c13544df357dff8eae",
+  "resume_command": "/home/liulei/miniconda3/envs/gnn311/bin/python -u scripts/run_ngas_a17as_full_bank.py --device cuda:0",
+  "schema": "ngas-a17as-full-bank-progress-v1",
+  "session_id": "9daa797f13544e2e9e3977df888ed1d6",
+  "status": "COMPLETE",
+  "updated_at_utc": "2026-09-12T16:56:53.737798+00:00"
+}

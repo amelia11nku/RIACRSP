@@ -1,0 +1,33 @@
+{
+  "affected_states": [
+    {
+      "corrected_same_top1": true,
+      "dataset_origin": "CLEAN_NON_R12_DEVELOPMENT",
+      "instance_id": "CB1_TRAIN_S_CF1_RI1_TI1_R04",
+      "legacy_same_top1": false,
+      "positive_U1_condition": true,
+      "scale": "S",
+      "search_stage": "40-60%",
+      "state_key": "CLEAN|CB1_TRAIN_S_CF1_RI1_TI1_R04:seed817000099:iteration2860"
+    }
+  ],
+  "corrected_clean_positive_U1_same_top1": {
+    "denominator": 5,
+    "numerator": 5,
+    "rate": 1.0
+  },
+  "corrected_files": [
+    "outputs/ngas_a1/trajectory_utility_a17ar_v1/derived/utility_alignment.csv",
+    "reports/ngas_a17ar_utility_alignment.md",
+    "reports/figures/ngas_a17ar/source_data/cost_normalized_utility.csv"
+  ],
+  "legacy_clean_positive_U1_same_top1": {
+    "denominator": 5,
+    "numerator": 4,
+    "rate": 0.8
+  },
+  "root_cause": "The legacy report-only U1/U2 path used Python max() over action-list order. The canonical pairwise path sorted utility descending then action_id ascending. A tied U1 bank therefore selected a different action in one clean state.",
+  "schema": "ngas-a17as-u1-u2-consistency-fix-v1",
+  "status": "PASS",
+  "tie_break": "utility_desc_then_action_id_asc"
+}
