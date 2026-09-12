@@ -32,7 +32,7 @@ formal timing and the actual NGAS search. It caches immutable per-instance indic
 uses reusable contiguous workspaces, constructs compact CSG/event/CPM arrays,
 shares schedule features across all three candidate sizes, computes target features
 once per unique target, creates tensor views directly, and runs the unchanged C1
-RT-HGT checkpoint and frozen prior/ranking rules. Event monitoring reuses the compact
+compact-relational checkpoint and frozen prior/ranking rules. Event monitoring reuses the compact
 critical analyzer. Historical Phase 6P source hashes remain valid.
 
 ## Formal latency

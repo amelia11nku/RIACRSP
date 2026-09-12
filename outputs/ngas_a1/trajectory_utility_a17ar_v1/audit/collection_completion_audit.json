@@ -1,0 +1,113 @@
+{
+  "boundaries": {
+    "R12": "DEVELOPMENT_EXPOSED_AUDIT_ONLY",
+    "R13": "LOCKED_FINAL_EVAL_NO_ACCESS",
+    "R14": "LOCKED_GENERALIZATION_EVAL_NO_ACCESS",
+    "RCIAS_CB1_CORE45": "EXTERNAL_BASELINE_ONLY_NO_ACCESS",
+    "gurobi_run": false,
+    "production_solver_changed": false,
+    "train_c1_v2": false
+  },
+  "budget": {
+    "atomic_starts_after_deadline": 0,
+    "maximum_atomic_seconds": 0.6562150270328857,
+    "maximum_overshoot_minus_atomic_bound_seconds": -0.03050195099785924,
+    "maximum_overshoot_seconds": 0.09664879599586129,
+    "median_maximum_atomic_seconds": 0.17146065799170174,
+    "median_overshoot_seconds": 0.0038309005030896515
+  },
+  "candidate_bank_hash": "e64c7a1cdfbe64495a2e3175fe7060dcea745f094ea6e3f1b3839fb48367bd07",
+  "checkpoint_sha256": "448b0aaf871f0629dec2d94bad63c888fbdaf71c113eb5ade58c4228647c8560",
+  "checks": {
+    "R13_R14_locked_CORE45_excluded_no_gurobi": true,
+    "all_final_schedule_replays_feasible": true,
+    "all_raw_sha256_match": true,
+    "all_raw_top_level_contracts_match": true,
+    "all_state_feature_action_trial_contracts_match": true,
+    "budget_atomic_prestart_and_overshoot_contract_pass": true,
+    "candidate_trials_semantics_preserved": true,
+    "every_run_has_exact_capture_set": true,
+    "exact_540_unique_states": true,
+    "exposure_ledger_hash_chain_and_scope_pass": true,
+    "formal_session_integrity_pass": true,
+    "frozen_collection_source_hashes_match": true,
+    "medium_and_large_not_underrepresented": true,
+    "progress_marks_exact_completion": true,
+    "protocol_config_registry_checkpoint_hashes_match": true,
+    "protocol_status_and_revision_frozen": true,
+    "raw_manifest_scope_exact": true,
+    "single_committed_execution_revision": true,
+    "train_validation_reserved_disjoint_by_id_and_hash": true
+  },
+  "collector_git_sha": "81b76acfacb6d35ed808ff0164650abb78f8ae94",
+  "completed_at_utc": "2026-09-12T10:06:52.264123+00:00",
+  "completed_runs": 108,
+  "completed_states": 540,
+  "coverage": {
+    "candidate_action_observations": 191315,
+    "candidate_actions_max": 360,
+    "candidate_actions_min": 330,
+    "selected_action_trial_records": 4320,
+    "states_by_capture_target": {
+      "0.1": 108,
+      "0.3": 108,
+      "0.5": 108,
+      "0.7": 108,
+      "0.9": 108
+    },
+    "states_by_role_and_scale": {
+      "TRAIN": {
+        "L": 135,
+        "M": 135,
+        "S": 135
+      },
+      "VALIDATION": {
+        "L": 45,
+        "M": 45,
+        "S": 45
+      }
+    },
+    "states_by_scale": {
+      "L": 180,
+      "M": 180,
+      "S": 180
+    }
+  },
+  "exposure_ledger_sha256": "aeea3247fafe6c9e15f2f4f02467e63be683a85c9e32537ef9acb6d92fe73361",
+  "formal_log_sha256": "49b172c45c057d578ece5a416e419f6c3a9e151165d593eb3c5dd2aa9761a573",
+  "next_stage": "FULL_BANK_DIAGNOSTIC_AUDIT",
+  "protocol_sha256": "856aac0c776412f5c8a509115d116c4086e7bfb211d03df43836945f61a5acf5",
+  "raw_bytes": 3561610312,
+  "raw_manifest_sha256": "32b58e770e9674afc136a37feb0d05f85d117031b0fab6f4db3c97e4aec7bb4b",
+  "schema": "ngas-a17ar-collection-completion-audit-v1",
+  "session_integrity": {
+    "checks": {
+      "completion_raw_hashes_match_manifest": true,
+      "event_sequences_contiguous": true,
+      "exactly_one_process_session": true,
+      "execution_commit_matches_raw": true,
+      "formal_completions_exact_once": true,
+      "formal_lock_released": true,
+      "formal_starts_exact_once": true,
+      "one_logical_formal_owner": true,
+      "one_successful_acquire_release": true,
+      "one_terminal_completion_event": true
+    },
+    "schema": "ngas-a17ar-session-integrity-v1",
+    "session_count": 1,
+    "sessions": [
+      {
+        "event_count": 1095,
+        "heartbeat_count": 876,
+        "path": "outputs/ngas_a1/trajectory_utility_a17ar_v1/integrity/sessions/b80a9429319445daa79ff177905a74d9.jsonl",
+        "session_id": "b80a9429319445daa79ff177905a74d9"
+      }
+    ],
+    "status": "PASS"
+  },
+  "session_log_sha256": {
+    "outputs/ngas_a1/trajectory_utility_a17ar_v1/integrity/sessions/b80a9429319445daa79ff177905a74d9.jsonl": "9058d4b7127f17d1f9fcc016398a6068a0b481bd2dfd93d6627a3241f11b6748"
+  },
+  "state_validation_errors": [],
+  "status": "PASS"
+}

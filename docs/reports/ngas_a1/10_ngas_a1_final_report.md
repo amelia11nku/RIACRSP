@@ -6,7 +6,7 @@ gate with `NGAS_A1_REVISE_RUNTIME`; those historical outputs remain unchanged.
 A1.5R then revised only the runtime architecture and passed its separately frozen gate.
 
 The actual neural NGAS search and the latency harness now call the same
-`ProductionRefreshRuntime`. The frozen C1 RT-HGT checkpoint, complete three-size
+`ProductionRefreshRuntime`. The frozen C1 compact-relational checkpoint, complete three-size
 candidate bank, target provenance/deduplication/order, five repairs, action identity,
 prior, RNG namespaces, and search policy were preserved. The runtime uses compact
 indexed CSG/event/critical arrays, shared per-refresh features, reusable workspaces,
