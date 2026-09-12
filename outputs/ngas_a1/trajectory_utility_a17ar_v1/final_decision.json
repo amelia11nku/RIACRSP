@@ -1,0 +1,101 @@
+{
+  "boundaries": {
+    "C1_retrained": false,
+    "R13": "LOCKED_FINAL_EVAL_NO_ACCESS",
+    "R14": "LOCKED_GENERALIZATION_EVAL_NO_ACCESS",
+    "RCIAS_CB1_CORE45": "EXTERNAL_BASELINE_ONLY_NO_ACCESS",
+    "adaptive_refresh_implemented": false,
+    "adaptive_trial_racing_implemented": false,
+    "gurobi_run": false,
+    "production_solver_changed": false
+  },
+  "checks": {
+    "R12_permanently_development_exposed": true,
+    "R13_R14_CORE45_and_gurobi_boundaries_preserved": true,
+    "R13_R14_roles_locked": true,
+    "all_completion_audits_pass": true,
+    "clean_future_pools_frozen_and_disjoint": true,
+    "comparator_exposure_classified": true,
+    "diagnostics_complete": true,
+    "figure_QA_pass": true,
+    "full_regression_suite_pass": true,
+    "no_A17AR_forbidden_family_access": true,
+    "production_solver_unchanged": true,
+    "r12_exposure_reconstructed": true,
+    "required_reports_present": true,
+    "state_overlap_conservatively_classified": true
+  },
+  "contamination_recovery": {
+    "R12_role": "DEVELOPMENT_EXPOSED",
+    "final_C1_instances": [
+      "CB1_CAUR_L_CF1_RI2_TI2_R12",
+      "CB1_CAUR_L_CF1_RI2_TI2_R12_C02",
+      "CB1_CAUR_L_CF2_RI2_TI2_R12",
+      "CB1_CAUR_L_CF2_RI2_TI2_R12_C02",
+      "CB1_CAUR_L_CF3_RI2_TI2_R12",
+      "CB1_CAUR_L_CF3_RI2_TI2_R12_C02",
+      "CB1_CAUR_M_CF1_RI2_TI2_R12",
+      "CB1_CAUR_M_CF1_RI2_TI2_R12_C02",
+      "CB1_CAUR_M_CF2_RI2_TI2_R12",
+      "CB1_CAUR_M_CF2_RI2_TI2_R12_C02",
+      "CB1_CAUR_M_CF3_RI2_TI2_R12",
+      "CB1_CAUR_M_CF3_RI2_TI2_R12_C02",
+      "CB1_CAUR_S_CF1_RI2_TI2_R12",
+      "CB1_CAUR_S_CF1_RI2_TI2_R12_C02",
+      "CB1_CAUR_S_CF2_RI2_TI2_R12",
+      "CB1_CAUR_S_CF2_RI2_TI2_R12_C02",
+      "CB1_CAUR_S_CF3_RI2_TI2_R12",
+      "CB1_CAUR_S_CF3_RI2_TI2_R12_C02"
+    ],
+    "final_C1_joint_action_labels": 6465,
+    "final_C1_states": 72,
+    "instance_overlap": "18/18 (100%)",
+    "no_continuation_rollout": true,
+    "seed_overlap": "3/3 (100%)"
+  },
+  "decided_at_utc": "2026-09-12T15:16:00.618195+00:00",
+  "diagnostics": {
+    "adaptive_refresh_supported": false,
+    "full_bank_actions": 12775,
+    "full_bank_states": 36,
+    "staleness_action_offset_evaluations": 63875,
+    "staleness_offsets": 180,
+    "staleness_states": 36
+  },
+  "finalization_input_commit": "0ca21fa7de8cca0ff6b4379a56726313717808e5",
+  "future_data": {
+    "collected_states": 540,
+    "reserved_id_and_hash_disjoint": true,
+    "train_instances": 81,
+    "train_states": 405,
+    "validation_instances": 27,
+    "validation_states": 135
+  },
+  "protocol_hashes": {
+    "full_bank": "cf0f68b1e8a68665c0edc9a66953b9e677bdfd2d1cc5c4f7dfd7085d7bec0bc1",
+    "prior_staleness": "60560639abb723df76225dcf9d7cbddcc3f28856e8cf3da726b81708ff03d717",
+    "trajectory": "856aac0c776412f5c8a509115d116c4086e7bfb211d03df43836945f61a5acf5"
+  },
+  "recommendation": {
+    "A1.7B": "JUSTIFIED_AS_SEPARATELY_FROZEN_DEVELOPMENT_PILOT",
+    "A1.7C": "JUSTIFIED_AS_SEPARATELY_FROZEN_DEVELOPMENT_PILOT",
+    "automatic_start": false
+  },
+  "regression": {
+    "command": "/home/liulei/miniconda3/envs/gnn311/bin/python -m pytest -q",
+    "completed_at_utc": "2026-09-12T15:15:00.412787+00:00",
+    "elapsed_seconds": 21.76,
+    "git_sha": "0ca21fa7de8cca0ff6b4379a56726313717808e5",
+    "schema": "ngas-a17ar-final-regression-test-v1",
+    "status": "PASS",
+    "tests_failed": 0,
+    "tests_passed": 545
+  },
+  "reports": {
+    "documentation": "docs/reports/ngas_a1/14_a17ar_contamination_recovery_and_diagnostics.md",
+    "figure_QA": "reports/figures/ngas_a17ar/figure_qa.json",
+    "final": "reports/ngas_a17ar_final_report.md"
+  },
+  "schema": "ngas-a17ar-final-decision-v1",
+  "terminal_classification": "NGAS_A1_7AR_PASS_CONTAMINATION_RECOVERED"
+}

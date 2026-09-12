@@ -1,0 +1,88 @@
+{
+  "backend": "python-matplotlib",
+  "checked_at_utc": "2026-09-12T15:16:00.614268+00:00",
+  "checks": {
+    "candidate_trial_marginal_value_alignment_pass": true,
+    "candidate_trial_marginal_value_collision_pass": true,
+    "candidate_trial_marginal_value_exports_complete": true,
+    "candidate_trial_marginal_value_glyph_floor_pass": true,
+    "cost_normalized_utility_summary_alignment_pass": true,
+    "cost_normalized_utility_summary_collision_pass": true,
+    "cost_normalized_utility_summary_exports_complete": true,
+    "cost_normalized_utility_summary_glyph_floor_pass": true,
+    "critic_rank_quality_by_scale_stage_alignment_pass": true,
+    "critic_rank_quality_by_scale_stage_collision_pass": true,
+    "critic_rank_quality_by_scale_stage_exports_complete": true,
+    "critic_rank_quality_by_scale_stage_glyph_floor_pass": true,
+    "prior_staleness_curve_alignment_pass": true,
+    "prior_staleness_curve_collision_pass": true,
+    "prior_staleness_curve_exports_complete": true,
+    "prior_staleness_curve_glyph_floor_pass": true,
+    "source_validation_pass": true,
+    "u0_u1_ranking_agreement_alignment_pass": true,
+    "u0_u1_ranking_agreement_collision_pass": true,
+    "u0_u1_ranking_agreement_exports_complete": true,
+    "u0_u1_ranking_agreement_glyph_floor_pass": true
+  },
+  "figures": {
+    "candidate_trial_marginal_value": {
+      "alignment_sha256": "15056f8f817d54af285b6493c43a6d4fbf819569ffd90d36e482c9cfa77ede15",
+      "collision_sha256": "9d2ed53251e60555a0823f7becfae2e9a898f5bc1e461586dd03f76585176774",
+      "exports": {
+        "pdf": "eecec235ef1febeaaa60e51f6f211071cb2c00e9f0e0669efaadc63154ddb839",
+        "png": "0aab2e81a19dc2e3c92be63272a1baad69b58f0f4806e5561746e282fdfde616",
+        "svg": "c21b1ff27e46d162e6c600476408c92fd3e56f3ed233037ab64648d323533c68",
+        "tiff": "b679898c80cb21b2f0bb4be9a84e5e3ea29f4dd8db9be3f750739cba5a76fc07"
+      },
+      "pdf_text_sha256": "5e11a645cb96d09d769acb9ecf1e3d286a8b46150233fc366e0ac9e60c894992"
+    },
+    "cost_normalized_utility_summary": {
+      "alignment_sha256": "c44c7233b55def5db153ca2e8c351eacb0c52442349549663b674eb98c11e963",
+      "collision_sha256": "712225fcd902f78c52bfd7dfd2f0f30df53733b0516cbe6ad5a871397d7a1818",
+      "exports": {
+        "pdf": "1d8292484c5dc7d0b12a0921395662ca1368de932283ce676082f1c1df93162b",
+        "png": "723fde97be3707f40dfca43436ed67e64f06b0b78b9e3feed7a492a91ff01ea3",
+        "svg": "5b77d25f4e07cdb9b303e9500733cade7777b06ebc72fcc8a0fbab1066756572",
+        "tiff": "d5ed458a3f09c57b19dc6dc63424a4c1e3f3becc9358fda914946d40324cc6e0"
+      },
+      "pdf_text_sha256": "54fbb0a0ba26fea9c1113463a499a4f10c1d51fad56e0efd9068dead38179d06"
+    },
+    "critic_rank_quality_by_scale_stage": {
+      "alignment_sha256": "d15aeb23472252601bfcc65df49582516df8f0e8a39027cb8fcf72e916c76b6a",
+      "collision_sha256": "5be600f9592dd6fa262232ce7e3b39beb3731721dbfef78f11fefd9be4af09dd",
+      "exports": {
+        "pdf": "3cfe01b5d703865d3965380944eea5cf2f0dc30f5e92fc37044c61f7fe743c17",
+        "png": "20f156d6f1f199227aefb08bb29d959227ed98dffb74af5e6b14849616281778",
+        "svg": "9adf6108b2d09f3ea632644d79ccb8a207382e68d633b5efbc0957d8f4999689",
+        "tiff": "5292f1b585fa581698210a5f0474261926d28c370dc725bf15a858f1452e3493"
+      },
+      "pdf_text_sha256": "5a50bf62a7bd2748a0dc0e9f4b93cf7452336a4ea589ec3ba0dd60080bef936a"
+    },
+    "prior_staleness_curve": {
+      "alignment_sha256": "4c55a9a66af70db0f67ba8367c3a9f230638fd3b8b73218e49afcf014e0a9ef4",
+      "collision_sha256": "e452092499676efd6d78e3d6c36ab76ef911ea2343b5164b93034c94f43a54d6",
+      "exports": {
+        "pdf": "a29b1340d0242598e45dc095e8df7740e856f6f17d944c6b96c2cfca94773d62",
+        "png": "f69602eaef7c4aedaa4bb22893aa7ab9d70e54006f2d6b7c6c7ecbe84bcc7968",
+        "svg": "105f006c3383237752731fca69c72aba844fbbba4d036518a41997cdbe99fddd",
+        "tiff": "997ae6bf5405a20cc9fd3998c7d0befe6a8b5ad1bf1d55a7211731bfd4118409"
+      },
+      "pdf_text_sha256": "3d98f0b08cc34966119954fcc801d3a4507e5a7802341c766298ddbc6d65dbcc"
+    },
+    "u0_u1_ranking_agreement": {
+      "alignment_sha256": "ac7dbeedc5223632df40f02035e00fd152f14dbdc1eda0bf2955db8421e61124",
+      "collision_sha256": "f8514d16993a98155d5b14cb3041d5ef26db8f2457249b0a3d675f08c9463e53",
+      "exports": {
+        "pdf": "711defcce89c79ef910cca35c91240f5021f5b16efc810561b2db9a4e7f66dd3",
+        "png": "42817c0c9fbf9ac641e0977cceb76249b70e3bc677728cd63567553e82d3c7f0",
+        "svg": "14b813a541021ad03779e5b1f38eb4ba1cefe307e1a42a40c7327ab6d1a3923e",
+        "tiff": "9c2e250dace013137c181d1d1bb6c57c64141eb43dfddbce6afff98b0676d308"
+      },
+      "pdf_text_sha256": "fce366a362c89e5a275b1401c05a2ea08d73dd4d7ef0771f680d3f2b40ea2e06"
+    }
+  },
+  "schema": "ngas-a17ar-figure-qa-v1",
+  "source_validation_sha256": "4c1add90a1efddfe03eaf18500d65105c593d7277fbcf89ec92777b0baacf32d",
+  "status": "PASS",
+  "visual_inspection": "PASS: every PNG was inspected at final composition; no clipping, ambiguous encoding, or unreadable panel was observed"
+}
