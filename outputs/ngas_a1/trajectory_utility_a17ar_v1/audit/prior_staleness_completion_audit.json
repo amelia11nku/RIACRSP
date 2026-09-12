@@ -1,0 +1,87 @@
+{
+  "boundaries": {
+    "R13": "LOCKED_FINAL_EVAL_NO_ACCESS",
+    "R14": "LOCKED_GENERALIZATION_EVAL_NO_ACCESS",
+    "RCIAS_CB1_CORE45": "EXTERNAL_BASELINE_ONLY_NO_ACCESS",
+    "adaptive_refresh": false,
+    "adaptive_trial_racing": false,
+    "formal_solver_budget_inclusion": false,
+    "gurobi_run": false,
+    "production_solver_changed": false,
+    "train_c1_v2": false
+  },
+  "candidate_bank_hash": "e64c7a1cdfbe64495a2e3175fe7060dcea745f094ea6e3f1b3839fb48367bd07",
+  "checkpoint_sha256": "448b0aaf871f0629dec2d94bad63c888fbdaf71c113eb5ade58c4228647c8560",
+  "checks": {
+    "R12_rows_are_audit_only_and_ineligible": true,
+    "all_state_offset_action_contracts_pass": true,
+    "checkpoint_and_upstream_artifacts_match": true,
+    "clean_rows_preserve_frozen_roles": true,
+    "completion_raw_hashes_match_manifest": true,
+    "event_sequences_contiguous": true,
+    "exact_formal_exposure_multiset": true,
+    "exactly_one_process_session": true,
+    "execution_commit_exists": true,
+    "formal_completions_exact_once": true,
+    "formal_exposures_match_frozen_identity_and_execution": true,
+    "formal_starts_exact_once": true,
+    "frozen_sources_match": true,
+    "ledger_hash_chain_valid": true,
+    "locked_boundaries_preserved": true,
+    "one_logical_formal_owner": true,
+    "one_successful_acquire_release": true,
+    "one_terminal_completion_event": true,
+    "origin_split_exact": true,
+    "prior_staleness_lock_released": true,
+    "progress_exact_complete": true,
+    "protocol_frozen_before_results": true,
+    "raw_manifest_scope_and_hashes_exact": true,
+    "raw_scope_exact": true
+  },
+  "completed_at_utc": "2026-09-12T14:42:24.585544+00:00",
+  "completed_offsets": 180,
+  "completed_states": 36,
+  "dataset_origin_counts": {
+    "CLEAN_NON_R12_DEVELOPMENT": 18,
+    "R12_DEVELOPMENT_EXPOSED": 18
+  },
+  "execution_commit": "54f2438bef079fdde89fbe6ee03c6adc3d3f9bcc",
+  "exposure_ledger_sha256": "2a9407a3cc112cbdf26ae9078fd5c96ffb60a53ba233ddaa34c6b64c9d6fb414",
+  "formal_log_sha256": "ecf0ccb3dbc08203ac4be18d5e204022f9a3c8d84543fae1960eaebb3f39fa0b",
+  "next_stage": "A1_7AR_FINALIZATION",
+  "protocol_sha256": "60560639abb723df76225dcf9d7cbddcc3f28856e8cf3da726b81708ff03d717",
+  "raw_bytes": 167840625,
+  "raw_manifest_sha256": "60312d4327bc209d383a2b486393332dcc042ac18593ff135cf50242ae733fc8",
+  "raw_validation_errors": [],
+  "schema": "ngas-a17ar-prior-staleness-completion-audit-v1",
+  "session_integrity": {
+    "checks": {
+      "completion_raw_hashes_match_manifest": true,
+      "event_sequences_contiguous": true,
+      "exactly_one_process_session": true,
+      "execution_commit_exists": true,
+      "formal_completions_exact_once": true,
+      "formal_starts_exact_once": true,
+      "one_logical_formal_owner": true,
+      "one_successful_acquire_release": true,
+      "one_terminal_completion_event": true,
+      "prior_staleness_lock_released": true
+    },
+    "execution_commit": "54f2438bef079fdde89fbe6ee03c6adc3d3f9bcc",
+    "schema": "ngas-a17ar-prior-staleness-session-integrity-v1",
+    "sessions": [
+      {
+        "event_count": 178,
+        "heartbeat_count": 103,
+        "path": "outputs/ngas_a1/trajectory_utility_a17ar_v1/integrity/prior_staleness_sessions/c0a67aff88854ba78105a20678a9f988.jsonl",
+        "session_id": "c0a67aff88854ba78105a20678a9f988"
+      }
+    ],
+    "status": "PASS"
+  },
+  "session_log_sha256": {
+    "outputs/ngas_a1/trajectory_utility_a17ar_v1/integrity/prior_staleness_sessions/c0a67aff88854ba78105a20678a9f988.jsonl": "fde844d942fd93e603c768cc823db7a4f824e10db4eb95ea2d14774e946d2929"
+  },
+  "stale_action_offset_evaluations": 63875,
+  "status": "PASS"
+}
