@@ -1,0 +1,46 @@
+{
+  "action_count_range": [
+    345,
+    355
+  ],
+  "budget_seconds": 8.0,
+  "checks": {
+    "all_graph_hashes": true,
+    "all_state_feature_hashes": true,
+    "core45_excluded": true,
+    "finite_normalized_priors": true,
+    "five_capture_states": true,
+    "r13_locked": true,
+    "r14_locked": true
+  },
+  "collector_git_sha": "261f721d4b35bb81050d5ad652fee89464f1c063",
+  "dataset_role": "TRAIN",
+  "end_to_end_seconds": 8.003835107025225,
+  "gpu": {
+    "completed_at_utc": "2026-09-11T16:24:04.537893+00:00",
+    "device": "cuda:0",
+    "device_name": "NVIDIA GeForce RTX 4060 Ti",
+    "numerical_stability": "PASS_FINITE_OUTPUTS_AND_NORMALIZED_PRIORS",
+    "peak_memory_allocated_bytes": 41540096,
+    "peak_memory_reserved_bytes": 60817408,
+    "status": "PASS"
+  },
+  "instance_content_sha256": "e6837a7979c890b1c80dca4a6f5423281017a0ef71b98037facc0cd7a9d9d9a8",
+  "instance_id": "CB1_TRAIN_S_CF2_RI1_TI2_R03",
+  "iterations": 419,
+  "iterations_per_second": 52.3499040643941,
+  "node_count_range": [
+    191,
+    199
+  ],
+  "protocol_revision": 3,
+  "protocol_sha256": "856aac0c776412f5c8a509115d116c4086e7bfb211d03df43836945f61a5acf5",
+  "raw_bytes": 5027036,
+  "raw_path": "outputs/ngas_a1/trajectory_utility_a17ar_v1/smoke/cuda_feasibility.json",
+  "raw_sha256": "0dc067c6ec660c32edf6f7e76d9851b19696794e4e999e9db4e5aa19f35eb411",
+  "refreshes": 21,
+  "refreshes_per_second": 2.623742208477986,
+  "schema": "ngas-a17ar-cuda-smoke-audit-v1",
+  "states": 5,
+  "status": "PASS"
+}
