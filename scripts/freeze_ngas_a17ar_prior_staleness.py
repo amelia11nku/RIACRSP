@@ -24,6 +24,8 @@ FULL_BANK_RAW_MANIFEST = ROOT / (
     'outputs/ngas_a1/trajectory_utility_a17ar_v1/diagnostics/'
     'full_bank_raw_manifest.json')
 OUTPUT = ROOT / 'artifacts/ngas_a17ar/prior_staleness_protocol_manifest.json'
+REJECTED_V1 = ROOT / (
+    'artifacts/ngas_a17ar/prior_staleness_protocol_manifest_rejected_v1.json')
 REPORT = ROOT / 'reports/ngas_a17ar_prior_staleness_protocol.md'
 RAW = ROOT / (
     'outputs/ngas_a1/trajectory_utility_a17ar_v1/diagnostics/'
@@ -39,8 +41,10 @@ def main() -> None:
             ['git', 'status', '--porcelain'], cwd=ROOT, text=True).strip():
         raise RuntimeError(
             'freeze prior-staleness protocol only from a clean committed worktree')
-    if OUTPUT.exists():
-        raise RuntimeError('prior-staleness protocol already exists and is immutable')
+    if (not OUTPUT.exists() or not REJECTED_V1.exists()
+            or OUTPUT.read_bytes() != REJECTED_V1.read_bytes()):
+        raise RuntimeError(
+            'revision 2 requires the exact preserved rejected-v1 protocol')
     if any(RAW.glob('*.json')):
         raise RuntimeError('formal prior-staleness outputs exist before protocol freeze')
 
@@ -95,7 +99,13 @@ def main() -> None:
     )
     payload = {
         'schema': 'ngas-a17ar-prior-staleness-protocol-v1',
+        'revision': 2,
         'status': 'FROZEN_BEFORE_STALENESS_RESULTS',
+        'supersedes_rejected_protocol_path': relative(REJECTED_V1),
+        'supersedes_rejected_protocol_sha256': sha256_file(REJECTED_V1),
+        'revision_reason': (
+            'the partial smoke slice now includes every offset-specific archived '
+            'selected action and the stale top-1; formal full-bank behavior is unchanged'),
         'frozen_at_utc': datetime.now(timezone.utc).isoformat(),
         'freeze_source_commit': subprocess.check_output(
             ['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
@@ -150,7 +160,7 @@ def main() -> None:
     OUTPUT.write_text(json.dumps(payload, indent=2, sort_keys=True) + '\n')
     REPORT.write_text(f'''# NGAS A1.7A-R prior-staleness protocol
 
-This protocol freezes the fixed-refresh staleness audit before outcomes. It uses
+Revision 2 freezes the fixed-refresh staleness audit before outcomes. It uses
 all 36 already governed full-bank states: 18 clean non-R12 development states and
 18 R12 development-exposed audit-only states. At offsets 0, 5, 10, 15, and 19,
 the persistent base bank is scored against full U0 counterfactual evidence. A
@@ -163,6 +173,8 @@ matched fresh-top-1 reference; it does not change the archived solver trajectory
 - Freeze source commit: `{payload['freeze_source_commit']}`.
 - R13/R14 remain locked; CORE45 is external-only; Gurobi is not run.
 - Adaptive refresh and C1-v2 training remain disabled.
+- Rejected v1 is preserved at `{relative(REJECTED_V1)}`; the formal full-bank
+  execution path is unchanged.
 ''')
     print(json.dumps({
         'status': payload['status'], 'states': len(states),

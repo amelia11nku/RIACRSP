@@ -312,12 +312,15 @@ def score_drift(stale, fresh) -> dict:
     }
 
 
-def base_u0_rows(state: dict, action_limit: int | None) -> list[dict]:
+def base_u0_rows(state: dict, action_ids: list[str]) -> list[dict]:
     full_path = ROOT / state['full_bank_raw_path']
     if sha256_file(full_path) != state['full_bank_raw_sha256']:
         raise RuntimeError(f'full-bank raw changed: {state["state_key"]}')
     payload = json.loads(full_path.read_text())
-    actions = payload['actions'][:action_limit] if action_limit else payload['actions']
+    by_id = {row['action_id']: row for row in payload['actions']}
+    if not set(action_ids) <= set(by_id):
+        raise RuntimeError('base U0 evidence does not cover the requested action IDs')
+    actions = [by_id[action_id] for action_id in action_ids]
     return [{
         'action_id': row['action_id'],
         'semantic_key': json.dumps(
@@ -343,12 +346,27 @@ def evaluate_state(state: dict, protocol: dict, protocol_sha: str,
     instance = context['instance']
     streams = context['streams']
     base_refresh = context['base_refresh']
-    base_actions = base_refresh.actions[:action_limit] if action_limit else base_refresh.actions
     base_iteration = int(context['snapshot']['iteration'])
+    offset_values = offsets or tuple(protocol['offsets'])
+    if action_limit:
+        required_ids = {
+            context['iteration_rows'][base_iteration + offset + 1]['action_id']
+            for offset in offset_values}
+        required_ids.add(base_refresh.actions[base_refresh.ranking[0]].action_id)
+        selected = list(base_refresh.actions[:action_limit])
+        selected_ids = {action.action_id for action in selected}
+        selected.extend(action for action in base_refresh.actions
+                        if action.action_id in required_ids
+                        and action.action_id not in selected_ids)
+        base_actions = tuple(selected)
+    else:
+        base_actions = base_refresh.actions
+    base_index = {action.action_id: index
+                  for index, action in enumerate(base_refresh.actions)}
     base_representation = representation(
         runtime, instance, context['current'], context['snapshot']['state_id'], streams)
     offset_rows = []
-    for offset in offsets or tuple(protocol['offsets']):
+    for offset in offset_values:
         current = replay_to_offset(context, offset)
         fresh_state_id = f'{instance.instance_id}:seed{state["seed"]}:iteration{base_iteration + offset}'
         fresh = runtime.refresh(
@@ -360,7 +378,8 @@ def evaluate_state(state: dict, protocol: dict, protocol_sha: str,
         drift = score_drift(base_refresh, fresh)
         trial_state_id = f'NGAS_A17AR_STALENESS|{state["state_key"]}|offset{offset}'
         if offset == 0:
-            action_rows = base_u0_rows(state, action_limit)
+            action_rows = base_u0_rows(
+                state, [action.action_id for action in base_actions])
         else:
             action_rows = [decode_action(
                 instance, current, action, streams, trial_state_id)
@@ -369,7 +388,8 @@ def evaluate_state(state: dict, protocol: dict, protocol_sha: str,
                          for row in action_rows}
         action_ids = [action.action_id for action in base_actions]
         utilities = [utility_by_id[action_id] for action_id in action_ids]
-        stale_scores = list(base_refresh.prior[:len(base_actions)])
+        stale_scores = [base_refresh.prior[base_index[action.action_id]]
+                        for action in base_actions]
         stale_metrics = ranking_metrics(stale_scores, utilities, action_ids)
         stale_top = base_actions[sorted(
             range(len(base_actions)),
@@ -427,7 +447,7 @@ def evaluate_state(state: dict, protocol: dict, protocol_sha: str,
         'protocol_sha256': protocol_sha, **state,
         'base_iteration': base_iteration,
         'refresh_interval': protocol['refresh_interval'],
-        'offsets': list(offsets or tuple(protocol['offsets'])),
+        'offsets': list(offset_values),
         'base_operation_feature_sha256': base_representation['operation_feature_sha256'],
         'base_graph_sha256': base_representation['graph_sha256'],
         'offset_results': offset_rows,
@@ -526,7 +546,9 @@ def main() -> None:
         atomic_json(OUT / 'smoke/prior_staleness_smoke.json', row)
         print(json.dumps({
             'status': 'PASS', 'state_key': state['state_key'],
-            'offsets': row['offsets'], 'actions_per_offset': 3,
+            'offsets': row['offsets'],
+            'actions_per_offset': [result['persistent_stale_actions_evaluated']
+                                   for result in row['offset_results']],
             'path': relative(OUT / 'smoke/prior_staleness_smoke.json'),
         }, indent=2))
         return
