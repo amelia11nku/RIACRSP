@@ -1,0 +1,21 @@
+{
+  "boundaries": {
+    "R13": "LOCKED_NO_ACCESS",
+    "R14": "LOCKED_NO_ACCESS",
+    "RCIAS_CB1_CORE45": "EXCLUDED",
+    "gurobi_run": false
+  },
+  "exposure_ledger_sha256": "85ce896f596f6e397310a4b22400be158d58fa178d66fb2a25572e38271942a7",
+  "failed_command": "scripts/run_ngas_a17ar_prior_staleness.py --device cuda:0 --smoke",
+  "failure": "archived selected action missing from persistent base bank",
+  "formal_lock_acquired": false,
+  "formal_outputs_written": false,
+  "formal_protocol_valid_for_execution": false,
+  "protocol_path": "artifacts/ngas_a17ar/prior_staleness_protocol_manifest_rejected_v1.json",
+  "protocol_sha256": "e1f9af118503acd92efb2a673aafa3d5db27610ca159e2b190422ebaa8f63778",
+  "recorded_at_utc": "2026-09-12T13:18:00.953182+00:00",
+  "required_revision": "include selected-action semantics in smoke or omit that assertion only for explicitly partial smoke; keep formal full-bank assertion fail-closed",
+  "root_cause": "three-action smoke slice omitted the archived selected action while the formal full-bank path does not slice actions",
+  "schema": "ngas-a17ar-prior-staleness-smoke-rejection-v1",
+  "status": "REJECTED_BEFORE_FORMAL_RESULTS"
+}
