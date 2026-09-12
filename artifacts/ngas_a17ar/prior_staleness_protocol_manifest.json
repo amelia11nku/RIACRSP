@@ -21,9 +21,9 @@
     "mandatory_origin_split_exact": true,
     "no_formal_output_before_freeze": true
   },
-  "freeze_source_commit": "a65899d06b43118ed0b4ce13796505f87ed5af3d",
+  "freeze_source_commit": "41168b4bc10cbf3839536bc4fefeb707cc941d81",
   "fresh_reference_scope": "hypothetical fixed production refresh at the same current state; semantic bank/rank/score overlap plus eight matched trials for fresh top-1 only",
-  "frozen_at_utc": "2026-09-12T13:16:27.472102+00:00",
+  "frozen_at_utc": "2026-09-12T13:19:13.075862+00:00",
   "full_bank_completion_audit_path": "outputs/ngas_a1/trajectory_utility_a17ar_v1/audit/full_bank_completion_audit.json",
   "full_bank_completion_audit_sha256": "1d13165dcc907df363c3f5b4b743905011a2fb25278aec9f5436b74ee7bad469",
   "full_bank_protocol_path": "artifacts/ngas_a17ar/full_bank_protocol_manifest.json",
@@ -55,6 +55,8 @@
     "graph_structure": "typed directed-edge Jaccard",
     "operation_features": "relative L2 and mean absolute compact input drift"
   },
+  "revision": 2,
+  "revision_reason": "the partial smoke slice now includes every offset-specific archived selected action and the stale top-1; formal full-bank behavior is unchanged",
   "schema": "ngas-a17ar-prior-staleness-protocol-v1",
   "source_hashes": {
     "rcias_clgri/env/insertion_decoder.py": "55897c60d20b4b4193d765546ee31b30d2952f221e98765b413aeedc2225be44",
@@ -65,8 +67,8 @@
     "rcias_ngas/rng.py": "517108042997aed218ffea8efb0537d38497aedf8c0b3f12103d6b397a9b1383",
     "rcias_ngas/runtime/compact_state.py": "433cac993192b3da1d2b73830a04d60a5c3e5f4429b8b88428726c40c1ac8356",
     "rcias_ngas/runtime/production_refresh.py": "890d8d65d3d73188edd5e8792261c3c3616fdcf1272715f15936e20524590b31",
-    "scripts/freeze_ngas_a17ar_prior_staleness.py": "6c505fac96d3a09ba3cdff00c9cba75218c9b0849f52040d6216aaa5eb0539a6",
-    "scripts/run_ngas_a17ar_prior_staleness.py": "df3fd9d9f0afa28f6ad5ed267eda181d61ed78d0c165443036c2e17ac052b0f1"
+    "scripts/freeze_ngas_a17ar_prior_staleness.py": "925f74c32ea60c679a35c5c9512025b6e1330778e11681cd5062fd1929430818",
+    "scripts/run_ngas_a17ar_prior_staleness.py": "e2404372f9d656d06a5d14759742a50e32f9e342e2384be49fd6d91b8aa78902"
   },
   "stale_bank_scope": "FULL_UNIQUE_BASE_REFRESH_JOINT_BANK",
   "stale_utility_scope": "eight matched repair/decode trials for every persistent base-bank action at each nonzero offset; offset zero reuses the hash-frozen full-bank U0 trials",
@@ -835,5 +837,7 @@
     "uncertainty": "instance-clustered; multiple R12 states are not independent"
   },
   "status": "FROZEN_BEFORE_STALENESS_RESULTS",
+  "supersedes_rejected_protocol_path": "artifacts/ngas_a17ar/prior_staleness_protocol_manifest_rejected_v1.json",
+  "supersedes_rejected_protocol_sha256": "e1f9af118503acd92efb2a673aafa3d5db27610ca159e2b190422ebaa8f63778",
   "trajectory_reconstruction": "replay archived selected actions and all eight stored repair seeds; apply only archived accepted moves and verify every current-before/current-after objective"
 }
